@@ -2322,9 +2322,9 @@ max-blobs-per-transaction=2
 
 </Tabs>
 
-Maximum number of [blobs](../../concepts/transactions/types.md#blob-transactions) allowed per transaction. This option takes effect from the [Osaka hardfork](https://eips.ethereum.org/EIPS/eip-7607) onwards.
-
-If omitted, the node uses the protocol default of 6.
+Maximum number of [blobs](../../concepts/transactions/types.md#blob-transactions) allowed per transaction.
+The default is 6.
+You can use this option starting from the [Osaka hard fork](https://eips.ethereum.org/EIPS/eip-7607).
 
 ### `max-peers`
 

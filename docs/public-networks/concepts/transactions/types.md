@@ -66,7 +66,7 @@ the reference to the blob.
 
 :::tip
 
-The maximum number of blobs per transaction is configurable via the [`--max-blobs-per-transaction`](../../reference/cli/options.md#max-blobs-per-transaction) CLI option (effective from the Osaka hardfork onwards).
+You can configure the maximum number of blobs per transaction using the [`--max-blobs-per-transaction`](../../reference/cli/options.md#max-blobs-per-transaction) CLI option.
 
 :::
 
