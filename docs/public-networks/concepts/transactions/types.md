@@ -65,9 +65,7 @@ Blobs are temporarily stored by consensus clients such as Teku, and blocks on th
 the reference to the blob.
 
 :::tip
-
 You can configure the maximum number of blobs per transaction using the [`--max-blobs-per-transaction`](../../reference/cli/options.md#max-blobs-per-transaction) CLI option.
-
 :::
 
 ### View blob transaction costs
