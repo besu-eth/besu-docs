@@ -112,6 +112,7 @@ To display the list of endpoints again, run:
 ```bash
 ./list.sh
 ```
+
 Congratulations, you are now running your private Besu network.
 
 ## Next steps
@@ -272,7 +273,6 @@ For more details on how to configure and use these tools for your own nodes, see
 You can view collated logs via Grafana Loki:
 
 ![Grafana Loki dashboard screenshot](../../assets/images/grafana_loki.png)
-
 
 ### Public transactions
 
