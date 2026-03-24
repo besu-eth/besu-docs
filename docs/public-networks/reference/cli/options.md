@@ -2307,7 +2307,7 @@ Sets logging verbosity. Log levels are `OFF`, `FATAL`, `ERROR`, `WARN`, `INFO`, 
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-BESU_MAX_BLOBS_PER_BLOCK=2=8
+BESU_MAX_BLOBS_PER_BLOCK=8
 ```
 
 </TabItem>
