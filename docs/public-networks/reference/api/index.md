@@ -6041,6 +6041,7 @@ curl -X POST --data '{"jsonrpc":"2.0", "method":"eth_simulateV1", "params":[{"bl
       "calls": [
         {
           "gasUsed": "0x5208",
+          "maxUsedGas": "0x7530",
           "logs": [
             {
               "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
@@ -6063,6 +6064,7 @@ curl -X POST --data '{"jsonrpc":"2.0", "method":"eth_simulateV1", "params":[{"bl
         },
         {
           "gasUsed": "0x5208",
+          "maxUsedGas": "0x7530",
           "logs": [
             {
               "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
