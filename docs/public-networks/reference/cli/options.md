@@ -2284,6 +2284,47 @@ logging="DEBUG"
 
 Sets logging verbosity. Log levels are `OFF`, `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`. The default is `INFO`.
 
+### `max-blobs-per-block`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--max-blobs-per-block=<INTEGER>
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+--max-blobs-per-block=8
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_MAX_BLOBS_PER_BLOCK=2=8
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+max-blobs-per-block=8
+```
+
+</TabItem>
+
+</Tabs>
+
+Maximum number of [blobs](../../concepts/transactions/types.md#blob-transactions) allowed per block.
+You can use this option starting from the [Osaka hard fork](https://eips.ethereum.org/EIPS/eip-7607).
+
 ### `max-blobs-per-transaction`
 
 <Tabs>
