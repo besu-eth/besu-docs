@@ -2323,6 +2323,9 @@ max-blobs-per-block=8
 </Tabs>
 
 Maximum number of [blobs](../../concepts/transactions/types.md#blob-transactions) allowed per block.
+The default is determined by the hard fork you're on, defined in the genesis file.
+Use this option if you want to apply a limit smaller than the default value.
+
 You can use this option starting from the [Osaka hard fork](https://eips.ethereum.org/EIPS/eip-7607).
 
 ### `max-blobs-per-transaction`
