@@ -6,17 +6,26 @@ tags:
   - private networks
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Deploy smart contracts to an Ethereum chain
 
 This tutorial shows you how to deploy smart contracts as transactions to a network.
 
 ## Prerequisites
 
-This tutorial requires a local blockchain network. You can use the [Developer Quickstart](../quickstart.md) to rapidly generate one.
+- A local blockchain network. You can use the [Developer Quickstart](../quickstart.md) to rapidly generate 
+one.
+- Install the Solidity compiler using one of the following methods:
+  - Use the [Solidity releases](https://github.com/ethereum/solidity/releases) for the `solc` binary.
+  - Run `npm install -g solc` for the JavaScript version.
 
 ## Use `eth_sendSignedTransaction`
 
-To deploy a smart contract using [`eth_sendSignedTransaction`](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#sendsignedtransaction), use an account's private key to sign and serialize the transaction, and send the API request.
+To deploy a smart contract using 
+[`eth_sendSignedTransaction`](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#sendsignedtransaction), use an account's 
+private key to sign and serialize the transaction, and send the API request.
 
 This example uses the [web3js](https://www.npmjs.com/package/web3) library to make the API calls.
 
@@ -61,15 +70,35 @@ Run `compile.js` to get the smart contract's output JSON:
 node compile.js
 ```
 
-Run `solc` to get the contract's bytecode and ABI:
+Run the compiler to get the contract's bytecode and ABI:
+
+<Tabs>
+<TabItem value="Binary (solc)" label="Binary (solc)" default>
+
+If you installed the compiler from [Solidity releases](https://github.com/ethereum/solidity/releases):
 
 ```bash
 solc SimpleStorage.sol --bin --abi
 ```
 
-Once you have the bytecode and ABI, you can rename the output files to make them easier to use; this tutorial refers to them as `SimpleStorage.bin` and `SimpleStorage.abi`.
+</TabItem>
+<TabItem value="npm (solcjs)" label="npm (solcjs)">
 
-Create a new file named `public_tx.js` to send the transaction (or run the following commands in a JavaScript console). The Developer Quickstart provides an [example of a public transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/public_tx.js).
+If you installed via `npm install -g solc`, use **`solcjs`**:
+
+```bash
+solcjs SimpleStorage.sol --bin --abi
+```
+
+</TabItem>
+</Tabs>
+
+Once you have the bytecode and ABI, you can rename the output files to make them easier to use; this tutorial refers to them as 
+`SimpleStorage.bin` and `SimpleStorage.abi`.
+
+Create a new file named `public_tx.js` to send the transaction (or run the following commands in a JavaScript console). 
+The developer quickstart provides an 
+[example of a public transaction script](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/public_tx.js).
 
 ```js titl="public_tx.js"
 const web3 = new Web3(host);
@@ -120,7 +149,8 @@ console.log("tx contractAddress: " + pTx.contractAddress);
 - `to` - address of the receiver. To deploy a contract, set to `null`.
 - `gas` - amount of gas provided by the sender for the transaction.
 - `gasPrice` - price for each unit of gas the sender is willing to pay.
-- `data` - binary of the contract (in this example there's also a constructor initialization value, so we append that to the binary value).
+- `data` - binary of the contract (in this example there's also a constructor initialization value, so we append that to the 
+binary value).
 - `value` - amount of Ether/Wei transferred from the sender to the recipient.
 
 Run the `public_tx.js` to send the transaction:
@@ -129,11 +159,15 @@ Run the `public_tx.js` to send the transaction:
 node public_tx.js
 ```
 
-This example code creates the transaction `tx`, signs it with the private key of the account, serializes it, then calls `eth_sendSignedTransaction` to deploy the contract.
+This example code creates the transaction `tx`, signs it with the private key of the account, serializes it, then calls 
+`eth_sendSignedTransaction` to deploy the contract.
 
 ## Use `eth_sendTransaction`
 
-You can use [`eth_sendTransaction`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_sendtransaction) as an alternative to `eth_sendSignedTransaction`. However, Besu does not support the `eth_sendTransaction` API call and keeps account management separate for stronger security. Configure [Web3Signer](https://docs.web3signer.consensys.net/) with your Besu node to make the `eth_sendTransaction` API call.
+You can use [`eth_sendTransaction`](https://ethereum.org/developers/docs/apis/json-rpc/#eth_sendtransaction) as an alternative 
+to `eth_sendSignedTransaction`. However, Besu does not support the `eth_sendTransaction` API call and keeps account management 
+separate for stronger security. Configure [Web3Signer](https://docs.web3signer.consensys.net/) with your Besu node to make the 
+`eth_sendTransaction` API call.
 
 Pass the following parameters to the [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction) call to Web3Signer. Web3Signer converts the request to an [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction) call that Besu uses:
 
@@ -143,7 +177,8 @@ Pass the following parameters to the [`eth_sendTransaction`](https://docs.web3si
 - `gasPrice` - price for each unit of gas the sender is willing to pay
 - `data` - one of the following:
   - For contract deployments (this use case) - compiled code of the contract
-  - For contract interactions - hash of the invoked method signature and encoded parameters (see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html))
+  - For contract interactions - hash of the invoked method signature and encoded parameters (see 
+  [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html))
   - For simple ether transfers - empty
 
 ```json title="'eth_sendTransaction' parameters"
