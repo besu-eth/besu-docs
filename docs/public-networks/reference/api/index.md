@@ -382,7 +382,7 @@ None
 
 `result`: _object_ - node object with the following fields:
 
-- `enode`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of the node
+- `enr`: _string_ - [Ethereum Node Record (ENR)](https://eips.ethereum.org/EIPS/eip-778) of the node
 
 - `listenAddr`: _string_ - host and port for the node
 
@@ -396,7 +396,7 @@ None
 
 :::note
 
-If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
+If the node is running locally, the host of the `enr` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enr` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
 
 :::
 
@@ -425,10 +425,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id"
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "enode": "enode://87ec35d558352cc55cd1bf6a472557797f91287b78fe5e86760219124563450ad1bb807e4cc61e86c574189a851733227155551a14b9d0e1f62c5e11332a18a3@[::]:30303",
+    "enr": "enr:-Jq4QOBEJ_aqkcth60IN44olOQ3uNsfqwEahYc6eKRfBg8ZlGbqhHTKqN_Yr67QWUA9v8_l-iaYhpd2uJC_AEQDv3agCg2V0aMrJhPxk7ASDEYwwgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQK99DIR26ML8QCgAEC5-DnhcWHIjIVzAouFM8it-O0elIN0Y3CCdl-DdWRwgnZf",
     "listenAddr": "[::]:30303",
-    "name": "besu/v1.0.1-dev-0d2294a5/osx-x86_64/oracle-java-1.8",
-    "id": "87ec35d558352cc55cd1bf6a472557797f91287b78fe5e86760219124563450ad1bb807e4cc61e86c574189a851733227155551a14b9d0e1f62c5e11332a18a3",
+    "name": "besu/v26.3-develop-f2ec0fe/osx-aarch_64/oracle_openjdk-java-22",
+    "id": "bdf43211dba30bf100a00040b9f839e17161c88c8573028b8533c8adf8ed1e9466e4b87d716d06292426d154d0df7acde83c3f68df151da5413224b22f049054",
     "ports": {
       "discovery": 30303,
       "listener": 30303

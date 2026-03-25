@@ -11,7 +11,8 @@ tags:
 
 Use the [`--nat-method`](../../reference/cli/options.md#nat-method) option to specify the NAT method. Options are: [`UPNP`](#upnp), [`DOCKER`](#docker), [`AUTO`](#auto), and [`NONE`](#none).
 
-The [enode](../../concepts/node-keys.md#enode-url) advertised to other nodes during discovery is the external IP address and port. The [`admin_nodeInfo`](../../reference/api/index.md#admin_nodeinfo) JSON-RPC API method returns the external address and port for the `enode` and `listenAddr` properties.
+The [enode](../../concepts/node-keys.md#enode-url) or [ENR](https://eips.ethereum.org/EIPS/eip-778) advertised to other nodes during discovery includes the external IP address and port.
+The [`admin_nodeInfo`](../../reference/api/index.md#admin_nodeinfo) JSON-RPC API method returns the external address and port for the `enr` and `listenAddr` properties.
 
 While Besu is running, the following are not supported:
 
