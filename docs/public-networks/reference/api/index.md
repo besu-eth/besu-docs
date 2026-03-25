@@ -396,7 +396,8 @@ None
 
 :::note
 
-If the node is running locally, the host of the `enr` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enr` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
+If the node is running locally, the host returned in the `enr` and `listenAddr` is `[::]`.
+When advertising externally, the external address included for the `enr` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
 
 :::
 
