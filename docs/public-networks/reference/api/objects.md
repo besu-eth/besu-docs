@@ -70,6 +70,7 @@ All fields are required.
 | `returnData` |   Data   | Data returned for the call.                                                                   |
 | `logs`       |  Array   | Array of [log objects](#log-object) generated during the call.                                |
 | `gasUsed`    | Quantity | Amount of gas used by the call.                                                               |
+| `maxUsedGas` | Quantity | Maximum gas used during the call before any refunds.                                          |
 | `status`     | Quantity | Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed. |
 
 ## Fee history results object
