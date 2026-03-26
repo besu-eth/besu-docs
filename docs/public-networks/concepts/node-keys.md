@@ -120,5 +120,5 @@ The [`admin_nodeInfo`](../reference/api/index.md#admin_nodeinfo) method returns 
 To use ENR URLs (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
 :::
 
-Unlike [enode URLs](#enode-url), ENR URLs can advertise additional node information, including IPv4 and IPv6 addresses and ports.
+Unlike [enode URLs](#enode-url), ENR URLs can advertise additional node information, including IPv4 and IPv6 addresses.
 See [EIP-778](https://eips.ethereum.org/EIPS/eip-778) for the full specification.

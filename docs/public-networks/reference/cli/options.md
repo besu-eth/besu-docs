@@ -3338,8 +3338,7 @@ If [`--nat-method`](#nat-method) is set to [`NONE`](../../how-to/connect/specify
 <TabItem value="Example" label="Example">
 
 ```bash
-# to listen on all interfaces
---p2p-host-ipv6=0.0.0.0
+--p2p-host-ipv6=2001:db8:85a3::8a2e:370:7334
 ```
 
 </TabItem>
@@ -3347,8 +3346,7 @@ If [`--nat-method`](#nat-method) is set to [`NONE`](../../how-to/connect/specify
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-# to listen on all interfaces
-BESU_P2P_HOST_IPV6=0.0.0.0
+BESU_P2P_HOST_IPV6=2001:db8:85a3::8a2e:370:7334
 ```
 
 </TabItem>
@@ -3356,7 +3354,7 @@ BESU_P2P_HOST_IPV6=0.0.0.0
 <TabItem value="Configuration file" label="Configuration file">
 
 ```bash
-p2p-host-ipv6="0.0.0.0"
+p2p-host-ipv6="2001:db8:85a3::8a2e:370:7334"
 ```
 
 </TabItem>
@@ -3433,7 +3431,7 @@ If you specify an IPv6 interface using `--p2p-interface`, do not set [`--p2p-int
 <TabItem value="Example" label="Example">
 
 ```bash
---p2p-interface-ipv6=192.168.1.132
+--p2p-interface-ipv6=2001:db8:85a3::1/64
 ```
 
 </TabItem>
@@ -3441,7 +3439,7 @@ If you specify an IPv6 interface using `--p2p-interface`, do not set [`--p2p-int
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-BESU_P2P_INTERFACE_IPV6=192.168.1.132
+BESU_P2P_INTERFACE_IPV6=2001:db8:85a3::1/64
 ```
 
 </TabItem>
@@ -3449,7 +3447,7 @@ BESU_P2P_INTERFACE_IPV6=192.168.1.132
 <TabItem value="Configuration file" label="Configuration file">
 
 ```bash
-p2p-interface-ipv6="192.168.1.132"
+p2p-interface-ipv6="2001:db8:85a3::1/64"
 ```
 
 </TabItem>
@@ -3556,10 +3554,7 @@ p2p-port="1789"
 The P2P listening ports (UDP and TCP). The default is `30303`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 :::tip Experimental feature
-This option can take an IPv4 or IPv6 port.
 To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
-
-If you specify an IPv6 port using `--p2p-port`, do not set [`--p2p-port-ipv6`](#p2p-port-ipv6).
 :::
 
 ### `p2p-port-ipv6`
@@ -3607,9 +3602,7 @@ The default is `30404`.
 You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 :::tip Experimental feature
-To use an IPv6 port (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
-
-If you set `--p2p-port-ipv6`, do not specify an IPv6 port using [`--p2p-interface`](#p2p-interface).
+To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
 :::
 
 ### `plugin-block-txs-selection-max-time`

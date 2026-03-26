@@ -45,7 +45,7 @@ To use ENR URLs and IPv6 addresses (discovery v5), set the experimental option `
 besu --genesis-file=privateNetworkGenesis.json --data-path=nodeDataPath --bootnodes=enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb99bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303
 ```
 
-The default host and port advertised to other peers for P2P communication is `127.0.0.1:30303`.
+The default host and port advertised to other peers for P2P discovery is `127.0.0.1:30303`.
 To specify a different host or port, use the
 [`--p2p-host`](../../../public-networks/reference/cli/options.md#p2p-host)
 / [`--p2p-host-ipv6`](../../../public-networks/reference/cli/options.md#p2p-host) or
