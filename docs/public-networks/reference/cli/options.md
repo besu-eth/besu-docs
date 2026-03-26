@@ -511,7 +511,7 @@ The default is `30000`.
 <TabItem value="Syntax" label="Syntax" default>
 
 ```bash
---bootnodes[=<source>[,<source>...]]
+--bootnodes=<enode://id@host:port>|<enr:base64Enr>[,<enode://id@host:port>|<enr:base64Enr>,...]
 ```
 
 </TabItem>
@@ -542,16 +542,15 @@ bootnodes=["enode://c35c3...d615f@1.2.3.4:30303","enode://f42c13...fc456@1.2.3.5
 
 </Tabs>
 
-A list of comma-separated sources for [P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md),
-where each source can be one of the following:
+A list of comma-separated [enode URLs](../../concepts/node-keys.md#enode-url) or [ENR URLs](../../concepts/node-keys.md#enr-url) for
+[P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md).
+The list must contain all enode URLs (for discovery v4) or all ENR URLs (for discovery v5).
 
-- A direct [enode URL](../../concepts/node-keys.md#enode-url): `enode://<id>@<host>:<port>`
-- A local file path: `/path/to/bootnodes.txt`
-- A file URI: `file:///path/to/bootnodes.txt`
-- An HTTP(S) URL: `https://example.com/bootnodes.txt`
+:::tip Experimental feature
+To use discovery v5 bootnodes, set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::
 
-Each file or URL must contain one enode URL per line. Blank lines and lines starting with `#` are ignored.
-When connecting to Mainnet or public testnets, the default is a predefined list of enode URLs.
+When connecting to Mainnet or public testnets, the default is a predefined list of bootnodes.
 
 In private networks defined using [`--genesis-file`](#genesis-file) or when using
 [`--network=dev`](#network), the default is an empty list of bootnodes.
@@ -3308,12 +3307,68 @@ p2p-host="0.0.0.0"
 
 </Tabs>
 
-The advertised host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). The default is `127.0.0.1`.
+The advertised host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
+The default is `127.0.0.1`.
+
+:::tip Experimental feature
+This option can take an IPv4 or IPv6 host.
+To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you specify an IPv6 host using `--p2p-host`, do not set [`--p2p-host-ipv6`](#p2p-host-ipv6).
+:::
 
 :::info
 
 If [`--nat-method`](#nat-method) is set to [`NONE`](../../how-to/connect/specify-nat.md), `--p2p-host` is not overridden and must be specified for the node to be accessed from outside the network.
 
+:::
+
+### `p2p-host-ipv6`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--p2p-host-ipv6=<HOST>
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+# to listen on all interfaces
+--p2p-host-ipv6=0.0.0.0
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+# to listen on all interfaces
+BESU_P2P_HOST_IPV6=0.0.0.0
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+p2p-host-ipv6="0.0.0.0"
+```
+
+</TabItem>
+
+</Tabs>
+
+The advertised IPv6 host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
+
+:::tip Experimental feature
+To use an IPv6 host (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you set `--p2p-host-ipv6`, do not specify an IPv6 host using [`--p2p-host`](#p2p-host).
 :::
 
 ### `p2p-interface`
@@ -3356,6 +3411,108 @@ p2p-interface="192.168.1.132"
 
 The network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces. The default is 0.0.0.0 (all interfaces).
 
+:::tip Experimental feature
+This option can take an IPv4 or IPv6 interface.
+To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you specify an IPv6 interface using `--p2p-interface`, do not set [`--p2p-interface-ipv6`](#p2p-interface-ipv6).
+:::
+
+### `p2p-interface-ipv6`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--p2p-interface-ipv6=<HOST>
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+--p2p-interface-ipv6=192.168.1.132
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_P2P_INTERFACE_IPV6=192.168.1.132
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+p2p-interface-ipv6="192.168.1.132"
+```
+
+</TabItem>
+
+</Tabs>
+
+The IPv6 network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
+Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces.
+
+:::tip Experimental feature
+To use an IPv6 interface (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you set `--p2p-interface-ipv6`, do not specify an IPv6 interface using [`--p2p-interface`](#p2p-interface).
+:::
+
+### `p2p-ipv6-outbound-enabled`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--p2p-ipv6-outbound-enabled[=<true|false>]
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+--p2p-ipv6-outbound-enabled=true
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_P2P_IPV6_OUTBOUND_ENABLED=true
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+p2p-ipv6-outbound-enabled=true
+```
+
+</TabItem>
+
+</Tabs>
+
+Enables or disables preferring IPv6 addresses for outbound P2P connections when peers advertise both IPv4 and IPv6.
+
+When set to `true`, IPv6 is preferred.
+When omitted or set to `false`, IPv4 is preferred.
+If a peer only advertises one address family, it is always used.
+
+:::tip Experimental feature
+To use IPv6 addresses (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::
+
 ### `p2p-port`
 
 <Tabs>
@@ -3397,6 +3554,63 @@ p2p-port="1789"
 </Tabs>
 
 The P2P listening ports (UDP and TCP). The default is `30303`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
+
+:::tip Experimental feature
+This option can take an IPv4 or IPv6 port.
+To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you specify an IPv6 port using `--p2p-port`, do not set [`--p2p-port-ipv6`](#p2p-port-ipv6).
+:::
+
+### `p2p-port-ipv6`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--p2p-port-ipv6=<PORT>
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+# to listen on port 1789
+--p2p-port-ipv6=1789
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+# to listen on port 1789
+BESU_P2P_PORT_IPV6=1789
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+p2p-port-ipv6="1789"
+```
+
+</TabItem>
+
+</Tabs>
+
+The IPv6 P2P listening ports (UDP and TCP).
+The default is `30404`.
+You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
+
+:::tip Experimental feature
+To use an IPv6 port (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+
+If you set `--p2p-port-ipv6`, do not specify an IPv6 port using [`--p2p-interface`](#p2p-interface).
+:::
 
 ### `plugin-block-txs-selection-max-time`
 

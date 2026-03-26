@@ -132,10 +132,10 @@ Using `fixeddifficulty` is not recommended for use with Ethash outside of test e
 ## Discovery configuration items
 
 Use the `discovery` configuration items to specify the [`bootnodes`](cli/options.md#bootnodes) and [`discovery-dns-url`](cli/options.md#discovery-dns-url) in the genesis file, in place of using CLI options or listing them in the configuration file.
-The genesis file can take discovery v4 bootnodes (specified as [enode URLs](../concepts/node-keys.md#enode-url) using the `bootnodes` option) and discovery v5 bootnodes (specified as [Ethereum Node Records (ENR)](https://eips.ethereum.org/EIPS/eip-778) using the `v5Bootnodes` option).
+The genesis file can take discovery v4 bootnodes (specified as [enode URLs](../concepts/node-keys.md#enode-url) using the `bootnodes` option) and discovery v5 bootnodes (specified as [ENR URLs](../concepts/node-keys.md#enr-url) using the `v5Bootnodes` option).
 
 :::tip Experimental feature
-Discovery v5 bootnodes are used when the experimental option `--Xv5-discovery-enabled` is set to `true`.
+To use discovery v5 bootnodes, set the experimental option `--Xv5-discovery-enabled` to `true`.
 :::
 
 If any option is specified using the command line or [configuration file](../how-to/configure-besu/index.md), it takes precedence over the genesis file.

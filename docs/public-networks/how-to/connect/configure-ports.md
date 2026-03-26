@@ -29,17 +29,21 @@ Besu supports [UPnP](specify-nat.md) for home or small office environments where
 
 ## P2P networking
 
-To enable peer discovery, the P2P UDP port must be open for inbound connections. Specify the P2P port using the [`--p2p-port`](../../reference/cli/options.md#p2p-port) option. The default is `30303`.
+To enable peer discovery, the P2P UDP port must be open for inbound connections.
+Specify the P2P port using the [`--p2p-port`](../../reference/cli/options.md#p2p-port) or 
+[`--p2p-port-ipv6`](../../reference/cli/options.md#p2p-port-ipv6) option.
+
+:::tip Experimental feature
+To use IPv6 addresses (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::
 
 We also recommend opening the P2P TCP port for inbound connections. This is not strictly required because Besu attempts to open outbound TCP connections. But if no nodes on the network are accepting inbound TCP connections, nodes cannot communicate.
 
-Combine the P2P port with the values for the [`--p2p-host`](../../reference/cli/options.md#p2p-host) and [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) options when specifying the [P2P host](../../reference/cli/options.md#p2p-host) and [P2P network interface](../../reference/cli/options.md#p2p-interface).
+To specify the P2P host, set the [`--p2p-host`](../../reference/cli/options.md#p2p-host) or [`--p2p-host-ipv6`](../../reference/cli/options.md#p2p-host-ipv6) option.
 
-:::info
-
-By default, peer discovery listens on `0.0.0.0:30303` (all interfaces). If the device Besu is running on must bind to a specific network interface, specify the interface using the [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) option.
-
-:::
+By default, peer discovery listens on all available network interfaces.
+If the device Besu is running on must bind to a specific network interface, specify the interface using the [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) or
+[`--p2p-interface-ipv6`](../../reference/cli/options.md#p2p-interface-ipv6) option.
 
 ## JSON-RPC API
 
