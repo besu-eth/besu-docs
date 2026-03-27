@@ -53,7 +53,7 @@ The enode URL identifies a node for discovery v4.
 For example, you can specify nodes by the enode URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option and the [`admin_addPeer`](../reference/api/index.md#admin_addpeer) method.
 
 :::tip
-Besu supports [ENR URLs](#enr-url) for discovery v5 when the experimental option 
+Besu supports [ENR URLs](#enr-url) for discovery v5 when the early access option 
 [`--Xv5-discovery-enabled`](../reference/cli/options.md#xhelp) is set to `true`.
 :::
 
@@ -116,8 +116,8 @@ For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../r
 or in the [`v5Bootnodes`](../reference/genesis-items.md#discovery-configuration-items) discovery setting in the genesis file.
 The [`admin_nodeInfo`](../reference/api/index.md#admin_nodeinfo) method returns the ENR URL in the `enr` field.
 
-:::tip Experimental feature
-To use ENR URLs (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use ENR URLs (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 Unlike [enode URLs](#enode-url), ENR URLs can advertise additional node information, including IPv4 and IPv6 addresses.

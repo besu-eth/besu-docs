@@ -546,8 +546,8 @@ A list of comma-separated [enode URLs](../../concepts/node-keys.md#enode-url) or
 [P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md).
 The list must contain all enode URLs (for discovery v4) or all ENR URLs (for discovery v5).
 
-:::tip Experimental feature
-To use discovery v5 bootnodes, set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use discovery v5 bootnodes, set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 When connecting to Mainnet or public testnets, the default is a predefined list of bootnodes.
@@ -3314,9 +3314,9 @@ p2p-host="0.0.0.0"
 The advertised host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
 The default is `127.0.0.1`.
 
-:::tip Experimental feature
+:::tip Early access feature
 This option can take an IPv4 or IPv6 host.
-To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 
 If you specify an IPv6 host using `--p2p-host`, do not set [`--p2p-host-ipv6`](#p2p-host-ipv6).
 :::
@@ -3367,8 +3367,8 @@ p2p-host-ipv6="2001:db8:85a3::8a2e:370:7334"
 
 The advertised IPv6 host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
 
-:::tip Experimental feature
-To use an IPv6 host (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use an IPv6 host (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 
 If you set `--p2p-host-ipv6`, do not specify an IPv6 host using [`--p2p-host`](#p2p-host).
 :::
@@ -3413,9 +3413,9 @@ p2p-interface="192.168.1.132"
 
 The network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces. The default is 0.0.0.0 (all interfaces).
 
-:::tip Experimental feature
+:::tip Early access feature
 This option can take an IPv4 or IPv6 interface.
-To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 
 If you specify an IPv6 interface using `--p2p-interface`, do not set [`--p2p-interface-ipv6`](#p2p-interface-ipv6).
 :::
@@ -3461,8 +3461,8 @@ p2p-interface-ipv6="2001:db8:85a3::1/64"
 The IPv6 network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
 Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces.
 
-:::tip Experimental feature
-To use an IPv6 interface (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use an IPv6 interface (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 
 If you set `--p2p-interface-ipv6`, do not specify an IPv6 interface using [`--p2p-interface`](#p2p-interface).
 :::
@@ -3511,8 +3511,8 @@ When set to `true`, IPv6 is preferred.
 When omitted or set to `false`, IPv4 is preferred.
 If a peer only advertises one address family, it is always used.
 
-:::tip Experimental feature
-To use IPv6 addresses (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 ### `p2p-port`
@@ -3557,8 +3557,8 @@ p2p-port="1789"
 
 The P2P listening ports (UDP and TCP). The default is `30303`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
-:::tip Experimental feature
-To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 ### `p2p-port-ipv6`
@@ -3605,8 +3605,8 @@ The IPv6 P2P listening ports (UDP and TCP).
 The default is `30404`.
 You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
-:::tip Experimental feature
-To use IPv6 (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 ### `plugin-block-txs-selection-max-time`

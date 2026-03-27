@@ -33,8 +33,8 @@ To enable peer discovery, the P2P UDP port must be open for inbound connections.
 Specify the P2P port using the [`--p2p-port`](../../reference/cli/options.md#p2p-port) or 
 [`--p2p-port-ipv6`](../../reference/cli/options.md#p2p-port-ipv6) option.
 
-:::tip Experimental feature
-To use IPv6 addresses (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 We also recommend opening the P2P TCP port for inbound connections. This is not strictly required because Besu attempts to open outbound TCP connections. But if no nodes on the network are accepting inbound TCP connections, nodes cannot communicate.

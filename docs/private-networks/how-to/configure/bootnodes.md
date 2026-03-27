@@ -37,8 +37,8 @@ To start a node, specify bootnode [enode URLs](../../../public-networks/concepts
 [ENR URLs](../../../public-networks/concepts/node-keys.md#enr-url) for P2P
 discovery using the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
 
-:::tip Experimental feature
-To use ENR URLs and IPv6 addresses (discovery v5), set the experimental option `--Xv5-discovery-enabled` to `true`.
+:::tip Early access feature
+To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 ```bash
