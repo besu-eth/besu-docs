@@ -230,13 +230,13 @@ azure:
   subscriptionId: azure-subscriptionId
 
 # the raw Genesis config
-# rawGenesisConfig.blockchain.nodes set the number of validators/signers
+# rawGenesisConfig.blockchain.nodes set the number of validators
 rawGenesisConfig:
   genesis:
     config:
       chainId: 1337
       algorithm:
-        consensus: qbft # choose from: ibft2 | qbft | clique
+        consensus: qbft # choose from: ibft2 | qbft
         blockperiodseconds: 10
         epochlength: 30000
         requesttimeoutseconds: 20

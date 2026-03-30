@@ -26,6 +26,14 @@
       "source": "/:version(\\d+\\.\\d+\\.\\d+)/:match(.*)",
       "destination": "/:match",
       "permanent": true
+    },
+    {
+      "source": "/private-networks/how-to/configure/consensus/clique/",
+      "destination": "/private-networks/how-to/configure/consensus/"
+    },
+    {
+      "source": "/private-networks/tutorials/clique/",
+      "destination": "/private-networks/tutorials/"
     }
   ]
 }
