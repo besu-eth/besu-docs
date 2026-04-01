@@ -8017,6 +8017,56 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 </TabItem>
 </Tabs>
 
+### `txpool_status`
+
+Returns the number of pending and queued transactions in the pool.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`result`: _object_ - transaction count details:
+
+  - `pending`: _string_ - count of the transactions currently pending for inclusion in the next
+    block or blocks
+
+  - `queued`: _string_ - count of the transactions that are scheduled for future execution
+    (transactions with nonce gaps)
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_status","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{ "jsonrpc": "2.0", "method": "txpool_status", "params": [], "id": 1 }
+```
+
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "pending": "0xa",
+    "queued": "0x7"
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## `WEB3` methods
 
 The `WEB3` API methods provide functionality for the Ethereum ecosystem.
