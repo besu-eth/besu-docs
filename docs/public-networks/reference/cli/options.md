@@ -542,16 +542,23 @@ bootnodes=["enode://c35c3...d615f@1.2.3.4:30303","enode://f42c13...fc456@1.2.3.5
 
 </Tabs>
 
-A list of comma-separated [enode URLs](../../concepts/node-keys.md#enode-url) or [ENR URLs](../../concepts/node-keys.md#enr-url) for
-[P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md).
-The list must contain all enode URLs (for discovery v4) or all ENR URLs (for discovery v5).
+A list of comma-separated sources for [P2P discovery bootstrap](../../../private-networks/how-to/configure/bootnodes.md),
+where each source can be one of the following:
+
+- A direct [enode URL](../../concepts/node-keys.md#enode-url) or [ENR URL](../../concepts/node-keys.md#enr-url)
+- A local file path: `/path/to/bootnodes.txt`
+- A file URI: `file:///path/to/bootnodes.txt`
+- An HTTP(S) URL: `https://example.com/bootnodes.txt`
+
+Each file or URL must contain one enode or ENR URL per line. Blank lines and lines starting with `#` are ignored.
+
+The `--bootnodes` list can mix sources, but must specify all enode URLs (for discovery v4) or all ENR URLs (for discovery v5).
 
 :::tip Early access feature
 To use discovery v5 bootnodes, set the early access option `--Xv5-discovery-enabled` to `true`.
 :::
 
 When connecting to Mainnet or public testnets, the default is a predefined list of bootnodes.
-
 In private networks defined using [`--genesis-file`](#genesis-file) or when using
 [`--network=dev`](#network), the default is an empty list of bootnodes.
 

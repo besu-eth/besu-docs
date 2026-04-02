@@ -37,13 +37,26 @@ To start a node, specify bootnode [enode URLs](../../../public-networks/concepts
 [ENR URLs](../../../public-networks/concepts/node-keys.md#enr-url) for P2P
 discovery using the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
 
-:::tip Early access feature
-To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-:::
-
 ```bash
 besu --genesis-file=privateNetworkGenesis.json --data-path=nodeDataPath --bootnodes=enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb99bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303
 ```
+
+The `--bootnodes` option also accepts files or URLs:
+
+- A local file path: `/path/to/bootnodes.txt`
+- A file URI: `file:///path/to/bootnodes.txt`
+- An HTTP(S) URL: `https://example.com/bootnodes.txt`
+
+You can mix sources, comma-separated, together with direct enode or ENR URLs.
+The list of sources must specify all enode URLs or all ENR URLs.
+
+```bash
+besu --bootnodes=/etc/besu/enodes.txt,https://example.com/enodes.txt,enode://c35c3...d615f@1.2.3.4:30303
+```
+
+:::tip Early access feature
+To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
+:::
 
 The default host and port advertised to other peers for P2P discovery is `127.0.0.1:30303`.
 To specify a different host or port, use the
