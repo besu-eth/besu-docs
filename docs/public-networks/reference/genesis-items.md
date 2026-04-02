@@ -20,7 +20,6 @@ Network configuration items are specified in the genesis file in the `config` ob
 | Milestone blocks    | [Milestone blocks for the network](#milestone-blocks).                                                                                                                                                            |
 | `chainID`           | [Chain ID for the network](../concepts/network-and-chain-id.md).                                                                                                                                                  |
 | `ethash`            | Specifies network uses [Ethash](../../private-networks/how-to/configure/consensus/index.md) and contains [`fixeddifficulty`](#fixed-difficulty).                                                                  |
-| `clique`            | Specifies network uses [Clique](../../private-networks/how-to/configure/consensus/clique.md) and contains [Clique configuration items](../../private-networks/how-to/configure/consensus/clique.md#genesis-file). |
 | `ibft2`             | Specifies network uses [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md) and contains [IBFT 2.0 configuration items](../../private-networks/how-to/configure/consensus/ibft.md#genesis-file). |
 | `qbft`              | Specifies network uses [QBFT](../../private-networks/how-to/configure/consensus/qbft.md) and contains [QBFT configuration items](../../private-networks/how-to/configure/consensus/qbft.md#genesis-file).         |
 | `transitions`       | Specifies block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                             |
@@ -33,7 +32,7 @@ Network configuration items are specified in the genesis file in the `config` ob
 
 ## Genesis block parameters
 
-The purpose of some genesis block parameters varies depending on the consensus protocol (Ethash, [Clique](../../private-networks/how-to/configure/consensus/clique.md), [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md), or [QBFT](../../private-networks/how-to/configure/consensus/qbft.md)). These parameters include:
+The purpose of some genesis block parameters varies depending on the consensus protocol (Ethash, [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md), or [QBFT](../../private-networks/how-to/configure/consensus/qbft.md)). These parameters include:
 
 - `difficulty`.
 - `extraData`.

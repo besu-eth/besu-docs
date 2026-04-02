@@ -141,13 +141,6 @@ number, and total difficulty as in the following example.
 }
 ```
 
-:::note
-
-If using [Clique](../../private-networks/how-to/configure/consensus/clique.md) consensus, the
-checkpoint must be the beginning of an epoch.
-
-:::
-
 If you enable checkpoint sync without a checkpoint configuration in the genesis file, Besu snap
 syncs from the genesis block.
 

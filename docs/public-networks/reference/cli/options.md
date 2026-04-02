@@ -4268,7 +4268,7 @@ rpc-http-api=["ETH","NET","WEB3"]
 
 </Tabs>
 
-A comma-separated list of APIs to enable on the JSON-RPC HTTP channel. When you use this option you must also specify the `--rpc-http-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `ENGINE`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
+A comma-separated list of APIs to enable on the JSON-RPC HTTP channel. When you use this option you must also specify the `--rpc-http-enabled` option. The available API options are: `ADMIN`, `DEBUG`, `ENGINE`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
 :::tip
 
@@ -5418,7 +5418,7 @@ rpc-ws-api=["ETH","NET","WEB3"]
 
 </Tabs>
 
-A comma-separated list of APIs to enable on the WebSockets channel. When you use this option you must also specify the `--rpc-ws-enabled` option. The available API options are: `ADMIN`, `CLIQUE`, `DEBUG`, `ENGINE`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
+A comma-separated list of APIs to enable on the WebSockets channel. When you use this option you must also specify the `--rpc-ws-enabled` option. The available API options are: `ADMIN`, `DEBUG`, `ENGINE`, `ETH`, `IBFT`, `MINER`, `NET`, `PERM`, `PLUGINS`, `QBFT`, `TRACE`, `TXPOOL`, and `WEB3`. The default is: `ETH`, `NET`, `WEB3`.
 
 :::tip
 
