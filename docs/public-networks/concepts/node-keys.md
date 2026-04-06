@@ -111,7 +111,7 @@ If nodes are not connecting as expected, set the [log level to TRACE](../referen
 
 ## ENR URL
 
-The Ethereum Node Record, or ENR URL, identifies a node for discovery v5.
+The Ethereum Node Record, or ENR URL, identifies a node for [discovery v5](https://github.com/ethereum/devp2p/tree/master/discv5).
 For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option
 or in the [`v5Bootnodes`](../reference/genesis-items.md#discovery-configuration-items) discovery setting in the genesis file.
 The [`admin_nodeInfo`](../reference/api/index.md#admin_nodeinfo) method returns the ENR URL in the `enr` field.
