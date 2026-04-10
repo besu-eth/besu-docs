@@ -8023,7 +8023,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 ### `txpool_inspect`
 
 Returns a textual summary of all pending and queued transactions in the pool, grouped by sender
-address and nonce.
+address and sorted by nonce.
 
 #### Parameters
 
@@ -8034,10 +8034,10 @@ None
 `result`: _object_ - transaction pool inspect object with the following fields:
 
 - `pending`: _object_ - map of sender addresses to a map of nonce to human-readable transaction
-  summary strings for transactions pending inclusion in the next block
+  summary strings, for transactions pending inclusion in the next block
 
 - `queued`: _object_ - map of sender addresses to a map of nonce to human-readable transaction
-  summary strings for transactions scheduled for future execution (transactions with nonce gaps)
+  summary strings, for transactions scheduled for future execution
 
 <Tabs>
 
