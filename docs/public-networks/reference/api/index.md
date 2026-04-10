@@ -8020,6 +8020,66 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 </TabItem>
 </Tabs>
 
+### `txpool_inspect`
+
+Returns a textual summary of all pending and queued transactions in the pool, grouped by sender
+address and nonce.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`result`: _object_ - transaction pool inspect object with the following fields:
+
+- `pending`: _object_ - map of sender addresses to a map of nonce to human-readable transaction
+  summary strings for transactions pending inclusion in the next block
+
+- `queued`: _object_ - map of sender addresses to a map of nonce to human-readable transaction
+  summary strings for transactions scheduled for future execution (transactions with nonce gaps)
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_inspect","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{ "jsonrpc": "2.0", "method": "txpool_inspect", "params": [], "id": 1 }
+```
+
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "pending": {
+      "0x1923f626bb8dc025849e00f99c25fe2b2f7fb0db": {
+        "21": "0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba: 0 wei + 21000 gas × 0 wei"
+      }
+    },
+    "queued": {
+      "0x9b11bf0459b0c4b2f87f8cebca4cfc26f294b63a": {
+        "2": "0x3a3c0698552eec2455ed3190eac3996feccc806970a4a056106deaf6ceb1e5e3: 0 wei + 21000 gas × 0 wei",
+        "6": "0xbbcd1e45eae3b859203a04be7d6e1d7b03b222ec1d66dfcc8011dd39794b147e: 0 wei + 21000 gas × 0 wei"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ### `txpool_status`
 
 Returns the number of pending and queued transactions in the pool.
