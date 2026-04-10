@@ -8033,10 +8033,10 @@ None
 
 `result`: _object_ - transaction pool content object with the following fields:
 
-- `pending`: _object_ - map of sender addresses to maps of nonce to [transaction objects](objects.md#transaction-object),
+- `pending`: _object_ - map of sender addresses to maps of nonces to [transaction objects](objects.md#transaction-object),
   for transactions pending inclusion in the next block
 
-- `queued`: _object_ - map of sender addresses to maps of nonce to [transaction objects](objects.md#transaction-object),
+- `queued`: _object_ - map of sender addresses to maps of nonces to [transaction objects](objects.md#transaction-object),
   for transactions scheduled for future execution
 
 <Tabs>
