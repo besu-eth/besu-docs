@@ -8033,10 +8033,10 @@ None
 
 `result`: _object_ - transaction pool inspect object with the following fields:
 
-- `pending`: _object_ - map of sender addresses to maps of nonce to human-readable transaction
+- `pending`: _object_ - map of sender addresses to maps of nonces to human-readable transaction
   summary strings, for transactions pending inclusion in the next block
 
-- `queued`: _object_ - map of sender addresses to maps of nonce to human-readable transaction
+- `queued`: _object_ - map of sender addresses to maps of nonces to human-readable transaction
   summary strings, for transactions scheduled for future execution
 
 <Tabs>
