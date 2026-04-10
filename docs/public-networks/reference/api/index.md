@@ -8020,6 +8020,103 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 </TabItem>
 </Tabs>
 
+### `txpool_contentFrom`
+
+Returns the pending (executable) and queued (non-executable) transactions for a given sender address.
+
+Pending transactions have consecutive nonces starting from the account's current on-chain nonce.
+Queued transactions have nonce gaps and cannot yet be executed.
+
+#### Parameters
+
+`address`: _string_ - 20-byte account address
+
+#### Returns
+
+`result`: _object_ - transaction pool content for the given address:
+
+  - `pending`: _object_ - map of transaction nonce (as decimal string) to [transaction object](objects.md#transaction-object) for executable transactions
+
+  - `queued`: _object_ - map of transaction nonce (as decimal string) to [transaction object](objects.md#transaction-object) for non-executable transactions
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_contentFrom","params":["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_contentFrom",
+  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"],
+  "id": 1
+}
+```
+
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "pending": {
+      "0": {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "gas": "0x5208",
+        "gasPrice": "0xab5d04c00",
+        "hash": "0xb7b2f4306c1c228ec94043da73b582594007091a7dfe024b1f8d6d772284e54b",
+        "input": "0x",
+        "nonce": "0x0",
+        "to": "0xf8be4ebda7f62d79a665294ec1263bfdb59aabf2",
+        "value": "0x0",
+        "v": "0xfe8",
+        "r": "0x5beb711e652c6cf0a589d3cea904eefc4f45ce4372652288701d08cc4412086d",
+        "s": "0x3af14a56e63aa5fb7dcb444a89708363a9d2c1eba1f777c67690288415080ded"
+      },
+      "1": {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "gas": "0x5208",
+        "gasPrice": "0xab5d04c00",
+        "hash": "0x1234abcd5678ef901234abcd5678ef901234abcd5678ef901234abcd5678ef90",
+        "input": "0x",
+        "nonce": "0x1",
+        "to": "0xf8be4ebda7f62d79a665294ec1263bfdb59aabf2",
+        "value": "0x0",
+        "v": "0xfe8",
+        "r": "0x1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "s": "0x2bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    },
+    "queued": {
+      "3": {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "gas": "0x5208",
+        "gasPrice": "0xab5d04c00",
+        "hash": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+        "input": "0x",
+        "nonce": "0x3",
+        "to": "0xf8be4ebda7f62d79a665294ec1263bfdb59aabf2",
+        "value": "0x0",
+        "v": "0xfe8",
+        "r": "0x3ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "s": "0x4ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ### `txpool_status`
 
 Returns the number of pending and queued transactions in the pool.
