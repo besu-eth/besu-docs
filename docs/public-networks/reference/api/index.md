@@ -8022,22 +8022,19 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 
 ### `txpool_contentFrom`
 
-Returns the pending (executable) and queued (non-executable) transactions for a given sender address.
-
-Pending transactions have consecutive nonces starting from the account's current on-chain nonce.
-Queued transactions have nonce gaps and cannot yet be executed.
+Returns the pending and queued transactions for a given sender address.
 
 #### Parameters
 
-`address`: _string_ - 20-byte account address
+`address`: _string_ - sender address
 
 #### Returns
 
 `result`: _object_ - transaction pool content for the given address:
 
-  - `pending`: _object_ - map of transaction nonce (as decimal string) to [transaction object](objects.md#transaction-object) for executable transactions
+  - `pending`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object), for pending transactions from the specified address
 
-  - `queued`: _object_ - map of transaction nonce (as decimal string) to [transaction object](objects.md#transaction-object) for non-executable transactions
+  - `queued`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object) for queued transactions from the specified address
 
 <Tabs>
 
