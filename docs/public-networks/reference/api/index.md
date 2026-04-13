@@ -8122,9 +8122,9 @@ Returns the pending and queued transactions for a given sender address.
 
 `result`: _object_ - transaction pool content for the given address:
 
-  - `pending`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object), for pending transactions from the specified address
+  - `pending`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object), for pending transactions from the given address
 
-  - `queued`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object) for queued transactions from the specified address
+  - `queued`: _object_ - map of nonces to [transaction objects](objects.md#transaction-object) for queued transactions from the given address
 
 <Tabs>
 
