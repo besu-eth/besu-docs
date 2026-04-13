@@ -491,7 +491,7 @@ None
 
 - `id`: _string_ - node public key (excluding the `0x` prefix, the node public key is the ID in the [enode URL](../../concepts/node-keys.md#enode-url) `enode://<id ex 0x>@<host>:<port>`.)
 
-- `protocols`: _object_ - [current state of peer](../../how-to/connect/manage-peers.md#monitor-peer-connections) including `difficulty` and `head` (`head` is the hash of the highest known block for the peer.)
+- `protocols`: _object_ - [current state of peer](../../how-to/connect/manage-peers.md#monitor-peer-connections) including `difficulty`, `head`, and `latestBlock` (`head` is the hash of the highest known block for the peer; `latestBlock` is the corresponding block number.)
 
 - `enode`: _string_ - enode URL of the remote node
 
@@ -534,6 +534,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_peers","params":[],"id":1}
         "eth": {
           "difficulty": "0x1ac",
           "head": "0x964090ae9277aef43f47f1b8c28411f162243d523118605f0b1231dbfdf3611a",
+          "latestBlock": 428,
           "version": 65
         }
       },
