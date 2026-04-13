@@ -8029,7 +8029,6 @@ address and sorted by nonce.
 The summary is free form, implementation-dependent, and meant to be consumed by humans.
 For programmatic access to the transaction pool, use [`txpool_content`](#txpool_content).
 
-
 #### Parameters
 
 None
