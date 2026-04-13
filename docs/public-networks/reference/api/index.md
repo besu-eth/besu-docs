@@ -8025,6 +8025,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 Returns a textual summary of all pending and queued transactions in the pool, grouped by sender
 address and sorted by nonce.
 
+The summary is free form, implementation-dependent, and meant to be consumed by humans.
+For programmatic access to the transaction pool, use [`txpool_content`](#txpool_content).
+
+
 #### Parameters
 
 None
@@ -8063,14 +8067,15 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_inspect","params":[],"id"
   "id": 1,
   "result": {
     "pending": {
-      "0x1923f626bb8dc025849e00f99c25fe2b2f7fb0db": {
-        "21": "0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba: 0 wei + 21000 gas × 0 wei"
+      "0x67ee9a8c19f7873125a875f61add461b4a505d8c": {
+        "5": "{sequence: 68178, addedAt: 1775837774160, isLocal=false, hasPriority=false, score=127, 0xfbee0231c6140f9db3bbcef774b3626556f6f5528a6a49dcd38e1f7f86c79368={MessageCall, 5, 0x67ee9a8c19f7873125a875f61add461b4a505d8c, EIP1559, mf: 300.00 kwei, pf: 300.00 kwei, gl: 70926, v: 0 wei, to: 0xe9f8133e47d42bc9962e469721faaf75e385af31}}",
+        "6": "{sequence: 68179, addedAt: 1775837774160, isLocal=false, hasPriority=false, score=127, 0x3474c0582722ed751dba809363f58c8d1acea415831b81bc0b0b9f29afb19c19={MessageCall, 6, 0x67ee9a8c19f7873125a875f61add461b4a505d8c, EIP1559, mf: 2.00 mwei, pf: 2.00 mwei, gl: 90617, v: 0 wei, to: 0x1eb4a2620b909a8838e0e24a8e912bd32f4a47a3}}"
       }
     },
     "queued": {
-      "0x9b11bf0459b0c4b2f87f8cebca4cfc26f294b63a": {
-        "2": "0x3a3c0698552eec2455ed3190eac3996feccc806970a4a056106deaf6ceb1e5e3: 0 wei + 21000 gas × 0 wei",
-        "6": "0xbbcd1e45eae3b859203a04be7d6e1d7b03b222ec1d66dfcc8011dd39794b147e: 0 wei + 21000 gas × 0 wei"
+      "0x5fa84846743cc07ab16106ceabad8e4e0ec1c1b6": {
+        "29": "{sequence: 2208499, addedAt: 1775952461706, isLocal=false, hasPriority=false, score=127, 0x2bb5f69f2b9737a99a3674018cd2aac5035b907a753a0c797051bc9df0b2a152={MessageCall, 29, 0x5fa84846743cc07ab16106ceabad8e4e0ec1c1b6, EIP1559, mf: 1.40 gwei, pf: 417.90 mwei, gl: 63209, v: 0 wei, to: 0xdac17f958d2ee523a2206206994597c13d831ec7}}",
+        "31": "{sequence: 1766002, addedAt: 1775931135467, isLocal=false, hasPriority=false, score=127, 0xdd250f166c086412fae187ef52dfbe1c4ff9405818781ac50f89d67a77a2d432={MessageCall, 31, 0x5fa84846743cc07ab16106ceabad8e4e0ec1c1b6, EIP1559, mf: 47.74 gwei, pf: 9.28 gwei, gl: 21000, v: 0 wei, to: 0x5fa84846743cc07ab16106ceabad8e4e0ec1c1b6}}"
       }
     }
   }
