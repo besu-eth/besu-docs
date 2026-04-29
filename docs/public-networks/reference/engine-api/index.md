@@ -2,8 +2,6 @@
 title: Engine API
 description: Engine API methods reference
 toc_max_heading_level: 3
-tags:
-  - public networks
 ---
 
 import Tabs from '@theme/Tabs';

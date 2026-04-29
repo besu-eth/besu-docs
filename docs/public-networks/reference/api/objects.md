@@ -1,9 +1,6 @@
 ---
 title: Objects
 description: Besu API objects reference
-tags:
-  - public networks
-  - private networks
 ---
 
 # Besu API objects

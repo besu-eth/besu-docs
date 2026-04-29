@@ -2,8 +2,6 @@
 title: Include revert reason
 description: Including revert reason in transactions with Besu
 sidebar_position: 3
-tags:
-  - private networks
 ---
 
 # Revert reason

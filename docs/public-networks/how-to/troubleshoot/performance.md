@@ -2,8 +2,6 @@
 description: Troubleshoot poor performance and resource constraints.
 sidebar_label: Troubleshoot performance
 sidebar_position: 3
-tags:
-  - public networks
 ---
 
 # Troubleshoot performance

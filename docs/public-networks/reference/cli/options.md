@@ -2,9 +2,6 @@
 title: Options
 description: Besu command line interface reference
 sidebar_position: 1
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

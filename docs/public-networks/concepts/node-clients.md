@@ -2,8 +2,6 @@
 title: Node clients
 sidebar_position: 1
 description: Learn about execution and consensus clients.
-tags:
-  - public networks
 ---
 
 # Node clients

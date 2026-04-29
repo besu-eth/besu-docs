@@ -2,9 +2,6 @@
 title: Use GraphQL over HTTP
 sidebar_position: 3
 description: How to access the Besu API using GraphQL
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

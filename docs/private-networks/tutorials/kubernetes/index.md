@@ -1,8 +1,6 @@
 ---
 title: Deploy a Besu private network with Kubernetes
 description: Deploying Besu with Kubernetes
-tags:
-  - private networks
 ---
 
 # Deploy Besu using Kubernetes

@@ -2,9 +2,6 @@
 title: Security disclosure policy
 sidebar_position: 8
 description: Besu responsible disclosure statement
-tags:
-  - public networks
-  - private networks
 ---
 
 # Security disclosure policy

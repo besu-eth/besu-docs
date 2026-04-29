@@ -1,8 +1,6 @@
 ---
 title: Installation options
 description: Options for getting started with Besu
-tags:
-  - public networks
 ---
 
 # Installation options

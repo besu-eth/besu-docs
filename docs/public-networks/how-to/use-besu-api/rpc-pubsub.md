@@ -2,9 +2,6 @@
 title: Use RPC Pub/Sub over WS and IPC
 sidebar_position: 2
 description: Using RPC Pub/Sub with Besu WebSockets and IPC
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

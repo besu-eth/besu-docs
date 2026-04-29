@@ -2,9 +2,6 @@
 title: Transaction types
 sidebar_position: 1
 description: Description of the different transaction types
-tags:
-  - public networks
-  - private networks
 ---
 
 # Transaction types

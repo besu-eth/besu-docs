@@ -3,8 +3,6 @@ title: Create a permissioned network
 sidebar_position: 1
 description: Besu create a permissioned network
 toc_max_heading_level: 3
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,8 +2,6 @@
 sidebar_position: 3
 title: Use Kubernetes
 description: Deploying Besu with Kubernetes
-tags:
-  - private networks
 ---
 
 # Deploy Besu with Kubernetes

@@ -1,8 +1,5 @@
 ---
 description: Besu API
-tags:
-  - public networks
-  - private networks
 ---
 
 # Access the Besu API

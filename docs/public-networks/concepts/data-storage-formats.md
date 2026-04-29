@@ -2,8 +2,6 @@
 title: Data storage formats
 sidebar_position: 3
 description: Learn about storing data using Forest of Tries and Bonsai Tries.
-tags:
-  - public networks
 ---
 
 # Data storage formats

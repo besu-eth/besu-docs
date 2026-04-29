@@ -2,9 +2,6 @@
 title: Manage JVM memory
 sidebar_position: 3
 description: Besu memory management
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

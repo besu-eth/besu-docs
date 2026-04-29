@@ -2,8 +2,6 @@
 title: Install binary distribution
 description: Install or upgrade Besu from binary distribution
 sidebar_position: 3
-tags:
-  - private networks
 ---
 
 # Install binary distribution

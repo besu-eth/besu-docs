@@ -2,9 +2,6 @@
 title: Access logs using JSON-RPC
 sidebar_position: 5
 description: Accessing logs using the Besu API
-tags:
-  - public networks
-  - private networks
 ---
 
 # Access logs using the Besu API

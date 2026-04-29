@@ -2,8 +2,6 @@
 title: Use Chainlens Explorer
 sidebar_position: 7
 description: Use Chainlens Explorer on a Besu network
-tags:
-  - private networks
 ---
 
 # Use Chainlens Blockchain Explorer

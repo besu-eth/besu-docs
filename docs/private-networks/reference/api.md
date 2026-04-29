@@ -3,8 +3,6 @@ description: Besu private network JSON-RPC API methods reference
 toc_max_heading_level: 3
 sidebar_position: 2
 sidebar_label: Besu API
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,8 +2,6 @@
 title: Backup and restore
 description: Backing up and restoring Besu
 sidebar_position: 7
-tags:
-  - private networks
 ---
 
 # Backup and restore Besu

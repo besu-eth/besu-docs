@@ -2,9 +2,6 @@
 title: Pass JVM options
 sidebar_position: 2
 description: Passing Java virtual machine JVM options to Besu at runtime
-tags:
-  - public networks
-  - private networks
 ---
 
 # Pass JVM options

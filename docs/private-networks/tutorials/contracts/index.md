@@ -2,8 +2,6 @@
 title: Deploy a smart contract
 sidebar_position: 1
 description: deploying smart contracts
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

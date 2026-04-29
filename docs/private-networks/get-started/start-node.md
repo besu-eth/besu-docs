@@ -2,8 +2,6 @@
 title: Start Besu
 description: Start Besu on a private Ethereum network.
 sidebar_position: 3
-tags:
-  - private networks
 ---
 
 # Start Besu

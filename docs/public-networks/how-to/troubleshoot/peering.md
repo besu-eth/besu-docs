@@ -2,8 +2,6 @@
 title: Troubleshoot peering
 sidebar_position: 4
 description: How to troubleshoot peering
-tags:
-  - public networks
 ---
 
 # Troubleshoot peering

@@ -1,9 +1,6 @@
 ---
 sidebar_position: 1
 description: Install or update Java for use with Besu
-tags:
-  - public networks
-  - private networks
 ---
 
 # Install and update Java

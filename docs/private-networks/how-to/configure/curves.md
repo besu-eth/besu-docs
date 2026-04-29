@@ -2,8 +2,6 @@
 title: Alternative elliptic curves
 description: Using alternative elliptic curves in Besu
 sidebar_position: 8
-tags:
-  - private networks
 ---
 
 # Configure alternative elliptic curves

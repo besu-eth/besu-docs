@@ -2,8 +2,6 @@
 sidebar_position: 2
 title: Use Ansible
 description: Deploying Besu with Ansible role on Galaxy
-tags:
-  - private networks
 ---
 
 # Deploy Besu with Ansible

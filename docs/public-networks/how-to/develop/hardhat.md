@@ -2,9 +2,6 @@
 title: Use Hardhat
 sidebar_position: 1
 description: Using Besu with Hardhat
-tags:
-  - public networks
-  - private networks
 ---
 
 # Use Hardhat

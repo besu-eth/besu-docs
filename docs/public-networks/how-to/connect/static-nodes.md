@@ -2,9 +2,6 @@
 title: Configure static nodes
 sidebar_position: 1
 description: Configuring static nodes
-tags:
-  - public networks
-  - private networks
 ---
 
 # Static nodes

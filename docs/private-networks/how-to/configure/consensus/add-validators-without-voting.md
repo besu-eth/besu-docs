@@ -2,8 +2,6 @@
 title: Add and remove validators without voting
 description: How to add or remove validators without voting
 sidebar_position: 5
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

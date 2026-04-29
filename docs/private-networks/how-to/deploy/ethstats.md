@@ -2,8 +2,6 @@
 sidebar_position: 4
 title: Use Ethstats network monitor
 description: Ethstats network monitor
-tags:
-  - private networks
 ---
 
 # Connect to Ethstats network monitor

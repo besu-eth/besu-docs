@@ -2,9 +2,6 @@
 title: Authenticate over JSON-RPC requests
 sidebar_position: 4
 description: Besu authentication and authorization for JSON-RPC
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

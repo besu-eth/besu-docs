@@ -1,7 +1,5 @@
 ---
 description: Monitoring using metrics and logging
-tags:
-  - private networks
 ---
 
 # Monitoring
