@@ -391,7 +391,7 @@ html[data-theme="light"] .navbar__link:hover {
 /* Active top nav section highlighting */
 .navbar__link--active {
   color: #fff !important;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 3px solid rgb(255 255 255 / 90%);
   padding-bottom: calc(var(--ifm-navbar-padding-vertical) - 3px);
 }
 
