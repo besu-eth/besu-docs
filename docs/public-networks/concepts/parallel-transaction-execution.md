@@ -158,8 +158,24 @@ GiB memory), with Teku and Nimbus as consensus layer (CL) clients:
   Besu running with Nimbus has better performance than with Teku because Nimbus has less overhead on
   Besu, meaning less context switching and fewer cache misses.
 
-- **Execution throughput** - Execution throughput increases, with an average of 96 Mgas/s and peaks
-  of up to 250 Mgas/s.
+- **Execution throughput** - Benchmarking against mainnet big blocks shows a significant increase in
+  execution throughput (measured in megagas per second, Mgas/s) compared to sequential processing.
+  These results were collected on the following hardware:
+
+  - CPU: AMD EPYC 4344P, 8 cores/16 threads, 3.8 GHz base / 5.3 GHz boost
+  - RAM: 64 GB DDR5 5200 MHz
+  - Storage: 2x 960 GB NVMe SSD
+
+  The following table shows the throughput results:
+
+  | Metric | Throughput |
+  |--------|-----------|
+  | Minimum | 194.55 Mgas/s |
+  | Maximum | 445.99 Mgas/s |
+  | Average | 348.17 Mgas/s |
+  | 50th percentile | 352.57 Mgas/s |
+  | 95th percentile | 404.93 Mgas/s |
+  | 99th percentile | 418.13 Mgas/s |
 
 - **Parallel transactions** - Parallel transaction execution introduces two new metrics, which
   indicate that approximately 40% of transactions are parallelized using this feature:
