@@ -2,9 +2,6 @@
 title: Use Java Flight Recorder
 sidebar_position: 4
 description: Using Java Flight Recorder with Besu
-tags:
-  - public networks
-  - private networks
 ---
 
 # Use Java Flight Recorder

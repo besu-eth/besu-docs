@@ -3,8 +3,6 @@ title: Public networks
 sidebar_position: 1
 sidebar_label: Introduction
 description: Public networks overview
-tags:
-  - public networks
 ---
 
 # Besu for public networks

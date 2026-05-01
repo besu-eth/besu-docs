@@ -2,9 +2,6 @@
 title: Trace transactions
 sidebar_position: 2
 description: How to trace transactions
-tags:
-  - public networks
-  - private networks
 ---
 
 # Trace transactions

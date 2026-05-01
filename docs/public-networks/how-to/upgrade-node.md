@@ -3,9 +3,6 @@ title: Upgrade Besu
 sidebar_position: 11
 description: Upgrade your Besu node to a new version.
 toc_max_heading_level: 2
-tags:
-  - public networks
-  - private networks
 ---
 
 # Upgrade your Besu node

@@ -2,9 +2,6 @@
 title: Manage peers
 sidebar_position: 3
 description: Managing Besu peers
-tags:
-  - public networks
-  - private networks
 ---
 
 # Manage peers

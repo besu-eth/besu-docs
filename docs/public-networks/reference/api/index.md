@@ -3,9 +3,6 @@ title: Besu API
 sidebar_position: 2
 description: Besu JSON-RPC API methods reference
 toc_max_heading_level: 3
-tags:
-  - public networks
-  - private networks
 ---
 
 import Postman from '../../../global/postman.md'

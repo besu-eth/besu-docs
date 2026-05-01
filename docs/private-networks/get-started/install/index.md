@@ -2,8 +2,6 @@
 title: Installation options
 description: Options for getting started with Besu
 sidebar_position: 1
-tags:
-  - private networks
 ---
 
 # Installation options

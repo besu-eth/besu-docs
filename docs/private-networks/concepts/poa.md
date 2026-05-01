@@ -2,8 +2,6 @@
 title: Proof of authority consensus
 sidebar_position: 1
 description: Besu proof of authority consensus protocols comparison
-tags:
-  - private networks
 ---
 
 # Proof of authority consensus

@@ -2,8 +2,6 @@
 title: Create a cluster
 sidebar_position: 2
 description: Create a cluster for deployment
-tags:
-  - private networks
 ---
 
 # Create a cluster

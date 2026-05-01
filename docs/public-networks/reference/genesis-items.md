@@ -2,9 +2,6 @@
 title: Genesis file items
 sidebar_position: 4
 description: Genesis file configuration items reference
-tags:
-  - public networks
-  - private networks
 ---
 
 # Genesis file items

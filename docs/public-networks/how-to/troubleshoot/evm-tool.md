@@ -2,9 +2,6 @@
 title: Use EVM tool
 sidebar_position: 1
 description: Besu EVM tool
-tags:
-  - public networks
-  - private networks
 ---
 
 # Use the EVM tool

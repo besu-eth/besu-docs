@@ -2,9 +2,6 @@
 title: Sample load balancer configurations
 sidebar_position: 1
 description: Sample load balancers
-tags:
-  - public networks
-  - private networks
 ---
 
 # Sample load balancer configurations

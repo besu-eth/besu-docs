@@ -2,8 +2,6 @@
 title: Add and removing IBFT 2.0 validators
 sidebar_position: 1
 description: Adding and removing IBFT 2.0 validators
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

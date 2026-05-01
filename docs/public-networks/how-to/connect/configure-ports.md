@@ -2,9 +2,6 @@
 title: Configure ports
 sidebar_position: 2
 description: To enable communication you must expose Besu ports appropriately
-tags:
-  - public networks
-  - private networks
 ---
 
 # Configure ports

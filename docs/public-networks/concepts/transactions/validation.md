@@ -2,9 +2,6 @@
 title: Transaction validation
 sidebar_position: 3
 description: What transaction validation and when
-tags:
-  - public networks
-  - private networks
 ---
 
 # Transaction validation

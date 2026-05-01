@@ -1,8 +1,6 @@
 ---
 title: Create and send transactions
 description: private networks send transactions overview
-tags:
-  - private networks
 ---
 
 # Create and send transactions

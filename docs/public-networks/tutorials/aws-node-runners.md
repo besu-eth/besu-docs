@@ -2,8 +2,6 @@
 sidebar_position: 4
 description: Configure Ethereum nodes using AWS Blockchain Node Runners.
 toc_max_heading_level: 3
-tags:
-   - Public networks
 ---
 
 import Tabs from '@theme/Tabs';

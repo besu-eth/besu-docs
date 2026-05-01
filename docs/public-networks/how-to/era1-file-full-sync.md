@@ -2,8 +2,6 @@
 title: Import ERA1 files
 sidebar_position: 9
 description: Import pre-merge Ethereum history from ERA1 archive files when using Full sync
-tags:
-  - public networks
 ---
 
 When running [full sync](../concepts/node-sync.md#full-synchronization), node operators can optionally

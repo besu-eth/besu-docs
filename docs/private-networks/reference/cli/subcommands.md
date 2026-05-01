@@ -2,8 +2,6 @@
 title: Private network subcommands
 sidebar_position: 2
 description: Besu command line interface subcommands
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

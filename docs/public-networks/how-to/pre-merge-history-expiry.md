@@ -2,8 +2,6 @@
 title: Prune pre-merge history
 sidebar_position: 9
 description: Reduce the size of your database by removing pre-merge blocks from your blockchain
-tags:
-  - public networks
 ---
 
 import Tabs from '@theme/Tabs';

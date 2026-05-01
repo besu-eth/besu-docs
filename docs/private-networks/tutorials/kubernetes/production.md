@@ -2,8 +2,6 @@
 title: Production
 sidebar_position: 6
 description: Deploying Besu Helm Charts for production on a Kubernetes cluster
-tags:
-  - private networks
 ---
 
 # Deploy for production

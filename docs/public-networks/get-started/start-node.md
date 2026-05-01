@@ -2,8 +2,6 @@
 title: Start Besu
 sidebar_position: 3
 description: Start Besu on a public Ethereum network.
-tags:
-  - public networks
 ---
 
 import Tabs from '@theme/Tabs';

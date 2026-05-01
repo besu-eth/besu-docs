@@ -2,8 +2,6 @@
 title: Parallel transaction execution
 sidebar_position: 5
 description: Learn about parallel transaction execution.
-tags:
-- public networks
 ---
 
 # Parallel transaction execution

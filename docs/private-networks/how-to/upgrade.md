@@ -2,8 +2,6 @@
 title: Upgrade
 description: Upgrading protocol versions
 sidebar_position: 8
-tags:
-  - private networks
 ---
 
 # Network and protocol upgrades

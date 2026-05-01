@@ -2,8 +2,6 @@
 title: Validators
 description: Configuring validators in production networks
 sidebar_position: 4
-tags:
-  - private networks
 ---
 
 # Configure validators in a production network

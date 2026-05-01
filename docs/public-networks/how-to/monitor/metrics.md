@@ -2,9 +2,6 @@
 title: Use metrics
 sidebar_position: 1
 description: Monitoring and metrics
-tags:
-  - public networks
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

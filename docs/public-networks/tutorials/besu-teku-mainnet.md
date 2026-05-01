@@ -2,8 +2,6 @@
 title: Run Besu and Teku on Mainnet
 sidebar_position: 1
 description: Run Besu and Teku on Ethereum Mainnet.
-tags:
-  - public networks
 ---
 
 import Tabs from '@theme/Tabs';

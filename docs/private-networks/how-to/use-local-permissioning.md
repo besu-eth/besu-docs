@@ -2,8 +2,6 @@
 title: Use local permissioning
 sidebar_position: 5
 description: Besu local permissioning
-tags:
-  - private networks
 ---
 
 # Use local permissioning

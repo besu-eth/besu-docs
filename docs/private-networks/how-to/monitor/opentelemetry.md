@@ -2,8 +2,6 @@
 title: Use OpenTelemetry
 sidebar_position: 6
 description: Collect Besu information with the OpenTelemetry Collector
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

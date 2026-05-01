@@ -2,8 +2,6 @@
 title: Attestations
 sidebar_position: 1
 description: Proof of stake attestations
-tags:
-  - public networks
 ---
 
 # Attestations

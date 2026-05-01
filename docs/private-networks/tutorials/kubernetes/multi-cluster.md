@@ -2,8 +2,6 @@
 title: Deploy Besu across multiple Kubernetes clusters across multiple cloud providers
 description: Deploy Besu across multiple Kubernetes clusters across multiple cloud providers
 sidebar_position: 7
-tags:
-  - private networks
 ---
 
 # Deploy Besu across multiple Kubernetes clusters across multiple cloud providers

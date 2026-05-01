@@ -2,8 +2,6 @@
 title: Understand metrics
 sidebar_position: 2
 description: Understand Besu performance metrics
-tags:
-  - public networks
 ---
 
 # Understand metrics

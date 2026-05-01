@@ -2,8 +2,6 @@
 title: Node synchronization
 sidebar_position: 4
 description: Learn about node synchronization for public networks.
-tags:
-  - public networks
 ---
 
 # Node synchronization

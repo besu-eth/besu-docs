@@ -2,8 +2,6 @@
 title: Run Besu from Docker image
 description: Run Besu using the official docker image
 sidebar_position: 2
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

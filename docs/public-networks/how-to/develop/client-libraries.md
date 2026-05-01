@@ -2,9 +2,6 @@
 title: Use client libraries
 sidebar_position: 2
 description: Besu client libraries
-tags:
-  - public networks
-  - private networks
 ---
 
 # Use client libraries

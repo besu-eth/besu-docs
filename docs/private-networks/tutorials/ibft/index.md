@@ -1,7 +1,5 @@
 ---
 description: Besu private network using the IBFT 2.0 (Proof of Authority) consensus protocol
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

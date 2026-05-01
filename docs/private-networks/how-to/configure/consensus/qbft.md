@@ -2,8 +2,6 @@
 title: QBFT
 description: Besu QBFT proof of authority (PoA) consensus protocol implementation
 sidebar_position: 2
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

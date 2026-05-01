@@ -2,8 +2,6 @@
 title: Private network options
 sidebar_position: 1
 description: Besu private networks CLI reference
-tags:
-  - private networks
 ---
 
 import Tabs from '@theme/Tabs';

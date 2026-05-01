@@ -1,8 +1,5 @@
 ---
 description: Besu high availability
-tags:
-  - public networks
-  - private networks
 ---
 
 # High availability of JSON-RPC and RPC Pub/Sub APIs

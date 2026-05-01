@@ -2,9 +2,6 @@
 title: Specify NAT method
 sidebar_position: 4
 description: Configuring NAT with Besu
-tags:
-  - public networks
-  - private networks
 ---
 
 # Specify the NAT method

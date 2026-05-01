@@ -2,9 +2,6 @@
 title: Genesis file
 sidebar_position: 9
 description: Learn about configuring a network using the genesis file.
-tags:
-  - public networks
-  - private networks
 ---
 
 # Genesis file

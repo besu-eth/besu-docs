@@ -2,8 +2,6 @@
 sidebar_label: Node synchronization
 sidebar_position: 4
 description: Learn about node synchronization for private networks.
-tags:
-  - private networks
 ---
 
 # Node synchronization for private networks
