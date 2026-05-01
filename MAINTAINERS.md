@@ -14,17 +14,17 @@
 ## Emeritus maintainers
 
 <!-- vale off -->
-| Name            | GitHub         | LFID           |
-|-----------------|----------------|----------------|
-| Steven Gregg    | sgregglives    | sagregg        |
-| Grant Noble     | grantnoble     | grantnoble     |
-| Tim Beiko       | timbeiko       | timbeiko       |
-| Nicolas Massart | NicolasMassart | NicolasMassart |
-| Roland Tyler    | rolandtyler    | rolandtyler    |
-| Mike Sanko      | mjsmike62      | mjsmike62      |
-| Joan Edwards    | joaniefromtheblock | joaniefromtheblock |
-| Madeline Murray | MadelineMurray | madelinemurray |
-| Harrie Bickle   | m4sterbunny    | m4sterbunny    |
+| Name            | GitHub             | LFID               |
+|-----------------|--------------------|--------------------|
+| Steven Gregg    | sgregglives        | sagregg             |
+| Grant Noble     | grantnoble         | grantnoble          |
+| Tim Beiko       | timbeiko           | timbeiko            |
+| Nicolas Massart | NicolasMassart     | NicolasMassart      |
+| Roland Tyler    | rolandtyler        | rolandtyler         |
+| Mike Sanko      | mjsmike62          | mjsmike62           |
+| Joan Edwards    | joaniefromtheblock | joaniefromtheblock  |
+| Madeline Murray | MadelineMurray     | madelinemurray      |
+| Harrie Bickle   | m4sterbunny        | m4sterbunny         |
 <!-- vale on -->
 
 ## Becoming a maintainer
