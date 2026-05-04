@@ -378,6 +378,10 @@ img {
   padding: 0;
 }
 
+.menu__caret {
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+}
+
 .navbar__link {
   color: var(--ifm-navbar-link-color);
   font-weight: var(--ifm-font-weight-semibold);
