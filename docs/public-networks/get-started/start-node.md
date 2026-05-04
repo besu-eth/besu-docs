@@ -29,7 +29,7 @@ Besu specifies the genesis configuration, and sets the network ID and bootnodes 
 
 :::info
 
-The following networks and testnets are deprecated: ETC Classic, Holesky, and Mordor.
+The following networks and testnets are deprecated: ETC (Ethereum Classic), Holesky, and Mordor.
 
 :::
 

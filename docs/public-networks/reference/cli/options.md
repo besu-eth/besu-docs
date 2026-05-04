@@ -3183,7 +3183,7 @@ Values are case-insensitive, so either `mainnet` or `MAINNET` works.
 
 - You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
 
-- The following networks and testnets are deprecated: ETC Classic, Holesky, and Mordor.
+- The following networks and testnets are deprecated: ETC (Ethereum Classic), Holesky, and Mordor.
 
 :::
 
