@@ -18,7 +18,7 @@ To run a node with Bonsai Tries data storage format, use the command line option
 
 <p align="center">
 
-![Bonsai tries](../../assets/images/bonsai-tries.png)
+![Bonsai tries](../../assets/images/bonsai-tries.svg)
 
 </p>
 
@@ -43,7 +43,7 @@ In forest mode, each node in the trie is saved in a key-value store by hash. For
 
 <p align="center">
 
-![Forest of tries](../../assets/images/forest-of-tries.png)
+![Forest of tries](../../assets/images/forest-of-tries.svg)
 
 </p>
 
