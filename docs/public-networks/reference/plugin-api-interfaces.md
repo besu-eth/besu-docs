@@ -47,7 +47,7 @@ To use the interfaces in your plugin, ensure the [Gradle build file](https://git
 
 :::warning Known issue
 
-As indicated in [issue #406](https://github.com/hyperledger/besu-docs/issues/406), plugins may need to access the parsed command line during registration, but the command line is not yet initialized at this stage.
+As indicated in [issue #406](https://github.com/besu-eth/besu-docs/issues/406), plugins may need to access the parsed command line during registration, but the command line is not yet initialized at this stage.
 
 It's in our roadmap to improve lifecycle steps and provide additional visibility for some data. A workaround is to create a supplier during the `register` step and store it in memory.
 

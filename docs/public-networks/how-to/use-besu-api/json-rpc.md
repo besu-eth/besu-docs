@@ -318,7 +318,7 @@ The block parameter can have one of the following values:
 - `blockHash` : _string_ or _object_ - 32-byte block hash or JSON object specifying the block hash.
   If using a JSON object, you can specify `requireCanonical` to indicate whether the block must be a
   canonical block.
-  See [this example](https://github.com/hyperledger/besu/blob/a2dedb0b2c7980cdc35db8eb4c094f2eb0dc7deb/ethereum/api/src/test/resources/org/hyperledger/besu/ethereum/api/jsonrpc/eth/eth_getBalance_blockHashObjectCanonical.json).
+  See [this example](https://github.com/besu-eth/besu/blob/a2dedb0b2c7980cdc35db8eb4c094f2eb0dc7deb/ethereum/api/src/test/resources/org/hyperledger/besu/ethereum/api/jsonrpc/eth/eth_getBalance_blockHashObjectCanonical.json).
 
   :::note
 

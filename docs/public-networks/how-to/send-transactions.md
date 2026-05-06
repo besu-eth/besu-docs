@@ -23,7 +23,7 @@ your node to the internet.
 
 Don't use the accounts from the examples on Mainnet or any public network except for testing. The private keys are displayed which means the accounts are not secure.
 
-All accounts and private keys in the examples are from the `dev.json` genesis file in the [`/besu/config/src/main/resources`](https://github.com/hyperledger/besu/tree/master/config/src/main/resources) directory.
+All accounts and private keys in the examples are from the `dev.json` genesis file in the [`/besu/config/src/main/resources`](https://github.com/besu-eth/besu/tree/master/config/src/main/resources) directory.
 
 In production environments avoid exposing your private keys by creating signed transactions offline, or use [Web3Signer](https://docs.web3signer.consensys.net/) to isolate your private keys and sign transactions with [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction).
 

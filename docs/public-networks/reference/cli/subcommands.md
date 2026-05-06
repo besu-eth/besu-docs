@@ -323,7 +323,7 @@ besu storage revert-metadata v2-to-v1
 
 </Tabs>
 
-Reverts the modifications made by the [database metadata refactor](https://github.com/hyperledger/besu/pull/6555).
+Reverts the modifications made by the [database metadata refactor](https://github.com/besu-eth/besu/pull/6555).
 If you need to downgrade Besu, run this subcommand before installing the previous binaries.
 
 ### `revert-variables`
@@ -348,7 +348,7 @@ besu --config-file config.toml storage revert-variables
 
 </Tabs>
 
-Reverts the modifications made by the [variables storage feature](https://github.com/hyperledger/besu/pull/5471).
+Reverts the modifications made by the [variables storage feature](https://github.com/besu-eth/besu/pull/5471).
 If you need to downgrade Besu, first run this subcommand specifying the path to
 the [configuration file](../../how-to/configure-besu/index.md) normally used to
 start Besu.
