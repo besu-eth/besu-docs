@@ -27,13 +27,11 @@ The following diagrams illustrate the high level architecture of these setups.
 
 ### Single RPC node setup
 
-<br/>
 <p align="center">
 
-![Architecture-PoC](../../assets/images/aws-node-runners-1.png)
+![Architecture-PoC](../../assets/images/aws-node-runners.svg)
 
 </p>
-<br/>
 
 This single node setup is for small-scale development environments.
 It deploys a single EC2 instance with both consensus and execution clients.
