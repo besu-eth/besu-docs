@@ -20,7 +20,13 @@ Permissioning requires a distributed network of trust across the network where p
 
 Use node permissioning to restrict access to known participants only.
 
-![Node Permissioning](../../../assets/images/node-permissioning-bad-actor.png)
+<p align="center">
+
+![Node Permissioning](../../../assets/images/node-permissioning-bad-actor.svg)
+
+</p>
+
+Node-level permissions are a useful system of governance to control connections to an individual node.
 
 ## Account permissioning
 
@@ -30,7 +36,11 @@ Use account permissioning to:
 - Suspend accounts.
 - Restrict the actions an account can perform.
 
-![Account Permissioning](../../../assets/images/enterprise-ethereum-account-permissioning.png)
+<p align="center">
+
+![Account Permissioning](../../../assets/images/account-permissioning.svg)
+
+</p>
 
 ## Specify local permissioning
 

@@ -8,6 +8,20 @@ sidebar_label: TLS
 
 Besu supports TLS for client communication. For example, you can configure TLS for communication between [Web3Signer](https://docs.web3signer.consensys.net/concepts/tls) and Besu.
 
+<p align="center">
+
+```mermaid
+flowchart TD
+  dapp["Dapp"]
+  web3signer["Web3Signer<br/>(TLS enabled)"]
+  besu["Besu<br/>(TLS enabled)"]
+
+  dapp -->|"eth_sendTransaction<br/>🔒TLS"| web3signer
+  web3signer <-->|"eth_sendRawTransaction<br/>🔒TLS"| besu
+```
+
+</p>
+
 The following instructions allow you to configure client authentication to secure HTTP JSON-RPC
 calls.
 
@@ -19,12 +33,6 @@ server authentication, and
 [`--rpc-ws-ssl-client-auth-enabled`](../../../public-networks/reference/cli/options.md#rpc-ws-ssl-client-auth-enabled) for client authentication.
 
 :::
-
-The following diagram displays an example client and server TLS configuration.
-
-![Besu client and server TLS](../../../assets/images/Besu_TLS.png)
-
-Configure TLS communication from the command line.
 
 ## Prerequisites
 
