@@ -329,6 +329,26 @@ const config = {
         ],
       },
     ],
+    [
+      "docusaurus-plugin-llms",
+      {
+        docsDir: "docs",
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        title: "Besu documentation",
+        description:
+          "Official Besu documentation: public Ethereum networks, permissioned / private networks, APIs, configuration, and operations.",
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        logLevel: process.env.CI ? "quiet" : "normal",
+        ignoreFiles: ["assets/**"],
+        includeOrder: [
+          "public-networks/**/*",
+          "private-networks/**/*",
+          "global/**/*",
+        ],
+      },
+    ],
   ],
   themes: [
     [

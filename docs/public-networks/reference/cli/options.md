@@ -2023,6 +2023,12 @@ mechanisms, so that the reclaimed storage is compacted quickly, freeing disk spa
 
 The default is `false`.
 
+:::caution Deprecated
+
+`--history-expiry-prune` is deprecated in Besu version 26.1.0 and will be removed in a future release.
+
+:::
+
 ### `host-allowlist`
 
 <Tabs>
