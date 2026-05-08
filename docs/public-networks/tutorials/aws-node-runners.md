@@ -39,13 +39,11 @@ The RPC port is exposed only to the internal IP range of the VPC, while P2P port
 
 ### Highly available setup
 
-<br/>
 <p align="center">
 
-![Architecture](../../assets/images/aws-node-runners-2.png)
+![Architecture](../../assets/images/aws-node-runners-ha.svg)
 
 </p>
-<br/>
 
 In this highly available, multiple node setup:
 
