@@ -6,7 +6,7 @@ description: What transaction validation and when
 
 # Transaction validation
 
-For each transaction submitted and added to a block, Besu checks that:
+For each transaction submitted and added to a block, Besu checks the following:
 
 - The nonce is high enough.
 - Permissions are correct.
