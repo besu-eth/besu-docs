@@ -5575,7 +5575,7 @@ The default is `false`.
 <TabItem value="Syntax" label="Syntax" default>
 
 ```bash
----rpc-ws-authentication-jwt-algorithm=<algorithm>
+--rpc-ws-authentication-jwt-algorithm=<algorithm>
 ```
 
 </TabItem>
