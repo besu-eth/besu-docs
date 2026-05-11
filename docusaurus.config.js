@@ -233,6 +233,17 @@ const config = {
           },
         },
       },
+      zoom: {
+        selectors: [
+          "div.docusaurus-mermaid-container",
+          "div.mermaid[data-processed=\"true\"]",
+          ".theme-doc-markdown img",
+          ".drawio",
+        ],
+        toolbar: {
+          enabled: true,
+        },
+      },
       languageTabs: [
         {
           highlight: "bash",
@@ -349,6 +360,7 @@ const config = {
         ],
       },
     ],
+    "@r74tech/docusaurus-plugin-panzoom",
   ],
   themes: [
     [
