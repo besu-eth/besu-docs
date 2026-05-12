@@ -2885,11 +2885,6 @@ Besu recognizes this option, but it has no effect.
 
 :::
 
-:::note
-
-Besu ignores the `--min-block-occupancy-ratio` option for proof-of-stake networks, such as Ethereum Mainnet.
-
-
 ### `min-gas-price`
 
 <Tabs>
