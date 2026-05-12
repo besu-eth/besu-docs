@@ -90,7 +90,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Besu",
-          src: "img/logo-reversed.svg",
+          src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
           width: 100,
         },
@@ -243,6 +243,7 @@ const config = {
         toolbar: {
           enabled: true,
         },
+        enableWheelZoom: false,
       },
       languageTabs: [
         {
