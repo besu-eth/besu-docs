@@ -1,7 +1,7 @@
 ---
 title: Run Besu and Teku on a testnet
 sidebar_position: 2
-description: Run Besu and Teku on the Ephemery, Hoodi, or Sepolia testnets.
+description: Run Besu and Teku on Ephemery, Hoodi, or Sepolia testnet.
 ---
 
 import Tabs from '@theme/Tabs';
