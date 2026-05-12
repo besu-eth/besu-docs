@@ -50,7 +50,6 @@ If you're also running the consensus client as a validator client, create a test
 (you can do this in [MetaMask](https://support.metamask.io/configure/accounts/how-to-add-accounts-in-your-wallet/)).
 Fund this address with testnet ETH (32 ETH and gas fees for each validator) using a faucet. See the faucets for the relevant testnet:
 
-- [Holesky](https://github.com/eth-clients/holesky)
 - [Hoodi](https://github.com/eth-clients/hoodi)
 - [Sepolia](https://github.com/eth-clients/sepolia)
 - [Ephemery](https://ephemery-faucet.pk910.de/)
@@ -188,7 +187,11 @@ If you're running the consensus client as a beacon node only, you're all set. If
 
 ### 6. Stake ETH
 
-Stake your testnet ETH for one or more validators using the [Holesky Staking Launchpad](https://holesky.launchpad.ethereum.org/), [Hoodi Staking Launchpad](https://hoodi.launchpad.ethereum.org/), or [Ephemery Staking Launchpad](https://launchpad.ephemery.dev/).
+Stake your testnet ETH for one or more validators using the
+[Hoodi Staking Launchpad](https://hoodi.launchpad.ethereum.org/) or
+[Ephemery Staking Launchpad](https://launchpad.ephemery.dev/).
 
-You can check your validator status by searching your Ethereum address on the [Holesky explorer](https://holesky.beaconcha.in/),
-[Hoodi explorer](https://hoodi.etherscan.io/), or [Ephemery explorer](https://explorer.ephemery.dev/). It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the
+[Hoodi explorer](https://hoodi.etherscan.io/) or
+[Ephemery explorer](https://explorer.ephemery.dev/). It may take up to multiple days
+for your validator to be activated and start proposing blocks.
