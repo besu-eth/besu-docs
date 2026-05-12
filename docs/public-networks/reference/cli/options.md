@@ -2877,6 +2877,14 @@ min-block-occupancy-ratio="0.5"
 
 Minimum occupancy ratio for a mined block if the transaction pool is not empty. When filling a block during mining, the occupancy ratio indicates the threshold at which the node stops waiting for smaller transactions to fill the remaining space. The default is 0.8.
 
+:::warning Deprecated
+
+The `--min-block-occupancy-ratio` option is deprecated and will be removed in a
+future release.
+Besu recognizes this option, but it has no effect.
+
+:::
+
 :::note
 
 Besu ignores the `--min-block-occupancy-ratio` option for proof-of-stake networks, such as Ethereum Mainnet.
