@@ -58,14 +58,24 @@ To use IBFT 2.0, Besu requires an IBFT 2.0 [genesis file](../../../../public-net
 }
 ```
 
-The properties specific to IBFT 2.0 are:
+You can configure the following properties in the `ibft2` configuration object:
 
 - `blockperiodseconds` - The minimum block time, in seconds.
+  The default is 1.
+- `emptyblockperiodseconds` - The minimum time between empty blocks, in seconds.
+  Use this to reduce empty block production while still producing blocks more quickly when transactions are pending.
+  The default is 0, which disables the empty block delay.
 - `epochlength` - The number of blocks after which to reset all votes.
+  The default is 30000.
 - `requesttimeoutseconds` - The timeout for each consensus round before a round change, in seconds.
-- `blockreward` - Optional reward amount in Wei to reward the beneficiary. Defaults to zero (0). Can be specified as a hexadecimal (with 0x prefix) or decimal string value. If set, then all nodes on the network must use the identical value.
-- `miningbeneficiary` - Optional beneficiary of the `blockreward`. Defaults to the validator that proposes the block. If set, then all nodes on the network must use the same beneficiary.
-- `extraData` - RLP encoded [extra data](#extra-data).
+  The default is 1.
+- `blockreward` - Reward amount in Wei to reward the beneficiary.
+  Specify a hexadecimal value with a `0x` prefix or a decimal string value.
+  If set, all nodes on the network must use the identical value.
+  The default is 0.
+- `miningbeneficiary` - Beneficiary of the `blockreward`.
+  If omitted, the validator that proposes the block receives the reward.
+  If set, all nodes on the network must use the same beneficiary.
 
 :::caution
 
@@ -73,17 +83,20 @@ We don't recommend changing `epochlength` in a running network. Changing the `ep
 
 :::
 
-:::caution Invalid block header error
+<details>
+<summary>Invalid block header error</summary>
+<div>
 
 When adding a new node, if a `TimeStampMoreRecentThanParent | Invalid block header` error occurs, the genesis file of the new node specifies a higher `blockperiodseconds` than the imported chain. The imported chain makes new blocks faster than the genesis file allows and Besu rejects them with this error. This error most often occurs when importing chains from older versions of Besu.
 
 Decrease the `blockperiodseconds` in the new IBFT 2.0 genesis file to a lower value that satisfies the block header validation.
 
-:::
-
 If the error reads `| TimestampMoreRecentThanParent | Invalid block header: timestamp 1619660141 is only 3 seconds newer than parent timestamp 1619660138. Minimum 4 seconds`, decrease the `blockperiodseconds` from 4 seconds to 3 seconds to match the imported chain.
 
 After you update the new genesis file, if the imported chain has a `blockperiodseconds` value set lower than you prefer, you can adjust it by [configuring the block time on an existing IBFT 2.0 network](#configure-block-time-on-an-existing-network).
+
+</div>
+</details>
 
 The properties with specific values in the IBFT 2.0 genesis files are:
 
@@ -161,10 +174,12 @@ View [`TRACE` logs](../../../../public-networks/reference/api/index.md#trace-met
 
 Use a [transition](#transitions) to update the `blockperiodseconds` in an existing network.
 
-### Optional configuration options
+### Advanced configuration options
 
-Optional configuration options in the genesis file are:
+The `ibft2` object also supports the following optional properties:
 
+- `gossipedhistorylimit` - Number of previous IBFT 2.0 messages to keep in history for gossip.
+  The default is 1000.
 - `messageQueueLimit` - In large networks with limited resources, increasing the message queue limit might help with message activity surges. The default is 1000.
 - `duplicateMessageLimit` - If the same node is retransmitting messages, increasing the duplicate message limit might reduce the number of retransmissions. A value of two to three times the number of validators is usually enough. The default is 100.
 - `futureMessagesLimit` - The future messages buffer holds messages for a future chain height. For large networks, increasing the future messages limit might be useful. The default is 1000.
