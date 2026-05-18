@@ -25,9 +25,15 @@ It might take significant time to recover after nodes are restarted.
 
 :::
 
-:::tip
+:::tip HSM-backed validator keys
 
-You can use a plugin to securely store a validator's key using the [`--security-module`](../../../../public-networks/reference/cli/options.md#security-module) option.
+For IBFT 2.0 validators, the validator address is derived from the
+[node public key](../../../../public-networks/concepts/node-keys.md#node-public-key).
+To store a validator's node key in a Hardware Security Module (HSM) instead of
+on disk, use a security module plugin, such as the
+[Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin), with the
+[`--security-module`](../../../../public-networks/reference/cli/options.md#security-module)
+option.
 
 :::
 
