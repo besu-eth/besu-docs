@@ -392,13 +392,16 @@ None
 
  - `ipv6`: _string_ - IPv6 address string
 
-- `listenAddrV6`: _string_ - IPv6 listen address as [ipv6]:port
+- `listenAddrV6`: _string_ - IPv6 listen address as `[ipv6]:port`
 
 - `ports`: _object_ - peer discovery and listening ports
 
   - `listener`: _number_ - TCP listening port
-  - `discovery`: _number_ - UDP discovery port
+
   - `listenerV6`: _number_ - IPv6 TCP listening port
+
+  - `discovery`: _number_ - UDP discovery port
+
   - `discoveryV6`: _number_ - IPv6 UDP discovery port
 
 - `protocols`: _object_ - list of objects containing information for each Ethereum sub-protocol
