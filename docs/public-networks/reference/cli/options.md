@@ -6446,7 +6446,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Example" label="Example">
 
 ```bash
---security-module=security_module
+--security-module=hsm
 ```
 
 </TabItem>
@@ -6454,7 +6454,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-BESU_SECURITY_MODULE=security_module
+BESU_SECURITY_MODULE=hsm
 ```
 
 </TabItem>
@@ -6462,7 +6462,7 @@ BESU_SECURITY_MODULE=security_module
 <TabItem value="Configuration file" label="Configuration file">
 
 ```bash
-security-module="security_module"
+security-module="hsm"
 ```
 
 </TabItem>
