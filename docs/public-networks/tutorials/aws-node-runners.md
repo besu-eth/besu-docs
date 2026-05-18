@@ -27,13 +27,11 @@ The following diagrams illustrate the high level architecture of these setups.
 
 ### Single RPC node setup
 
-<br/>
 <p align="center">
 
-![Architecture-PoC](../../assets/images/aws-node-runners-1.png)
+![Architecture-PoC](../../assets/images/aws-node-runners.svg)
 
 </p>
-<br/>
 
 This single node setup is for small-scale development environments.
 It deploys a single EC2 instance with both consensus and execution clients.
@@ -41,13 +39,11 @@ The RPC port is exposed only to the internal IP range of the VPC, while P2P port
 
 ### Highly available setup
 
-<br/>
 <p align="center">
 
-![Architecture](../../assets/images/aws-node-runners-2.png)
+![Architecture](../../assets/images/aws-node-runners-ha.svg)
 
 </p>
-<br/>
 
 In this highly available, multiple node setup:
 

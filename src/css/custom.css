@@ -16,6 +16,7 @@
   --ifm-color-primary-darkest: #0056DD;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
   --ifm-navbar-link-color: #fff;
+  --besu-mermaid-stroke-width: 2.5px;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -28,6 +29,36 @@
   --ifm-color-primary-darker: #0056DD;
   --ifm-color-primary-darkest: #0056DD;
   --docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
+}
+
+.docusaurus-mermaid-container .node rect,
+.docusaurus-mermaid-container .node circle,
+.docusaurus-mermaid-container .node ellipse,
+.docusaurus-mermaid-container .node polygon,
+.docusaurus-mermaid-container .node path {
+  stroke-width: var(--besu-mermaid-stroke-width) !important;
+}
+
+.docusaurus-mermaid-container .edge-thickness-normal,
+.docusaurus-mermaid-container .flowchart-link {
+  stroke-width: var(--besu-mermaid-stroke-width) !important;
+}
+
+html[data-theme="light"] .docusaurus-mermaid-container .node rect,
+html[data-theme="light"] .docusaurus-mermaid-container .node circle,
+html[data-theme="light"] .docusaurus-mermaid-container .node ellipse,
+html[data-theme="light"] .docusaurus-mermaid-container .node polygon,
+html[data-theme="light"] .docusaurus-mermaid-container .node path {
+  fill: transparent !important;
+  stroke: #00A4A2 !important;
+}
+
+html[data-theme="dark"] .docusaurus-mermaid-container .node rect,
+html[data-theme="dark"] .docusaurus-mermaid-container .node circle,
+html[data-theme="dark"] .docusaurus-mermaid-container .node ellipse,
+html[data-theme="dark"] .docusaurus-mermaid-container .node polygon,
+html[data-theme="dark"] .docusaurus-mermaid-container .node path {
+  stroke: #00A4A2 !important;
 }
 
 /* github */
@@ -346,10 +377,6 @@ h4 {
   font-size: 40px;
   padding-top: 20px;
   padding-bottom: 5px;
-}
-
-img {
-  border-radius: 0.4rem;
 }
 
 .footer__copyright {

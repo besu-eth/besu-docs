@@ -1,7 +1,7 @@
 ---
 title: Run Besu and Teku on a testnet
 sidebar_position: 2
-description: Run Besu and Teku on Ephemery , Hoodi or Sepolia testnet.
+description: Run Besu and Teku on Ephemery, Hoodi, or Sepolia testnet.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -133,11 +133,11 @@ To run Teku as a beacon node only (without validator duties), run the following 
 
 <Tabs>
 
-<TabItem value="Holesky" label="Holesky" default>
+<TabItem value="Hoodi" label="Hoodi" default>
 
 ```bash
 teku \
-  --network=holesky                            \
+  --network=hoodi                              \
   --ee-endpoint=http://localhost:8551          \
   --ee-jwt-secret-file=<path to jwtsecret.hex> \
   --metrics-enabled=true                       \
@@ -284,9 +284,14 @@ If you're running Teku as a beacon node only, you're all set. If you're also run
 
 ## 7. Stake ETH
 
-Stake your testnet ETH for one or more validators using the [Holesky Staking Launchpad](https://holesky.launchpad.ethereum.org/), [Hoodi Staking Launchpad](https://hoodi.launchpad.ethereum.org/), or [Ephemery Staking Launchpad](https://launchpad.ephemery.dev/).
+Stake your testnet ETH for one or more validators using the
+[Hoodi Staking Launchpad](https://hoodi.launchpad.ethereum.org/) or
+[Ephemery Staking Launchpad](https://launchpad.ephemery.dev/).
 
-You can check your validator status by searching your Ethereum address on the [Holesky explorer](https://holesky.beaconcha.in/), [Hoodi explorer](https://hoodi.etherscan.io/), or [Ephemery explorer](https://explorer.ephemery.dev/). It may take up to multiple days for your validator to be activated and start proposing blocks.
+You can check your validator status by searching your Ethereum address on the
+[Hoodi explorer](https://hoodi.etherscan.io/) or
+[Ephemery explorer](https://explorer.ephemery.dev/). It may take up to multiple days
+for your validator to be activated and start proposing blocks.
 
 <!--links-->
 

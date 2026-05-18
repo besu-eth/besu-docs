@@ -221,7 +221,7 @@ const config = {
       },
       mermaid: {
         options: {
-          fontFamily: "arial, verdana, sans-serif;",
+          fontFamily: "var(--ifm-font-family-base)",
           wrap: true,
           sequence: {
             diagramMarginX: 25,
