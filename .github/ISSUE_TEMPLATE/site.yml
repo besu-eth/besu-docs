@@ -21,14 +21,14 @@ body:
       label: Site issue type
       description: Select any type that applies.
       options:
-        - Build or CI
-        - Configuration, dependencies, or plugins
-        - UI/UX
-        - Navigation
-        - Search, analytics, or metadata
-        - Redirects or routing
-        - AI tooling
-        - Other
+        - label: Build or CI
+        - label: Configuration, dependencies, or plugins
+        - label: UI/UX
+        - label: Navigation
+        - label: Search, analytics, or metadata
+        - label: Redirects or routing
+        - label: AI tooling
+        - label: Other
   - type: textarea
     id: source-links
     attributes:

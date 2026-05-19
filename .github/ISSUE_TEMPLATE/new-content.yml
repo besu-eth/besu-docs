@@ -21,17 +21,17 @@ body:
       label: Content type
       description: Select the type(s) of content needed.
       options:
-        - Concept
-        - How-to guide
-        - Get-started or onboarding
-        - Reference
-        - Tutorial
+        - label: Concept
+        - label: How-to guide
+        - label: Get-started or onboarding
+        - label: Reference
+        - label: Tutorial
   - type: input
     id: location
     attributes:
       label: Location
       description: Link to or describe the page or section where this content might live.
-      placeholder: Example: "https://besu.hyperledger.org/public-networks/..."
+      placeholder: 'Example: "https://besu.hyperledger.org/public-networks/..."'
   - type: textarea
     id: source-links
     attributes:
