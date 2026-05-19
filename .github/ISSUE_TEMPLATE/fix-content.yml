@@ -1,0 +1,42 @@
+name: Docs change or fix
+description: Report a small docs fix, source-linked update, or known content issue.
+title: "Fix: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for small fixes, source-linked product changes, or updates to existing docs.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What should be changed?
+      description: Describe the docs update.
+      placeholder: |
+        Example: "Update --tx-pool-enable-balance-check default to true."
+    validations:
+      required: true
+  - type: input
+    id: docs-page
+    attributes:
+      label: Docs page
+      description: Link to the page or section where the issue is located.
+      placeholder: 'Example: "https://besu.hyperledger.org/public-networks/..."'
+  - type: checkboxes
+    id: issue-type
+    attributes:
+      label: Issue type
+      description: Select any type that applies.
+      options:
+        - label: Inaccurate content
+        - label: Outdated content
+        - label: Missing content
+        - label: Broken or misleading example
+        - label: Link or navigation issue
+        - label: Typo, grammar, or style issue
+  - type: textarea
+    id: source-links
+    attributes:
+      label: Source links
+      description: Link to a Besu PR, code, release note, spec, issue, or discussion.
+      placeholder: |
+        Example: "https://github.com/besu-eth/besu/pull/10175"

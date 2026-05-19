@@ -26,6 +26,7 @@ listed on the right unless they appear in code, URLs, or direct quotations from 
 | consensus client                       | consensus layer client, CL client                       |
 | execution client                       | execution layer client, EL client                       |
 | validator                              | validator node (use "validator" in prose)                |
+| early access                           | experimental                                            |
 
 ## Consensus protocols (private networks)
 

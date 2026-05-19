@@ -24,6 +24,8 @@ Ask the user for any information they have not already provided:
 3. **Topic** - what is the page about?
 4. **File path** - where should the file live? (Suggest one based on area and content type
    if the user doesn't specify.)
+5. **Source material** - what code, release note, specification, issue, PR, or other reference
+   verifies the content?
 
 ## Step 1: Determine conventions
 
