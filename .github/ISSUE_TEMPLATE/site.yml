@@ -12,7 +12,7 @@ body:
       label: What should be changed?
       description: Describe the site, tooling, or build issue or enhancement.
       placeholder: |
-        Add feedback widget to the Besu docs.
+        Example: "Add feedback widget to the Besu docs. Investigate if the MetaMask docs solution can be used."
     validations:
       required: true
   - type: checkboxes
@@ -35,4 +35,4 @@ body:
       label: Source links
       description: Link to related issues, dependency docs, upstream changes, logs, or discussions.
       placeholder: |
-        Investigate if the MetaMask docs solution can be used: https://github.com/MetaMask/metamask-docs/pull/2852
+        Example: "MetaMask docs solution: https://github.com/MetaMask/metamask-docs/pull/2852"

@@ -12,7 +12,7 @@ body:
       label: What should be changed?
       description: Describe the docs update.
       placeholder: |
-        Update `--tx-pool-enable-balance-check` default to `true`.
+        Example: "Update --tx-pool-enable-balance-check default to true."
     validations:
       required: true
   - type: input
@@ -20,7 +20,7 @@ body:
     attributes:
       label: Docs page
       description: Link to the page or section where the issue is located.
-      placeholder: https://besu.hyperledger.org/public-networks/...
+      placeholder: Example: "https://besu.hyperledger.org/public-networks/..."
   - type: checkboxes
     id: issue-type
     attributes:
@@ -39,4 +39,4 @@ body:
       label: Source links
       description: Link to a Besu PR, code, release note, spec, issue, or discussion.
       placeholder: |
-        https://github.com/besu-eth/besu/pull/10175
+        Example: "https://github.com/besu-eth/besu/pull/10175"
