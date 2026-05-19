@@ -131,23 +131,9 @@ JVM memory requirements are highest when syncing, but will reduce after the node
 The disk space required for syncing a Besu node depends on the
 [sync mode](../concepts/node-sync.md#sync-modes) and
 [data storage format](../concepts/data-storage-formats.md) used.
-The following table summarizes approximate storage estimates and download times for each configuration.
+Using snap sync with Bonsai on Mainnet requires about 1.14 TB.
 
-:::info
-Besu uses snap sync with history pruning enabled by default for named networks such as Mainnet and
-Sepolia. This configuration retains only block headers and the genesis block for
-[pre-merge](https://ethereum.org/en/roadmap/merge/) PoW history, significantly reducing disk usage.
-
-We recommend using snap sync instead of checkpoint sync because checkpoint sync will be deprecated
-in the future.
-:::
-
-| Storage format | Sync mode                 | World state sync time | Blockchain download time | Disk usage |
-|----------------|---------------------------|-----------------------|--------------------------|------------|
-| Bonsai         | Snap (pruned)             | ~3 hours              | ~13 hours                | 805 GB     |
-| Bonsai         | Snap (unpruned)           | ~3 hours              | ~26 hours (est.)         | 1164 GB    |
-| Bonsai         | Checkpoint                | ~3 hours              | ~13 hours                | >840 GB    |
-| Forest         | Full                      | Weeks                 | Weeks                    | ~3 TB      |
+See the current [Mainnet storage estimates](../concepts/data-storage-formats.md#storage-estimates) for more information.
 
 ## Disk type
 
@@ -155,16 +141,17 @@ Use [local SSD storage](https://cloud.google.com/compute/docs/disks) for high th
 
 You can use local SSDs through [SCSI interfaces](https://en.wikipedia.org/wiki/SCSI). For higher performance in production settings, we recommend upgrading to [NVMe interfaces](https://cloud.google.com/compute/docs/disks/local-ssd#performance).
 
-## AWS requirements
+## Reference environment
 
-We are running 22.4.2 Mainnet nodes using `m6gd.2xlarge` boxes.
+Recent Mainnet Bonsai snap sync measurements used AWS `m8g.2xlarge` instances with 8 vCPUs,
+30 GiB memory, and a 1.9 TB Amazon EBS data volume.
+Performance test nodes used provisioned disk IOPS and throughput.
+Using a larger instance or faster disk while synchronizing can reduce sync time.
+After the node is synchronized, you can reduce the instance size based on observed CPU, memory,
+and disk I/O usage.
 
-We synchronized the 22.4.2 Mainnet nodes using `m6gd.2xlarge` boxes.
+:::warning
 
-Using a larger box while synchronizing speeds up the sync process by giving it more resources. When the sync is completed, the box size can be reduced.
-
-:::caution
-
-If you are using a more recent release than 22.4.2, resource requirements may have increased.
+If you are using a more recent release than 26.5.0, resource requirements may have increased.
 
 :::

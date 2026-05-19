@@ -19,8 +19,7 @@ includes syncing, staking, API usage, monitoring, and development workflows.
 
 - **Execution client**: Besu is an execution client. It pairs with a **consensus client** (such as
   Teku, Lodestar, or Prysm) to operate a full Ethereum node post-Merge.
-- **Sync modes**: snap sync (default), checkpoint sync, full sync. Use these terms
-  consistently.
+- **Sync modes**: snap sync (default) and full sync. Use these terms consistently.
 - **JSON-RPC API**: the primary API for interacting with Besu. Reference pages live under
   `reference/api/`.
 - **Engine API**: the API used for execution-consensus client communication. Reference pages live

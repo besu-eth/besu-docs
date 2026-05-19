@@ -52,7 +52,9 @@ With revert reason enabled, the transaction receipt returned by [`eth_getTransac
 
 :::info
 
-The revert reason is not included in the transaction receipt's root hash. Not including the revert reason in the transactions receipt's root hash means the revert reason is only available to nodes that execute the transaction when importing the block. That is, the revert reason is not available if using fast synchronization ([`--sync-mode=FAST`](../../../public-networks/reference/cli/options.md#sync-mode)).
+The revert reason is not included in the transaction receipt's root hash.
+Not including the revert reason in the transaction receipt's root hash means the revert reason is only available to nodes that execute the transaction when importing the block.
+Nodes that sync without executing historical blocks ([snap sync](../../../public-networks/concepts/node-sync.md#snap-synchronization)), won't have receipt revert reasons for those historical blocks.
 
 :::
 

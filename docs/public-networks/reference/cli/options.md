@@ -4025,7 +4025,7 @@ In private and permissioned networks with a level of trust between peers, disabl
 
 :::danger
 
-To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to any public network, and especially when using [`--sync-mode`](#sync-mode) and [`--fast-sync-min-peers`](#sync-min-peers-fast-sync-min-peers).
+To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to any public network, and especially when using [`--sync-mode`](#sync-mode) and [`--sync-min-peers`](#sync-min-peers).
 
 :::
 
@@ -6592,7 +6592,7 @@ snapsync-synchronizer-transaction-indexing-enabled=true
 
 </Tabs>
 
-Enables or disables transaction indexing during initial sync for [snap sync](../../concepts/node-sync.md#snap-synchronization) and [checkpoint sync](../../concepts/node-sync.md#checkpoint-synchronization). 
+Enables or disables transaction indexing during initial [snap sync](../../concepts/node-sync.md#snap-synchronization).
 
 The default is `false`.
 
@@ -6684,7 +6684,7 @@ Enables or disables replay protection, in accordance with [EIP-155](https://eips
 
 The default is `false`.
 
-### `sync-min-peers`, `fast-sync-min-peers`
+### `sync-min-peers`
 
 <Tabs>
 
@@ -6768,18 +6768,15 @@ sync-mode="SNAP"
 
 </Tabs>
 
-The synchronization mode. Use `SNAP` for [snap sync](../../concepts/node-sync.md#snap-synchronization), `CHECKPOINT` for [checkpoint sync](../../concepts/node-sync.md#checkpoint-synchronization), `FAST` for [fast sync](../../concepts/node-sync.md#fast-synchronization-deprecated), and `FULL` for [full sync](../../concepts/node-sync.md#full-synchronization).
+The synchronization mode. Use `SNAP` for [snap sync](../../concepts/node-sync.md#snap-synchronization) and `FULL` for [full sync](../../concepts/node-sync.md#full-synchronization).
 
 - The default is `FULL` when connecting to a private network by not using the [`--network`](#network) option and specifying the [`--genesis-file`](#genesis-file) option.
 - The default is `SNAP` when using the [`--network`](#network) option with named networks, except for the `dev` development network. `SNAP` is also the default if running Besu on the default network (Ethereum Mainnet) by specifying neither [network](#network) nor [genesis file](#genesis-file).
 
-:::note Notes
+:::warning Checkpoint sync
 
-- We recommend using snap sync over fast sync because snap sync can be faster by several days.
-- Fast sync is deprecated in Besu version 24.12.0 and later.
-  We recommend updating Besu to a version that supports other sync methods.
-- When using a mode other than `FULL`, most historical world state data is unavailable.
-  Any methods attempting to access unavailable world state data return `null`.
+Checkpoint sync is deprecated.
+If you specify `CHECKPOINT`, Besu performs snap sync instead.
 
 :::
 

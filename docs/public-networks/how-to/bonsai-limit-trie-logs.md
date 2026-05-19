@@ -197,7 +197,6 @@ You must shut down the Besu client before running the subcommand.
 
 Check that you have specified `--sync-mode`. 
 The default is `--sync-mode=SNAP`. 
-Most Mainnet users use `SNAP` or `CHECKPOINT`. 
 
 ### Cannot run trie log prune
 
