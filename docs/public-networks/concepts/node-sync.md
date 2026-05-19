@@ -192,7 +192,7 @@ java.util.concurrent.CompletionException: org.hyperledger.besu.plugin.services.e
 
 The failure has been seen on AWS and Digital Ocean. On AWS, A full restart of the VM is required to
 restart the fast sync. Fast sync isn't
-[currently supported on Digital Ocean](https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/CHANGELOG.md#143).
+[currently supported on Digital Ocean](https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/CHANGELOG.md#143).
 
 </details>
 

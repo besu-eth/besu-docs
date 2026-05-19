@@ -201,4 +201,4 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{pending {t
 </Tabs>
 <!-- Links -->
 
-[Besu GraphQL schema]: https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
+[Besu GraphQL schema]: https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls

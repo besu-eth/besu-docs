@@ -17,7 +17,7 @@ You can use specific options and methods to [configure and monitor the transacti
 
 ## Layered transaction pool
 
-The [layered transaction pool](https://github.com/hyperledger/besu/pull/5290) is the default
+The [layered transaction pool](https://github.com/besu-eth/besu/pull/5290) is the default
 transaction pool implementation.
 The implementation separates the pool into layers according to value and executability of the transactions.
 The first layer keeps only the highest-value transactions that can feasibly go into the next block. 

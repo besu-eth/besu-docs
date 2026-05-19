@@ -1,7 +1,7 @@
 # Besu documentation
 
-This repository contains the source for [Besu](https://besu.hyperledger.org), the
-Hyperledger Besu documentation site. It is built with Docusaurus and covers two documentation areas
+This repository contains the source for [Besu](https://docs.besu-eth.org), the
+Besu documentation site. It is built with Docusaurus and covers two documentation areas
 for the Besu Ethereum client.
 
 ## Documentation areas
