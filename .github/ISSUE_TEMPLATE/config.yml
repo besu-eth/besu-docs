@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask the Besu community
+    url: https://discord.com/invite/hyperledger
+    about: Ask usage questions or discuss ideas that are not ready for a docs issue.

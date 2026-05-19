@@ -49,6 +49,8 @@ and match conventions of neighboring pages in the same `get-started/` section.
 - Describe and only describe. Be austere, neutral, and factual.
 - Match the format used in surrounding reference pages. The CLI reference uses definition-list
   style; API reference pages use nested bulleted lists or tables.
+- Do not add reference entries for early access CLI options, typically options that begin with
+  `--x` or `--X`. Add reference docs only after the option graduates from early access.
 - Adopt standard patterns. Consistent structure lets readers find information quickly.
 - Mirror the structure of the API or code itself (for example, one section per method or endpoint).
 - Include short usage examples to illustrate parameters and return values.

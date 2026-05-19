@@ -1,0 +1,38 @@
+name: Site, tooling, or build
+description: Report a docs site, tooling, dependency, workflow, or CI issue.
+title: "Site: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to suggest updates or report issues related to the site configuration, dependencies, CI, or tooling.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What should be changed?
+      description: Describe the site, tooling, or build issue or enhancement.
+      placeholder: |
+        Add feedback widget to the Besu docs.
+    validations:
+      required: true
+  - type: checkboxes
+    id: issue-type
+    attributes:
+      label: Site issue type
+      description: Select any type that applies.
+      options:
+        - Build or CI
+        - Configuration, dependencies, or plugins
+        - UI/UX
+        - Navigation
+        - Search, analytics, or metadata
+        - Redirects or routing
+        - AI tooling
+        - Other
+  - type: textarea
+    id: source-links
+    attributes:
+      label: Source links
+      description: Link to related issues, dependency docs, upstream changes, logs, or discussions.
+      placeholder: |
+        Investigate if the MetaMask docs solution can be used: https://github.com/MetaMask/metamask-docs/pull/2852
