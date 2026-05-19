@@ -6167,9 +6167,11 @@ None
 
 - `highestBlock`: _string_ - index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
 
-- `pulledStates`: _string_ - if fast synchronizing, the number of state entries fetched so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
+- `pulledStates`: _string_ - the number of state entries fetched so far, or `null` if this is not known or not relevant (if
+  [full syncing](../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
-- `knownStates`: _string_ - if fast synchronizing, the number of states the node knows of so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
+- `knownStates`: _string_ - the number of states the node knows of so far, or `null` if this is not known or not relevant (if
+  [full syncing](../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
 <Tabs>
 

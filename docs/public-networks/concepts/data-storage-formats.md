@@ -56,13 +56,22 @@ We recommend using [Bonsai Tries](#bonsai-tries) to save disk space.
 
 ## Forest of Tries vs. Bonsai Tries
 
-### Storage requirements
+### Storage estimates
 
-Forest mode uses significantly more memory than Bonsai.
-With a [full node](node-sync.md#full-nodes), forest mode uses an
-estimated 750 GB of storage, while Bonsai uses an estimated 650 GB of storage.
-[Archive nodes](node-sync.md#archive-nodes) must use forest mode, which
-uses an estimated 12 TB of storage.
+Mainnet storage requirements change over time as the chain grows.
+Use the following estimates as a reference point, not fixed minimum requirements.
+
+| Data storage format | Sync mode | Node type    | Mainnet storage estimate  |
+|---------------------|-----------|--------------|---------------------------|
+| Bonsai              | [Snap](node-sync.md#snap-synchronization) | [Full node](node-sync.md#full-nodes)       | ~1.14 TB |
+| Forest              | [Full](node-sync.md#full-synchronization) | [Archive node](node-sync.md#archive-nodes) | ~12 TB   |
+
+The Bonsai snap sync estimate is based on May 2026 burn-in results for the Besu 26.5.0
+release cycle on AWS `m8g.2xlarge` instances.
+By default, snap sync prunes historical block data for PoW blocks, retaining only the headers and the genesis block.
+Downloading full PoW blocks (by setting [`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled=false`](../reference/cli/options.md#snapsync-synchronizer-pre-checkpoint-headers-only-enabled)) increases disk usage.
+
+Forest mode uses significantly more memory than Bonsai, and we do not recommend using it on Mainnet.
 
 ### Accessing data
 
@@ -73,25 +82,5 @@ However, Bonsai becomes increasingly more resource-intensive the further in hist
 :::note
 
 Using `--bonsai-historical-block-limit` doesn't affect the size of the database being stored, only how far back to load. This means there is no "safe minimum" value to use with this option.
-
-:::
-
-### Syncing nodes
-
-The following table shows the ways you can sync a [full node](node-sync.md#full-nodes) with the different data storage formats using [fast](node-sync.md#fast-synchronization-deprecated) and [snap](node-sync.md#snap-synchronization) sync.
-
-By default, Snap sync prunes historical block data for PoW blocks, retaining only the headers and the genesis block.
-
-| Data storage format | Sync mode                      | Storage estimate | Can other nodes sync to your node? |
-|---------------------|--------------------------------|------------------|------------------------------------|
-| Bonsai              | Fast                           | > 1140 GB          | No                                 |
-| Bonsai              | Snap (with history pruning)    | 805 GB           | Yes                                |
-| Bonsai              | Snap (without history pruning) | 1164 GB          | Yes                                |
-| Bonsai              | Checkpoint                     | > 840 GB           | No                                 |
-| Forest              | Fast                           | > 1200 GB          | Yes                                |
-
-:::tip
-
-We recommend using snap sync with Bonsai for the fastest sync and lowest storage requirements.
 
 :::
