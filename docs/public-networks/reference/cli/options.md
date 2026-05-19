@@ -6473,7 +6473,8 @@ Name of the security module plugin to use for [node key](../../concepts/node-key
 For example, use a Hardware Security Module (HSM) or V3 filestore plugin, such as the
 [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin).
 
-The default is the node's local private key file specified using [`--node-private-key-file`](#node-private-key-file).
+The default is `localfile`.
+If using a local private key file, specify its location using [`--node-private-key-file`](#node-private-key-file).
 
 ### `snapsync-server-enabled`
 
