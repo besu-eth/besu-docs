@@ -141,7 +141,7 @@ Downloading full PoW blocks could double the download time.
 
 Full sync takes significantly more time than snap sync, and we do not recommend using it on Mainnet.
 
-See the [storage estimates](data-storage-formats.md#storage-requirements) for the different sync modes and node types.
+See the [storage estimates](data-storage-formats.md#storage-estimates) for the different sync modes and node types.
 
 :::note
 Testnets take significantly less time and space to sync.
