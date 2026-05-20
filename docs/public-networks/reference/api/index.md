@@ -2201,6 +2201,50 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":5
 
 </Tabs>
 
+### `eth_baseFee`
+
+Returns the base fee per gas for the next block in wei.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`result`: _string_ - hexadecimal integer representing the base fee per gas for the next block in wei, or `null` if the network does not support [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 51,
+  "result": "0x8"
+}
+```
+
+</TabItem>
+
+</Tabs>
+
 ### `eth_blobBaseFee`
 
 Returns the base fee per blob gas in wei.
