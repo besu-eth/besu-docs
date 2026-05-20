@@ -90,7 +90,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Besu",
-          src: "img/logo-reversed.svg",
+          src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
           width: 100,
         },
@@ -237,12 +237,13 @@ const config = {
         selectors: [
           "div.docusaurus-mermaid-container",
           "div.mermaid[data-processed=\"true\"]",
-          ".theme-doc-markdown img",
+          ".theme-doc-markdown img:not([alt=\"Run in Postman\"])",
           ".drawio",
         ],
         toolbar: {
           enabled: true,
         },
+        enableWheelZoom: false,
       },
       languageTabs: [
         {
