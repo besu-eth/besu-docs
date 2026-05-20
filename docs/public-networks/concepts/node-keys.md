@@ -9,8 +9,7 @@ description: Learn about node public and private keys, and the node address.
 Each node has a private and public key pair, and a node address.
 Besu uses the key pair as the node's network identity, and the node address as an
 identifier for the node.
-In QBFT and IBFT 2.0 private networks, validator addresses are derived from node
-public keys.
+In QBFT and IBFT 2.0 private networks, node addresses are validator addresses.
 
 ## Node private key
 
