@@ -186,6 +186,12 @@ If any option is specified using the command line or [configuration file](../how
 
 ## Fixed difficulty
 
+:::caution Deprecated
+
+PoW consensus is deprecated in Besu version 24.11.0 and later. Please read this [blog post](https://www.lfdecentralizedtrust.org/blog/sunsetting-tessera-and-simplifying-hyperledger-besu) for more context on the rationale behind this decision as well as alternative options.
+
+:::
+
 Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This keeps the network's difficulty constant and overrides the `difficulty` parameter from the genesis file.
 
 ```json
