@@ -2524,6 +2524,57 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":51
 
 </Tabs>
 
+### `eth_capabilities`
+
+Returns the node's data-serving capabilities.
+
+#### Parameters
+
+None
+
+#### Returns
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `result` | object | Node capabilities information |
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"id":1}' http://127.0.0.1:8545/
+```
+
+</TabItem>
+
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{ "jsonrpc":"2.0", "method":"eth_capabilities", "params":[], "id":1 }
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc":"2.0",
+  "id":1,
+  "result":{
+    "head":{
+      "number":"0x2a",
+      "hash":"0x1111111111111111111111111111111111111111111111111111111111111111"
+    }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
 ### `eth_config`
 
 Returns the client's fork information for the current, next, and last known forks.
