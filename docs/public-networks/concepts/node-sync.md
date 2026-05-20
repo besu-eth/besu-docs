@@ -43,10 +43,10 @@ Bonsai is designed for retrieving recent data only.
 
 The following table summarizes the recommended public network sync modes:
 
-| Sync mode                     | Recommended use | Requirements |
-|-------------------------------|-----------------|--------------|
-| [Snap](#snap-synchronization) | Full nodes on Mainnet and public testnets. | Besu version 22.4.0 or later |
-| [Full](#full-synchronization) | Archive nodes on smaller networks. Not recommended on Mainnet. | None |
+| Sync mode                     | Recommended use | Besu version requirement |
+|-------------------------------|-----------------|--------------------------|
+| [Snap](#snap-synchronization) | Full nodes on Mainnet and public testnets. | 22.4.0 or later |
+| [Full](#full-synchronization) | Archive nodes on smaller networks. Not recommended on Mainnet. | Any |
 
 :::warning Checkpoint sync
 
