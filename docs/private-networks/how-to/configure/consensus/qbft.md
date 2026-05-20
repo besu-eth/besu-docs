@@ -148,15 +148,27 @@ You can use a [transitions](#transitions) to change the `blockperiodseconds` or 
 
 </Tabs>
 
-The QBFT properties are:
+You can configure the following properties in the `qbft` configuration object:
 
 - `blockperiodseconds` - The minimum block time, in seconds.
+  The default is 1.
+- `emptyblockperiodseconds` - The minimum time between empty blocks, in seconds.
+  Use this to reduce empty block production while still producing blocks more quickly when transactions are pending.
+  The default is 0, which disables the empty block delay.
 - `epochlength` - The number of blocks after which to reset all votes.
+  The default is 30000.
 - `requesttimeoutseconds` - The timeout for each consensus round before a round change, in seconds.
-- `blockreward` - Optional reward amount in Wei to reward the beneficiary. Defaults to zero (0). Can be specified as a hexadecimal (with 0x prefix) or decimal string value. If set, then all nodes on the network must use the identical value.
+  The default is 1.
+- `blockreward` - Reward amount in Wei to reward the beneficiary.
+  The default is 0.
+  Specify a hexadecimal value with a `0x` prefix or a decimal string value.
+  If set, all nodes on the network must use the identical value.
 - `validatorcontractaddress` - Address of the validator smart contract. Required only if using a contract validator selection. The address must be identical to the address in the `alloc` section. This option can also be used in the [transitions](#transitions) configuration item if swapping [validator management methods](#add-and-remove-validators) in an existing network.
-- `miningbeneficiary` - Optional beneficiary of the `blockreward`. Defaults to the validator that proposes the block. If set, then all nodes on the network must use the same beneficiary.
-- [`extraData`](#extra-data) - RLP encoded [extra data](#extra-data).
+- `startblock` - Block number at which QBFT starts.
+  Use this when migrating from IBFT to QBFT.
+- `miningbeneficiary` - Beneficiary of the `blockreward`.
+  If omitted, the validator that proposes the block receives the reward.
+  If set, all nodes on the network must use the same beneficiary.
 
 :::caution
 
@@ -164,7 +176,9 @@ We don't recommend changing `epochlength` in a running network. Changing the `ep
 
 :::
 
-:::caution Invalid block header error
+<details>
+<summary>Invalid block header error</summary>
+<div>
 
 When adding a new node, if a `TimeStampMoreRecentThanParent | Invalid block header` error occurs, the genesis file of the new node specifies a higher `blockperiodseconds` than the imported chain. The imported chain makes new blocks faster than the genesis file allows and Besu rejects them with this error. This error most often occurs when importing chains from older versions of Besu.
 
@@ -174,7 +188,8 @@ If the error reads `| TimestampMoreRecentThanParent | Invalid block header: time
 
 After you update the new genesis file, if the imported chain has a `blockperiodseconds` value set lower than you prefer, you can adjust it by [configuring the block time on an existing QBFT network](#configure-block-time-on-an-existing-network).
 
-:::
+</div>
+</details>
 
 The properties with specific values in the QBFT genesis files are:
 
@@ -276,10 +291,12 @@ View [`TRACE` logs](../../../../public-networks/reference/api/index.md#admin_cha
 
 Use a [transition](#transitions) to update the `blockperiodseconds` in an existing network.
 
-### Optional configuration options
+### Advanced configuration options
 
-Optional configuration options in the genesis file are:
+The `qbft` object also supports the following optional properties:
 
+- `gossipedHistoryLimit` - Number of previous QBFT messages to keep in history for gossip.
+  The default is 1000.
 - `messageQueueLimit` - In large networks with limited resources, increasing the message queue limit might help with message activity surges. The default is 1000.
 - `duplicateMessageLimit` - If the same node is retransmitting messages, increasing the duplicate message limit might reduce the number of retransmissions. A value of two to three times the number of validators is usually enough. The default is 100.
 - `futureMessagesLimit` - The future messages buffer holds messages for a future chain height. For large networks, increasing the future messages limit might be useful. The default is 1000.
@@ -391,8 +408,8 @@ QBFT requires four validators to be Byzantine fault tolerant. Byzantine fault to
 
 ## Transitions
 
-The `transitions` genesis configuration item allows you to specify a future block number at which to 
-the QBFT network configuration in an existing network.
+The `transitions` genesis configuration item allows you to specify a future block number at which to
+change the QBFT network configuration in an existing network.
 For example, you can update the [block time](#configure-block-time-on-an-existing-network),
 [block reward](#configure-block-rewards-on-an-existing-network),
 [validator management method](#swap-validator-management-methods), or
