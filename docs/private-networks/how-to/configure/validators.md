@@ -9,6 +9,18 @@ sidebar_position: 4
 As when [configuring bootnodes](bootnodes.md):
 
 1. Create the [node key pair](../../../public-networks/concepts/node-keys.md) (that is, the private and public key) before starting the validator.
+
+   :::tip HSM-backed validator keys
+   
+   For validators backed by a Hardware Security Module (HSM), create or import the
+   node key in the HSM before starting Besu.
+   Configure Besu with a security module plugin, such as the
+   [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin), using the
+   [`--security-module`](../../../public-networks/reference/cli/options.md#security-module)
+   option.
+
+   :::
+
 1. When creating validators in the cloud (for example, AWS or Azure), attempt to assign static IP addresses to them. If your network is:
 
    - Publicly accessible, assign an elastic IP address.

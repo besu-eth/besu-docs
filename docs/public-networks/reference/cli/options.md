@@ -6446,7 +6446,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Example" label="Example">
 
 ```bash
---security-module=security_module
+--security-module=hsm
 ```
 
 </TabItem>
@@ -6454,7 +6454,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-BESU_SECURITY_MODULE=security_module
+BESU_SECURITY_MODULE=hsm
 ```
 
 </TabItem>
@@ -6462,16 +6462,19 @@ BESU_SECURITY_MODULE=security_module
 <TabItem value="Configuration file" label="Configuration file">
 
 ```bash
-security-module="security_module"
+security-module="hsm"
 ```
 
 </TabItem>
 
 </Tabs>
 
-Name of the security module plugin to use. For example, a Hardware Security Module (HSM) or V3 filestore plugin.
+Name of the security module plugin to use for [node key](../../concepts/node-keys.md) storage.
+For example, use a Hardware Security Module (HSM) or V3 filestore plugin, such as the
+[Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin).
 
-The default is the node's local private key file specified using [`--node-private-key-file`](#node-private-key-file).
+The default is `localfile`.
+If using a local private key file, specify its location using [`--node-private-key-file`](#node-private-key-file).
 
 ### `snapsync-server-enabled`
 
