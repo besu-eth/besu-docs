@@ -44,6 +44,18 @@ const CardList: CardItem[] = [
     buttonName: "Get started",
     buttonType: "secondary",
   },
+  {
+    title: "🔌 Plugins",
+    link: "/plugins",
+    // prettier-ignore
+    description: (
+      <>
+        Extend Besu&apos;s functionality on both public and private networks using the Plugin API.
+      </>
+    ),
+    buttonName: "Get started",
+    buttonType: "secondary",
+  },
 ];
 
 function Card({ title, link, description, buttonName, buttonType }: CardItem) {
@@ -82,7 +94,7 @@ export default function HomepageCards(): JSX.Element {
         <p>
           Besu is an open source Ethereum client developed under the
           Apache 2.0 license and written in Java. It runs on public and private
-          networks:
+          networks. You can also extend Besu&apos;s functionality using plugins.
         </p>
         <div className="row">
           {CardList.map((props, idx) => (
