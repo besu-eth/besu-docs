@@ -4,9 +4,9 @@
 # Content signals declare how automated systems may use the public docs:
 # - search=yes allows search indexing and search results.
 # - ai-input=yes allows use as model input for retrieval and grounding.
-# - ai-train=no reserves use for training or fine-tuning AI models.
+# - ai-train=yes allows use for training or fine-tuning AI models.
 
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: *
 Allow: /
