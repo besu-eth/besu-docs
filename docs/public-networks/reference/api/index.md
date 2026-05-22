@@ -1745,11 +1745,14 @@ Reruns the transaction with the same state as when the transaction executed.
 
 - `options`: _object_ - request options object with the following fields (all optional):
 
-  - `disableStorage`: _boolean_ - `true` disables storage capture; defaults to `false`
+  - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
-  - `disableMemory`: _boolean_ - `true` disables memory capture; defaults to `true`
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableStack` : _boolean_ - `true` disables stack capture; defaults to `false`
+  - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
+  - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
@@ -1800,9 +1803,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
         "gas": 0,
         "gasCost": 0,
         "depth": 1,
-        "stack": [],
-        "memory": [],
-        "storage": null
+        "stack": []
       }
     ]
   }
@@ -1824,6 +1825,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -1899,6 +1903,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -1982,6 +1989,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -2067,11 +2077,18 @@ temporary state changes without affecting the actual blockchain state.
 
 - `options`: _object_ - request options object with the following fields:
 
-  - `disableStorage`: _boolean_ - (optional) `true` disables storage capture; defaults to `false`
+  - `disableStorage`: _boolean_ - (optional) `true` disables storage capture.
+    The default is `false`.
 
-  - `disableMemory`: _boolean_ - (optional) `true` disables memory capture; defaults to `true`
+  - `enableMemory`: _boolean_ - (optional) `true` enables memory capture.
+    The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableStack` : _boolean_ - (optional) `true` disables stack capture; defaults to `false`
+  - `disableMemory`: _boolean_ - (optional) `true` disables memory capture.
+    The default is `true`.
+
+  - `disableStack` : _boolean_ - (optional) `true` disables stack capture.
+    The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - (optional) list of opcode names to trace; if omitted or empty, all opcodes are traced
 
@@ -2123,11 +2140,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceCall","params":[{"fro
           "op": "STOP",
           "gas": 0,
           "gasCost": 0,
-          "depth": 1,
-          "stack": [],
-          "memory": [],
-          "storage": null,
-          "reason": null
+          "depth": 1
         }
       ]
     }
