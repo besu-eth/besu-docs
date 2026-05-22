@@ -6955,7 +6955,7 @@ tx-pool-enable-balance-check=true
 Enables or disables balance checks for pending transactions in the [transaction pool](../../concepts/transactions/pool.md).
 When enabled, the check prevents pending transactions, whose sender doesn't have enough balance to pay their fee, from being included in the prioritized layer. This prevents such transactions from occupying space and potentially being selected for block production.
 
-The default is `false`.
+The default is `true`.
 
 ### `tx-pool-enable-save-restore`
 
