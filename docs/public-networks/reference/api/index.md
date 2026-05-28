@@ -2536,7 +2536,29 @@ None
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `result` | object | Node capabilities information |
+| `head` | object | Current chain head information |
+| `state` | object | State capability information |
+| `tx` | object | Transaction capability information |
+| `logs` | object | Logs capability information |
+| `receipts` | object | Receipts capability information |
+| `blocks` | object | Blocks capability information |
+| `stateproofs` | object | State proofs capability information |
+
+The `head` object contains:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `number` | string | Current chain head block number as hex quantity |
+| `hash` | string | Current chain head block hash |
+
+Each resource object (`state`, `tx`, `logs`, `receipts`, `blocks`, `stateproofs`) contains:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `disabled` | boolean | Indicates whether the resource is disabled |
+| `oldestBlock` | string | Oldest available block as hex quantity (optional) |
+
+The `oldestBlock` field is included for block-backed resources when pruning has occurred.
 
 <Tabs>
 
@@ -2566,6 +2588,28 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"i
     "head":{
       "number":"0x2a",
       "hash":"0x1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "state":{
+      "disabled":false
+    },
+    "tx":{
+      "disabled":false,
+      "oldestBlock":"0x1"
+    },
+    "logs":{
+      "disabled":false,
+      "oldestBlock":"0x1"
+    },
+    "receipts":{
+      "disabled":false,
+      "oldestBlock":"0x1"
+    },
+    "blocks":{
+      "disabled":false,
+      "oldestBlock":"0x1"
+    },
+    "stateproofs":{
+      "disabled":false
     }
   }
 }
