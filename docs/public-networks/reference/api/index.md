@@ -379,17 +379,33 @@ None
 
 `result`: _object_ - node object with the following fields:
 
+- `id`: _string_ - [node public key](../../concepts/node-keys.md#node-public-key)
+
+- `name`: _string_ - client name
+
+- `activeFork`: _string_ - active EVM hard fork name for the current chain head
+
 - `enode`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of the node
 
 - `enr`: _string_ - [ENR URL](../../concepts/node-keys.md#enr-url) of the node
 
+- `ip`: _string_ - IP address
+
+- `ipv6`: _string_ - IPv6 address
+
 - `listenAddr`: _string_ - host and port for the node
 
-- `name`: _string_ - client name
+- `listenAddrV6`: _string_ - IPv6 host and port for the node
 
-- `id`: _string_ - [node public key](../../concepts/node-keys.md#node-public-key)
+- `ports`: _object_ - peer discovery and listening ports
 
-- `ports`: _object_ - peer discovery and listening [ports](../../how-to/connect/configure-ports.md)
+  - `discovery`: _number_ - UDP discovery port
+
+  - `discoveryV6`: _number_ - IPv6 UDP discovery port
+
+  - `listener`: _number_ - TCP listening port
+
+  - `listenerV6`: _number_ - IPv6 TCP listening port
 
 - `protocols`: _object_ - list of objects containing information for each Ethereum sub-protocol
 
@@ -424,14 +440,19 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id"
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
+    "id": "bdf43211dba30bf100a00040b9f839e17161c88c8573028b8533c8adf8ed1e9466e4b87d716d06292426d154d0df7acde83c3f68df151da5413224b22f049054",
+    "name": "besu/v26.3-develop-f2ec0fe/osx-aarch_64/oracle_openjdk-java-22",
     "enode": "enode://87ec35d558352cc55cd1bf6a472557797f91287b78fe5e86760219124563450ad1bb807e4cc61e86c574189a851733227155551a14b9d0e1f62c5e11332a18a3@[::]:30303",
     "enr": "enr:-Jq4QOBEJ_aqkcth60IN44olOQ3uNsfqwEahYc6eKRfBg8ZlGbqhHTKqN_Yr67QWUA9v8_l-iaYhpd2uJC_AEQDv3agCg2V0aMrJhPxk7ASDEYwwgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQK99DIR26ML8QCgAEC5-DnhcWHIjIVzAouFM8it-O0elIN0Y3CCdl-DdWRwgnZf",
-    "listenAddr": "[::]:30303",
-    "name": "besu/v26.3-develop-f2ec0fe/osx-aarch_64/oracle_openjdk-java-22",
-    "id": "bdf43211dba30bf100a00040b9f839e17161c88c8573028b8533c8adf8ed1e9466e4b87d716d06292426d154d0df7acde83c3f68df151da5413224b22f049054",
+    "ip": "172.28.0.10",
+    "ipv6": "fd00:dead:beef:0:0:0:0:10",
+    "listenAddr": "172.28.0.10:30303",
+    "listenAddrV6": "[fd00:dead:beef:0:0:0:0:10]:30404",
     "ports": {
       "discovery": 30303,
-      "listener": 30303
+      "discoveryV6": 30404,
+      "listener": 30303,
+      "listenerV6": 30404
     },
     "protocols": {
       "eth": {
@@ -1724,11 +1745,14 @@ Reruns the transaction with the same state as when the transaction executed.
 
 - `options`: _object_ - request options object with the following fields (all optional):
 
-  - `disableStorage`: _boolean_ - `true` disables storage capture; defaults to `false`
+  - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
-  - `disableMemory`: _boolean_ - `true` disables memory capture; defaults to `true`
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableStack` : _boolean_ - `true` disables stack capture; defaults to `false`
+  - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
+  - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
@@ -1779,9 +1803,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
         "gas": 0,
         "gasCost": 0,
         "depth": 1,
-        "stack": [],
-        "memory": [],
-        "storage": null
+        "stack": []
       }
     ]
   }
@@ -1803,6 +1825,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -1878,6 +1903,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -1961,6 +1989,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 - `options`: _object_ - (optional) request options object with the following fields:
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
+  - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
 
@@ -2046,11 +2077,18 @@ temporary state changes without affecting the actual blockchain state.
 
 - `options`: _object_ - request options object with the following fields:
 
-  - `disableStorage`: _boolean_ - (optional) `true` disables storage capture; defaults to `false`
+  - `disableStorage`: _boolean_ - (optional) `true` disables storage capture.
+    The default is `false`.
 
-  - `disableMemory`: _boolean_ - (optional) `true` disables memory capture; defaults to `true`
+  - `enableMemory`: _boolean_ - (optional) `true` enables memory capture.
+    The default is `false`.
+    If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableStack` : _boolean_ - (optional) `true` disables stack capture; defaults to `false`
+  - `disableMemory`: _boolean_ - (optional) `true` disables memory capture.
+    The default is `true`.
+
+  - `disableStack` : _boolean_ - (optional) `true` disables stack capture.
+    The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - (optional) list of opcode names to trace; if omitted or empty, all opcodes are traced
 
@@ -2102,11 +2140,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceCall","params":[{"fro
           "op": "STOP",
           "gas": 0,
           "gasCost": 0,
-          "depth": 1,
-          "stack": [],
-          "memory": [],
-          "storage": null,
-          "reason": null
+          "depth": 1
         }
       ]
     }
@@ -2173,6 +2207,50 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":5
   "jsonrpc": "2.0",
   "id": 53,
   "result": []
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### `eth_baseFee`
+
+Returns the base fee per gas for the next block in wei.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`result`: _string_ - hexadecimal integer representing the base fee per gas for the next block in wei, or `null` if the network does not support [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 51,
+  "result": "0x8"
 }
 ```
 
@@ -6241,9 +6319,11 @@ None
 
 - `highestBlock`: _string_ - index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
 
-- `pulledStates`: _string_ - if fast synchronizing, the number of state entries fetched so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
+- `pulledStates`: _string_ - the number of state entries fetched so far, or `null` if this is not known or not relevant (if
+  [full syncing](../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
-- `knownStates`: _string_ - if fast synchronizing, the number of states the node knows of so far, or `null` if this is not known or not relevant (if full synchronizing or fully synchronized, this field is not returned.)
+- `knownStates`: _string_ - the number of states the node knows of so far, or `null` if this is not known or not relevant (if
+  [full syncing](../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
 <Tabs>
 

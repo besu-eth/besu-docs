@@ -77,6 +77,7 @@ Use `eth_subscribe` to create subscriptions for the following event types:
 - [Logs](#logs)
 - [Pending transactions](#pending-transactions)
 - [Dropped transactions](#dropped-transactions)
+- [Transaction receipts](#transaction-receipts)
 - [Synchronizing](#synchronizing)
 
 ### New headers
@@ -371,6 +372,89 @@ Example notification:
   }
 }
 ```
+
+### Transaction receipts
+
+To notify you about transaction receipts for each new block, use the
+`transactionReceipts` parameter with `eth_subscribe`.
+
+The transaction receipts subscription returns an array of
+[transaction receipt objects](../../reference/api/objects.md#transaction-receipt-object).
+The receipt format matches the `eth_getTransactionReceipt` response.
+
+If a chain reorganization occurs, the subscription publishes receipts for blocks
+added to the new canonical chain.
+
+To subscribe to all transaction receipt notifications:
+
+```json
+{
+  "id": 1,
+  "method": "eth_subscribe",
+  "params": ["transactionReceipts"]
+}
+```
+
+Example result:
+
+```json
+{ "jsonrpc": "2.0", "id": 1, "result": "0x3" }
+```
+
+Example notification:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_subscription",
+  "params": {
+    "subscription": "0x3",
+    "result": [
+      {
+        "blockHash": "0x19514ce955c65e4dd2cd41f435a75a46a08535b8fc16bc660f8092b32590b182",
+        "blockNumber": "0x6f55",
+        "contractAddress": null,
+        "cumulativeGasUsed": "0x18c36",
+        "effectiveGasPrice": "0x9502f907",
+        "from": "0x22896bfc68814bfd855b1a167255ee497006e730",
+        "gasUsed": "0x18c36",
+        "logs": [],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "status": "0x1",
+        "to": "0xfd584430cafa2f451b4e2ebcf3986a21fff04350",
+        "transactionHash": "0x4a481e4649da999d92db0585c36cba94c18a33747e95dc235330e6c737c6f975",
+        "transactionIndex": "0x0",
+        "type": "0x0"
+      }
+    ]
+  }
+}
+```
+
+To subscribe to receipt notifications for specific transactions, specify the
+optional `transactionHashes` filter.
+You can specify up to 200 transaction hashes.
+
+```json
+{
+  "id": 1,
+  "method": "eth_subscribe",
+  "params": [
+    "transactionReceipts",
+    {
+      "transactionHashes": [
+        "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "0x0000000000000000000000000000000000000000000000000000000000000002"
+      ]
+    }
+  ]
+}
+```
+
+When no receipts match the filter, Besu doesn't send a notification for that
+block.
+When one or more receipts match the filter, the notification `result` contains
+the matching receipts.
 
 ### Synchronizing
 

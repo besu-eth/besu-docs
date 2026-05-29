@@ -40,9 +40,11 @@ for full details. The rules below cover the most common conventions.
 
 ## Admonitions
 
-- Use Docusaurus admonitions: `:::note`, `:::tip`, `:::caution`, `:::info`, `:::danger`.
+- Use Docusaurus admonitions: `:::note`, `:::tip`, `:::caution`, `:::warning`, `:::info`, and `:::danger`.
 - Add a custom title on the same line only when it helps scanning (for example,
   `:::caution important`).
+- For deprecated features or content, use `:::warning Deprecated`.
+  State that the feature or content is deprecated and will be removed in a future release.
 - Do not nest admonitions.
 
 ## Tables

@@ -6,7 +6,10 @@ description: Learn about node public and private keys, and the node address.
 
 # Node keys and node address
 
-Each node has a private and public key pair, and a node address. Besu uses the private and public key pair to sign and verify transactions, and the node address as an identifier for the node.
+Each node has a private and public key pair, and a node address.
+Besu uses the key pair as the node's network identity, and the node address as an
+identifier for the node.
+In QBFT and IBFT 2.0 private networks, node addresses are validator addresses.
 
 ## Node private key
 
@@ -14,9 +17,24 @@ When starting Besu, if the [`--node-private-key-file`](../reference/cli/options.
 
 If a `key` file does exist in the data directory when starting Besu, the node starts using the private key in the `key` file.
 
-:::info
+:::danger
 
-The private key is not encrypted.
+The local private key file is not encrypted.
+
+:::
+
+:::tip HSM-backed node keys
+
+For deployments that require hardware-backed key storage, use a security module
+plugin, such as the [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin),
+with the [`--security-module`](../reference/cli/options.md#security-module)
+option.
+The plugin delegates node key operations to a Hardware Security Module (HSM)
+instead of reading a local key file.
+
+On public networks, this protects Besu's P2P node key.
+It doesn't manage Ethereum account keys, transaction signing keys, or
+proof of stake validator keys.
 
 :::
 

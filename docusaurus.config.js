@@ -90,7 +90,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Besu",
-          src: "img/logo-reversed.svg",
+          src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
           width: 100,
         },
@@ -221,7 +221,7 @@ const config = {
       },
       mermaid: {
         options: {
-          fontFamily: "arial, verdana, sans-serif;",
+          fontFamily: "var(--ifm-font-family-base)",
           wrap: true,
           sequence: {
             diagramMarginX: 25,
@@ -237,12 +237,13 @@ const config = {
         selectors: [
           "div.docusaurus-mermaid-container",
           "div.mermaid[data-processed=\"true\"]",
-          ".theme-doc-markdown img",
+          ".theme-doc-markdown img:not([alt=\"Run in Postman\"])",
           ".drawio",
         ],
         toolbar: {
           enabled: true,
         },
+        enableWheelZoom: false,
       },
       languageTabs: [
         {

@@ -1,0 +1,41 @@
+name: New docs content
+description: Suggest new content or report documentation needed for a new feature.
+title: "New docs: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for new pages, new sections, or docs for new Besu behavior.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What docs should be added?
+      description: Describe the needed docs. Add notes, goals, or a proposed outline, if available.
+      placeholder: |
+        Example: "Document the new eth_capabilities RPC method."
+    validations:
+      required: true
+  - type: checkboxes
+    id: content-type
+    attributes:
+      label: Content type
+      description: Select the type(s) of content needed.
+      options:
+        - label: Concept
+        - label: How-to guide
+        - label: Get-started or onboarding
+        - label: Reference
+        - label: Tutorial
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: Link to or describe the page or section where this content might live.
+      placeholder: 'Example: "https://besu.hyperledger.org/public-networks/..."'
+  - type: textarea
+    id: source-links
+    attributes:
+      label: Source links
+      description: Link to a Besu PR, code, release note, spec, issue, or discussion.
+      placeholder: |
+        Example: "https://github.com/besu-eth/besu/pull/10322"
