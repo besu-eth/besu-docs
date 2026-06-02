@@ -27,7 +27,7 @@
       ]
     },
     {
-      "source": "/index.md",
+      "source": "/(.*)\\.md",
       "headers": [
         {
           "key": "Content-Type",
@@ -83,6 +83,17 @@
         }
       ],
       "destination": "/index.md"
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/:path+.md"
     }
   ]
 }
