@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import AskAiButton from "@site/src/components/AskAiButton";
 
 const agentDirectiveStyle = {
@@ -19,7 +18,8 @@ export default function Root({ children }) {
     <>
       <div style={agentDirectiveStyle}>
         For AI agents: a documentation index is available at{" "}
-        <Link to="/llms.txt">/llms.txt</Link>. Markdown versions of pages are
+        {/* eslint-disable-next-line @docusaurus/no-html-links */}
+        <a href="/llms.txt">/llms.txt</a>. Markdown versions of pages are
         available by appending <code>.md</code> to any documentation URL.
       </div>
       {children}
