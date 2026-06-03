@@ -90,7 +90,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Besu",
-          src: "img/logo-reversed.svg",
+          src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
           width: 100,
         },
@@ -253,7 +253,7 @@ const config = {
       },
       mermaid: {
         options: {
-          fontFamily: "arial, verdana, sans-serif;",
+          fontFamily: "var(--ifm-font-family-base)",
           wrap: true,
           sequence: {
             diagramMarginX: 25,
@@ -264,6 +264,18 @@ const config = {
             nodeSpacing: 75,
           },
         },
+      },
+      zoom: {
+        selectors: [
+          "div.docusaurus-mermaid-container",
+          "div.mermaid[data-processed=\"true\"]",
+          ".theme-doc-markdown img:not([alt=\"Run in Postman\"])",
+          ".drawio",
+        ],
+        toolbar: {
+          enabled: true,
+        },
+        enableWheelZoom: false,
       },
       languageTabs: [
         {
@@ -361,6 +373,27 @@ const config = {
         ],
       },
     ],
+    [
+      "docusaurus-plugin-llms",
+      {
+        docsDir: "docs",
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        title: "Besu documentation",
+        description:
+          "Official Besu documentation: public Ethereum networks, permissioned / private networks, APIs, configuration, and operations.",
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        logLevel: process.env.CI ? "quiet" : "normal",
+        ignoreFiles: ["assets/**"],
+        includeOrder: [
+          "public-networks/**/*",
+          "private-networks/**/*",
+          "global/**/*",
+        ],
+      },
+    ],
+    "@r74tech/docusaurus-plugin-panzoom",
   ],
   themes: [
     [

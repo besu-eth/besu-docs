@@ -1,14 +1,13 @@
 ## Description
-<!-- Briefly describe the changes made in your pull request (PR) below. -->
 
-- 
+<!-- Briefly explain what changed and why. -->
 
-### Issue(s) fixed
-<!-- Include the issue number that this PR fixes. {Example: Fixes #123} -->
+## Related issue(s)
+
+<!-- Use "Fixes #123" or "Relates to #123". Leave "N/A" if there is no issue. -->
 
 Fixes #
 
-### Preview
-<!-- Provide a PR preview link to the page(s) changed. {Example: https://besu-docs-git-100-branch-hyperledger.vercel.app} -->
+## Preview
 
-- 
+<!-- Provide a PR preview link to the page(s) changed. {Example: https://besu-docs-git-100-branch-hyperledger.vercel.app} -->

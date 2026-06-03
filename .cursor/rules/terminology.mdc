@@ -1,0 +1,48 @@
+---
+description: Required spelling and casing for product names, industry terms, and standards referenced across Besu documentation.
+globs: ["**/*.md", "**/*.mdx"]
+alwaysApply: false
+---
+
+# Terminology
+
+Use the following terms consistently. The left column is the required form. Do not use the variants
+listed on the right unless they appear in code, URLs, or direct quotations from a specification.
+
+| Required term                          | Do not use                                              |
+|----------------------------------------|---------------------------------------------------------|
+| Besu                                   | besu, BESU (except in code/URLs/CLI)                    |
+| Hyperledger Besu                       | Hyperledger besu                                        |
+| dapp                                   | DApp, Dapp, dApp, decentralized application             |
+| externally owned account (EOA)         | externally-owned account                                |
+| smart contract                         | smartcontract, smart-contract                           |
+| proof of stake                         | Proof of Stake, PoS (spell out on first use)            |
+| proof of work                          | Proof of Work, PoW (spell out on first use)             |
+| proof of authority                     | Proof of Authority, PoA (spell out on first use)        |
+| web3                                   | Web3, WEB3 (capitalize only at sentence start)          |
+| JSON-RPC                               | json-rpc, Json-RPC, JSONRPC                             |
+| onchain / offchain                     | on-chain, off-chain                                     |
+| node                                   | full node (unless distinguishing from archive/light)    |
+| consensus client                       | consensus layer client, CL client                       |
+| execution client                       | execution layer client, EL client                       |
+| validator                              | validator node (use "validator" in prose)                |
+| early access                           | experimental                                            |
+
+## Consensus protocols (private networks)
+
+| Required term | Do not use                     |
+|---------------|--------------------------------|
+| IBFT 2.0      | IBFT2, ibft2, iBFT             |
+| QBFT          | qbft, Qbft                     |
+
+## Standards and specifications
+
+When introducing a standard for the first time on a page, spell out the full name with the
+identifier in parentheses. Use the short form on subsequent references.
+
+Examples:
+
+- First use: "Ethereum Improvement Proposal 1559 (EIP-1559)"
+- Subsequent: "EIP-1559"
+- First use: "Engine API specification"
+- Subsequent: "Engine API"

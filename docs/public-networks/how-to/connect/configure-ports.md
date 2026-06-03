@@ -8,7 +8,7 @@ description: To enable communication you must expose Besu ports appropriately
 
 To enable communication you must expose Besu ports appropriately. The following shows an example port configuration for a Besu node on AWS. 
 
-![Port Configuration](../../../assets/images/PortConfiguration.png)
+![Port Configuration](../../../assets/images/port-configuration.png)
 
 When running Besu from the [Docker image](../../get-started/install/run-docker-image.md), [expose ports](../../get-started/install/run-docker-image.md#expose-ports).
 

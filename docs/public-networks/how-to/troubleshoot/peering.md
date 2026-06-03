@@ -17,7 +17,6 @@ One or more of the following may be the cause:
 - Your hardware doesn't have enough CPU, disk IOPS, or bandwidth to handle all the peers.
 - Your ports aren't open in your firewall and/or router.
 - Your node is sending large numbers of DNS requests. See [issue #4375](https://github.com/hyperledger/besu/issues/4375).
-- You're using [checkpoint sync](../../concepts/node-sync.md#checkpoint-synchronization), which doesn't download all historical block data, so your peers may disconnect you when fetching those blocks.
 - Your node is experiencing the normal behavior of peers connecting and disconnecting. This is especially normal soon after you start your node.
 
 You can try the following to find more peers:

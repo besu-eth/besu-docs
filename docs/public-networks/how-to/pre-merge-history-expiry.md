@@ -44,24 +44,33 @@ The fastest option for pruning pre-merge blocks is to perform an offline prune. 
     On completion, you'll receive the `Pruning pre-merge blocks and transaction receipts completed` log message.
     It should only take a few minutes to complete but has been known to take up to two hours on occasion.
 
-1. Add the [`--history-expiry-prune`](../reference/cli/options.md#history-expiry-prune)
-    option and restart Besu to apply opinionated database garbage collection options to help free up space. You can tweak underlying
-    garbage collection options separately if necessary.
+1. Add the following RocksDB garbage collection options and restart Besu to help free up space:
+
+   - `--Xplugin-rocksdb-blockchain-blob-garbage-collection-enabled`
+   - `--Xplugin-rocksdb-blob-garbage-collection-age-cutoff=0.5`: The fraction of file age that makes a blob file eligible for garbage collection; `0.5` means only the oldest 50% of files are eligible.
+   - `--Xplugin-rocksdb-blob-garbage-collection-force-threshold=0.1`: The fraction of garbage within an eligible blob file required to trigger compaction; `0.1` triggers garbage collection when at least 10% of an eligible file's content is garbage.
 
    :::info
    In testing, we saw the space increased by up to 200GB before the space was finally reclaimed.
    We suggest waiting 24-48 hours for all the space to be reclaimed.
    :::
 
-1. (Optional) Remove the `--history-expiry-prune` option and restart Besu. This will disable garbage collection which isn't necessary after pruning has reclaimed all the space.
+1. (Optional) Remove the RocksDB options and restart Besu. This will disable garbage collection which isn't necessary after pruning has reclaimed all the space.
 
 ## Online pruning
+
+:::caution Deprecated
+
+Online pruning using `--history-expiry-prune` is deprecated in Besu version 26.1.0 and will be removed in a future release.
+Use [offline pruning](#offline-pruning) or [sync without pre-merge blocks](#sync-without-pre-merge-blocks) instead.
+
+:::
 
 Online pruning allows you to prune the pre-merge blocks on a running Besu instance. It has the least
 downtime but may impact normal operations for lower spec users. Add the [`--history-expiry-prune`](../reference/cli/options.md#history-expiry-prune) option and restart your Besu node.
 
 :::note
-The early access option  `--Xpre-merge-pruning-quantity` can be used to specify how many blocks to prune
+The early access option `--Xpre-merge-pruning-quantity` can be used to specify how many blocks to prune
 for each new block added to the chain. For example, `--Xpre-merge-pruning-quantity=10`.
 During testing on a 4 CPU machine, we only noticed an impact to Besu when this was tuned to `1000`
 :::

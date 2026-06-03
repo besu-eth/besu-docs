@@ -76,7 +76,9 @@ You can define specific IP subnets permitted to interact with the node using the
 
 ## Limit remote connections
 
-Prevent eclipse attacks when using [`--sync-mode`](../../reference/cli/options.md#sync-mode) and [`--fast-sync-min-peers`](../../reference/cli/options.md#sync-min-peers-fast-sync-min-peers) on public networks by enabling the [remote connection limits](../../reference/cli/options.md#remote-connections-limit-enabled).
+Prevent eclipse attacks when using [`--sync-mode`](../../reference/cli/options.md#sync-mode) and
+[`--sync-min-peers`](../../reference/cli/options.md#sync-min-peers) on public networks by enabling
+the [remote connection limits](../../reference/cli/options.md#remote-connections-limit-enabled).
 
 In private and permissioned networks with only trusted peers, enabling the remote connection limits is unnecessary and might adversely affect the speed at which nodes can join the network. Limiting remote connections can cause a closed group of peers to form when the number of nodes in the network is slightly higher than [`--max-peers`](../../reference/cli/options.md#max-peers). The nodes in this closed group are all connected to each other and can't accept more connections.
 

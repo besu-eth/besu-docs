@@ -8,3 +8,22 @@
     max-width: 75% !important;
   }
 }
+
+.docItemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.docItemHeader > :first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 996px) {
+  .docItemHeader {
+    flex-wrap: wrap;
+  }
+}

@@ -8,41 +8,54 @@ description: Genesis file configuration items reference
 
 The [Besu genesis file](../concepts/genesis-file.md) contains [network configuration items](#configuration-items) and [genesis block parameters](#genesis-block-parameters).
 
+:::note
+Genesis item names are case-insensitive, except account addresses in `alloc`.
+The examples on this page use the casing used in Besu's built-in genesis files.
+:::
+
 ## Configuration items
 
 Network configuration items are specified in the genesis file in the `config` object.
 
-| Item                | Description                                                                                                                                                                                                       |
-|---------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Milestone blocks    | [Milestone blocks for the network](#milestone-blocks).                                                                                                                                                            |
-| `chainID`           | [Chain ID for the network](../concepts/network-and-chain-id.md).                                                                                                                                                  |
-| `ethash`            | Specifies network uses [Ethash](../../private-networks/how-to/configure/consensus/index.md) and contains [`fixeddifficulty`](#fixed-difficulty).                                                                  |
-| `ibft2`             | Specifies network uses [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md) and contains [IBFT 2.0 configuration items](../../private-networks/how-to/configure/consensus/ibft.md#genesis-file). |
-| `qbft`              | Specifies network uses [QBFT](../../private-networks/how-to/configure/consensus/qbft.md) and contains [QBFT configuration items](../../private-networks/how-to/configure/consensus/qbft.md#genesis-file).         |
-| `transitions`       | Specifies block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                             |
-| `contractSizeLimit` | Maximum contract size in bytes. Specify in [free gas networks](../../private-networks/how-to/configure/free-gas.md). The default is `24576` and the maximum size is `2147483647`.                                 |
-| `evmStackSize`      | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                           |
-| `ecCurve`           | Specifies [the elliptic curve to use](../../private-networks/how-to/configure/curves.md). Default is `secp256k1`.                                                                                                 |
-| `discovery`         | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                              |
-| `zeroBaseFee`       | Specifies a base fee of `0` for [free gas networks](../../private-networks/how-to/configure/free-gas.md#4-enable-zero-base-fee-if-using-london-fork-or-later).                                                      |
-| `fixedBaseFee`      | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [EIP-1559](../concepts/transactions/types.md#eip1559-transactions).  |
+| Item                                   | Description                                                                                                                                                                                                 |
+|----------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Milestone blocks                       | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                                  |
+| `chainId`                              | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                            |
+| `ethash`                               | Specifies that the network uses [Ethash](/private-networks/how-to/configure/consensus/) and contains [`fixeddifficulty`](#fixed-difficulty).                                                               |
+| `ibft2`                                | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file).   |
+| `qbft`                                 | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).          |
+| `transitions`                          | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                             |
+| `contractSizeLimit`                    | Maximum contract size in bytes. Specify in [free gas networks](/private-networks/how-to/configure/free-gas). The default is `24576` and the maximum size is `2147483647`.                                  |
+| `evmStackSize`                         | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                     |
+| `ecCurve`                              | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
+| `discovery`                            | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                        |
+| `zeroBaseFee`                          | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#4-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
+| `fixedBaseFee`                         | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).           |
+| `depositContractAddress`               | Address for the Ethereum staking contract.                                                                                                                           |
+| `withdrawalRequestContractAddress`     | Address for the withdrawal request contract.                                                                                                                          |
+| `consolidationRequestContractAddress`  | Address for the consolidation request contract.                                                                                                                       |
+| `blobSchedule`                         | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                          |
 
 ## Genesis block parameters
 
-The purpose of some genesis block parameters varies depending on the consensus protocol (Ethash, [IBFT 2.0](../../private-networks/how-to/configure/consensus/ibft.md), or [QBFT](../../private-networks/how-to/configure/consensus/qbft.md)). These parameters include:
+Genesis block parameters are specified as top-level fields in the genesis file, outside of `config`.
 
-- `difficulty`.
-- `extraData`.
-- `mixHash`.
-
-The following table describes the genesis block parameters with the same purpose across all consensus protocols.
-
-| Item | Description                                                                                                                                                      |
-| --- |:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gasLimit` | Block gas limit. Total gas limit for all transactions in a block.                                                                                                |
-| `nonce` | Used in block computation. Can be any value in the genesis block (commonly set to `0x0`).                                                                        |
-| `timestamp` | Creation date and time of the block. Must be before the next block so we recommend specifying `0x0` in the genesis file.                                         |
-| `alloc` | Defines [accounts with balances](../../private-networks/reference/accounts-for-testing.md) or [contracts](../../private-networks/how-to/configure/contracts.md). |
+| Item                    | Description                                                                                                                                                             |
+|-------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `alloc`                 | Defines [accounts with balances](/private-networks/reference/accounts-for-testing) or [contracts](/private-networks/how-to/configure/contracts).                         |
+| `baseFeePerGas`         | Genesis block base fee per gas, in Wei. Specify as a decimal or hexadecimal string. If omitted and `londonBlock` is `0`, Besu uses `1000000000`.                      |
+| `blobGasUsed`           | Blob gas used in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                                                     |
+| `coinbase`              | Beneficiary address in the genesis block. If omitted, Besu uses the zero address.                                                                                       |
+| `difficulty`            | Difficulty value in the genesis block. The required value depends on the consensus protocol.                                                                             |
+| `excessBlobGas`         | Excess blob gas in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                                                   |
+| `extraData`             | Extra data in the genesis block. For IBFT 2.0 and QBFT, this contains the validator list and consensus metadata.                                                        |
+| `gasLimit`              | Block gas limit. Total gas limit for all transactions in a block.                                                                                                       |
+| `mixHash`               | Mix hash value in the genesis block. The required value depends on the consensus protocol.                                                                               |
+| `nonce`                 | Used in block computation. Can be any value in the genesis block. The default is `0x0`.                                                                                 |
+| `parentBeaconBlockRoot` | Parent beacon block root in the genesis block. Besu applies this value when Cancun is active at genesis. The default is the zero hash.                                  |
+| `parentHash`            | Parent hash in the genesis block.                                                                                                                                      |
+| `slotNumber`            | Slot number in the genesis block. Besu applies this value when Amsterdam is active at genesis. The default is `0x0`.                                                    |
+| `timestamp`             | Creation date and time of the genesis block. Must be before the next block, so we recommend specifying `0x0`. |
 
 :::caution
 
@@ -50,31 +63,41 @@ If a `Supplied genesis block does not match stored chain data` error occurs, use
 
 :::
 
-## Milestone blocks
+## Milestone configuration items
 
-In public networks, the milestone blocks specify the blocks at which the network changed protocol. See a [full list of Ethereum protocol releases](https://github.com/ethereum/execution-specs#ethereum-protocol-releases) and their corresponding milestone blocks.
+Milestone items activate protocol changes for the network.
+Use `terminalTotalDifficulty` for the Paris transition (The Merge).
+Use block-number milestone items for pre-merge forks and timestamp milestone
+items for post-merge forks (Shanghai and later).
 
-```json title="Ethereum Mainnet milestone blocks"
+See the Ethereum execution specs
+[protocol history](https://github.com/ethereum/execution-specs/blob/master/docs/specs/protocol_history.md#mainnet-hardforks)
+for Mainnet activation blocks and timestamps.
+
+```json title="Ethereum Mainnet milestone items"
 {
   "config": {
-    ...
     "homesteadBlock": 1150000,
     "daoForkBlock": 1920000,
-    "daoForkSupport": true,
     "eip150Block": 2463000,
-    "eip150Hash": "0x2086799aeebeae135c246c65021c82b4e15a2c451340993aacfd2751886514f0",
-    "eip155Block": 2675000,
     "eip158Block": 2675000,
     "byzantiumBlock": 4370000,
     "constantinopleBlock": 7280000,
     "constantinopleFixBlock": 7280000,
+    "istanbulBlock": 9069000,
     "muirGlacierBlock": 9200000,
     "berlinBlock": 12244000,
     "londonBlock": 12965000,
     "arrowGlacierBlock": 13773000,
     "grayGlacierBlock": 15050000,
-    ...
-  },
+    "terminalTotalDifficulty": 58750000000000000000000,
+    "shanghaiTime": 1681338455,
+    "cancunTime": 1710338135,
+    "pragueTime": 1746612311,
+    "osakaTime": 1764798551,
+    "bpo1Time": 1765290071,
+    "bpo2Time": 1767747671
+  }
 }
 ```
 
@@ -102,28 +125,35 @@ In private networks, we recommend specifying the latest milestone block. It's im
 
 :::
 
-## Fixed difficulty
+## Blob schedule configuration items
 
-Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This will keep the network's difficulty constant and override the `difficulty` parameter from the genesis file.
+Use the `blobSchedule` object to configure blob gas parameters for Cancun,
+Prague, and Blob Parameter Only (BPO) forks.
 
-```json
+| Item                    | Description                                                           |
+|-------------------------|:----------------------------------------------------------------------|
+| `target`                | Target number of blobs per block for the fork.                        |
+| `max`                   | Maximum number of blobs per block for the fork.                       |
+| `baseFeeUpdateFraction` | Denominator used to update the blob base fee for the fork.            |
+
+```json title="Blob schedule example"
 {
   "config": {
-      ...
-      "ethash": {
-        "fixeddifficulty": 1000
+    "blobSchedule": {
+      "cancun": {
+        "target": 3,
+        "max": 6,
+        "baseFeeUpdateFraction": 3338477
       },
-
-  },
-  ...
+      "prague": {
+        "target": 6,
+        "max": 9,
+        "baseFeeUpdateFraction": 5007716
+      }
+    }
+  }
 }
 ```
-
-:::tip
-
-Using `fixeddifficulty` is not recommended for use with Ethash outside of test environments. For production networks using Ethash, we recommend setting a low `difficulty` value in the genesis file instead. Ethash will adjust the difficulty of the network based on hashrate to produce blocks at the targeted frequency.
-
-:::
 
 ## Discovery configuration items
 
@@ -153,3 +183,29 @@ If any option is specified using the command line or [configuration file](../how
   }
 }
 ```
+
+## Fixed difficulty
+
+:::caution Deprecated
+
+PoW consensus is deprecated in Besu version 24.11.0 and later. Please read this [blog post](https://www.lfdecentralizedtrust.org/blog/sunsetting-tessera-and-simplifying-hyperledger-besu) for more context on the rationale behind this decision as well as alternative options.
+
+:::
+
+Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This keeps the network's difficulty constant and overrides the `difficulty` parameter from the genesis file.
+
+```json
+{
+  "config": {
+    "ethash": {
+      "fixeddifficulty": 1000
+    }
+  }
+}
+```
+
+:::tip
+
+Using `fixeddifficulty` is not recommended for use with Ethash outside of test environments. For production networks using Ethash, we recommend setting a low `difficulty` value in the genesis file instead. Ethash will adjust the difficulty of the network based on hashrate to produce blocks at the targeted frequency.
+
+:::

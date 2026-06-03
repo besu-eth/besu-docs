@@ -25,4 +25,8 @@ If you have any questions about Besu for private (permissioned) networks, ask on
 
 The following diagram outlines the high-level architecture of Besu for private networks.
 
-![Private architecture](../assets/images/private-architecture.jpeg)
+<p align="center">
+
+![Private architecture](../assets/images/private-architecture.svg)
+
+</p>

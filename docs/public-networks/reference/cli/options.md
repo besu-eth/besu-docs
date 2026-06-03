@@ -2023,6 +2023,12 @@ mechanisms, so that the reclaimed storage is compacted quickly, freeing disk spa
 
 The default is `false`.
 
+:::caution Deprecated
+
+`--history-expiry-prune` is deprecated in Besu version 26.1.0 and will be removed in a future release.
+
+:::
+
 ### `host-allowlist`
 
 <Tabs>
@@ -2871,9 +2877,11 @@ min-block-occupancy-ratio="0.5"
 
 Minimum occupancy ratio for a mined block if the transaction pool is not empty. When filling a block during mining, the occupancy ratio indicates the threshold at which the node stops waiting for smaller transactions to fill the remaining space. The default is 0.8.
 
-:::note
+:::warning Deprecated
 
-Besu ignores the `--min-block-occupancy-ratio` option for proof-of-stake networks, such as Ethereum Mainnet.
+The `--min-block-occupancy-ratio` option is deprecated and will be removed in a
+future release.
+Besu recognizes this option, but it has no effect.
 
 :::
 
@@ -3183,7 +3191,7 @@ Values are case-insensitive, so either `mainnet` or `MAINNET` works.
 
 - You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
 
-- The following networks and testnets are deprecated: ETC Classic, Holesky, and Mordor.
+- The following networks and testnets are deprecated: ETC (Ethereum Classic) and Mordor.
 
 :::
 
@@ -4017,7 +4025,7 @@ In private and permissioned networks with a level of trust between peers, disabl
 
 :::danger
 
-To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to any public network, and especially when using [`--sync-mode`](#sync-mode) and [`--fast-sync-min-peers`](#sync-min-peers-fast-sync-min-peers).
+To prevent eclipse attacks, ensure you enable the remote connections limit when connecting to any public network, and especially when using [`--sync-mode`](#sync-mode) and [`--sync-min-peers`](#sync-min-peers).
 
 :::
 
@@ -5569,7 +5577,7 @@ The default is `false`.
 <TabItem value="Syntax" label="Syntax" default>
 
 ```bash
----rpc-ws-authentication-jwt-algorithm=<algorithm>
+--rpc-ws-authentication-jwt-algorithm=<algorithm>
 ```
 
 </TabItem>
@@ -6438,7 +6446,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Example" label="Example">
 
 ```bash
---security-module=security_module
+--security-module=hsm
 ```
 
 </TabItem>
@@ -6446,7 +6454,7 @@ Specify the required [`--rpc-ws-ssl-truststore-file`](#rpc-ws-ssl-truststore-fil
 <TabItem value="Environment variable" label="Environment variable">
 
 ```bash
-BESU_SECURITY_MODULE=security_module
+BESU_SECURITY_MODULE=hsm
 ```
 
 </TabItem>
@@ -6454,16 +6462,19 @@ BESU_SECURITY_MODULE=security_module
 <TabItem value="Configuration file" label="Configuration file">
 
 ```bash
-security-module="security_module"
+security-module="hsm"
 ```
 
 </TabItem>
 
 </Tabs>
 
-Name of the security module plugin to use. For example, a Hardware Security Module (HSM) or V3 filestore plugin.
+Name of the security module plugin to use for [node key](../../concepts/node-keys.md) storage.
+For example, use a Hardware Security Module (HSM) or V3 filestore plugin, such as the
+[Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin).
 
-The default is the node's local private key file specified using [`--node-private-key-file`](#node-private-key-file).
+The default is `localfile`.
+If using a local private key file, specify its location using [`--node-private-key-file`](#node-private-key-file).
 
 ### `snapsync-server-enabled`
 
@@ -6584,7 +6595,7 @@ snapsync-synchronizer-transaction-indexing-enabled=true
 
 </Tabs>
 
-Enables or disables transaction indexing during initial sync for [snap sync](../../concepts/node-sync.md#snap-synchronization) and [checkpoint sync](../../concepts/node-sync.md#checkpoint-synchronization). 
+Enables or disables transaction indexing during initial [snap sync](../../concepts/node-sync.md#snap-synchronization).
 
 The default is `false`.
 
@@ -6676,7 +6687,7 @@ Enables or disables replay protection, in accordance with [EIP-155](https://eips
 
 The default is `false`.
 
-### `sync-min-peers`, `fast-sync-min-peers`
+### `sync-min-peers`
 
 <Tabs>
 
@@ -6760,18 +6771,15 @@ sync-mode="SNAP"
 
 </Tabs>
 
-The synchronization mode. Use `SNAP` for [snap sync](../../concepts/node-sync.md#snap-synchronization), `CHECKPOINT` for [checkpoint sync](../../concepts/node-sync.md#checkpoint-synchronization), `FAST` for [fast sync](../../concepts/node-sync.md#fast-synchronization-deprecated), and `FULL` for [full sync](../../concepts/node-sync.md#full-synchronization).
+The synchronization mode. Use `SNAP` for [snap sync](../../concepts/node-sync.md#snap-synchronization) and `FULL` for [full sync](../../concepts/node-sync.md#full-synchronization).
 
 - The default is `FULL` when connecting to a private network by not using the [`--network`](#network) option and specifying the [`--genesis-file`](#genesis-file) option.
 - The default is `SNAP` when using the [`--network`](#network) option with named networks, except for the `dev` development network. `SNAP` is also the default if running Besu on the default network (Ethereum Mainnet) by specifying neither [network](#network) nor [genesis file](#genesis-file).
 
-:::note Notes
+:::warning Checkpoint sync
 
-- We recommend using snap sync over fast sync because snap sync can be faster by several days.
-- Fast sync is deprecated in Besu version 24.12.0 and later.
-  We recommend updating Besu to a version that supports other sync methods.
-- When using a mode other than `FULL`, most historical world state data is unavailable.
-  Any methods attempting to access unavailable world state data return `null`.
+Checkpoint sync is deprecated.
+If you specify `CHECKPOINT`, Besu performs snap sync instead.
 
 :::
 
@@ -6947,7 +6955,7 @@ tx-pool-enable-balance-check=true
 Enables or disables balance checks for pending transactions in the [transaction pool](../../concepts/transactions/pool.md).
 When enabled, the check prevents pending transactions, whose sender doesn't have enough balance to pay their fee, from being included in the prioritized layer. This prevents such transactions from occupying space and potentially being selected for block production.
 
-The default is `false`.
+The default is `true`.
 
 ### `tx-pool-enable-save-restore`
 

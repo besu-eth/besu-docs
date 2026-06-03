@@ -1,0 +1,72 @@
+---
+description: Markdown formatting conventions for the Besu documentation site (Docusaurus).
+globs: ["**/*.md", "**/*.mdx"]
+alwaysApply: false
+---
+
+# Markdown formatting
+
+Follow the [Consensys Markdown formatting guide](https://docs-template.consensys.net/contribute/format-markdown)
+for full details. The rules below cover the most common conventions.
+
+## Line length and sentence breaks
+
+- Wrap lines at roughly 80 columns (per the project `.editorconfig` and `.prettierrc`).
+- Start each new sentence on a new line, even if the previous line is short. This makes diffs
+  easier to review.
+
+## Links
+
+- Use relative file paths for links within the same documentation area (for example,
+  `./concepts/transactions/index.md`).
+- Use absolute URL paths for cross-area links (for example,
+  `/private-networks/how-to/configure/consensus/ibft`).
+- Use descriptive link text. Do not use "click here" or bare URLs.
+
+## Code blocks
+
+- Always specify the language on fenced code blocks (` ```javascript `, ` ```bash `, etc.).
+- Indent code with two spaces, not four.
+- Write code samples that can be copied, pasted, and run as-is. Do not include shell prompts
+  (for example, `user@host $`) or trailing comments that break execution.
+- Use angle-bracket placeholders for values the reader must supply
+  (for example, `<YOUR_NODE_URL>`).
+
+## Tabs
+
+- Use Docusaurus `<Tabs>` and `<TabItem>` components to display parallel content such as
+  command-line syntax or configuration in different formats (for example, TOML vs command-line).
+- Import `Tabs` and `TabItem` from `@theme/Tabs` and `@theme/TabItem` at the top of the file.
+
+## Admonitions
+
+- Use Docusaurus admonitions: `:::note`, `:::tip`, `:::caution`, `:::warning`, `:::info`, and `:::danger`.
+- Add a custom title on the same line only when it helps scanning (for example,
+  `:::caution important`).
+- For deprecated features or content, use `:::warning Deprecated`.
+  State that the feature or content is deprecated and will be removed in a future release.
+- Do not nest admonitions.
+
+## Tables
+
+- Align table columns in the source Markdown for readability.
+- Use a tool like [Markdown Table Formatter](https://markdowntable.com/) if needed.
+
+## Frontmatter
+
+- Required: `description` (one sentence for SEO and previews).
+- Recommended: `keywords` (array).
+- `sidebar_label`: optional. Use sparingly; only when the default sidebar text (usually from the
+  page title) would be too long or wordy for the navigation. Omit when the default is fine.
+- If the frontmatter contains a `title` field, do not add a separate top-level `# Heading` to
+  avoid a duplicate H1.
+
+## File and folder names
+
+- Use lowercase letters and dashes only (for example, `configure-mining.md`, not
+  `configureMining.md`).
+
+## Diagrams
+
+- Use [Mermaid](https://mermaid.js.org/) for diagrams where possible. The site has
+  `@docusaurus/theme-mermaid` enabled.
