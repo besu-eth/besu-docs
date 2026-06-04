@@ -360,11 +360,11 @@ const config = {
           },
           {
             from: "/private-networks/concepts/plugins",
-            to: "/public-networks/concepts/plugins",
+            to: "/plugins",
           },
           {
             from: "/private-networks/reference/plugin-api-interfaces",
-            to: "/public-networks/reference/plugin-api-interfaces",
+            to: "/plugins",
           },
           {
             from: "/private-networks/reference/api/objects",
