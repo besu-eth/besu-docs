@@ -3703,7 +3703,7 @@ plugin-block-txs-selection-max-time=50
 
 </Tabs>
 
-Maximum time, as a percentage of the overall block creation time, that [plugins](../../concepts/plugins.md) can use to propose their own transactions during block creation.
+Maximum time, as a percentage of the overall block creation time, that [plugins](../../../plugins/index.md) can use to propose their own transactions during block creation.
 The default is `50`: limiting plugins to up to 50% of the total block creation time.
 
 ### `plugin-continue-on-error`
@@ -3739,7 +3739,7 @@ plugin-continue-on-error=true
 </TabItem>
 </Tabs>
 
-Enables or disables continuing to run Besu if a [plugin](../../concepts/plugins.md)
+Enables or disables continuing to run Besu if a [plugin](../../../plugins/index.md)
 fails during registration or other startup lifecycle stages.
 If set to `true` and any plugin fails, Besu logs an error and continues running.
 If set to `false` and any plugin fails, Besu logs an error and stops running.

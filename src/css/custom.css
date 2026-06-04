@@ -92,12 +92,12 @@ html[data-theme="dark"] .docusaurus-mermaid-container .node path {
   stroke-width: var(--besu-mermaid-stroke-width) !important;
 }
 
-html[data-theme="light"] .docusaurus-mermaid-container .labelBox {
-  fill: #fff !important;
-}
-
 .docusaurus-mermaid-container .labelBox {
   stroke: #00A4A2 !important;
+}
+
+html[data-theme="light"] .docusaurus-mermaid-container .labelBox {
+  fill: #fff !important;
 }
 
 /* github */

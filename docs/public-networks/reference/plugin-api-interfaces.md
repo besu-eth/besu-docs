@@ -6,7 +6,7 @@ description: Plugin interfaces
 
 # Plugin API interfaces
 
-API interfaces in Besu allow users to [build plugins](../concepts/plugins.md) to extend Besu's functionality.
+API interfaces in Besu allow users to build plugins to extend Besu's functionality.
 
 For more information about the available interfaces, see the [Plugin API Javadoc](https://javadoc.io/doc/org.hyperledger.besu/plugin-api/latest/index.html).
 
