@@ -206,8 +206,8 @@ const config = {
                 to: "/plugins/how-to",
               },
               {
-                label: "Concepts",
-                to: "/plugins/concepts",
+                label: "Plugin features",
+                to: "/plugins/features",
               },
               {
                 label: "Tutorials",

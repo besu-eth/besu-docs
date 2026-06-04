@@ -83,6 +83,23 @@ html[data-theme="dark"] .docusaurus-mermaid-container .node path {
   stroke: #00A4A2 !important;
 }
 
+/* Sequence diagram styling */
+
+.docusaurus-mermaid-container .actor,
+.docusaurus-mermaid-container .loopLine {
+  fill: transparent !important;
+  stroke: #00A4A2 !important;
+  stroke-width: var(--besu-mermaid-stroke-width) !important;
+}
+
+html[data-theme="light"] .docusaurus-mermaid-container .labelBox {
+  fill: #fff !important;
+}
+
+.docusaurus-mermaid-container .labelBox {
+  stroke: #00A4A2 !important;
+}
+
 /* github */
 .header-github-link:hover {
   opacity: 0.6;

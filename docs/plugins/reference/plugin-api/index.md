@@ -1,15 +1,16 @@
 ---
 sidebar_position: 1
 sidebar_label: Plugin API
-description: See the Plugin API reference.
+description: See the Besu Plugin API reference.
 ---
 
 # Plugin API reference
 
-TO DO: This section should contain a manually formatted reference of the Plugin API.
-The [existing Javadoc spec](https://javadoc.io/doc/org.hyperledger.besu/plugin-api/latest/index.html)
-might be used as a starting point, but should be updated to reflect the current API.
+TODO: Generate or host reference documentation from the current `besu-plugin-api` artifact.
 
-This section should document each API interface, method, etc., with a description, parameters,
-return values, and an example usage.
-It might be broken up into separate pages in this category, e.g., one page for each interface.
+Possible approaches:
+
+- Add a Docusaurus plugin that downloads, verifies, unpacks, and hosts the current Javadoc artifact.
+- Generate Docusaurus-native API reference pages from source or Javadoc data.
+
+Consider how to handle multiple Plugin API versions.
