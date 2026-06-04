@@ -70,6 +70,10 @@
     {
       "source": "/private-networks/tutorials/clique/",
       "destination": "/private-networks/tutorials/"
+    },
+    {
+      "source": "/public-networks/concepts/plugins/",
+      "destination": "/plugins/"
     }
   ],
   "rewrites": [

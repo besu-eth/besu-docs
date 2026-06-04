@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "slug": "/plugins/features",
-    "description": "Besu plugins use Plugin API services to observe Besu activity, expose new APIs, provide custom components, or integrate Besu with external systems. Choose the feature page that matches what your plugin needs to do:"
+    "description": "Besu plugins use Plugin API interfaces to observe Besu activity, expose new APIs, provide custom components, or integrate Besu with external systems. Choose the feature page that matches what your plugin needs to do:"
   }
 }
