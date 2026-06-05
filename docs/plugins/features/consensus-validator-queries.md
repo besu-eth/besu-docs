@@ -5,7 +5,7 @@ description: Query PoA and BFT validator information from a plugin.
 
 # Consensus and validator queries
 
-Use consensus query services to inspect validator information on proof of authority networks.
+Use consensus query services to inspect validator information on proof of authority (PoA) networks.
 
 `PoaQueryService` exposes:
 
@@ -19,29 +19,36 @@ Use consensus query services to inspect validator information on proof of author
 - Signers from a block header.
 - The consensus mechanism name.
 
-Handle these services as optional. They might not be available for every network configuration.
+Handle these services as optional.
+They might not be available for every network configuration.
 
 For example, expose the latest PoA validator count as a metric or RPC result:
 
 ```java
-serviceManager
-    .getService(PoaQueryService.class)
-    .ifPresent(
-        poa -> {
-          int validatorCount = poa.getValidatorsForLatestBlock().size();
-          Address localSigner = poa.getLocalSignerAddress();
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(PoaQueryService.class)
+      .ifPresent(
+          poa -> {
+            int validatorCount = poa.getValidatorsForLatestBlock().size();
+            Address localSigner = poa.getLocalSignerAddress();
+          });
+}
 ```
 
 For BFT-specific metadata, combine `BftQueryService` with a block header:
 
 ```java
-serviceManager
-    .getService(BftQueryService.class)
-    .ifPresent(
-        bft -> {
-          String consensusName = bft.getConsensusMechanismName();
-          int round = bft.getRoundNumberFrom(blockHeader);
-          Collection<Address> signers = bft.getSignersFrom(blockHeader);
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(BftQueryService.class)
+      .ifPresent(
+          bft -> {
+            String consensusName = bft.getConsensusMechanismName();
+            int round = bft.getRoundNumberFrom(blockHeader);
+            Collection<Address> signers = bft.getSignersFrom(blockHeader);
+          });
+}
 ```

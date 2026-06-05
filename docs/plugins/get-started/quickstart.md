@@ -53,7 +53,7 @@ import org.hyperledger.besu.plugin.BesuPlugin;
 import org.hyperledger.besu.plugin.ServiceManager;
 
 public class ExamplePlugin implements BesuPlugin {
-  private ServiceManager context;
+  private ServiceManager serviceManager;
 
   @Override
   public String getName() {
@@ -61,8 +61,8 @@ public class ExamplePlugin implements BesuPlugin {
   }
 
   @Override
-  public void register(final ServiceManager context) {
-    this.context = context;
+  public void register(final ServiceManager serviceManager) {
+    this.serviceManager = serviceManager;
   }
 
   @Override
@@ -111,7 +111,7 @@ import picocli.CommandLine.Option;
 // highlight-end
 
 public class ExamplePlugin implements BesuPlugin {
-  private ServiceManager context;
+  private ServiceManager serviceManager;
 
 // highlight-start
   @Option(names = "--plugin-example-enabled", description = "Enable the example plugin feature.")
@@ -119,10 +119,10 @@ public class ExamplePlugin implements BesuPlugin {
 // highlight-end
 
   @Override
-  public void register(final ServiceManager context) {
-    this.context = context;
+  public void register(final ServiceManager serviceManager) {
+    this.serviceManager = serviceManager;
 // highlight-start
-    context
+    serviceManager
         .getService(PicoCLIOptions.class)
         .ifPresent(cli -> cli.addPicoCLIOptions("example", this));
 // highlight-end  
@@ -133,9 +133,9 @@ public class ExamplePlugin implements BesuPlugin {
 
 ### 5. Retrieve services and start
 
-Use the `start` method to retrieve Besu services and begin runtime work.
-Most services are not available until `start` is called.
-See [Plugin lifecycle](plugin-lifecycle.md) for the full service availability table.
+Use `start` to retrieve Besu services and begin runtime work.
+Services that expose runtime data (such as events, metrics, and world state) only become available at `start`.
+Learn more about [when services are available](plugin-lifecycle.md#service-availability).
 
 The following example retrieves `BesuEvents`:
 
@@ -144,7 +144,7 @@ import org.hyperledger.besu.plugin.services.BesuEvents;
 
 @Override
 public void start() {
-  context
+  serviceManager
       .getService(BesuEvents.class)
       .ifPresent(events -> {
         // subscribe to block, transaction, or sync events

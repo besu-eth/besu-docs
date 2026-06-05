@@ -5,14 +5,14 @@ description: Read chain state and simulate transactions or blocks from a plugin.
 
 # Chain state and simulation
 
-Use chain state and simulation services when a plugin needs to inspect blocks, receipts,
-transactions, world state, or simulated execution results.
+Use chain state and simulation services to inspect blocks, receipts, transactions, world state, 
+or simulated execution results.
 
 ## Read blockchain data
 
 `BlockchainService` exposes methods to retrieve blocks, block headers, receipts, transactions, the
-chain head, safe and finalized blocks, chain ID, base fee information, and hard fork IDs. It also
-includes methods for storing blocks and setting safe or finalized block hashes.
+chain head, safe and finalized blocks, chain ID, base fee information, and hard fork IDs.
+It also includes methods for storing blocks and setting safe or finalized block hashes.
 
 Use this service for plugins that need chain metadata or historical block data.
 
@@ -20,14 +20,17 @@ For example, use `BlockchainService` to expose chain head data from another plug
 a custom RPC endpoint or metric:
 
 ```java
-serviceManager
-    .getService(BlockchainService.class)
-    .ifPresent(
-        blockchain -> {
-          Hash chainHeadHash = blockchain.getChainHeadHash();
-          long chainHeadNumber = blockchain.getChainHeadHeader().getNumber();
-          Optional<BigInteger> chainId = blockchain.getChainId();
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(BlockchainService.class)
+      .ifPresent(
+          blockchain -> {
+            Hash chainHeadHash = blockchain.getChainHeadHash();
+            long chainHeadNumber = blockchain.getChainHeadHeader().getNumber();
+            Optional<BigInteger> chainId = blockchain.getChainId();
+          });
+}
 ```
 
 ## Read world state
@@ -40,16 +43,20 @@ Use this service for plugins that need account or storage state through Besu's w
 For example, retrieve the current world state view:
 
 ```java
-serviceManager
-    .getService(WorldStateService.class)
-    .ifPresent(worldState -> WorldView currentWorldView = worldState.getWorldView());
+@Override
+public void start() {
+  serviceManager
+      .getService(WorldStateService.class)
+      .ifPresent(worldState -> {
+        WorldView currentWorldView = worldState.getWorldView();
+      });
+}
 ```
 
 ## Simulate execution
 
-`TransactionSimulationService` simulates transactions and can create a pending block header for
-simulation. `BlockSimulationService` simulates blocks and includes a method to simulate and persist
-world state.
+`TransactionSimulationService` simulates transactions and can create a pending block header for simulation. 
+`BlockSimulationService` simulates blocks and includes a method to simulate and persist world state.
 
 Use simulation services for plugins that need to evaluate transaction or block execution without
 submitting a normal transaction through JSON-RPC.
@@ -58,12 +65,15 @@ For example, use `TransactionSimulationService` to create a pending block header
 simulation:
 
 ```java
-serviceManager
-    .getService(TransactionSimulationService.class)
-    .ifPresent(
-        simulation -> {
-          ProcessableBlockHeader pendingHeader = simulation.simulatePendingBlockHeader();
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(TransactionSimulationService.class)
+      .ifPresent(
+          simulation -> {
+            ProcessableBlockHeader pendingHeader = simulation.simulatePendingBlockHeader();
+          });
+}
 ```
 
 If the plugin already has the transaction, state overrides, block overrides, and tracer it needs, it
@@ -86,26 +96,28 @@ PluginBlockSimulationResult result =
     blockSimulation.simulate(blockNumber, transactions, blockOverrides, stateOverrides);
 ```
 
-## Advanced chain control
+## Read sync status
 
-`SynchronizationService` exposes sync status methods such as `isInitialSyncPhaseDone()`,
-`getSyncStatus()`, `isInSync()`, and `getBestPeerChainHead()`. It also exposes advanced methods
-that can start or stop synchronization, set the chain head, fire forkchoice events, and disable the
-world state trie.
+`SynchronizationService` exposes sync status methods such as `isInitialSyncPhaseDone`,
+`getSyncStatus`, `isInSync`, and `getBestPeerChainHead`.
+It also exposes advanced methods that can start or stop synchronization, set
+the chain head, fire forkchoice events, and disable the world state trie.
 
 Use the chain-control methods only for specialized plugins that intentionally manage sync or chain
 head behavior.
-
 For ordinary observability, read sync status without changing synchronization behavior:
 
 ```java
-serviceManager
-    .getService(SynchronizationService.class)
-    .ifPresent(
-        sync -> {
-          boolean initialSyncDone = sync.isInitialSyncPhaseDone();
-          boolean inSync = sync.isInSync();
-          Optional<SyncStatus> status = sync.getSyncStatus();
-          Optional<Long> bestPeerChainHead = sync.getBestPeerChainHead();
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(SynchronizationService.class)
+      .ifPresent(
+          sync -> {
+            boolean initialSyncDone = sync.isInitialSyncPhaseDone();
+            boolean inSync = sync.isInSync();
+            Optional<SyncStatus> status = sync.getSyncStatus();
+            Optional<Long> bestPeerChainHead = sync.getBestPeerChainHead();
+          });
+}
 ```

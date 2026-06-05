@@ -5,12 +5,11 @@ description: Observe Besu activity and expose plugin metrics.
 
 # Events and metrics
 
-Use events when a plugin needs to observe Besu activity, and use metrics when it needs to expose
-plugin state through Besu's metrics system.
+Observe Besu activity using events, and expose plugin state through Besu's metrics system.
 
 ## Events
 
-`BesuEvents` lets plugins register and remove listeners for:
+`BesuEvents` lets plugins observe the following events:
 
 - Block propagation.
 - Block additions.
@@ -21,7 +20,7 @@ plugin state through Besu's metrics system.
 - Log emissions filtered by address and topics.
 - Bad blocks.
 
-Register event listeners in `start()` and remove them in `stop()`.
+Register event listeners in `start` and remove them in `stop`.
 
 ```java
 private long listenerId;
@@ -41,7 +40,7 @@ public void stop() {
 }
 ```
 
-Events are a common fit for plugins that forward Besu activity to external systems, collect
+Events are useful for plugins that forward Besu activity to external systems, collect
 operational data, or react to chain activity.
 
 ## Metrics

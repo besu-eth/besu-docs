@@ -17,7 +17,7 @@ startup, runtime, reload, and shutdown.
 | `register(ServiceManager)` | Called early in the Besu lifecycle. Store the `ServiceManager` and perform early registration such as CLI options and RPC endpoints. |
 | `beforeExternalServices` | Optional hook called after Besu loads configuration and before external services (like metrics and HTTP) start. |
 | `start` | Called after Besu loads configuration and starts external services, but before the main loop is up. Start runtime work here. |
-| `afterExternalServicePostMainLoop` | Optional hook called after external services and post-main-loop setup. |
+| `afterExternalServicePostMainLoop` | Optional hook called after external services and main-loop setup. |
 | `reloadConfiguration` | Optional hook called by the `plugins_reloadPluginConfig` RPC method. Implement it only for configuration that can be reloaded safely. |
 | `stop` | Called when Besu shuts down or disables the plugin. Remove listeners and stop background work here. |
 | `getVersion` | Returns plugin version information from package implementation metadata. |
@@ -65,15 +65,34 @@ sequenceDiagram
 
 ## Service availability
 
-The following services have explicit timing requirements:
+Besu services are available at different parts of the plugin lifecycle.
+Some are available and used in `register` before startup completes, and others interact with live data and are used in `start`.
 
-| Service or action | Lifecycle timing |
-| --- | --- |
-| `PicoCLIOptions` | Available during `register`. Register plugin CLI options there. |
-| `RpcEndpointService` | Available during `register` and must be used during `register`. RPC handlers are not called before `start`. |
-| Most services | Might not be available before `start`. Retrieve them as `Optional` and handle absence. |
-| Event listeners | Register in `start` and remove in `stop`. |
-| Background threads | Start in `start` and stop in `stop`. |
+`PicoCLIOptions` and `RpcEndpointService` must be used in `register`.
 
-If a plugin needs a service during startup, check whether the service is present and fail only when
-the user explicitly requested functionality that cannot work without it.
+The following services are typically used in `register`:
+
+- `BesuConfiguration`
+- `MetricCategoryRegistry`
+- `PermissioningService`
+- `SecurityModuleService`
+- `TransactionPoolValidatorService`
+- `TransactionSelectionService`
+- `TransactionValidatorService`
+
+`BlockchainService` and `TransactionSimulationService` are available at `register`, but typically used in `start`.
+
+The remaining services only become available at `start`:
+
+- `BesuEvents`
+- `BftQueryService`
+- `BlockSimulationService`
+- `MetricsSystem`
+- `MiningService`
+- `P2PService`
+- `PoaQueryService`
+- `RlpConverterService`
+- `SynchronizationService`
+- `TraceService`
+- `TransactionPoolService`
+- `WorldStateService`

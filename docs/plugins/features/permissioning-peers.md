@@ -5,8 +5,7 @@ description: Extend permissioning and peer-related behavior from a plugin.
 
 # Permissioning and peers
 
-Use permissioning and peer services when a plugin needs to influence network access or interact
-with peer connections.
+Use permissioning and peer services to influence network access or interact with peer connections.
 
 ## Permissioning
 
@@ -21,11 +20,15 @@ Use this service for plugins that provide allowlisting or custom permission deci
 For example, register a node connection permissioning provider:
 
 ```java
-serviceManager
-    .getService(PermissioningService.class)
-    .ifPresent(
-        permissioning ->
-            permissioning.registerNodePermissioningProvider(nodeConnectionProvider));
+@Override
+public void register(final ServiceManager context) {
+  this.serviceManager = context;
+  serviceManager
+      .getService(PermissioningService.class)
+      .ifPresent(
+          permissioning ->
+              permissioning.registerNodePermissioningProvider(nodeConnectionProvider));
+}
 ```
 
 The plugin supplies the provider implementation.
@@ -46,12 +49,15 @@ Use `P2PService` for plugins that need peer visibility or direct peer interactio
 For example, read the current peer count and subscribe to connection events:
 
 ```java
-serviceManager
-    .getService(P2PService.class)
-    .ifPresent(
-        p2p -> {
-          int peerCount = p2p.getPeerCount();
-          p2p.subscribeConnect(connection -> {});
-          p2p.subscribeDisconnect((connection, reason, initiatedByPeer) -> {});
-        });
+@Override
+public void start() {
+  serviceManager
+      .getService(P2PService.class)
+      .ifPresent(
+          p2p -> {
+            int peerCount = p2p.getPeerCount();
+            p2p.subscribeConnect(connection -> {});
+            p2p.subscribeDisconnect((connection, reason, initiatedByPeer) -> {});
+          });
+}
 ```

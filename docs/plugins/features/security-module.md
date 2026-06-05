@@ -18,9 +18,14 @@ implementation, such as an HSM-backed implementation.
 For example, register a custom security module supplier:
 
 ```java
-serviceManager
-    .getService(SecurityModuleService.class)
-    .ifPresent(securityModules -> securityModules.register("example-hsm", () -> securityModule));
+@Override
+public void register(final ServiceManager context) {
+  this.serviceManager = context;
+  serviceManager
+      .getService(SecurityModuleService.class)
+      .ifPresent(
+          securityModules -> securityModules.register("example-hsm", () -> securityModule));
+}
 ```
 
 The plugin supplies the `SecurityModule` implementation.
