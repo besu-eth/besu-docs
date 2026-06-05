@@ -3779,7 +3779,7 @@ plugins-verification-mode=FULL
 </TabItem>
 </Tabs>
 
-Controls whether Besu fails to start if a [plugin's](../../concepts/plugins.md) verification fails at 
+Controls whether Besu fails to start if a [plugin's](../../../plugins/index.md) verification fails at 
 startup.
 
 Verification mode options are `NONE` or `FULL`:
@@ -3821,7 +3821,7 @@ plugins=["essential-plugin","security-plugin"]
 </TabItem>
 </Tabs>
 
-Comma-separated list of [plugin](../../concepts/plugins.md) names to load. Each plugin must reside in
+Comma-separated list of [plugin](../../../plugins/index.md) names to load. Each plugin must reside in
 the `plugins` directory. If you omit this option, Besu automatically loads all plugins found in that directory.
 
 The plugin name is case-sensitive, and is the name of the class that implements
