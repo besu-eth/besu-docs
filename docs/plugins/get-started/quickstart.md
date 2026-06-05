@@ -37,12 +37,14 @@ besuPlugin {
 ### 2. Implement `BesuPlugin`
 
 Create a class that implements `BesuPlugin`.
-
 The three required methods are `register`, `start`, and `stop`.
-Besu calls `register(ServiceManager)` early in startup;
-this is the only time the `ServiceManager` is provided, so store it for later use.
-`getName` is optional; it defaults to the fully qualified class name, but overriding it with a short 
-string gives your plugin a readable identifier.
+
+Besu calls `register(ServiceManager)` early in startup.
+`ServiceManager` is the interface through which your plugin accesses all Besu services.
+This is the only time it is provided, so store it in a field for later use.
+
+The `getName` method is optional; it defaults to the fully qualified class name, but overriding it with
+a short string gives your plugin a readable identifier.
 
 ```java title="ExamplePlugin.java"
 package example;
@@ -73,44 +75,57 @@ public class ExamplePlugin implements BesuPlugin {
 
 ### 3. Register the plugin for discovery
 
-Besu discovers plugin JARs with Java `ServiceLoader`.
-Register your plugin by including a service provider entry for
-`org.hyperledger.besu.plugin.BesuPlugin`.
-You can generate the entry with `@AutoService(BesuPlugin.class)`:
+Besu discovers plugin classes using Java's `ServiceLoader`.
+Register your plugin by including a service provider entry for `BesuPlugin`.
+You can generate the entry using Google's `@AutoService` annotation processor:
 
 ```java title="ExamplePlugin.java"
-import com.google.auto.service.AutoService;
-import org.hyperledger.besu.plugin.BesuPlugin;
+package example;
 
+import org.hyperledger.besu.plugin.BesuPlugin;
+import org.hyperledger.besu.plugin.ServiceManager;
+// highlight-next-line
+import com.google.auto.service.AutoService;
+
+// highlight-next-line
 @AutoService(BesuPlugin.class)
 public class ExamplePlugin implements BesuPlugin { ... }
 ```
 
 ### 4. Register CLI options
 
-Use `register` to add CLI options to the Besu command line.
-Retrieve the `PicoCLIOptions` service and call `addPicoCLIOptions`, passing a short namespace string and the object whose fields carry PicoCLI `@Option` annotations.
+Use the `register` method to add plugin CLI options to the Besu command line.
+Retrieve the `PicoCLIOptions` service and call `addPicoCLIOptions`, passing a short namespace string and 
+the object whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
-Besu auto-prepends `--plugin-` to the namespace you provide, so the actual required option prefix
-is `--plugin-<namespace>-`.
+:::info Note
+Besu prepends `--plugin-` to the namespace you provide, so the required option prefix is
+`--plugin-<namespace>-`.
 Passing `"example"` means every `@Option` name must start with `--plugin-example-`.
+:::
 
 ```java title="ExamplePlugin.java"
+// highlight-start
 import org.hyperledger.besu.plugin.services.PicoCLIOptions;
 import picocli.CommandLine.Option;
+// highlight-end
 
 public class ExamplePlugin implements BesuPlugin {
   private ServiceManager context;
 
+// highlight-start
   @Option(names = "--plugin-example-enabled", description = "Enable the example plugin feature.")
   private boolean enabled = false;
+// highlight-end
 
   @Override
   public void register(final ServiceManager context) {
     this.context = context;
+// highlight-start
     context
         .getService(PicoCLIOptions.class)
         .ifPresent(cli -> cli.addPicoCLIOptions("example", this));
+// highlight-end  
   }
   ...
 }
@@ -118,9 +133,11 @@ public class ExamplePlugin implements BesuPlugin {
 
 ### 5. Retrieve services and start
 
-Use `start` to retrieve Besu services and begin runtime work.
-Most services are not available until `start` is called — calling `getService` in `register` will return 
-an empty `Optional` for most services.
+Use the `start` method to retrieve Besu services and begin runtime work.
+Most services are not available until `start` is called.
+See [Plugin lifecycle](plugin-lifecycle.md) for the full service availability table.
+
+The following example retrieves `BesuEvents`:
 
 ```java title="ExamplePlugin.java"
 import org.hyperledger.besu.plugin.services.BesuEvents;
@@ -157,8 +174,8 @@ Build the distribution:
 ./gradlew distZip
 ```
 
-Create the `plugins` directory in your Besu installation if it does not already exist, then unzip
-the archive into it.
+Create a `plugins` directory at the root of your Besu installation if it does not already exist.
+Then unzip the archive into it.
 The `-j` flag flattens the ZIP so all JARs land directly in `plugins/`:
 
 ```bash
@@ -172,7 +189,6 @@ To load only specific plugins, use
 
 ## Next steps
 
-- [Build a plugin](../how-to/build-a-plugin.md)
-- [Configure a plugin](../how-to/configure-a-plugin.md)
-- [Plugin lifecycle](plugin-lifecycle.md)
-- [Troubleshoot](../how-to/troubleshoot.md)
+- Learn about the [plugin lifecycle](plugin-lifecycle.md).
+- Integrate different [features](/plugins/features) into your plugin.
+- [Troubleshoot](../how-to/troubleshoot.md) common issues.
