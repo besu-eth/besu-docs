@@ -4579,7 +4579,7 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 #### Parameters
 
-- `storageRequest`: _object_ - An object where each key is a 20-byte account address
+- `storageRequest`: _object_ - each key is a 20-byte account address
   and each value is an array of storage slot keys (as 32-byte hex strings).
   The maximum total number of storage slots across all addresses is 1024.
 
@@ -4593,7 +4593,7 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 #### Returns
 
-`result` : _object_ - Each key is an account address and each
+`result` : _object_ - each key is an account address and each
 value is an array of hex-encoded storage values in the same order as the requested slot keys.
 Unknown accounts return zero values for all requested slots.
 Key order in the response object is not guaranteed to match the request.
