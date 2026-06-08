@@ -2619,6 +2619,7 @@ None
   - `hash`: _string_ - current chain head block hash
 - `state`: _object_ - state capability information
   - `disabled`: _boolean_ - indicates whether the `state` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
 - `tx`: _object_ - transaction capability information
   - `disabled`: _boolean_ - indicates whether the `tx` resource is disabled
   - `oldestBlock`: _string_ - (optional) oldest available block
@@ -2633,6 +2634,7 @@ None
   - `oldestBlock`: _string_ - (optional) oldest available block
 - `stateproofs`: _object_ - state proofs capability information
   - `disabled`: _boolean_ - indicates whether the `stateproofs` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
 
 The `oldestBlock` field is included for block-backed resources when pruning has occurred.
 If the full chain is available, this can be `0x0`.
