@@ -4649,14 +4649,6 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[
 
 </Tabs>
 
-#### Errors
-
-| Code     | Message                     | Description                                                            |
-|----------|-----------------------------|------------------------------------------------------------------------|
-| `-32602` | `empty request`             | The request contains no addresses or slots.                            |
-| `-32602` | `too many slots (max 1024)` | The total number of requested slots across all addresses exceeds 1024. |
-| `-32603` | `WORLD_STATE_UNAVAILABLE`   | Besu cannot open the world state for the requested block.              |
-
 ### `eth_getTransactionByBlockHashAndIndex`
 
 Returns transaction information for the specified block hash and transaction index position.
