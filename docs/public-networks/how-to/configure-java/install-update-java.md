@@ -8,7 +8,7 @@ description: Install or update Java for use with Besu
 There are many flavors of Java and the Java Virtual Machine (JVM) that work with Besu.
 They might impact performance, start time, and more.
 Consider the options carefully when installing Java on your host machine.
-Currently, [we recommend Java 21](../../get-started/system-requirements.md#java-distribution-and-installation).
+Currently, [we recommend Java 25](../../get-started/system-requirements.md#java-distribution-and-installation).
 
 ## Install Java
 
@@ -17,7 +17,7 @@ If you are running Besu outside a virtual environment, like Docker, you must hav
 the host machine.
 
 :::tip
-Download [OpenJDK 21](https://jdk.java.net/21/).
+Download [OpenJDK 25](https://jdk.java.net/25/).
 :::
 
 You can find platform-specific installation instructions with the download.
@@ -44,7 +44,7 @@ You can install OpenJDK on Ubuntu using the `apt-get` command.
 3. If no version is returned, use `apt` to install the preferred version. 
 
     ```bash
-    sudo apt-get install openjdk-21-jdk
+    sudo apt-get install openjdk-25-jdk
     ```
 
 4. Confirm the installation:
@@ -84,7 +84,7 @@ You can install OpenJDK on MacOS using Homebrew.
 1. With `brew` installed, run:
 
     ```bash
-    brew install openjdk@21
+    brew install openjdk@25
     ```
 
     You can target another version if you prefer. 
@@ -125,12 +125,12 @@ You can update Java on MacOS using Homebrew.
     brew ls
     ```
 
-2. To update the JDK version (for example, from 17 to 21), uninstall the old version and reinstall
+2. To update the JDK version (for example, from 21 to 25), uninstall the old version and reinstall
     the target version:
 
     ```bash
-    brew uninstall openjdk@17
-    brew install openjdk@21
+    brew uninstall openjdk@21
+    brew install openjdk@25
     ```
 
     :::note

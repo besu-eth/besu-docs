@@ -15,7 +15,7 @@ Run Besu as an [execution client](../concepts/node-clients.md#execution-clients)
 
 Install [Besu](../get-started/install/binary-distribution.md) and [Teku](https://docs.teku.consensys.net/HowTo/Get-Started/Installation-Options/Install-Binaries/).
 
-Ensure you meet the prerequisites for the installation option you use. For example, you must have Java 21+ if using the Besu and Teku binary distributions.
+Ensure you meet the prerequisites for the installation option you use. For example, you must have Java 25+ if using the Besu and Teku binary distributions.
 
 Ensure you meet the [system requirements for Besu on public networks](../get-started/system-requirements.md).
 
