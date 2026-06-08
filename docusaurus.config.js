@@ -202,16 +202,16 @@ const config = {
                 to: "/plugins",
               },
               {
-                label: "How to guides",
-                to: "/plugins/how-to",
+                label: "Get started",
+                to: "/plugins/get-started",
               },
               {
-                label: "Plugin features",
+                label: "Features",
                 to: "/plugins/features",
               },
               {
-                label: "Tutorials",
-                to: "/plugins/tutorials",
+                label: "How to guides",
+                to: "/plugins/how-to",
               },
               {
                 label: "Reference",
