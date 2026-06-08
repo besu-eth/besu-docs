@@ -4593,18 +4593,10 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 #### Returns
 
-`result` : _object_ - A JSON object where each key is a lowercase account address and each
+`result` : _object_ - A JSON object where each key is an account address and each
 value is an array of hex-encoded storage values in the same order as the requested slot keys.
 Unknown accounts return zero values for all requested slots.
 Key order in the response object is not guaranteed to match the request.
-
-#### Errors
-
-| Code     | Message                     | Description                                                            |
-|----------|-----------------------------|------------------------------------------------------------------------|
-| `-32602` | `empty request`             | The request contains no addresses or slots.                            |
-| `-32602` | `too many slots (max 1024)` | The total number of requested slots across all addresses exceeds 1024. |
-| `-32603` | `WORLD_STATE_UNAVAILABLE`   | Besu cannot open the world state for the requested block.              |
 
 <Tabs>
 
@@ -4656,6 +4648,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[
 </TabItem>
 
 </Tabs>
+
+#### Errors
+
+| Code     | Message                     | Description                                                            |
+|----------|-----------------------------|------------------------------------------------------------------------|
+| `-32602` | `empty request`             | The request contains no addresses or slots.                            |
+| `-32602` | `too many slots (max 1024)` | The total number of requested slots across all addresses exceeds 1024. |
+| `-32603` | `WORLD_STATE_UNAVAILABLE`   | Besu cannot open the world state for the requested block.              |
 
 ### `eth_getTransactionByBlockHashAndIndex`
 
