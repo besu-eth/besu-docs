@@ -19,8 +19,8 @@ CPU requirements are highest when syncing to the network and typically reduce af
 
 ## Java distribution and installation
 
-Besu requires an installation of Java 21+ to run.
-We currently recommend two Java distributions, [OpenJDK 21](https://jdk.java.net/21/) and
+Besu requires an installation of Java 25+ to run.
+We currently recommend two Java distributions, [OpenJDK 25](https://jdk.java.net/25/) and
 [OpenJ9](https://www.eclipse.org/openj9/), though you can experiment based on your needs.
 
 OpenJDK is the default for many Java users and is balanced in performance and garbage collection.
@@ -35,12 +35,12 @@ If you have less RAM:
 If you have OpenJDK installed or need a fresh installation of OpenJ9, you can pick up the OpenJ9
 docker image, or install the OpenJ9 JDK using the following steps:
 
-1. Get the [binaries](https://github.com/ibmruntimes/semeru21-certified-binaries/releases) corresponding to
+1. Get the [binaries](https://github.com/ibmruntimes/semeru25-certified-binaries/releases) corresponding to
    your OS architecture.
    For example:
 
     ```bash
-    wget https://github.com/ibmruntimes/semeru21-certified-binaries/releases/download/jdk-21.0.3%2B9_openj9-0.44.0/ibm-semeru-certified-jdk_x64_linux_21.0.3.0.tar.gz
+    wget https://github.com/ibmruntimes/semeru25-certified-binaries/releases/download/jdk-25.0.3.0/ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
     ```
 2. Uncompress the binaries:
 
@@ -55,7 +55,7 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <TabItem value="Example" label="Example">
 
     ```bash
-    tar -xvf ibm-semeru-certified-jdk_x64_linux_21.0.3.0.tar.gz
+    tar -xvf ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
     ```
 
     </TabItem>
@@ -74,7 +74,7 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <TabItem value="Example" label="Example">
 
     ```bash
-    sudo cp -r jdk-21.0.3+9/ /usr/bin/
+    sudo cp -r jdk-25.0.3+9/ /usr/bin/
     ```
 
     </TabItem>
@@ -94,7 +94,7 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <TabItem value="Example" label="Example">
 
     ```bash
-    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/jdk-21.0.3+9/bin/java"
+    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/jdk-25.0.3+9/bin/java"
     ```
 
     </TabItem>
@@ -114,7 +114,7 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <TabItem value="Example" label="Example">
 
     ```bash
-    export JAVA_HOME=/usr/bin/jdk-21.0.3+9
+    export JAVA_HOME=/usr/bin/jdk-25.0.3+9
     ```
 
     </TabItem>
