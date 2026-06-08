@@ -4593,8 +4593,8 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 #### Returns
 
-`result` : _object_ - each key is an account address and each
-value is an array of hex-encoded storage values in the same order as the requested slot keys.
+`result` : _object_ - each key is an account address and each value is an array of hex-encoded
+storage values in the same order as the requested slot keys.
 Unknown accounts return zero values for all requested slots.
 Key order in the response object is not guaranteed to match the request.
 
