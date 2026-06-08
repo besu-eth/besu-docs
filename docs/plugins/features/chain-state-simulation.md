@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-description: Read chain state and simulate transactions or blocks from a plugin.
+description: Read chain state and simulate transactions.
 ---
 
 # Chain state and simulation

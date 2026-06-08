@@ -1,15 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 description: See additional resources for Besu plugins.
 ---
 
 # Resources
 
-See the following additional resources for Besu plugins.
-
-## Open source plugins
-
-See the following open source Besu plugins and plugin examples:
+See the following open source Besu plugins:
 
 - [Besu RocksDB storage plugin](https://github.com/besu-eth/besu/tree/main/plugins/rocksdb)
 - [Linea sequencer plugins](https://github.com/Consensys/linea-monorepo/tree/main/linea-besu/plugins/linea-sequencer)
@@ -17,9 +13,8 @@ See the following open source Besu plugins and plugin examples:
 - [Linea tracer plugin](https://github.com/Consensys/linea-monorepo/tree/main/tracer)
 - [Besu-Shomei plugin](https://github.com/Consensys/besu-shomei-plugin)
 - [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin)
-- [Besu revert debugger plugin](https://github.com/vivek-0509/besu-revert-debugger-plugin)
 
 ## Get support
 
-If you have questions about creating or using Besu plugins, ask on the **#besu** channel on
-[Hyperledger Discord](https://discord.gg/hyperledger).
+If you have questions about creating or using Besu plugins, ask on the **besu** channel on
+[Discord](https://discord.gg/hyperledger).

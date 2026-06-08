@@ -34,7 +34,7 @@ besuPlugin {
 }
 ```
 
-### 2. Implement `BesuPlugin`
+### 2. Implement the plugin class
 
 Create a class that implements `BesuPlugin`.
 The three required methods are `register`, `start`, and `stop`.
@@ -99,8 +99,8 @@ Retrieve the `PicoCLIOptions` service and call `addPicoCLIOptions`, passing a sh
 the object whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
 :::info Note
-Besu prepends `--plugin-` to the namespace you provide, so the required option prefix is
-`--plugin-<namespace>-`.
+Besu prepends `--plugin-` to the namespace you pass to `addPicoCLIOptions`, so every `@Option`
+name in the object must start with `--plugin-<namespace>-`.
 Passing `"example"` means every `@Option` name must start with `--plugin-example-`.
 :::
 
@@ -174,7 +174,7 @@ Build the distribution:
 ./gradlew distZip
 ```
 
-Create a `plugins` directory at the root of your Besu installation if it does not already exist.
+Create a `plugins` directory at the root of your Besu installation if it doesn't already exist.
 Then unzip the archive into it.
 The `-j` flag flattens the ZIP so all JARs land directly in `plugins/`:
 

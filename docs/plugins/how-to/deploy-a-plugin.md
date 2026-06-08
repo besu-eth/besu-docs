@@ -1,39 +1,78 @@
 ---
-sidebar_position: 5
-description: Deploy a Besu plugin.
+sidebar_position: 4
+description: Build and deploy a plugin.
 ---
 
 # Deploy a plugin
 
-Deploy a plugin by copying the packaged plugin JAR to Besu's `plugins` directory before starting
-Besu.
+Build your plugin distribution and deploy it to a running Besu installation.
 
-If you omit [`--plugins`](../../public-networks/reference/cli/options.md#plugins), Besu loads all
-plugins found in the `plugins` directory. To load only specific plugins, pass a comma-separated list
-to `--plugins`.
+## Prerequisites
+
+- A completed Besu plugin.
+  See how to [set up a plugin project](set-up-a-plugin.md).
+- A [Besu installation](../../public-networks/get-started/install/index.md).
+
+## Steps
+
+### 1. Build the distribution
+
+Run the `distZip` task provided by the [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin)
+to package your plugin:
+
+```bash
+./gradlew distZip
+```
+
+The output archive at `build/distributions/<project-name>.zip` contains only your plugin JAR and
+any extra runtime dependencies that Besu does not already provide.
+JARs already in Besu's `lib` directory are excluded from the ZIP.
+
+:::tip
+If your plugin has no extra dependencies, the ZIP contains a single JAR.
+:::
+
+To inspect the contents of the archive before deploying:
+
+```bash
+unzip -l build/distributions/<project-name>.zip
+```
+
+### 2. Deploy to Besu
+
+Create a `plugins` directory at the root of your Besu installation if it doesn't already exist,
+then unzip the archive into it.
+The `-j` flag flattens the ZIP so all JARs land directly in `plugins/`:
+
+```bash
+unzip -j build/distributions/<project-name>.zip -d /path/to/besu/plugins/
+```
+
+Start Besu.
+By default, Besu loads all JARs found in the `plugins` directory automatically.
+
+To load only specific plugins, pass a comma-separated list to
+[`--plugins`](../../public-networks/reference/cli/options.md#plugins):
 
 ```bash
 besu --plugins=ExamplePlugin
 ```
 
-In the current implementation, `--plugins` matches the simple name of the class that implements
-`BesuPlugin`. The match is case-sensitive.
+`--plugins` matches the value returned by `BesuPlugin.getName`.
+The match is case-sensitive.
 
-## Verify startup
+### 3. Verify startup
 
-Check Besu startup logs to confirm the plugin was detected and registered. Besu logs a plugin
-registration summary that includes registered plugins and detected plugins that were skipped.
-
-## Plugin verification
+Check the Besu startup logs to confirm your plugin was detected and registered.
+Besu logs a plugin registration summary that lists registered plugins and any plugins that
+were detected but skipped.
 
 Use [`--plugins-verification-mode`](../../public-networks/reference/cli/options.md#plugins-verification-mode)
-to control whether plugin verification failures stop Besu.
+to control how Besu handles plugin verification failures:
 
-- `NONE` logs a warning and continues running when verification fails.
-- `FULL` logs an error and stops Besu when verification fails.
+- `NONE` (default) logs a warning and continues.
+- `FULL` logs an error and stops Besu.
 
-The default is `NONE`.
+## Next steps
 
-Keep plugin-specific installation, configuration, and operating instructions in the plugin's own
-documentation. Besu docs should link to major plugin examples rather than duplicating each plugin's
-operator guide.
+[Troubleshoot](troubleshoot.md) common issues.

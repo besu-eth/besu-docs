@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: Add custom JSON-RPC endpoints from a Besu plugin.
+description: Add custom JSON-RPC endpoints.
 ---
 
 # Custom RPC endpoints

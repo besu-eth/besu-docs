@@ -5,7 +5,7 @@ description: Extend transaction pool, selection, and validation behavior.
 
 # Transaction pool, selection, and validation
 
-Use transaction pool services when a plugin needs to inspect pending transactions, control
+Use transaction pool services to inspect pending transactions, control
 transaction pool availability, influence transaction selection, or add validation rules.
 
 ## Observe pending transactions

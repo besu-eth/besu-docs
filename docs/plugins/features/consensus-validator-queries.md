@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: Query PoA and BFT validator information from a plugin.
+description: Query PoA validator information.
 ---
 
 # Consensus and validator queries

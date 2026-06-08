@@ -64,6 +64,6 @@ The two tracer instances have no shared state, so per-tracer deduplication (for 
 field on the tracer) does not help; the duplicate comes from a separate tracer object. 
 Deduplicate at a shared data layer keyed by both block hash and transaction hash.
 
-On PoS (mainnet) networks, each block is processed once and the tracer fires once per transaction.
+On proof of stake networks, each block is processed once and the tracer fires once per transaction.
 </div>
 </details>
