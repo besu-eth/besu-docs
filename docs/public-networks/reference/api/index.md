@@ -4572,6 +4572,91 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{account(ad
 
 </Tabs>
 
+### `eth_getStorageValues`
+
+Returns storage values for multiple slots across one or more accounts in a single call.
+This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
+
+#### Parameters
+
+- `storageRequest`: _object_ - A JSON object where each key is a 20-byte account address
+  and each value is an array of storage slot keys (as 32-byte hex strings).
+  The maximum total number of storage slots across all addresses is 1024.
+
+- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+  block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
+  `safe`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+
+  :::note
+  `pending` returns the same value as `latest`.
+  :::
+
+#### Returns
+
+`result` : _object_ - A JSON object where each key is a lowercase account address and each
+value is an array of hex-encoded storage values in the same order as the requested slot keys.
+Unknown accounts return zero values for all requested slots.
+Key order in the response object is not guaranteed to match the request.
+
+#### Errors
+
+| Code     | Message                     | Description                                                            |
+|----------|-----------------------------|------------------------------------------------------------------------|
+| `-32602` | `empty request`             | The request contains no addresses or slots.                            |
+| `-32602` | `too many slots (max 1024)` | The total number of requested slots across all addresses exceeds 1024. |
+| `-32603` | `WORLD_STATE_UNAVAILABLE`   | Besu cannot open the world state for the requested block.              |
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[{"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73":["0x0","0x1"],"0x627306090abaB3A6e1400e9345bC60c78a8BEf57":["0x0"]},"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getStorageValues",
+  "params": [
+    {
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": ["0x0", "0x1"],
+      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": ["0x0"]
+    },
+    "latest"
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "0x627306090abab3a6e1400e9345bc60c78a8bef57": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ]
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
 ### `eth_getTransactionByBlockHashAndIndex`
 
 Returns transaction information for the specified block hash and transaction index position.
