@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import Heading from '@theme/Heading'
-// import styles from "./styles.module.css";
+import styles from "./styles.module.css";
 
 type CardItem = {
   title: string;
@@ -61,12 +61,12 @@ const CardList: CardItem[] = [
 function Card({ title, link, description, buttonName, buttonType }: CardItem) {
   return (
     <div className={clsx("col", "margin-top--md")}>
-      <div className="card-demo">
-        <div className="card">
+      <div className={clsx("card-demo", styles.cardDemo)}>
+        <div className={clsx("card", styles.card)}>
           <div className="card__header">
             <Heading as='h3'>{title}</Heading>
           </div>
-          <div className="card__body">
+          <div className={clsx("card__body", styles.cardBody)}>
             <p>{description}</p>
           </div>
           <div className="card__footer">

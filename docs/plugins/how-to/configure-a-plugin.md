@@ -15,7 +15,7 @@ You can add CLI options, read Besu configuration values, validate configuration 
 
 Use the `register` method to add plugin-specific options to the Besu command line.
 
-Retrieve the `PicoCLIOptions` service and pass an options object to `addPicoCLIOptions`.
+Retrieve the [`PicoCLIOptions`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PicoCLIOptions.html) service and pass an options object to `addPicoCLIOptions`.
 The options object is a plain class (or `this`) whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
 ```java
@@ -50,7 +50,7 @@ conventions.
 
 ## Read Besu configuration
 
-Use `BesuConfiguration` when your plugin needs selected Besu configuration values.
+Use [`BesuConfiguration`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuConfiguration.html) when your plugin needs selected Besu configuration values.
 The service is available from `register` onward.
 
 ```java
@@ -61,7 +61,7 @@ public void register(final ServiceManager serviceManager) {
     serviceManager
         .getService(BesuConfiguration.class)
         .ifPresent(config -> {
-            // use config values, for example config.getDataPath()
+            // Use config values, for example config.getDataPath().
         });
 }
 ```
@@ -89,7 +89,7 @@ public void start() {
         throw new IllegalStateException(
             "plugin-example-url is required when --plugin-example-enabled is true");
     }
-    // proceed with startup
+    // Proceed with startup.
 }
 ```
 

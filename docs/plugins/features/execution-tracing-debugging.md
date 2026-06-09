@@ -7,13 +7,13 @@ description: Trace execution and build debugging plugins.
 
 Use tracing services when a plugin needs execution traces or block-import tracing hooks.
 
-`TraceService` exposes methods to:
+[`TraceService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TraceService.html) exposes methods to:
 
 - Trace a block by block number.
 - Trace a block by block hash.
 - Trace execution with an operation tracer.
 
-`BlockImportTracerProvider` lets a plugin provide a `BlockAwareOperationTracer` for a block header
+[`BlockImportTracerProvider`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BlockImportTracerProvider.html) lets a plugin provide a [`BlockAwareOperationTracer`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/tracer/BlockAwareOperationTracer.html) for a block header
 during block import.
 
 Tracing plugins commonly use operation tracers to inspect EVM execution, collect debugging data, or

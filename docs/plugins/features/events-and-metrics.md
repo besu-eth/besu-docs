@@ -9,7 +9,7 @@ Observe Besu activity using events, and expose plugin state through Besu's metri
 
 ## Events
 
-`BesuEvents` lets plugins observe the following events:
+[`BesuEvents`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuEvents.html) lets plugins observe the following events:
 
 - Block propagation.
 - Block additions.
@@ -45,7 +45,7 @@ operational data, or react to chain activity.
 
 ## Metrics
 
-Use `MetricCategoryRegistry` to add a metric category, and use `MetricsSystem` to create counters,
+Use [`MetricCategoryRegistry`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/metrics/MetricCategoryRegistry.html) to add a metric category, and use [`MetricsSystem`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/MetricsSystem.html) to create counters,
 gauges, timers, histograms, summaries, and cache collectors.
 
 `MetricsSystem` also exposes enabled metric categories, so plugins can check whether their category

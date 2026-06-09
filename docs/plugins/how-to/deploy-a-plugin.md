@@ -63,10 +63,10 @@ The Besu Docker image doesn't include a `plugins` directory.
 Use a bind mount to inject your plugin JARs into the container at `/opt/besu/plugins`:
 
 ```bash
-# unzip the distribution into a local directory
+# Unzip the distribution into a local directory.
 unzip -j build/distributions/<project-name>.zip -d /host/path/to/plugins/
 
-# mount that directory when starting the container
+# Mount that directory when starting the container.
 docker run \
   -v /host/path/to/plugins:/opt/besu/plugins \
   hyperledger/besu:latest

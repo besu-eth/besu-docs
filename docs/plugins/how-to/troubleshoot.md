@@ -19,7 +19,7 @@ Check that:
 
 ## Service is missing
 
-`ServiceManager.getService` returns `Optional` because services can be unavailable.
+[`ServiceManager.getService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) returns `Optional` because services can be unavailable.
 A service might be missing because:
 
 - The service is not available in the current lifecycle phase.

@@ -5,7 +5,7 @@ description: Integrate custom signing and security modules.
 
 # Security module
 
-Use `SecurityModuleService` to register a named security module.
+Use [`SecurityModuleService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/SecurityModuleService.html) to register a named security module.
 
 The service exposes:
 
@@ -28,4 +28,4 @@ public void register(final ServiceManager context) {
 }
 ```
 
-The plugin supplies the `SecurityModule` implementation.
+The plugin supplies the [`SecurityModule`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/securitymodule/SecurityModule.html) implementation.

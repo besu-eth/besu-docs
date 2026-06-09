@@ -5,7 +5,7 @@ description: Add custom JSON-RPC endpoints.
 
 # Custom RPC endpoints
 
-Use `RpcEndpointService` to register plugin functions as custom JSON-RPC methods.
+Use [`RpcEndpointService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/RpcEndpointService.html) to register plugin functions as custom JSON-RPC methods.
 
 ## Register an endpoint
 
@@ -33,7 +33,7 @@ In this example, the JSON-RPC method is `example_status`.
 
 ## Parameters and return values
 
-`RpcEndpointService` passes a `PluginRpcRequest` to the handler.
+`RpcEndpointService` passes a [`PluginRpcRequest`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/rpc/PluginRpcRequest.html) to the handler.
 The request parameters are exposed as strings.
 Complex input objects are not supported by the plugin RPC request interface.
 

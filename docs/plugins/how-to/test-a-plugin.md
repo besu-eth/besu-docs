@@ -15,7 +15,7 @@ See how to [set up a plugin project](set-up-a-plugin.md).
 
 ## Unit test lifecycle code
 
-Use `ServiceManager.SimpleServiceManager` to unit test code that retrieves Plugin API services.
+Use [`ServiceManager.SimpleServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) to unit test code that retrieves Plugin API services.
 Add only the services the test needs, then call the lifecycle method under test.
 
 ```java
@@ -32,12 +32,12 @@ class ExamplePluginTest {
 
         plugin.register(serviceManager);
 
-        // assert plugin stored the service manager and registered any extension points
+        // Assert that the plugin stored the ServiceManager and registered any extension points.
     }
 
     @Test
     void register_handlesMissingOptionalService() {
-        // empty service manager — plugin must not throw when optional services are absent
+        // Empty ServiceManager — the plugin must not throw when optional services are absent.
         var serviceManager = new ServiceManager.SimpleServiceManager();
         var plugin = new ExamplePlugin();
 

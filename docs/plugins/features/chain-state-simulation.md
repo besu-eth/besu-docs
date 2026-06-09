@@ -10,7 +10,7 @@ or simulated execution results.
 
 ## Read blockchain data
 
-`BlockchainService` exposes methods to retrieve blocks, block headers, receipts, transactions, the
+[`BlockchainService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BlockchainService.html) exposes methods to retrieve blocks, block headers, receipts, transactions, the
 chain head, safe and finalized blocks, chain ID, base fee information, and hard fork IDs.
 It also includes methods for storing blocks and setting safe or finalized block hashes.
 
@@ -35,7 +35,7 @@ public void start() {
 
 ## Read world state
 
-`WorldStateService` exposes the current `WorldView` and, when available, a `WorldView` for a block
+[`WorldStateService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/WorldStateService.html) exposes the current `WorldView` and, when available, a `WorldView` for a block
 hash.
 
 Use this service for plugins that need account or storage state through Besu's world state view.
@@ -55,8 +55,8 @@ public void start() {
 
 ## Simulate execution
 
-`TransactionSimulationService` simulates transactions and can create a pending block header for simulation. 
-`BlockSimulationService` simulates blocks and includes a method to simulate and persist world state.
+[`TransactionSimulationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionSimulationService.html) simulates transactions and can create a pending block header for simulation. 
+[`BlockSimulationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BlockSimulationService.html) simulates blocks and includes a method to simulate and persist world state.
 
 Use simulation services for plugins that need to evaluate transaction or block execution without
 submitting a normal transaction through JSON-RPC.
@@ -98,7 +98,7 @@ PluginBlockSimulationResult result =
 
 ## Read sync status
 
-`SynchronizationService` exposes sync status methods such as `isInitialSyncPhaseDone`,
+[`SynchronizationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/sync/SynchronizationService.html) exposes sync status methods such as `isInitialSyncPhaseDone`,
 `getSyncStatus`, `isInSync`, and `getBestPeerChainHead`.
 It also exposes advanced methods that can start or stop synchronization, set
 the chain head, fire forkchoice events, and disable the world state trie.

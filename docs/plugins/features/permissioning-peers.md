@@ -9,7 +9,7 @@ Use permissioning and peer services to influence network access or interact with
 
 ## Permissioning
 
-`PermissioningService` lets plugins register providers for:
+[`PermissioningService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PermissioningService.html) lets plugins register providers for:
 
 - Node connection permissioning - Restrict node access to known participants only.
 - Transaction permissioning - Restrict transaction processing based on transaction properties.
@@ -34,7 +34,7 @@ The plugin supplies the provider implementation.
 
 ## Peers
 
-`P2PService` exposes methods to:
+[`P2PService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/p2p/P2PService.html) exposes methods to:
 
 - Enable or disable discovery.
 - Get peer counts and peer connections.

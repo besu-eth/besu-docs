@@ -7,13 +7,13 @@ description: Query PoA validator information.
 
 Use consensus query services to inspect validator information on proof of authority (PoA) networks.
 
-`PoaQueryService` exposes:
+[`PoaQueryService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/query/PoaQueryService.html) exposes:
 
 - Validators for the latest block.
 - The proposer of a block.
 - The local signer address.
 
-`BftQueryService` extends `PoaQueryService` for BFT-style PoA networks and exposes:
+[`BftQueryService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/query/BftQueryService.html) extends `PoaQueryService` for BFT-style PoA networks and exposes:
 
 - The round number from a block header.
 - Signers from a block header.

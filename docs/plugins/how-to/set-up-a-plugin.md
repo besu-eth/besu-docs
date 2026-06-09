@@ -81,11 +81,11 @@ task to produce a slim distribution.
 
 ### 2. Implement the plugin class
 
-Create a class that implements `BesuPlugin`.
+Create a class that implements [`BesuPlugin`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/BesuPlugin.html).
 The three required methods are `register`, `start`, and `stop`.
 
 Besu calls `register(ServiceManager)` early in startup.
-`ServiceManager` is the interface through which your plugin accesses all Besu services.
+[`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) is the interface through which your plugin accesses all Besu services.
 This is the only time it is provided, so store it in a field for later use.
 
 The `getName` method is optional; it defaults to the fully qualified class name, but overriding it with

@@ -10,13 +10,13 @@ transaction pool availability, influence transaction selection, or add validatio
 
 ## Observe pending transactions
 
-`TransactionPoolService` exposes methods to:
+[`TransactionPoolService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/transactionpool/TransactionPoolService.html) exposes methods to:
 
 - Disable or enable the transaction pool.
 - Check whether the transaction pool is enabled.
 - Retrieve pending transactions.
 
-For event-based observation, `BesuEvents` exposes transaction added and transaction dropped
+For event-based observation, [`BesuEvents`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuEvents.html) exposes transaction added and transaction dropped
 listeners.
 
 For example, inspect pending transaction count:
@@ -52,7 +52,7 @@ public void start() {
 
 ## Influence selection
 
-`TransactionSelectionService` exposes methods to create a plugin transaction selector, select
+[`TransactionSelectionService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionSelectionService.html) exposes methods to create a plugin transaction selector, select
 pending transactions, and register a plugin transaction selector factory.
 
 Use this service when the plugin needs to participate in transaction selection.
@@ -71,14 +71,14 @@ public void register(final ServiceManager context) {
 }
 ```
 
-The plugin supplies the `PluginTransactionSelectorFactory` implementation.
+The plugin supplies the [`PluginTransactionSelectorFactory`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/txselection/PluginTransactionSelectorFactory.html) implementation.
 
 ## Validate transactions
 
-`TransactionPoolValidatorService` exposes methods to create a plugin transaction pool validator and
+[`TransactionPoolValidatorService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionPoolValidatorService.html) exposes methods to create a plugin transaction pool validator and
 register a plugin transaction validator factory.
 
-`TransactionValidatorService` exposes a method to register a transaction validation rule.
+[`TransactionValidatorService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionValidatorService.html) exposes a method to register a transaction validation rule.
 
 Use these services when a plugin needs custom validation behavior.
 
@@ -115,4 +115,4 @@ public void register(final ServiceManager context) {
 }
 ```
 
-The plugin supplies the `PluginTransactionPoolValidatorFactory` implementation.
+The plugin supplies the [`PluginTransactionPoolValidatorFactory`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/txvalidator/PluginTransactionPoolValidatorFactory.html) implementation.

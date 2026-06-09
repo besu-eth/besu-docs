@@ -44,11 +44,11 @@ besuPlugin {
 
 ### 2. Implement the plugin class
 
-Create a class that implements `BesuPlugin`.
+Create a class that implements [`BesuPlugin`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/BesuPlugin.html).
 The three required methods are `register`, `start`, and `stop`.
 
 Besu calls `register(ServiceManager)` early in startup.
-`ServiceManager` is the interface through which your plugin accesses all Besu services.
+[`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) is the interface through which your plugin accesses all Besu services.
 This is the only time it is provided, so store it in a field for later use.
 
 The `getName` method is optional; it defaults to the fully qualified class name, but overriding it with
@@ -103,7 +103,7 @@ public class ExamplePlugin implements BesuPlugin { ... }
 ### 4. Register CLI options
 
 Use the `register` method to add plugin CLI options to the Besu command line.
-Retrieve the `PicoCLIOptions` service and call `addPicoCLIOptions`, passing a short namespace string and 
+Retrieve the [`PicoCLIOptions`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PicoCLIOptions.html) service and call `addPicoCLIOptions`, passing a short namespace string and 
 the object whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
 :::info Note
@@ -145,7 +145,7 @@ Use `start` to retrieve Besu services and begin runtime work.
 Services that expose runtime data (such as events, metrics, and world state) only become available at `start`.
 Learn more about [when services are available](plugin-lifecycle.md#service-availability).
 
-The following example retrieves `BesuEvents`:
+The following example retrieves [`BesuEvents`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuEvents.html):
 
 ```java title="ExamplePlugin.java"
 import org.hyperledger.besu.plugin.services.BesuEvents;
@@ -155,7 +155,7 @@ public void start() {
   serviceManager
       .getService(BesuEvents.class)
       .ifPresent(events -> {
-        // subscribe to block, transaction, or sync events
+        // Subscribe to block, transaction, or sync events.
       });
 }
 ```
@@ -168,7 +168,7 @@ Besu calls `stop` during shutdown and when disabling individual plugins.
 ```java title="ExamplePlugin.java"
 @Override
 public void stop() {
-  // remove event subscriptions and release resources
+  // Remove event subscriptions and release resources.
 }
 ```
 

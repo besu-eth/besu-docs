@@ -197,6 +197,9 @@ Fill in the scaffold with content based on what the user provides. Follow these 
 - **Sentence case** for all headings.
 - **One sentence per line**, wrapped at roughly 80 columns.
 - **Code blocks**: always include a language tag.
+- **Code comments**: write as complete sentences — sentence-style capitalization (capitalize the
+  first word) and a closing period. This applies to both inline (`//`) and block (`/* */`) comments
+  in Java snippets, and to `#` comments in shell/bash snippets.
 - **Terminology**: use the required forms from `terminology.mdc`.
 - **No marketing language**: no "powerful," "seamless," "best-in-class."
 - **No invented API behavior**: if you are not certain about a parameter, return value, or
