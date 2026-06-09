@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "prestart": "node scripts/fetch-plugin-api-docs.mjs",
     "start": "docusaurus start",
+    "prebuild": "node scripts/fetch-plugin-api-docs.mjs",
     "build": "docusaurus build && node scripts/copy-md-to-build.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -67,7 +69,8 @@
     "stylelint": "^15.0.0 ",
     "stylelint-config-standard": "^34.0.0",
     "tsc-files": "^1.1.4",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "unzipper": "^0.12.3"
   },
   "browserslist": {
     "production": [

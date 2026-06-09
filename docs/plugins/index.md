@@ -1,6 +1,5 @@
 ---
 title: Besu plugins
-sidebar_position: 1
 sidebar_label: Introduction
 id: index
 description: Learn how Besu plugins extend Besu functionality.
@@ -8,7 +7,7 @@ description: Learn how Besu plugins extend Besu functionality.
 
 # Besu plugins
 
-Besu plugins are Java extensions that use the [Plugin API](reference/plugin-api/index.md) to
+Besu plugins are Java extensions that use the [Plugin API](pathname:///plugins/reference/plugin-api/index.html) to
 extend Besu functionality without modifying Besu source code.
 
 You can create your own plugin to build app-specific chains, integrate Besu with enterprise systems,

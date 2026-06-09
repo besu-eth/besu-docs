@@ -10,6 +10,13 @@ const config = {
   favicon: "img/favicon.svg",
   trailingSlash: false,
 
+  // Single source of truth for the current Besu release version.
+  // The Plugin API reference Javadoc is fetched at build time for this version.
+  // Update this field when cutting a new Besu release.
+  customFields: {
+    besuVersion: "26.6.0",
+  },
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "hyperledger", // Usually your GitHub org/user name.
