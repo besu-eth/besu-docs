@@ -101,7 +101,7 @@ The enode advertised to other nodes during discovery is the external IP address 
 
 :::caution
 
-Enode URL domain name support is an early access feature that you can use in private [permissioned networks](../../private-networks/concepts/permissioning/index.md) only.
+Enode URL domain name support is an early access feature that you can use in private [permissioned networks](../../private-networks/concepts/permissioning.md) only.
 
 :::
 

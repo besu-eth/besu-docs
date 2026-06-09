@@ -1,6 +1,6 @@
 ---
 title: Permissioning
-sidebar_position: 1
+sidebar_position: 3
 description: Besu permissioning feature
 ---
 
@@ -22,7 +22,7 @@ Use node permissioning to restrict access to known participants only.
 
 <p align="center">
 
-![Node Permissioning](../../../assets/images/node-permissioning-bad-actor.svg)
+![Node Permissioning](../../assets/images/node-permissioning-bad-actor.svg)
 
 </p>
 
@@ -38,20 +38,20 @@ Use account permissioning to:
 
 <p align="center">
 
-![Account Permissioning](../../../assets/images/account-permissioning.svg)
+![Account Permissioning](../../assets/images/account-permissioning.svg)
 
 </p>
 
 ## Specify local permissioning
 
-[Local permissioning](../../how-to/use-local-permissioning.md) works at the node level. Each node in the network has a [permissions configuration file], which can be used to configure node and/or account permissioning rules.
+[Local permissioning](../how-to/use-local-permissioning.md) works at the node level. Each node in the network has a [permissions configuration file], which can be used to configure node and/or account permissioning rules.
 
 Local permissioning affects your node but not the rest of the network. Use local permissioning to restrict use of your node (that is, the resources under your control). For example, customers are able to access your node.
 
 Local permissioning does not require coordination with the rest of the network and you can act immediately to protect your node. Your rules are not enforced in blocks produced by other nodes.
 
-To implement more complex permissioning rules, you can [write your own plugin](plugin.md).
+To implement more complex permissioning rules, you can [write your own plugin](../../plugins/index.md).
 
 <!-- Links -->
 
-[permissions configuration file]: ../../how-to/use-local-permissioning.md#permissions-configuration-file
+[permissions configuration file]: ../how-to/use-local-permissioning.md#permissions-configuration-file

@@ -321,4 +321,4 @@ This option only applies to proof of authority (private) networks.
 
 [accounts permissions configuration file]: ../../how-to/use-local-permissioning.md#permissions-configuration-file
 [nodes permissions configuration file]: ../../how-to/use-local-permissioning.md#permissions-configuration-file
-[account permissioning]: ../../concepts/permissioning/index.md#account-permissioning
+[account permissioning]: ../../concepts/permissioning.md#account-permissioning

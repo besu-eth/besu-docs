@@ -41,7 +41,7 @@ To update the list of static peers at run time, use the [`admin_addPeer`](../../
 
 Runtime modifications of static nodes are not persisted between runs. The `static-nodes.json` file is not updated by the `admin_addPeer` and `admin_removePeer` methods.
 
-Nodes not in the list of the static nodes are not prevented from connecting. To prevent nodes from connecting, use [Permissioning](../../../private-networks/concepts/permissioning/index.md).
+Nodes not in the list of the static nodes are not prevented from connecting. To prevent nodes from connecting, use [Permissioning](../../../private-networks/concepts/permissioning.md).
 
 :::
 

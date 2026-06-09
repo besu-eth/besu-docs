@@ -41,6 +41,7 @@ const sidebars = {
           type: "link",
           label: "Plugin API",
           href: "pathname:///plugins/reference/plugin-api/index.html",
+          description: "Open the Plugin API Javadoc.",
         },
         { type: "doc", id: "plugins/reference/resources" },
       ],
