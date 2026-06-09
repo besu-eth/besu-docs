@@ -5,7 +5,7 @@ description: Understand the Besu plugin lifecycle.
 
 # Plugin lifecycle
 
-Besu plugins implement `BesuPlugin`.
+A Besu plugin is a Java class that implements the `BesuPlugin` interface.
 Besu discovers plugin JARs using Java's `ServiceLoader`, then calls the plugin lifecycle methods during 
 startup, runtime, reload, and shutdown.
 

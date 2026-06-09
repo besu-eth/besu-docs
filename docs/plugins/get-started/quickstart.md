@@ -15,14 +15,22 @@ Follow this quickstart to learn the essential workflow to create and deploy a Be
 
 ## Steps
 
-### 1. Add the Besu Gradle Plugin
+### 1. Set up your project
+
+A Besu plugin is a standalone Java project; create it in a separate directory from your Besu
+installation.
+
+```bash
+mkdir my-besu-plugin && cd my-besu-plugin
+```
 
 Besu provides a [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin) to simplify
-the plugin developer experience, enabling you to bootstrap a new plugin project easily.
-The Gradle plugin automatically adds and manages dependencies, and packages the plugin artifacts when
-you distribute the project.
+the plugin developer experience.
+It automatically adds and manages dependencies, and packages the plugin artifacts when you
+distribute the project.
 
-In a new plugin project, apply the Gradle plugin (`net.consensys.besu-plugin-distribution`), and set the Besu version using `besuPlugin`:
+In your plugin project, apply the Gradle plugin (`net.consensys.besu-plugin-distribution`) and set the Besu version
+using `besuPlugin`:
 
 ```groovy title="build.gradle"
 plugins {
@@ -186,6 +194,10 @@ Start Besu.
 It loads all JARs found in the `plugins` directory automatically.
 To load only specific plugins, use
 [`--plugins`](../../public-networks/reference/cli/options.md#plugins).
+
+:::tip Deploy using Docker
+See [Deploy a plugin](../how-to/deploy-a-plugin.md) to learn how to deploy your plugin using a Besu Docker image.
+:::
 
 ## Next steps
 

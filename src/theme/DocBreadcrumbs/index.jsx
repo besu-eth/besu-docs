@@ -13,6 +13,7 @@ import styles from "./styles.module.css";
 const SECTIONS = [
   { pathPrefix: "/public-networks", label: "Public networks", href: "/public-networks" },
   { pathPrefix: "/private-networks", label: "Private networks", href: "/private-networks" },
+  { pathPrefix: "/plugins", label: "Plugins", href: "/plugins" },
 ];
 
 function getSectionItem(pathname) {

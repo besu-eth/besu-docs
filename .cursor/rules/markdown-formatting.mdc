@@ -23,6 +23,14 @@ for full details. The rules below cover the most common conventions.
   `/private-networks/how-to/configure/consensus/ibft`).
 - Use descriptive link text. Do not use "click here" or bare URLs.
 
+## Inline code references
+
+- When referencing a method name in prose, omit empty parentheses: write `getName`, not `getName()`.
+  Reserve the `()` suffix for cases where the signature is part of the meaning, such as distinguishing
+  an overloaded method or showing a parameter type (for example, `register(ServiceManager)`).
+- Always use backticks for inline code references (method names, class names, CLI options, file paths,
+  and so on).
+
 ## Code blocks
 
 - Always specify the language on fenced code blocks (` ```javascript `, ` ```bash `, etc.).

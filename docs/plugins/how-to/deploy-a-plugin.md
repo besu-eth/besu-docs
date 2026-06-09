@@ -40,6 +40,10 @@ unzip -l build/distributions/<project-name>.zip
 
 ### 2. Deploy to Besu
 
+Deploy your plugin via a standard Besu installation or Besu Docker image.
+
+#### Standard installation
+
 Create a `plugins` directory at the root of your Besu installation if it doesn't already exist,
 then unzip the archive into it.
 The `-j` flag flattens the ZIP so all JARs land directly in `plugins/`:
@@ -50,16 +54,33 @@ unzip -j build/distributions/<project-name>.zip -d /path/to/besu/plugins/
 
 Start Besu.
 By default, Besu loads all JARs found in the `plugins` directory automatically.
-
 To load only specific plugins, pass a comma-separated list to
-[`--plugins`](../../public-networks/reference/cli/options.md#plugins):
+[`--plugins`](../../public-networks/reference/cli/options.md#plugins).
+
+#### Docker
+
+The Besu Docker image doesn't include a `plugins` directory.
+Use a bind mount to inject your plugin JARs into the container at `/opt/besu/plugins`:
 
 ```bash
-besu --plugins=ExamplePlugin
+# unzip the distribution into a local directory
+unzip -j build/distributions/<project-name>.zip -d /host/path/to/plugins/
+
+# mount that directory when starting the container
+docker run \
+  -v /host/path/to/plugins:/opt/besu/plugins \
+  hyperledger/besu:latest
 ```
 
-`--plugins` matches the value returned by `BesuPlugin.getName`.
-The match is case-sensitive.
+To use a different path inside the container, override the plugins directory using the
+`besu.plugins.dir` system property via `BESU_OPTS`:
+
+```bash
+docker run \
+  -e BESU_OPTS="-Dbesu.plugins.dir=/data/plugins" \
+  -v /host/path/to/plugins:/data/plugins \
+  hyperledger/besu:latest
+```
 
 ### 3. Verify startup
 
