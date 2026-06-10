@@ -536,4 +536,4 @@ To restart the permissioned network in the future, start from [step 7](#7-start-
 <!-- Links -->
 
 [IBFT 2.0 proof of authority consensus protocol]: ../../how-to/configure/consensus/ibft.md
-[Quickstart tutorial]: ../quickstart.md#create-a-transaction-using-metamask
+[Quickstart tutorial]: ../quickstart.md#6-send-a-transaction-with-metamask

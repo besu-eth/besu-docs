@@ -11,18 +11,8 @@ description: Send Besu logs to Splunk
 
 Splunk can aggregate multiple logs in one place and run complex queries without being connected to the machine running Besu to read the standard output.
 
-Options for running Splunk and Besu are:
-
-- [Developer Quickstart with Splunk](#developer-quickstart-with-splunk)
-- [Use Splunk Enterprise as a Docker container](#use-splunk-enterprise-as-a-docker-container)
-- [Run a Splunk Enterprise instance](#run-a-splunk-enterprise-instance)
-
-## Developer Quickstart with Splunk
-
-To view the Quickstart network logs in Splunk:
-
-1. [Start the Developer Quickstart with Besu](../../tutorials/quickstart.md), selecting Splunk monitoring.
-1. Open the [Splunk UI](http://localhost:8000).
+To use Splunk with Besu, run Splunk Enterprise [as a Docker container](#use-splunk-enterprise-as-a-docker-container)
+or [as its own instance](#run-a-splunk-enterprise-instance).
 
 ## Use Splunk Enterprise as a Docker container
 
@@ -90,7 +80,7 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
     --network=dev \
     --logging=trace
     ```
-    
+
     The environment variables specified send the Besu logs to Splunk. Only `LOGGER`, `SPLUNK_URL`, `SPLUNK_TOKEN` and `SPLUNK_SKIPTLSVERIFY` are required in this example. The complete list of options is in the [Splunk options reference table](#splunk-options-reference).
 
 4.  In the Splunk Web interface, navigate to the [search page](http://localhost:8080/en-US/app/search/search). Type `index="besu"` in the search field. Log events sent by Besu are displayed.

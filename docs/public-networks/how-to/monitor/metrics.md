@@ -210,4 +210,4 @@ You can enable metric categories using the
 
 <!-- Links -->
 
-[monitoring with Prometheus and Grafana configured]: ../../../private-networks/tutorials/quickstart.md#monitor-nodes-with-prometheus-and-grafana
+[monitoring with Prometheus and Grafana configured]: ../../../private-networks/tutorials/quickstart.md#5-monitor-nodes-with-prometheus-grafana-and-loki

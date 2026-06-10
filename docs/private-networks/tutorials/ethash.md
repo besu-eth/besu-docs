@@ -214,7 +214,7 @@ The result confirms Node-1 (the node running the JSON-RPC service) has two peers
 
 ## Next steps
 
-Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
+Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#6-send-a-transaction-with-metamask).
 
 :::info
 
