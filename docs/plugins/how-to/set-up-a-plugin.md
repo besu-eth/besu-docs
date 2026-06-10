@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 description: Set up, implement, and register a plugin.
+toc_max_heading_level: 3
 ---
 
 # Set up a plugin project
@@ -25,7 +26,7 @@ The plugin:
   artifact catalog.
 - Produces a slim distribution ZIP that excludes JARs already on Besu's classpath.
 
-In a new plugin project, apply the Gradle plugin (`net.consensys.besu-plugin-distribution`), and set the Besu version using `besuPlugin`:
+In a new plugin project, apply the Gradle plugin (`net.consensys.besu-plugin-distribution`), and set the Besu version you want to compile your plugin against:
 
 ```groovy title="build.gradle"
 plugins {
@@ -36,6 +37,10 @@ besuPlugin {
     besuVersion = '26.6.0'
 }
 ```
+
+:::note
+The Gradle plugin resolves the matching Besu API JARs as compile-time dependencies, so your plugin builds against that version's API surface.
+:::
 
 #### Multi-module projects
 

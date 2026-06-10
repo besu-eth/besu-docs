@@ -5,7 +5,7 @@ description: Add CLI options and read Besu configuration.
 
 # Configure a plugin
 
-You can add CLI options, read Besu configuration values, validate configuration at startup, and reload configuration at runtime.
+You can perform configuration-related tasks: add CLI options, read Besu configuration values, validate configuration at startup, and reload configuration at runtime.
 
 ## Prerequisites
 
