@@ -10,6 +10,7 @@ import DocItemTOCMobile from "@theme/DocItem/TOC/Mobile";
 import DocItemTOCDesktop from "@theme/DocItem/TOC/Desktop";
 import DocItemContent from "@theme/DocItem/Content";
 import DocBreadcrumbs from "@theme/DocBreadcrumbs";
+import CopyPageButton from "docusaurus-plugin-copy-page-button/src/CopyPageButton";
 import styles from "./styles.module.css";
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -38,7 +39,10 @@ export default function DocItemLayout({ children }) {
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
-            <DocBreadcrumbs />
+            <div className={styles.docItemHeader}>
+              <DocBreadcrumbs />
+              <CopyPageButton />
+            </div>
             <DocItemTags />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>

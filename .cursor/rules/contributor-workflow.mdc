@@ -33,6 +33,16 @@ verified against the Besu codebase or published reference. If you are uncertain,
 comment or admonition noting the uncertainty. This rule applies to both human and AI-assisted
 contributions.
 
+## Issue intake
+
+Issue forms live in `.github/ISSUE_TEMPLATE/` and should stay lightweight. Many Besu docs issues
+start as a short note with a link to a Besu product PR, code change, or published docs page.
+
+When working from an issue, use whatever fields are provided.
+If the issue is sparse, inspect the linked source material and derive the implementation checklist.
+If the source is blank, unclear, or says research is needed, treat verification as part of
+the task before changing docs. Do not fill gaps by inventing Besu behavior.
+
 ## Images
 
 Place images in `docs/assets/images/`. Reference them with relative paths from the documentation
@@ -54,6 +64,39 @@ corresponding `.cursor/rules/` file in the same PR. Examples of changes that req
 
 Keeping rule files current prevents stale guidance from producing incorrect contributions.
 
+## DCO sign-off
+
+All commits in a pull request must follow the
+[Besu DCO process](https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154245/DCO).
+The Developer Certificate of Origin (DCO) confirms that the contribution can be submitted under the
+repository license.
+
+If an AI agent creates commits or opens a PR, it must complete this preflight before opening the PR:
+
+- Confirm `git config user.name` is the human contributor's legal name.
+- Confirm `git config user.email` is an email address associated with the human contributor's
+  GitHub account.
+- Create commits with `git commit -s` or `git commit --signoff` so each commit message includes
+  `Signed-off-by: Legal Name <email@address>`.
+- Inspect every commit that will be included in the PR and verify that each has a `Signed-off-by`
+  line. Compare against the PR base branch, usually `main` or `upstream/main`.
+- Do not open a PR with unsigned commits. If a local commit is missing sign-off, amend or rebase to
+  add it before pushing. If the branch was already pushed, confirm with the user before rewriting
+  published commit history.
+
+Do not invent or substitute the contributor identity. If the legal name or GitHub-associated email
+is missing or unclear, ask the user before committing or opening the PR.
+
+Useful preflight commands:
+
+```bash
+git config user.name
+git config user.email
+git log --format='%h %an <%ae>%n%B' <base-branch>..HEAD
+```
+
+Replace `<base-branch>` with the PR target branch, for example `upstream/main`.
+
 ## CI linting
 
 Pull requests are checked by the
@@ -73,6 +116,7 @@ Additional CI checks:
 - Follow the PR template in `.github/PULL_REQUEST_TEMPLATE.md`.
 - Summarize what changed and why in the PR description. Do not just list files.
 - Link the related issue using `fixes #<number>` when applicable.
+- Verify DCO sign-off before pushing or opening the PR.
 - Preview locally with `npm start` before requesting review.
 
 ## Cross-area links

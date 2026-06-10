@@ -18,7 +18,8 @@ description: Install or upgrade Besu from binary distribution
 Besu supports:
 
 - MacOS High Sierra 10.13 or later versions.
-- Java 21+. You can install Java using `brew install openjdk@21`. Alternatively, you can manually install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
+- Java 25+. You can install Java using `brew install openjdk@25`. Alternatively, you can manually
+    install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
 
 :::
 
@@ -62,17 +63,20 @@ besu --help
 
 ### Prerequisites
 
-- [Java JDK 21+](https://www.oracle.com/java/technologies/downloads/)
+- [Java JDK 25+](https://www.oracle.com/java/technologies/downloads/)
 
 :::note Linux open file limit
 
-If synchronizing to Mainnet on Linux or other chains with large data requirements, increase the maximum number of open files allowed using `ulimit`. If the open files limit is not high enough, a `Too many open files` RocksDB exception occurs.
+If synchronizing to Mainnet on Linux or other chains with large data requirements, increase the
+maximum number of open files allowed using `ulimit`. If the open files limit is not high enough, a
+`Too many open files` RocksDB exception occurs.
 
 :::
 
 :::tip
 
-We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage. If using Ubuntu, you can install it with the command: `apt install libjemalloc-dev`.
+We recommend installing [jemalloc](https://jemalloc.net/) to reduce memory usage. If using Ubuntu, you
+can install it with the command: `apt install libjemalloc-dev`.
 
 :::
 

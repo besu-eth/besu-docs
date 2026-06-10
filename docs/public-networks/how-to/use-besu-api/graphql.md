@@ -82,6 +82,7 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"
 </TabItem>
 
 </Tabs>
+
 The following [`syncing`](../../reference/api/index.md#eth_syncing) request returns data about the
 synchronization status:
 
@@ -111,6 +112,7 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{syncing{st
 </TabItem>
 
 </Tabs>
+
 :::info note
 In some cases, for example, when your node is fully synced, the syncing request returns a `null` response:
 
@@ -129,7 +131,7 @@ The third-party tool, [GraphiQL](https://github.com/skevy/graphiql-app), provide
 for editing and testing GraphQL queries and mutations.
 GraphiQL also provides access to the [Besu GraphQL schema] from within the app.
 
-![GraphiQL](../../../assets/images/GraphiQL.png)
+![GraphiQL](../../../assets/images/graphiql.png)
 
 ## Pending
 

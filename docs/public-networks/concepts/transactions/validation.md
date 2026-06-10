@@ -6,9 +6,22 @@ description: What transaction validation and when
 
 # Transaction validation
 
-For transactions submitted and added to a block, Besu validates the transactions, as illustrated in the following diagram.
+For each transaction submitted and added to a block, Besu checks the following:
 
-![Transaction Validation](../../../assets/images/transaction-validation.png)
+- The nonce is high enough.
+- Permissions are correct.
+- The transaction is well formed.
+- The sender is valid.
+- There is a sufficient account balance.
+- The chain ID is correct.
+- The gas limit is high enough.
+
+The following diagram illustrates when Besu validates transactions (indicated by a check mark):
+<p align="center">
+
+![Transaction Validation](../../../assets/images/transaction-validation.svg)
+
+</p>
 
 Besu repeats the set of transaction pool validations after propagating the transaction. Besu repeats the same set of validations when importing the block that includes the transaction, except the nonce must be exactly right when importing the block.
 

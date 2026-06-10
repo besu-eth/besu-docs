@@ -15,7 +15,7 @@ You can use the OpenTelemetry monitoring and tracing service to gather node metr
 
 Use OpenTelemetry to monitor the sync time of your Besu node and show where time is spent internally and over the JSON-RPC interface.
 
-[This office hours recording](https://wiki.hyperledger.org/display/BESU/2021-01-19+Office+Hours+Notes) shows examples of monitoring Besu.
+[This office hours recording](https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154821/2021-01-19+Office+Hours+Notes) shows examples of monitoring Besu.
 
 :::
 

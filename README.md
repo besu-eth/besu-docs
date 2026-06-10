@@ -11,12 +11,12 @@ If you're looking for the software source code, go to the [Besu software reposit
 
 ### View older doc versions
 
-See the Besu wiki for information about [viewing and hosting older versions of the documentation](https://wiki.hyperledger.org/display/BESU/View+older+documentation+versions)
+See the Besu wiki for information about [viewing and hosting older versions of the documentation](https://lf-hyperledger.atlassian.net/wiki/display/BESU/View+older+documentation+versions)
 on your own infrastructure.
 
 ### Contribute to the docs
 
-See the [documentation section in the Besu wiki](https://wiki.hyperledger.org/display/BESU/Documentation)
+See the [documentation section in the Besu wiki](https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154225/Documentation)
 for information about submitting documentation changes and previewing the site locally.
 
 ### Questions?

@@ -101,10 +101,15 @@ You might need to set [`--tx-pool-limit-by-account-percentage`](../../public-net
 
 :::
 
-:::note Sync nodes for BFT
+:::info Sync nodes for BFT
 
-If you're running a node on a [QBFT](../how-to/configure/consensus/qbft.md) or [IBFT 2.0](../how-to/configure/consensus/ibft.md) network, your node must use [fast sync](../../public-networks/concepts/node-sync.md#fast-synchronization-deprecated) or [full sync](../../public-networks/concepts/node-sync.md#full-synchronization). 
+If you're running a node on a [QBFT](../how-to/configure/consensus/qbft.md) or [IBFT 2.0](../how-to/configure/consensus/ibft.md) network, 
+Besu uses [full sync](../../public-networks/concepts/node-sync.md#full-synchronization) by default.
 
-Full sync is set by default.
+To use [snap sync](../../public-networks/concepts/node-sync.md#snap-synchronization) for a node joining or catching up to an existing QBFT or IBFT 2.0 network,
+the existing nodes must serve snap sync data using
+[`--snapsync-server-enabled=true`](../../public-networks/reference/cli/options.md#snapsync-server-enabled),
+and the joining node must set
+[`--sync-mode=SNAP`](../../public-networks/reference/cli/options.md#sync-mode).
 
 :::

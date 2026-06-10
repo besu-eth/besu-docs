@@ -329,6 +329,7 @@ The block parameter can have one of the following values:
   - [`eth_getCode`](../../reference/api/index.md#eth_getcode)
   - [`eth_getProof`](../../reference/api/index.md#eth_getproof)
   - [`eth_getStorageAt`](../../reference/api/index.md#eth_getstorageat)
+  - [`eth_getStorageValues`](../../reference/api/index.md#eth_getstoragevalues)
   - [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount)
 
   :::

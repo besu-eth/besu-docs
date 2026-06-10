@@ -6,7 +6,11 @@ description: Besu high availability
 
 To enable high availability to the [RPC Pub/Sub API over WebSocket](../use-besu-api/rpc-pubsub.md) or the [JSON-RPC API](../use-besu-api/json-rpc.md), run and synchronize more than one Besu node to the network. Use a load balancer to distribute requests across nodes in the cluster that are ready to receive requests.
 
-![Load Balancer](../../../assets/images/LoadBalancer.png)
+<p align="center">
+
+![Load Balancer](../../../assets/images/load-balancer.svg)
+
+</p>
 
 :::tip
 

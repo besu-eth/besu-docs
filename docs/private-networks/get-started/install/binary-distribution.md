@@ -18,7 +18,8 @@ sidebar_position: 3
 Besu supports:
 
 - MacOS High Sierra 10.13 or later versions.
-- Java 21+. You can install Java using `brew install openjdk@21`. Alternatively, you can manually install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
+- Java 25+. You can install Java using `brew install openjdk@25`. Alternatively, you can manually
+    install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
 
 :::
 
@@ -65,7 +66,7 @@ besu --help
 
 ### Prerequisites
 
-- [Java JDK 17+](https://www.oracle.com/java/technologies/downloads/)
+- [Java JDK 25+](https://www.oracle.com/java/technologies/downloads/)
 
 :::note Linux open file limit
 

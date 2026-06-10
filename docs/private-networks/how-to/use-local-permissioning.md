@@ -104,7 +104,11 @@ After adding transactions to a block, the transactions are not validated against
 
 The following diagram illustrates where local permissioning rules are checked.
 
-![Permissioning Flow](../../assets/images/PermissioningFlow.png)
+<p align="center">
+
+![Permissioning Flow](../../assets/images/permissioning-flow.svg)
+
+</p>
 
 ```text title="Example of different account allowlists"
 Node 1 Allowlist = [Account A, Account B]

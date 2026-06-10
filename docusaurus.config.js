@@ -90,7 +90,7 @@ const config = {
       navbar: {
         logo: {
           alt: "Besu",
-          src: "img/logo-reversed.svg",
+          src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
           width: 100,
         },
@@ -133,7 +133,7 @@ const config = {
           alt: "Besu logo",
           src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
-          href: "https://www.hyperledger.org/use/besu",
+          href: "https://www.lfdecentralizedtrust.org/projects/besu",
           width: 250,
         },
         links: [
@@ -221,7 +221,7 @@ const config = {
       },
       mermaid: {
         options: {
-          fontFamily: "arial, verdana, sans-serif;",
+          fontFamily: "var(--ifm-font-family-base)",
           wrap: true,
           sequence: {
             diagramMarginX: 25,
@@ -232,6 +232,18 @@ const config = {
             nodeSpacing: 75,
           },
         },
+      },
+      zoom: {
+        selectors: [
+          "div.docusaurus-mermaid-container",
+          "div.mermaid[data-processed=\"true\"]",
+          ".theme-doc-markdown img:not([alt=\"Run in Postman\"])",
+          ".drawio",
+        ],
+        toolbar: {
+          enabled: true,
+        },
+        enableWheelZoom: false,
       },
       languageTabs: [
         {
@@ -349,6 +361,7 @@ const config = {
         ],
       },
     ],
+    "@r74tech/docusaurus-plugin-panzoom",
   ],
   themes: [
     [

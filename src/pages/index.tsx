@@ -40,11 +40,11 @@ function HomepageText() {
       </p>
       <p>
         You can{" "}
-        <Link to="https://wiki.hyperledger.org/display/BESU/Documentation">
+        <Link to="https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154225/Documentation">
           contribute to the documentation
         </Link>{" "}
         or to{" "}
-        <Link to="https://wiki.hyperledger.org/display/BESU/Contributing">
+        <Link to="https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22156850/How+to+Contribute">
           Besu itself
         </Link>
         .
