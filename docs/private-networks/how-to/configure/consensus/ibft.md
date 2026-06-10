@@ -264,7 +264,7 @@ IBFT 2.0 requires four validators to be Byzantine fault tolerant. Byzantine faul
 
 ### Maximum number of validators
 
-As the number of validators increase, the message complexity increases, which can decrease performance. In [network tests](https://wiki.hyperledger.org/display/BESU/Maximum+Validator+count+for+an+IBFT2+Network), IBFT 2.0 handles up to 30 validators with no loss of performance.
+As the number of validators increase, the message complexity increases, which can decrease performance. In [network tests](https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22155102/Maximum+Validator+count+for+an+IBFT2+Network), IBFT 2.0 handles up to 30 validators with no loss of performance.
 
 Non-validator nodes don't affect performance and don't count towards the maximum limit.
 

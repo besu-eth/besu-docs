@@ -16,7 +16,7 @@ One or more of the following may be the cause:
 
 - Your hardware doesn't have enough CPU, disk IOPS, or bandwidth to handle all the peers.
 - Your ports aren't open in your firewall and/or router.
-- Your node is sending large numbers of DNS requests. See [issue #4375](https://github.com/hyperledger/besu/issues/4375).
+- Your node is sending large numbers of DNS requests. See [issue #4375](https://github.com/besu-eth/besu/issues/4375).
 - Your node is experiencing the normal behavior of peers connecting and disconnecting. This is especially normal soon after you start your node.
 
 You can try the following to find more peers:

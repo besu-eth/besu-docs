@@ -8708,5 +8708,5 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}
 
 <!-- Links -->
 
-[schema]: https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
+[schema]: https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
 [eth_sendRawTransaction or eth_call]: ../../how-to/send-transactions.md#eth_call-or-eth_sendrawtransaction

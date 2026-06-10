@@ -11,8 +11,7 @@ listed on the right unless they appear in code, URLs, or direct quotations from 
 
 | Required term                          | Do not use                                              |
 |----------------------------------------|---------------------------------------------------------|
-| Besu                                   | besu, BESU (except in code/URLs/CLI)                    |
-| Hyperledger Besu                       | Hyperledger besu                                        |
+| Besu                                   | besu, BESU (except in code/URLs/CLI), Hyperledger Besu  |
 | dapp                                   | DApp, Dapp, dApp, decentralized application             |
 | externally owned account (EOA)         | externally-owned account                                |
 | smart contract                         | smartcontract, smart-contract                           |

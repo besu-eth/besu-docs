@@ -16,6 +16,6 @@ View the [Wiki] for instructions to install Besu from source.
 
 <!-- link -->
 
-[Wiki]: https://wiki.hyperledger.org/display/BESU/Building+from+source
+[Wiki]: https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154264/Building+from+source
 [binary]: binary-distribution.md
 [Docker image]: run-docker-image.md

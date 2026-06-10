@@ -35,7 +35,7 @@ The following networks and testnets are deprecated: ETC (Ethereum Classic) and M
 
 When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
 
-The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/hyperledger/besu/tree/master/config/src/main/resources).
+The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
 To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/cli/options.md#genesis-file) option.
 

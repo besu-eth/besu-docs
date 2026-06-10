@@ -24,7 +24,7 @@ To define a genesis configuration, create a [genesis file](../../public-networks
 
 When you specify [`--network=dev`](../../public-networks/reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../../public-networks/reference/cli/options.md#network) has an empty bootnodes list by default.
 
-Predefined genesis configurations for named networks are in the [Besu source files](https://github.com/hyperledger/besu/tree/master/config/src/main/resources).
+Predefined genesis configurations for named networks are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
 ## Confirm node is running
 
