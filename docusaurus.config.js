@@ -213,8 +213,8 @@ const config = {
                 to: "/plugins/get-started",
               },
               {
-                label: "Features",
-                to: "/plugins/features",
+                label: "Services",
+                to: "/plugins/services",
               },
               {
                 label: "How to guides",

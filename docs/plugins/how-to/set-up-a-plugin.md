@@ -157,7 +157,7 @@ example.ExamplePlugin
 ## Next steps
 
 - Learn about the [plugin lifecycle](../get-started/plugin-lifecycle.md).
-- Integrate [events and metrics](../features/events-and-metrics.md), [custom RPC endpoints](../features/custom-rpc-endpoints.md),
-  and other plugin features.
+- Integrate [events and metrics](../services/events-and-metrics.md), [custom RPC endpoints](../services/custom-rpc-endpoints.md),
+  and other plugin services.
 - When you're ready to ship, [build and deploy the plugin](deploy-a-plugin.md).
 - [Troubleshoot](troubleshoot.md) common issues.

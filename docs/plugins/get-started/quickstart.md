@@ -197,5 +197,5 @@ See [Deploy a plugin](../how-to/deploy-a-plugin.md) to learn how to deploy your 
 ## Next steps
 
 - Learn about the [plugin lifecycle](plugin-lifecycle.md).
-- Integrate different [features](/plugins/features) into your plugin.
+- Integrate different [services](/plugins/services) into your plugin.
 - [Troubleshoot](../how-to/troubleshoot.md) common issues.

@@ -19,7 +19,7 @@ They can also register event listeners to observe Besu activity such as block im
 pool changes, logs, and sync status changes.
 
 Get started with the [quickstart](get-started/quickstart.md), or explore the
-[plugin lifecycle](get-started/plugin-lifecycle.md) and [plugin features](/plugins/features).
+[plugin lifecycle](get-started/plugin-lifecycle.md) and [plugin services](/plugins/services).
 
 ## Architecture
 
