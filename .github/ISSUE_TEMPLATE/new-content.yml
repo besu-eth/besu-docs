@@ -31,7 +31,7 @@ body:
     attributes:
       label: Location
       description: Link to or describe the page or section where this content might live.
-      placeholder: 'Example: "https://besu.hyperledger.org/public-networks/..."'
+      placeholder: 'Example: "https://docs.besu-eth.org/public-networks/..."'
   - type: textarea
     id: source-links
     attributes:

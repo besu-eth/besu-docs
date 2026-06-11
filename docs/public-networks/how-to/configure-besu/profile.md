@@ -31,14 +31,14 @@ A configuration option specified in the configuration file or on the command lin
 
 [`--profile=MINIMALIST_STAKER`](../../reference/cli/options.md#profile) is optimized for stakers who 
 want to maximize their hardware value but don't want to serve full sets of data to their peers. See the
-[minimalist staker profile on GitHub](https://github.com/hyperledger/besu/blob/main/config/src/main/resources/profiles/minimalist-staker.toml)
+[minimalist staker profile on GitHub](https://github.com/besu-eth/besu/blob/main/config/src/main/resources/profiles/minimalist-staker.toml)
 for the custom settings.
 
 ## Staker profile
 
 [`--profile=STAKER`](../../reference/cli/options.md#profile) is optimized for stakers who want to 
 maximize their hardware value while also serving full sets of data to their peers. See the
-[staker profile on GitHub](https://github.com/hyperledger/besu/blob/main/config/src/main/resources/profiles/staker.toml)
+[staker profile on GitHub](https://github.com/besu-eth/besu/blob/main/config/src/main/resources/profiles/staker.toml)
 for the custom settings.
 
 ## Enterprise/Private profile
@@ -46,7 +46,7 @@ for the custom settings.
 `ENTERPRISE` and `PRIVATE` are aliases for the same profile. [`--profile=PRIVATE` / `--profile=ENTERPRISE`](../../reference/cli/options.md#profile) 
 supports private network operators and enterprises by handling specific use cases that apply to 
 private network operators. See the [enterprise/private profile on 
-GitHub](https://github.com/hyperledger/besu/blob/main/config/src/main/resources/profiles/enterprise-private.toml)
+GitHub](https://github.com/besu-eth/besu/blob/main/config/src/main/resources/profiles/enterprise-private.toml)
 for the custom settings.
 
 When using this profile, set [`--sync-mode=FULL`](../../reference/cli/options.md#sync-mode) 
@@ -64,8 +64,8 @@ increasing the RocksDB cache size and caching the last 2048 blocks.
 The performance profiles use early access features.
 :::
 
-See the [performance profile](https://github.com/hyperledger/besu/blob/main/config/src/main/resources/profiles/performance.toml)
-and [performance RPC profile](https://github.com/hyperledger/besu/blob/main/config/src/main/resources/profiles/performance-rpc.toml)
+See the [performance profile](https://github.com/besu-eth/besu/blob/main/config/src/main/resources/profiles/performance.toml)
+and [performance RPC profile](https://github.com/besu-eth/besu/blob/main/config/src/main/resources/profiles/performance-rpc.toml)
 on GitHub for the custom settings.
 
 ## Load external profiles

@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "f334929f-c8c3-43ed-bb73-69a6f0d728d8",
-    "name": "Hyperledger Besu JSON-RPC API",
-    "description": "Hyperledger Besu JSON-RPC API enables interaction with a Besu Ethereum node.\n\nRefer to [Besu documentation how to page](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API/) to learn how to use this API.\n",
+    "name": "Besu JSON-RPC API",
+    "description": "The Besu JSON-RPC API enables interaction with a Besu Ethereum node.\n\nRefer to [Besu documentation how to page](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API/) to learn how to use this API.\n",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -103,7 +103,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Changes the log level without restarting Besu. You can change the log level for all logs, or you\ncan change the log level for specific packages or classes.\n\nYou can specify only one log level per RPC call.\n\n#### Parameters\n\n`level` - [Log level](https://besu.hyperledger.org/en/stable/Reference/CLI/CLI-Syntax/#logging)\n\n`log_filter`: `Array` - Packages or classes to change the log level for. Optional.\n\n#### Returns\n\n`result` : `Success` if the log level has changed, otherwise `error`."
+            "description": "Changes the log level without restarting Besu. You can change the log level for all logs, or you\ncan change the log level for specific packages or classes.\n\nYou can specify only one log level per RPC call.\n\n#### Parameters\n\n`level` - [Log level](https://docs.besu-eth.org/en/stable/Reference/CLI/CLI-Syntax/#logging)\n\n`log_filter`: `Array` - Packages or classes to change the log level for. Optional.\n\n#### Returns\n\n`result` : `Success` if the log level has changed, otherwise `error`."
           },
           "response": [
             {
@@ -155,7 +155,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth_getlogs) and\n[`eth_getFilterLogs`](#eth_getfilterlogs) use the cache for improved performance.\n\n> **note**\n>\n> Each index file contains 100000 blocks. The last fragment of blocks less than 100000 are not indexed.\n\n> **tip**\n>\n> Manually executing `admin_generateLogBloomCache` is not required unless the [`--auto-log-bloom-caching-enabled`](https://besu.hyperledger.org/en/stable/Reference/CLI/CLI-Syntax/#auto-log-bloom-caching-enabled) command line option was set to false.\n\n#### Parameters\n\n`integer` - Block to start generating indexes.\n\n`integer` - Block to stop generating indexes.\n\n#### Returns\n\n`result` : *object* - Log bloom index details:\n\n* `quantity` : `startBlock` - Starting block for the last requested cache generation.\n* `quantity` : `endBlock` - Ending block for the last requested cache generation.\n* `quantity` : `currentBlock` - The most recent block added to the cache.\n* `boolean` : `indexing` - `true` if indexing is in progress.\n* `boolean` : `true` indicates acceptance of the request from this call to generate the cache."
+            "description": "Generates cached log bloom indexes for blocks. APIs such as [`eth_getLogs`](#eth_getlogs) and\n[`eth_getFilterLogs`](#eth_getfilterlogs) use the cache for improved performance.\n\n> **note**\n>\n> Each index file contains 100000 blocks. The last fragment of blocks less than 100000 are not indexed.\n\n> **tip**\n>\n> Manually executing `admin_generateLogBloomCache` is not required unless the [`--auto-log-bloom-caching-enabled`](https://docs.besu-eth.org/en/stable/Reference/CLI/CLI-Syntax/#auto-log-bloom-caching-enabled) command line option was set to false.\n\n#### Parameters\n\n`integer` - Block to start generating indexes.\n\n`integer` - Block to stop generating indexes.\n\n#### Returns\n\n`result` : *object* - Log bloom index details:\n\n* `quantity` : `startBlock` - Starting block for the last requested cache generation.\n* `quantity` : `endBlock` - Ending block for the last requested cache generation.\n* `quantity` : `currentBlock` - The most recent block added to the cache.\n* `boolean` : `indexing` - `true` if indexing is in progress.\n* `boolean` : `true` indicates acceptance of the request from this call to generate the cache."
           },
           "response": [
             {
@@ -259,7 +259,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns networking information about the node. The information includes general information about\nthe node and specific information from each running Ethereum sub-protocol (for example, `eth`).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : Node object\n\nProperties of the node object are:\n\n* `enode` - [Enode URL](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url) of the node.\n* `listenAddr` - Host and port for the node.\n* `name` - Client name.\n* `id` - [Node public key](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#node-public-key).\n* `ports` - Peer discovery and listening\n  [ports](https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Managing-Peers#port-configuration).\n* `protocols` - List of objects containing information for each Ethereum sub-protocol.\n\n> **note**\n>\n> If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Specifying-NAT).\n"
+            "description": "Returns networking information about the node. The information includes general information about\nthe node and specific information from each running Ethereum sub-protocol (for example, `eth`).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : Node object\n\nProperties of the node object are:\n\n* `enode` - [Enode URL](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url) of the node.\n* `listenAddr` - Host and port for the node.\n* `name` - Client name.\n* `id` - [Node public key](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#node-public-key).\n* `ports` - Peer discovery and listening\n  [ports](https://docs.besu-eth.org/en/stable/HowTo/Find-and-Connect/Managing-Peers#port-configuration).\n* `protocols` - List of objects containing information for each Ethereum sub-protocol.\n\n> **note**\n>\n> If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](https://docs.besu-eth.org/en/stable/HowTo/Find-and-Connect/Specifying-NAT).\n"
           },
           "response": [
             {
@@ -311,7 +311,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns networking information about connected remote nodes.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *array* of *objects* - Object returned for each remote node.\n\nProperties of the remote node object are:\n\n* `version` - P2P protocol version.\n* `name` - Client name.\n* `caps` - List of Ethereum sub-protocol capabilities.\n* `network` - Local and remote addresses established at time of bonding with the peer. The remote\n  address might not match the hex value for `port`. The remote address depends on which node\n  initiated the connection.\n* `port` - Port on the remote node on which P2P discovery is listening.\n* `id` - Node public key. Excluding the `0x` prefix, the node public key is the ID in the enode\n  URL `enode://<id ex 0x>@<host>:<port>`.\n* `protocols` - [Current state of peer](https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Managing-Peers#monitoring-peer-connections)\n  including `difficulty` and `head`. `head` is the hash of the highest known block for the peer."
+            "description": "Returns networking information about connected remote nodes.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *array* of *objects* - Object returned for each remote node.\n\nProperties of the remote node object are:\n\n* `version` - P2P protocol version.\n* `name` - Client name.\n* `caps` - List of Ethereum sub-protocol capabilities.\n* `network` - Local and remote addresses established at time of bonding with the peer. The remote\n  address might not match the hex value for `port`. The remote address depends on which node\n  initiated the connection.\n* `port` - Port on the remote node on which P2P discovery is listening.\n* `id` - Node public key. Excluding the `0x` prefix, the node public key is the ID in the enode\n  URL `enode://<id ex 0x>@<host>:<port>`.\n* `protocols` - [Current state of peer](https://docs.besu-eth.org/en/stable/HowTo/Find-and-Connect/Managing-Peers#monitoring-peer-connections)\n  including `difficulty` and `head`. `head` is the hash of the highest known block for the peer."
           },
           "response": [
             {
@@ -363,7 +363,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Removes a [static node](https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Static-Nodes).\n\n#### Parameters\n\n`string` : [Enode URL](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url) of peer to remove.\n\n#### Returns\n\n`result` : `boolean` - `true` if peer removed or `false` if peer not a\n[static node](https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Static-Nodes))."
+            "description": "Removes a [static node](https://docs.besu-eth.org/en/stable/HowTo/Find-and-Connect/Static-Nodes).\n\n#### Parameters\n\n`string` : [Enode URL](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url) of peer to remove.\n\n#### Returns\n\n`result` : `boolean` - `true` if peer removed or `false` if peer not a\n[static node](https://docs.besu-eth.org/en/stable/HowTo/Find-and-Connect/Static-Nodes))."
           },
           "response": [
             {
@@ -396,7 +396,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `ADMIN` API methods are not enabled by default for JSON-RPC. To enable the `ADMIN` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or\n[`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.",
+      "description": "> **Note**\n>\n> The `ADMIN` API methods are not enabled by default for JSON-RPC. To enable the `ADMIN` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or\n[`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.",
       "event": [
         {
           "listen": "prerequest",
@@ -489,7 +489,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Provides validator metrics for the specified range:\n\n* Number of blocks from each validator.\n* Block number of the last block proposed by each validator (if any proposed in the specified\n  range).\n* All validators present in the last block.\n\n#### Parameters\n\n`fromBlockNumber` - Integer representing a block number or the string tag `earliest`, as described\nin [Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`toBlockNumber` - Integer representing a block number or one of the string tags `latest` or\n`pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter)\n\nIf you specify:\n\n* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less\n  than 100 blocks.\n* Only the first parameter, the call provides metrics for all blocks from the block specified to\n  the latest block.\n\n#### Returns\n\n`result`: _object_ - List of validator objects.\n\n> **Note**\n>\n> The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`."
+            "description": "Provides validator metrics for the specified range:\n\n* Number of blocks from each validator.\n* Block number of the last block proposed by each validator (if any proposed in the specified\n  range).\n* All validators present in the last block.\n\n#### Parameters\n\n`fromBlockNumber` - Integer representing a block number or the string tag `earliest`, as described\nin [Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`toBlockNumber` - Integer representing a block number or one of the string tags `latest` or\n`pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter)\n\nIf you specify:\n\n* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less\n  than 100 blocks.\n* Only the first parameter, the call provides metrics for all blocks from the block specified to\n  the latest block.\n\n#### Returns\n\n`result`: _object_ - List of validator objects.\n\n> **Note**\n>\n> The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`."
           },
           "response": [
             {
@@ -541,7 +541,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists [signers for the specified block].\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result: array of data` - List of 20-byte addresses of signers."
+            "description": "Lists [signers for the specified block].\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result: array of data` - List of 20-byte addresses of signers."
           },
           "response": [
             {
@@ -645,7 +645,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns\n[current proposals](https://besu.hyperledger.org/en/stable/HowTo/Configure/Consensus-Protocols/Clique#adding-and-removing-signers).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result`:_object_ - Map of account addresses to corresponding boolean values indicating the\nproposal for each account.\n\nIf the boolean value is `true`, the proposal is to add a signer. If `false`, the proposal is to\nremove a signer."
+            "description": "Returns\n[current proposals](https://docs.besu-eth.org/en/stable/HowTo/Configure/Consensus-Protocols/Clique#adding-and-removing-signers).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result`:_object_ - Map of account addresses to corresponding boolean values indicating the\nproposal for each account.\n\nIf the boolean value is `true`, the proposal is to add a signer. If `false`, the proposal is to\nremove a signer."
           },
           "response": [
             {
@@ -730,7 +730,7 @@
           ]
         }
       ],
-      "description": "> Note\n>\n> The `CLIQUE` API methods are not enabled by default for JSON-RPC.\n>\n> To enable the `CLIQUE` API methods use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> Note\n>\n> The `CLIQUE` API methods are not enabled by default for JSON-RPC.\n>\n> To enable the `CLIQUE` API methods use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "DEBUG",
@@ -859,7 +859,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "[Remix](https://remix.ethereum.org/) uses `debug_storageRangeAt` to implement debugging. Use the\n_Debugger_ tab in Remix instead of calling `debug_storageRangeAt` directly.\n\nReturns the contract storage for the specified range.\n\n#### Parameters\n\n`blockHash` : `data` - Block hash.\n\n`txIndex` : `integer` - Transaction index from which to start.\n\n`address` : `data` - Contract address.\n\n`startKey` : `hash` - Start key.\n\n`limit` : `integer` - Number of storage entries to return.\n\n#### Returns\n\n`result`:`object` - [Range object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#range-object).\n"
+            "description": "[Remix](https://remix.ethereum.org/) uses `debug_storageRangeAt` to implement debugging. Use the\n_Debugger_ tab in Remix instead of calling `debug_storageRangeAt` directly.\n\nReturns the contract storage for the specified range.\n\n#### Parameters\n\n`blockHash` : `data` - Block hash.\n\n`txIndex` : `integer` - Transaction index from which to start.\n\n`address` : `data` - Contract address.\n\n`startKey` : `hash` - Start key.\n\n`limit` : `integer` - Number of storage entries to return.\n\n#### Returns\n\n`result`:`object` - [Range object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#range-object).\n"
           },
           "response": [
             {
@@ -911,7 +911,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`Block` : `data` - RLP of the block.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`object` - [Trace object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#trace-object).\n"
+            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`Block` : `data` - RLP of the block.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`object` - [Trace object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#trace-object).\n"
           },
           "response": [
             {
@@ -963,7 +963,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`block hash` : `data` - Block hash.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`array of objects` - [Trace objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#trace-object)."
+            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`block hash` : `data` - Block hash.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`array of objects` - [Trace objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#trace-object)."
           },
           "response": [
             {
@@ -1015,7 +1015,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`array of objects` - [Trace objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#trace-object)."
+            "description": "Returns full trace of all invoked opcodes of all transactions included in the block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`array of objects` - [Trace objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#trace-object)."
           },
           "response": [
             {
@@ -1067,7 +1067,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "[Remix](https://remix.ethereum.org/) uses `debug_traceTransaction` to implement debugging. Use the\n_Debugger_ tab in Remix instead of calling `debug_traceTransaction` directly.\n\nReruns the transaction with the same state as when the transaction executed.\n\n#### Parameters\n\n`transactionHash` : `data` - Transaction hash.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`object` - [Trace object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#trace-object).\n"
+            "description": "[Remix](https://remix.ethereum.org/) uses `debug_traceTransaction` to implement debugging. Use the\n_Debugger_ tab in Remix instead of calling `debug_traceTransaction` directly.\n\nReruns the transaction with the same state as when the transaction executed.\n\n#### Parameters\n\n`transactionHash` : `data` - Transaction hash.\n\n`Object` - request options (all optional and default to `false`):\n\n* `disableStorage` : `boolean` - `true` disables storage capture.\n* `disableMemory` : `boolean` - `true` disables memory capture.\n* `disableStack` : `boolean` - `true` disables stack capture.\n\n#### Returns\n\n`result`:`object` - [Trace object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#trace-object).\n"
           },
           "response": [
             {
@@ -1100,7 +1100,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `DEBUG` API methods are not enabled by default for JSON-RPC. To enable the `DEBUG` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.\n\nThe DEBUG API is a more verbose alternative to the TRACE API whose main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). We recommend using the TRACE API for production use over the DEBUG API."
+      "description": "> **Note**\n>\n> The `DEBUG` API methods are not enabled by default for JSON-RPC. To enable the `DEBUG` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.\n\nThe DEBUG API is a more verbose alternative to the TRACE API whose main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). We recommend using the TRACE API for production use over the DEBUG API."
     },
     {
       "name": "EEA",
@@ -1125,7 +1125,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Distributes the\n[private transaction](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions),\ngenerates the [privacy marker transaction](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Private-Transaction-Processing)\nand submits it to the transaction pool, and returns the transaction hash of the\n[privacy marker transaction](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Private-Transaction-Processing).\n\nThe signed transaction passed as an input parameter includes the `privateFrom`,\n[`privateFor` or `privacyGroupId`](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions#eea-compliant-or-besu-extended-privacy),\nand `restriction` fields.\n\nThe `gas` and `gasPrice` are used by the [privacy marker transaction](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Private-Transaction-Processing)\nnot the private transaction itself.\n\nTo avoid exposing your private key, create signed transactions offline and send the signed\ntransaction data using `eea_sendRawTransaction`.\n\n> **Important**\n>\n> For production systems requiring private transactions, use a network with a consensus mechanism\n> supporting transaction finality to make sure the private state does not become inconsistent\n> with the chain. For example, [IBFT 2.0](https://besu.hyperledger.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT)\n> provides the required finality.\n>\n> Using private transactions with [pruning](https://besu.hyperledger.org/en/stable/Concepts/Pruning) or\n> [fast sync](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#sync-mode) is not supported.\n> \n> Besu does not implement\n> [`eea_sendTransaction`](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Account-Management).\n> \n> [EthSigner](https://docs.ethsigner.consensys.net/en/latest/) provides transaction signing and\n>implements [`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).\n\n#### Parameters\n\n`data` -  Signed RLP-encoded private transaction. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n#### Returns\n\n`result` : `data` - 32-byte transaction hash of the\n[Privacy Marker Transaction](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Private-Transaction-Processing).\n\n> **Tip**\n>\n> If creating a contract, use [priv_getTransactionReceipt](#priv_gettransactionreceipt) to\n> retrieve the contract address after the transaction is finalized."
+            "description": "Distributes the\n[private transaction](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions),\ngenerates the [privacy marker transaction](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Private-Transaction-Processing)\nand submits it to the transaction pool, and returns the transaction hash of the\n[privacy marker transaction](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Private-Transaction-Processing).\n\nThe signed transaction passed as an input parameter includes the `privateFrom`,\n[`privateFor` or `privacyGroupId`](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions#eea-compliant-or-besu-extended-privacy),\nand `restriction` fields.\n\nThe `gas` and `gasPrice` are used by the [privacy marker transaction](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Private-Transaction-Processing)\nnot the private transaction itself.\n\nTo avoid exposing your private key, create signed transactions offline and send the signed\ntransaction data using `eea_sendRawTransaction`.\n\n> **Important**\n>\n> For production systems requiring private transactions, use a network with a consensus mechanism\n> supporting transaction finality to make sure the private state does not become inconsistent\n> with the chain. For example, [IBFT 2.0](https://docs.besu-eth.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT)\n> provides the required finality.\n>\n> Using private transactions with [pruning](https://docs.besu-eth.org/en/stable/Concepts/Pruning) or\n> [fast sync](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#sync-mode) is not supported.\n> \n> Besu does not implement\n> [`eea_sendTransaction`](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Account-Management).\n> \n> [EthSigner](https://docs.ethsigner.consensys.net/en/latest/) provides transaction signing and\n>implements [`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).\n\n#### Parameters\n\n`data` -  Signed RLP-encoded private transaction. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n#### Returns\n\n`result` : `data` - 32-byte transaction hash of the\n[Privacy Marker Transaction](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Private-Transaction-Processing).\n\n> **Tip**\n>\n> If creating a contract, use [priv_getTransactionReceipt](#priv_gettransactionreceipt) to\n> retrieve the contract address after the transaction is finalized."
           },
           "response": [
             {
@@ -1158,7 +1158,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `EEA` API methods are not enabled by default for JSON-RPC. To enable the `EEA` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `EEA` API methods are not enabled by default for JSON-RPC. To enable the `EEA` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "ETH",
@@ -1183,7 +1183,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns a list of account addresses a client owns.\n\n> **note**\n> \n> This method returns an empty object because Besu [doesn't support key management](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Account-Management) inside the client.\n> \n> To provide access to your key store and and then sign transactions, use [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`Array of data` : List of 20-byte account addresses owned by the client.\n"
+            "description": "Returns a list of account addresses a client owns.\n\n> **note**\n> \n> This method returns an empty object because Besu [doesn't support key management](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Account-Management) inside the client.\n> \n> To provide access to your key store and and then sign transactions, use [EthSigner](http://docs.ethsigner.consensys.net/en/latest/) with Besu.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`Array of data` : List of 20-byte account addresses owned by the client.\n"
           },
           "response": [
             {
@@ -1287,7 +1287,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Invokes a contract function locally and does not change the state of the blockchain.\n\nYou can interact with contracts using `eth_sendRawTransaction` or `eth_call`.\n\n#### Parameters\n\n*OBJECT* - [Transaction call object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-call-object).\n\n*QUANTITY|TAG* - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` - `data` - Return value of the executed contract.\n"
+            "description": "Invokes a contract function locally and does not change the state of the blockchain.\n\nYou can interact with contracts using `eth_sendRawTransaction` or `eth_call`.\n\n#### Parameters\n\n*OBJECT* - [Transaction call object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-call-object).\n\n*QUANTITY|TAG* - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` - `data` - Return value of the executed contract.\n"
           },
           "response": [
             {
@@ -1339,7 +1339,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the [chain ID](https://besu.hyperledger.org/en/stable/Concepts/NetworkID-And-ChainID).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *quantity* - Chain ID, in hexadecimal."
+            "description": "Returns the [chain ID](https://docs.besu-eth.org/en/stable/Concepts/NetworkID-And-ChainID).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *quantity* - Chain ID, in hexadecimal."
           },
           "response": [
             {
@@ -1443,7 +1443,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns an estimate of the gas required for a transaction to complete. The estimation process\ndoes not use gas and the transaction is not added to the blockchain. The resulting estimate can be\ngreater than the amount of gas the transaction ends up using, for reasons including EVM mechanics\nand node performance.\n\nThe `eth_estimateGas` call does not send a transaction. You must call\n[`eth_sendRawTransaction`](#eth_sendrawtransaction) to execute the transaction.\n\n#### Parameters\n\nThe transaction call object parameters are the same as those for [`eth_call`](#eth_call) except for the\n[`strict` parameter](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-call-object). If `strict` is set to `true`, the sender\naccount balance is checked for value transfer and transaction fees. The default for `strict` is `false`.\n\nFor `eth_estimateGas`, all fields are optional because setting a gas limit\nis irrelevant to the estimation process (unlike transactions, in which gas limits apply).\n\n`object` - [Transaction call object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-call-object).\n\n#### Returns\n\n`result` : `quantity` -  Amount of gas used."
+            "description": "Returns an estimate of the gas required for a transaction to complete. The estimation process\ndoes not use gas and the transaction is not added to the blockchain. The resulting estimate can be\ngreater than the amount of gas the transaction ends up using, for reasons including EVM mechanics\nand node performance.\n\nThe `eth_estimateGas` call does not send a transaction. You must call\n[`eth_sendRawTransaction`](#eth_sendrawtransaction) to execute the transaction.\n\n#### Parameters\n\nThe transaction call object parameters are the same as those for [`eth_call`](#eth_call) except for the\n[`strict` parameter](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-call-object). If `strict` is set to `true`, the sender\naccount balance is checked for value transfer and transaction fees. The default for `strict` is `false`.\n\nFor `eth_estimateGas`, all fields are optional because setting a gas limit\nis irrelevant to the estimation process (unlike transactions, in which gas limits apply).\n\n`object` - [Transaction call object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-call-object).\n\n#### Returns\n\n`result` : `quantity` -  Amount of gas used."
           },
           "response": [
             {
@@ -1495,7 +1495,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns a percentile gas unit price for the most recent blocks, in Wei. By default,\nthe last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value)\nis returned.\n\nIf there are no blocks, the value for [`--min-gas-price`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#min-gas-price) is returned.\nThe value returned is restricted to values between [`--min-gas-price`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#min-gas-price)\nand [`--api-gas-price-max`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#api-gas-price-max). By default, 1000 Wei and\n500GWei.\n\nUse the [`--api-gas-price-blocks`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#api-gas-price-blocks), [`--api-gas-price-percentile`](CLI/CLI-Syntax#api-gas-price-percentile)\n, and [`--api-gas-price-max`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#api-gas-price-max) command line\noptions to configure the `eth_gasPrice` default values.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : `quantity` - Percentile gas unit price for the most recent blocks, in Wei, as a hexadecimal value."
+            "description": "Returns a percentile gas unit price for the most recent blocks, in Wei. By default,\nthe last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value)\nis returned.\n\nIf there are no blocks, the value for [`--min-gas-price`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#min-gas-price) is returned.\nThe value returned is restricted to values between [`--min-gas-price`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#min-gas-price)\nand [`--api-gas-price-max`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#api-gas-price-max). By default, 1000 Wei and\n500GWei.\n\nUse the [`--api-gas-price-blocks`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#api-gas-price-blocks), [`--api-gas-price-percentile`](CLI/CLI-Syntax#api-gas-price-percentile)\n, and [`--api-gas-price-max`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#api-gas-price-max) command line\noptions to configure the `eth_gasPrice` default values.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : `quantity` - Percentile gas unit price for the most recent blocks, in Wei, as a hexadecimal value."
           },
           "response": [
             {
@@ -1547,7 +1547,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the account balance of the specified address.\n\n#### Parameters\n\n`DATA` - 20-byte account address from which to retrieve the balance.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Current balance, in wei, as a hexadecimal value."
+            "description": "Returns the account balance of the specified address.\n\n#### Parameters\n\n`DATA` - 20-byte account address from which to retrieve the balance.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Current balance, in wei, as a hexadecimal value."
           },
           "response": [
             {
@@ -1599,7 +1599,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns information about the block by hash.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a block.\n\n`Boolean` - If `true`, returns the full [transaction objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-object);\nif `false`, returns the transaction hashes.\n\n#### Returns\n\n`result` : *OBJECT* - [Block object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#block-object) , or `null` when there is no block."
+            "description": "Returns information about the block by hash.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a block.\n\n`Boolean` - If `true`, returns the full [transaction objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-object);\nif `false`, returns the transaction hashes.\n\n#### Returns\n\n`result` : *OBJECT* - [Block object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#block-object) , or `null` when there is no block."
           },
           "response": [
             {
@@ -1651,7 +1651,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns information about a block by block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`Boolean` - If `true`, returns the full [transaction objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-object);\nif `false`, returns only the hashes of the transactions.\n\n#### Returns\n\n`result` : *OBJECT* - [Block object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#block-object) , or `null` when there is no\nblock."
+            "description": "Returns information about a block by block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`Boolean` - If `true`, returns the full [transaction objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-object);\nif `false`, returns only the hashes of the transactions.\n\n#### Returns\n\n`result` : *OBJECT* - [Block object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#block-object) , or `null` when there is no\nblock."
           },
           "response": [
             {
@@ -1755,7 +1755,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the number of transactions in a block matching the specified block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Integer representing the number of transactions in the specified block."
+            "description": "Returns the number of transactions in a block matching the specified block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Integer representing the number of transactions in the specified block."
           },
           "response": [
             {
@@ -1807,7 +1807,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the code of the smart contract at the specified address. Besu stores compiled smart\ncontract code as a hexadecimal value.\n\n#### Parameters\n\n`DATA` - 20-byte contract address.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *DATA* - Code stored at the specified address."
+            "description": "Returns the code of the smart contract at the specified address. Besu stores compiled smart\ncontract code as a hexadecimal value.\n\n#### Parameters\n\n`DATA` - 20-byte contract address.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *DATA* - Code stored at the specified address."
           },
           "response": [
             {
@@ -1859,7 +1859,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Polls the specified filter and returns an array of changes that have occurred since the last poll.\n\n#### Parameters\n\n`data` - Filter ID.\n\n#### Returns\n\n`result` : `Array of Object` - If nothing changed since the last poll, an empty list. Otherwise:\n\n* For filters created with `eth_newBlockFilter`, returns block hashes.\n* For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.\n* For filters created with `eth_newFilter`, returns [log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object)."
+            "description": "Polls the specified filter and returns an array of changes that have occurred since the last poll.\n\n#### Parameters\n\n`data` - Filter ID.\n\n#### Returns\n\n`result` : `Array of Object` - If nothing changed since the last poll, an empty list. Otherwise:\n\n* For filters created with `eth_newBlockFilter`, returns block hashes.\n* For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.\n* For filters created with `eth_newFilter`, returns [log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object)."
           },
           "response": [
             {
@@ -1965,7 +1965,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns an array of [logs](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs) for the specified filter.\n\nLeave the [`--auto-log-bloom-caching-enabled`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\ncommand line option at the default value of `true` to improve log retrieval performance.\n\n> **note**\n\n    `eth_getFilterLogs` is only used for filters created with `eth_newFilter`. To specify a filter\n    object and get logs without creating a filter, use `eth_getLogs` .\n\n#### Parameters\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object)."
+            "description": "Returns an array of [logs](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs) for the specified filter.\n\nLeave the [`--auto-log-bloom-caching-enabled`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\ncommand line option at the default value of `true` to improve log retrieval performance.\n\n> **note**\n\n    `eth_getFilterLogs` is only used for filters created with `eth_newFilter`. To specify a filter\n    object and get logs without creating a filter, use `eth_getLogs` .\n\n#### Parameters\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object)."
           },
           "response": [
             {
@@ -2017,7 +2017,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns an array of [logs](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs) matching a specified filter object.\n\nLeave the [`--auto-log-bloom-caching-enabled`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\ncommand line option at the default value of `true` to improve log retrieval performance.\n\n> **Attention**\n>\n> Using `eth_getLogs` to get the logs from a large range of blocks, especially an entire chain from its genesis block, can cause Besu to hang and never return a response. We recommend splitting one large query into multiple ones for better performance.\n\n#### Parameters\n\n`Object` - [Filter options object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#filter-options-object).\n\n#### Returns\n\n`array` - [Log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object)."
+            "description": "Returns an array of [logs](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs) matching a specified filter object.\n\nLeave the [`--auto-log-bloom-caching-enabled`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\ncommand line option at the default value of `true` to improve log retrieval performance.\n\n> **Attention**\n>\n> Using `eth_getLogs` to get the logs from a large range of blocks, especially an entire chain from its genesis block, can cause Besu to hang and never return a response. We recommend splitting one large query into multiple ones for better performance.\n\n#### Parameters\n\n`Object` - [Filter options object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#filter-options-object).\n\n#### Returns\n\n`array` - [Log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object)."
           },
           "response": [
             {
@@ -2069,7 +2069,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns miner data for the specified block.\n\n#### Parameters\n\n`data` - 32 byte block hash.\n\n#### Returns\n\n`result`: `object` - [Miner data](https://besu.hyperledger.org/en/stable/Reference/API-Objects#miner-data-object)."
+            "description": "Returns miner data for the specified block.\n\n#### Parameters\n\n`data` - 32 byte block hash.\n\n#### Returns\n\n`result`: `object` - [Miner data](https://docs.besu-eth.org/en/stable/Reference/API-Objects#miner-data-object)."
           },
           "response": [
             {
@@ -2121,7 +2121,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns miner data for the specified block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result`: `object` - [Miner data](https://besu.hyperledger.org/en/stable/Reference/API-Objects#miner-data-object)."
+            "description": "Returns miner data for the specified block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result`: `object` - [Miner data](https://docs.besu-eth.org/en/stable/Reference/API-Objects#miner-data-object)."
           },
           "response": [
             {
@@ -2173,7 +2173,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the account and storage values of the specified account, including the Merkle proof.\n\nThe API allows IoT devices or mobile apps which are unable to run light clients to verify responses\nfrom untrusted sources, by using a trusted block hash.\n\n#### Parameters\n\n`DATA` - 20-byte address of the account or contract.\n\n`ARRAY` - Array of 32-byte storage keys to generate proofs for.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result`: *Object* - Account details:\n\n* `balance`:`Quantity` - Account balance.\n* `codeHash`:`Data, 32-byte` - Hash of the account code.\n* `nonce`:`Quantity` - Number of transactions sent from the account.\n* `storageHash`:`Data, 32-byte` - SHA3 of the `storageRoot`.\n* `accountProof`:`Array` - RLP-encoded Merkle tree nodes, starting with the `stateRoot`.\n* `storageProof`:`Array`- Storage entries. Each entry is an object that displays:\n    * `key`:`Quantity` - Storage key.\n    * `value`:`Quantity` - Storage value.\n    * `proof`:`Array` - RLP-encoded Merkle tree nodes, starting with the `storageHash`."
+            "description": "Returns the account and storage values of the specified account, including the Merkle proof.\n\nThe API allows IoT devices or mobile apps which are unable to run light clients to verify responses\nfrom untrusted sources, by using a trusted block hash.\n\n#### Parameters\n\n`DATA` - 20-byte address of the account or contract.\n\n`ARRAY` - Array of 32-byte storage keys to generate proofs for.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result`: *Object* - Account details:\n\n* `balance`:`Quantity` - Account balance.\n* `codeHash`:`Data, 32-byte` - Hash of the account code.\n* `nonce`:`Quantity` - Number of transactions sent from the account.\n* `storageHash`:`Data, 32-byte` - SHA3 of the `storageRoot`.\n* `accountProof`:`Array` - RLP-encoded Merkle tree nodes, starting with the `stateRoot`.\n* `storageProof`:`Array`- Storage entries. Each entry is an object that displays:\n    * `key`:`Quantity` - Storage key.\n    * `value`:`Quantity` - Storage value.\n    * `proof`:`Array` - RLP-encoded Merkle tree nodes, starting with the `storageHash`."
           },
           "response": [
             {
@@ -2225,7 +2225,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the value of a storage position at a specified address.\n\n#### Parameters\n\n`DATA` - A 20-byte storage address.\n\n`QUANTITY` - Integer index of the storage position.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *DATA* - The value at the specified storage position."
+            "description": "Returns the value of a storage position at a specified address.\n\n#### Parameters\n\n`DATA` - A 20-byte storage address.\n\n`QUANTITY` - Integer index of the storage position.\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *DATA* - The value at the specified storage position."
           },
           "response": [
             {
@@ -2277,7 +2277,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns transaction information for the specified block hash and transaction index position.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a block.\n\n`QUANTITY` - Integer representing the transaction index position.\n\n#### Returns\n\nObject - [Transaction object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
+            "description": "Returns transaction information for the specified block hash and transaction index position.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a block.\n\n`QUANTITY` - Integer representing the transaction index position.\n\n#### Returns\n\nObject - [Transaction object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
           },
           "response": [
             {
@@ -2329,7 +2329,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns transaction information for the specified block number and transaction index position.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`QUANTITY` - The transaction index position.\n\n#### Returns\n\nObject - [Transaction object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
+            "description": "Returns transaction information for the specified block number and transaction index position.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`QUANTITY` - The transaction index position.\n\n#### Returns\n\nObject - [Transaction object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
           },
           "response": [
             {
@@ -2381,7 +2381,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns transaction information for the specified transaction hash.\n\n#### Parameters\n\n`DATA` - 32-byte transaction hash.\n\n#### Returns\n\nObject - [Transaction object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
+            "description": "Returns transaction information for the specified transaction hash.\n\n#### Parameters\n\n`DATA` - 32-byte transaction hash.\n\n#### Returns\n\nObject - [Transaction object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-object), or `null` when there is no\ntransaction."
           },
           "response": [
             {
@@ -2433,7 +2433,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the number of transactions sent from a specified address. Use the `pending` tag to get the\nnext account nonce not used by any pending transactions.\n\n#### Parameters\n\n`data` - 20-byte account address.\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *quantity* - Integer representing the number of transactions sent from the specified\naddress."
+            "description": "Returns the number of transactions sent from a specified address. Use the `pending` tag to get the\nnext account nonce not used by any pending transactions.\n\n#### Parameters\n\n`data` - 20-byte account address.\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *quantity* - Integer representing the number of transactions sent from the specified\naddress."
           },
           "response": [
             {
@@ -2485,7 +2485,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the receipt of a transaction by transaction hash. Receipts for pending transactions are not\navailable.\n\nIf you enabled [revert reason](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Revert-Reason), the receipt includes\navailable revert reasons in the response.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a transaction.\n\n#### Returns\n\n`Object` - [Transaction receipt object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-receipt-object), or `null` when\nthere is no receipt."
+            "description": "Returns the receipt of a transaction by transaction hash. Receipts for pending transactions are not\navailable.\n\nIf you enabled [revert reason](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Revert-Reason), the receipt includes\navailable revert reasons in the response.\n\n#### Parameters\n\n`DATA` - 32-byte hash of a transaction.\n\n#### Returns\n\n`Object` - [Transaction receipt object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-receipt-object), or `null` when\nthere is no receipt."
           },
           "response": [
             {
@@ -2537,7 +2537,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns uncle specified by block hash and index.\n\n#### Parameters\n\n`data` - 32-byte block hash.\n\n`quantity` - Index of the uncle.\n\n#### Returns\n\n`result` : [Block object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#block-object)\n\n> **note**\n>\n> Uncles do not contain individual transactions."
+            "description": "Returns uncle specified by block hash and index.\n\n#### Parameters\n\n`data` - 32-byte block hash.\n\n`quantity` - Index of the uncle.\n\n#### Returns\n\n`result` : [Block object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#block-object)\n\n> **note**\n>\n> Uncles do not contain individual transactions."
           },
           "response": [
             {
@@ -2589,7 +2589,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns uncle specified by block number and index.\n\n#### Parameters\n\n`quantity|tag` - Index of the block, or one of the string tags `latest`, `earliest`, or `pending`,\nas described in [Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`quantity` - Index of the uncle.\n\n#### Returns\n\n`result` : [Block object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#block-object)\n\n> **note**\n>\n> Uncles do not contain individual transactions."
+            "description": "Returns uncle specified by block number and index.\n\n#### Parameters\n\n`quantity|tag` - Index of the block, or one of the string tags `latest`, `earliest`, or `pending`,\nas described in [Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`quantity` - Index of the uncle.\n\n#### Returns\n\n`result` : [Block object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#block-object)\n\n> **note**\n>\n> Uncles do not contain individual transactions."
           },
           "response": [
             {
@@ -2693,7 +2693,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the number of uncles in a block matching the specified block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing either the index of the block within the blockchain, or one\nof the string tags `latest`, `earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Integer representing the number of uncles in the specified block."
+            "description": "Returns the number of uncles in a block matching the specified block number.\n\n#### Parameters\n\n`QUANTITY|TAG` - Integer representing either the index of the block within the blockchain, or one\nof the string tags `latest`, `earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : *QUANTITY* - Integer representing the number of uncles in the specified block."
           },
           "response": [
             {
@@ -2953,7 +2953,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Creates a [log filter](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs). To poll for logs associated with the\ncreated filter, use [`eth_getFilterChanges`](#eth_getfilterchanges). To get all logs associated with\nthe filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).\n\n#### Parameters\n\n`Object` - [Filter options object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#filter-options-object).\n\n> **note**\n>\n> `fromBlock` and `toBlock` in the filter options object default to `latest`.\n\n#### Returns\n\n`data` - Filter ID."
+            "description": "Creates a [log filter](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs). To poll for logs associated with the\ncreated filter, use [`eth_getFilterChanges`](#eth_getfilterchanges). To get all logs associated with\nthe filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).\n\n#### Parameters\n\n`Object` - [Filter options object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#filter-options-object).\n\n> **note**\n>\n> `fromBlock` and `toBlock` in the filter options object default to `latest`.\n\n#### Returns\n\n`data` - Filter ID."
           },
           "response": [
             {
@@ -3109,7 +3109,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Sends a [signed transaction](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Transactions).\nA transaction can send ether, deploy a contract, or interact with a contract.\nSet the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-tx-feecap) CLI option.\n\nYou can interact with contracts using [`eth_sendRawTransaction` or `eth_call`].\n\nTo avoid exposing your private key, create signed transactions offline and send the signed\ntransaction data using `eth_sendRawTransaction`.\n\n> **important**\n>\n> Besu does not implement [`eth_sendTransaction`](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Account-Management).\n>\n> [EthSigner](https://docs.ethsigner.consensys.net/) provides transaction signing and implements\n> [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction).\n\n#### Parameters\n\n`data` -  Signed transaction serialized to hexadecimal format. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n> **note**\n>\n> [Creating and Sending Transactions](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Transactions) includes examples of creating signed transactions using the [web3.js](https://github.com/ethereum/web3.js/) library.\n\n#### Returns\n\n`result` : `data` - 32-byte transaction hash."
+            "description": "Sends a [signed transaction](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Transactions).\nA transaction can send ether, deploy a contract, or interact with a contract.\nSet the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-tx-feecap) CLI option.\n\nYou can interact with contracts using [`eth_sendRawTransaction` or `eth_call`].\n\nTo avoid exposing your private key, create signed transactions offline and send the signed\ntransaction data using `eth_sendRawTransaction`.\n\n> **important**\n>\n> Besu does not implement [`eth_sendTransaction`](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Account-Management).\n>\n> [EthSigner](https://docs.ethsigner.consensys.net/) provides transaction signing and implements\n> [`eth_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eth_sendtransaction).\n\n#### Parameters\n\n`data` -  Signed transaction serialized to hexadecimal format. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n> **note**\n>\n> [Creating and Sending Transactions](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Transactions) includes examples of creating signed transactions using the [web3.js](https://github.com/ethereum/web3.js/) library.\n\n#### Returns\n\n`result` : `data` - 32-byte transaction hash."
           },
           "response": [
             {
@@ -3358,7 +3358,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> Methods with an equivalent [GraphQL](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/GraphQL) query include a GraphQL\n    request and result in the method example. The parameter and result descriptions apply to the\n    JSON-RPC requests. The GraphQL specification is defined in the [schema](https://github.com/hyperledger/besu/blob/master/ethereum/api/src/main/resources/schema.graphqls)."
+      "description": "> **Note**\n>\n> Methods with an equivalent [GraphQL](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/GraphQL) query include a GraphQL\n    request and result in the method example. The parameter and result descriptions apply to the\n    JSON-RPC requests. The GraphQL specification is defined in the [schema](https://github.com/besu-eth/besu/blob/master/ethereum/api/src/main/resources/schema.graphqls)."
     },
     {
       "name": "IBFT",
@@ -3435,7 +3435,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns [votes](https://besu.hyperledger.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT#adding-and-removing-validators)\ncast in the current [epoch](https://besu.hyperledger.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT#genesis-file).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result`: `object` - Map of account addresses to corresponding boolean values indicating the vote\nfor each account.\n\nIf the boolean value is `true`, the vote is to add a validator. If `false`, the proposal is to\nremove a validator."
+            "description": "Returns [votes](https://docs.besu-eth.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT#adding-and-removing-validators)\ncast in the current [epoch](https://docs.besu-eth.org/en/stable/HowTo/Configure/Consensus-Protocols/IBFT#genesis-file).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result`: `object` - Map of account addresses to corresponding boolean values indicating the vote\nfor each account.\n\nIf the boolean value is `true`, the vote is to add a validator. If `false`, the proposal is to\nremove a validator."
           },
           "response": [
             {
@@ -3487,7 +3487,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Provides validator metrics for the specified range:\n\n* Number of blocks from each validator.\n* Block number of the last block proposed by each validator (if any proposed in the specified\n  range).\n* All validators present in the last block of the range.\n\n#### Parameters\n\n`fromBlockNumber` - Integer representing a block number or the string tag `earliest` as described\nin [Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`toBlockNumber` - Integer representing a block number or one of the string tags `latest` or\n`pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter)\n\nIf you specify:\n\n* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less\n  than 100 blocks.\n* Only the first parameter, the call provides metrics for all blocks from the block specified to\n  the latest block.\n\n#### Returns\n\n`result`: _object_ - List of validator objects\n\n> **Note**\n>\n> The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`."
+            "description": "Provides validator metrics for the specified range:\n\n* Number of blocks from each validator.\n* Block number of the last block proposed by each validator (if any proposed in the specified\n  range).\n* All validators present in the last block of the range.\n\n#### Parameters\n\n`fromBlockNumber` - Integer representing a block number or the string tag `earliest` as described\nin [Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`toBlockNumber` - Integer representing a block number or one of the string tags `latest` or\n`pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter)\n\nIf you specify:\n\n* No parameters, the call provides metrics for the last 100 blocks, or all blocks if there are less\n  than 100 blocks.\n* Only the first parameter, the call provides metrics for all blocks from the block specified to\n  the latest block.\n\n#### Returns\n\n`result`: _object_ - List of validator objects\n\n> **Note**\n>\n> The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`."
           },
           "response": [
             {
@@ -3591,7 +3591,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists the validators defined in the specified block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result: array of data` - List of validator addresses."
+            "description": "Lists the validators defined in the specified block.\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result: array of data` - List of validator addresses."
           },
           "response": [
             {
@@ -3676,7 +3676,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `IBFT` API methods are not enabled by default for JSON-RPC. To enable the `IBFT` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `IBFT` API methods are not enabled by default for JSON-RPC. To enable the `IBFT` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "MINER",
@@ -3701,7 +3701,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Starts the mining process. To start mining, you must first specify a miner coinbase using the\n[`--miner-coinbase`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#miner-coinbase) command line option.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` :  `boolean` - `true` if mining starts, or if the node was already mining."
+            "description": "Starts the mining process. To start mining, you must first specify a miner coinbase using the\n[`--miner-coinbase`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#miner-coinbase) command line option.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` :  `boolean` - `true` if mining starts, or if the node was already mining."
           },
           "response": [
             {
@@ -3786,7 +3786,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `MINER` API methods are not enabled by default for JSON-RPC. To enable the `MINER` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `MINER` API methods are not enabled by default for JSON-RPC. To enable the `MINER` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "Miscellaneous",
@@ -3811,7 +3811,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists [enabled APIs](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#api-methods-enabled-by-default)\nand the version of each.\n\n#### Parameters\n\nNone\n\n#### Returns\n\nEnabled APIs."
+            "description": "Lists [enabled APIs](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#api-methods-enabled-by-default)\nand the version of each.\n\n#### Parameters\n\nNone\n\n#### Returns\n\nEnabled APIs."
           },
           "response": [
             {
@@ -3868,7 +3868,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the [network ID](https://besu.hyperledger.org/en/stable/Concepts/NetworkID-And-ChainID).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *string* - Current network ID.\n\n| Network ID | Chain | Network | Description\n|------------|-------|---------|-------------------------------|\n| `1`        | ETH   | Mainnet | Main Ethereum network         |\n| `2018`     | ETH   | Dev     | PoW development network       |\n| `1`        | ETC   | Classic | Main Ethereum Classic network |\n| `7`        | ETC   | Mordor  | PoW test network              |\n\n> **note**\n>\n> For almost all networks network ID and chain ID are the same.\nThe only networks in the table above with different network and chain IDs are\nClassic with a chain ID of `61` and Mordor with a chain ID of `63`."
+            "description": "Returns the [network ID](https://docs.besu-eth.org/en/stable/Concepts/NetworkID-And-ChainID).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *string* - Current network ID.\n\n| Network ID | Chain | Network | Description\n|------------|-------|---------|-------------------------------|\n| `1`        | ETH   | Mainnet | Main Ethereum network         |\n| `2018`     | ETH   | Dev     | PoW development network       |\n| `1`        | ETC   | Classic | Main Ethereum Classic network |\n| `7`        | ETC   | Mordor  | PoW test network              |\n\n> **note**\n>\n> For almost all networks network ID and chain ID are the same.\nThe only networks in the table above with different network and chain IDs are\nClassic with a chain ID of `61` and Mordor with a chain ID of `63`."
           },
           "response": [
             {
@@ -4021,7 +4021,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the [enode URL](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *string* - [Enode URL](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url) of the node."
+            "description": "Returns the [enode URL](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : *string* - [Enode URL](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url) of the node."
           },
           "response": [
             {
@@ -4128,7 +4128,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Adds accounts (participants) to the\n[accounts permission list](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\n`list of strings` - List of account addresses.\n\n> **Note**\n>\n> The parameters list contains a list which is why the account addresses are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to add accounts already on the\nallowlist or including invalid account addresses.\n"
+            "description": "Adds accounts (participants) to the\n[accounts permission list](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\n`list of strings` - List of account addresses.\n\n> **Note**\n>\n> The parameters list contains a list which is why the account addresses are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to add accounts already on the\nallowlist or including invalid account addresses.\n"
           },
           "response": [
             {
@@ -4180,7 +4180,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Adds nodes to the\n[nodes allowlist](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\n`list of strings` - List of [enode URLs](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url).\n\n> **Note**\n>\n> The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to add nodes already on the allowlist or\nincluding invalid enode URLs."
+            "description": "Adds nodes to the\n[nodes allowlist](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\n`list of strings` - List of [enode URLs](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url).\n\n> **Note**\n>\n> The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to add nodes already on the allowlist or\nincluding invalid enode URLs."
           },
           "response": [
             {
@@ -4232,7 +4232,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists accounts (participants) in the\n[accounts permissions list](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result: list` - Accounts (participants) in the accounts allowlist."
+            "description": "Lists accounts (participants) in the\n[accounts permissions list](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result: list` - Accounts (participants) in the accounts allowlist."
           },
           "response": [
             {
@@ -4284,7 +4284,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists nodes in the\n[nodes allowlist](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result: list` - [Enode URLs](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url) of nodes in the nodes allowlist."
+            "description": "Lists nodes in the\n[nodes allowlist](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result: list` - [Enode URLs](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url) of nodes in the nodes allowlist."
           },
           "response": [
             {
@@ -4388,7 +4388,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Removes accounts (participants) from the\n[accounts permissions list](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\n`list of strings` - List of account addresses.\n\n> **Note**\n>\n> The parameters list contains a list which is why the account addresses are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to remove accounts not on the allowlist\nor including invalid account addresses."
+            "description": "Removes accounts (participants) from the\n[accounts permissions list](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#account-permissioning).\n\n#### Parameters\n\n`list of strings` - List of account addresses.\n\n> **Note**\n>\n> The parameters list contains a list which is why the account addresses are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to remove accounts not on the allowlist\nor including invalid account addresses."
           },
           "response": [
             {
@@ -4440,7 +4440,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Removes nodes from the\n[nodes allowlist](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\n`list of strings` - List of [enode URLs](https://besu.hyperledger.org/en/stable/Concepts/Node-Keys#enode-url)\n\n> **Note**\n>\n> The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to remove nodes not on the allowlist\nor including invalid enode URLs."
+            "description": "Removes nodes from the\n[nodes allowlist](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning#node-allowlisting).\n\n#### Parameters\n\n`list of strings` - List of [enode URLs](https://docs.besu-eth.org/en/stable/Concepts/Node-Keys#enode-url)\n\n> **Note**\n>\n> The parameters list contains a list which is why the enode URLs are enclosed by double square brackets.\n\n#### Returns\n\n`result` - `Success` or `error`. Errors include attempting to remove nodes not on the allowlist\nor including invalid enode URLs."
           },
           "response": [
             {
@@ -4473,7 +4473,7 @@
           ]
         }
       ],
-      "description": "Use the permissioning API methods for [local](https://besu.hyperledger.org/en/stable/HowTo/Limit-Access/Local-Permissioning)\npermissioning only.\n\n> **Note**\n>\n>The `PERM` API methods are not enabled by default for JSON-RPC. To enable the `PERM` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) CLI options."
+      "description": "Use the permissioning API methods for [local](https://docs.besu-eth.org/en/stable/HowTo/Limit-Access/Local-Permissioning)\npermissioning only.\n\n> **Note**\n>\n>The `PERM` API methods are not enabled by default for JSON-RPC. To enable the `PERM` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) CLI options."
     },
     {
       "name": "PLUGINS",
@@ -4521,7 +4521,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `PLUGINS` API methods are not enabled by default for JSON-RPC. To enable the `PLUGINS` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `PLUGINS` API methods are not enabled by default for JSON-RPC. To enable the `PLUGINS` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "PRIV",
@@ -4701,7 +4701,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Distributes a signed, RLP encoded\n[private transaction](https://besu.hyperledger.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions).\n\n> **tip**\n\n    If you want to sign the Privacy Marker Transaction outside of Besu,\n    use [`priv_distributeRawTransaction`](https://besu.hyperledger.org/en/stable//HowTo/Send-Transactions/Creating-Sending-Private-Transactions#priv_distributerawtransaction)\n    instead of [`eea_sendRawTransaction`](#eea_sendrawtransaction).\n\n#### Parameters\n\n`data` -  Signed RLP-encoded private transaction. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n#### Returns\n\n`result` : `data` - 32-byte enclave key. The enclave key is a pointer to the private transaction in\n[Tessera](https://docs.tessera.consensys.net/)."
+            "description": "Distributes a signed, RLP encoded\n[private transaction](https://docs.besu-eth.org/en/stable/HowTo/Send-Transactions/Creating-Sending-Private-Transactions).\n\n> **tip**\n\n    If you want to sign the Privacy Marker Transaction outside of Besu,\n    use [`priv_distributeRawTransaction`](https://docs.besu-eth.org/en/stable//HowTo/Send-Transactions/Creating-Sending-Private-Transactions#priv_distributerawtransaction)\n    instead of [`eea_sendRawTransaction`](#eea_sendrawtransaction).\n\n#### Parameters\n\n`data` -  Signed RLP-encoded private transaction. For example:\n\n`params: [\"0xf869018203e882520894f17f52151ebef6c7334fad080c5704d77216b732881bc16d674ec80000801ba02da1c48b670996dcb1f447ef9ef00b33033c48a4fe938f420bec3e56bfd24071a062e0aa78a81bf0290afbc3a9d8e9a068e6d74caa66c5e0fa8a46deaae96b0833\"]`\n\n#### Returns\n\n`result` : `data` - 32-byte enclave key. The enclave key is a pointer to the private transaction in\n[Tessera](https://docs.tessera.consensys.net/)."
           },
           "response": [
             {
@@ -4753,7 +4753,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns a list of privacy groups containing only the listed members. For example, if the listed\nmembers are A and B, a privacy group containing A, B, and C is not returned.\n\n#### Parameters\n\n`array of data` - Members specified by [Tessera](https://docs.tessera.consensys.net/) public keys.\n\n#### Returns\n\nPrivacy groups containing only the specified members. Privacy groups are\n[EEA-compliant](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups#enterprise-ethereum-alliance-privacy)\nor [Besu-extended](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups#besu-extended-privacy) with types:\n\n* `LEGACY` for EEA-compliant groups.\n* `PANTHEON` for Besu-extended groups."
+            "description": "Returns a list of privacy groups containing only the listed members. For example, if the listed\nmembers are A and B, a privacy group containing A, B, and C is not returned.\n\n#### Parameters\n\n`array of data` - Members specified by [Tessera](https://docs.tessera.consensys.net/) public keys.\n\n#### Returns\n\nPrivacy groups containing only the specified members. Privacy groups are\n[EEA-compliant](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups#enterprise-ethereum-alliance-privacy)\nor [Besu-extended](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups#besu-extended-privacy) with types:\n\n* `LEGACY` for EEA-compliant groups.\n* `PANTHEON` for Besu-extended groups."
           },
           "response": [
             {
@@ -4805,7 +4805,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the code of the private smart contract at the specified address. Compiled smart contract code\nis stored as a hexadecimal value.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - 20-byte contract address.\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`, `earliest`,\nor `pending`, as described in [Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : `data` - Code stored at the specified address."
+            "description": "Returns the code of the private smart contract at the specified address. Compiled smart contract code\nis stored as a hexadecimal value.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - 20-byte contract address.\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`, `earliest`,\nor `pending`, as described in [Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` : `data` - Code stored at the specified address."
           },
           "response": [
             {
@@ -4909,7 +4909,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Polls the specified filter for a private contract and returns an array of changes that have occurred\nsince the last poll.\n\nFilters for private contracts can only be created by [`priv_newFilter`](#priv_newfilter) so unlike\n[`eth_getFilterChanges`](#eth_getfilterchanges), `priv_getFilterChanges` always returns an array\nof log objects or an empty list.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object). If nothing has changed since the last poll, an\nempty list."
+            "description": "Polls the specified filter for a private contract and returns an array of changes that have occurred\nsince the last poll.\n\nFilters for private contracts can only be created by [`priv_newFilter`](#priv_newfilter) so unlike\n[`eth_getFilterChanges`](#eth_getfilterchanges), `priv_getFilterChanges` always returns an array\nof log objects or an empty list.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object). If nothing has changed since the last poll, an\nempty list."
           },
           "response": [
             {
@@ -4961,7 +4961,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns an array of [logs](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs) for the specified filter for a private\ncontract.\n\nFor private contracts, `priv_getFilterLogs` is the same as [`eth_getFilterLogs`](#eth_getfilterlogs)\nfor public contracts except there is no [automatic log bloom caching](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\nfor private contracts.\n\n> **Note**\n>\n> `priv_getFilterLogs` is only used for filters created with [`priv_newFilter`](#priv_newfilter).\n> To specify a filter object and get logs without creating a filter, use [`priv_getLogs`](#priv_getlogs).\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object)."
+            "description": "Returns an array of [logs](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs) for the specified filter for a private\ncontract.\n\nFor private contracts, `priv_getFilterLogs` is the same as [`eth_getFilterLogs`](#eth_getfilterlogs)\nfor public contracts except there is no [automatic log bloom caching](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\nfor private contracts.\n\n> **Note**\n>\n> `priv_getFilterLogs` is only used for filters created with [`priv_newFilter`](#priv_newfilter).\n> To specify a filter object and get logs without creating a filter, use [`priv_getLogs`](#priv_getlogs).\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`array` - [Log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object)."
           },
           "response": [
             {
@@ -5013,7 +5013,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns an array of [logs](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs) matching a specified filter object.\n\nFor private contracts, `priv_getLogs` is the same as [`eth_getLogs`](#eth_getlogs) for public contracts\nexcept there is no [automatic log bloom caching](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\nfor private contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`Object` - [Filter options object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#filter-options-object).\n\n#### Returns\n\n`array` - [Log objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#log-object)."
+            "description": "Returns an array of [logs](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs) matching a specified filter object.\n\nFor private contracts, `priv_getLogs` is the same as [`eth_getLogs`](#eth_getlogs) for public contracts\nexcept there is no [automatic log bloom caching](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#auto-log-bloom-caching-enabled)\nfor private contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`Object` - [Filter options object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#filter-options-object).\n\n#### Returns\n\n`array` - [Log objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#log-object)."
           },
           "response": [
             {
@@ -5065,7 +5065,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the address of the\n[privacy precompiled contract](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Private-Transaction-Processing). The address\nis derived and based on the value of the [`privacy-onchain-groups-enabled`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#privacy-onchain-groups-enabled)\noption.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : `data` - Address of the privacy precompile."
+            "description": "Returns the address of the\n[privacy precompiled contract](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Private-Transaction-Processing). The address\nis derived and based on the value of the [`privacy-onchain-groups-enabled`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#privacy-onchain-groups-enabled)\noption.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` : `data` - Address of the privacy precompile."
           },
           "response": [
             {
@@ -5117,7 +5117,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns the private transaction if you are a participant, otherwise, `null`.\n\n#### Parameters\n\n`data` - Transaction hash returned by [`eea_sendRawTransaction`](#eea_sendrawtransaction) or\n[`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).\n\n#### Returns\n\nObject - [Private transaction object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#private-transaction-object), or `null` if not\na participant in the private transaction."
+            "description": "Returns the private transaction if you are a participant, otherwise, `null`.\n\n#### Parameters\n\n`data` - Transaction hash returned by [`eea_sendRawTransaction`](#eea_sendrawtransaction) or\n[`eea_sendTransaction`](https://docs.ethsigner.consensys.net/Reference/API-Methods#eea_sendtransaction).\n\n#### Returns\n\nObject - [Private transaction object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#private-transaction-object), or `null` if not\na participant in the private transaction."
           },
           "response": [
             {
@@ -5221,7 +5221,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Returns information about the private transaction after mining the transaction. Receipts for\npending transactions are not available.\n\n#### Parameters\n\n`data` - 32-byte hash of a transaction.\n\n#### Returns\n\n`Object` - [Private Transaction receipt object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#private-transaction-receipt-object),\nor `null` if no receipt found."
+            "description": "Returns information about the private transaction after mining the transaction. Receipts for\npending transactions are not available.\n\n#### Parameters\n\n`data` - 32-byte hash of a transaction.\n\n#### Returns\n\n`Object` - [Private Transaction receipt object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#private-transaction-receipt-object),\nor `null` if no receipt found."
           },
           "response": [
             {
@@ -5273,7 +5273,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Creates a [log filter](https://besu.hyperledger.org/en/stable/Concepts/Events-and-Logs) for a private contract. To poll for logs associated with the\ncreated filter, use [`priv_getFilterChanges`](#priv_getfilterchanges). To get all logs associated with\nthe filter, use [`priv_getFilterLogs`](#priv_getfilterlogs).\n\nFor private contracts, `priv_newFilter` is the same as [`eth_newFilter`](#eth_newfilter)\nfor public contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`Object` - [Filter options object](https://besu.hyperledger.org/en/stable/Reference/API-Objects#filter-options-object).\n\n> **Note**\n>\n> `fromBlock` and `toBlock` in the filter options object default to `latest`."
+            "description": "Creates a [log filter](https://docs.besu-eth.org/en/stable/Concepts/Events-and-Logs) for a private contract. To poll for logs associated with the\ncreated filter, use [`priv_getFilterChanges`](#priv_getfilterchanges). To get all logs associated with\nthe filter, use [`priv_getFilterLogs`](#priv_getfilterlogs).\n\nFor private contracts, `priv_newFilter` is the same as [`eth_newFilter`](#eth_newfilter)\nfor public contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`Object` - [Filter options object](https://docs.besu-eth.org/en/stable/Reference/API-Objects#filter-options-object).\n\n> **Note**\n>\n> `fromBlock` and `toBlock` in the filter options object default to `latest`."
           },
           "response": [
             {
@@ -5325,7 +5325,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Uninstalls a filter for a private contract with the specified ID. When a filter is no longer required,\ncall this method.\n\nFilters time out when not requested by [`priv_getFilterChanges`](#priv_getfilterchanges) or [`priv_getFilterLogs`](#priv_getfilterlogs) for 10\nminutes.\n\nFor private contracts, `priv_uninstallFilter` is the same as [`eth_uninstallFilter`](#eth_uninstallfilter)\nfor public contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://besu.hyperledger.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`Boolean` - `true` if the filter was successfully uninstalled, otherwise `false`."
+            "description": "Uninstalls a filter for a private contract with the specified ID. When a filter is no longer required,\ncall this method.\n\nFilters time out when not requested by [`priv_getFilterChanges`](#priv_getfilterchanges) or [`priv_getFilterLogs`](#priv_getfilterlogs) for 10\nminutes.\n\nFor private contracts, `priv_uninstallFilter` is the same as [`eth_uninstallFilter`](#eth_uninstallfilter)\nfor public contracts.\n\n#### Parameters\n\n`data` - 32-byte [privacy Group ID](https://docs.besu-eth.org/en/stable/Concepts/Privacy/Privacy-Groups).\n\n`data` - Filter ID.\n\n#### Returns\n\n`Boolean` - `true` if the filter was successfully uninstalled, otherwise `false`."
           },
           "response": [
             {
@@ -5358,7 +5358,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `PRIV` API methods are not enabled by default for JSON-RPC. To enable the `PRIV` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `PRIV` API methods are not enabled by default for JSON-RPC. To enable the `PRIV` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "TRACE",
@@ -5383,7 +5383,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Provides transaction processing tracing per block.\n\n> **important**\n\n    Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n    requested block must be within [the number of pruning blocks retained](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained)\n    (by default, 1024).\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`array of strings` - Tracing options are\n[`trace`, `vmTrace`, and `stateDiff`](Trace-Types). Specify any\ncombination of the three options including none of them.\n\n#### Returns\n\n`result` - Array of [transaction trace objects](https://besu.hyperledger.org/en/stable/Reference/API-Objects#transaction-trace-object) containing\none object per transaction, in transaction execution order."
+            "description": "Provides transaction processing tracing per block.\n\n> **important**\n\n    Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n    requested block must be within [the number of pruning blocks retained](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained)\n    (by default, 1024).\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n`array of strings` - Tracing options are\n[`trace`, `vmTrace`, and `stateDiff`](Trace-Types). Specify any\ncombination of the three options including none of them.\n\n#### Returns\n\n`result` - Array of [transaction trace objects](https://docs.besu-eth.org/en/stable/Reference/API-Objects#transaction-trace-object) containing\none object per transaction, in transaction execution order."
           },
           "response": [
             {
@@ -5421,7 +5421,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Provides transaction processing of [type `trace`](Trace-Types#trace) for the specified block.\n\n> **Important**\n>\n> Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n> requested block must be within [the number of pruning blocks retained](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained) (by default, 1024).\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://besu.hyperledger.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` - Array of [calls to other contracts](Trace-Types#trace) containing\none object per call, in transaction execution order."
+            "description": "Provides transaction processing of [type `trace`](Trace-Types#trace) for the specified block.\n\n> **Important**\n>\n> Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n> requested block must be within [the number of pruning blocks retained](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained) (by default, 1024).\n\n#### Parameters\n\n`quantity|tag` - Integer representing a block number or one of the string tags `latest`,\n`earliest`, or `pending`, as described in\n[Block Parameter](https://docs.besu-eth.org/en/stable/HowTo/Interact/APIs/Using-JSON-RPC-API#block-parameter).\n\n#### Returns\n\n`result` - Array of [calls to other contracts](Trace-Types#trace) containing\none object per call, in transaction execution order."
           },
           "response": [
             {
@@ -5463,7 +5463,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Provides transaction processing of [type `trace`](Trace-Types#trace) for the specified transaction.\n\n> **Important**\n>\n> Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n> requested transaction must be contained in a block within [the number of pruning blocks retained](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained) (by default, 1024).\n\n#### Parameters\n\n`data` : Transaction hash\n\n#### Returns\n\n`result` - Array of [calls to other contracts](Trace-Types#trace) containing\none object per call, in the order called by the transaction.\n"
+            "description": "Provides transaction processing of [type `trace`](Trace-Types#trace) for the specified transaction.\n\n> **Important**\n>\n> Your node must be an archive node (that is, synchronized without pruning or fast sync) or the\n> requested transaction must be contained in a block within [the number of pruning blocks retained](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#pruning-blocks-retained) (by default, 1024).\n\n#### Parameters\n\n`data` : Transaction hash\n\n#### Returns\n\n`result` - Array of [calls to other contracts](Trace-Types#trace) containing\none object per call, in the order called by the transaction.\n"
           },
           "response": [
             {
@@ -5487,7 +5487,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `TRACE` API methods are not enabled by default for JSON-RPC. To enable the `TRACE` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.\n\nThe TRACE API is a more concise alternative to the DEBUG API."
+      "description": "> **Note**\n>\n> The `TRACE` API methods are not enabled by default for JSON-RPC. To enable the `TRACE` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options.\n\nThe TRACE API is a more concise alternative to the DEBUG API."
     },
     {
       "name": "TXPOOL",
@@ -5512,7 +5512,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists pending transactions that match the supplied filter conditions.\n\n#### Parameters\n\n* `QUANTITY` - Integer representing the maximum number of results to return.\n* Object of fields used to create the filter condition.\n\nEach field in the object corresponds to a field name containing an operator, and a value for the\noperator. A field name can only be specified once, and can only contain one operator.\nFor example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the\n`gt` and `lt` operator in the same field name instance.\n\nAll filters must be satisfied for a transaction to be returned.\n\n| Field name   | Value                                     | Value type            | Supported operators |\n|--------------|-------------------------------------------|:---------------------:|---------------------|\n| **from**     | Address of the sender.                    | *Data*, 20&nbsp;bytes | `eq`                |\n| **to**       | Address of the receiver, or `\"contract_creation\"`.| *Data*, 20&nbsp;bytes |`eq`, `action`|\n| **gas**      | Gas provided by the sender.               | *Quantity*            | `eq`, `gt`, `lt`    |\n| **gasPrice** | Gas price, in wei, provided by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |\n| **value**    | Value transferred, in wei.                | *Quantity*            | `eq`, `gt`, `lt`    |\n| **nonce**    | Number of transactions made by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |\n|\n\nSupported operators:\n\n* `eq` (Equal to)\n* `lt` (Less than)\n* `gt` (Greater than)\n* `action`\n\n> **Note**\n>\n> The only supported `action` is `\"contract_creation\"`.\n\n#### Returns\n\n`result` - Array of objects with [details of the pending transaction](https://besu.hyperledger.org/en/stable/Reference/API-Objects#pending-transaction-object)."
+            "description": "Lists pending transactions that match the supplied filter conditions.\n\n#### Parameters\n\n* `QUANTITY` - Integer representing the maximum number of results to return.\n* Object of fields used to create the filter condition.\n\nEach field in the object corresponds to a field name containing an operator, and a value for the\noperator. A field name can only be specified once, and can only contain one operator.\nFor example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the\n`gt` and `lt` operator in the same field name instance.\n\nAll filters must be satisfied for a transaction to be returned.\n\n| Field name   | Value                                     | Value type            | Supported operators |\n|--------------|-------------------------------------------|:---------------------:|---------------------|\n| **from**     | Address of the sender.                    | *Data*, 20&nbsp;bytes | `eq`                |\n| **to**       | Address of the receiver, or `\"contract_creation\"`.| *Data*, 20&nbsp;bytes |`eq`, `action`|\n| **gas**      | Gas provided by the sender.               | *Quantity*            | `eq`, `gt`, `lt`    |\n| **gasPrice** | Gas price, in wei, provided by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |\n| **value**    | Value transferred, in wei.                | *Quantity*            | `eq`, `gt`, `lt`    |\n| **nonce**    | Number of transactions made by the sender.| *Quantity*            | `eq`, `gt`, `lt`    |\n|\n\nSupported operators:\n\n* `eq` (Equal to)\n* `lt` (Less than)\n* `gt` (Greater than)\n* `action`\n\n> **Note**\n>\n> The only supported `action` is `\"contract_creation\"`.\n\n#### Returns\n\n`result` - Array of objects with [details of the pending transaction](https://docs.besu-eth.org/en/stable/Reference/API-Objects#pending-transaction-object)."
           },
           "response": [
             {
@@ -5564,7 +5564,7 @@
               "host": ["{{rpc-http-host}}"],
               "port": "{{rpc-http-port}}"
             },
-            "description": "Lists statistics about the node transaction pool.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` - Transaction pool statistics:\n\n* `maxSize` - Maximum number of transactions kept in the transaction pool. Use the\n  [`--tx-pool-max-size`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#tx-pool-max-size) option to configure the maximum size.\n* `localCount` - Number of transactions submitted directly to this node.\n* `remoteCount` - Number of transactions received from remote nodes."
+            "description": "Lists statistics about the node transaction pool.\n\n#### Parameters\n\nNone\n\n#### Returns\n\n`result` - Transaction pool statistics:\n\n* `maxSize` - Maximum number of transactions kept in the transaction pool. Use the\n  [`--tx-pool-max-size`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#tx-pool-max-size) option to configure the maximum size.\n* `localCount` - Number of transactions submitted directly to this node.\n* `remoteCount` - Number of transactions received from remote nodes."
           },
           "response": [
             {
@@ -5649,7 +5649,7 @@
           ]
         }
       ],
-      "description": "> **Note**\n>\n> The `TXPOOL` API methods are not enabled by default for JSON-RPC. To enable the `TXPOOL` API methods, use the [`--rpc-http-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://besu.hyperledger.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
+      "description": "> **Note**\n>\n> The `TXPOOL` API methods are not enabled by default for JSON-RPC. To enable the `TXPOOL` API methods, use the [`--rpc-http-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-http-api) or [`--rpc-ws-api`](https://docs.besu-eth.org/en/stable/CLI/CLI-Syntax#rpc-ws-api) options."
     },
     {
       "name": "WEB3",

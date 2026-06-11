@@ -82,7 +82,7 @@ can install it with the command: `apt install libjemalloc-dev`.
 
 ### Install from packaged binaries
 
-Download the Besu [packaged binaries](https://github.com/hyperledger/besu/releases).
+Download the Besu [packaged binaries](https://github.com/besu-eth/besu/releases).
 
 Unpack the downloaded files and change into the `besu-<release>` directory.
 

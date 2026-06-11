@@ -8,7 +8,7 @@
  *   docs/<area>/path/to/dir/index.md → build/<area>/path/to/dir.md
  *
  * This lets agents request, e.g.:
- *   https://besu.hyperledger.org/public-networks/get-started/install.md
+ *   https://docs.besu-eth.org/public-networks/get-started/install.md
  */
 
 const fs = require("fs");

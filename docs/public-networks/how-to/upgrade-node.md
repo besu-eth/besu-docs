@@ -16,7 +16,7 @@ This page provides instructions for upgrading your Besu node on:
 
 When upgrading your node, we recommend:
 
-- Checking the [Besu release notes](https://github.com/hyperledger/besu/releases) for breaking changes.
+- Checking the [Besu release notes](https://github.com/besu-eth/besu/releases) for breaking changes.
 - Preserving your node's data and configuration.
 - Storing your configuration under version control.
 
@@ -25,9 +25,9 @@ When upgrading your node, we recommend:
 1. Run the following script to automatically download the latest Linux release, extract it, and clean up:
 
     ```bash
-    RELEASE_URL="https://api.github.com/repos/hyperledger/besu/releases/latest"
+    RELEASE_URL="https://api.github.com/repos/besu-eth/besu/releases/latest"
     TAG=$(curl -s $RELEASE_URL | jq -r .tag_name)
-    BINARIES_URL="https://github.com/hyperledger/besu/releases/download/$TAG/besu-$TAG.tar.gz"
+    BINARIES_URL="https://github.com/besu-eth/besu/releases/download/$TAG/besu-$TAG.tar.gz"
    
     echo Downloading URL: $BINARIES_URL
    

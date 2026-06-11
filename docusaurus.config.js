@@ -4,7 +4,7 @@ const darkCodeTheme = require("prism-react-renderer").themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Besu documentation",
-  url: "https://besu.hyperledger.org",
+  url: "https://docs.besu-eth.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
   favicon: "img/favicon.svg",
@@ -19,7 +19,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "hyperledger", // Usually your GitHub org/user name.
+  organizationName: "besu-eth", // Usually your GitHub org/user name.
   projectName: "besu-docs", // Usually your repo name.
   deploymentBranch: "gh-pages", // Github Pages deploying branch
 
@@ -46,7 +46,7 @@ const config = {
           breadcrumbs: true,
           sidebarPath: require.resolve("./sidebars.js"),
           // Set a base path separate from default /docs
-          editUrl: "https://github.com/hyperledger/besu-docs/tree/main/",
+          editUrl: "https://github.com/besu-eth/besu-docs/tree/main/",
           path: "./docs",
           routeBasePath: "/",
           // @ts-ignore
@@ -124,7 +124,7 @@ const config = {
             label: "Plugins",
           },
           {
-            href: "https://github.com/hyperledger/besu/",
+            href: "https://github.com/besu-eth/besu/",
             className: "header-github-link",
             position: "right",
           },
@@ -147,7 +147,7 @@ const config = {
           alt: "Besu logo",
           src: "img/logo.svg",
           srcDark: "img/logo-reversed.svg",
-          href: "https://www.hyperledger.org/use/besu",
+          href: "https://www.lfdecentralizedtrust.org/projects/besu",
           width: 250,
         },
         links: [
@@ -243,11 +243,11 @@ const config = {
               },
               {
                 label: "Besu GitHub",
-                href: "https://github.com/hyperledger/besu/",
+                href: "https://github.com/besu-eth/besu/",
               },
               {
                 label: "Besu documentation GitHub",
-                href: "https://github.com/hyperledger/besu-docs",
+                href: "https://github.com/besu-eth/besu-docs",
               },
             ],
           },

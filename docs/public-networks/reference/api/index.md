@@ -2602,6 +2602,102 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":51
 
 </Tabs>
 
+### `eth_capabilities`
+
+Returns the node's data-serving capabilities.
+
+#### Parameters
+
+None
+
+#### Returns
+
+`result`: _object_ - capabilities information containing:
+
+- `head`: _object_ - current chain head information:
+  - `number`: _string_ - current chain head block number
+  - `hash`: _string_ - current chain head block hash
+- `state`: _object_ - state capability information
+  - `disabled`: _boolean_ - indicates whether the `state` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+- `tx`: _object_ - transaction capability information
+  - `disabled`: _boolean_ - indicates whether the `tx` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+- `logs`: _object_ - logs capability information
+  - `disabled`: _boolean_ - indicates whether the `logs` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+- `receipts`: _object_ - receipts capability information
+  - `disabled`: _boolean_ - indicates whether the `receipts` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+- `blocks`: _object_ - blocks capability information
+  - `disabled`: _boolean_ - indicates whether the `blocks` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+- `stateproofs`: _object_ - state proofs capability information
+  - `disabled`: _boolean_ - indicates whether the `stateproofs` resource is disabled
+  - `oldestBlock`: _string_ - (optional) oldest available block
+
+The `oldestBlock` field is included for block-backed resources when pruning has occurred.
+If the full chain is available, this can be `0x0`.
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"id":1}' http://127.0.0.1:8545/
+```
+
+</TabItem>
+
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{ "jsonrpc":"2.0", "method":"eth_capabilities", "params":[], "id":1 }
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc":"2.0",
+  "id":1,
+  "result":{
+    "head":{
+      "number":"0x13f8e3a",
+      "hash":"0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
+    },
+    "state":{
+      "disabled":false
+    },
+    "tx":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
+    },
+    "logs":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
+    },
+    "receipts":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
+    },
+    "blocks":{
+      "disabled":false,
+      "oldestBlock":"0x0"
+    },
+    "stateproofs":{
+      "disabled":false
+    }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
 ### `eth_config`
 
 Returns the client's fork information for the current, next, and last known forks.
@@ -4564,6 +4660,83 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{account(ad
     "account": {
       "storage": "0x0000000000000000000000000000000000000000000000000000000000000000"
     }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+### `eth_getStorageValues`
+
+Returns storage values for multiple slots across one or more accounts in a single call.
+This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
+
+#### Parameters
+
+- `storageRequest`: _object_ - each key is a 20-byte account address
+  and each value is an array of storage slot keys (as 32-byte hex strings).
+  The maximum total number of storage slots across all addresses is 1024.
+
+- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+  block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
+  `safe`, as described in [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+
+  :::note
+  `pending` returns the same value as `latest`.
+  :::
+
+#### Returns
+
+`result` : _object_ - each key is an account address and each value is an array of hex-encoded
+storage values in the same order as the requested slot keys.
+Unknown accounts return zero values for all requested slots.
+Key order in the response object is not guaranteed to match the request.
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[{"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73":["0x0","0x1"],"0x627306090abaB3A6e1400e9345bC60c78a8BEf57":["0x0"]},"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getStorageValues",
+  "params": [
+    {
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": ["0x0", "0x1"],
+      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": ["0x0"]
+    },
+    "latest"
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "0x627306090abab3a6e1400e9345bc60c78a8bef57": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ]
   }
 }
 ```
@@ -8535,5 +8708,5 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}
 
 <!-- Links -->
 
-[schema]: https://github.com/hyperledger/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
+[schema]: https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/ethereum/api/src/main/resources/schema.graphqls
 [eth_sendRawTransaction or eth_call]: ../../how-to/send-transactions.md#eth_call-or-eth_sendrawtransaction

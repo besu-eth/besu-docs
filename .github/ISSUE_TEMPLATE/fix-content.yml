@@ -20,7 +20,7 @@ body:
     attributes:
       label: Docs page
       description: Link to the page or section where the issue is located.
-      placeholder: 'Example: "https://besu.hyperledger.org/public-networks/..."'
+      placeholder: 'Example: "https://docs.besu-eth.org/public-networks/..."'
   - type: checkboxes
     id: issue-type
     attributes:

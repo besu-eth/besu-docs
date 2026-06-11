@@ -53,7 +53,7 @@ source of truth for full criteria, examples, and edge cases.
 
 ### Terminology (terminology.mdc)
 
-- Product names match the required forms (Besu, Hyperledger Besu, JSON-RPC, etc.).
+- Product names match the required forms (Besu, JSON-RPC, etc.).
 - Consensus protocol names use correct casing (IBFT 2.0, QBFT, Clique).
 - Standards spelled out on first use with identifier in parentheses (for example,
   "Ethereum Improvement Proposal 1559 (EIP-1559)"), short form on subsequent references.
