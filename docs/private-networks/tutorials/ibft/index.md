@@ -368,7 +368,7 @@ This tutorial configures a private network using IBFT 2.0 for educational purpos
 
 :::
 
-Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](../quickstart.md#create-a-transaction-using-metamask).
+Import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](../quickstart.md#6-send-a-transaction-with-metamask).
 
 :::info
 

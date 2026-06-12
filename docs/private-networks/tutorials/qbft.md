@@ -259,7 +259,6 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 <TabItem value="Windows" label="Windows">
 
-
 ```bash
 besu --data-path=data --genesis-file=..\genesis.json --bootnodes=<Node-1 Enode URL> --p2p-port=30305 --rpc-http-enabled --rpc-http-api=ETH,NET,QBFT --host-allowlist="*" --rpc-http-cors-origins="all" --rpc-http-port=8547 --profile=ENTERPRISE
 ```
@@ -363,7 +362,7 @@ If a new key was created, the validator key specified in the configuration does 
 
 ## Next steps
 
-Use the [QBFT API](../reference/api.md#qbft-methods) to remove or add validators, or import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#create-a-transaction-using-metamask).
+Use the [QBFT API](../reference/api.md#qbft-methods) to remove or add validators, or import accounts to MetaMask and send transactions as described in the [Quickstart tutorial](quickstart.md#6-send-a-transaction-with-metamask).
 
 :::note
 

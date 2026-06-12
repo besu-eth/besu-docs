@@ -13,7 +13,8 @@ Transaction pools are categorized into the following two types:
 * [Layered](#layered-transaction-pool) - Recommended for public blockchain networks.
 * [Sequenced](#sequenced-transaction-pool) - Recommended for private blockchain networks.
 
-You can use specific options and methods to [configure and monitor the transaction pool](#transaction-pool-methods-and-options).
+You can use specific [options](../../reference/cli/options.md#tx-pool) and
+[methods](../../reference/api/index.md#txpool-methods) to configure and monitor the transaction pool.
 
 ## Layered transaction pool
 
@@ -45,7 +46,7 @@ If you previously configured transaction pool behavior, upgrade to the layered t
 You can opt out of the layered transaction pool implementation by setting the
 [`--tx-pool`](../../reference/cli/options.md#tx-pool) option to `sequenced`.
 
-### Penalize transient invalid pending transactions
+### Transient invalid pending transactions
 
 Transient invalid pending transactions cannot be included in the current block but might be included in a future one. 
 This can happen due to issues like insufficient balance in the sender's wallet or a gas price below the minimum. 
@@ -67,6 +68,15 @@ between `-128` and `127`, instructs the transaction pool to remove pending trans
 below the specified value. By default, the value is `-128`, meaning the pending transaction will remain in the
 pool with the lowest score and will only be selected after all other pending transactions have been processed.
 
+### Dropping transactions
+
+When the layered transaction pool is full, it accepts and retains local transactions in preference to remote transactions,
+unless [`--tx-pool-no-local-priority`](../../reference/cli/options.md#tx-pool-no-local-priority) is enabled.
+
+If the transaction pool is full of local transactions, Besu drops the oldest local transactions first. 
+That is, a full transaction pool continues to accept new local transactions by first dropping remote transactions and
+then by dropping the oldest local transactions.
+
 ## Sequenced transaction pool
 
 In the sequenced transaction pool, transactions are processed strictly in the order they are received.
@@ -80,67 +90,42 @@ If you set the enterprise configuration profile using [`--profile=enterprise`](.
 The sequenced transaction pool suits enterprise environments because it functions like a first-in-first-out (FIFO) queue and processes transactions in the order of submission, regardless of the sender. 
 When the pool reaches capacity, the newer transactions are evicted first, reducing the likelihood of a nonce gap and avoiding the need to resubmit older transactions.
 
-## Drop transactions when the layered transaction pool is full
-
-When the transaction pool is full, it accepts and retains local transactions in preference to remote transactions. 
-If the transaction pool is full of local transactions, Besu drops the oldest local transactions first. 
-That is, a full transaction pool continues to accept new local transactions by first dropping remote transactions and then by dropping the oldest local transactions.
-
-## Replace transactions with the same sender and nonce
-
-### In networks with a base fee and priced gas
+## Replacing pending transactions
 
 You can replace a pending transaction with a transaction that has the same sender and nonce but a higher gas price.
 
-If sending a [legacy transaction](types.md#frontier-transactions), the old transaction is replaced if the new transaction has a gas price higher than the existing gas price by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+### Legacy transactions
+
+If sending a [legacy](types.md#frontier-transactions) or [`ACCESS_LIST`](types.md#access_list-transactions) transaction,
+the old transaction is replaced if the new transaction has a gas price higher than the existing gas price by the percentage
+specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+
+### `EIP1559` transactions
 
 If sending an [`EIP1559` transaction](types.md#eip1559-transactions), the old transaction is replaced if one of the following is true:
 
-- The new transaction's effective gas price is higher than the existing gas price by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) AND the new effective priority fee is greater than or equal to the existing priority fee.
+- The new transaction's effective gas price is higher than the existing gas price by the percentage specified by
+  [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) AND the new effective priority fee is greater than
+  or equal to the existing priority fee.
 
-- The new transaction's effective gas price is the equal to the existing gas price AND the new effective priority fee is higher than the existing priority fee by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+- The new transaction's effective gas price is equal to the existing gas price AND the new effective priority fee is higher than
+  the existing priority fee by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
 
-The default value for [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) is 10%.
+### `BLOB` transactions
 
-### In networks with zero base base or free gas
+If sending a [`BLOB` transaction](types.md#blob-transactions), the old transaction is replaced if BOTH of the following are true:
 
-To enable replacing transactions in the transaction pool for zero base fee networks,
-or free gas networks:
+- The new transaction's gas price is higher than the existing gas price by the percentage specified by
+  [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
 
-* If you set [`zeroBaseFee`](../../reference/genesis-items.md) to `true` in the genesis file,
-  the transaction pool price bump is set to `0`. Specifying a value for transaction pool price bump using [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump)
-  will cause an error.
-* If the [minimum gas price is zero](../../../private-networks/how-to/configure/free-gas.md), the transaction pool price bump is set to `0`, unless you specify a different value using [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+- The new transaction's maximum fee per blob gas is higher than the existing maximum fee per blob gas by the percentage specified by 
+  [`--tx-pool-blob-price-bump`](../../reference/cli/options.md#tx-pool-blob-price-bump).
 
-## Transaction pool methods and options
+### Free gas networks
 
-You can configure and monitor the transaction pool using the following methods, subscriptions, and options:
+In [free gas networks](../../../private-networks/how-to/configure/free-gas.md), the transaction pool price bump is `0` by default,
+so replacement transactions can use the same gas price as the pending transaction.
 
-|                | Name                                                                                             | Description                                                                         |
-|----------------|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Method         | [`txpool_besuTransactions`](../../reference/api/index.md#txpool_besutransactions)                | API method to list transactions in the transaction pool.                            |
-| Method         | [`txpool_besuStatistics`](../../reference/api/index.md#txpool_besustatistics)                    | API method to list statistics of the transaction pool.                              |
-| Method         | [`txpool_besuPendingTransactions`](../../reference/api/index.md#txpool_besupendingtransactions)  | API method to list pending transactions in the transaction pool.                    |
-| Method         | [`txpool_contentFrom`](../../reference/api/index.md#txpool_contentfrom)                          | API method to list pending and queued transactions for a given sender address.      |
-| Method         | [`txpool_content`](../../reference/api/index.md#txpool_content)                                  | API method to list all pending and queued transactions in the pool, grouped by sender address and nonce. |
-| Subscription   | [`newPendingTransactions`](../../how-to/use-besu-api/rpc-pubsub.md#pending-transactions)         | RPC subscription to notify of transactions added to the transaction pool.           |
-| Subscription   | [`droppedPendingTransactions`](../../how-to/use-besu-api/rpc-pubsub.md#dropped-transactions)     | RPC subscription to notify of transactions dropped from the transaction pool.       |
-| Option         | [`--tx-pool`](../../reference/cli/options.md#tx-pool)                                            | Option to specify the type of transaction pool to use.                              |
-| Option         | [`--tx-pool-enable-save-restore`](../../reference/cli/options.md#tx-pool-enable-save-restore)    | Option to enable save and restore functionality for the transaction pool.           |
-| Option         | [`--tx-pool-layer-max-capacity`](../../reference/cli/options.md#tx-pool-layer-max-capacity)      | Option to specify the maximum memory capacity of the layered transaction pool.      |
-| Option         | [`--tx-pool-limit-by-account-percentage`](../../reference/cli/options.md#tx-pool-limit-by-account-percentage) | Option to limit the transaction pool by account percentage.            |
-| Option         | [`--tx-pool-max-future-by-sender`](../../reference/cli/options.md#tx-pool-max-future-by-sender)  | Option to specify the maximum number of future transactions by sender.              |
-| Option         | [`--tx-pool-max-prioritized`](../../reference/cli/options.md#tx-pool-max-prioritized)            | Option to specify the maximum number of prioritized transactions.                   |
-| Option         | [`--tx-pool-max-prioritized-by-type`](../../reference/cli/options.md#tx-pool-max-prioritized-by-type) | Option to specify the maximum number of prioritized transactions by type.      |
-| Option         | [`--tx-pool-max-size`](../../reference/cli/options.md#tx-pool-max-size)                          | Option to specify the maximum size of the transaction pool.                         |
-| Option         | [`--tx-pool-min-gas-price`](../../reference/cli/options.md#tx-pool-min-gas-price)                | Option to specify the minimum gas price for transactions in the pool.               |
-| Option         | [`--tx-pool-min-score`](../../reference/cli/options.md#tx-pool-min-score)                | Option to remove a pending transaction from the layered transaction pool when its score is below a specified value.               |
-| Option         | [`--tx-pool-no-local-priority`](../../reference/cli/options.md#tx-pool-no-local-priority)        | Option to disable local priority for transactions.                                  |
-| Option         | [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump)                      | Option to specify the price bump percentage to replace an existing transaction.     |
-| Option         | [`--tx-pool-priority-senders`](../../reference/cli/options.md#tx-pool-priority-senders)          | Option to specify sender addresses to prioritize in the transaction pool.           |
-| Option         | [`--tx-pool-retention-hours`](../../reference/cli/options.md#tx-pool-retention-hours)            | Option to specify the number of hours to retain transactions in the pool.           |
-| Option         | [`--tx-pool-save-file`](../../reference/cli/options.md#tx-pool-save-file)                        | Option to specify the file for saving the transaction pool state.                   |
-
-:::note
-The option [`--tx-pool-layer-max-capacity`](../../reference/cli/options.md#tx-pool-layer-max-capacity) is applicable only for [layered transaction pools](#layered-transaction-pool).
-:::
+If [`zeroBaseFee`](../../reference/genesis-items.md) is not set, you can set
+[`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) to require a higher gas price when replacing transactions
+that use a nonzero gas price.

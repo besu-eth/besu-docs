@@ -94,6 +94,6 @@ Block network takes between 13 and 16 seconds.
 
 <!--links-->
 
-[monitoring Besu with Prometheus and Grafana]: ../../../private-networks/tutorials/quickstart.md#monitor-nodes-with-prometheus-and-grafana
+[monitoring Besu with Prometheus and Grafana]: ../../../private-networks/tutorials/quickstart.md#5-monitor-nodes-with-prometheus-grafana-and-loki
 
 [^1]: A CPU-bound task means that the time required to execute the task is determined only by the CPU speed.

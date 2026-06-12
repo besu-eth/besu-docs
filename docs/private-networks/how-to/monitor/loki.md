@@ -7,29 +7,24 @@ description: Using Grafana Loki log management platform with Besu
 # Grafana Loki
 
 [Grafana Loki] is an open-source log management platform that is available when using the [Developer Quickstart](../../tutorials/quickstart.md).
+The generated quickstart network uses Grafana Alloy to collect Besu logs and send them to Loki.
 
-The [Promtail configuration] ingests logs at regular defined intervals and outputs them to [Loki] for storage.
+## View quickstart logs in Loki
 
-The `pipeline configuration` in Promtail defines pipeline stages that can collate logs natively or using the JSON format.
+1. Generate a private network using the [Developer Quickstart](../../tutorials/quickstart.md).
+2. Open the Grafana logs URL listed by `./list.sh`.
+   The URL uses Grafana Explore:
 
-:::note
+   ```text
+   http://localhost:3000/a/grafana-lokiexplore-app/explore
+   ```
 
-If using the pipeline regex stage in `Promtail`, configuration must match your log format.
+3. Select the Loki data source if Grafana doesn't select it automatically.
 
-:::
-
-To view the GoQuorum Quickstart network logs in Loki:
-
-1. [Start the Developer Quickstart with Besu](../../tutorials/quickstart.md), selecting Loki monitoring.
-2. Open the [`Grafana Loki address`](http://localhost:3000/d/Ak6eXLsPxFemKYKEXfcH/quorum-logs-loki?orgId=1&var-app=besu&var-search=&from=now-15m&to=now) listed by the sample networks `list.sh` script.
-
-   The logs display in Loki.
+   The logs display in Grafana.
 
    ![Loki logs](../../../assets/images/grafana_loki.png)
 
 <!-- Links -->
 
-[Promtail configuration]: https://github.com/ConsenSys/quorum-dev-quickstart/blob/master/files/common/promtail/promtail.yml
-[pipeline configuration]: https://github.com/ConsenSys/quorum-dev-quickstart/blob/master/files/common/promtail/promtail.yml
-[Loki]: https://github.com/ConsenSys/quorum-dev-quickstart/blob/master/files/common/loki/loki.yml
 [Grafana Loki]: https://grafana.com/oss/loki/

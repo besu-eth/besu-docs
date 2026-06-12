@@ -13,7 +13,7 @@ Besu uses [Log4j 2](https://logging.apache.org/log4j/2.x/) for logging and provi
 - [Basic](#basic-logging) - Changes the log level.
 - [Advanced](#advanced-logging) - Configures the output and format of the logs.
 
-[Quorum Developer Quickstart](https://github.com/ConsenSys/quorum-dev-quickstart) provides an [example implementation using Elastic Stack](../../../private-networks/how-to/monitor/elastic-stack.md) for log management.
+[Besu Developer Quickstart](https://github.com/Consensys/besu-dev-quickstart) provides an example implementation using Grafana Alloy, Loki, and Grafana for log management.
 
 ## Basic logging
 
@@ -110,9 +110,9 @@ For example, the following Log4j 2 configuration enables logging of invalid tran
 
 ### Log rotation
 
-The [Quorum Developer Quickstart](https://github.com/ConsenSys/quorum-dev-quickstart) logging configuration defines a [log rotation to restrict the size of the log files].
+The [Besu Developer Quickstart](https://github.com/Consensys/besu-dev-quickstart) logging configuration defines a [log rotation to restrict the size of the log files].
 
 <!-- Links -->
 
 [default configuration]: https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/besu/src/main/resources/log4j2.xml
-[log rotation to restrict the size of the log files]: https://github.com/ConsenSys/quorum-dev-quickstart/blob/b72a0f64d685c851bf8be399a8e33bbdf0e09982/files/besu/config/besu/log-config.xml
+[log rotation to restrict the size of the log files]: https://github.com/Consensys/besu-dev-quickstart/blob/master/files/common/config/besu/log-config.xml
