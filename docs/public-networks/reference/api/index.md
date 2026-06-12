@@ -3668,7 +3668,7 @@ the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as desc
 
 #### Returns
 
-`result`: _object_ - [block object](objects.md#block-object), or `null` when there is no block.
+`result`: _array_ of _objects_ - list of [transaction receipt objects](objects.md#transaction-receipt-object), or `null` when there is no block.
 
 <Tabs>
 
@@ -3719,6 +3719,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockReceipts","params":[
           "transactionHash": "0x4a481e4649da999d92db0585c36cba94c18a33747e95dc235330e6c737c6f975",
           "transactionIndex": "0x0",
           "blockHash": "0x19514ce955c65e4dd2cd41f435a75a46a08535b8fc16bc660f8092b32590b182",
+          "blockTimestamp": "0x561bc2e0",
           "logIndex": "0x0",
           "removed": false
         }

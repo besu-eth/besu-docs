@@ -15,7 +15,9 @@ This reference contains API objects that apply to both public and private networ
 
 ## Block object
 
-Returned by [`eth_getBlockByHash`](index.md#eth_getblockbyhash), [`eth_getBlockByNumber`](index.md#eth_getblockbynumber), and [`eth_simulateV1`](index.md#eth_simulatev1).
+Returned by [`eth_getBlockByHash`](index.md#eth_getblockbyhash), [`eth_getBlockByNumber`](index.md#eth_getblockbynumber), [`eth_getUncleByBlockHashAndIndex`](index.md#eth_getunclebyblockhashandindex), [`eth_getUncleByBlockNumberAndIndex`](index.md#eth_getunclebyblocknumberandindex), and [`eth_simulateV1`](index.md#eth_simulatev1).
+The `block` field in [`debug_getBadBlocks`](index.md#debug_getbadblocks) results is also a block object.
+Block objects include `timestamp`, not `blockTimestamp`.
 
 | Key | Type | Value |
 | --- | :-: | --- |
@@ -35,7 +37,7 @@ Returned by [`eth_getBlockByHash`](index.md#eth_getblockbyhash), [`eth_getBlockB
 | `size` | Quantity, Integer | Size of block in bytes. |
 | `gasLimit` | Quantity | Maximum gas allowed in this block. |
 | `gasUsed` | Quantity | Total gas used by all transactions in this block. |
-| `timestamp` | Quantity | Unix timestamp (milliseconds) for block assembly. |
+| `timestamp` | Quantity | Hex-encoded Unix timestamp, in seconds, for block assembly. |
 | `transactions` | Array | Array of [transaction objects](#transaction-object), or 32 byte transaction hashes depending on the specified boolean parameter. |
 | `uncles` | Array | Array of uncle hashes. |
 | `baseFeePerGas` | Quantity | The block's [base fee per gas](../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md). |
@@ -259,7 +261,7 @@ All transaction call object parameters are optional.
 
 ## Transaction receipt object
 
-Returned by [`eth_getTransactionReceipt`](index.md#eth_gettransactionreceipt).
+Returned by [`eth_getTransactionReceipt`](index.md#eth_gettransactionreceipt) and [`eth_getBlockReceipts`](index.md#eth_getblockreceipts).
 
 | Key | Type | Value |
 | --- | :-: | --- |
