@@ -70,10 +70,12 @@ pool with the lowest score and will only be selected after all other pending tra
 
 ### Dropping transactions
 
-When the layered transaction pool is full, it accepts and retains local transactions in preference to remote transactions, unless [`--tx-pool-no-local-priority`](../../reference/cli/options.md#tx-pool-no-local-priority) is enabled.
+When the layered transaction pool is full, it accepts and retains local transactions in preference to remote transactions,
+unless [`--tx-pool-no-local-priority`](../../reference/cli/options.md#tx-pool-no-local-priority) is enabled.
 
 If the transaction pool is full of local transactions, Besu drops the oldest local transactions first. 
-That is, a full transaction pool continues to accept new local transactions by first dropping remote transactions and then by dropping the oldest local transactions.
+That is, a full transaction pool continues to accept new local transactions by first dropping remote transactions and
+then by dropping the oldest local transactions.
 
 ## Sequenced transaction pool
 
@@ -94,26 +96,36 @@ You can replace a pending transaction with a transaction that has the same sende
 
 ### Legacy transactions
 
-If sending a [legacy](types.md#frontier-transactions) or [`ACCESS_LIST`](types.md#access_list-transactions) transaction, the old transaction is replaced if the new transaction has a gas price higher than the existing gas price by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+If sending a [legacy](types.md#frontier-transactions) or [`ACCESS_LIST`](types.md#access_list-transactions) transaction,
+the old transaction is replaced if the new transaction has a gas price higher than the existing gas price by the percentage
+specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
 
 ### `EIP1559` transactions
 
 If sending an [`EIP1559` transaction](types.md#eip1559-transactions), the old transaction is replaced if one of the following is true:
 
-- The new transaction's effective gas price is higher than the existing gas price by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) AND the new effective priority fee is greater than or equal to the existing priority fee.
+- The new transaction's effective gas price is higher than the existing gas price by the percentage specified by
+  [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) AND the new effective priority fee is greater than
+  or equal to the existing priority fee.
 
-- The new transaction's effective gas price is equal to the existing gas price AND the new effective priority fee is higher than the existing priority fee by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+- The new transaction's effective gas price is equal to the existing gas price AND the new effective priority fee is higher than
+  the existing priority fee by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
 
 ### `BLOB` transactions
 
 If sending a [`BLOB` transaction](types.md#blob-transactions), the old transaction is replaced if BOTH of the following are true:
 
-- The new transaction's gas price is higher than the existing gas price by the percentage specified by [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
+- The new transaction's gas price is higher than the existing gas price by the percentage specified by
+  [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump).
 
-- The new transaction's maximum fee per blob gas is higher than the existing maximum fee per blob gas by the percentage specified by [`--tx-pool-blob-price-bump`](../../reference/cli/options.md#tx-pool-blob-price-bump).
+- The new transaction's maximum fee per blob gas is higher than the existing maximum fee per blob gas by the percentage specified by 
+  [`--tx-pool-blob-price-bump`](../../reference/cli/options.md#tx-pool-blob-price-bump).
 
 ### Free gas networks
 
-In [free gas networks](../../../private-networks/how-to/configure/free-gas.md), the transaction pool price bump is `0` by default, so replacement transactions can use the same gas price as the pending transaction.
+In [free gas networks](../../../private-networks/how-to/configure/free-gas.md), the transaction pool price bump is `0` by default,
+so replacement transactions can use the same gas price as the pending transaction.
 
-If [`zeroBaseFee`](../../reference/genesis-items.md) is not set, you can set [`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) to require a higher gas price when replacing transactions that use a nonzero gas price.
+If [`zeroBaseFee`](../../reference/genesis-items.md) is not set, you can set
+[`--tx-pool-price-bump`](../../reference/cli/options.md#tx-pool-price-bump) to require a higher gas price when replacing transactions
+that use a nonzero gas price.
