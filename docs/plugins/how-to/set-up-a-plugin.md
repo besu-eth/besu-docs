@@ -6,7 +6,8 @@ toc_max_heading_level: 3
 
 # Set up a plugin project
 
-Set up a plugin project, implement `BesuPlugin`, and register it for discovery.
+Configure the build for a Besu plugin project, implement the `BesuPlugin` interface,
+and register the plugin so Besu can discover it at startup.
 
 ## Prerequisites
 

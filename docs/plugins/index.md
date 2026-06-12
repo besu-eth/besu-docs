@@ -7,23 +7,23 @@ description: Learn how Besu plugins extend Besu functionality.
 
 # Besu plugins
 
-Besu plugins are Java extensions that use the [Plugin API](pathname:///plugins/reference/plugin-api/index.html) to
-extend Besu functionality without modifying Besu source code.
+Besu plugins are Java extensions that add custom functionality to Besu without changing Besu source code.
+
+Plugins are built using the [Plugin API](pathname:///plugins/reference/plugin-api/index.html), which provides
+services for interacting with Besu.
+Using these services, plugins can query Besu state, configure behavior, extend or replace parts of Besu, and listen
+for events such as block imports and transaction pool changes.
 
 You can create your own plugin to build app-specific chains, integrate Besu with enterprise systems,
 observe blockchain activity, analyze transactions, support Layer 2 networks, or add debugging and
 operational tooling.
-
-Plugins use Besu services to query, configure, extend, or replace parts of Besu.
-They can also register event listeners to observe Besu activity such as block imports, transaction
-pool changes, logs, and sync status changes.
 
 Get started with the [quickstart](get-started/quickstart.md), or explore the
 [plugin lifecycle](get-started/plugin-lifecycle.md) and [plugin services](/plugins/services).
 
 ## Architecture
 
-The following diagram illustrates some of the interfaces exposed by the Plugin API.
+The following diagram illustrates some of the services exposed by the Plugin API.
 
 <p align="center">
 

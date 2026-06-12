@@ -38,10 +38,9 @@ public class ExamplePlugin implements BesuPlugin {
 }
 ```
 
-:::info note
-Besu prepends `--plugin-` to the namespace you pass to `addPicoCLIOptions`, so every `@Option`
-name in the object must start with `--plugin-<namespace>-`.
-Passing `"example"` means every `@Option` name must start with `--plugin-example-`.
+:::warning Important
+Plugin CLI option names must use the prefix `--plugin-<namespace>-`, where `<namespace>` is the value you pass to `addPicoCLIOptions`.
+For example, passing `"example"` means every `@Option` name must start with `--plugin-example-`.
 :::
 
 Once registered, plugin options are automatically accepted through the Besu TOML configuration

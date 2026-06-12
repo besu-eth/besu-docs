@@ -25,7 +25,8 @@ the plugin developer experience.
 It automatically adds and manages dependencies, and packages the plugin artifacts when you
 distribute the project.
 
-In your plugin project, apply the Gradle plugin (`net.consensys.besu-plugin-distribution`) and set the Besu version you want to compile your plugin against:
+In your plugin project, apply the latest version of the [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin)
+(`net.consensys.besu-plugin-distribution`) and set the Besu version you want to compile your plugin against:
 
 ```groovy title="build.gradle"
 plugins {
@@ -44,7 +45,7 @@ The three required methods are `register`, `start`, and `stop`.
 
 Besu calls `register(ServiceManager)` early in startup.
 [`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) is the interface through which your plugin accesses all Besu services.
-This is the only time it is provided, so store it in a field for later use.
+Store `ServiceManager` in a field if your plugin needs to retrieve services later.
 
 The `getName` method is optional; it defaults to the fully qualified class name, but overriding it with
 a short string gives your plugin a readable identifier.
@@ -101,12 +102,6 @@ Use the `register` method to add plugin CLI options to the Besu command line.
 Retrieve the [`PicoCLIOptions`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PicoCLIOptions.html) service and call `addPicoCLIOptions`, passing a short namespace string and 
 the object whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
-:::info Note
-Besu prepends `--plugin-` to the namespace you pass to `addPicoCLIOptions`, so every `@Option`
-name in the object must start with `--plugin-<namespace>-`.
-Passing `"example"` means every `@Option` name must start with `--plugin-example-`.
-:::
-
 ```java title="ExamplePlugin.java"
 // highlight-start
 import org.hyperledger.besu.plugin.services.PicoCLIOptions;
@@ -133,6 +128,11 @@ public class ExamplePlugin implements BesuPlugin {
   ...
 }
 ```
+
+:::warning Important
+Plugin CLI option names must use the prefix `--plugin-<namespace>-`, where `<namespace>` is the value you pass to `addPicoCLIOptions`.
+For example, passing `"example"` means every `@Option` name must start with `--plugin-example-`.
+:::
 
 ### 5. Retrieve services and start
 
@@ -198,4 +198,4 @@ See [Deploy a plugin](../how-to/deploy-a-plugin.md) to learn how to deploy your 
 
 - Learn about the [plugin lifecycle](plugin-lifecycle.md).
 - Integrate different [services](/plugins/services) into your plugin.
-- [Troubleshoot](../how-to/troubleshoot.md) common issues.
+- See example [open source plugins](../reference/resources.md).
