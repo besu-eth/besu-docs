@@ -17,7 +17,6 @@ This reference contains API objects that apply to both public and private networ
 
 Returned by [`eth_getBlockByHash`](index.md#eth_getblockbyhash), [`eth_getBlockByNumber`](index.md#eth_getblockbynumber), [`eth_getUncleByBlockHashAndIndex`](index.md#eth_getunclebyblockhashandindex), [`eth_getUncleByBlockNumberAndIndex`](index.md#eth_getunclebyblocknumberandindex), and [`eth_simulateV1`](index.md#eth_simulatev1).
 The `block` field in [`debug_getBadBlocks`](index.md#debug_getbadblocks) results is also a block object.
-Block objects include `timestamp`, not `blockTimestamp`.
 
 | Key | Type | Value |
 | --- | :-: | --- |
