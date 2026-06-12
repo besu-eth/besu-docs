@@ -43,7 +43,8 @@ You can use Docker Desktop or Docker Engine with the Compose plugin in the WSL2 
 
 ### 1. Generate the private network files
 
-Run the Developer Quickstart:
+Run the Developer Quickstart.
+The quickstart generates a folder (`./besu-test-network` by default) with the Docker Compose files, scripts, and Besu configuration in it.
 
 ```bash
 npx @consensys-software/besu-dev-quickstart
@@ -63,8 +64,6 @@ To skip the prompts, run:
 ```bash
 npx @consensys-software/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens true
 ```
-
-The command creates the Docker Compose files, scripts, and Besu configuration in `besu-test-network`.
 
 ### 2. Start the network
 
