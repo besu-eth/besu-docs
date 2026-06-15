@@ -216,7 +216,7 @@ Returned by [`eth_getTransactionByHash`](index.md#eth_gettransactionbyhash), [`e
 | `accessList` | Array | (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). |
 | `blockHash` | Data, 32&nbsp;bytes | Hash of the block containing this transaction. `null` when transaction is pending. |
 | `blockNumber` | Quantity | Block number of the block containing this transaction. `null` when transaction is pending. |
-| `blockTimestamp` | Quantity | Hex-encoded Unix timestamp, in seconds, of the block containing this transaction. `null` when transaction is pending. |
+| `blockTimestamp` | Quantity | Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending. |
 | `chainId` | Quantity | [Chain ID](../../concepts/network-and-chain-id.md). |
 | `from` | Data, 20&nbsp;bytes | Address of the sender. |
 | `gas` | Quantity | Gas provided by the sender. |
