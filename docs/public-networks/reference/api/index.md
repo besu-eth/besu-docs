@@ -282,7 +282,7 @@ You can skip a parameter by using an empty string, `""`. If you specify:
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"admin_logsRemoveCache","params":["1", "100"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"admin_logsRemoveCache","params":["0x1", "0x64"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
 
 </TabItem>
@@ -293,7 +293,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_logsRemoveCache","params":
 {
   "jsonrpc": "2.0",
   "method": "admin_logsRemoveCache",
-  "params": ["1", "100"],
+  "params": ["0x1", "0x64"],
   "id": 1
 }
 ```
@@ -4886,7 +4886,7 @@ Returns transaction information for the specified block number and transaction i
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockNumberAndIndex","params":["82990", "0x2"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockNumberAndIndex","params":["0x1442e", "0x2"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
 
 </TabItem>
@@ -4897,7 +4897,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByBlockNumberA
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionByBlockNumberAndIndex",
-  "params": ["82990", "0x2"],
+  "params": ["0x1442e", "0x2"],
   "id": 1
 }
 ```

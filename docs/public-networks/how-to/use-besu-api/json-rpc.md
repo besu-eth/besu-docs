@@ -314,7 +314,7 @@ have a block parameter.
 The block parameter can have one of the following values:
 
 - `blockNumber` : _quantity_ - The block number, specified in hexadecimal.
-  `0` represents the genesis block.
+  `0x0` represents the genesis block.
 - `blockHash` : _string_ or _object_ - 32-byte block hash or JSON object specifying the block hash.
   If using a JSON object, you can specify `requireCanonical` to indicate whether the block must be a
   canonical block.

@@ -163,7 +163,7 @@ The proposer of the genesis block has address `0x0000000000000000000000000000000
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getSignerMetrics","params":["1", "100"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getSignerMetrics","params":["0x1", "0x64"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
 
 </TabItem>
@@ -171,7 +171,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getSignerMetrics","params":
 <TabItem value="wscat WS" label="wscat WS">
 
 ```bash
-{"jsonrpc":"2.0","method":"ibft_getSignerMetrics","params":["1", "100"], "id":1}
+{"jsonrpc":"2.0","method":"ibft_getSignerMetrics","params":["0x1", "0x64"], "id":1}
 ```
 
 </TabItem>
@@ -856,7 +856,7 @@ The proposer of the genesis block has address `0x0000000000000000000000000000000
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getSignerMetrics","params":["1", "100"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getSignerMetrics","params":["0x1", "0x64"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
 
 </TabItem>
@@ -864,7 +864,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getSignerMetrics","params":
 <TabItem value="wscat WS" label="wscat WS">
 
 ```bash
-{"jsonrpc":"2.0","method":"qbft_getSignerMetrics","params":["1", "100"], "id":1}
+{"jsonrpc":"2.0","method":"qbft_getSignerMetrics","params":["0x1", "0x64"], "id":1}
 ```
 
 </TabItem>
