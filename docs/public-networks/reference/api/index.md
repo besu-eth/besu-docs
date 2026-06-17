@@ -1543,7 +1543,7 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -1617,7 +1617,7 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -1760,7 +1760,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -1804,10 +1804,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
     "returnValue": "",
     "structLogs": [
       {
-        "pc": 0,
-        "op": "RETURN",
-        "gas": 0,
-        "gasCost": 0,
+        "pc": 100,
+        "op": "STATICCALL",
+        "gas": 78000,
+        "gasCost": 500,
         "depth": 1,
         "stack": [],
         "returnData": "0x0000000000000000000000000000000000000000000000000000000000000001"
@@ -1842,7 +1842,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -1922,7 +1922,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -2010,7 +2010,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
 #### Returns
 
@@ -2105,7 +2105,7 @@ temporary state changes without affecting the actual blockchain state.
 
   - `opcodes`: _array_ of _strings_ - (optional) list of opcode names to trace; if omitted or empty, all opcodes are traced
 
-  - `enableReturnData`: _boolean_ - (optional) `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+  - `enableReturnData`: _boolean_ - (optional) `true` enables return data capture. The default is `false`.
 
   - `stateOverrides`: _object_ - (optional) [address-to-state mapping](./objects.md#state-override-object)
 
