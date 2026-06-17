@@ -7592,6 +7592,56 @@ content if the save and restore functionality is enabled using
 The file is created on shutdown and reloaded during startup.
 The default file name is `txpool.dump` in the [data directory](#data-path).
 
+### `tx-sender-nonce-index-enabled`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--tx-sender-nonce-index-enabled[=<true|false>]
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+--tx-sender-nonce-index-enabled=false
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_TX_SENDER_NONCE_INDEX_ENABLED=false
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+tx-sender-nonce-index-enabled=false
+```
+
+</TabItem>
+
+</Tabs>
+
+Enables or disables the sender and nonce index, which maps each sender address and nonce to a
+transaction hash. This index is required for
+[`eth_getTransactionBySenderAndNonce`](../../reference/api/index.md#eth_gettransactionbysenderandnonce)
+to return mined transactions. If disabled, `eth_getTransactionBySenderAndNonce` returns `null` for
+mined transactions but still checks the transaction pool for pending transactions.
+
+On mainnet, the index adds approximately 60 bytes per transaction and can reach 150 GB or more on
+a full node. Existing nodes that upgrade without resyncing will not have index entries for
+pre-upgrade transactions.
+
+The default is `true`.
+
 ### `version`
 
 <Tabs>

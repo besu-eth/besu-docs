@@ -5109,6 +5109,89 @@ curl -X POST -H "Content-Type: application/json" --data '{"query": "{transaction
 
 </Tabs>
 
+### `eth_getTransactionBySenderAndNonce`
+
+Returns transaction information for the given sender address and nonce.
+
+:::note
+
+This method requires the sender and nonce index to look up mined transactions. The index is
+enabled by default. You can disable it using the
+[`--tx-sender-nonce-index-enabled`](../cli/options.md#tx-sender-nonce-index-enabled) option. If
+the index is disabled, this method returns `null` for mined transactions but still checks the
+transaction pool for pending transactions.
+
+:::
+
+#### Parameters
+
+- `address`: _string_ - 20-byte sender address
+
+- `nonce`: _string_ - hexadecimal integer representing the transaction nonce
+
+#### Returns
+
+`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` if the
+transaction is not found. Pending transactions include `null` values for `blockHash`,
+`blockNumber`, and `transactionIndex`.
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionBySenderAndNonce","params":["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73","0x1"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getTransactionBySenderAndNonce",
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+    "0x1"
+  ],
+  "id": 53
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 53,
+  "result": {
+    "blockHash": "0x510efccf44a192e6e34bcb439a1947e24b86244280762cbb006858c237093fda",
+    "blockNumber": "0x422",
+    "blockTimestamp": "0x561bc2e0",
+    "chainId": 2018,
+    "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+    "gas": "0x5208",
+    "gasPrice": "0x3b9aca00",
+    "hash": "0xa52be92809541220ee0aaaede6047d9a6c5d0cd96a517c854d944ee70a0ebb44",
+    "input": "0x",
+    "nonce": "0x1",
+    "to": "0x627306090abab3a6e1400e9345bc60c78a8bef57",
+    "transactionIndex": "0x0",
+    "value": "0x4e1003b28d9280000",
+    "v": "0xfe7",
+    "r": "0x84caf09aefbd5e539295acc67217563438a4efb224879b6855f56857fa2037d3",
+    "s": "0x5e863be3829812c81439f0ae9d8ecb832b531d651fb234c848d1bf45e62be8b9"
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
 ### `eth_getTransactionCount`
 
 Returns the number of transactions sent from a specified address. Use the `pending` tag to get the next account nonce not used by any pending transactions.
