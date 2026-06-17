@@ -5111,16 +5111,14 @@ curl -X POST -H "Content-Type: application/json" --data '{"query": "{transaction
 
 ### `eth_getTransactionBySenderAndNonce`
 
-Returns transaction information for the given sender address and nonce.
+Returns transaction information for the specified sender address and nonce.
 
 :::note
-
-This method requires the sender and nonce index to look up mined transactions. The index is
-enabled by default. You can disable it using the
-[`--tx-sender-nonce-index-enabled`](../cli/options.md#tx-sender-nonce-index-enabled) option. If
-the index is disabled, this method returns `null` for mined transactions but still checks the
+To return mined transactions, this method requires the sender and nonce index.
+The index is enabled by default; you can disable it using
+[`--tx-sender-nonce-index-enabled`](../cli/options.md#tx-sender-nonce-index-enabled).
+If the index is disabled, this method returns `null` for mined transactions but still checks the
 transaction pool for pending transactions.
-
 :::
 
 #### Parameters
@@ -5131,9 +5129,7 @@ transaction pool for pending transactions.
 
 #### Returns
 
-`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` if the
-transaction is not found. Pending transactions include `null` values for `blockHash`,
-`blockNumber`, and `transactionIndex`.
+`result`: _object_ - [transaction object](objects.md#transaction-object), or `null` when there is no transaction
 
 <Tabs>
 

@@ -7630,17 +7630,20 @@ tx-sender-nonce-index-enabled=false
 
 </Tabs>
 
-Enables or disables the sender and nonce index, which maps each sender address and nonce to a
-transaction hash. This index is required for
+Enables or disables the sender and nonce index, which maps each sender address and nonce to a transaction hash.
+This index is required for
 [`eth_getTransactionBySenderAndNonce`](../../reference/api/index.md#eth_gettransactionbysenderandnonce)
-to return mined transactions. If disabled, `eth_getTransactionBySenderAndNonce` returns `null` for
-mined transactions but still checks the transaction pool for pending transactions.
-
-On mainnet, the index adds approximately 60 bytes per transaction and can reach 150 GB or more on
-a full node. Existing nodes that upgrade without resyncing will not have index entries for
-pre-upgrade transactions.
-
+to return mined transactions.
 The default is `true`.
+
+:::note Storage impact
+The index adds approximately 60 bytes per transaction.
+If you upgrade Besu to enable this index without resyncing, the index is only populated for blocks processed after the upgrade.
+Resyncing will index the full available transaction history.
+
+Disabling this option for [archive nodes](../../concepts/node-sync.md#archive-nodes) avoids the extra 
+storage cost in the case of a resync.
+:::
 
 ### `version`
 
