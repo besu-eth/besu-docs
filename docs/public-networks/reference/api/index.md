@@ -1543,6 +1543,8 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+
 #### Returns
 
 `result`: _string_ - location of the generated trace files
@@ -1614,6 +1616,8 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
   - `disableStorage`: _boolean_ - omit storage from the trace; defaults to `true`
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
 
 #### Returns
 
@@ -1756,6 +1760,8 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
 
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
+
 #### Returns
 
 `result`: _object_ - [trace object](objects.md#trace-object)
@@ -1765,7 +1771,7 @@ Reruns the transaction with the same state as when the transaction executed.
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params":["0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",{"disableStorage":true}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params":["0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",{"disableStorage":true,"enableReturnData":true}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
 
 </TabItem>
@@ -1778,7 +1784,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
   "method": "debug_traceTransaction",
   "params": [
     "0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",
-    { "disableStorage": true }
+    { "disableStorage": true, "enableReturnData": true }
   ],
   "id": 1
 }
@@ -1799,11 +1805,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
     "structLogs": [
       {
         "pc": 0,
-        "op": "STOP",
+        "op": "RETURN",
         "gas": 0,
         "gasCost": 0,
         "depth": 1,
-        "stack": []
+        "stack": [],
+        "returnData": "0x0000000000000000000000000000000000000000000000000000000000000001"
       }
     ]
   }
@@ -1834,6 +1841,8 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
 
 #### Returns
 
@@ -1912,6 +1921,8 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
 
 #### Returns
 
@@ -1998,6 +2009,8 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+
+  - `enableReturnData`: _boolean_ - `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
 
 #### Returns
 
@@ -2091,6 +2104,8 @@ temporary state changes without affecting the actual blockchain state.
     The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - (optional) list of opcode names to trace; if omitted or empty, all opcodes are traced
+
+  - `enableReturnData`: _boolean_ - (optional) `true` captures EVM return data per opcode and includes `returnData` in each applicable structured log entry. The default is `false`. The field is omitted when not enabled or when return data is empty.
 
   - `stateOverrides`: _object_ - (optional) [address-to-state mapping](./objects.md#state-override-object)
 
