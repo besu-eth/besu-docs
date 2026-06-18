@@ -26,9 +26,6 @@ The signal is most meaningful once your node is fully synced and following the c
 - [Gradle](https://gradle.org/install/).
 - A [Besu installation](../../public-networks/get-started/install/index.md).
 - A consensus client, for example [Teku](https://docs.teku.consensys.net/), to run alongside Besu.
-- Enough resources to run a Mainnet node.
-  This tutorial runs the plugin on Mainnet, where privately built transactions are common.
-  See the [system requirements](../../public-networks/get-started/system-requirements.md).
 
 ## Steps
 
@@ -575,15 +572,16 @@ For other deployment options, including Docker, see [deploy a plugin](../how-to/
 ### 11. Run Besu with the plugin
 
 The plugin relies on mempool gossip and block import events, so it needs a node following a live network.
-Run it on Ethereum Mainnet, where a significant share of transactions are built privately, for example by MEV builders that bypass
-the public mempool.
+This tutorial runs it on the Hoodi testnet, which syncs quickly and still surfaces transactions that never appeared in
+your node's public mempool.
 
-Run Besu as an execution client on Mainnet alongside a consensus client.
+Run Besu as an execution client on Hoodi alongside a consensus client.
 Start Besu with metrics enabled and the plugin's metric category included.
 The `--metrics-category` option replaces the default set of categories, so list the `TX_DETECTION` category to expose the plugin's metrics:
 
 ```bash
 besu \
+  --network=hoodi \
   --engine-rpc-enabled \
   --engine-jwt-secret=<path to jwtsecret.hex> \
   --engine-host-allowlist="*" \
@@ -595,8 +593,8 @@ besu \
 
 Then start your consensus client.
 For full setup instructions, including generating the shared JWT secret and starting the consensus client, see how to
-[connect to Mainnet](../../public-networks/get-started/connect/mainnet.md) or follow the
-[Besu and Teku Mainnet tutorial](../../public-networks/tutorials/besu-teku-mainnet.md).
+[connect to a testnet](../../public-networks/get-started/connect/testnet.md) or follow the
+[Besu and Teku testnet tutorial](../../public-networks/tutorials/besu-teku-testnet.md).
 
 :::tip
 The metric category name is matched case-insensitively.
