@@ -5117,8 +5117,7 @@ Returns transaction information for the specified sender address and nonce.
 To return mined transactions, this method requires the sender and nonce index.
 The index is enabled by default; you can disable it using
 [`--tx-sender-nonce-index-enabled`](../cli/options.md#tx-sender-nonce-index-enabled).
-If the index is disabled, this method returns `null` for mined transactions but still checks the
-transaction pool for pending transactions.
+If the index is disabled, this method only returns information for pending transactions.
 :::
 
 #### Parameters
