@@ -22,7 +22,9 @@ The signal is most meaningful once your node is fully synced and following the c
 
 ## Prerequisites
 
-- [JDK 25](https://adoptium.net/) or later.
+- Java 25+.
+  You can install Java using `brew install openjdk@25` or manually install the
+  [Java JDK](https://www.oracle.com/java/technologies/downloads).
 - [Gradle](https://gradle.org/install/).
 - A [Besu installation](../../public-networks/get-started/install/index.md).
 - A consensus client, for example [Teku](https://docs.teku.consensys.net/), to run alongside Besu.
@@ -32,14 +34,14 @@ The signal is most meaningful once your node is fully synced and following the c
 ### 1. Set up your project
 
 A Besu plugin is a standalone Java project.
-Create it in a separate directory from your Besu installation:
+Create a new directory for it:
 
 ```bash
 mkdir -p tx-detection-plugin/src/main/java/txdetection
 cd tx-detection-plugin
 ```
 
-Your project will have the following layout:
+Your project will have the following structure:
 
 ```text
 tx-detection-plugin/
@@ -54,11 +56,14 @@ tx-detection-plugin/
 
 ### 2. Configure the build
 
-Besu provides a [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin)
-(`net.consensys.besu-plugin-distribution`) that adds the required repositories, populates the compile classpath with
-everything Besu provides, and packages a slim distribution.
+Besu provides a [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin) to simplify
+the plugin developer experience.
+It automatically adds and manages dependencies, and packages the plugin artifacts when you
+distribute the project.
 
-Create `build.gradle` and set the Besu version you want to compile against:
+In the root of your project, create `build.gradle`.
+Apply the latest version of the [Gradle plugin](https://github.com/Consensys/besu-plugin-gradle-plugin)
+(`net.consensys.besu-plugin-distribution`) and set the Besu version you want to compile your plugin against:
 
 ```groovy title="build.gradle"
 plugins {
@@ -77,9 +82,12 @@ The name determines the distribution ZIP file name:
 rootProject.name = 'tx-detection-plugin'
 ```
 
-You don't need to declare any other dependencies.
-The Gradle plugin makes the Plugin API, the PicoCLI library, the `@AutoService` annotation processor, and SLF4J logging
-available on the compile classpath, because Besu already provides them at runtime.
+Generate the [Gradle wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) so the
+project builds with a consistent Gradle version:
+
+```bash
+gradle wrapper
+```
 
 ### 3. Create the plugin skeleton
 
@@ -128,8 +136,8 @@ public class TxDetectionPlugin implements BesuPlugin {
 }
 ```
 
-The `@AutoService(BesuPlugin.class)` annotation generates the `META-INF/services` entry that Besu's `ServiceLoader` uses to
-discover your plugin at startup.
+The `@AutoService(BesuPlugin.class)` annotation generates the service provider entry that Besu's `ServiceLoader` 
+uses to discover your plugin at startup.
 Besu calls `register(ServiceManager)` once, early in startup, and passes the
 [`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html)
 you use to access all Besu services.
@@ -139,9 +147,10 @@ Store it in a field for later use.
 
 Add a set that records the hash of every transaction the node sees in the mempool.
 
-Because a busy node sees many transactions, use a bounded structure that evicts the oldest entries so memory usage stays constant.
-The following uses a `LinkedHashMap` configured as a fixed-size, least-recently-used cache, wrapped to make it thread-safe
-because Besu fires events from multiple threads:
+Because a busy node sees many transactions, use a bounded structure that evicts the oldest entries so memory 
+usage stays constant.
+The following uses a `LinkedHashMap` configured as a fixed-size, least-recently-used cache, wrapped to make it 
+thread-safe because Besu fires events from multiple threads:
 
 ```java title="TxDetectionPlugin.java"
 // highlight-start
@@ -157,7 +166,9 @@ import java.util.Set;
 
 @AutoService(BesuPlugin.class)
 public class TxDetectionPlugin
-    implements BesuPlugin, BesuEvents.TransactionAddedListener {
+    implements BesuPlugin,
+        // highlight-next-line
+        BesuEvents.TransactionAddedListener {
 
   private static final Logger LOG = LoggerFactory.getLogger(TxDetectionPlugin.class);
   private static final String PLUGIN_NAME = "tx-detection";
@@ -177,11 +188,7 @@ public class TxDetectionPlugin
                   return size() > MAX_TRACKED_TRANSACTIONS;
                 }
               }));
-  // highlight-end
 
-  // ... lifecycle methods ...
-
-  // highlight-start
   @Override
   public void onTransactionAdded(final Transaction transaction) {
     mempoolHashes.add(transaction.getHash());
@@ -195,8 +202,9 @@ lets the plugin receive a callback every time a transaction is added to the node
 
 ### 5. Inspect new blocks
 
-Add the block listener that does the detection.
-For each new block that advances the chain head, count the transactions whose hash the plugin never recorded from the mempool:
+Add the block listener that detects unseen transactions.
+For each new block that advances the chain head, count the transactions whose hash the plugin never recorded 
+from the mempool:
 
 ```java title="TxDetectionPlugin.java"
 // highlight-next-line
@@ -567,7 +575,7 @@ mkdir -p /path/to/besu/plugins
 unzip -j build/distributions/tx-detection-plugin.zip -d /path/to/besu/plugins/
 ```
 
-For other deployment options, including Docker, see [deploy a plugin](../how-to/deploy-a-plugin.md).
+If you installed Besu using Homebrew or docker, see [Deploy a plugin](../how-to/deploy-a-plugin.md).
 
 ### 11. Run Besu with the plugin
 
@@ -577,7 +585,8 @@ your node's public mempool.
 
 Run Besu as an execution client on Hoodi alongside a consensus client.
 Start Besu with metrics enabled and the plugin's metric category included.
-The `--metrics-category` option replaces the default set of categories, so list the `TX_DETECTION` category to expose the plugin's metrics:
+The [`--metrics-category`](../../public-networks/reference/cli/options.md#metrics-category) option replaces 
+the default set of categories, so list the `TX_DETECTION` category to expose the plugin's metrics:
 
 ```bash
 besu \
@@ -596,12 +605,6 @@ For full setup instructions, including generating the shared JWT secret and star
 [connect to a testnet](../../public-networks/get-started/connect/testnet.md) or follow the
 [Besu and Teku testnet tutorial](../../public-networks/tutorials/besu-teku-testnet.md).
 
-:::tip
-The metric category name is matched case-insensitively.
-To keep Besu's default metrics as well, add `TX_DETECTION` to the default list, for example
-`--metrics-category=BLOCKCHAIN,PROCESS,JVM,TX_DETECTION`.
-:::
-
 ### 12. Verify the plugin is running
 
 Check the Besu startup logs to confirm the plugin was detected and started.
@@ -611,8 +614,6 @@ You should see your start message:
 Transaction detection plugin started
 ```
 
-<!-- TODO: Add a screenshot or log snippet of the plugin registration summary at startup. -->
-
 Once the node is synced and following the chain head, the plugin logs each block that contains
 transactions it never saw in the mempool:
 
@@ -620,7 +621,8 @@ transactions it never saw in the mempool:
 Block 1234567 contained 8 transaction(s) not seen in the mempool
 ```
 
-<!-- TODO: Add a screenshot or log snippet of the detection log lines. -->
+You can paste the block number into a block explorer to inspect the block and its transactions, and
+confirm whether any were submitted directly to a builder rather than the public mempool.
 
 :::note
 During initial sync, before your node receives mempool gossip, almost every block transaction
@@ -647,8 +649,6 @@ tx_detection_total_detected 152.0
 # TYPE tx_detection_last_block gauge
 tx_detection_last_block 8.0
 ```
-
-<!-- TODO: Add a screenshot of the metrics output or a Grafana panel built from these metrics. -->
 
 :::note
 The exact Prometheus metric names and any suffixes depend on the Besu version and metrics backend.

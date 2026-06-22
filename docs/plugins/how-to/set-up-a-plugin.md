@@ -85,7 +85,17 @@ bundled in your JAR.
 You are responsible for managing all other Besu dependencies and configuring the packaging
 task to produce a slim distribution.
 
-### 2. Implement the plugin class
+### 2. Generate the Gradle wrapper
+
+Generate the [Gradle wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) so the
+project builds with a consistent Gradle version.
+This creates the `gradlew` script used to [build and deploy the plugin](deploy-a-plugin.md):
+
+```bash
+gradle wrapper
+```
+
+### 3. Implement the plugin class
 
 Create a class that implements [`BesuPlugin`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/BesuPlugin.html).
 The three required methods are `register`, `start`, and `stop`.
@@ -124,7 +134,7 @@ public class ExamplePlugin implements BesuPlugin {
 }
 ```
 
-### 3. Register the plugin for discovery
+### 4. Register the plugin for discovery
 
 Besu discovers plugin classes using Java's `ServiceLoader`.
 Register your plugin by including a service provider entry for `BesuPlugin`.
