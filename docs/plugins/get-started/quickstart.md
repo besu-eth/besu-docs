@@ -9,9 +9,11 @@ Follow this quickstart to learn the essential workflow to create and deploy a Be
 
 ## Prerequisites
 
-- [JDK 25](https://adoptium.net/) or later
-- [Gradle](https://gradle.org/install/)
-- A [Besu installation](../../public-networks/get-started/install/index.md)
+- Java 25+.
+  You can install Java using `brew install openjdk@25` or manually install the
+  [Java JDK](https://www.oracle.com/java/technologies/downloads).
+- [Gradle](https://gradle.org/install/).
+- A [Besu installation](../../public-networks/get-started/install/index.md).
 
 ## Steps
 
