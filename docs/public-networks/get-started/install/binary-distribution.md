@@ -47,23 +47,6 @@ brew upgrade besu-eth/besu/besu
 
 :::
 
-:::warning
-
-If you previously tapped `hyperledger/besu`, you may encounter the following error when
-installing without the fully qualified formula name:
-
-```
-Error: Formulae found in multiple taps:
-       * hyperledger/besu/besu
-       * besu-eth/besu/besu
-
-Please use the fully-qualified name (e.g. besu-eth/besu/besu) to refer to a specific formula.
-```
-
-Always use the fully qualified name `besu-eth/besu/besu` to avoid this conflict.
-
-:::
-
 To display the Besu version and confirm installation:
 
 ```bash
