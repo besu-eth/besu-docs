@@ -28,22 +28,39 @@ Besu supports:
 To install Besu using Homebrew:
 
 ```bash
-brew tap hyperledger/besu
-brew install hyperledger/besu/besu
+brew tap besu-eth/besu
+brew install besu-eth/besu/besu
 ```
 
 To upgrade an existing Besu installation using Homebrew:
 
 ```bash
-brew upgrade hyperledger/besu/besu
+brew upgrade besu-eth/besu/besu
 ```
 
 :::note notes
 
-- If you upgraded your MacOS version between installing and upgrading Besu, when running `brew upgrade hyperledger/besu/besu` you
+- If you upgraded your MacOS version between installing and upgrading Besu, when running `brew upgrade besu-eth/besu/besu` you
     might be prompted to reinstall command line tools with `xcode-select --install`.
 
 - When upgrading Besu, you might be prompted to fix the remote branch names in Homebrew by using the command `brew tap --repair`.
+
+:::
+
+:::warning
+
+If you previously tapped `hyperledger/besu`, you may encounter the following error when
+installing without the fully qualified formula name:
+
+```
+Error: Formulae found in multiple taps:
+       * hyperledger/besu/besu
+       * besu-eth/besu/besu
+
+Please use the fully-qualified name (e.g. besu-eth/besu/besu) to refer to a specific formula.
+```
+
+Always use the fully qualified name `besu-eth/besu/besu` to avoid this conflict.
 
 :::
 
