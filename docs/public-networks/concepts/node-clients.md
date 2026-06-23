@@ -19,7 +19,7 @@ transitioned from Proof of Work (PoW) to [PoS](proof-of-stake/index.md) consensu
 ## Execution and consensus clients
 
 Under PoS, a full Ethereum Mainnet node is a combination of an execution client (previously called 
-an [Eth1 client](https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming/) client) and a 
+an [Eth1 client](https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming/)) and a 
 consensus client (previously called an 
 [Eth2 client](https://blog.ethereum.org/2022/01/24/the-great-eth2-renaming/)). The consensus client 
 uses the [Engine API](../how-to/use-engine-api.md) to communicate with the execution client.
