@@ -304,13 +304,12 @@ public class TxDetectionPlugin
 
 In `start`, create the metrics and subscribe to the events.
 These runtime services only become available at `start`.
-See [service availability](../get-started/plugin-lifecycle.md#service-availability).
 
 Use [`MetricsSystem`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/MetricsSystem.html) to
 create a counter for the running total and a gauge for the most recent block, then use
 [`BesuEvents`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuEvents.html) to register
 both listeners.
-Remember the listener IDs so you can remove them in `stop`:
+Store the listener IDs in fields, so you can remove them in `stop`:
 
 ```java title="TxDetectionPlugin.java"
 // highlight-start
@@ -376,7 +375,7 @@ public class TxDetectionPlugin
 }
 ```
 
-Now update `onBlockAdded` to increment the counter when it finds unseen transactions.
+Next, update `onBlockAdded` to increment the counter when it finds unseen transactions.
 Add the highlighted lines inside the existing `if (unseen > 0)` block:
 
 ```java title="TxDetectionPlugin.java"
@@ -568,7 +567,7 @@ unzip -l build/distributions/tx-detection-plugin.zip
 ### 10. Deploy the plugin to Besu
 
 Create a `plugins` directory at the root of your Besu installation if it doesn't already exist, then unzip the archive into it.
-The `-j` flag flattens the ZIP so the JAR lands directly in `plugins/`:
+The `-j` option flattens the ZIP so the JAR lands directly in `plugins/`:
 
 ```bash
 mkdir -p /path/to/besu/plugins
