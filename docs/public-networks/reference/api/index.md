@@ -5114,7 +5114,7 @@ curl -X POST -H "Content-Type: application/json" --data '{"query": "{transaction
 Returns transaction information for the specified sender address and nonce.
 
 :::note
-To return mined transactions, this method requires the sender and nonce index.
+To return transactions included in blocks, this method requires the sender and nonce index.
 The index is enabled by default; you can disable it using
 [`--tx-sender-nonce-index-enabled`](../cli/options.md#tx-sender-nonce-index-enabled).
 If the index is disabled, this method only returns information for pending transactions.

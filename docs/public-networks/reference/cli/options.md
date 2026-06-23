@@ -7633,7 +7633,7 @@ tx-sender-nonce-index-enabled=false
 Enables or disables the sender and nonce index, which maps each sender address and nonce to a transaction hash.
 This index is required for
 [`eth_getTransactionBySenderAndNonce`](../../reference/api/index.md#eth_gettransactionbysenderandnonce)
-to return mined transactions.
+to return transactions included in blocks.
 The default is `true`.
 
 :::note Storage impact
