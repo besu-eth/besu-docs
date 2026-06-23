@@ -66,7 +66,7 @@ The validator client may either be run
 [in the same process](https://docs.teku.consensys.net/get-started/start-teku#start-the-clients-in-a-single-process) 
 as the beacon node or [separately](https://docs.teku.consensys.net/get-started/start-teku#run-the-clients-separately).
 
-Validators earn [rewards](https://www.blocknative.com/ethereum-staking-calculator) for performing
+Validators earn rewards for performing
  [validator duties](proof-of-stake/index.md), and 
  [fee recipients](https://docs.teku.consensys.net/reference/cli#validators-proposer-default-fee-recipient) 
  also earn rewards for the inclusion of execution layer transactions.
