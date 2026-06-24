@@ -232,7 +232,8 @@ You can use `wscat` to make multiple RPC requests over WebSocket at the same tim
 
 ## Readiness and liveness endpoints
 
-Besu provides readiness and liveness endpoints to confirm the Besu node status. Both return a `200 OK` status when ready or live and a `503 Service Unavailable` status if not ready or live.
+Besu provides readiness and liveness endpoints to confirm the Besu node status.
+Both return a `200 OK` HTTP status when ready or live, and a `503 Service Unavailable` HTTP status if not ready or live.
 
 ### Readiness
 
@@ -258,7 +259,7 @@ curl -v 'http://localhost:8545/readiness'
 
 </TabItem>
 
-<TabItem value="Query parameters example" label="Query parameters example">
+<TabItem value="Query params example">
 
 ```bash
 curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
@@ -266,11 +267,59 @@ curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
 
 </TabItem>
 
+<TabItem value="Response example">
+
+```json
+{
+  "status": "DOWN",
+  "checks": {
+    "peers": {
+      "status": true,
+      "currentPeers": 5,
+      "requiredPeers": 1
+    },
+    "sync": {
+      "status": false,
+      "blocksBehind": 150,
+      "maxBlocksBehind": 2
+    }
+  }
+}
+```
+
+</TabItem>
+
 </Tabs>
+
+The readiness response object contains the following fields:
+
+- `status`: _string_ - readiness status of the node, either `UP` or `DOWN`
+
+- `checks`: _object_ - peer and sync diagnostics
+
+  - `peers`: _object_ - peer connectivity diagnostics; included only when [P2P communication](../../reference/cli/options.md#p2p-enabled) is enabled
+
+    - `status`: _boolean_ - whether the peer requirement is met
+
+    - `currentPeers`: _number_ - number of connected peers
+
+    - `requiredPeers`: _number_ - minimum number of peers required, from the `minPeers` query parameter or the default
+
+    - `error`: _string_ - present only when the `minPeers` query parameter is invalid
+
+  - `sync`: _object_ - sync diagnostics; included only when sync status is available
+
+    - `status`: _boolean_ - whether the node is within the block tolerance
+
+    - `blocksBehind`: _number_ - number of blocks the node is behind the best known block
+
+    - `maxBlocksBehind`: _number_ - maximum number of blocks the node can be behind, from the `maxBlocksBehind` query parameter or the default
+
+    - `error`: _string_ - present only when the `maxBlocksBehind` query parameter is invalid
 
 ### Liveness
 
-The liveness check requires the JSON-RPC server to be up. You can use the endpoint to verify that the node can respond to RPC calls. The status in the response will always be `UP`.
+The liveness check requires the JSON-RPC server to be up. You can use the endpoint to verify that the node can respond to RPC calls. The `status` in the response will always be `UP`.
 
 <Tabs>
 
@@ -286,6 +335,16 @@ http://<JSON-RPC-HTTP-endpoint:port>/liveness
 
 ```bash
 curl -v 'http://localhost:8545/liveness'
+```
+
+</TabItem>
+
+<TabItem value="Response">
+
+```json
+{
+  "status": "UP"
+}
 ```
 
 </TabItem>
