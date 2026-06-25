@@ -182,6 +182,7 @@ Log information returned as part of the [Trace object](#trace-object).
 | `stack` | Array of 32&nbsp;byte arrays | EVM execution stack before executing current operation. |
 | `memory` | Array of 32&nbsp;byte arrays | Memory space of the contract before executing current operation. |
 | `storage` | Object | Storage entries changed by the current transaction. |
+| `returnData` | Data | EVM return data produced by the current opcode, as a hex string. |
 
 ## Trace object
 

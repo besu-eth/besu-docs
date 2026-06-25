@@ -7592,6 +7592,59 @@ content if the save and restore functionality is enabled using
 The file is created on shutdown and reloaded during startup.
 The default file name is `txpool.dump` in the [data directory](#data-path).
 
+### `tx-sender-nonce-index-enabled`
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+--tx-sender-nonce-index-enabled[=<true|false>]
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+--tx-sender-nonce-index-enabled=false
+```
+
+</TabItem>
+
+<TabItem value="Environment variable" label="Environment variable">
+
+```bash
+BESU_TX_SENDER_NONCE_INDEX_ENABLED=false
+```
+
+</TabItem>
+
+<TabItem value="Configuration file" label="Configuration file">
+
+```bash
+tx-sender-nonce-index-enabled=false
+```
+
+</TabItem>
+
+</Tabs>
+
+Enables or disables the sender and nonce index, which maps each sender address and nonce to a transaction hash.
+This index is required for
+[`eth_getTransactionBySenderAndNonce`](../../reference/api/index.md#eth_gettransactionbysenderandnonce)
+to return transactions included in blocks.
+The default is `true`.
+
+:::note Storage impact
+The index adds approximately 60 bytes per transaction.
+If you upgrade Besu to enable this index without resyncing, the index is only populated for blocks processed after the upgrade.
+Resyncing will index the full available transaction history.
+
+Disabling this option for [archive nodes](../../concepts/node-sync.md#archive-nodes) avoids the extra 
+storage cost in the case of a resync.
+:::
+
 ### `version`
 
 <Tabs>
