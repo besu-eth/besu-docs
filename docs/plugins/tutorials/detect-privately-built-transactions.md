@@ -41,7 +41,7 @@ mkdir -p tx-detection-plugin/src/main/java/txdetection
 cd tx-detection-plugin
 ```
 
-Your project will have the following structure:
+By the end of the tutorial, your project will have the following structure:
 
 ```text
 tx-detection-plugin/
@@ -147,10 +147,9 @@ Store it in a field for later use.
 
 Add a set that records the hash of every transaction the node sees in the mempool.
 
-Because a busy node sees many transactions, use a bounded structure that evicts the oldest entries so memory 
-usage stays constant.
-The following uses a `LinkedHashMap` configured as a fixed-size, least-recently-used cache, wrapped to make it 
-thread-safe because Besu fires events from multiple threads:
+A busy node sees many transactions; use a bounded structure so memory usage stays constant.
+The following uses a fixed-size `LinkedHashMap` that evicts the oldest entry once it reaches its capacity, 
+wrapped to make it thread-safe because Besu fires events from multiple threads:
 
 ```java title="TxDetectionPlugin.java"
 // highlight-start
