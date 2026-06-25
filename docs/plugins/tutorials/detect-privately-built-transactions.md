@@ -145,7 +145,8 @@ Store it in a field for later use.
 
 ### 4. Track the mempool
 
-Add a set that records the hash of every transaction the node sees in the mempool.
+Add a `Set` that records the hash of every transaction your node sees in the
+mempool.
 
 A busy node sees many transactions; use a bounded structure so memory usage stays constant.
 The following uses a fixed-size `LinkedHashMap` that evicts the oldest entry once it reaches its capacity, 
