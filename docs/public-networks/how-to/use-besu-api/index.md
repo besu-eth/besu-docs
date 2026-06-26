@@ -92,7 +92,7 @@ Specifying `*` for `--host-allowlist` is not recommended for production code.
 
 Account management relies on private key management in the client, which is not supported by Besu.
 
-To send signed transactions, use [`eth_sendRawTransaction`](../../reference/api/index.md#eth_sendrawtransaction). `eth_sendTransaction` is not implemented.
+To send signed transactions, use [`eth_sendRawTransaction`](../../reference/api/eth/submit.md#eth_sendrawtransaction). `eth_sendTransaction` is not implemented.
 
 For [account management](../send-transactions.md#use-wallets-for-key-management), use third-party wallets.
 

@@ -553,3 +553,21 @@ html[data-theme="dark"] .floating-ask-ai-btn {
 html[data-theme="dark"] .floating-ask-ai-btn:hover {
   box-shadow: 0 6px 20px rgb(0 0 0 / 50%);
 }
+
+/* API overview cards, styled like Docusaurus generated category cards */
+.api-card {
+  display: block;
+  height: 100%;
+  color: var(--ifm-color-content);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 15%);
+  transition: all var(--ifm-transition-fast) ease;
+  transition-property: border, box-shadow;
+}
+
+.api-card:hover {
+  color: var(--ifm-color-content);
+  text-decoration: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 6px 0 rgb(0 0 0 / 20%);
+}

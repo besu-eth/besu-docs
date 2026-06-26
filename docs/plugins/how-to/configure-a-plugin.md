@@ -106,7 +106,7 @@ public CompletableFuture<Void> reloadConfiguration() {
 ```
 
 Besu calls this method through the
-[`plugins_reloadPluginConfig`](../../public-networks/reference/api/index.md#plugins_reloadpluginconfig)
+[`plugins_reloadPluginConfig`](../../public-networks/reference/api/plugins.md#plugins_reloadpluginconfig)
 JSON-RPC method.
 The method belongs to the `PLUGINS` API group, which is disabled by default.
 Enable it with [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) or

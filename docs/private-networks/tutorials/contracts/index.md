@@ -167,7 +167,7 @@ to `eth_sendSignedTransaction`. However, Besu does not support the `eth_sendTran
 separate for stronger security. Configure [Web3Signer](https://docs.web3signer.consensys.net/) with your Besu node to make the 
 `eth_sendTransaction` API call.
 
-Pass the following parameters to the [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction) call to Web3Signer. Web3Signer converts the request to an [`eth_sendRawTransaction`](../../../public-networks/reference/api/index.md#eth_sendrawtransaction) call that Besu uses:
+Pass the following parameters to the [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction) call to Web3Signer. Web3Signer converts the request to an [`eth_sendRawTransaction`](../../../public-networks/reference/api/eth/submit.md#eth_sendrawtransaction) call that Besu uses:
 
 - `to` - address of the receiver. To deploy a contract, set to `null`.
 - `from` - address of the sender account. For example `0x9b790656b9ec0db1936ed84b3bea605873558198`.

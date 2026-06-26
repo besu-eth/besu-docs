@@ -10,11 +10,11 @@ Subscribe to events, such as logs, using either [RPC Pub/Sub over WebSockets](rp
 
 Access logs using the following Besu API methods:
 
-- [`eth_getFilterChanges`](../../reference/api/index.md#eth_getfilterchanges)
-- [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs)
-- [`eth_getLogs`](../../reference/api/index.md#eth_getlogs)
+- [`eth_getFilterChanges`](../../reference/api/eth/filter.md#eth_getfilterchanges)
+- [`eth_getFilterLogs`](../../reference/api/eth/filter.md#eth_getfilterlogs)
+- [`eth_getLogs`](../../reference/api/eth/filter.md#eth_getlogs)
 
-Use [`eth_newFilter`](../../reference/api/index.md#eth_newfilter) to create the filter before using [`eth_getFilterChanges`](../../reference/api/index.md#eth_getfilterchanges) and [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs)).
+Use [`eth_newFilter`](../../reference/api/eth/filter.md#eth_newfilter) to create the filter before using [`eth_getFilterChanges`](../../reference/api/eth/filter.md#eth_getfilterchanges) and [`eth_getFilterLogs`](../../reference/api/eth/filter.md#eth_getfilterlogs)).
 
 :::note
 
@@ -24,7 +24,7 @@ The following examples use the sample contract included in [events and logs](../
 
 ## Create a filter
 
-Create a filter using [`eth_newFilter`](../../reference/api/index.md#eth_newfilter).
+Create a filter using [`eth_newFilter`](../../reference/api/eth/filter.md#eth_newfilter).
 
 If the [example contract](../../concepts/events-and-logs.md) was deployed to 0x42699a7612a82f1d9c36148af9c77354759b210b, the following request for `eth_newFilter` creates a filter to log when `valueIndexed` is set to 5:
 
@@ -47,13 +47,13 @@ If the [example contract](../../concepts/events-and-logs.md) was deployed to 0x4
 }
 ```
 
-[`eth_newFilter`](../../reference/api/index.md#eth_newfilter) returns a filter ID hash (for example, `0x1ddf0c00989044e9b41cc0ae40272df3`).
+[`eth_newFilter`](../../reference/api/eth/filter.md#eth_newfilter) returns a filter ID hash (for example, `0x1ddf0c00989044e9b41cc0ae40272df3`).
 
 ### Poll a filter for changes
 
-To poll the filter for changes since the last poll, use [`eth_getFilterChanges`](../../reference/api/index.md#eth_getfilterchanges) with the filter ID hash returned by [`eth_newFilter`](../../reference/api/index.md#eth_newfilter).
+To poll the filter for changes since the last poll, use [`eth_getFilterChanges`](../../reference/api/eth/filter.md#eth_getfilterchanges) with the filter ID hash returned by [`eth_newFilter`](../../reference/api/eth/filter.md#eth_newfilter).
 
-If the contract had been executed twice since the last poll, with `valueIndexed` set to 1 and 5, [`eth_getFilterChanges`](../../reference/api/index.md#eth_getfilterchanges) returns only the log where the [topic](../../concepts/events-and-logs.md#event-parameters) for `valueIndexed` is 5:
+If the contract had been executed twice since the last poll, with `valueIndexed` set to 1 and 5, [`eth_getFilterChanges`](../../reference/api/eth/filter.md#eth_getfilterchanges) returns only the log where the [topic](../../concepts/events-and-logs.md#event-parameters) for `valueIndexed` is 5:
 
 ```json
 {
@@ -81,7 +81,7 @@ If the contract had been executed twice since the last poll, with `valueIndexed`
 
 ### Get all logs for a filter
 
-To get all logs for a filter, use [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs).
+To get all logs for a filter, use [`eth_getFilterLogs`](../../reference/api/eth/filter.md#eth_getfilterlogs).
 
 If the contract had been executed twice with `valueIndexed` set to 5 since the filter was created using `eth_newFilter`, `eth_getFilterLogs` returns:
 
@@ -126,17 +126,17 @@ If the contract had been executed twice with `valueIndexed` set to 5 since the f
 
 :::tip
 
-You can use [`eth_getLogs`](#get-logs-using-a-filter-options-object) with a filter options object to get all logs matching the filter options instead of using [`eth_newFilter`](../../reference/api/index.md#eth_newfilter) followed by [`eth_getFilterLogs`](../../reference/api/index.md#eth_getfilterlogs).
+You can use [`eth_getLogs`](#get-logs-using-a-filter-options-object) with a filter options object to get all logs matching the filter options instead of using [`eth_newFilter`](../../reference/api/eth/filter.md#eth_newfilter) followed by [`eth_getFilterLogs`](../../reference/api/eth/filter.md#eth_getfilterlogs).
 
 :::
 
 ## Uninstall a filter
 
-When a filter is no longer required, use [`eth_uninstallFilter`](../../reference/api/index.md#eth_uninstallfilter) to remove the filter.
+When a filter is no longer required, use [`eth_uninstallFilter`](../../reference/api/eth/filter.md#eth_uninstallfilter) to remove the filter.
 
 ## Get logs using a filter options object
 
-To get all logs for a filter options object, use [`eth_getLogs`](../../reference/api/index.md#eth_getlogs).
+To get all logs for a filter options object, use [`eth_getLogs`](../../reference/api/eth/filter.md#eth_getlogs).
 
 The following request for `eth_getLogs` returns all the logs where the example contract has been deployed to `0x42699a7612a82f1d9c36148af9c77354759b210b` and executed with `valueIndexed` set to 5.
 

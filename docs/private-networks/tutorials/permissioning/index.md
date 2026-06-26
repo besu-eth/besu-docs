@@ -365,7 +365,7 @@ The curl call is the same for each node except for the JSON-RPC endpoint.
 
 ### 12. Add nodes as peers
 
-Use the [`admin_addPeer`](../../../public-networks/reference/api/index.md#admin_addpeer) JSON-RPC API method to add Node-1 as a peer for Node-2, Node-3, and Node-4.
+Use the [`admin_addPeer`](../../../public-networks/reference/api/admin.md#admin_addpeer) JSON-RPC API method to add Node-1 as a peer for Node-2, Node-3, and Node-4.
 
 Replace `<EnodeNode1>` with the enode URL displayed when starting Node-1.
 
@@ -435,7 +435,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["<Enode
 
 #### Check peer count
 
-Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method and confirm the nodes are functioning as peers:
+Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/net.md#net_peercount) method and confirm the nodes are functioning as peers:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545/ -H "Content-Type: application/json"
@@ -507,7 +507,7 @@ besu --data-path=data --bootnodes="<EnodeNode1>" --genesis-file=..\genesis.json 
 
 </Tabs>
 
-Start another terminal and use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method:
+Start another terminal and use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/net.md#net_peercount) method:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8549

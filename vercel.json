@@ -82,6 +82,10 @@
     {
       "source": "/public-networks/reference/plugin-api-interfaces/",
       "destination": "/plugins/"
+    },
+    {
+      "source": "/public-networks/reference/api/objects/",
+      "destination": "/public-networks/reference/api/eth"
     }
   ],
   "rewrites": [

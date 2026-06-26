@@ -6,7 +6,7 @@ description: How to trace transactions
 
 # Trace transactions
 
-To get detailed information about transaction processing, use the [`TRACE` API](../../reference/api/index.md#trace-methods). Enable the `TRACE` API using the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../reference/cli/options.md#rpc-ws-api) command line options.
+To get detailed information about transaction processing, use the [`TRACE` API](../../reference/api/trace.md). Enable the `TRACE` API using the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../reference/cli/options.md#rpc-ws-api) command line options.
 
 The `TRACE` API has two sets of trace calls, [ad-hoc tracing APIs](#ad-hoc-tracing-apis) and [transaction-trace filtering APIs](#transaction-trace-filtering-apis).
 
@@ -21,10 +21,10 @@ from the head of the chain).
 
 The ad-hoc tracing APIs are:
 
-- [`trace_call`](../../reference/api/index.md#trace_call)
-- [`trace_callMany`](../../reference/api/index.md#trace_callmany)
-- [`trace_rawTransaction`](../../reference/api/index.md#trace_rawtransaction)
-- [`trace_replayBlockTransactions`](../../reference/api/index.md#trace_replayblocktransactions)
+- [`trace_call`](../../reference/api/trace.md#trace_call)
+- [`trace_callMany`](../../reference/api/trace.md#trace_callmany)
+- [`trace_rawTransaction`](../../reference/api/trace.md#trace_rawtransaction)
+- [`trace_replayBlockTransactions`](../../reference/api/trace.md#trace_replayblocktransactions)
 
 ## Transaction-trace filtering APIs
 
@@ -39,17 +39,17 @@ of the chain).
 
 The transaction-trace filtering APIs are:
 
-- [`trace_block`](../../reference/api/index.md#trace_block)
-- [`trace_filter`](../../reference/api/index.md#trace_filter)
-- [`trace_get`](../../reference/api/index.md#trace_get)
-- [`trace_transaction`](../../reference/api/index.md#trace_transaction)
+- [`trace_block`](../../reference/api/trace.md#trace_block)
+- [`trace_filter`](../../reference/api/trace.md#trace_filter)
+- [`trace_get`](../../reference/api/trace.md#trace_get)
+- [`trace_transaction`](../../reference/api/trace.md#trace_transaction)
 
 ## Dumping traces to file
 
 For large blocks or when you prefer file output over a JSON response, use the debug API methods:
 
-- [`debug_standardTraceBlockToFile`](../../reference/api/index.md#debug_standardtraceblocktofile)
-- [`debug_standardTraceBadBlockToFile`](../../reference/api/index.md#debug_standardtracebadblocktofile)
+- [`debug_standardTraceBlockToFile`](../../reference/api/debug/trace.md#debug_standardtraceblocktofile)
+- [`debug_standardTraceBadBlockToFile`](../../reference/api/debug/trace.md#debug_standardtracebadblocktofile)
 
 Enable or disable trace fields (txHash, stack, memory, storage, and opcodes) via the optional options parameter on both methods. For example, set `disableStack`, `disableMemory`, and/or `disableStorage` to reduce output size or focus on specific data.
 

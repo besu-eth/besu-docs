@@ -308,7 +308,7 @@ To enable the `ADMIN`, `DEBUG`, `EEA`, `IBFT`, `MINER`, `PERM`, `PLUGINS`, `PRIV
 
 When you make requests that might have different results depending on the block accessed, the block
 parameter specifies the block.
-Methods such as [`eth_getTransactionByBlockNumberAndIndex`](../../reference/api/index.md#eth_gettransactionbyblocknumberandindex)
+Methods such as [`eth_getTransactionByBlockNumberAndIndex`](../../reference/api/eth/transaction.md#eth_gettransactionbyblocknumberandindex)
 have a block parameter.
 
 The block parameter can have one of the following values:
@@ -324,13 +324,13 @@ The block parameter can have one of the following values:
 
   Only the following methods support the `blockHash` parameter:
 
-  - [`eth_call`](../../reference/api/index.md#eth_call)
-  - [`eth_getBalance`](../../reference/api/index.md#eth_getbalance)
-  - [`eth_getCode`](../../reference/api/index.md#eth_getcode)
-  - [`eth_getProof`](../../reference/api/index.md#eth_getproof)
-  - [`eth_getStorageAt`](../../reference/api/index.md#eth_getstorageat)
-  - [`eth_getStorageValues`](../../reference/api/index.md#eth_getstoragevalues)
-  - [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount)
+  - [`eth_call`](../../reference/api/eth/execute.md#eth_call)
+  - [`eth_getBalance`](../../reference/api/eth/state.md#eth_getbalance)
+  - [`eth_getCode`](../../reference/api/eth/state.md#eth_getcode)
+  - [`eth_getProof`](../../reference/api/eth/state.md#eth_getproof)
+  - [`eth_getStorageAt`](../../reference/api/eth/state.md#eth_getstorageat)
+  - [`eth_getStorageValues`](../../reference/api/eth/state.md#eth_getstoragevalues)
+  - [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount)
 
   :::
 
@@ -339,7 +339,7 @@ The block parameter can have one of the following values:
 - `pending` : _tag_ - The next anticipated block, except in the following cases:
   - For some methods (specified in their parameter description), `pending` returns the
     same value as `latest`.
-  - For [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount),
+  - For [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount),
     `pending` refers to the most recent block plus pending transactions.
   - For [`qbft_getValidatorsByBlockNumber`](../../../private-networks/reference/api.md#qbft_getvalidatorsbyblocknumber),
     `pending` returns a list of validators that will be used to produce the next block.
