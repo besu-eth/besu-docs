@@ -155,19 +155,19 @@ The playbook:
 If you have [JSON-RPC HTTP enabled](../reference/cli/options.md#rpc-http-enabled),
 you can use the following commands to verify that you've successfully upgraded your Besu node.
 
-Call [`eth_syncing`](../reference/api/index.md#eth_syncing) to check the node synchronization status:
+Call [`eth_syncing`](../reference/api/eth/client.md#eth_syncing) to check the node synchronization status:
 
  ```bash
  curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
  ```
 
-Call [`web3_clientVersion`](../reference/api/index.md#web3_clientversion) to check the current client version:
+Call [`web3_clientVersion`](../reference/api/web3.md#web3_clientversion) to check the current client version:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
 ```
 
-Call [`net_peerCount`](../reference/api/index.md#net_peercount) to verify peer connections:
+Call [`net_peerCount`](../reference/api/net.md#net_peercount) to verify peer connections:
 
  ```bash
  curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"

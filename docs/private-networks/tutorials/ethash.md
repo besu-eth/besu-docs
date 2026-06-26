@@ -196,7 +196,7 @@ The command line specifies:
 
 ### 6. Confirm the private network is working
 
-Start another terminal, use curl to call the JSON-RPC API [`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount) method and confirm the nodes are functioning as peers:
+Start another terminal, use curl to call the JSON-RPC API [`net_peerCount`](../../public-networks/reference/api/net.md#net_peercount) method and confirm the nodes are functioning as peers:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545/ -H "Content-Type: application/json"

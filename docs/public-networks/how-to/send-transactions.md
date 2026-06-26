@@ -6,7 +6,7 @@ description: Send transactions using eth_call or eth_sendRawTransaction.
 
 # Create and send transactions
 
-You can send signed transactions using the [`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction)
+You can send signed transactions using the [`eth_sendRawTransaction`](../reference/api/eth/submit.md#eth_sendrawtransaction)
 JSON-RPC API method.
 Signed transactions can be simple value transfers, contract creation, or contract invocation. Set the
 maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../reference/cli/options.md#rpc-tx-feecap) CLI option.
@@ -31,7 +31,7 @@ In production environments avoid exposing your private keys by creating signed t
 
 ## `eth_call` vs. `eth_sendRawTransaction`
 
-You can interact with contracts using [`eth_call`](../reference/api/index.md#eth_call) or [`eth_sendRawTransaction`](../reference/api/index.md#eth_sendrawtransaction). The table below compares the characteristics of both calls.
+You can interact with contracts using [`eth_call`](../reference/api/eth/execute.md#eth_call) or [`eth_sendRawTransaction`](../reference/api/eth/submit.md#eth_sendrawtransaction). The table below compares the characteristics of both calls.
 
 | `eth_call` | `eth_sendRawTransaction` |
 | --- | --- |
@@ -44,7 +44,7 @@ You can interact with contracts using [`eth_call`](../reference/api/index.md#eth
 
 ## Override state values 
 
-Use methods that accept the [state override object](../reference/api/objects.md#state-override-object) to override an account with temporary state values before
+Use methods that accept the [state override object](../reference/api/eth/execute.md#eth_call) to override an account with temporary state values before
 executing a call. State overrides allow you to make temporary state changes without affecting the actual blockchain state, and provide the following benefits:
 
 - Minimize the amount of contract code that must be deployed onchain. Code that returns internal
@@ -53,12 +53,12 @@ executing a call. State overrides allow you to make temporary state changes with
   reconstructing the entire state in a sandbox, allowing selective state or code overrides
   to observe execution changes.
 
-The following methods support the [state override object](../reference/api/objects.md#state-override-object):
+The following methods support the [state override object](../reference/api/eth/execute.md#eth_call):
 
-- [`eth_call`](../reference/api/index.md#eth_call)
-- [`eth_estimateGas`](../reference/api/index.md#eth_estimategas)
-- [`eth_simulateV1`](../reference/api/index.md#eth_simulatev1)
-- [`debug_traceCall`](../reference/api/index.md#debug_tracecall) (via the `stateOverrides` options wrapper)
+- [`eth_call`](../reference/api/eth/execute.md#eth_call)
+- [`eth_estimateGas`](../reference/api/eth/execute.md#eth_estimategas)
+- [`eth_simulateV1`](../reference/api/eth/execute.md#eth_simulatev1)
+- [`debug_traceCall`](../reference/api/debug/trace.md#debug_tracecall) (via the `stateOverrides` options wrapper)
 
 ## Use wallets for key management
 

@@ -290,7 +290,7 @@ To tune the block timeout for your network deployment:
 
 :::tip
 
-View [`TRACE` logs](../../../../public-networks/reference/api/index.md#admin_changeloglevel) to see round change log messages.
+View [`TRACE` logs](../../../../public-networks/reference/api/admin.md#admin_changeloglevel) to see round change log messages.
 
 :::
 

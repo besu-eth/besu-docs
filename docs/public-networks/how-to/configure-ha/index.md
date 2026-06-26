@@ -20,7 +20,7 @@ We don't recommend putting [bootnodes](../../../private-networks/how-to/configur
 
 :::info
 
-We recommend using load balancers over WebSockets because WebSockets are persistent connections associated with specific nodes. If you use load balancers configured in sticky mode over HTTP instead, the connection sticks to the associated node even when the node is congested and there is a lower load node available. If you use load balancers not configured in sticky mode over HTTP, the connections may switch from node to node, so some JSON-RPC requests may not provide expected results (for example, [`admin` methods](../../reference/api/index.md#admin-methods), [`net_enode`](../../reference/api/index.md#net_enode), [`net_peerCount`](../../reference/api/index.md#net_peercount), and [`eth_syncing`](../../reference/api/index.md#eth_syncing)).
+We recommend using load balancers over WebSockets because WebSockets are persistent connections associated with specific nodes. If you use load balancers configured in sticky mode over HTTP instead, the connection sticks to the associated node even when the node is congested and there is a lower load node available. If you use load balancers not configured in sticky mode over HTTP, the connections may switch from node to node, so some JSON-RPC requests may not provide expected results (for example, [`admin` methods](../../reference/api/admin.md), [`net_enode`](../../reference/api/net.md#net_enode), [`net_peerCount`](../../reference/api/net.md#net_peercount), and [`eth_syncing`](../../reference/api/eth/client.md#eth_syncing)).
 
 :::
 
@@ -36,7 +36,7 @@ The minimum number of peers and number of blocks from the best known block for d
 
 ## Transaction nonces
 
-Besu obtains the nonce for the next transaction using [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount). The nonce depends on the transactions in the [transaction pool](../../concepts/transactions/pool.md). If sending [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount) and [`eth_sendRawTransaction`](../../reference/api/index.md#eth_sendrawtransaction) requests for a specific account to more than one node, the [`eth_getTransactionCount`](../../reference/api/index.md#eth_gettransactioncount) results might be incorrect.
+Besu obtains the nonce for the next transaction using [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount). The nonce depends on the transactions in the [transaction pool](../../concepts/transactions/pool.md). If sending [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount) and [`eth_sendRawTransaction`](../../reference/api/eth/submit.md#eth_sendrawtransaction) requests for a specific account to more than one node, the [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount) results might be incorrect.
 
 To get correct nonces when distributing requests across a cluster, either:
 
@@ -71,15 +71,15 @@ If there is a dropped subscription, missed events might occur while reconnecting
 
 ### New headers
 
-To request information on blocks from the last block before the subscription dropped to the first block received from the new subscription, use [`eth_getBlockByNumber`](../../reference/api/index.md#eth_getblockbynumber).
+To request information on blocks from the last block before the subscription dropped to the first block received from the new subscription, use [`eth_getBlockByNumber`](../../reference/api/eth/block.md#eth_getblockbynumber).
 
 ### Logs
 
-To request logs from the block number of the last log received before the subscription dropped to the current chain head, use [`eth_getLogs`](../../reference/api/index.md#eth_getlogs).
+To request logs from the block number of the last log received before the subscription dropped to the current chain head, use [`eth_getLogs`](../../reference/api/eth/filter.md#eth_getlogs).
 
 ### New pending transactions
 
-To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/index.md#txpool_besutransactions).
+To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/txpool.md#txpool_besutransactions).
 
 :::note
 
@@ -89,7 +89,7 @@ Nodes do not all store the same pending transactions.
 
 ### Dropped pending transactions
 
-To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/index.md#txpool_besutransactions).
+To request all pending transactions for the new node, use [`txpool_besuTransactions`](../../reference/api/txpool.md#txpool_besutransactions).
 
 :::note
 
@@ -99,4 +99,4 @@ Nodes do not all store the same pending transactions.
 
 ### Syncing
 
-The syncing state of each node is specific to that node. To retrieve the syncing state of the new node, use [`eth_syncing`](../../reference/api/index.md#eth_syncing).
+The syncing state of each node is specific to that node. To retrieve the syncing state of the new node, use [`eth_syncing`](../../reference/api/eth/client.md#eth_syncing).
