@@ -53,20 +53,14 @@ besu --bootnodes=/etc/besu/enodes.txt,https://example.com/enodes.txt,enode://c35
 ```
 
 :::tip Early access feature
-To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
+Use ENR URLs for [dual-stack networking](../../../public-networks/concepts/ipv6-dual-stack.md).
+Dual-stack requires discovery v5, an early access feature.
+Set `--Xv5-discovery-enabled` to `true` to specify bootnodes by ENR URL.
 :::
 
-The default host and port advertised to other peers for P2P discovery is `127.0.0.1:30303`.
-To specify a different host or port, use the
-[`--p2p-host`](../../../public-networks/reference/cli/options.md#p2p-host)
-/ [`--p2p-host-ipv6`](../../../public-networks/reference/cli/options.md#p2p-host) or
-[`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port)
-/ [`--p2p-port-ipv6`](../../../public-networks/reference/cli/options.md#p2p-port) options.
-
-By default, peer discovery listens on all available network interfaces. If the device Besu is running
-on must bind to a specific network interface, specify the interface using the
-[`--p2p-interface`](../../../public-networks/reference/cli/options.md#p2p-interface) or
-[`--p2p-interface-ipv6`](../../../public-networks/reference/cli/options.md#p2p-interface-ipv6) option.
+By default, the advertised address is `127.0.0.1:30303`, and peer discovery listens on all IPv4 interfaces (`0.0.0.0`).
+To add a specific configuration, or to configure dual-stack networking, see the
+[P2P options](../../../public-networks/concepts/ipv6-dual-stack.md#p2p-options).
 
 ## Configure bootnodes in a production network
 

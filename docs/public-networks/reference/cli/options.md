@@ -3370,11 +3370,9 @@ p2p-host="0.0.0.0"
 The advertised host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
 The default is `127.0.0.1`.
 
-:::tip Early access feature
+:::tip
 This option can take an IPv4 or IPv6 host.
-To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-
-If you specify an IPv6 host using `--p2p-host`, do not set [`--p2p-host-ipv6`](#p2p-host-ipv6).
+For dual-stack, see [IPv6 and dual-stack networking](../../concepts/ipv6-dual-stack.md).
 :::
 
 :::info
@@ -3422,11 +3420,15 @@ p2p-host-ipv6="2001:db8:85a3::8a2e:370:7334"
 </Tabs>
 
 The advertised IPv6 host that can be used to access the node from outside the network in [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
+Set this option for a [dual-stack](../../concepts/ipv6-dual-stack.md) node, in which case 
+[`--p2p-host`](#p2p-host) must be an IPv4 address.
+
+If you set `--p2p-host-ipv6` without [`--p2p-interface-ipv6`](#p2p-interface-ipv6), Besu automatically
+sets `--p2p-interface-ipv6` to `::` (all IPv6 interfaces).
 
 :::tip Early access feature
-To use an IPv6 host (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-
-If you set `--p2p-host-ipv6`, do not specify an IPv6 host using [`--p2p-host`](#p2p-host).
+This option enables [dual-stack networking](../../concepts/ipv6-dual-stack.md) and requires discovery v5, an early access feature.
+Set `--Xv5-discovery-enabled` to `true` to use this option.
 :::
 
 ### `p2p-interface`
@@ -3469,11 +3471,9 @@ p2p-interface="192.168.1.132"
 
 The network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking). Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces. The default is 0.0.0.0 (all interfaces).
 
-:::tip Early access feature
+:::tip
 This option can take an IPv4 or IPv6 interface.
-To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-
-If you specify an IPv6 interface using `--p2p-interface`, do not set [`--p2p-interface-ipv6`](#p2p-interface-ipv6).
+For dual-stack, see [IPv6 and dual-stack networking](../../concepts/ipv6-dual-stack.md).
 :::
 
 ### `p2p-interface-ipv6`
@@ -3516,11 +3516,15 @@ p2p-interface-ipv6="2001:db8:85a3::1/64"
 
 The IPv6 network interface on which the node listens for [P2P communication](../../how-to/connect/configure-ports.md#p2p-networking).
 Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces.
+Set this option for a [dual-stack](../../concepts/ipv6-dual-stack.md) node, in which case 
+[`--p2p-interface`](#p2p-interface) must be an IPv4 address or `0.0.0.0`.
+
+If you set `--p2p-interface-ipv6` without [`--p2p-host-ipv6`](#p2p-host-ipv6), Besu can auto-discover the
+advertised IPv6 address from discovery v5 peer consensus.
 
 :::tip Early access feature
-To use an IPv6 interface (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-
-If you set `--p2p-interface-ipv6`, do not specify an IPv6 interface using [`--p2p-interface`](#p2p-interface).
+This option enables [dual-stack networking](../../concepts/ipv6-dual-stack.md) and requires discovery v5, an early access feature.
+Set `--Xv5-discovery-enabled` to `true` to use this option.
 :::
 
 ### `p2p-ipv6-outbound-enabled`
@@ -3561,15 +3565,12 @@ p2p-ipv6-outbound-enabled=true
 
 </Tabs>
 
-Enables or disables preferring IPv6 addresses for outbound P2P connections when peers advertise both IPv4 and IPv6.
+Enables or disables preferring IPv6 addresses for outbound P2P connections when peers advertise both 
+IPv4 and IPv6 ([dual-stack](../../concepts/ipv6-dual-stack.md)).
 
 When set to `true`, IPv6 is preferred.
 When omitted or set to `false`, IPv4 is preferred.
 If a peer only advertises one address family, it is always used.
-
-:::tip Early access feature
-To use IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-:::
 
 ### `p2p-port`
 
@@ -3613,8 +3614,9 @@ p2p-port="1789"
 
 The P2P listening ports (UDP and TCP). The default is `30303`. You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
-:::tip Early access feature
-To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
+:::tip
+This option sets the listening port for the primary P2P socket.
+For dual-stack, see [IPv6 and dual-stack networking](../../concepts/ipv6-dual-stack.md).
 :::
 
 ### `p2p-port-ipv6`
@@ -3662,7 +3664,9 @@ The default is `30404`.
 You must [expose ports appropriately](../../how-to/connect/configure-ports.md).
 
 :::tip Early access feature
-To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
+This option sets the port for the IPv6 socket in [dual-stack](../../concepts/ipv6-dual-stack.md) mode.
+Dual-stack requires discovery v5, an early access feature.
+Set `--Xv5-discovery-enabled` to `true` to use this option.
 :::
 
 ### `plugin-block-txs-selection-max-time`
