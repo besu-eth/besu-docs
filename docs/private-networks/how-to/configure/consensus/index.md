@@ -16,7 +16,7 @@ Besu supports the following consensus protocols:
 - [Proof of stake](../../../../public-networks/concepts/proof-of-stake/index.md) - Used on Ethereum Mainnet and public testnets.
 
 :::warning Important
-Besu no longer supports the Clique consensus protocol.
+Besu no longer supports the Clique and Ethash consensus protocols.
 :::
 
 Learn more about the [proof of authority consensus protocols](../../../concepts/poa.md).
