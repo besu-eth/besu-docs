@@ -466,10 +466,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_nodeInfo","params":[],"id"
           "eip158Block": 0,
           "byzantiumBlock": 0,
           "constantinopleBlock": 0,
-          "constantinopleFixBlock": 0,
-          "ethash": {
-            "fixeddifficulty": 100
-          }
+          "constantinopleFixBlock": 0
         },
         "difficulty": 78536,
         "genesis": "0x43ee12d45470e57c86a0dfe008a5b847af9e372d05e8ba8f01434526eb2bea0f",
@@ -5924,50 +5921,6 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_maxPriorityFeePerGas","param
 
 </Tabs>
 
-### `eth_mining` (Deprecated)
-
-Whether the client is actively mining new blocks. Besu pauses mining while the client synchronizes with the network regardless of command settings or methods called.
-
-#### Parameters
-
-None
-
-#### Returns
-
-`result`: _boolean_ - indicates if the client is actively mining new blocks
-
-<Tabs>
-
-<TabItem value="curl HTTP request" label="curl HTTP request" default>
-
-```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
-```
-
-</TabItem>
-
-<TabItem value="wscat WS request" label="wscat WS request">
-
-```json
-{ "jsonrpc": "2.0", "method": "eth_mining", "params": [], "id": 53 }
-```
-
-</TabItem>
-
-<TabItem value="JSON result" label="JSON result">
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 53,
-  "result": true
-}
-```
-
-</TabItem>
-
-</Tabs>
-
 ### `eth_newBlockFilter`
 
 Creates a filter to retrieve new block hashes. To poll for new blocks, use [`eth_getFilterChanges`](#eth_getfilterchanges).
@@ -6639,8 +6592,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_uninstallFilter","params":["
 
 ## `MINER` methods
 
-The `MINER` API methods allow you to control the node's mining operation, or settings related to
-block creation in general. 
+The `MINER` API methods allow you to control settings related to block creation.
 
 :::note
 
@@ -7216,7 +7168,7 @@ None
 | `1`        | ETH    | Mainnet | Main Ethereum network         |
 | `560048`   | ETH    | Hoodi   | Ethereum PoS test network     |
 | `11155111` | ETH    | Sepolia | Ethereum PoS test network     |
-| `2018`     | ETH    | Dev     | Ethereum PoW development network|
+| `2018`     | ETH    | Dev     | Ethereum development network    |
 | `59144`    | Linea  | Mainnet | Main Linea network            |
 | `59141`    | Linea  | Testnet | Linea Sepolia testnet         |
 | `4201`     | Lukso  | Mainnet | Main Lukso network            |

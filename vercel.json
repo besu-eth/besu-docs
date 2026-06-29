@@ -72,6 +72,10 @@
       "destination": "/private-networks/tutorials/"
     },
     {
+      "source": "/private-networks/tutorials/ethash/",
+      "destination": "/private-networks/tutorials/"
+    },
+    {
       "source": "/public-networks/concepts/plugins/",
       "destination": "/plugins/"
     },

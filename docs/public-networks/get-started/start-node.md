@@ -27,13 +27,7 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 Besu specifies the genesis configuration, and sets the network ID and bootnodes when connecting to [ETH testnets](#run-a-node-on-an-ethereum-testnet), and [Mainnet](#run-a-node-on-ethereum-mainnet).
 
-:::info
-
-The following networks and testnets are deprecated: ETC (Ethereum Classic) and Mordor.
-
-:::
-
-When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
+When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development network genesis configuration, which is intended for local development and testing. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
 
 The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
@@ -49,35 +43,6 @@ By default, Besu syncs to the current state of the blockchain using [snap sync](
 We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/cli/options.md#sync-mode).
 
 By default, Besu stores data in the [Bonsai Tries format](../concepts/data-storage-formats.md#bonsai-tries).
-
-## Run a node for testing
-
-To run a node that mines blocks at a rate suitable for testing purposes:
-
-```bash
-besu --network=dev --rpc-http-cors-origins="all" --host-allowlist="*" --rpc-ws-enabled --rpc-http-enabled --data-path=/tmp/tmpDatdir
-```
-
-You can also use the following [configuration file](../how-to/configure-besu/index.md) on the command line to start a node with the same options as above:
-
-```toml
-network="dev"
-rpc-http-cors-origins=["all"]
-host-allowlist=["*"]
-rpc-ws-enabled=true
-rpc-http-enabled=true
-data-path="/tmp/tmpdata-path"
-```
-
-:::danger Warning
-
-The following settings are a security risk in production environments:
-
-- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
-- Setting [`--host-allowlist`](../reference/cli/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
-- Setting [`--rpc-http-cors-origins`](../reference/cli/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
-
-:::
 
 ## Run a node on an Ethereum testnet
 

@@ -21,7 +21,6 @@ Network configuration items are specified in the genesis file in the `config` ob
 |----------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Milestone blocks                       | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                                  |
 | `chainId`                              | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                            |
-| `ethash`                               | Specifies that the network uses [Ethash](/private-networks/how-to/configure/consensus/) and contains [`fixeddifficulty`](#fixed-difficulty).                                                               |
 | `ibft2`                                | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file).   |
 | `qbft`                                 | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).          |
 | `transitions`                          | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                             |
@@ -183,29 +182,3 @@ If any option is specified using the command line or [configuration file](../how
   }
 }
 ```
-
-## Fixed difficulty
-
-:::caution Deprecated
-
-PoW consensus is deprecated in Besu version 24.11.0 and later. Please read this [blog post](https://www.lfdecentralizedtrust.org/blog/sunsetting-tessera-and-simplifying-hyperledger-besu) for more context on the rationale behind this decision as well as alternative options.
-
-:::
-
-Use `fixeddifficulty` to specify a fixed difficulty in private networks using Ethash. This keeps the network's difficulty constant and overrides the `difficulty` parameter from the genesis file.
-
-```json
-{
-  "config": {
-    "ethash": {
-      "fixeddifficulty": 1000
-    }
-  }
-}
-```
-
-:::tip
-
-Using `fixeddifficulty` is not recommended for use with Ethash outside of test environments. For production networks using Ethash, we recommend setting a low `difficulty` value in the genesis file instead. Ethash will adjust the difficulty of the network based on hashrate to produce blocks at the targeted frequency.
-
-:::
