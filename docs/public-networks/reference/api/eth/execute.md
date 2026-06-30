@@ -201,36 +201,7 @@ curl -X POST http://localhost:8547/graphql \
 </Tabs>
 
 The following example creates a simulated contract by not including the `to` parameter from the
-transaction call object in the `call` parameter, with the following fields:
-
-- `from`: _Data, 20 bytes_ - Address of the sender.
-
-- `to`: _Data, 20 bytes_ - Address of the action receiver.
-
-- `gas`: _Quantity, Integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
-
-- `gasPrice`: _Quantity, Integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
-- `maxPriorityFeePerGas`: _Quantity, Integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
-
-- `maxFeePerGas`: _Quantity, Integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-
-- `maxFeePerBlobGas`: _Quantity, Integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
-- `nonce`: _Quantity, Integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
-
-- `value`: _Quantity, Integer_ - Value transferred, in Wei.
-
-- `data`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
-
-- `input`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
-
-- `accessList`: _Array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
-
-- `strict`: _Tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-
-- `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
+transaction call object in the `call` parameter.
 Besu simulates the data to create the contract.
 
 <Tabs>
