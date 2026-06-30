@@ -9,24 +9,35 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Fee market methods query gas price and fee market information, including the base fee, blob base fee, fee history, and priority fees.
+
 ## `eth_baseFee`
 
 Returns the base fee per gas for the next block in wei.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - hexadecimal integer representing the base fee per gas for the next block in wei, or `null` if the network does not support [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+- Hexadecimal integer representing the base fee per gas for the next block in wei, or `null` if the network does not support [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_baseFee",
+    "params": [],
+    "id": 51
+  }'
 ```
 
 </TabItem>
@@ -34,7 +45,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51}
+{
+  "jsonrpc": "2.0",
+  "method": "eth_baseFee",
+  "params": [],
+  "id": 51
+}
 ```
 
 </TabItem>
@@ -53,6 +69,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_baseFee","params":[],"id":51
 
 </Tabs>
 
+---
+
 ## `eth_blobBaseFee`
 
 Returns the base fee per blob gas in wei.
@@ -66,18 +84,27 @@ data to be stored temporarily by consensus clients.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - hexadecimal integer representing the base fee per blob gas.
+- Hexadecimal integer representing the base fee per blob gas.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blobBaseFee","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_blobBaseFee",
+    "params": [],
+    "id": 51
+  }'
 ```
 
 </TabItem>
@@ -85,7 +112,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blobBaseFee","params":[],"id
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{"jsonrpc":"2.0","method":"eth_blobBaseFee","params":[],"id":51}
+{
+  "jsonrpc": "2.0",
+  "method": "eth_blobBaseFee",
+  "params": [],
+  "id": 51
+}
 ```
 
 </TabItem>
@@ -102,6 +134,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blobBaseFee","params":[],"id
 </TabItem>
 </Tabs>
 
+---
+
 ## `eth_feeHistory`
 
 Returns base fee per gas and transaction effective priority fee per gas history for the requested block
@@ -113,9 +147,9 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 
 - `blockCount`: _integer_ or _string_ - Number of blocks in the requested range. Between 1 and 1024 blocks can be requested in a single query. If blocks in the specified block range are not available, then only the fee history for available blocks is returned. Accepts hexadecimal or integer values.
 
-- `newestBlock`: _string_ - hexadecimal integer representing the highest number block of
+- `newestBlock`: _string_ - Hexadecimal integer representing the highest number block of
   the requested range, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
-  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
@@ -125,31 +159,47 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 
 ### Returns
 
-`result`: _object_ - Fee history results object with the following fields:
+- Fee history results object with the following fields:
 
-<details>
-<summary>Show fields</summary>
+  <details>
+  <summary>Show fields</summary>
 
-- `oldestBlock`: _Quantity, Integer_ - Lowest number block of the returned range.
+  - `oldestBlock`: _Quantity, Integer_ - Lowest number block of the returned range.
 
-- `baseFeePerGas`: _Array_ - Array of block base fees per gas, including an extra block value. The extra value is the next block after the newest block in the returned range. Returns zeroes for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
+  - `baseFeePerGas`: _Array_ - Array of block base fees per gas, including an extra block value. The extra value is the next block after the newest block in the returned range. Returns zeroes for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
 
-- `baseFeePerBlobGas`: _Array_ - Array of base fees per blob gas. Returns zeroes for blocks created before [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+  - `baseFeePerBlobGas`: _Array_ - Array of base fees per blob gas. Returns zeroes for blocks created before [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
-- `gasUsedRatio`: _Array_ - Array of block gas used ratios. These are calculated as the ratio of `gasUsed` and `gasLimit`.
+  - `gasUsedRatio`: _Array_ - Array of block gas used ratios. These are calculated as the ratio of `gasUsed` and `gasLimit`.
 
-- `blobGasUsedRatio`: _Array_ - Array of blob gas used ratios. These are calculated as the ratio of `blobGasUsed` and the max blob gas per block.
+  - `blobGasUsedRatio`: _Array_ - Array of blob gas used ratios. These are calculated as the ratio of `blobGasUsed` and the max blob gas per block.
 
-- `reward`: _Array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
+  - `reward`: _Array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_feeHistory","params": ["0x5", "latest", [20,30]],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_feeHistory",
+    "params": [
+      "0x5",
+      "latest",
+      [
+        20,
+        30
+      ]
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -160,7 +210,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_feeHistory","params": ["0x5"
 {
   "jsonrpc": "2.0",
   "method": "eth_feeHistory",
-  "params": ["0x5", "latest", [20, 30]],
+  "params": [
+    "0x5",
+    "latest",
+    [
+      20,
+      30
+    ]
+  ],
   "id": 1
 }
 ```
@@ -235,6 +292,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_feeHistory","params": ["0x5"
 
 </Tabs>
 
+---
+
 ## `eth_gasPrice`
 
 Returns a percentile gas unit price for the most recent blocks, in wei. By default, the last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value) is returned.
@@ -245,18 +304,27 @@ Use the [`--api-gas-price-blocks`](../../cli/options.md#api-gas-price-blocks), [
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - percentile gas unit price for the most recent blocks, in wei, as a hexadecimal value
+- Percentile gas unit price for the most recent blocks, in wei, as a hexadecimal value.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_gasPrice",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -264,7 +332,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":5
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_gasPrice", "params": [], "id": 53 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_gasPrice",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>
@@ -284,7 +357,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":5
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{gasPrice}"
+  }'
 ```
 
 </TabItem>
@@ -313,24 +390,35 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"
 
 </Tabs>
 
+---
+
 ## `eth_maxPriorityFeePerGas`
 
 Returns an estimate of how much priority fee, in wei, you can pay to get a transaction included in the current block.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _hexadecimal_ value in wei
+- Hexadecimal value in wei.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_maxPriorityFeePerGas","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_maxPriorityFeePerGas",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -338,7 +426,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_maxPriorityFeePerGas","param
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_maxPriorityFeePerGas", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_maxPriorityFeePerGas",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>

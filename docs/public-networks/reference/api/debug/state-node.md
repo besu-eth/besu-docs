@@ -9,34 +9,38 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+State and node methods inspect account and world state, and manage node operations such as metrics, resyncing, and replaying blocks.
+
 ## `debug_accountAt`
 
 Returns account information at the specified index of the specified block.
 
 ### Parameters
 
-- `blockHashOrNumber`: _string_ - block hash or number at which to retrieve account information
+- `blockHashOrNumber`: _string_ - Block hash or number at which to retrieve account information.
 
-- `txIndex`: _number_ - transaction index at which to retrieve account information
+- `txIndex`: _number_ - Transaction index at which to retrieve account information.
 
-- `address`: _string_ - contract or account address for which to retrieve information
+- `address`: _string_ - Contract or account address for which to retrieve information.
 
 ### Returns
 
-`result`: _object_ - account details object with the following fields:
+- Account details object with the following fields:
 
-<details>
-<summary>Show account details object fields</summary>
+  <details>
+  <summary>Show account details object fields</summary>
 
-- `code`: _data_ - code for the account. Displays `0x0` if the address is an externally owned account.
+  - `code`: _data_ - Code for the account. Displays `0x0` if the address is an externally owned account.
 
-- `nonce`: _quantity_ - number of transactions made by the account before this one
+  - `nonce`: _quantity_ - Number of transactions made by the account before this one.
 
-- `balance`: _quantity_ - balance of the account in wei
+  - `balance`: _quantity_ - Balance of the account in wei.
 
-- `codehash`: _data_ - code hash for the account
+  - `codehash`: _data_ - Code hash for the account.
 
-</details>
+  </details>
+
+### Example
 
 This example uses an externally owned account address for the `address` parameter.
 
@@ -45,7 +49,18 @@ This example uses an externally owned account address for the `address` paramete
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountAt","params":["0xc8df1f061abb4d0c107b2b1a794ade8780b3120e681f723fe55a7be586d95ba6", 0, "0xbcde5374fce5edbc8e2a8697c15331677e6ebf0b"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_accountAt",
+    "params": [
+      "0xc8df1f061abb4d0c107b2b1a794ade8780b3120e681f723fe55a7be586d95ba6",
+      0,
+      "0xbcde5374fce5edbc8e2a8697c15331677e6ebf0b"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -93,7 +108,18 @@ This example uses a contract address for the `address` parameter.
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountAt","params":["0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c", 0, "0x0e0d2c8f7794e82164f11798276a188147fbd415"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_accountAt",
+    "params": [
+      "0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c",
+      0,
+      "0x0e0d2c8f7794e82164f11798276a188147fbd415"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -134,6 +160,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountAt","params":["0x2b
 
 </Tabs>
 
+---
+
 ## `debug_accountRange`
 
 [Retesteth](https://github.com/ethereum/retesteth/wiki/Retesteth-Overview) uses `debug_accountRange` to implement debugging.
@@ -142,33 +170,47 @@ Returns the accounts for a specified block.
 
 ### Parameters
 
-- `blockHashOrNumber`: _string_ - block hash or number at which to retrieve account information
+- `blockHashOrNumber`: _string_ - Block hash or number at which to retrieve account information.
 
-- `txIndex`: _number_ - transaction index at which to retrieve account information
+- `txIndex`: _number_ - Transaction index at which to retrieve account information.
 
-- `address`: _string_ - address hash from which to start
+- `address`: _string_ - Address hash from which to start.
 
-- `limit`: _integer_ - maximum number of account entries to return
+- `limit`: _integer_ - Maximum number of account entries to return.
 
 ### Returns
 
-`result`: _object_ - account details object with the following fields:
+- Account details object with the following fields:
 
-<details>
-<summary>Show account details object fields</summary>
+  <details>
+  <summary>Show account details object fields</summary>
 
-- `addressMap`: _map_ of _strings_ to _strings_ - map of address hashes and account addresses
+  - `addressMap`: _map_ of _strings_ to _strings_ - Map of address hashes and account addresses.
 
-- `nextKey`: _string_ - hash of the next address if any addresses remain in the state, otherwise zero
+  - `nextKey`: _string_ - Hash of the next address if any addresses remain in the state, otherwise zero.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountRange","params":["12345", 0, "0", 5],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_accountRange",
+    "params": [
+      "12345",
+      0,
+      "0",
+      5
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -179,7 +221,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountRange","params":["1
 {
   "jsonrpc": "2.0",
   "method": "debug_accountRange",
-  "params": ["12345", 0, "0", 5],
+  "params": [
+    "12345",
+    0,
+    "0",
+    5
+  ],
   "id": 1
 }
 ```
@@ -209,43 +256,69 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_accountRange","params":["1
 
 </Tabs>
 
+---
+
 ## `debug_batchSendRawTransaction`
 
 Sends a list of [signed transactions](../../../how-to/send-transactions.md). This is used to quickly load a network with a lot of transactions. This does the same thing as calling [`eth_sendRawTransaction`](../eth/submit.md#eth_sendrawtransaction) multiple times.
 
 ### Parameters
 
-`data`: _string_ - signed transaction data array
+- `data`: _string_ - Signed transaction data array.
 
 ### Returns
 
-`result`: _array_ of _objects_ - object returned for each transaction, with the following fields:
+- Object returned for each transaction, with the following fields:
 
-<details>
-<summary>Show fields</summary>
+  <details>
+  <summary>Show fields</summary>
 
-- `index`: _string_ - index of the transaction in the request parameters array
+  - `index`: _string_ - Index of the transaction in the request parameters array.
 
-- `success`: _boolean_ - indicates whether or not the transaction has been added to the transaction pool
+  - `success`: _boolean_ - Indicates whether or not the transaction has been added to the transaction pool.
 
-- `errorMessage`: _string_ - (optional) error message
+  - `errorMessage`: _string_ - (Optional) Error message.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_batchSendRawTransaction","params":["0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ba0ac74ecfa0e9b85785f042c143ead4780931234cc9a032fce99fab1f45e0d90faa02fd17e8eb433d4ca47727653232045d4f81322619c0852d3fe8ddcfcedb66a43","0x416","0xf868018203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ca0b24ea1bee8fe36984c36acbf80979a4509f23fc17141851e08d505c0df158aa0a00472a05903d4cd7a811bd4d5c59cc105d93f5943f3393f253e92e65fc36e7ce0","0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef5787470de4df820000801ca0f7936b4de04792e3c65095cfbfd1399d231368f5f05f877588c0c8509f6c98c9a01834004dead527c8da1396eede42e1c60e41f38a77c2fd13a6e495479c729b99"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_batchSendRawTransaction",
+    "params": [
+      "0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ba0ac74ecfa0e9b85785f042c143ead4780931234cc9a032fce99fab1f45e0d90faa02fd17e8eb433d4ca47727653232045d4f81322619c0852d3fe8ddcfcedb66a43",
+      "0x416",
+      "0xf868018203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ca0b24ea1bee8fe36984c36acbf80979a4509f23fc17141851e08d505c0df158aa0a00472a05903d4cd7a811bd4d5c59cc105d93f5943f3393f253e92e65fc36e7ce0",
+      "0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef5787470de4df820000801ca0f7936b4de04792e3c65095cfbfd1399d231368f5f05f877588c0c8509f6c98c9a01834004dead527c8da1396eede42e1c60e41f38a77c2fd13a6e495479c729b99"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 
 <TabItem value="wscat WS" label="wscat WS">
 
-```bash
-{"jsonrpc":"2.0","method":"debug_batchSendRawTransaction","params":["0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ba0ac74ecfa0e9b85785f042c143ead4780931234cc9a032fce99fab1f45e0d90faa02fd17e8eb433d4ca47727653232045d4f81322619c0852d3fe8ddcfcedb66a43","0x416","0xf868018203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ca0b24ea1bee8fe36984c36acbf80979a4509f23fc17141851e08d505c0df158aa0a00472a05903d4cd7a811bd4d5c59cc105d93f5943f3393f253e92e65fc36e7ce0","0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef5787470de4df820000801ca0f7936b4de04792e3c65095cfbfd1399d231368f5f05f877588c0c8509f6c98c9a01834004dead527c8da1396eede42e1c60e41f38a77c2fd13a6e495479c729b99"],"id":1}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "debug_batchSendRawTransaction",
+  "params": [
+    "0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ba0ac74ecfa0e9b85785f042c143ead4780931234cc9a032fce99fab1f45e0d90faa02fd17e8eb433d4ca47727653232045d4f81322619c0852d3fe8ddcfcedb66a43",
+    "0x416",
+    "0xf868018203e882520894627306090abab3a6e1400e9345bc60c78a8bef57872386f26fc10000801ca0b24ea1bee8fe36984c36acbf80979a4509f23fc17141851e08d505c0df158aa0a00472a05903d4cd7a811bd4d5c59cc105d93f5943f3393f253e92e65fc36e7ce0",
+    "0xf868808203e882520894627306090abab3a6e1400e9345bc60c78a8bef5787470de4df820000801ca0f7936b4de04792e3c65095cfbfd1399d231368f5f05f877588c0c8509f6c98c9a01834004dead527c8da1396eede42e1c60e41f38a77c2fd13a6e495479c729b99"
+  ],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -283,6 +356,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_batchSendRawTransaction","
 
 </Tabs>
 
+---
+
 ## `debug_metrics`
 
 Returns metrics providing information on the internal operation of Besu.
@@ -299,18 +374,27 @@ The metric types are:
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - metrics object
+- Metrics object.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_metrics","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_metrics",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -318,7 +402,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_metrics","params":[],"id":
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "debug_metrics", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "debug_metrics",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -428,15 +517,17 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_metrics","params":[],"id":
 
 </Tabs>
 
+---
+
 ## `debug_replayBlock`
 
 Re-imports the block matching the specified block number, by rolling the head of the local chain back to the block right before the specified block, then importing the specified block.
 
 ### Parameters
 
-`blockNumber`: _string_ - hexadecimal integer representing a block number, or one of the
-string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-[block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
+  string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 :::note
 `pending` returns the same value as `latest`.
@@ -444,14 +535,25 @@ string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as describe
 
 ### Returns
 
-`result`: _string_ - `Success` or `error`
+- `Success` or `error`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_replayBlock","params":["0x1"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_replayBlock",
+    "params": [
+      "0x1"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -459,7 +561,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_replayBlock","params":["0x
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "debug_replayBlock", "params": ["0x1"], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "debug_replayBlock",
+  "params": [
+    "0x1"
+  ],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -477,6 +586,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_replayBlock","params":["0x
 </TabItem>
 
 </Tabs>
+
+---
 
 ## `debug_resyncWorldState`
 
@@ -484,18 +595,27 @@ Triggers a re-synchronization of the world state while retaining imported blocks
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - `Success` or `error`
+- `Success` or `error`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_resyncWorldState","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_resyncWorldState",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -503,7 +623,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_resyncWorldState","params"
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "debug_resyncWorldState", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "debug_resyncWorldState",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -521,6 +646,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_resyncWorldState","params"
 </TabItem>
 
 </Tabs>
+
+---
 
 ## `debug_setHead`
 
@@ -541,27 +668,38 @@ the RPC call might time out even though Besu continues the operation in the back
 
 ### Parameters
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of the
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
     string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-    [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+    [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
     :::note
     `pending` returns the same value as `latest`.
     :::
 
-- `shouldMoveWorldstate`: _boolean_ - (optional) if `true`, moves the [bonsai](../../../concepts/data-storage-formats.md#bonsai-tries)
+- `shouldMoveWorldstate`: _boolean_ - (Optional) If `true`, moves the [bonsai](../../../concepts/data-storage-formats.md#bonsai-tries)
     world state to the specified block. The default is `false`.
 
 ### Returns
 
-`result`: _string_ - `Success` or `error`
+- `Success` or `error`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_setHead","params":["0x1"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_setHead",
+    "params": [
+      "0x1"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -569,7 +707,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_setHead","params":["0x1"],
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "debug_setHead", "params": ["0x1"], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "debug_setHead",
+  "params": [
+    "0x1"
+  ],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -588,6 +733,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_setHead","params":["0x1"],
 
 </Tabs>
 
+---
+
 ## `debug_storageRangeAt`
 
 [Remix](https://remix.ethereum.org/) uses `debug_storageRangeAt` to implement debugging. Use the _Debugger_ tab in Remix instead of calling `debug_storageRangeAt` directly.
@@ -596,35 +743,50 @@ Returns the contract storage for the specified range.
 
 ### Parameters
 
-- `blockHash`: _string_ - block hash
+- `blockHash`: _string_ - Block hash.
 
-- `txIndex`: _number_ - transaction index from which to start
+- `txIndex`: _number_ - Transaction index from which to start.
 
-- `address`: _string_ - contract address
+- `address`: _string_ - Contract address.
 
-- `startKey`: _string_ - start key
+- `startKey`: _string_ - Start key.
 
-- `limit`: _number_ - number of storage entries to return
+- `limit`: _number_ - Number of storage entries to return.
 
 ### Returns
 
-`result`: _object_ - range object with the following fields:
+- Range object with the following fields:
 
-<details>
-<summary>Show range object fields</summary>
+  <details>
+  <summary>Show range object fields</summary>
 
-- `storage`: _Object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
+  - `storage`: _Object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
 
-- `nextKey`: _Hash_ - Hash of next key if further storage in range. Otherwise, not included.
+  - `nextKey`: _Hash_ - Hash of next key if further storage in range. Otherwise, not included.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_storageRangeAt","params":["0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c",0,"0x0e0d2c8f7794e82164f11798276a188147fbd415","0x0000000000000000000000000000000000000000000000000000000000000000",1], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_storageRangeAt",
+    "params": [
+      "0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c",
+      0,
+      "0x0e0d2c8f7794e82164f11798276a188147fbd415",
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      1
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>

@@ -9,6 +9,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Trace methods trace transactions, blocks, and calls to inspect low-level execution.
+
 ## `debug_standardTraceBlockToFile`
 
 Generates files containing the block trace. A separate file is generated for each transaction in the block.
@@ -19,22 +21,22 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 ### Parameters
 
-- `blockHash`: _string_ - block hash
+- `blockHash`: _string_ - Block hash.
 
 - Optional second parameter _object_ (all keys optional):
 
   <details>
   <summary>Show fields</summary>
 
-  - `txHash`: _string_ - transaction hash; if omitted, a trace file is generated for each transaction in the block
+  - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
-  - `disableMemory`: _boolean_ - omit EVM memory from the trace; defaults to `false`
+  - `disableMemory`: _boolean_ - Omit EVM memory from the trace; defaults to `false`.
 
-  - `disableStack`: _boolean_ - omit stack from the trace; defaults to `false`
+  - `disableStack`: _boolean_ - Omit stack from the trace; defaults to `false`.
 
-  - `disableStorage`: _boolean_ - omit storage from the trace; defaults to `false`
+  - `disableStorage`: _boolean_ - Omit storage from the trace; defaults to `false`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -42,15 +44,29 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 ### Returns
 
-`result`: _string_ - location of the generated trace files
+- Location of the generated trace files.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_standardTraceBlockToFile","params":["0x2dc0b6c43144e314a86777b4bd4f987c0790a6a0b21560671d221ed81a23f2dc", {
-"txHash": "0x4ff04c4aec9517721179c8dd435f47fbbfc2ed26cd4926845ab687420d5580a6", "disableMemory": false}], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_standardTraceBlockToFile",
+    "params": [
+      "0x2dc0b6c43144e314a86777b4bd4f987c0790a6a0b21560671d221ed81a23f2dc",
+      {
+        "txHash": "0x4ff04c4aec9517721179c8dd435f47fbbfc2ed26cd4926845ab687420d5580a6",
+        "disableMemory": false
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -90,6 +106,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_standardTraceBlockToFile",
 
 </Tabs>
 
+---
+
 ## `debug_standardTraceBadBlockToFile`
 
 Generates files containing the block trace of invalid blocks. A separate file is generated for each transaction in the block.
@@ -98,22 +116,22 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 ### Parameters
 
-- `blockHash`: _string_ - block hash
+- `blockHash`: _string_ - Block hash.
 
 - Optional second parameter _object_ (all keys optional):
 
   <details>
   <summary>Show fields</summary>
 
-  - `txHash`: _string_ - transaction hash; if omitted, a trace file is generated for each transaction in the block
+  - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
-  - `disableMemory`: _boolean_ - omit EVM memory from the trace; defaults to `true`
+  - `disableMemory`: _boolean_ - Omit EVM memory from the trace; defaults to `true`.
 
-  - `disableStack`: _boolean_ - omit stack from the trace; defaults to `false`
+  - `disableStack`: _boolean_ - Omit stack from the trace; defaults to `false`.
 
-  - `disableStorage`: _boolean_ - omit storage from the trace; defaults to `true`
+  - `disableStorage`: _boolean_ - Omit storage from the trace; defaults to `true`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -121,14 +139,25 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 ### Returns
 
-`result`: _string_ - location of the generated trace files
+- Location of the generated trace files.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_standardTraceBadBlockToFile","params":["0x53741e9e94791466d117c5f9e41a2ed1de3f73d39920c621dfc2f294e7779baa"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_standardTraceBadBlockToFile",
+    "params": [
+      "0x53741e9e94791466d117c5f9e41a2ed1de3f73d39920c621dfc2f294e7779baa"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -164,6 +193,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_standardTraceBadBlockToFil
 
 </Tabs>
 
+---
+
 ## `debug_traceTransaction`
 
 [Remix](https://remix.ethereum.org/) uses `debug_traceTransaction` to implement debugging. Use the _Debugger_ tab in Remix instead of calling `debug_traceTransaction` directly.
@@ -172,9 +203,9 @@ Reruns the transaction with the same state as when the transaction executed.
 
 ### Parameters
 
-- `transactionHash`: _string_ - transaction hash.
+- `transactionHash`: _string_ - Transaction hash.
 
-- `options`: _object_ - request options object with the following fields (all optional):
+- `options`: _object_ - Request options object with the following fields (all optional):
 
   <details>
   <summary>Show `options` fields</summary>
@@ -188,7 +219,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -196,52 +227,67 @@ Reruns the transaction with the same state as when the transaction executed.
 
 ### Returns
 
-`result`: _object_ - trace object with the following fields:
-
-<details>
-<summary>Show trace object fields</summary>
-
-- `gas`: _Integer_ - Gas used by the transaction.
-
-- `failed`: _Boolean_ - True if transaction failed, otherwise, false.
-
-- `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
-
-- `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+- Trace object with the following fields:
 
   <details>
-  <summary>Show `structLogs` fields</summary>
+  <summary>Show trace object fields</summary>
 
-  - `pc`: _Integer_ - Current program counter.
+  - `gas`: _Integer_ - Gas used by the transaction.
 
-  - `op`: _String_ - Current OpCode.
+  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
 
-  - `gas`: _Integer_ - Gas remaining.
+  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-  - `depth`: _Integer_ - Execution depth.
+    <details>
+    <summary>Show `structLogs` fields</summary>
 
-  - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `pc`: _Integer_ - Current program counter.
 
-  - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `op`: _String_ - Current OpCode.
 
-  - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `gas`: _Integer_ - Gas remaining.
 
-  - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
 
-  - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `depth`: _Integer_ - Execution depth.
+
+    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+
+    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+
+    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+
+    - `storage`: _Object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params":["0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",{"disableStorage":true,"enableReturnData":true}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_traceTransaction",
+    "params": [
+      "0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",
+      {
+        "disableStorage": true,
+        "enableReturnData": true
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -254,7 +300,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
   "method": "debug_traceTransaction",
   "params": [
     "0x2cc6c94c21685b7e0f8ddabf277a5ccf98db157c62619cde8baea696a74ed18e",
-    { "disableStorage": true, "enableReturnData": true }
+    {
+      "disableStorage": true,
+      "enableReturnData": true
+    }
   ],
   "id": 1
 }
@@ -291,15 +340,17 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceTransaction","params"
 
 </Tabs>
 
+---
+
 ## `debug_traceBlock`
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
 ### Parameters
 
-- `block`: _string_ - RLP of the block
+- `block`: _string_ - RLP of the block.
 
-- `options`: _object_ - (optional) request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object with the following fields:
 
   <details>
   <summary>Show `options` fields</summary>
@@ -313,7 +364,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -321,52 +372,63 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-`result`: _object_ - trace object with the following fields:
-
-<details>
-<summary>Show trace object fields</summary>
-
-- `gas`: _Integer_ - Gas used by the transaction.
-
-- `failed`: _Boolean_ - True if transaction failed, otherwise, false.
-
-- `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
-
-- `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+- Trace object with the following fields:
 
   <details>
-  <summary>Show `structLogs` fields</summary>
+  <summary>Show trace object fields</summary>
 
-  - `pc`: _Integer_ - Current program counter.
+  - `gas`: _Integer_ - Gas used by the transaction.
 
-  - `op`: _String_ - Current OpCode.
+  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
 
-  - `gas`: _Integer_ - Gas remaining.
+  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-  - `depth`: _Integer_ - Execution depth.
+    <details>
+    <summary>Show `structLogs` fields</summary>
 
-  - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `pc`: _Integer_ - Current program counter.
 
-  - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `op`: _String_ - Current OpCode.
 
-  - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `gas`: _Integer_ - Gas remaining.
 
-  - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
 
-  - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `depth`: _Integer_ - Execution depth.
+
+    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+
+    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+
+    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+
+    - `storage`: _Object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlock","params":["0xf90277f90208a05a41d0e66b4120775176c09fcf39e7c0520517a13d2b57b18d33d342df038bfca01dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d4934794e6a7a1d47ff21b6321162aea7c6cb457d5476bcaa00e0df2706b0a4fb8bd08c9246d472abbe850af446405d9eba1db41db18b4a169a04513310fcb9f6f616972a3b948dc5d547f280849a87ebb5af0191f98b87be598a0fe2bf2a941abf41d72637e5b91750332a30283efd40c424dc522b77e6f0ed8c4b9010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000860153886c1bbd82b44382520b8252088455c426598b657468706f6f6c2e6f7267a0b48c515a9dde8d346c3337ea520aa995a4738bb595495506125449c1149d6cf488ba4f8ecd18aab215f869f86780862d79883d2000825208945df9b87991262f6ba471f09758cde1c0fc1de734827a69801ca088ff6cf0fefd94db46111149ae4bfc179e9b94721fffd821d38d16464b3f71d0a045e0aff800961cfce805daef7016b9b675c137a6a41a548f7b60a3484c06a33ac0"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlock",
+    "params": [
+      "0xf90277f90208a05a41d0e66b4120775176c09fcf39e7c0520517a13d2b57b18d33d342df038bfca01dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d4934794e6a7a1d47ff21b6321162aea7c6cb457d5476bcaa00e0df2706b0a4fb8bd08c9246d472abbe850af446405d9eba1db41db18b4a169a04513310fcb9f6f616972a3b948dc5d547f280849a87ebb5af0191f98b87be598a0fe2bf2a941abf41d72637e5b91750332a30283efd40c424dc522b77e6f0ed8c4b9010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000860153886c1bbd82b44382520b8252088455c426598b657468706f6f6c2e6f7267a0b48c515a9dde8d346c3337ea520aa995a4738bb595495506125449c1149d6cf488ba4f8ecd18aab215f869f86780862d79883d2000825208945df9b87991262f6ba471f09758cde1c0fc1de734827a69801ca088ff6cf0fefd94db46111149ae4bfc179e9b94721fffd821d38d16464b3f71d0a045e0aff800961cfce805daef7016b9b675c137a6a41a548f7b60a3484c06a33ac0"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -414,15 +476,17 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlock","params":["0xf
 
 </Tabs>
 
+---
+
 ## `debug_traceBlockByHash`
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
 ### Parameters
 
-- `blockHash`: _string_ - block hash
+- `blockHash`: _string_ - Block hash.
 
-- `options`: _object_ - (optional) request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object with the following fields:
 
   <details>
   <summary>Show `options` fields</summary>
@@ -436,7 +500,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -444,52 +508,63 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of trace objects, each with the following fields:
-
-<details>
-<summary>Show trace object fields</summary>
-
-- `gas`: _Integer_ - Gas used by the transaction.
-
-- `failed`: _Boolean_ - True if transaction failed, otherwise, false.
-
-- `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
-
-- `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+- List of trace objects, each with the following fields:
 
   <details>
-  <summary>Show `structLogs` fields</summary>
+  <summary>Show trace object fields</summary>
 
-  - `pc`: _Integer_ - Current program counter.
+  - `gas`: _Integer_ - Gas used by the transaction.
 
-  - `op`: _String_ - Current OpCode.
+  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
 
-  - `gas`: _Integer_ - Gas remaining.
+  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-  - `depth`: _Integer_ - Execution depth.
+    <details>
+    <summary>Show `structLogs` fields</summary>
 
-  - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `pc`: _Integer_ - Current program counter.
 
-  - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `op`: _String_ - Current OpCode.
 
-  - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `gas`: _Integer_ - Gas remaining.
 
-  - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
 
-  - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `depth`: _Integer_ - Execution depth.
+
+    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+
+    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+
+    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+
+    - `storage`: _Object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlockByHash","params":["0xaceb3b2c9b25b0589230873921eb894b28722011b8df63977145517d754875a5"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlockByHash",
+    "params": [
+      "0xaceb3b2c9b25b0589230873921eb894b28722011b8df63977145517d754875a5"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -539,21 +614,23 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlockByHash","params"
 
 </Tabs>
 
+---
+
 ## `debug_traceBlockByNumber`
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
 ### Parameters
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of the
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
   string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _object_ - (optional) request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object with the following fields:
 
   <details>
   <summary>Show `options` fields</summary>
@@ -567,7 +644,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
@@ -575,52 +652,66 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of trace objects, each with the following fields:
-
-<details>
-<summary>Show trace object fields</summary>
-
-- `gas`: _Integer_ - Gas used by the transaction.
-
-- `failed`: _Boolean_ - True if transaction failed, otherwise, false.
-
-- `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
-
-- `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+- List of trace objects, each with the following fields:
 
   <details>
-  <summary>Show `structLogs` fields</summary>
+  <summary>Show trace object fields</summary>
 
-  - `pc`: _Integer_ - Current program counter.
+  - `gas`: _Integer_ - Gas used by the transaction.
 
-  - `op`: _String_ - Current OpCode.
+  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
 
-  - `gas`: _Integer_ - Gas remaining.
+  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-  - `depth`: _Integer_ - Execution depth.
+    <details>
+    <summary>Show `structLogs` fields</summary>
 
-  - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `pc`: _Integer_ - Current program counter.
 
-  - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `op`: _String_ - Current OpCode.
 
-  - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `gas`: _Integer_ - Gas remaining.
 
-  - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
 
-  - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `depth`: _Integer_ - Execution depth.
+
+    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+
+    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+
+    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+
+    - `storage`: _Object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlockByNumber","params":["0x7224",{"disableStorage":true}], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_traceBlockByNumber",
+    "params": [
+      "0x7224",
+      {
+        "disableStorage": true
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -631,7 +722,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlockByNumber","param
 {
   "jsonrpc": "2.0",
   "method": "debug_traceBlockByNumber",
-  "params": ["0x7224", { "disableStorage": true }],
+  "params": [
+    "0x7224",
+    {
+      "disableStorage": true
+    }
+  ],
   "id": 1
 }
 ```
@@ -667,6 +763,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceBlockByNumber","param
 
 </Tabs>
 
+---
+
 ## `debug_traceCall`
 
 Performs an [`eth_call`](../eth/execute.md#eth_call) within the execution environment of a given block, using the final state of its parent block as the base, and provides a detailed trace of the executed opcodes.
@@ -677,7 +775,7 @@ temporary state changes without affecting the actual blockchain state.
 
 ### Parameters
 
-- `call`: _object_ - transaction call object with the following fields:
+- `call`: _object_ - Transaction call object with the following fields:
 
   <details>
   <summary>Show `call` fields</summary>
@@ -712,37 +810,37 @@ temporary state changes without affecting the actual blockchain state.
 
   </details>
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of the
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
   string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _object_ - request options object with the following fields:
+- `options`: _object_ - Request options object with the following fields:
 
   <details>
   <summary>Show `options` fields</summary>
 
-  - `disableStorage`: _boolean_ - (optional) `true` disables storage capture.
+  - `disableStorage`: _boolean_ - (Optional) `true` disables storage capture.
     The default is `false`.
 
-  - `enableMemory`: _boolean_ - (optional) `true` enables memory capture.
+  - `enableMemory`: _boolean_ - (Optional) `true` enables memory capture.
     The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableMemory`: _boolean_ - (optional) `true` disables memory capture.
+  - `disableMemory`: _boolean_ - (Optional) `true` disables memory capture.
     The default is `true`.
 
-  - `disableStack` : _boolean_ - (optional) `true` disables stack capture.
+  - `disableStack` : _boolean_ - (Optional) `true` disables stack capture.
     The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - (optional) list of opcode names to trace; if omitted or empty, all opcodes are traced
+  - `opcodes`: _array_ of _strings_ - (Optional) List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - (optional) `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - (Optional) `true` enables return data capture. The default is `false`.
 
-  - `stateOverrides`: _object_ - (optional) address-to-state mapping, with the following fields:
+  - `stateOverrides`: _object_ - (Optional) Address-to-state mapping, with the following fields:
 
     <details>
     <summary>Show `stateOverrides` fields</summary>
@@ -765,53 +863,76 @@ temporary state changes without affecting the actual blockchain state.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of trace objects, each with the following fields:
-
-<details>
-<summary>Show trace object fields</summary>
-
-- `gas`: _Integer_ - Gas used by the transaction.
-
-- `failed`: _Boolean_ - True if transaction failed, otherwise, false.
-
-- `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
-
-- `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+- List of trace objects, each with the following fields:
 
   <details>
-  <summary>Show `structLogs` fields</summary>
+  <summary>Show trace object fields</summary>
 
-  - `pc`: _Integer_ - Current program counter.
+  - `gas`: _Integer_ - Gas used by the transaction.
 
-  - `op`: _String_ - Current OpCode.
+  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
 
-  - `gas`: _Integer_ - Gas remaining.
+  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-  - `depth`: _Integer_ - Execution depth.
+    <details>
+    <summary>Show `structLogs` fields</summary>
 
-  - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `pc`: _Integer_ - Current program counter.
 
-  - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `op`: _String_ - Current OpCode.
 
-  - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `gas`: _Integer_ - Gas remaining.
 
-  - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
 
-  - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `depth`: _Integer_ - Execution depth.
+
+    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+
+    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+
+    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+
+    - `storage`: _Object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"debug_traceCall","params":[{"from":"","to":"","gas":"0xfffff2","gasPrice":"0xef","value":"0x0","data":""},"latest",{"disableMemory":true,"disableStack":true,"disableStorage":true}], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
-
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_traceCall",
+    "params": [
+      {
+        "from": "",
+        "to": "",
+        "gas": "0xfffff2",
+        "gasPrice": "0xef",
+        "value": "0x0",
+        "data": ""
+      },
+      "latest",
+      {
+        "disableMemory": true,
+        "disableStack": true,
+        "disableStorage": true
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>

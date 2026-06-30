@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `TRACE` methods
+
 The `TRACE` API is a more concise alternative to the [`DEBUG` API](debug/index.md).
 
 :::note
@@ -29,9 +31,9 @@ the requested block must be within the number of
 
 ### Parameters
 
-`blockNumber`: _string_ - hexadecimal integer representing a block number, or one of
-the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-[block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
+  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 :::note
 `pending` returns the same value as `latest`.
@@ -39,14 +41,25 @@ the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as desc
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_block","params":["0x6"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_block",
+    "params": [
+      "0x6"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -54,7 +67,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_block","params":["0x6"],"i
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "trace_block", "params": ["0x6"], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "trace_block",
+  "params": [
+    "0x6"
+  ],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -125,6 +145,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_block","params":["0x6"],"i
 
 </Tabs>
 
+---
+
 ## `trace_call`
 
 Executes the given call and returns a number of possible traces for it.
@@ -137,7 +159,7 @@ default, 512 from the head of the chain).
 
 ### Parameters
 
-- `call`: _object_ - transaction call object with the following fields:
+- `call`: _object_ - Transaction call object with the following fields:
 
   <details>
   <summary>Show `call` fields</summary>
@@ -172,26 +194,49 @@ default, 512 from the head of the chain).
 
   </details>
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_call","params":[{"from":"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73","to":"0x0010000000000000000000000000000000000000","gas":"0xfffff2","gasPrice":"0xef","value":"0x0","data":"0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002","nonce":"0x0"},["trace"],"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_call",
+    "params": [
+      {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "to": "0x0010000000000000000000000000000000000000",
+        "gas": "0xfffff2",
+        "gasPrice": "0xef",
+        "value": "0x0",
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002",
+        "nonce": "0x0"
+      },
+      [
+        "trace"
+      ],
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -212,7 +257,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_call","params":[{"from":"0
       "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002",
       "nonce": "0x0"
     },
-    ["trace"],
+    [
+      "trace"
+    ],
     "latest"
   ],
   "id": 1
@@ -256,6 +303,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_call","params":[{"from":"0
 
 </Tabs>
 
+---
+
 ## `trace_callMany`
 
 Performs multiple call traces on top of the same block. You can trace dependent transactions.
@@ -268,11 +317,11 @@ default, 512 from the head of the chain).
 
 ### Parameters
 
-- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
@@ -280,14 +329,47 @@ default, 512 from the head of the chain).
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_callMany","params":[[[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"},["trace"]],[{"from":"0x407d73d8a49eeb85d32cf465507dd71d507100c1","to":"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b","value":"0x186a0"},["trace"]]],"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_callMany",
+    "params": [
+      [
+        [
+          {
+            "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+            "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+            "value": "0x186a0"
+          },
+          [
+            "trace"
+          ]
+        ],
+        [
+          {
+            "from": "0x407d73d8a49eeb85d32cf465507dd71d507100c1",
+            "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+            "value": "0x186a0"
+          },
+          [
+            "trace"
+          ]
+        ]
+      ],
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -359,6 +441,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_callMany","params":[[[{"fr
 
 </Tabs>
 
+---
+
 ## `trace_filter`
 
 Returns traces matching the specified filter. The maximum number of blocks you can supply to `trace_filter` is 1000 by default. You can adjust this limit using the [`--rpc-max-trace-filter-range`](../cli/options.md#rpc-max-trace-filter-range) option. 
@@ -372,7 +456,7 @@ the requested blocks must be within the number of
 
 ### Parameters
 
-`traceFilterOptions`: _object_ - trace filter options object with the following fields:
+- `traceFilterOptions`: _object_ - Trace filter options object with the following fields:
 
 - `fromBLock`: _String | Tag_ - Trace starts at this block.
 
@@ -388,14 +472,33 @@ the requested blocks must be within the number of
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_filter","params":[{"fromBlock":"0x1","toBlock":"0x21","after":2,"count":2,"fromAddress":["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"]}],"id":415}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_filter",
+    "params": [
+      {
+        "fromBlock": "0x1",
+        "toBlock": "0x21",
+        "after": 2,
+        "count": 2,
+        "fromAddress": [
+          "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+        ]
+      }
+    ],
+    "id": 415
+  }'
 ```
 
 </TabItem>
@@ -411,7 +514,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_filter","params":[{"fromBl
       "toBlock": "0x21",
       "after": 2,
       "count": 2,
-      "fromAddress": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"]
+      "fromAddress": [
+        "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+      ]
     }
   ],
   "id": 415
@@ -475,6 +580,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_filter","params":[{"fromBl
 </TabItem>
 </Tabs>
 
+---
+
 ## `trace_get`
 
 Returns a trace at the given position.
@@ -488,20 +595,34 @@ the requested transaction must be contained in a block within the number of
 
 ### Parameters
 
-- `transaction`: _string_ - transaction hash
+- `transaction`: _string_ - Transaction hash.
 
-- `indexPositions`: _array_ - Index positions of the traces
+- `indexPositions`: _array_ - Index positions of the traces.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_get","params":["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_get",
+    "params": [
+      "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
+      [
+        "0x0"
+      ]
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -513,7 +634,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_get","params":["0x17104ac9
   "method": "trace_get",
   "params": [
     "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
-    ["0x0"]
+    [
+      "0x0"
+    ]
   ],
   "id": 1
 }
@@ -555,6 +678,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_get","params":["0x17104ac9
 </TabItem>
 </Tabs>
 
+---
+
 ## `trace_rawTransaction`
 
 Traces a call to `eth_sendRawTransaction` without making the call, returning the traces.
@@ -568,20 +693,34 @@ the chain).
 
 ### Parameters
 
-- `data` - _string_ - Raw transaction data
+- `data` - _string_ - Raw transaction data.
 
-- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"trace_rawTransaction","params":["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",["trace"]],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_rawTransaction",
+    "params": [
+      "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+      [
+        "trace"
+      ]
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -593,7 +732,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_rawTransaction","params":[
   "method": "trace_rawTransaction",
   "params": [
     "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
-    ["trace"]
+    [
+      "trace"
+    ]
   ],
   "id": 1
 }
@@ -628,6 +769,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"trace_rawTransaction","params":[
 </TabItem>
 </Tabs>
 
+---
+
 ## `trace_replayBlockTransactions`
 
 Provides transaction processing tracing per block.
@@ -640,41 +783,57 @@ default, 512 from the head of the chain).
 
 ### Parameters
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _array_ of _strings_ - list of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), each with the following fields:
+- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), each with the following fields:
 
-<details>
-<summary>Show transaction trace object fields</summary>
+  <details>
+  <summary>Show transaction trace object fields</summary>
 
-- `output`: _Boolean_ - Transaction result. 1 for success and 0 for failure.
+  - `output`: _Boolean_ - Transaction result. 1 for success and 0 for failure.
 
-- `stateDiff`: _Object_ - [State changes in the requested block](../trace-types.md#statediff).
+  - `stateDiff`: _Object_ - [State changes in the requested block](../trace-types.md#statediff).
 
-- `trace`: _Array_ - [Ordered list of calls to other contracts](../trace-types.md#trace).
+  - `trace`: _Array_ - [Ordered list of calls to other contracts](../trace-types.md#trace).
 
-- `vmTrace`: _Object_ - [Ordered list of EVM actions](../trace-types.md#vmtrace).
+  - `vmTrace`: _Object_ - [Ordered list of EVM actions](../trace-types.md#vmtrace).
 
-- `transactionHash`: _Data, 32 bytes_ - Hash of the replayed transaction.
+  - `transactionHash`: _Data, 32 bytes_ - Hash of the replayed transaction.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc": "2.0", "method": "trace_replayBlockTransactions","params": ["0x12",["trace","vmTrace","stateDiff"]],"id": 1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_replayBlockTransactions",
+    "params": [
+      "0x12",
+      [
+        "trace",
+        "vmTrace",
+        "stateDiff"
+      ]
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -684,7 +843,14 @@ curl -X POST --data '{"jsonrpc": "2.0", "method": "trace_replayBlockTransactions
 {
   "jsonrpc": "2.0",
   "method": "trace_replayBlockTransactions",
-  "params": ["0x12", ["trace", "vmTrace", "stateDiff"]],
+  "params": [
+    "0x12",
+    [
+      "trace",
+      "vmTrace",
+      "stateDiff"
+    ]
+  ],
   "id": 1
 }
 ```
@@ -767,6 +933,8 @@ curl -X POST --data '{"jsonrpc": "2.0", "method": "trace_replayBlockTransactions
 </TabItem>
 </Tabs>
 
+---
+
 ## `trace_transaction`
 
 Provides transaction processing of [type `trace`](../trace-types.md#trace) for the specified transaction.
@@ -780,18 +948,29 @@ the requested transaction must be contained in a block within the number of
 
 ### Parameters
 
-`transaction`: _string_ - transaction hash
+- `transaction`: _string_ - Transaction hash.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc": "2.0", "method": "trace_transaction","params": ["0x4c253746668dca6ac3f7b9bc18248b558a95b5fc881d140872c2dff984d344a7"],"id": 1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_transaction",
+    "params": [
+      "0x4c253746668dca6ac3f7b9bc18248b558a95b5fc881d140872c2dff984d344a7"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>

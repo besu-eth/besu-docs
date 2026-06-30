@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `PLUGINS` methods
+
 The `PLUGINS` API methods provide plugin-related functionality.
 
 :::note
@@ -25,18 +27,29 @@ those plugins are reloaded. This method awaits all reloads before returning its 
 
 ### Parameters
 
-- `plugin`: _string_ - (optional) plugin name
+- `plugin`: _string_ - (Optional) Plugin name.
 
 ### Returns
 
-`result`: _string_ - `Success`
+- `Success`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"plugins_reloadPluginConfig","params":["tech.pegasys.plus.plugin.kafka.KafkaPlugin"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "plugins_reloadPluginConfig",
+    "params": [
+      "tech.pegasys.plus.plugin.kafka.KafkaPlugin"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -47,7 +60,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"plugins_reloadPluginConfig","par
 {
   "jsonrpc": "2.0",
   "method": "plugins_reloadPluginConfig",
-  "params": ["tech.pegasys.plus.plugin.kafka.KafkaPlugin"],
+  "params": [
+    "tech.pegasys.plus.plugin.kafka.KafkaPlugin"
+  ],
   "id": 1
 }
 ```

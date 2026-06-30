@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `MINER` methods
+
 The `MINER` API methods allow you to control the node's mining operation, or settings related to
 block creation in general. 
 
@@ -23,18 +25,29 @@ Updates the target gas limit set using the [`--target-gas-limit`](../cli/options
 
 ### Parameters
 
-`gasPrice`: _number_ - target gas price in wei
+- `gasPrice`: _number_ - Target gas price in wei.
 
 ### Returns
 
-`result`: _string_ - `Success` or `error`
+- `Success` or `error`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_changeTargetGasLimit","params":[800000], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_changeTargetGasLimit",
+    "params": [
+      800000
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -45,7 +58,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_changeTargetGasLimit","par
 {
   "jsonrpc": "2.0",
   "method": "miner_changeTargetGasLimit",
-  "params": [800000],
+  "params": [
+    800000
+  ],
   "id": 1
 }
 ```
@@ -66,24 +81,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_changeTargetGasLimit","par
 
 </Tabs>
 
+---
+
 ## `miner_getExtraData`
 
 Retrieves the current extra data field that is used when producing blocks.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - Hexadecimal string representation of the extra data bytes.
+- Hexadecimal string representation of the extra data bytes.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getExtraData","params":[], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_getExtraData",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -115,6 +141,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getExtraData","params":[],
 
 </Tabs>
 
+---
+
 ## `miner_getMinGasPrice`
 
 Gets the minimum gas price (in wei) offered by a transaction to be included in a block.
@@ -124,18 +152,27 @@ Use [`miner_setMinGasPrice`](#miner_setmingasprice) to change the current value 
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - Minimum gas price (in wei) as a hexadecimal string
+- Minimum gas price (in wei) as a hexadecimal string.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getMinGasPrice","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_getMinGasPrice",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -166,6 +203,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getMinGasPrice","params":[
 
 </Tabs>
 
+---
+
 ## `miner_getMinPriorityFee`
 
 Gets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. The initial value is set using the [`--min-priority-fee`](../cli/options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
@@ -173,18 +212,27 @@ Use [`miner_setMinPriorityFee`](#miner_setminpriorityfee) to change the current 
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - Minimum priority fee per gas (in wei) as a hexadecimal string
+- Minimum priority fee per gas (in wei) as a hexadecimal string.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getMinPriorityFee","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_getMinPriorityFee",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -215,24 +263,37 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_getMinPriorityFee","params
 
 </Tabs>
 
+---
+
 ## `miner_setExtraData`
 
 Sets a new value for the extra data field that is used when producing blocks.
 
 ### Parameters
 
-`extraData`: _string_ - Hexadecimal representation of the extra data field, with a maximum of 32 bytes.
+- `extraData`: _string_ - Hexadecimal representation of the extra data field, with a maximum of 32 bytes.
 
 ### Returns
 
-`result`: _string_ - `true` or `false`
+- `true` or `false`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setExtraData","params":["0x0010203"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_setExtraData",
+    "params": [
+      "0x0010203"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -243,7 +304,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setExtraData","params":["0
 {
   "jsonrpc": "2.0",
   "method": "miner_setExtraData",
-  "params": ["0x0010203"],
+  "params": [
+    "0x0010203"
+  ],
   "id": 1
 }
 ```
@@ -265,6 +328,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setExtraData","params":["0
 
 </Tabs>
 
+---
+
 ## `miner_setMinGasPrice`
 
 Sets the minimum gas price (in wei) offered by a transaction to be included in a block.
@@ -274,18 +339,29 @@ Use [`miner_getMinGasPrice`](#miner_getmingasprice) to get the current value of 
 
 ### Parameters
 
-`minGasPrice`: _string_ - Minimum gas price in hexadecimal
+- `minGasPrice`: _string_ - Minimum gas price in hexadecimal.
 
 ### Returns
 
-`result`: _boolean_ - `true` when the gas price is set
+- `true` when the gas price is set.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setMinGasPrice","params":["0x5dc"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_setMinGasPrice",
+    "params": [
+      "0x5dc"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -296,7 +372,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setMinGasPrice","params":[
 {
   "jsonrpc": "2.0",
   "method": "miner_setMinGasPrice",
-  "params": ["0x5dc"],
+  "params": [
+    "0x5dc"
+  ],
   "id": 1
 }
 ```
@@ -317,6 +395,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setMinGasPrice","params":[
 
 </Tabs>
 
+---
+
 ## `miner_setMinPriorityFee`
 
 Sets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. 
@@ -325,18 +405,29 @@ Use [`miner_getMinPriorityFee`](#miner_getminpriorityfee) to get the current val
 
 ### Parameters
 
-`minPriorityFeePerGas`: _string_ - Minimum priority fee per gas in hexadecimal
+- `minPriorityFeePerGas`: _string_ - Minimum priority fee per gas in hexadecimal.
 
 ### Returns
 
-`result`: _boolean_ - `true` when the fee is set
+- `true` when the fee is set.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setMinPriorityFee","params":["0x0a"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "miner_setMinPriorityFee",
+    "params": [
+      "0x0a"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -347,7 +438,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"miner_setMinPriorityFee","params
 {
   "jsonrpc": "2.0",
   "method": "miner_setMinPriorityFee",
-  "params": ["0x0a"],
+  "params": [
+    "0x0a"
+  ],
   "id": 1
 }
 ```

@@ -10,16 +10,6 @@ import TabItem from '@theme/TabItem';
 
 # Besu API methods
 
-:::caution
-
-- This reference contains API methods that apply to both public and private networks. For private-network-specific API methods, see the [private network API reference](../../../private-networks/reference/api.md).
-- All JSON-RPC HTTP examples use the default host and port endpoint `http://127.0.0.1:8545`. If using the [--rpc-http-host](../cli/options.md#rpc-http-host) or [--rpc-http-port](../cli/options.md#rpc-http-port) options, update the endpoint.
-- Most example requests are made against private networks. Depending on network configuration and activity, your example results might be different.
-
-:::
-
-<Postman />
-
 The Besu JSON-RPC API methods are grouped by namespace. Each namespace page documents its methods, with the full schema of any parameter or result object expanded inline as a nested list within the method.
 
 | Namespace | Description |
@@ -34,6 +24,14 @@ The Besu JSON-RPC API methods are grouped by namespace. Each namespace page docu
 | [`TXPOOL`](txpool.md) | Inspect the contents of the transaction pool. |
 | [`WEB3`](web3.md) | Functionality for the Ethereum ecosystem. |
 
+:::caution Important
+
+- This reference contains API methods that apply to both public and private networks. For private-network-specific API methods, see the [private network API reference](../../../private-networks/reference/api.md).
+- All JSON-RPC HTTP examples use the default host and port endpoint `http://127.0.0.1:8545`. If using the [--rpc-http-host](../cli/options.md#rpc-http-host) or [--rpc-http-port](../cli/options.md#rpc-http-port) options, update the endpoint.
+- Most example requests are made against private networks. Depending on network configuration and activity, your example results might be different.
+
+:::
+
 ## Miscellaneous methods
 
 ### `rpc_modules`
@@ -46,21 +44,33 @@ None
 
 #### Returns
 
-`result`: _map_ of _strings_ to _strings_ - enabled APIs and their versions
+- Enabled APIs and their versions.
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "rpc_modules",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
-```bash
-{"jsonrpc":"2.0","method":"rpc_modules","params":[],"id":1}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "rpc_modules",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>

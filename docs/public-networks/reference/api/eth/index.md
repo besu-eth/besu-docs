@@ -7,6 +7,8 @@ toc_max_heading_level: 2
 
 import Link from '@docusaurus/Link';
 
+# `ETH` methods
+
 The `ETH` API methods allow you to interact with the blockchain.
 
 :::note

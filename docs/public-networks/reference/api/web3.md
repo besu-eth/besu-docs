@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `WEB3` methods
+
 The `WEB3` API methods provide functionality for the Ethereum ecosystem.
 
 ## `web3_clientVersion`
@@ -16,25 +18,39 @@ Returns the current client version.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - current client version
+- Current client version.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "web3_clientVersion",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "web3_clientVersion", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "web3_clientVersion",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -51,24 +67,37 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],
 </TabItem>
 </Tabs>
 
+---
+
 ## `web3_sha3`
 
 Returns a [SHA3](https://en.wikipedia.org/wiki/SHA-3) hash of the specified data. The result value is a [Keccak-256](https://keccak.team/keccak.html) hash, not the standardized SHA3-256.
 
 ### Parameters
 
-`data`: _string_ - data to convert to a SHA3 hash
+- `data`: _string_ - Data to convert to a SHA3 hash.
 
 ### Returns
 
-`result`: _string_ - SHA3 result of the input data
+- SHA3 result of the input data.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"web3_sha3","params":["0x68656c6c6f20776f726c00"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "web3_sha3",
+    "params": [
+      "0x68656c6c6f20776f726c00"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -78,7 +107,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"web3_sha3","params":["0x68656c6c
 {
   "jsonrpc": "2.0",
   "method": "web3_sha3",
-  "params": ["0x68656c6c6f20776f726c00"],
+  "params": [
+    "0x68656c6c6f20776f726c00"
+  ],
   "id": 53
 }
 ```

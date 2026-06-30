@@ -9,6 +9,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Client and network methods query client and network information, such as accounts, chain ID, protocol version, configuration, and sync status.
+
 ## `eth_accounts`
 
 Returns a list of account addresses a client owns.
@@ -23,18 +25,27 @@ To provide access to your key store and then sign transactions, use [Web3Signer]
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _array_ of _strings_ - list of 20-byte account addresses owned by the client
+- List of 20-byte account addresses owned by the client.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_accounts",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -42,7 +53,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":5
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_accounts", "params": [], "id": 53 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_accounts",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>
@@ -61,24 +77,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":5
 
 </Tabs>
 
+---
+
 ## `eth_blockNumber`
 
 Returns the index corresponding to the block number of the current chain head.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - hexadecimal integer representing the index corresponding to the block number of the current chain head
+- Hexadecimal integer representing the index corresponding to the block number of the current chain head.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_blockNumber",
+    "params": [],
+    "id": 51
+  }'
 ```
 
 </TabItem>
@@ -86,7 +113,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_blockNumber", "params": [], "id": 51 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_blockNumber",
+  "params": [],
+  "id": 51
+}
 ```
 
 </TabItem>
@@ -106,7 +138,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{block{number}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{block{number}}"
+  }'
 ```
 
 </TabItem>
@@ -139,24 +175,35 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{block{numb
 
 </Tabs>
 
+---
+
 ## `eth_chainId`
 
 Returns the [chain ID](../../../concepts/network-and-chain-id.md).
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - chain ID in hexadecimal
+- Chain ID in hexadecimal.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_chainId",
+    "params": [],
+    "id": 51
+  }'
 ```
 
 </TabItem>
@@ -164,7 +211,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":51
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_chainId", "params": [], "id": 51 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_chainId",
+  "params": [],
+  "id": 51
+}
 ```
 
 </TabItem>
@@ -183,109 +235,120 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":51
 
 </Tabs>
 
+---
+
 ## `eth_capabilities`
 
 Returns the node's data-serving capabilities.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - capabilities information with the following fields:
-
-<details>
-<summary>Show fields</summary>
-
-- `head`: _object_ - current chain head information:
+- Capabilities information with the following fields:
 
   <details>
-  <summary>Show `head` fields</summary>
+  <summary>Show fields</summary>
 
-  - `number`: _string_ - current chain head block number
+  - `head`: _object_ - Current chain head information:
 
-  - `hash`: _string_ - current chain head block hash
+    <details>
+    <summary>Show `head` fields</summary>
+
+    - `number`: _string_ - Current chain head block number.
+
+    - `hash`: _string_ - Current chain head block hash.
+
+    </details>
+
+  - `state`: _object_ - State capability information.
+
+    <details>
+    <summary>Show `state` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `state` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
+
+  - `tx`: _object_ - Transaction capability information.
+
+    <details>
+    <summary>Show `tx` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `tx` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
+
+  - `logs`: _object_ - Logs capability information.
+
+    <details>
+    <summary>Show `logs` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `logs` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
+
+  - `receipts`: _object_ - Receipts capability information.
+
+    <details>
+    <summary>Show `receipts` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `receipts` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
+
+  - `blocks`: _object_ - Blocks capability information.
+
+    <details>
+    <summary>Show `blocks` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `blocks` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
+
+  - `stateproofs`: _object_ - State proofs capability information.
+
+    <details>
+    <summary>Show `stateproofs` fields</summary>
+
+    - `disabled`: _boolean_ - Indicates whether the `stateproofs` resource is disabled.
+
+    - `oldestBlock`: _string_ - (Optional) Oldest available block.
+
+    </details>
 
   </details>
-
-- `state`: _object_ - state capability information
-
-  <details>
-  <summary>Show `state` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `state` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-- `tx`: _object_ - transaction capability information
-
-  <details>
-  <summary>Show `tx` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `tx` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-- `logs`: _object_ - logs capability information
-
-  <details>
-  <summary>Show `logs` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `logs` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-- `receipts`: _object_ - receipts capability information
-
-  <details>
-  <summary>Show `receipts` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `receipts` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-- `blocks`: _object_ - blocks capability information
-
-  <details>
-  <summary>Show `blocks` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `blocks` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-- `stateproofs`: _object_ - state proofs capability information
-
-  <details>
-  <summary>Show `stateproofs` fields</summary>
-
-  - `disabled`: _boolean_ - indicates whether the `stateproofs` resource is disabled
-
-  - `oldestBlock`: _string_ - (optional) oldest available block
-
-  </details>
-
-</details>
 
 The `oldestBlock` field is included for block-backed resources when pruning has occurred.
 If the full chain is available, this can be `0x0`.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"id":1}' http://127.0.0.1:8545/
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_capabilities",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -293,7 +356,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"i
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc":"2.0", "method":"eth_capabilities", "params":[], "id":1 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_capabilities",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -339,6 +407,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_capabilities","params":[],"i
 
 </Tabs>
 
+---
+
 ## `eth_config`
 
 Returns the client's fork information for the current, next, and last known forks.
@@ -351,58 +421,67 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - configuration information with the following fields:
-
-<details>
-<summary>Show fields</summary>
-
-- `current`: _object_ - current fork configuration:
+- Configuration information with the following fields:
 
   <details>
-  <summary>Show `current` fields</summary>
+  <summary>Show fields</summary>
 
-  - `activationTime`: _number_ - fork activation timestamp (Unix epoch seconds)
-
-  - `blobSchedule`: _object_ - blob configuration parameters:
+  - `current`: _object_ - Current fork configuration:
 
     <details>
-    <summary>Show `blobSchedule` fields</summary>
+    <summary>Show `current` fields</summary>
 
-    - `baseFeeUpdateFraction`: _number_ - base fee update fraction
+    - `activationTime`: _number_ - Fork activation timestamp (Unix epoch seconds).
 
-    - `max`: _number_ - maximum number of blobs per block
+    - `blobSchedule`: _object_ - Blob configuration parameters:
 
-    - `target`: _number_ - target number of blobs per block
+      <details>
+      <summary>Show `blobSchedule` fields</summary>
+
+      - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
+
+      - `max`: _number_ - Maximum number of blobs per block.
+
+      - `target`: _number_ - Target number of blobs per block.
+
+      </details>
+
+    - `chainId`: _string_ - Chain ID in hexadecimal.
+
+    - `forkId`: _string_ - Fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122).
+
+    - `precompiles`: _object_ - Active precompiled contracts with names and addresses.
+
+    - `systemContracts`: _object_ - System contract addresses.
 
     </details>
 
-  - `chainId`: _string_ - chain ID in hexadecimal
+  - `next`: _object_ - Next fork configuration, or `null` if no future fork is scheduled.
 
-  - `forkId`: _string_ - fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122)
-
-  - `precompiles`: _object_ - active precompiled contracts with names and addresses
-
-  - `systemContracts`: _object_ - system contract addresses
+  - `last`: _object_ - The furthest configured future fork configuration (the future fork with
+      the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
 
   </details>
 
-- `next`: _object_ - next fork configuration, or `null` if no future fork is scheduled.
-
-- `last`: _object_ - the furthest configured future fork configuration (the future fork with
-    the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
-
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_config","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_config",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -410,7 +489,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_config","params":[],"id":1}'
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_config", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_config",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -468,24 +552,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_config","params":[],"id":1}'
 
 </Tabs>
 
+---
+
 ## `eth_mining` (Deprecated)
 
 Whether the client is actively mining new blocks. Besu pauses mining while the client synchronizes with the network regardless of command settings or methods called.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _boolean_ - indicates if the client is actively mining new blocks
+- Indicates if the client is actively mining new blocks.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_mining",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -493,7 +588,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":53}
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_mining", "params": [], "id": 53 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_mining",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>
@@ -512,24 +612,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":53}
 
 </Tabs>
 
+---
+
 ## `eth_protocolVersion`
 
 Returns current Ethereum protocol version.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - Ethereum protocol version
+- Ethereum protocol version.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_protocolVersion",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -537,7 +648,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[]
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_protocolVersion", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_protocolVersion",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -557,7 +673,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[]
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{protocolVersion}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{protocolVersion}"
+  }'
 ```
 
 </TabItem>
@@ -586,6 +706,8 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{protocolVe
 
 </Tabs>
 
+---
+
 ## `eth_syncing`
 
 Returns an object with data about the synchronization status, or `false` if not synchronizing.
@@ -598,35 +720,44 @@ Once the node reaches the head of the chain, `eth_syncing` returns false, indica
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ or _boolean_ - synchronization status data object with the following fields, or `false` if not synchronizing:
+- Synchronization status data object with the following fields, or `false` if not synchronizing:
 
-<details>
-<summary>Show synchronization status data object fields</summary>
+  <details>
+  <summary>Show synchronization status data object fields</summary>
 
-- `startingBlock`: _string_ - index of the highest block on the blockchain when the network synchronization starts
+  - `startingBlock`: _string_ - Index of the highest block on the blockchain when the network synchronization starts.
 
-- `currentBlock`: _string_ - index of the latest block (also known as the best block) for the current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
+  - `currentBlock`: _string_ - Index of the latest block (also known as the best block) for the current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
 
-- `highestBlock`: _string_ - index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
+  - `highestBlock`: _string_ - Index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
 
-- `pulledStates`: _string_ - the number of state entries fetched so far, or `null` if this is not known or not relevant (if
-  [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
+  - `pulledStates`: _string_ - The number of state entries fetched so far, or `null` if this is not known or not relevant (if
+    [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
-- `knownStates`: _string_ - the number of states the node knows of so far, or `null` if this is not known or not relevant (if
-  [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
+  - `knownStates`: _string_ - The number of states the node knows of so far, or `null` if this is not known or not relevant (if
+    [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":51}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_syncing",
+    "params": [],
+    "id": 51
+  }'
 ```
 
 </TabItem>
@@ -634,7 +765,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":51
 <TabItem value="wscat WS" label="wscat WS">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_syncing", "params": [], "id": 51 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_syncing",
+  "params": [],
+  "id": 51
+}
 ```
 
 </TabItem>
@@ -660,7 +796,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":51
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{syncing{startingBlock currentBlock highestBlock pulledStates knownStates}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{syncing{startingBlock currentBlock highestBlock pulledStates knownStates}}"
+  }'
 ```
 
 </TabItem>

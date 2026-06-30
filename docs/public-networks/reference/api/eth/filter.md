@@ -9,60 +9,73 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Filter and log methods create, poll, and remove filters, and query event logs.
+
 ## `eth_getFilterChanges`
 
 Polls the specified filter and returns an array of changes that have occurred since the last poll.
 
 ### Parameters
 
-`filterId`: _string_ - filter ID
+- `filterId`: _string_ - Filter ID.
 
 ### Returns
 
-`result`: _array_ of _strings_ or _objects_ - if nothing changed since the last poll, an empty list; otherwise:
-
-<details>
-<summary>Show fields</summary>
-
-- For filters created with `eth_newBlockFilter`, returns block hashes.
-
-- For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.
-
-- For filters created with `eth_newFilter`, returns log objects, each with the following fields:
+- If nothing changed since the last poll, an empty list; otherwise:
 
   <details>
   <summary>Show fields</summary>
 
-  - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - For filters created with `eth_newBlockFilter`, returns block hashes.
 
-  - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+  - For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.
 
-  - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - For filters created with `eth_newFilter`, returns log objects, each with the following fields:
 
-  - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+    <details>
+    <summary>Show fields</summary>
 
-  - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+    - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-  - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+    - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
 
-  - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+    - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-  - `address`: _Data, 20 bytes_ - Address the log originated from.
+    - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-  - `data`: _Data_ - Non-indexed arguments of the log.
+    - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-  - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+    - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+
+    - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+
+    - `address`: _Data, 20 bytes_ - Address the log originated from.
+
+    - `data`: _Data_ - Non-indexed arguments of the log.
+
+    - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterChanges","params":["0xf8bf5598d9e04fbe84523d42640b9b0e"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getFilterChanges",
+    "params": [
+      "0xf8bf5598d9e04fbe84523d42640b9b0e"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -73,7 +86,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterChanges","params":[
 {
   "jsonrpc": "2.0",
   "method": "eth_getFilterChanges",
-  "params": ["0xf8bf5598d9e04fbe84523d42640b9b0e"],
+  "params": [
+    "0xf8bf5598d9e04fbe84523d42640b9b0e"
+  ],
   "id": 1
 }
 ```
@@ -146,6 +161,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterChanges","params":[
 
 </Tabs>
 
+---
+
 ## `eth_getFilterLogs`
 
 Returns an array of [logs](../../../concepts/events-and-logs.md) for the specified filter.
@@ -160,43 +177,54 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-blo
 
 ### Parameters
 
-`filterId`: _string_ - filter ID
+- `filterId`: _string_ - Filter ID.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of log objects, each with the following fields:
+- List of log objects, each with the following fields:
 
-<details>
-<summary>Show log object fields</summary>
+  <details>
+  <summary>Show log object fields</summary>
 
-- `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-- `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+  - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
 
-- `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-- `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+  - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-- `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+  - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-- `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+  - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
 
-- `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+  - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
 
-- `address`: _Data, 20 bytes_ - Address the log originated from.
+  - `address`: _Data, 20 bytes_ - Address the log originated from.
 
-- `data`: _Data_ - Non-indexed arguments of the log.
+  - `data`: _Data_ - Non-indexed arguments of the log.
 
-- `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+  - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterLogs","params":["0x5ace5de3985749b6a1b2b0d3f3e1fb69"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getFilterLogs",
+    "params": [
+      "0x5ace5de3985749b6a1b2b0d3f3e1fb69"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -207,7 +235,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterLogs","params":["0x
 {
   "jsonrpc": "2.0",
   "method": "eth_getFilterLogs",
-  "params": ["0x5ace5de3985749b6a1b2b0d3f3e1fb69"],
+  "params": [
+    "0x5ace5de3985749b6a1b2b0d3f3e1fb69"
+  ],
   "id": 1
 }
 ```
@@ -257,6 +287,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getFilterLogs","params":["0x
 
 </Tabs>
 
+---
+
 ## `eth_getLogs`
 
 Returns an array of [logs](../../../concepts/events-and-logs.md) matching a specified filter object.
@@ -271,7 +303,7 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
 ### Parameters
 
-`filterOptions`: _object_ - filter options object with the following fields:
+- `filterOptions`: _object_ - Filter options object with the following fields:
 
 - `fromBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
 
@@ -285,39 +317,55 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of log objects, each with the following fields:
+- List of log objects, each with the following fields:
 
-<details>
-<summary>Show log object fields</summary>
+  <details>
+  <summary>Show log object fields</summary>
 
-- `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-- `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+  - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
 
-- `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-- `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+  - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-- `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+  - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-- `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+  - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
 
-- `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+  - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
 
-- `address`: _Data, 20 bytes_ - Address the log originated from.
+  - `address`: _Data, 20 bytes_ - Address the log originated from.
 
-- `data`: _Data_ - Non-indexed arguments of the log.
+  - `data`: _Data_ - Non-indexed arguments of the log.
 
-- `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+  - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"fromBlock":"0x16e2a9a","toBlock":"0x16e2a9a","address":"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "topics":[]}], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getLogs",
+    "params": [
+      {
+        "fromBlock": "0x16e2a9a",
+        "toBlock": "0x16e2a9a",
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "topics": []
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -386,7 +434,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"fromBlo
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{"query": "{logs(filter:{fromBlock: 24000026, toBlock: 24000026, addresses: [\"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"]}) {index topics data account{address} transaction{hash} }}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{logs(filter:{fromBlock: 24000026, toBlock: 24000026, addresses: [\"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\"]}) {index topics data account{address} transaction{hash} }}"
+  }'
 ```
 
 </TabItem>
@@ -452,24 +504,35 @@ curl -X POST -H "Content-Type: application/json" --data '{"query": "{logs(filter
 
 </Tabs>
 
+---
+
 ## `eth_newBlockFilter`
 
 Creates a filter to retrieve new block hashes. To poll for new blocks, use [`eth_getFilterChanges`](#eth_getfilterchanges).
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - filter ID
+- Filter ID.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_newBlockFilter",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -477,7 +540,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "eth_newBlockFilter", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "eth_newBlockFilter",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -496,13 +564,15 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],
 
 </Tabs>
 
+---
+
 ## `eth_newFilter`
 
 Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs associated with the created filter, use [`eth_getFilterChanges`](#eth_getfilterchanges). To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).
 
 ### Parameters
 
-`filterOptions`: _object_ - filter options object with the following fields:
+- `filterOptions`: _object_ - Filter options object with the following fields:
 
 - `fromBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
 
@@ -522,14 +592,29 @@ Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs a
 
 ### Returns
 
-`result`: _string_ - filter ID
+- Filter ID.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"fromBlock":"earliest", "toBlock":"latest", "topics":[]}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_newFilter",
+    "params": [
+      {
+        "fromBlock": "earliest",
+        "toBlock": "latest",
+        "topics": []
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -540,7 +625,13 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"fromB
 {
   "jsonrpc": "2.0",
   "method": "eth_newFilter",
-  "params": [{ "fromBlock": "earliest", "toBlock": "latest", "topics": [] }],
+  "params": [
+    {
+      "fromBlock": "earliest",
+      "toBlock": "latest",
+      "topics": []
+    }
+  ],
   "id": 1
 }
 ```
@@ -561,24 +652,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"fromB
 
 </Tabs>
 
+---
+
 ## `eth_newPendingTransactionFilter`
 
 Creates a filter to retrieve new pending transactions hashes. To poll for new pending transactions, use [`eth_getFilterChanges`](#eth_getfilterchanges).
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - filter ID
+- Filter ID.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newPendingTransactionFilter","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_newPendingTransactionFilter",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -610,6 +712,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_newPendingTransactionFilter"
 
 </Tabs>
 
+---
+
 ## `eth_uninstallFilter`
 
 Uninstalls a filter with the specified ID. When a filter is no longer required, call this method.
@@ -618,18 +722,29 @@ Filters time out when not requested by [`eth_getFilterChanges`](#eth_getfilterch
 
 ### Parameters
 
-`filterId`: _string_ - filter ID
+- `filterId`: _string_ - Filter ID.
 
 ### Returns
 
-`result`: _boolean_ - indicates if the filter is successfully uninstalled
+- Indicates if the filter is successfully uninstalled.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_uninstallFilter","params":["0x70355a0b574b437eaa19fe95adfedc0a"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_uninstallFilter",
+    "params": [
+      "0x70355a0b574b437eaa19fe95adfedc0a"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -640,7 +755,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_uninstallFilter","params":["
 {
   "jsonrpc": "2.0",
   "method": "eth_uninstallFilter",
-  "params": ["0x70355a0b574b437eaa19fe95adfedc0a"],
+  "params": [
+    "0x70355a0b574b437eaa19fe95adfedc0a"
+  ],
   "id": 1
 }
 ```

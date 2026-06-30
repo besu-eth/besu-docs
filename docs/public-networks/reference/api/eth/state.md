@@ -9,15 +9,17 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+State and account methods read account state at a given block, including balances, nonces, contract code, storage values, and Merkle proofs.
+
 ## `eth_getBalance`
 
 Returns the account balance of the specified address.
 
 ### Parameters
 
-- `address`: _string_ - 20-byte account address from which to retrieve the balance
+- `address`: _string_ - 20-byte account address from which to retrieve the balance.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
   `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
@@ -28,14 +30,26 @@ Returns the account balance of the specified address.
 
 ### Returns
 
-`result`: _string_ - current balance, in wei, as a hexadecimal value
+- Current balance, in wei, as a hexadecimal value.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73", "latest"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getBalance",
+    "params": [
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+      "latest"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -46,7 +60,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xfe3
 {
   "jsonrpc": "2.0",
   "method": "eth_getBalance",
-  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73", "latest"],
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -68,7 +85,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xfe3
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{ account ( address: \"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\") { balance } }"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{ account ( address: \"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\") { balance } }"
+  }'
 ```
 
 </TabItem>
@@ -101,15 +122,17 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{ account (
 
 </Tabs>
 
+---
+
 ## `eth_getCode`
 
 Returns the code of the smart contract at the specified address. Besu stores compiled smart contract code as a hexadecimal value.
 
 ### Parameters
 
-- `address`: _string_ - 20-byte contract address
+- `address`: _string_ - 20-byte contract address.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
   described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
@@ -120,14 +143,26 @@ Returns the code of the smart contract at the specified address. Besu stores com
 
 ### Returns
 
-`result`: _data_ - code stored at the specified address
+- Code stored at the specified address.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getCode","params":["0xa50a51c09a5c451c52bb714527e1974b686d8e77", "latest"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getCode",
+    "params": [
+      "0xa50a51c09a5c451c52bb714527e1974b686d8e77",
+      "latest"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -138,7 +173,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getCode","params":["0xa50a51
 {
   "jsonrpc": "2.0",
   "method": "eth_getCode",
-  "params": ["0xa50a51c09a5c451c52bb714527e1974b686d8e77", "latest"],
+  "params": [
+    "0xa50a51c09a5c451c52bb714527e1974b686d8e77",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -160,7 +198,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getCode","params":["0xa50a51
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{"query": "{account(address: \"0xa50a51c09a5c451c52bb714527e1974b686d8e77\"){ code }}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{account(address: \"0xa50a51c09a5c451c52bb714527e1974b686d8e77\"){ code }}"
+  }'
 ```
 
 </TabItem>
@@ -193,6 +235,8 @@ curl -X POST -H "Content-Type: application/json" --data '{"query": "{account(add
 
 </Tabs>
 
+---
+
 ## `eth_getProof`
 
 Returns the account and storage values of the specified account, including the Merkle proof.
@@ -201,11 +245,11 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
 ### Parameters
 
-- `address`: _string_ - 20-byte address of the account or contract
+- `address`: _string_ - 20-byte address of the account or contract.
 
-- `keys`: _array_ of _strings_ - list of 32-byte storage keys to generate proofs for
+- `keys`: _array_ of _strings_ - List of 32-byte storage keys to generate proofs for.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
   `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
@@ -216,43 +260,57 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
 ### Returns
 
-`result`: _object_ - account details object with the following fields:
-
-<details>
-<summary>Show account details object fields</summary>
-
-- `balance`: _string_ - account balance
-
-- `codeHash`: _string_ - 32-byte hash of the account code
-
-- `nonce`: _string_ - number of transactions sent from the account
-
-- `storageHash`: _string_ - 32-byte SHA3 of the `storageRoot`
-
-- `accountProof`: _array_ of _strings_ - list of RLP-encoded Merkle tree nodes, starting with the `stateRoot`
-
-- `storageProof`: _array_ of _objects_ - list of storage entry objects with the following fields:
+- Account details object with the following fields:
 
   <details>
-  <summary>Show `storageProof` fields</summary>
+  <summary>Show account details object fields</summary>
 
-  - `key`: _string_ - storage key
+  - `balance`: _string_ - Account balance.
 
-  - `value`: _string_ - storage value
+  - `codeHash`: _string_ - 32-byte hash of the account code.
 
-  - `proof`: _array_ of _strings_ - list of RLP-encoded Merkle tree nodes, starting with the `storageHash`
+  - `nonce`: _string_ - Number of transactions sent from the account.
+
+  - `storageHash`: _string_ - 32-byte SHA3 of the `storageRoot`.
+
+  - `accountProof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `stateRoot`.
+
+  - `storageProof`: _array_ of _objects_ - List of storage entry objects with the following fields:
+
+    <details>
+    <summary>Show `storageProof` fields</summary>
+
+    - `key`: _string_ - Storage key.
+
+    - `value`: _string_ - Storage value.
+
+    - `proof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `storageHash`.
+
+    </details>
 
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getProof","params": [
-"0a8156e7ee392d885d10eaa86afd0e323afdcd95", ["0x0000000000000000000000000000000000000000000000000000000000000347"], "latest"],"id": 1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getProof",
+    "params": [
+      "0a8156e7ee392d885d10eaa86afd0e323afdcd95",
+      [
+        "0x0000000000000000000000000000000000000000000000000000000000000347"
+      ],
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -265,7 +323,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getProof","params": [
   "method": "eth_getProof",
   "params": [
     "0a8156e7ee392d885d10eaa86afd0e323afdcd95",
-    ["0x0000000000000000000000000000000000000000000000000000000000000347"],
+    [
+      "0x0000000000000000000000000000000000000000000000000000000000000347"
+    ],
     "latest"
   ],
   "id": 1
@@ -311,17 +371,19 @@ curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getProof","params": [
 
 </Tabs>
 
+---
+
 ## `eth_getStorageAt`
 
 Returns the value of a storage position at a specified address.
 
 ### Parameters
 
-- `address`: _string_ - 20-byte storage address
+- `address`: _string_ - 20-byte storage address.
 
-- `index`: _string_ - integer index of the storage position
+- `index`: _string_ - Integer index of the storage position.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
   `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
@@ -332,16 +394,29 @@ Returns the value of a storage position at a specified address.
 
 ### Returns
 
-`result` : _string_ - value at the specified storage position
+- Value at the specified storage position.
 
 Calculating the correct position depends on the storage you want to retrieve.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getStorageAt","params": ["0x‭3B3F3E‬","0x0","latest"],"id": 53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getStorageAt",
+    "params": [
+      "0x‭3B3F3E‬",
+      "0x0",
+      "latest"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -352,7 +427,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getStorageAt","params": ["0
 {
   "jsonrpc": "2.0",
   "method": "eth_getStorageAt",
-  "params": ["0x‭3B3F3E‬", "0x0", "latest"],
+  "params": [
+    "0x‭3B3F3E‬",
+    "0x0",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -374,7 +453,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method": "eth_getStorageAt","params": ["0
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{account(address: \"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\") {storage(slot: \"0x04\")}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{account(address: \"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\") {storage(slot: \"0x04\")}}"
+  }'
 ```
 
 </TabItem>
@@ -407,6 +490,8 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{account(ad
 
 </Tabs>
 
+---
+
 ## `eth_getStorageValues`
 
 Returns storage values for multiple slots across one or more accounts in a single call.
@@ -414,11 +499,11 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 ### Parameters
 
-- `storageRequest`: _object_ - each key is a 20-byte account address
+- `storageRequest`: _object_ - Each key is a 20-byte account address
   and each value is an array of storage slot keys (as 32-byte hex strings).
   The maximum total number of storage slots across all addresses is 1024.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
   `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
@@ -429,17 +514,37 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
 
 ### Returns
 
-`result` : _object_ - each key is an account address and each value is an array of hex-encoded
-storage values in the same order as the requested slot keys.
-Unknown accounts return zero values for all requested slots.
-Key order in the response object is not guaranteed to match the request.
+- Each key is an account address and each value is an array of hex-encoded
+  storage values in the same order as the requested slot keys.
+  Unknown accounts return zero values for all requested slots.
+  Key order in the response object is not guaranteed to match the request.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[{"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73":["0x0","0x1"],"0x627306090abaB3A6e1400e9345bC60c78a8BEf57":["0x0"]},"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getStorageValues",
+    "params": [
+      {
+        "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+          "0x0",
+          "0x1"
+        ],
+        "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": [
+          "0x0"
+        ]
+      },
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -452,8 +557,13 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[
   "method": "eth_getStorageValues",
   "params": [
     {
-      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": ["0x0", "0x1"],
-      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": ["0x0"]
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+        "0x0",
+        "0x1"
+      ],
+      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": [
+        "0x0"
+      ]
     },
     "latest"
   ],
@@ -485,27 +595,41 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getStorageValues","params":[
 
 </Tabs>
 
+---
+
 ## `eth_getTransactionCount`
 
 Returns the number of transactions sent from a specified address. Use the `pending` tag to get the next account nonce not used by any pending transactions.
 
 ### Parameters
 
-- `address`: _string_ - 20-byte account address
+- `address`: _string_ - 20-byte account address.
 
-- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `latest`.
 
 ### Returns
 
-`result`: _string_ - integer representing the number of transactions sent from the specified address
+- Integer representing the number of transactions sent from the specified address.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params":["0xc94770007dda54cF92009BFF0dE90c06F603a09f","latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionCount",
+    "params": [
+      "0xc94770007dda54cF92009BFF0dE90c06F603a09f",
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -516,7 +640,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionCount",
-  "params": ["0xc94770007dda54cF92009BFF0dE90c06F603a09f", "latest"],
+  "params": [
+    "0xc94770007dda54cF92009BFF0dE90c06F603a09f",
+    "latest"
+  ],
   "id": 1
 }
 ```
@@ -538,7 +665,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionCount","params
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{ account (address:\"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\"){transactionCount}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{ account (address:\"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73\"){transactionCount}}"
+  }'
 ```
 
 </TabItem>

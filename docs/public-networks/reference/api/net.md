@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `NET` methods
+
 The `NET` API methods provide network-related information.
 
 ## `net_enode`
@@ -16,26 +18,40 @@ Returns the [enode URL](../../concepts/node-keys.md#enode-url).
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - [enode URL](../../concepts/node-keys.md#enode-url) of the node
+- [Enode URL](../../concepts/node-keys.md#enode-url) of the node.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "net_enode",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 
 <TabItem value="wscat WS request" label="wscat WS request">
 
-```bash
-{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "net_enode",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -54,32 +70,48 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_enode","params":[],"id":1}' 
 
 </Tabs>
 
+---
+
 ## `net_listening`
 
 Whether the client is actively listening for network connections.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _boolean_ - indicates if the client is actively listening for network connections
+- Indicates if the client is actively listening for network connections.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "net_listening",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
 
 <TabItem value="wscat WS request" label="wscat WS request">
 
-```bash
-{"jsonrpc":"2.0","method":"net_listening","params":[],"id":53}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "net_listening",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>
@@ -98,24 +130,35 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":
 
 </Tabs>
 
+---
+
 ## `net_peerCount`
 
 Returns the number of peers currently connected to the client.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - number of connected peers in hexadecimal
+- Number of connected peers in hexadecimal.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "net_peerCount",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -123,7 +166,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "net_peerCount", "params": [], "id": 53 }
+{
+  "jsonrpc": "2.0",
+  "method": "net_peerCount",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>
@@ -142,6 +190,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 
 </Tabs>
 
+---
+
 ## `net_services`
 
 Returns enabled services (for example, `jsonrpc`) and the host and port for each service.
@@ -154,26 +204,40 @@ The [`--nat-method`](../cli/options.md#nat-method) setting affects the JSON-RPC 
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - enabled services
+- Enabled services.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_services","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "net_services",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 
 <TabItem value="wscat WS request" label="wscat WS request">
 
-```bash
-{"jsonrpc":"2.0","method":"net_services","params":[],"id":1}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "net_services",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -205,17 +269,19 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_services","params":[],"id":1
 
 </Tabs>
 
+---
+
 ## `net_version`
 
 Returns the [network ID](../../concepts/network-and-chain-id.md).
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _string_ - current network ID
+- Current network ID.
 
 | Network ID | Chain  | Network | Description                   |
 | ---------- | -------| ------- | ----------------------------- |
@@ -233,12 +299,21 @@ For almost all networks, network ID and chain ID are the same. For Ephemery, the
 
 :::
 
+### Example
+
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "net_version",
+    "params": [],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -246,7 +321,12 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":53
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "net_version", "params": [], "id": 53 }
+{
+  "jsonrpc": "2.0",
+  "method": "net_version",
+  "params": [],
+  "id": 53
+}
 ```
 
 </TabItem>

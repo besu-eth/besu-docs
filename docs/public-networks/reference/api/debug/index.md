@@ -7,6 +7,8 @@ toc_max_heading_level: 2
 
 import Link from '@docusaurus/Link';
 
+# `DEBUG` methods
+
 The `DEBUG` API methods allow you to inspect and debug the network. The `DEBUG` API is a more verbose alternative to the [`TRACE` API](../trace.md), and its main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). Where these APIs overlap, we recommend using the [`TRACE` API](../trace.md) for production use over the `DEBUG` API. Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over `debug_traceTransaction`.
 
 :::note

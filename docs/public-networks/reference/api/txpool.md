@@ -8,6 +8,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# `TXPOOL` methods
+
 The `TXPOOL` API methods allow you to inspect the contents of the transaction pool.
 
 :::note
@@ -22,9 +24,9 @@ Lists pending transactions that match the supplied filter conditions.
 
 ### Parameters
 
-- `numResults`: _number_ - integer representing the maximum number of results to return
+- `numResults`: _number_ - Integer representing the maximum number of results to return.
 
-- `fields`: _object_ - object of fields used to create the filter condition
+- `fields`: _object_ - Object of fields used to create the filter condition.
 
 Each field in the object corresponds to a field name containing an operator, and a value for the operator. A field name can only be specified once, and can only contain one operator. For example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the `gt` and `lt` operator in the same field name instance.
 
@@ -57,49 +59,71 @@ The only supported `action` is `"contract_creation"`.
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of objects with details of the pending transaction, each with the following fields:
+- List of objects with details of the pending transaction, each with the following fields:
 
-<details>
-<summary>Show fields</summary>
+  <details>
+  <summary>Show fields</summary>
 
-- `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-- `from`: _Data, 20 bytes_ - Address of the sender.
+  - `from`: _Data, 20 bytes_ - Address of the sender.
 
-- `gas`: _Quantity_ - Gas provided by the sender.
+  - `gas`: _Quantity_ - Gas provided by the sender.
 
-- `gasPrice`: _Quantity_ - (Optional) Gas price, in wei, provided by the sender. Not used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `gasPrice`: _Quantity_ - (Optional) Gas price, in wei, provided by the sender. Not used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-- `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-- `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-- `hash`: _Data, 32 bytes_ - Hash of the transaction.
+  - `hash`: _Data, 32 bytes_ - Hash of the transaction.
 
-- `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+  - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
 
-- `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+  - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
 
-- `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+  - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-- `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+  - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
 
-- `value`: _Quantity_ - Value transferred, in wei.
+  - `value`: _Quantity_ - Value transferred, in wei.
 
-- `v`: _Quantity_ - ECDSA Recovery ID.
+  - `v`: _Quantity_ - ECDSA Recovery ID.
 
-- `r`: _Data, 32 bytes_ - ECDSA signature r.
+  - `r`: _Data, 32 bytes_ - ECDSA signature r.
 
-- `s`: _Data, 32 bytes_ - ECDSA signature s.
+  - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuPendingTransactions","params":[2,{"from":{"eq":"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"},"gas":{"lt":"0x5209"},"nonce":{"gt":"0x1"}}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_besuPendingTransactions",
+    "params": [
+      2,
+      {
+        "from": {
+          "eq": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+        },
+        "gas": {
+          "lt": "0x5209"
+        },
+        "nonce": {
+          "gt": "0x1"
+        }
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -112,9 +136,15 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuPendingTransactions",
   "params": [
     2,
     {
-      "from": { "eq": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73" },
-      "gas": { "lt": "0x5209" },
-      "nonce": { "gt": "0x1" }
+      "from": {
+        "eq": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+      },
+      "gas": {
+        "lt": "0x5209"
+      },
+      "nonce": {
+        "gt": "0x1"
+      }
     }
   ],
   "id": 1
@@ -149,42 +179,58 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuPendingTransactions",
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_besuStatistics`
 
 Lists statistics about the node transaction pool.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - transaction pool statistics object with the following fields:
+- Transaction pool statistics object with the following fields:
 
-<details>
-<summary>Show transaction pool statistics object fields</summary>
+  <details>
+  <summary>Show transaction pool statistics object fields</summary>
 
-- `maxSize`: _number_ - maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
+  - `maxSize`: _number_ - Maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
 
-- `localCount`: _number_ - number of transactions submitted directly to this node
+  - `localCount`: _number_ - Number of transactions submitted directly to this node.
 
-- `remoteCount`: _number_ - number of transactions received from remote nodes
+  - `remoteCount`: _number_ - Number of transactions received from remote nodes.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuStatistics","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_besuStatistics",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
-```bash
-{"jsonrpc":"2.0","method":"txpool_besuStatistics","params":[],"id":1}
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_besuStatistics",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -205,31 +251,47 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuStatistics","params":
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_besuTransactions`
 
 Lists transactions in the node transaction pool.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of transactions
+- List of transactions.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_besuTransactions",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "txpool_besuTransactions", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_besuTransactions",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -257,6 +319,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_besuTransactions","params
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_content`
 
 Returns all pending and queued transactions in the pool, grouped by
@@ -264,126 +328,140 @@ sender address and sorted by nonce.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - transaction pool content object with the following fields:
-
-<details>
-<summary>Show transaction pool content object fields</summary>
-
-- `pending`: _object_ - map of sender addresses to maps of nonces to transaction objects,
-  for transactions pending inclusion in the next block, each with the following fields:
+- Transaction pool content object with the following fields:
 
   <details>
-  <summary>Show `pending` fields</summary>
+  <summary>Show transaction pool content object fields</summary>
 
-  - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `pending`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
+    for transactions pending inclusion in the next block, each with the following fields:
 
-  - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    <details>
+    <summary>Show `pending` fields</summary>
 
-  - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
 
-  - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
 
-  - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
 
-  - `gas`: _Quantity_ - Gas provided by the sender.
+    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
 
-  - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `from`: _Data, 20 bytes_ - Address of the sender.
 
-  - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `gas`: _Quantity_ - Gas provided by the sender.
 
-  - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-  - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
 
-  - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
 
-  - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
 
-  - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-  - `value`: _Quantity_ - Value transferred, in Wei.
+    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
 
-  - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
 
-  - `r`: _Data, 32 bytes_ - ECDSA signature r.
+    - `value`: _Quantity_ - Value transferred, in Wei.
 
-  - `s`: _Data, 32 bytes_ - ECDSA signature s.
+    - `v`: _Quantity_ - ECDSA Recovery ID.
+
+    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+
+    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+
+    </details>
+
+  - `queued`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
+    for transactions scheduled for future execution, each with the following fields:
+
+    <details>
+    <summary>Show `queued` fields</summary>
+
+    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+
+    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+
+    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+
+    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+
+    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+
+    - `from`: _Data, 20 bytes_ - Address of the sender.
+
+    - `gas`: _Quantity_ - Gas provided by the sender.
+
+    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+
+    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+
+    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+
+    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+
+    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+
+    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+
+    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+
+    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+
+    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+
+    - `value`: _Quantity_ - Value transferred, in Wei.
+
+    - `v`: _Quantity_ - ECDSA Recovery ID.
+
+    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+
+    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+
+    </details>
 
   </details>
 
-- `queued`: _object_ - map of sender addresses to maps of nonces to transaction objects,
-  for transactions scheduled for future execution, each with the following fields:
-
-  <details>
-  <summary>Show `queued` fields</summary>
-
-  - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
-
-  - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
-  - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
-  - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
-  - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
-
-  - `from`: _Data, 20 bytes_ - Address of the sender.
-
-  - `gas`: _Quantity_ - Gas provided by the sender.
-
-  - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
-  - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
-
-  - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
-
-  - `hash`: _Data, 32 bytes_ - Hash of the transaction.
-
-  - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
-
-  - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
-
-  - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
-  - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-  - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
-
-  - `value`: _Quantity_ - Value transferred, in Wei.
-
-  - `v`: _Quantity_ - ECDSA Recovery ID.
-
-  - `r`: _Data, 32 bytes_ - ECDSA signature r.
-
-  - `s`: _Data, 32 bytes_ - ECDSA signature s.
-
-  </details>
-
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_content","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_content",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "txpool_content", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_content",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -441,19 +519,21 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_content","params":[],"id"
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_contentFrom`
 
 Returns the pending and queued transactions for a given sender address.
 
 ### Parameters
 
-`address`: _string_ - sender address
+- `address`: _string_ - Sender address.
 
 ### Returns
 
-`result`: _object_ - transaction pool content for the given address:
+- Transaction pool content for the given address:
 
-  - `pending`: _object_ - map of nonces to transaction objects, for pending transactions from the given address, each with the following fields:
+  - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address, each with the following fields:
 
     <details>
     <summary>Show `pending` fields</summary>
@@ -500,7 +580,7 @@ Returns the pending and queued transactions for a given sender address.
 
     </details>
 
-  - `queued`: _object_ - map of nonces to transaction objects for queued transactions from the given address, each with the following fields:
+  - `queued`: _object_ - Map of nonces to transaction objects for queued transactions from the given address, each with the following fields:
 
     <details>
     <summary>Show `queued` fields</summary>
@@ -547,12 +627,23 @@ Returns the pending and queued transactions for a given sender address.
 
     </details>
 
+### Example
+
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_contentFrom","params":["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_contentFrom",
+    "params": [
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -562,7 +653,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_contentFrom","params":["0
 {
   "jsonrpc": "2.0",
   "method": "txpool_contentFrom",
-  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"],
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+  ],
   "id": 1
 }
 ```
@@ -625,6 +718,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_contentFrom","params":["0
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_inspect`
 
 Returns a textual summary of all pending and queued transactions in the pool, grouped by sender
@@ -635,36 +730,50 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - transaction pool inspect object with the following fields:
+- Transaction pool inspect object with the following fields:
 
-<details>
-<summary>Show transaction pool inspect object fields</summary>
+  <details>
+  <summary>Show transaction pool inspect object fields</summary>
 
-- `pending`: _object_ - map of sender addresses to maps of nonces to human-readable transaction
-  summary strings, for transactions pending inclusion in the next block
+  - `pending`: _object_ - Map of sender addresses to maps of nonces to human-readable transaction
+    summary strings, for transactions pending inclusion in the next block.
 
-- `queued`: _object_ - map of sender addresses to maps of nonces to human-readable transaction
-  summary strings, for transactions scheduled for future execution
+  - `queued`: _object_ - Map of sender addresses to maps of nonces to human-readable transaction
+    summary strings, for transactions scheduled for future execution.
 
-</details>
+  </details>
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_inspect","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_inspect",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "txpool_inspect", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_inspect",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>
@@ -694,37 +803,53 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_inspect","params":[],"id"
 </TabItem>
 </Tabs>
 
+---
+
 ## `txpool_status`
 
 Returns the number of pending and queued transactions in the pool.
 
 ### Parameters
 
-None
+- None
 
 ### Returns
 
-`result`: _object_ - transaction count details:
+- Transaction count details:
 
-  - `pending`: _string_ - count of the transactions currently pending for inclusion in the next
-    block or blocks
+  - `pending`: _string_ - Count of the transactions currently pending for inclusion in the next
+    block or blocks.
 
-  - `queued`: _string_ - count of the transactions that are scheduled for future execution
-    (transactions with nonce gaps)
+  - `queued`: _string_ - Count of the transactions that are scheduled for future execution
+    (transactions with nonce gaps).
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"txpool_status","params":[],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "txpool_status",
+    "params": [],
+    "id": 1
+  }'
 ```
 
 </TabItem>
 <TabItem value="wscat WS request" label="wscat WS request">
 
 ```json
-{ "jsonrpc": "2.0", "method": "txpool_status", "params": [], "id": 1 }
+{
+  "jsonrpc": "2.0",
+  "method": "txpool_status",
+  "params": [],
+  "id": 1
+}
 ```
 
 </TabItem>

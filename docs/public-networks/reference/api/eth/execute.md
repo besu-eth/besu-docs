@@ -9,6 +9,8 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Execution methods execute calls, create access lists, estimate gas, and simulate transactions without submitting them to the network.
+
 ## `eth_call`
 
 Invokes a contract function locally and does not change the state of the blockchain.
@@ -19,7 +21,7 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
 ### Parameters
 
-- `call`: _object_ - transaction call object with the following fields:
+- `call`: _object_ - Transaction call object with the following fields:
 
   :::note
   If you don't want the sender account balance checked, set the gas to zero or specify
@@ -60,15 +62,15 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
   </details>
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
-  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
   `pending` returns the same value as `latest`.
   :::
 
-- `stateOverride`: _object_ - (optional) The address-to-state mapping.
+- `stateOverride`: _object_ - (Optional) The address-to-state mapping.
     Each entry specifies a state that will be temporarily overridden before executing the call.
     This allows you to test, analyze, and debug smart contracts more efficiently by allowing
     temporary state changes without affecting the actual blockchain state, each with the following fields:
@@ -92,14 +94,29 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
 ### Returns
 
-`result`: _string_ - return value of the executed contract
+- Return value of the executed contract.
+
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13","value":"0x1"}, "latest"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_call",
+    "params": [
+      {
+        "to": "0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13",
+        "value": "0x1"
+      },
+      "latest"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -111,7 +128,10 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x694
   "jsonrpc": "2.0",
   "method": "eth_call",
   "params": [
-    { "to": "0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13", "value": "0x1" },
+    {
+      "to": "0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13",
+      "value": "0x1"
+    },
     "latest"
   ],
   "id": 53
@@ -135,7 +155,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0x694
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{block {number call (data : {from : \"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b\", to: \"0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13\", data :\"0x12a7b914\"}){data status}}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{block {number call (data : {from : \"0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b\", to: \"0x69498dd54bd25aa0c886cf1f8b8ae0856d55ff13\", data :\"0x12a7b914\"}){data status}}}"
+  }'
 ```
 
 </TabItem>
@@ -214,7 +238,22 @@ Besu simulates the data to create the contract.
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"from":"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73", "data":"0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555034801561005057600080fd5b5061021e806100606000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610064578063fdacd576146100ae575b600080fd5b61004e6100dc565b6040518082815260200191505060405180910390f35b61006c6100e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100da600480360360208110156100c457600080fd5b8101908080359060200190929190505050610107565b005b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101ac576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101b76033913960400191505060405180910390fd5b806001819055505056fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a265627a7a7231582007302f208a10686769509b529e1878bda1859883778d70dedd1844fe790c9bde64736f6c63430005100032","gas":"0x439cf","gasPrice":"0x0"},"latest"],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_call",
+    "params": [
+      {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "data": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555034801561005057600080fd5b5061021e806100606000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063445df0ac146100465780638da5cb5b14610064578063fdacd576146100ae575b600080fd5b61004e6100dc565b6040518082815260200191505060405180910390f35b61006c6100e2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100da600480360360208110156100c457600080fd5b8101908080359060200190929190505050610107565b005b60015481565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101ac576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260338152602001806101b76033913960400191505060405180910390fd5b806001819055505056fe546869732066756e6374696f6e206973207265737472696374656420746f2074686520636f6e74726163742773206f776e6572a265627a7a7231582007302f208a10686769509b529e1878bda1859883778d70dedd1844fe790c9bde64736f6c63430005100032",
+        "gas": "0x439cf",
+        "gasPrice": "0x0"
+      },
+      "latest"
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -242,7 +281,27 @@ for the specified address.
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0xdAC17F958D2ee523a2206206994597C13D831ec7","data":"0x70a08231000000000000000000000000fe3b557e8fb62b89f4916b721be55ceb828dbd73"},"latest",{"0xdAC17F958D2ee523a2206206994597C13D831ec7":{"stateDiff":{"0xd0dd44a13782bf89714335c2b2b08ecb7c074e78a161807742c578965dda1b56":"0x0000000000000000000000000000000000000000000000000000000000004E20"}}}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_call",
+    "params": [
+      {
+        "to": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "data": "0x70a08231000000000000000000000000fe3b557e8fb62b89f4916b721be55ceb828dbd73"
+      },
+      "latest",
+      {
+        "0xdAC17F958D2ee523a2206206994597C13D831ec7": {
+          "stateDiff": {
+            "0xd0dd44a13782bf89714335c2b2b08ecb7c074e78a161807742c578965dda1b56": "0x0000000000000000000000000000000000000000000000000000000000004E20"
+          }
+        }
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -261,13 +320,15 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"0xdAC
 
 </Tabs>
 
+---
+
 ## `eth_createAccessList`
 
 Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that you can [include in a transaction](../../../concepts/transactions/types.md#access_list-transactions). The method returns a success response (access list and gas used) even if the simulated transaction would revert.
 
 ### Parameters
 
-- `transaction`: _object_ - transaction call object with the following fields:
+- `transaction`: _object_ - Transaction call object with the following fields:
 
   <details>
   <summary>Show `transaction` fields</summary>
@@ -302,38 +363,53 @@ Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that 
 
   </details>
 
-- `blockNumber`: _string_ - hexadecimal integer representing a block number, or one of
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 ### Returns
 
-`result`: _object_ - access list object with the following fields:
-
-<details>
-<summary>Show access list object fields</summary>
-
-- `accessList`: _array_ of _objects_ - list of objects with the following fields:
+- Access list object with the following fields:
 
   <details>
-  <summary>Show `accessList` fields</summary>
+  <summary>Show access list object fields</summary>
 
-  - `address`: _string_ - addresses to be accessed by the transaction
+  - `accessList`: _array_ of _objects_ - List of objects with the following fields:
 
-  - `storageKeys`: _array_ - storage keys to be accessed by the transaction
+    <details>
+    <summary>Show `accessList` fields</summary>
+
+    - `address`: _string_ - Addresses to be accessed by the transaction.
+
+    - `storageKeys`: _array_ - Storage keys to be accessed by the transaction.
+
+    </details>
+
+  - `gasUsed`: _string_ - Approximate gas cost for the transaction if the access list is included.
 
   </details>
 
-- `gasUsed`: _string_ - approximate gas cost for the transaction if the access list is included
-
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"method":"eth_createAccessList","params":[{"from": "0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63", "data": "0x608060806080608155"}, "pending"],"id":1,"jsonrpc":"2.0"}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "method": "eth_createAccessList",
+    "params": [
+      {
+        "from": "0xaeA8F8f781326bfE6A7683C2BD48Dd6AA4d3Ba63",
+        "data": "0x608060806080608155"
+      },
+      "pending"
+    ],
+    "id": 1,
+    "jsonrpc": "2.0"
+  }'
 ```
 
 </TabItem>
@@ -384,6 +460,8 @@ use [`eth_call`](#eth_call) or [`eth_estimateGas`](#eth_estimategas).
 
 :::
 
+---
+
 ## `eth_estimateGas`
 
 Returns an estimate of the gas required for a transaction to complete. The estimation process does not use gas and the transaction is not added to the blockchain. The resulting estimate can be greater than the amount of gas the transaction ends up using, for reasons including EVM mechanics and node performance.
@@ -394,7 +472,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
 ### Parameters
 
-- `call`: _object_ - transaction call object with the following fields:
+- `call`: _object_ - Transaction call object with the following fields:
 
       :::note
       If you don't want the sender account balance checked, set the gas to zero or specify
@@ -435,7 +513,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
   </details>
 
-- `blockNumber`: _string_ - (optional) hexadecimal integer representing a block number, or one of
+- `blockNumber`: _string_ - (Optional) Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
   The default is `pending`.
@@ -463,7 +541,9 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
 ### Returns
 
-`result`: _string_ - amount of gas used
+- Amount of gas used.
+
+### Example
 
 The following example returns an estimate of 21000 wei (`0x5208`) for the transaction.
 
@@ -472,7 +552,20 @@ The following example returns an estimate of 21000 wei (`0x5208`) for the transa
 <TabItem value="curl HTTP" label="curl HTTP" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"from":"0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73","to":"0x44Aa93095D6749A706051658B970b941c72c1D53","value":"0x1"}],"id":53}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_estimateGas",
+    "params": [
+      {
+        "from": "0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73",
+        "to": "0x44Aa93095D6749A706051658B970b941c72c1D53",
+        "value": "0x1"
+      }
+    ],
+    "id": 53
+  }'
 ```
 
 </TabItem>
@@ -511,7 +604,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"fro
 <TabItem value="curl GraphQL" label="curl GraphQL">
 
 ```bash
-curl -X POST -H "Content-Type: application/json" --data '{ "query": "{block{estimateGas (data: {from :\"0x6295ee1b4f6dd65047762f924ecd367c17eabf8f\", to :\"0x8888f1f195afa192cfee860698584c030f4c9db1\"})}}"}' http://localhost:8547/graphql
+curl -X POST http://localhost:8547/graphql \
+  -H "Content-Type: application/json" \
+  --data '{
+    "query": "{block{estimateGas (data: {from :\"0x6295ee1b4f6dd65047762f924ecd367c17eabf8f\", to :\"0x8888f1f195afa192cfee860698584c030f4c9db1\"})}}"
+  }'
 ```
 
 </TabItem>
@@ -551,7 +648,19 @@ The following example request estimates the cost of deploying a simple storage s
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"from":"0x8bad598904ec5d93d07e204a366d084a80c7694e","data":"0x608060405234801561001057600080fd5b5060e38061001f6000396000f3fe6080604052600436106043576000357c0100000000000000000000000000000000000000000000000000000000900480633fa4f24514604857806355241077146070575b600080fd5b348015605357600080fd5b50605a60a7565b6040518082815260200191505060405180910390f35b348015607b57600080fd5b5060a560048036036020811015609057600080fd5b810190808035906020019092919050505060ad565b005b60005481565b806000819055505056fea165627a7a7230582020d7ad478b98b85ca751c924ef66bcebbbd8072b93031073ef35270a4c42f0080029"}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_estimateGas",
+    "params": [
+      {
+        "from": "0x8bad598904ec5d93d07e204a366d084a80c7694e",
+        "data": "0x608060405234801561001057600080fd5b5060e38061001f6000396000f3fe6080604052600436106043576000357c0100000000000000000000000000000000000000000000000000000000900480633fa4f24514604857806355241077146070575b600080fd5b348015605357600080fd5b50605a60a7565b6040518082815260200191505060405180910390f35b348015607b57600080fd5b5060a560048036036020811015609057600080fd5b810190808035906020019092919050505060ad565b005b60005481565b806000819055505056fea165627a7a7230582020d7ad478b98b85ca751c924ef66bcebbbd8072b93031073ef35270a4c42f0080029"
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -579,7 +688,28 @@ for the transaction.
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"from":"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73","to":"0xdAC17F958D2ee523a2206206994597C13D831ec7","data":"0xa9059cbb000000000000000000000000627306090abaB3A6e1400e9345bC60c78a8BEf570000000000000000000000000000000000000000000000000000000000000064"},"latest",{"0xdAC17F958D2ee523a2206206994597C13D831ec7":{"stateDiff":{"0xd0dd44a13782bf89714335c2b2b08ecb7c074e78a161807742c578965dda1b56":"0x0000000000000000000000000000000000000000000000000000000000004E20"}}}],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_estimateGas",
+    "params": [
+      {
+        "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+        "to": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+        "data": "0xa9059cbb000000000000000000000000627306090abaB3A6e1400e9345bC60c78a8BEf570000000000000000000000000000000000000000000000000000000000000064"
+      },
+      "latest",
+      {
+        "0xdAC17F958D2ee523a2206206994597C13D831ec7": {
+          "stateDiff": {
+            "0xd0dd44a13782bf89714335c2b2b08ecb7c074e78a161807742c578965dda1b56": "0x0000000000000000000000000000000000000000000000000000000000004E20"
+          }
+        }
+      }
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
@@ -598,6 +728,8 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_estimateGas","params":[{"fro
 
 </Tabs>
 
+---
+
 ## `eth_simulateV1`
 
 Simulates transactions across multiple blocks. Allows you to test transactions with custom state and
@@ -605,17 +737,17 @@ block parameters without submitting them to the network.
 
 ### Parameters
 
-- `payload`: _object_ - transaction simulation payload object with the following fields:
+- `payload`: _object_ - Transaction simulation payload object with the following fields:
 
   <details>
   <summary>Show `payload` fields</summary>
 
-  - `blockStateCalls`: _array_ of _objects_ - list of block state call objects, each with the following fields:
+  - `blockStateCalls`: _array_ of _objects_ - List of block state call objects, each with the following fields:
 
     <details>
     <summary>Show `blockStateCalls` fields</summary>
 
-    - `blockOverrides`: _array_ of _objects_ - list of block override objects, each with the following fields:
+    - `blockOverrides`: _array_ of _objects_ - List of block override objects, each with the following fields:
 
 
       <details>
@@ -639,7 +771,7 @@ block parameters without submitting them to the network.
 
       </details>
 
-    - `stateOverrides`: _array_ of _objects_ - list of state override objects, each with the following fields:
+    - `stateOverrides`: _array_ of _objects_ - List of state override objects, each with the following fields:
 
 
       <details>
@@ -659,7 +791,7 @@ block parameters without submitting them to the network.
 
       </details>
 
-    - `calls`: _array_ of _objects_ - list of transaction call objects, each with the following fields:
+    - `calls`: _array_ of _objects_ - List of transaction call objects, each with the following fields:
 
 
       <details>
@@ -697,171 +829,212 @@ block parameters without submitting them to the network.
 
     </details>
 
-  - `traceTransfers`:  _boolean_ - (optional) if `true`, ETH transfers are added as ERC-20 transfer
+  - `traceTransfers`:  _boolean_ - (Optional) If `true`, ETH transfers are added as ERC-20 transfer
       events to the logs, allowing you to trace value transfers. The default is `false`.
 
-  - `validation`: _boolean_ - (optional) If `true`, `eth_simulateV1` does all the validation that a
+  - `validation`: _boolean_ - (Optional) If `true`, `eth_simulateV1` does all the validation that a
     normal EVM would do, except contract sender and signature checks. If `false`, `eth_simulateV1` behaves like `eth_call`.
     The default is `false`.
 
-  - `returnFullTransactionObjects`: _boolean_ - (optional) If `true`, returns full transaction
+  - `returnFullTransactionObjects`: _boolean_ - (Optional) If `true`, returns full transaction
     objects. If `false`, returns only hashes. The default is `false`.
 
   </details>
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
-  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 ### Returns
 
-`result`: _array_ of _objects_ - list of simulation result objects, each with the following fields:
-
-<details>
-<summary>Show fields</summary>
-
-- all the fields of a block object
+- List of simulation result objects, each with the following fields:
 
   <details>
   <summary>Show fields</summary>
 
-  - `number`: _Quantity, Integer_ - Block number. `null` when block is pending.
-
-  - `hash`: _Data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
-  - `parentHash`: _Data, 32 bytes_ - Hash of the parent block.
-
-  - `nonce`: _Data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
-  - `sha3Uncles`: _Data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
-  - `logsBloom`: _Data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
-  - `transactionsRoot`: _Data, 32 bytes_ - Root of the transaction trie for the block.
-
-  - `stateRoot`: _Data, 32 bytes_ - Root of the final state trie for the block.
-
-  - `receiptsRoot`: _Data, 32 bytes_ - Root of the receipts trie for the block.
-
-  - `miner`: _Data, 20 bytes_ - Address to pay mining rewards to.
-
-  - `difficulty`: _Quantity, Integer_ - Difficulty for this block.
-
-  - `totalDifficulty`: _Quantity, Integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
-
-  - `extraData`: _Data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
-  - `size`: _Quantity, Integer_ - Size of block in bytes.
-
-  - `gasLimit`: _Quantity_ - Maximum gas allowed in this block.
-
-  - `gasUsed`: _Quantity_ - Total gas used by all transactions in this block.
-
-  - `timestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
-  - `transactions`: _Array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter, each with the following fields:
+  - all the fields of a block object
 
     <details>
-    <summary>Show `transactions` fields</summary>
+    <summary>Show fields</summary>
 
-    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `number`: _Quantity, Integer_ - Block number. `null` when block is pending.
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `hash`: _Data, 32 bytes_ - Hash of the block. `null` when block is pending.
 
-    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `parentHash`: _Data, 32 bytes_ - Hash of the parent block.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `nonce`: _Data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
 
-    - `chainId`: _Quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
+    - `sha3Uncles`: _Data, 32 bytes_ - SHA3 of the uncle's data in the block.
 
-    - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `logsBloom`: _Data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
 
-    - `gas`: _Quantity_ - Gas provided by the sender.
+    - `transactionsRoot`: _Data, 32 bytes_ - Root of the transaction trie for the block.
 
-    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `stateRoot`: _Data, 32 bytes_ - Root of the final state trie for the block.
 
-    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `receiptsRoot`: _Data, 32 bytes_ - Root of the receipts trie for the block.
 
-    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `miner`: _Data, 20 bytes_ - Address to pay mining rewards to.
 
-    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `difficulty`: _Quantity, Integer_ - Difficulty for this block.
 
-    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `totalDifficulty`: _Quantity, Integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
 
-    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `extraData`: _Data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
-    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `size`: _Quantity, Integer_ - Size of block in bytes.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `gasLimit`: _Quantity_ - Maximum gas allowed in this block.
 
-    - `transactionType`: _String_ - [Transaction type](../../../concepts/transactions/types.md).
+    - `gasUsed`: _Quantity_ - Total gas used by all transactions in this block.
 
-    - `value`: _Quantity_ - Value transferred, in Wei.
+    - `timestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
 
-    - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `transactions`: _Array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter, each with the following fields:
 
-    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+      <details>
+      <summary>Show `transactions` fields</summary>
 
-    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+      - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+
+      - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+
+      - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+
+      - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+
+      - `chainId`: _Quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
+
+      - `from`: _Data, 20 bytes_ - Address of the sender.
+
+      - `gas`: _Quantity_ - Gas provided by the sender.
+
+      - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+
+      - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+
+      - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+
+      - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+
+      - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+
+      - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+
+      - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+
+      - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+
+      - `transactionType`: _String_ - [Transaction type](../../../concepts/transactions/types.md).
+
+      - `value`: _Quantity_ - Value transferred, in Wei.
+
+      - `v`: _Quantity_ - ECDSA Recovery ID.
+
+      - `r`: _Data, 32 bytes_ - ECDSA signature r.
+
+      - `s`: _Data, 32 bytes_ - ECDSA signature s.
+
+      </details>
+
+    - `uncles`: _Array_ - Array of uncle hashes.
+
+    - `baseFeePerGas`: _Quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
 
     </details>
 
-  - `uncles`: _Array_ - Array of uncle hashes.
-
-  - `baseFeePerGas`: _Quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
-
-  </details>
-
-- `calls`: _array_ of _objects_ - list of call result objects, each with the following fields:
-
-  <details>
-  <summary>Show `calls` fields</summary>
-
-  - `returnData`: _Data_ - Data returned for the call.
-
-  - `logs`: _Array_ - Array of log objects generated during the call, each with the following fields:
+  - `calls`: _array_ of _objects_ - List of call result objects, each with the following fields:
 
     <details>
-    <summary>Show `logs` fields</summary>
+    <summary>Show `calls` fields</summary>
 
-    - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+    - `returnData`: _Data_ - Data returned for the call.
 
-    - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+    - `logs`: _Array_ - Array of log objects generated during the call, each with the following fields:
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+      <details>
+      <summary>Show `logs` fields</summary>
 
-    - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+      - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+      - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
 
-    - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+      - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+      - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-    - `address`: _Data, 20 bytes_ - Address the log originated from.
+      - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-    - `data`: _Data_ - Non-indexed arguments of the log.
+      - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
 
-    - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+      - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+
+      - `address`: _Data, 20 bytes_ - Address the log originated from.
+
+      - `data`: _Data_ - Non-indexed arguments of the log.
+
+      - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+
+      </details>
+
+    - `gasUsed`: _Quantity_ - Amount of gas used by the call.
+
+    - `maxUsedGas`: _Quantity_ - Maximum gas used during the call before any refunds.
+
+    - `status`: _Quantity_ - Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed.
 
     </details>
 
-  - `gasUsed`: _Quantity_ - Amount of gas used by the call.
-
-  - `maxUsedGas`: _Quantity_ - Maximum gas used during the call before any refunds.
-
-  - `status`: _Quantity_ - Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed.
-
   </details>
 
-</details>
+### Example
 
 <Tabs>
 
 <TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
-curl -X POST --data '{"jsonrpc":"2.0", "method":"eth_simulateV1", "params":[{"blockStateCalls":[{"blockOverrides":{"baseFeePerGas":"0x9"},"stateOverrides":{"0xc000000000000000000000000000000000000000":{"balance":"0x4a817c800"}},"calls":[{"from":"0xc000000000000000000000000000000000000000","to":"0xc000000000000000000000000000000000000001","maxFeePerGas":"0xf","value":"0x1"},{"from":"0xc000000000000000000000000000000000000000","to":"0xc000000000000000000000000000000000000002","maxFeePerGas":"0xf","value":"0x1"}]}],"validation":true,"traceTransfers":true},"latest"],"id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_simulateV1",
+    "params": [
+      {
+        "blockStateCalls": [
+          {
+            "blockOverrides": {
+              "baseFeePerGas": "0x9"
+            },
+            "stateOverrides": {
+              "0xc000000000000000000000000000000000000000": {
+                "balance": "0x4a817c800"
+              }
+            },
+            "calls": [
+              {
+                "from": "0xc000000000000000000000000000000000000000",
+                "to": "0xc000000000000000000000000000000000000001",
+                "maxFeePerGas": "0xf",
+                "value": "0x1"
+              },
+              {
+                "from": "0xc000000000000000000000000000000000000000",
+                "to": "0xc000000000000000000000000000000000000002",
+                "maxFeePerGas": "0xf",
+                "value": "0x1"
+              }
+            ]
+          }
+        ],
+        "validation": true,
+        "traceTransfers": true
+      },
+      "latest"
+    ],
+    "id": 1
+  }'
 ```
 
 </TabItem>
