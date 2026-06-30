@@ -17,9 +17,10 @@ Returns the account balance of the specified address.
 
 - `address`: _string_ - 20-byte account address from which to retrieve the balance
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
-  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
   :::note
   `pending` returns the same value as `latest`.
@@ -108,9 +109,10 @@ Returns the code of the smart contract at the specified address. Besu stores com
 
 - `address`: _string_ - 20-byte contract address
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
-  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
   :::note
   `pending` returns the same value as `latest`.
@@ -203,9 +205,10 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
 - `keys`: _array_ of _strings_ - list of 32-byte storage keys to generate proofs for
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
-  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
   :::note
   `pending` returns the same value as `latest`.
@@ -318,9 +321,10 @@ Returns the value of a storage position at a specified address.
 
 - `index`: _string_ - integer index of the storage position
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block
   number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
-  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
   :::note
   `pending` returns the same value as `latest`.
@@ -414,9 +418,10 @@ This is a batched version of [`eth_getStorageAt`](#eth_getstorageat).
   and each value is an array of storage slot keys (as 32-byte hex strings).
   The maximum total number of storage slots across all addresses is 1024.
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number,
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
-  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+  `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
   :::note
   `pending` returns the same value as `latest`.
@@ -488,7 +493,8 @@ Returns the number of transactions sent from a specified address. Use the `pendi
 
 - `address`: _string_ - 20-byte account address
 
-- `blockNumber` or `blockHash`: _string_ - hexadecimal integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber` or `blockHash`: _string_ - (optional) hexadecimal integer representing a block number, block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  The default is `latest`.
 
 ### Returns
 
