@@ -90,7 +90,19 @@ api-gas-price-blocks=50
 
 </Tabs>
 
-Number of blocks back from the head block to examine for [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice). The default is `100`.
+Number of blocks back from the head block to examine for
+[`eth_gasPrice`](../api/eth/fee.md#eth_gasprice) and
+[`eth_maxPriorityFeePerGas`](../api/eth/fee.md#eth_maxpriorityfeepergas).
+The default is `100`.
+
+Set to `0` to return the lower-bound value (next block's base fee or configured minimum
+gas price) without sampling any historical blocks.
+
+:::note
+In Besu 26.6.1 and earlier, setting `--api-gas-price-blocks=0` was incorrectly treated as
+`1`, causing Besu to sample one block.
+If you relied on that behavior, set `--api-gas-price-blocks=1` instead.
+:::
 
 ### `api-gas-price-max`
 
