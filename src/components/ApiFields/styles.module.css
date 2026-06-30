@@ -50,6 +50,14 @@
   font-size: 0.875rem;
 }
 
+/*
+  Collapsed state: keep the content in the DOM (so it stays in the static HTML
+  and is picked up by DOM-based markdown extractors) but hide it visually.
+*/
+.contentHidden {
+  display: none;
+}
+
 /* Compact the field lists so the box reads more densely than body copy. */
 .content :global(ul) {
   margin-bottom: 0;

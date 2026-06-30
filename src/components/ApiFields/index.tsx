@@ -34,7 +34,15 @@ export default function Fields({
         </span>
         {open ? `Hide ${label}` : `Show ${label}`}
       </button>
-      {open && <div className={styles.content}>{children}</div>}
+      {/*
+        Always render children (hidden with CSS when collapsed) instead of
+        unmounting them. This keeps the content in the DOM and the static HTML,
+        matching native <details> behavior, so DOM-based markdown extractors
+        (such as the "Copy page" / "View as Markdown" button) still capture it.
+      */}
+      <div className={open ? styles.content : styles.contentHidden}>
+        {children}
+      </div>
     </div>
   );
 }
