@@ -27,8 +27,7 @@ Returns account information at the specified index of the specified block.
 
 - Account details object with the following fields:
 
-  <details>
-  <summary>Show account details object fields</summary>
+  <Fields>
 
   - `code`: _data_ - Code for the account. Displays `0x0` if the address is an externally owned account.
 
@@ -38,7 +37,7 @@ Returns account information at the specified index of the specified block.
 
   - `codehash`: _data_ - Code hash for the account.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -182,14 +181,13 @@ Returns the accounts for a specified block.
 
 - Account details object with the following fields:
 
-  <details>
-  <summary>Show account details object fields</summary>
+  <Fields>
 
   - `addressMap`: _map_ of _strings_ to _strings_ - Map of address hashes and account addresses.
 
   - `nextKey`: _string_ - Hash of the next address if any addresses remain in the state, otherwise zero.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -270,8 +268,7 @@ Sends a list of [signed transactions](../../../how-to/send-transactions.md). Thi
 
 - Object returned for each transaction, with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `index`: _string_ - Index of the transaction in the request parameters array.
 
@@ -279,7 +276,7 @@ Sends a list of [signed transactions](../../../how-to/send-transactions.md). Thi
 
   - `errorMessage`: _string_ - (Optional) Error message.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -757,14 +754,13 @@ Returns the contract storage for the specified range.
 
 - Range object with the following fields:
 
-  <details>
-  <summary>Show range object fields</summary>
+  <Fields>
 
   - `storage`: _Object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
 
   - `nextKey`: _Hash_ - Hash of next key if further storage in range. Otherwise, not included.
 
-  </details>
+  </Fields>
 
 ### Example
 

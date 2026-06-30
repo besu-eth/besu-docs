@@ -25,8 +25,7 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 - Optional second parameter _object_ (all keys optional):
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
@@ -40,7 +39,7 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
@@ -120,8 +119,7 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 - Optional second parameter _object_ (all keys optional):
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
@@ -135,7 +133,7 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
@@ -207,8 +205,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
 - `options`: _object_ - Request options object with the following fields (all optional):
 
-  <details>
-  <summary>Show `options` fields</summary>
+  <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
@@ -223,14 +220,13 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
 - Trace object with the following fields:
 
-  <details>
-  <summary>Show trace object fields</summary>
+  <Fields>
 
   - `gas`: _Integer_ - Gas used by the transaction.
 
@@ -240,8 +236,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-    <details>
-    <summary>Show `structLogs` fields</summary>
+    <Fields>
 
     - `pc`: _Integer_ - Current program counter.
 
@@ -263,9 +258,9 @@ Reruns the transaction with the same state as when the transaction executed.
 
     - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -352,8 +347,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object with the following fields:
 
-  <details>
-  <summary>Show `options` fields</summary>
+  <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
@@ -368,14 +362,13 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
 - Trace object with the following fields:
 
-  <details>
-  <summary>Show trace object fields</summary>
+  <Fields>
 
   - `gas`: _Integer_ - Gas used by the transaction.
 
@@ -385,8 +378,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-    <details>
-    <summary>Show `structLogs` fields</summary>
+    <Fields>
 
     - `pc`: _Integer_ - Current program counter.
 
@@ -408,9 +400,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -488,8 +480,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object with the following fields:
 
-  <details>
-  <summary>Show `options` fields</summary>
+  <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
@@ -504,14 +495,13 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
 - List of trace objects, each with the following fields:
 
-  <details>
-  <summary>Show trace object fields</summary>
+  <Fields>
 
   - `gas`: _Integer_ - Gas used by the transaction.
 
@@ -521,8 +511,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-    <details>
-    <summary>Show `structLogs` fields</summary>
+    <Fields>
 
     - `pc`: _Integer_ - Current program counter.
 
@@ -544,9 +533,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -632,8 +621,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object with the following fields:
 
-  <details>
-  <summary>Show `options` fields</summary>
+  <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
 
@@ -648,14 +636,13 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  </details>
+  </Fields>
 
 ### Returns
 
 - List of trace objects, each with the following fields:
 
-  <details>
-  <summary>Show trace object fields</summary>
+  <Fields>
 
   - `gas`: _Integer_ - Gas used by the transaction.
 
@@ -665,8 +652,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-    <details>
-    <summary>Show `structLogs` fields</summary>
+    <Fields>
 
     - `pc`: _Integer_ - Current program counter.
 
@@ -688,9 +674,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -777,8 +763,7 @@ temporary state changes without affecting the actual blockchain state.
 
 - `call`: _object_ - Transaction call object with the following fields:
 
-  <details>
-  <summary>Show `call` fields</summary>
+  <Fields>
 
   - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -808,7 +793,7 @@ temporary state changes without affecting the actual blockchain state.
 
   - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844](../ https://eips.ethereum.org/EIPS/eip-4844).
 
-  </details>
+  </Fields>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
   string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -820,8 +805,7 @@ temporary state changes without affecting the actual blockchain state.
 
 - `options`: _object_ - Request options object with the following fields:
 
-  <details>
-  <summary>Show `options` fields</summary>
+  <Fields>
 
   - `disableStorage`: _boolean_ - (Optional) `true` disables storage capture.
     The default is `false`.
@@ -842,8 +826,7 @@ temporary state changes without affecting the actual blockchain state.
 
   - `stateOverrides`: _object_ - (Optional) Address-to-state mapping, with the following fields:
 
-    <details>
-    <summary>Show `stateOverrides` fields</summary>
+    <Fields>
 
     - `balance`: _Quantity_ - Temporary account balance for the call execution.
 
@@ -857,16 +840,15 @@ temporary state changes without affecting the actual blockchain state.
 
     - `stateDiff`: _Quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Returns
 
 - List of trace objects, each with the following fields:
 
-  <details>
-  <summary>Show trace object fields</summary>
+  <Fields>
 
   - `gas`: _Integer_ - Gas used by the transaction.
 
@@ -876,8 +858,7 @@ temporary state changes without affecting the actual blockchain state.
 
   - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
 
-    <details>
-    <summary>Show `structLogs` fields</summary>
+    <Fields>
 
     - `pc`: _Integer_ - Current program counter.
 
@@ -899,9 +880,9 @@ temporary state changes without affecting the actual blockchain state.
 
     - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 

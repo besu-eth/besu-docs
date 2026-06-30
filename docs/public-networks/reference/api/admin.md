@@ -242,8 +242,7 @@ Each index file contains 100000 blocks. The last fragment of blocks less than 10
 
 - Log bloom index details:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `startBlock`: _string_ - Starting block for the last requested cache generation.
 
@@ -255,7 +254,7 @@ Each index file contains 100000 blocks. The last fragment of blocks less than 10
 
   - _boolean_ - Indicates acceptance of the request from this call to generate the cache.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -479,8 +478,7 @@ Returns networking information about the node. The information includes general 
 
 - Node object with the following fields:
 
-  <details>
-  <summary>Show node object fields</summary>
+  <Fields>
 
   - `id`: _string_ - [Node public key](../../concepts/node-keys.md#node-public-key).
 
@@ -502,8 +500,7 @@ Returns networking information about the node. The information includes general 
 
   - `ports`: _object_ - Peer discovery and listening ports.
 
-    <details>
-    <summary>Show `ports` fields</summary>
+    <Fields>
 
     - `discovery`: _number_ - UDP discovery port.
 
@@ -513,11 +510,11 @@ Returns networking information about the node. The information includes general 
 
     - `listenerV6`: _number_ - IPv6 TCP listening port.
 
-    </details>
+    </Fields>
 
   - `protocols`: _object_ - List of objects containing information for each Ethereum sub-protocol.
 
-  </details>
+  </Fields>
 
 :::note
 
@@ -623,8 +620,7 @@ Returns networking information about connected remote nodes.
 
 - List of objects returned for each remote node, with the following fields.
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `version`: _string_ - P2P protocol version.
 
@@ -642,7 +638,7 @@ Returns networking information about connected remote nodes.
 
   - `enode`: _string_ - Enode URL of the remote node.
 
-  </details>
+  </Fields>
 
 ### Example
 

@@ -262,8 +262,7 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
 - Account details object with the following fields:
 
-  <details>
-  <summary>Show account details object fields</summary>
+  <Fields>
 
   - `balance`: _string_ - Account balance.
 
@@ -277,8 +276,7 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
   - `storageProof`: _array_ of _objects_ - List of storage entry objects with the following fields:
 
-    <details>
-    <summary>Show `storageProof` fields</summary>
+    <Fields>
 
     - `key`: _string_ - Storage key.
 
@@ -286,9 +284,9 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
     - `proof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `storageHash`.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 

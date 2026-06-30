@@ -23,8 +23,7 @@ Polls the specified filter and returns an array of changes that have occurred si
 
 - If nothing changed since the last poll, an empty list; otherwise:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - For filters created with `eth_newBlockFilter`, returns block hashes.
 
@@ -32,8 +31,7 @@ Polls the specified filter and returns an array of changes that have occurred si
 
   - For filters created with `eth_newFilter`, returns log objects, each with the following fields:
 
-    <details>
-    <summary>Show fields</summary>
+    <Fields>
 
     - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
@@ -55,9 +53,9 @@ Polls the specified filter and returns an array of changes that have occurred si
 
     - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -183,8 +181,7 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-blo
 
 - List of log objects, each with the following fields:
 
-  <details>
-  <summary>Show log object fields</summary>
+  <Fields>
 
   - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
@@ -206,7 +203,7 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-blo
 
   - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -319,8 +316,7 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
 - List of log objects, each with the following fields:
 
-  <details>
-  <summary>Show log object fields</summary>
+  <Fields>
 
   - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
@@ -342,7 +338,7 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
   - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-  </details>
+  </Fields>
 
 ### Example
 

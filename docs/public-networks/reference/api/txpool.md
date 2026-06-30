@@ -61,8 +61,7 @@ The only supported `action` is `"contract_creation"`.
 
 - List of objects with details of the pending transaction, each with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -94,7 +93,7 @@ The only supported `action` is `"contract_creation"`.
 
   - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -193,8 +192,7 @@ Lists statistics about the node transaction pool.
 
 - Transaction pool statistics object with the following fields:
 
-  <details>
-  <summary>Show transaction pool statistics object fields</summary>
+  <Fields>
 
   - `maxSize`: _number_ - Maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
 
@@ -202,7 +200,7 @@ Lists statistics about the node transaction pool.
 
   - `remoteCount`: _number_ - Number of transactions received from remote nodes.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -334,14 +332,12 @@ sender address and sorted by nonce.
 
 - Transaction pool content object with the following fields:
 
-  <details>
-  <summary>Show transaction pool content object fields</summary>
+  <Fields>
 
   - `pending`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
     for transactions pending inclusion in the next block, each with the following fields:
 
-    <details>
-    <summary>Show `pending` fields</summary>
+    <Fields>
 
     - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -383,13 +379,12 @@ sender address and sorted by nonce.
 
     - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-    </details>
+    </Fields>
 
   - `queued`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
     for transactions scheduled for future execution, each with the following fields:
 
-    <details>
-    <summary>Show `queued` fields</summary>
+    <Fields>
 
     - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -431,9 +426,9 @@ sender address and sorted by nonce.
 
     - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -535,8 +530,7 @@ Returns the pending and queued transactions for a given sender address.
 
   - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address, each with the following fields:
 
-    <details>
-    <summary>Show `pending` fields</summary>
+    <Fields>
 
     - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -578,12 +572,11 @@ Returns the pending and queued transactions for a given sender address.
 
     - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-    </details>
+    </Fields>
 
   - `queued`: _object_ - Map of nonces to transaction objects for queued transactions from the given address, each with the following fields:
 
-    <details>
-    <summary>Show `queued` fields</summary>
+    <Fields>
 
     - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -625,7 +618,7 @@ Returns the pending and queued transactions for a given sender address.
 
     - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-    </details>
+    </Fields>
 
 ### Example
 
@@ -736,8 +729,7 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
 
 - Transaction pool inspect object with the following fields:
 
-  <details>
-  <summary>Show transaction pool inspect object fields</summary>
+  <Fields>
 
   - `pending`: _object_ - Map of sender addresses to maps of nonces to human-readable transaction
     summary strings, for transactions pending inclusion in the next block.
@@ -745,7 +737,7 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
   - `queued`: _object_ - Map of sender addresses to maps of nonces to human-readable transaction
     summary strings, for transactions scheduled for future execution.
 
-  </details>
+  </Fields>
 
 ### Example
 

@@ -249,87 +249,79 @@ Returns the node's data-serving capabilities.
 
 - Capabilities information with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `head`: _object_ - Current chain head information:
 
-    <details>
-    <summary>Show `head` fields</summary>
+    <Fields>
 
     - `number`: _string_ - Current chain head block number.
 
     - `hash`: _string_ - Current chain head block hash.
 
-    </details>
+    </Fields>
 
   - `state`: _object_ - State capability information.
 
-    <details>
-    <summary>Show `state` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `state` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
   - `tx`: _object_ - Transaction capability information.
 
-    <details>
-    <summary>Show `tx` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `tx` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
   - `logs`: _object_ - Logs capability information.
 
-    <details>
-    <summary>Show `logs` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `logs` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
   - `receipts`: _object_ - Receipts capability information.
 
-    <details>
-    <summary>Show `receipts` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `receipts` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
   - `blocks`: _object_ - Blocks capability information.
 
-    <details>
-    <summary>Show `blocks` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `blocks` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
   - `stateproofs`: _object_ - State proofs capability information.
 
-    <details>
-    <summary>Show `stateproofs` fields</summary>
+    <Fields>
 
     - `disabled`: _boolean_ - Indicates whether the `stateproofs` resource is disabled.
 
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 The `oldestBlock` field is included for block-backed resources when pruning has occurred.
 If the full chain is available, this can be `0x0`.
@@ -427,20 +419,17 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
 - Configuration information with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `current`: _object_ - Current fork configuration:
 
-    <details>
-    <summary>Show `current` fields</summary>
+    <Fields>
 
     - `activationTime`: _number_ - Fork activation timestamp (Unix epoch seconds).
 
     - `blobSchedule`: _object_ - Blob configuration parameters:
 
-      <details>
-      <summary>Show `blobSchedule` fields</summary>
+      <Fields>
 
       - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
 
@@ -448,7 +437,7 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
       - `target`: _number_ - Target number of blobs per block.
 
-      </details>
+      </Fields>
 
     - `chainId`: _string_ - Chain ID in hexadecimal.
 
@@ -458,14 +447,14 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
     - `systemContracts`: _object_ - System contract addresses.
 
-    </details>
+    </Fields>
 
   - `next`: _object_ - Next fork configuration, or `null` if no future fork is scheduled.
 
   - `last`: _object_ - The furthest configured future fork configuration (the future fork with
       the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -726,8 +715,7 @@ Once the node reaches the head of the chain, `eth_syncing` returns false, indica
 
 - Synchronization status data object with the following fields, or `false` if not synchronizing:
 
-  <details>
-  <summary>Show synchronization status data object fields</summary>
+  <Fields>
 
   - `startingBlock`: _string_ - Index of the highest block on the blockchain when the network synchronization starts.
 
@@ -741,7 +729,7 @@ Once the node reaches the head of the chain, `eth_syncing` returns false, indica
   - `knownStates`: _string_ - The number of states the node knows of so far, or `null` if this is not known or not relevant (if
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
-  </details>
+  </Fields>
 
 ### Example
 

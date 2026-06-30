@@ -161,8 +161,7 @@ default, 512 from the head of the chain).
 
 - `call`: _object_ - Transaction call object with the following fields:
 
-  <details>
-  <summary>Show `call` fields</summary>
+  <Fields>
 
   - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -192,7 +191,7 @@ default, 512 from the head of the chain).
 
   - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-  </details>
+  </Fields>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -797,8 +796,7 @@ default, 512 from the head of the chain).
 
 - List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), each with the following fields:
 
-  <details>
-  <summary>Show transaction trace object fields</summary>
+  <Fields>
 
   - `output`: _Boolean_ - Transaction result. 1 for success and 0 for failure.
 
@@ -810,7 +808,7 @@ default, 512 from the head of the chain).
 
   - `transactionHash`: _Data, 32 bytes_ - Hash of the replayed transaction.
 
-  </details>
+  </Fields>
 
 ### Example
 

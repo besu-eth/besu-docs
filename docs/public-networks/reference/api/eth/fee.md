@@ -161,8 +161,7 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 
 - Fee history results object with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - `oldestBlock`: _Quantity, Integer_ - Lowest number block of the returned range.
 
@@ -176,7 +175,7 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 
   - `reward`: _Array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
 
-  </details>
+  </Fields>
 
 ### Example
 

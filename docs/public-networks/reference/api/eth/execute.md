@@ -29,8 +29,7 @@ By default, the `eth_call` error response includes the [revert reason](../../../
   does not have sufficient funds to cover the gas fees.
   :::
 
-  <details>
-  <summary>Show `call` fields</summary>
+  <Fields>
 
   - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -60,7 +59,7 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
   - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-  </details>
+  </Fields>
 
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
@@ -75,8 +74,7 @@ By default, the `eth_call` error response includes the [revert reason](../../../
     This allows you to test, analyze, and debug smart contracts more efficiently by allowing
     temporary state changes without affecting the actual blockchain state, each with the following fields:
 
-  <details>
-  <summary>Show `stateOverride` fields</summary>
+  <Fields>
 
   - `balance`: _Quantity_ - Temporary account balance for the call execution.
 
@@ -90,7 +88,7 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
   - `stateDiff`: _Quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-  </details>
+  </Fields>
 
 ### Returns
 
@@ -301,8 +299,7 @@ Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that 
 
 - `transaction`: _object_ - Transaction call object with the following fields:
 
-  <details>
-  <summary>Show `transaction` fields</summary>
+  <Fields>
 
   - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -332,7 +329,7 @@ Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that 
 
   - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-  </details>
+  </Fields>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -342,23 +339,21 @@ Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that 
 
 - Access list object with the following fields:
 
-  <details>
-  <summary>Show access list object fields</summary>
+  <Fields>
 
   - `accessList`: _array_ of _objects_ - List of objects with the following fields:
 
-    <details>
-    <summary>Show `accessList` fields</summary>
+    <Fields>
 
     - `address`: _string_ - Addresses to be accessed by the transaction.
 
     - `storageKeys`: _array_ - Storage keys to be accessed by the transaction.
 
-    </details>
+    </Fields>
 
   - `gasUsed`: _string_ - Approximate gas cost for the transaction if the access list is included.
 
-  </details>
+  </Fields>
 
 ### Example
 
@@ -451,8 +446,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
       does not have sufficient funds to cover the gas fees.
       :::
 
-  <details>
-  <summary>Show `call` fields</summary>
+  <Fields>
 
   - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -482,7 +476,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
   - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-  </details>
+  </Fields>
 
 - `blockNumber`: _string_ - (Optional) Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -493,8 +487,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
     Each entry specifies a state that will be temporarily overridden before executing the call.
     This allows you to make temporary state changes without affecting the actual blockchain state, each with the following fields:
 
-  <details>
-  <summary>Show `stateOverride` fields</summary>
+  <Fields>
 
   - `balance`: _Quantity_ - Temporary account balance for the call execution.
 
@@ -508,7 +501,7 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
   - `stateDiff`: _Quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-  </details>
+  </Fields>
 
 ### Returns
 
@@ -710,19 +703,16 @@ block parameters without submitting them to the network.
 
 - `payload`: _object_ - Transaction simulation payload object with the following fields:
 
-  <details>
-  <summary>Show `payload` fields</summary>
+  <Fields>
 
   - `blockStateCalls`: _array_ of _objects_ - List of block state call objects, each with the following fields:
 
-    <details>
-    <summary>Show `blockStateCalls` fields</summary>
+    <Fields>
 
     - `blockOverrides`: _array_ of _objects_ - List of block override objects, each with the following fields:
 
 
-      <details>
-      <summary>Show `blockOverrides` fields</summary>
+      <Fields>
 
       - `baseFeePerGas`: _Quantity_ - Base fee per gas for the block.
 
@@ -740,13 +730,12 @@ block parameters without submitting them to the network.
 
       - `withdrawals`: _Array_ - Array of withdrawals made by validators. This array can have a maximum length of 16.
 
-      </details>
+      </Fields>
 
     - `stateOverrides`: _array_ of _objects_ - List of state override objects, each with the following fields:
 
 
-      <details>
-      <summary>Show `stateOverrides` fields</summary>
+      <Fields>
 
       - `balance`: _Quantity_ - Temporary account balance for the call execution.
 
@@ -760,13 +749,12 @@ block parameters without submitting them to the network.
 
       - `stateDiff`: _Quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-      </details>
+      </Fields>
 
     - `calls`: _array_ of _objects_ - List of transaction call objects, each with the following fields:
 
 
-      <details>
-      <summary>Show `calls` fields</summary>
+      <Fields>
 
       - `from`: _Data, 20 bytes_ - Address of the sender.
 
@@ -796,9 +784,9 @@ block parameters without submitting them to the network.
 
       - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-      </details>
+      </Fields>
 
-    </details>
+    </Fields>
 
   - `traceTransfers`:  _boolean_ - (Optional) If `true`, ETH transfers are added as ERC-20 transfer
       events to the logs, allowing you to trace value transfers. The default is `false`.
@@ -810,7 +798,7 @@ block parameters without submitting them to the network.
   - `returnFullTransactionObjects`: _boolean_ - (Optional) If `true`, returns full transaction
     objects. If `false`, returns only hashes. The default is `false`.
 
-  </details>
+  </Fields>
 
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
@@ -820,13 +808,11 @@ block parameters without submitting them to the network.
 
 - List of simulation result objects, each with the following fields:
 
-  <details>
-  <summary>Show fields</summary>
+  <Fields>
 
   - all the fields of a block object
 
-    <details>
-    <summary>Show fields</summary>
+    <Fields>
 
     - `number`: _Quantity, Integer_ - Block number. `null` when block is pending.
 
@@ -864,8 +850,7 @@ block parameters without submitting them to the network.
 
     - `transactions`: _Array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter, each with the following fields:
 
-      <details>
-      <summary>Show `transactions` fields</summary>
+      <Fields>
 
       - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
 
@@ -907,25 +892,23 @@ block parameters without submitting them to the network.
 
       - `s`: _Data, 32 bytes_ - ECDSA signature s.
 
-      </details>
+      </Fields>
 
     - `uncles`: _Array_ - Array of uncle hashes.
 
     - `baseFeePerGas`: _Quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
 
-    </details>
+    </Fields>
 
   - `calls`: _array_ of _objects_ - List of call result objects, each with the following fields:
 
-    <details>
-    <summary>Show `calls` fields</summary>
+    <Fields>
 
     - `returnData`: _Data_ - Data returned for the call.
 
     - `logs`: _Array_ - Array of log objects generated during the call, each with the following fields:
 
-      <details>
-      <summary>Show `logs` fields</summary>
+      <Fields>
 
       - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
@@ -947,7 +930,7 @@ block parameters without submitting them to the network.
 
       - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-      </details>
+      </Fields>
 
     - `gasUsed`: _Quantity_ - Amount of gas used by the call.
 
@@ -955,9 +938,9 @@ block parameters without submitting them to the network.
 
     - `status`: _Quantity_ - Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed.
 
-    </details>
+    </Fields>
 
-  </details>
+  </Fields>
 
 ### Example
 
