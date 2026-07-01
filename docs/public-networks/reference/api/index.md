@@ -371,6 +371,11 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_logsRepairCache","params":
 
 Returns networking information about the node. The information includes general information about the node and specific information from each running Ethereum sub-protocol (for example, `eth`).
 
+:::tip
+Learn about
+[verifying IPv4 and IPv6 addresses with `admin_nodeInfo`](../../concepts/ipv6-dual-stack.md#verifying-addresses-with-admin_nodeinfo).
+:::
+
 #### Parameters
 
 None
@@ -393,9 +398,9 @@ None
 
 - `ipv6`: _string_ - IPv6 address
 
-- `listenAddr`: _string_ - host and port for the node
+- `listenAddr`: _string_ - host and port for the node, as `ip:port`
 
-- `listenAddrV6`: _string_ - IPv6 host and port for the node
+- `listenAddrV6`: _string_ - IPv6 host and port for the node, as `[ipv6]:port`
 
 - `ports`: _object_ - peer discovery and listening ports
 
