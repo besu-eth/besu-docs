@@ -12,7 +12,7 @@ Besu implements the QBFT and IBFT 2.0 proof of authority (PoA) [consensus protoc
 Besu no longer supports the Clique consensus protocol.
 :::
 
-PoA consensus protocols have faster block times and a much greater transaction throughput than the Ethash proof of work consensus protocol used on the Ethereum Mainnet.
+PoA consensus protocols have faster block times and much greater transaction throughput than the proof of stake consensus used on Ethereum Mainnet.
 
 In QBFT or IBFT 2.0, a group of nodes in the network act as validators. The existing nodes in the validator pool vote to add nodes to or remove nodes from the pool.
 

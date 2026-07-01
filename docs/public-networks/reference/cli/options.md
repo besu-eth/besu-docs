@@ -324,7 +324,7 @@ The maximum time, in milliseconds, that can be spent selecting transactions to b
 This value must be less than or equal to the default, `5000`.
 
 :::note
-This option only applies to proof-of-stake and proof-of-work networks.
+This option only applies to proof-of-stake networks.
 For proof-of-authority networks, see
 [`--poa-block-txs-selection-max-time`](../../../private-networks/reference/cli/options.md#poa-block-txs-selection-max-time).
 :::
@@ -3186,7 +3186,7 @@ Possible values include the following:
 | `mainnet`  | ETH   | Production  | [`SNAP`](#sync-mode) | PoS network       | The main [Ethereum network](https://ethereum.org/en/developers/docs/networks/) |
 | `hoodi`    | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Hoodi](https://hoodi.ethpandaops.io/)                    |
 | `sepolia`  | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Sepolia](https://sepolia.dev)                            |
-| `dev`      | ETH   | Development | [`FULL`](#sync-mode) | PoW network       | Development network with low difficulty to enable local CPU mining             |
+| `dev`      | ETH   | Development | [`FULL`](#sync-mode) | Dev mode          | Local development network for testing                                          |
 | `ephemery` | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Ephemery](https://ephemery.dev)  
 | `linea_mainnet`  | Linea   | Production        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)       | The main [Linea network](https://docs.linea.build/get-started/build/network-info)                            |
 | `linea_sepolia`  | Linea   | Test        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)      | Linea [Sepolia testnet](https://docs.linea.build/get-started/build/network-info/)                            |
