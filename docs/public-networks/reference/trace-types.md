@@ -144,14 +144,14 @@ An absent value is distinct from zero when creating accounts or clearing storage
 
 The trace options `trace`, `vmTrace`, and `stateDiff` are available for the following [ad-hoc tracing API methods](../how-to/troubleshoot/trace-transactions.md#ad-hoc-tracing-apis):
 
-- [`trace_call`](api/index.md#trace_call)
-- [`trace_callMany`](api/index.md#trace_callmany)
-- [`trace_rawTransaction`](api/index.md#trace_rawtransaction)
-- [`trace_replayBlockTransactions`](api/index.md#trace_replayblocktransactions)
+- [`trace_call`](api/trace.md#trace_call)
+- [`trace_callMany`](api/trace.md#trace_callmany)
+- [`trace_rawTransaction`](api/trace.md#trace_rawtransaction)
+- [`trace_replayBlockTransactions`](api/trace.md#trace_replayblocktransactions)
 
 Only the `trace` option is available for the following [transaction-trace filtering API methods](../how-to/troubleshoot/trace-transactions.md#transaction-trace-filtering-apis):
 
-- [`trace_block`](api/index.md#trace_block)
-- [`trace_filter`](api/index.md#trace_filter)
-- [`trace_get`](api/index.md#trace_get)
-- [`trace_transaction`](api/index.md#trace_transaction)
+- [`trace_block`](api/trace.md#trace_block)
+- [`trace_filter`](api/trace.md#trace_filter)
+- [`trace_get`](api/trace.md#trace_get)
+- [`trace_transaction`](api/trace.md#trace_transaction)

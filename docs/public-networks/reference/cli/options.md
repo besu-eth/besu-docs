@@ -91,8 +91,8 @@ api-gas-price-blocks=50
 </Tabs>
 
 Number of blocks back from the head block to examine for
-[`eth_gasPrice`](../api/index.md#eth_gasprice) and
-[`eth_maxPriorityFeePerGas`](../api/index.md#eth_maxpriorityfeepergas).
+[`eth_gasPrice`](../api/eth/fee.md#eth_gasprice) and
+[`eth_maxPriorityFeePerGas`](../api/eth/fee.md#eth_maxpriorityfeepergas).
 The default is `100`.
 
 Set to `0` to return the lower-bound value (next block's base fee or configured minimum
@@ -142,7 +142,7 @@ api-gas-price-max=20000
 
 </Tabs>
 
-Maximum gas price to return for [`eth_gasPrice`](../api/index.md#eth_gasprice), regardless of the percentile value measured. The default is `500000000000` (500 GWei).
+Maximum gas price to return for [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice), regardless of the percentile value measured. The default is `500000000000` (500 GWei).
 
 ### `api-gas-price-percentile`
 
@@ -182,9 +182,9 @@ api-gas-price-percentile=75
 
 </Tabs>
 
-Percentile value to measure for [`eth_gasPrice`](../api/index.md#eth_gasprice). The default is `50.0`.
+Percentile value to measure for [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice). The default is `50.0`.
 
-For [`eth_gasPrice`](../api/index.md#eth_gasprice), to return the:
+For [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice), to return the:
 
 - Highest gas price in [`--api-gas-price-blocks`](#api-gas-price-blocks), set to `100`.
 - Lowest gas price in [`--api-gas-price-blocks`](#api-gas-price-blocks), set to `0`.
@@ -227,7 +227,7 @@ auto-log-bloom-caching-enabled=false
 
 </Tabs>
 
-Enables or disables automatic log bloom caching. APIs such as [`eth_getLogs`](../api/index.md#eth_getlogs) and [`eth_getFilterLogs`](../api/index.md#eth_getfilterlogs) use the cache for improved performance. 
+Enables or disables automatic log bloom caching. APIs such as [`eth_getLogs`](../api/eth/filter.md#eth_getlogs) and [`eth_getFilterLogs`](../api/eth/filter.md#eth_getfilterlogs) use the cache for improved performance. 
 
 The default is `true`.
 
@@ -610,7 +610,7 @@ cache-last-blocks=2048
 </Tabs>
 
 The number of recent blocks to cache. 
-Using this option can improve the performance of several RPC calls including: [`eth_getBlockByNumber`](../api/index.md#eth_getblockbynumber), [`eth_getBlockByHash`](../api/index.md#eth_getblockbyhash), [`eth_getTransactionReceipt`](../api/index.md#eth_gettransactionreceipt), and especially [`eth_feeHistory`](../api/index.md#eth_feehistory). 
+Using this option can improve the performance of several RPC calls including: [`eth_getBlockByNumber`](../api/eth/block.md#eth_getblockbynumber), [`eth_getBlockByHash`](../api/eth/block.md#eth_getblockbyhash), [`eth_getTransactionReceipt`](../api/eth/transaction.md#eth_gettransactionreceipt), and especially [`eth_feeHistory`](../api/eth/fee.md#eth_feehistory). 
 The default is `0`.
 
 ### `cache-last-block-headers`
@@ -1312,7 +1312,7 @@ estimate-gas-tolerance-ratio=0.015
 
 </Tabs>
 
-Defines the tolerance used when estimating gas for the [`eth_estimateGas`](../api/index.md#eth_estimategas) JSON-RPC method.
+Defines the tolerance used when estimating gas for the [`eth_estimateGas`](../api/eth/execute.md#eth_estimategas) JSON-RPC method.
 Lower values increase accuracy but take longer to compute.
 Higher values speed up estimation but might provide less precise results.
 
@@ -2936,13 +2936,13 @@ min-gas-price=1337
 </Tabs>
 
 The minimum price (in wei) a transaction offers to include it in a mined block.
-The minimum gas price is the lowest value [`eth_gasPrice`](../api/index.md#eth_gasprice) can return.
+The minimum gas price is the lowest value [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice) can return.
 The default is `1000`.
 
 For a running node, use:
 
-* [`miner_getMinGasPrice`](../api/index.md#miner_getmingasprice) to get the value.
-* [`miner_setMinGasPrice`](../api/index.md#miner_setmingasprice) to change the value.
+* [`miner_getMinGasPrice`](../api/miner.md#miner_getmingasprice) to get the value.
+* [`miner_setMinGasPrice`](../api/miner.md#miner_setmingasprice) to change the value.
 
 :::tip
 
@@ -2950,7 +2950,7 @@ In a [free gas network](../../../private-networks/how-to/configure/free-gas.md),
 gas price is set to zero for every node.
 Any node with a minimum gas price set higher than zero will silently drop transactions with a zero
 gas price.
-You can query a node's gas configuration using [`eth_gasPrice`](../api/index.md#eth_gasprice).
+You can query a node's gas configuration using [`eth_gasPrice`](../api/eth/fee.md#eth_gasprice).
 
 :::
 
@@ -2997,8 +2997,8 @@ The default is `0`.
 
 For a running node, use:
 
-* [`miner_getMinPriorityFee`](../api/index.md#miner_getminpriorityfee) to get the value.
-* [`miner_setMinPriorityFee`](../api/index.md#miner_setminpriorityfee) to change the value.
+* [`miner_getMinPriorityFee`](../api/miner.md#miner_getminpriorityfee) to get the value.
+* [`miner_setMinPriorityFee`](../api/miner.md#miner_setminpriorityfee) to change the value.
 
 ### `miner-extra-data`
 
@@ -4199,7 +4199,7 @@ revert-reason-enabled=true
 
 </Tabs>
 
-Enables or disables including the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](../api/index.md#eth_estimategas) error response, [`eth_call`](../api/index.md#eth_call) error response, and [`trace`](../trace-types.md#trace) response. 
+Enables or disables including the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](../api/eth/execute.md#eth_estimategas) error response, [`eth_call`](../api/eth/execute.md#eth_call) error response, and [`trace`](../trace-types.md#trace) response. 
 
 The default is `false`.
 
@@ -4252,7 +4252,7 @@ This option allows users to override the transaction's gas limit.
 This can prevent the simulation of transactions with high gas usage by setting a predefined cap, preventing DoS attacks.
 Its value must be greater than or equal to `0`. 
 The default is `100000000`. You can set this to `0` to indicate there is no limit. 
-This cap prevents [`eth_call`](../api/index.md#eth_call) requests from using excessive resources.
+This cap prevents [`eth_call`](../api/eth/execute.md#eth_call) requests from using excessive resources.
 
 ### `rpc-http-api`
 
@@ -5310,7 +5310,7 @@ rpc-max-logs-range=500
 
 </Tabs>
 
-When using [`eth_getLogs`](../api/index.md#eth_getlogs), the maximum number of blocks to retrieve logs from. Set to 0 to specify no limit. The default is 5000.
+When using [`eth_getLogs`](../api/eth/filter.md#eth_getlogs), the maximum number of blocks to retrieve logs from. Set to 0 to specify no limit. The default is 5000.
 
 :::caution
 
@@ -5360,7 +5360,7 @@ rpc-max-trace-filter-range=100
 
 </Tabs>
 
-The maximum number of blocks you can supply to the [`trace_filter`](../api/index.md#trace_filter) method. The value must be equal to or greater than `0`. Setting this option to `0` indicates there is no limit. The default is `1000`.
+The maximum number of blocks you can supply to the [`trace_filter`](../api/trace.md#trace_filter) method. The value must be equal to or greater than `0`. Setting this option to `0` indicates there is no limit. The default is `1000`.
 
 ### `rpc-tx-feecap`
 
@@ -5400,7 +5400,7 @@ rpc-tx-feecap=1200000000000000000
 
 </Tabs>
 
-The maximum transaction fee (in wei) accepted for transactions submitted through the [`eth_sendRawTransaction`](../api/index.md#eth_sendrawtransaction) RPC. The default is 1000000000000000000 (1 ether).
+The maximum transaction fee (in wei) accepted for transactions submitted through the [`eth_sendRawTransaction`](../api/eth/submit.md#eth_sendrawtransaction) RPC. The default is 1000000000000000000 (1 ether).
 
 If set to 0, then this option is ignored and no cap is applied.
 
@@ -6837,7 +6837,7 @@ The gas limit toward which Besu will gradually move on an existing network, if e
 
 If a value for `target-gas-limit` is not specified, the block gas limit remains at the value specified in the [genesis file](../genesis-items.md#genesis-block-parameters).
 
-Use the [`miner_changeTargetGasLimit`](../api/index.md#miner_changetargetgaslimit) API to update the `target-gas-limit` while Besu is running. Alternatively restart Besu with an updated `target-gas-limit` value.
+Use the [`miner_changeTargetGasLimit`](../api/miner.md#miner_changetargetgaslimit) API to update the `target-gas-limit` while Besu is running. Alternatively restart Besu with an updated `target-gas-limit` value.
 
 ### `tx-pool`
 
@@ -7644,7 +7644,7 @@ tx-sender-nonce-index-enabled=false
 
 Enables or disables the sender and nonce index, which maps each sender address and nonce to a transaction hash.
 This index is required for
-[`eth_getTransactionBySenderAndNonce`](../../reference/api/index.md#eth_gettransactionbysenderandnonce)
+[`eth_getTransactionBySenderAndNonce`](../../reference/api/eth/transaction.md#eth_gettransactionbysenderandnonce)
 to return transactions included in blocks.
 The default is `true`.
 

@@ -86,7 +86,7 @@ To notify you about each block added to the blockchain, use the `newHeads` param
 
 If a chain reorganization occurs, the subscription publishes notifications for blocks in the new chain. This means the subscription can publish notifications for multiple blocks at the same height on the blockchain.
 
-The new headers notification returns [block objects](../../reference/api/objects.md#block-object). The second parameter is optional. If specified, the notifications include whole [transaction objects](../../reference/api/objects.md#transaction-object), Otherwise, the notifications include transaction hashes.
+The new headers notification returns [block objects](../../reference/api/eth/block.md#eth_getblockbyhash). The second parameter is optional. If specified, the notifications include whole [transaction objects](../../reference/api/eth/transaction.md#eth_gettransactionbyhash), Otherwise, the notifications include transaction hashes.
 
 To subscribe to new header notifications:
 
@@ -185,9 +185,9 @@ Logs subscriptions have a filter object parameter with the following fields:
 - `fromBlock` - (optional) The earliest block from which to return logs.
 - `toBlock` - (optional) The last block from which to return logs.
 
-If a chain reorganization occurs, the subscription publishes notifications for logs from the old chain with the `removed` property in the [log object](../../reference/api/objects.md#log-object) set to `true`. This means the subscription can publish notifications for multiple logs for the same transaction.
+If a chain reorganization occurs, the subscription publishes notifications for logs from the old chain with the `removed` property in the [log object](../../reference/api/eth/filter.md#eth_getlogs) set to `true`. This means the subscription can publish notifications for multiple logs for the same transaction.
 
-The logs subscription returns [log objects](../../reference/api/objects.md#log-object).
+The logs subscription returns [log objects](../../reference/api/eth/filter.md#eth_getlogs).
 
 <Tabs>
 
@@ -379,7 +379,7 @@ To notify you about transaction receipts for each new block, use the
 `transactionReceipts` parameter with `eth_subscribe`.
 
 The transaction receipts subscription returns an array of
-[transaction receipt objects](../../reference/api/objects.md#transaction-receipt-object).
+[transaction receipt objects](../../reference/api/eth/transaction.md#eth_gettransactionreceipt).
 The receipt format matches the `eth_getTransactionReceipt` response.
 
 If a chain reorganization occurs, the subscription publishes receipts for blocks

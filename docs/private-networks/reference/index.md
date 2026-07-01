@@ -12,8 +12,7 @@ The following features and resources are shared with [public networks](../../pub
   - [Standard options](../../public-networks/reference/cli/options.md)
   - [Standard subcommands](../../public-networks/reference/cli/subcommands.md)
 - Besu API:
-  - [Standard Besu API methods](../../public-networks/reference/api/index.md)
-  - [Standard Besu API objects](../../public-networks/reference/api/objects.md)
+  - [Standard Besu API methods](../../public-networks/reference/api/index.md) (response object schemas are documented inline within each method)
 - [Genesis file items](../../public-networks/reference/genesis-items.md)
 - [EVM tool options](../../public-networks/reference/evm-tool.md)
 - [Transaction trace types](../../public-networks/reference/trace-types.md)

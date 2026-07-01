@@ -144,7 +144,7 @@ Successfully calling this method shows that you can connect to the network using
 #### Count the peers
 
 Peers are the other nodes connected to the node receiving the JSON-RPC request.
-Poll the peer count using [`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount):
+Poll the peer count using [`net_peerCount`](../../public-networks/reference/api/net.md#net_peercount):
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
@@ -162,7 +162,7 @@ The result indicates that `rpcnode` has four peers:
 
 #### Request the most recent block number
 
-Call [`eth_blockNumber`](../../public-networks/reference/api/index.md#eth_blocknumber) to retrieve the highest block number on `rpcnode`:
+Call [`eth_blockNumber`](../../public-networks/reference/api/eth/client.md#eth_blocknumber) to retrieve the highest block number on `rpcnode`:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"

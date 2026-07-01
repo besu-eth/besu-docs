@@ -18,7 +18,7 @@ networks.
 small, stable networks.
 
 :::info
-You can use [`admin_addPeer`](../../reference/api/index.md#admin_addpeer) to attempt a specific
+You can use [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer) to attempt a specific
 connection, but this isn't P2P discovery.
 :::
 
@@ -92,13 +92,13 @@ You can use [`--random-peer-priority-enabled`](../../reference/cli/options.md#ra
 
 JSON-RPC API methods to monitor peer connections include:
 
-- [`net_peerCount`](../../reference/api/index.md#net_peercount).
-- [`admin_peers`](../../reference/api/index.md#admin_peers).
-- [`debug_metrics`](../../reference/api/index.md#debug_metrics).
+- [`net_peerCount`](../../reference/api/net.md#net_peercount).
+- [`admin_peers`](../../reference/api/admin.md#admin_peers).
+- [`debug_metrics`](../../reference/api/debug/state-node.md#debug_metrics).
 
-Each peer entry returned by [`admin_peers`](../../reference/api/index.md#admin_peers) includes a `protocols` section. Use the information in the `protocols` section to:
+Each peer entry returned by [`admin_peers`](../../reference/api/admin.md#admin_peers) includes a `protocols` section. Use the information in the `protocols` section to:
 
-- Determine the health of peers. For example, an external process can use [`admin_peers`](../../reference/api/index.md#admin_peers) and [`admin_removePeer`](../../reference/api/index.md#admin_removepeer) to disconnect from peers that are stalled at a single difficulty for an extended period of time.
+- Determine the health of peers. For example, an external process can use [`admin_peers`](../../reference/api/admin.md#admin_peers) and [`admin_removePeer`](../../reference/api/admin.md#admin_removepeer) to disconnect from peers that are stalled at a single difficulty for an extended period of time.
 
 - Monitor node health. For example, if peers report increasing difficulties but the node is stuck at the same block number, the node may be on a different fork to most peers.
 
@@ -118,7 +118,7 @@ The console logs connection and disconnection events when the log level is `DEBU
 
 To disable P2P discovery, set the [`--discovery-enabled`](../../reference/cli/options.md#discovery-enabled) option to `false`.
 
-With discovery disabled, peers can't open connections with the node unless they were previously discovered or manually peered (for example, using [`admin_addPeer`](../../reference/api/index.md#admin_addpeer)). [Static nodes](static-nodes.md) can also open connections.
+With discovery disabled, peers can't open connections with the node unless they were previously discovered or manually peered (for example, using [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer)). [Static nodes](static-nodes.md) can also open connections.
 
 ## Troubleshoot
 

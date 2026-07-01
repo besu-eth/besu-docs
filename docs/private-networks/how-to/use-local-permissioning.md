@@ -96,7 +96,7 @@ Account allowlisting is at the node level. That is, each node in the network has
 
 Transaction validation against the accounts allowlist occurs at the following points:
 
-- Submitted by JSON-RPC API method [`eth_sendRawTransaction`](../../public-networks/reference/api/index.md#eth_sendrawtransaction)
+- Submitted by JSON-RPC API method [`eth_sendRawTransaction`](../../public-networks/reference/api/eth/submit.md#eth_sendrawtransaction)
 - Received via propagation from another node
 - Added to a block by a mining node
 

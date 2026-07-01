@@ -8,7 +8,7 @@ description: Configuring NAT with Besu
 
 Use the [`--nat-method`](../../reference/cli/options.md#nat-method) option to specify the NAT method. Options are: [`UPNP`](#upnp), [`DOCKER`](#docker), [`AUTO`](#auto), and [`NONE`](#none).
 
-The [enode](../../concepts/node-keys.md#enode-url) advertised to other nodes during discovery is the external IP address and port. The [`admin_nodeInfo`](../../reference/api/index.md#admin_nodeinfo) JSON-RPC API method returns the external address and port for the `enode` and `listenAddr` properties.
+The [enode](../../concepts/node-keys.md#enode-url) advertised to other nodes during discovery is the external IP address and port. The [`admin_nodeInfo`](../../reference/api/admin.md#admin_nodeinfo) JSON-RPC API method returns the external address and port for the `enode` and `listenAddr` properties.
 
 While Besu is running, the following are not supported:
 
@@ -62,7 +62,7 @@ Specify `NONE` to explicitly configure the external IP address and ports adverti
 - [`--p2p-host`](../../reference/cli/options.md#p2p-host) and [`--p2p-port`](../../reference/cli/options.md#p2p-port) for the P2P service.
 - [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host) and [`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port) for the JSON-RPC HTTP service.
 
-The P2P and JSON-RPC HTTP hosts and ports are advertised in the [`net_services`](../../reference/api/index.md#net_services) method.
+The P2P and JSON-RPC HTTP hosts and ports are advertised in the [`net_services`](../../reference/api/net.md#net_services) method.
 
 :::tip
 
