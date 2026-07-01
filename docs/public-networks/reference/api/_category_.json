@@ -1,5 +1,5 @@
 {
-  "label": "API",
+  "label": "JSON-RPC API",
   "position": 2,
   "link": {
     "type": "doc",

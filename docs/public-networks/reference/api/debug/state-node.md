@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-State and node methods inspect account and world state, and manage node operations such as metrics, resyncing, and replaying blocks.
+These methods inspect account and world state, and manage node operations such as metrics, resyncing, and replaying blocks.
 
 ## `debug_accountAt`
 
@@ -25,7 +25,7 @@ Returns account information at the specified index of the specified block.
 
 ### Returns
 
-- Account details object with the following fields:
+- Account details object.
 
   <Fields>
 
@@ -179,7 +179,7 @@ Returns the accounts for a specified block.
 
 ### Returns
 
-- Account details object with the following fields:
+- Account details object.
 
   <Fields>
 
@@ -266,7 +266,7 @@ Sends a list of [signed transactions](../../../how-to/send-transactions.md). Thi
 
 ### Returns
 
-- Object returned for each transaction, with the following fields:
+- Object returned for each transaction.
 
   <Fields>
 
@@ -364,9 +364,7 @@ The available metrics might change over time. The JVM metrics might vary based o
 The metric types are:
 
 - Timer
-
 - Counter
-
 - Gauge
 
 ### Parameters
@@ -526,9 +524,9 @@ Re-imports the block matching the specified block number, by rolling the head of
   string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
-:::note
-`pending` returns the same value as `latest`.
-:::
+  :::note
+  `pending` returns the same value as `latest`.
+  :::
 
 ### Returns
 
@@ -752,13 +750,13 @@ Returns the contract storage for the specified range.
 
 ### Returns
 
-- Range object with the following fields:
+- Range object.
 
   <Fields>
 
-  - `storage`: _Object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
+  - `storage`: _object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
 
-  - `nextKey`: _Hash_ - Hash of next key if further storage in range. Otherwise, not included.
+  - `nextKey`: _hash_ - Hash of next key if further storage in range. Otherwise, not included.
 
   </Fields>
 

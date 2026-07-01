@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-State and account methods read account state at a given block, including balances, nonces, contract code, storage values, and Merkle proofs.
+These methods read account state at a given block, including balances, nonces, contract code, storage values, and Merkle proofs.
 
 ## `eth_getBalance`
 
@@ -260,7 +260,7 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
 ### Returns
 
-- Account details object with the following fields:
+- Account details object.
 
   <Fields>
 
@@ -274,7 +274,7 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 
   - `accountProof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `stateRoot`.
 
-  - `storageProof`: _array_ of _objects_ - List of storage entry objects with the following fields:
+  - `storageProof`: _array_ of _objects_ - List of storage entry objects.
 
     <Fields>
 
@@ -393,8 +393,6 @@ Returns the value of a storage position at a specified address.
 ### Returns
 
 - Value at the specified storage position.
-
-Calculating the correct position depends on the storage you want to retrieve.
 
 ### Example
 

@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Fee market methods query gas price and fee market information, including the base fee, blob base fee, fee history, and priority fees.
+These methods query gas price and fee market information, including the base fee, blob base fee, fee history, and priority fees.
 
 ## `eth_baseFee`
 
@@ -159,21 +159,21 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 
 ### Returns
 
-- Fee history results object with the following fields:
+- Fee history results object.
 
   <Fields>
 
-  - `oldestBlock`: _Quantity, Integer_ - Lowest number block of the returned range.
+  - `oldestBlock`: _quantity, integer_ - Lowest number block of the returned range.
 
-  - `baseFeePerGas`: _Array_ - Array of block base fees per gas, including an extra block value. The extra value is the next block after the newest block in the returned range. Returns zeroes for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
+  - `baseFeePerGas`: _array_ - Array of block base fees per gas, including an extra block value. The extra value is the next block after the newest block in the returned range. Returns zeroes for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
 
-  - `baseFeePerBlobGas`: _Array_ - Array of base fees per blob gas. Returns zeroes for blocks created before [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+  - `baseFeePerBlobGas`: _array_ - Array of base fees per blob gas. Returns zeroes for blocks created before [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
-  - `gasUsedRatio`: _Array_ - Array of block gas used ratios. These are calculated as the ratio of `gasUsed` and `gasLimit`.
+  - `gasUsedRatio`: _array_ - Array of block gas used ratios. These are calculated as the ratio of `gasUsed` and `gasLimit`.
 
-  - `blobGasUsedRatio`: _Array_ - Array of blob gas used ratios. These are calculated as the ratio of `blobGasUsed` and the max blob gas per block.
+  - `blobGasUsedRatio`: _array_ - Array of blob gas used ratios. These are calculated as the ratio of `blobGasUsed` and the max blob gas per block.
 
-  - `reward`: _Array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
+  - `reward`: _array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
 
   </Fields>
 

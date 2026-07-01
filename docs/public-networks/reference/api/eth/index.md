@@ -13,11 +13,13 @@ The `ETH` API methods allow you to interact with the blockchain.
 
 :::note
 
-Methods with an equivalent [GraphQL](../../../how-to/use-besu-api/graphql.md) query include a GraphQL request and result in the method example. The parameter and result descriptions apply to the JSON-RPC requests. The GraphQL specification is defined in the [schema].
+Methods with an equivalent [GraphQL](../../../how-to/use-besu-api/graphql.md) query include a GraphQL request and result in the method example.
+The parameter and result descriptions apply to the JSON-RPC requests.
+The GraphQL specification is defined in the [schema].
 
 :::
 
-The `ETH` API methods are grouped into the following pages.
+The `ETH` methods are grouped into the following pages.
 
 <div className="row">
 <div className="col col--6 margin-bottom--lg">
@@ -25,12 +27,13 @@ The `ETH` API methods are grouped into the following pages.
 
 #### Client and network
 
+Query client and network information.
+
 - `eth_accounts`
 - `eth_blockNumber`
 - `eth_capabilities`
 - `eth_chainId`
 - `eth_config`
-- `eth_mining`
 - `eth_protocolVersion`
 - `eth_syncing`
 
@@ -40,6 +43,8 @@ The `ETH` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/eth/block">
 
 #### Block
+
+Query blocks and their contents.
 
 - `eth_getBlockByHash`
 - `eth_getBlockByNumber`
@@ -58,6 +63,8 @@ The `ETH` API methods are grouped into the following pages.
 
 #### Transaction
 
+Retrieve transactions and transaction receipts.
+
 - `eth_getTransactionByBlockHashAndIndex`
 - `eth_getTransactionByBlockNumberAndIndex`
 - `eth_getTransactionByHash`
@@ -70,6 +77,8 @@ The `ETH` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/eth/state">
 
 #### State and account
+
+Read account state at a given block.
 
 - `eth_getBalance`
 - `eth_getCode`
@@ -85,6 +94,8 @@ The `ETH` API methods are grouped into the following pages.
 
 #### Execution
 
+Execute calls and perform actions without changing blockchain state.
+
 - `eth_call`
 - `eth_createAccessList`
 - `eth_estimateGas`
@@ -96,6 +107,8 @@ The `ETH` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/eth/fee">
 
 #### Fee market
+
+Query gas price and fee market information.
 
 - `eth_baseFee`
 - `eth_blobBaseFee`
@@ -109,6 +122,8 @@ The `ETH` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/eth/filter">
 
 #### Filter and log
+
+Manage filters and query event logs.
 
 - `eth_getFilterChanges`
 - `eth_getFilterLogs`
@@ -124,6 +139,8 @@ The `ETH` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/eth/submit">
 
 #### Submit
+
+Submit signed transactions to the network.
 
 - `eth_sendRawTransaction`
 

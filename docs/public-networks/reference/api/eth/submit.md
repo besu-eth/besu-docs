@@ -1,5 +1,5 @@
 ---
-title: Submit transaction
+title: Submit methods
 description: Besu ETH JSON-RPC API submit methods reference
 sidebar_label: Submit
 sidebar_position: 8
@@ -9,15 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Submit transaction methods submit signed transactions to the network.
-
-## `eth_sendRawTransaction`
-
-Sends a [signed transaction](../../../how-to/send-transactions.md). A transaction can send ether, deploy a contract, or interact with a contract. Set the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../../cli/options.md#rpc-tx-feecap) CLI option.
-
-You can interact with contracts using `eth_sendRawTransaction` or [`eth_call`](execute.md#eth_call).
-
-To avoid exposing your private key, create signed transactions offline and send the signed transaction data using `eth_sendRawTransaction`.
+These methods submit signed transactions to the network.
 
 :::info
 
@@ -27,15 +19,23 @@ Besu doesn't implement [`eth_sendTransaction`](../../../how-to/send-transactions
 
 :::
 
-### Parameters
+## `eth_sendRawTransaction`
 
-- `transaction`: _string_ - Signed transaction serialized to hexadecimal format.
+Sends a [signed transaction](../../../how-to/send-transactions.md). A transaction can send ether, deploy a contract, or interact with a contract. Set the maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../../cli/options.md#rpc-tx-feecap) CLI option.
+
+You can interact with contracts using `eth_sendRawTransaction` or [`eth_call`](execute.md#eth_call).
+
+To avoid exposing your private key, create signed transactions offline and send the signed transaction data using `eth_sendRawTransaction`.
 
 :::note
 
-[Creating and sending transactions](../../../how-to/send-transactions.md) includes examples of creating signed transactions using the [web3.js](https://github.com/ethereum/web3.js/) library.
+[Create and send transactions](../../../how-to/send-transactions.md) includes examples of creating signed transactions using the [web3.js](https://github.com/ethereum/web3.js/) library.
 
 :::
+
+### Parameters
+
+- `transaction`: _string_ - Signed transaction serialized to hexadecimal format.
 
 ### Returns
 

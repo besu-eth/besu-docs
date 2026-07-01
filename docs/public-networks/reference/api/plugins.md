@@ -14,9 +14,8 @@ The `PLUGINS` API methods provide plugin-related functionality.
 
 :::note
 
-The `PLUGINS` API methods are not enabled by default for JSON-RPC. To enable the `PLUGINS` API methods, 
-use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or 
-[`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `PLUGINS` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
 
 :::
 

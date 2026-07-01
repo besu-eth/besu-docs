@@ -9,21 +9,27 @@ import Link from '@docusaurus/Link';
 
 # `DEBUG` methods
 
-The `DEBUG` API methods allow you to inspect and debug the network. The `DEBUG` API is a more verbose alternative to the [`TRACE` API](../trace.md), and its main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/). Where these APIs overlap, we recommend using the [`TRACE` API](../trace.md) for production use over the `DEBUG` API. Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over `debug_traceTransaction`.
+The `DEBUG` API methods allow you to inspect and debug the network.
+The `DEBUG` API is a more verbose alternative to the [`TRACE` API](../trace.md), and its main purpose is compatibility with tools such as [Remix](https://remix.ethereum.org/).
+Where these APIs overlap, we recommend using the [`TRACE` API](../trace.md) for production use over the `DEBUG` API.
+Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_transaction` over `debug_traceTransaction`.
 
 :::note
 
-The `DEBUG` API methods are not enabled by default for JSON-RPC. To enable the `DEBUG` API methods, use the [`--rpc-http-api`](../../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../cli/options.md#rpc-ws-api) options.
+The `DEBUG` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../cli/options.md#rpc-ws-api) option.
 
 :::
 
-The `DEBUG` API methods are grouped into the following pages.
+The `DEBUG` methods are grouped into the following pages.
 
 <div className="row">
 <div className="col col--6 margin-bottom--lg">
 <Link className="card padding--md api-card" to="/public-networks/reference/api/debug/trace">
 
 #### Trace
+
+Trace transactions, blocks, and calls.
 
 - `debug_standardTraceBlockToFile`
 - `debug_standardTraceBadBlockToFile`
@@ -40,6 +46,8 @@ The `DEBUG` API methods are grouped into the following pages.
 
 #### Getters
 
+Retrieve block and transaction information.
+
 - `debug_getBadBlocks`
 - `debug_getRawBlock`
 - `debug_getRawHeader`
@@ -52,6 +60,8 @@ The `DEBUG` API methods are grouped into the following pages.
 <Link className="card padding--md api-card" to="/public-networks/reference/api/debug/state-node">
 
 #### State and node
+
+Inspect account and world state, and manage node operations.
 
 - `debug_accountAt`
 - `debug_accountRange`

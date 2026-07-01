@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Client and network methods query client and network information, such as accounts, chain ID, protocol version, configuration, and sync status.
+These methods query client and network information, such as accounts, chain ID, protocol version, configuration, and sync status.
 
 ## `eth_accounts`
 
@@ -177,66 +177,6 @@ curl -X POST http://localhost:8547/graphql \
 
 ---
 
-## `eth_chainId`
-
-Returns the [chain ID](../../../concepts/network-and-chain-id.md).
-
-### Parameters
-
-- None
-
-### Returns
-
-- Chain ID in hexadecimal.
-
-### Example
-
-<Tabs>
-
-<TabItem value="curl HTTP request" label="curl HTTP request" default>
-
-```bash
-curl -X POST http://127.0.0.1:8545/ \
-  -H "Content-Type: application/json" \
-  --data '{
-    "jsonrpc": "2.0",
-    "method": "eth_chainId",
-    "params": [],
-    "id": 51
-  }'
-```
-
-</TabItem>
-
-<TabItem value="wscat WS request" label="wscat WS request">
-
-```json
-{
-  "jsonrpc": "2.0",
-  "method": "eth_chainId",
-  "params": [],
-  "id": 51
-}
-```
-
-</TabItem>
-
-<TabItem value="JSON result" label="JSON result">
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 51,
-  "result": "0x7e2"
-}
-```
-
-</TabItem>
-
-</Tabs>
-
----
-
 ## `eth_capabilities`
 
 Returns the node's data-serving capabilities.
@@ -247,11 +187,11 @@ Returns the node's data-serving capabilities.
 
 ### Returns
 
-- Capabilities information with the following fields:
+- Capabilities information.
 
   <Fields>
 
-  - `head`: _object_ - Current chain head information:
+  - `head`: _object_ - Current chain head information.
 
     <Fields>
 
@@ -321,10 +261,10 @@ Returns the node's data-serving capabilities.
 
     </Fields>
 
-  </Fields>
+  The `oldestBlock` field is included for block-backed resources when pruning has occurred.
+  If the full chain is available, this can be `0x0`.
 
-The `oldestBlock` field is included for block-backed resources when pruning has occurred.
-If the full chain is available, this can be `0x0`.
+  </Fields>
 
 ### Example
 
@@ -401,6 +341,66 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ---
 
+## `eth_chainId`
+
+Returns the [chain ID](../../../concepts/network-and-chain-id.md).
+
+### Parameters
+
+- None
+
+### Returns
+
+- Chain ID in hexadecimal.
+
+### Example
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_chainId",
+    "params": [],
+    "id": 51
+  }'
+```
+
+</TabItem>
+
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_chainId",
+  "params": [],
+  "id": 51
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 51,
+  "result": "0x7e2"
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
 ## `eth_config`
 
 Returns the client's fork information for the current, next, and last known forks.
@@ -417,17 +417,17 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
 ### Returns
 
-- Configuration information with the following fields:
+- Configuration information.
 
   <Fields>
 
-  - `current`: _object_ - Current fork configuration:
+  - `current`: _object_ - Current fork configuration.
 
     <Fields>
 
     - `activationTime`: _number_ - Fork activation timestamp (Unix epoch seconds).
 
-    - `blobSchedule`: _object_ - Blob configuration parameters:
+    - `blobSchedule`: _object_ - Blob configuration parameters.
 
       <Fields>
 
@@ -543,66 +543,6 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ---
 
-## `eth_mining` (Deprecated)
-
-Whether the client is actively mining new blocks. Besu pauses mining while the client synchronizes with the network regardless of command settings or methods called.
-
-### Parameters
-
-- None
-
-### Returns
-
-- Indicates if the client is actively mining new blocks.
-
-### Example
-
-<Tabs>
-
-<TabItem value="curl HTTP request" label="curl HTTP request" default>
-
-```bash
-curl -X POST http://127.0.0.1:8545/ \
-  -H "Content-Type: application/json" \
-  --data '{
-    "jsonrpc": "2.0",
-    "method": "eth_mining",
-    "params": [],
-    "id": 53
-  }'
-```
-
-</TabItem>
-
-<TabItem value="wscat WS request" label="wscat WS request">
-
-```json
-{
-  "jsonrpc": "2.0",
-  "method": "eth_mining",
-  "params": [],
-  "id": 53
-}
-```
-
-</TabItem>
-
-<TabItem value="JSON result" label="JSON result">
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 53,
-  "result": true
-}
-```
-
-</TabItem>
-
-</Tabs>
-
----
-
 ## `eth_protocolVersion`
 
 Returns current Ethereum protocol version.
@@ -703,7 +643,7 @@ Returns an object with data about the synchronization status, or `false` if not 
 
 :::note
 
-Once the node reaches the head of the chain, `eth_syncing` returns false, indicating that there is no active syncing target.
+Once the node reaches the head of the chain, `eth_syncing` returns `false`, indicating that there is no active syncing target.
 
 :::
 
@@ -713,7 +653,7 @@ Once the node reaches the head of the chain, `eth_syncing` returns false, indica
 
 ### Returns
 
-- Synchronization status data object with the following fields, or `false` if not synchronizing:
+- Synchronization status data object, or `false` if not synchronizing.
 
   <Fields>
 

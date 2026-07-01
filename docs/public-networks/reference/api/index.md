@@ -1,5 +1,4 @@
 ---
-title: Besu API
 sidebar_position: 2
 description: Besu JSON-RPC API methods reference
 ---
@@ -8,16 +7,16 @@ import Postman from '../../../global/postman.md'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Besu API methods
+# Besu JSON-RPC API reference
 
-The Besu JSON-RPC API methods are grouped by namespace. Each namespace page documents its methods, with the full schema of any parameter or result object expanded inline as a nested list within the method.
+The Besu JSON-RPC API methods are grouped by namespace:
 
 | Namespace | Description |
 | --- | --- |
 | [`ADMIN`](admin.md) | Administrative functionality to manage your node. |
 | [`DEBUG`](debug/index.md) | Inspect and debug the network. |
 | [`ETH`](eth/index.md) | Interact with the blockchain, including querying blocks, transactions, logs, and account state. |
-| [`MINER`](miner.md) | Control the node's mining operation and block creation settings. |
+| [`MINER`](miner.md) | Control the node's block creation settings. |
 | [`NET`](net.md) | Network-related information. |
 | [`PLUGINS`](plugins.md) | Plugin-related functionality. |
 | [`TRACE`](trace.md) | Concise alternative to the `DEBUG` API for tracing transactions. |
@@ -40,7 +39,7 @@ Lists [enabled APIs](../../how-to/use-besu-api/json-rpc.md#api-methods-enabled-b
 
 #### Parameters
 
-None
+- None
 
 #### Returns
 

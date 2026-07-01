@@ -14,7 +14,8 @@ The `TRACE` API is a more concise alternative to the [`DEBUG` API](debug/index.m
 
 :::note
 
-The `TRACE` API methods are not enabled by default for JSON-RPC. To enable the `TRACE` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `TRACE` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
 
 :::
 
@@ -159,37 +160,37 @@ default, 512 from the head of the chain).
 
 ### Parameters
 
-- `call`: _object_ - Transaction call object with the following fields:
+- `call`: _object_ - Transaction call object.
 
   <Fields>
 
-  - `from`: _Data, 20 bytes_ - Address of the sender.
+  - `from`: _data, 20 bytes_ - Address of the sender.
 
-  - `to`: _Data, 20 bytes_ - Address of the action receiver.
+  - `to`: _data, 20 bytes_ - Address of the action receiver.
 
-  - `gas`: _Quantity, Integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
+  - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
 
-  - `gasPrice`: _Quantity, Integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+  - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-  - `maxPriorityFeePerGas`: _Quantity, Integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
+  - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
 
-  - `maxFeePerGas`: _Quantity, Integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
+  - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
 
-  - `maxFeePerBlobGas`: _Quantity, Integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+  - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
-  - `nonce`: _Quantity, Integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
+  - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
 
-  - `value`: _Quantity, Integer_ - Value transferred, in Wei.
+  - `value`: _quantity, integer_ - Value transferred, in Wei.
 
-  - `data`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
+  - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
 
-  - `input`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
+  - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
 
-  - `accessList`: _Array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../concepts/transactions/types.md#frontier-transactions) transactions.
+  - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../concepts/transactions/types.md#frontier-transactions) transactions.
 
-  - `strict`: _Tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
+  - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
 
-  - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
   </Fields>
 
@@ -455,19 +456,19 @@ the requested blocks must be within the number of
 
 ### Parameters
 
-- `traceFilterOptions`: _object_ - Trace filter options object with the following fields:
+- `traceFilterOptions`: _object_ - Trace filter options object.
 
 - `fromBLock`: _String | Tag_ - Trace starts at this block.
 
 - `toBlock`: _String | Tag_ - Trace stops at this block.
 
-- `fromAddress`: _String_ - Include only traces sent from this address.
+- `fromAddress`: _string_ - Include only traces sent from this address.
 
-- `toAddress`: _String_ - Include only traces with this destination address.
+- `toAddress`: _string_ - Include only traces with this destination address.
 
-- `after`: _Quantity_ - The offset trace number.
+- `after`: _quantity_ - The offset trace number.
 
-- `count`: _Integer_ - Number of traces to display in a batch.
+- `count`: _integer_ - Number of traces to display in a batch.
 
 ### Returns
 
@@ -794,19 +795,19 @@ default, 512 from the head of the chain).
 
 ### Returns
 
-- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md), each with the following fields:
+- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
   <Fields>
 
-  - `output`: _Boolean_ - Transaction result. 1 for success and 0 for failure.
+  - `output`: _boolean_ - Transaction result. 1 for success and 0 for failure.
 
-  - `stateDiff`: _Object_ - [State changes in the requested block](../trace-types.md#statediff).
+  - `stateDiff`: _object_ - [State changes in the requested block](../trace-types.md#statediff).
 
-  - `trace`: _Array_ - [Ordered list of calls to other contracts](../trace-types.md#trace).
+  - `trace`: _array_ - [Ordered list of calls to other contracts](../trace-types.md#trace).
 
-  - `vmTrace`: _Object_ - [Ordered list of EVM actions](../trace-types.md#vmtrace).
+  - `vmTrace`: _object_ - [Ordered list of EVM actions](../trace-types.md#vmtrace).
 
-  - `transactionHash`: _Data, 32 bytes_ - Hash of the replayed transaction.
+  - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
   </Fields>
 

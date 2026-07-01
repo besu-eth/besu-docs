@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Filter and log methods create, poll, and remove filters, and query event logs.
+These methods create, poll, and remove filters, and query event logs.
 
 ## `eth_getFilterChanges`
 
@@ -23,39 +23,35 @@ Polls the specified filter and returns an array of changes that have occurred si
 
 - If nothing changed since the last poll, an empty list; otherwise:
 
-  <Fields>
-
   - For filters created with `eth_newBlockFilter`, returns block hashes.
 
   - For filters created with `eth_newPendingTransactionFilter`, returns transaction hashes.
 
-  - For filters created with `eth_newFilter`, returns log objects, each with the following fields:
+  - For filters created with `eth_newFilter`, returns log objects.
 
     <Fields>
 
-    - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+    - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-    - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+    - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+    - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-    - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+    - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+    - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-    - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+    - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+    - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
 
-    - `address`: _Data, 20 bytes_ - Address the log originated from.
+    - `address`: _data, 20 bytes_ - Address the log originated from.
 
-    - `data`: _Data_ - Non-indexed arguments of the log.
+    - `data`: _data_ - Non-indexed arguments of the log.
 
-    - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+    - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
     </Fields>
-
-  </Fields>
 
 ### Example
 
@@ -179,29 +175,29 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-blo
 
 ### Returns
 
-- List of log objects, each with the following fields:
+- List of log objects.
 
   <Fields>
 
-  - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-  - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+  - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
-  - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
-  - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+  - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
 
-  - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+  - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
 
-  - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+  - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
 
-  - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+  - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
 
-  - `address`: _Data, 20 bytes_ - Address the log originated from.
+  - `address`: _data, 20 bytes_ - Address the log originated from.
 
-  - `data`: _Data_ - Non-indexed arguments of the log.
+  - `data`: _data_ - Non-indexed arguments of the log.
 
-  - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+  - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
   </Fields>
 
@@ -300,43 +296,49 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
 ### Parameters
 
-- `filterOptions`: _object_ - Filter options object with the following fields:
-
-- `fromBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
-
-- `toBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
-
-- `address`: _Data | Array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
-
-- `topics`: _Array of Data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
-
-- `blockHash`: _Data, 32 bytes_ - (`eth_getLogs` only) (Optional.) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
-
-### Returns
-
-- List of log objects, each with the following fields:
+- `filterOptions`: _object_ - Filter options object.
 
   <Fields>
 
-  - `removed`: _Tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `fromBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+    The default is `latest`.
 
-  - `logIndex`: _Quantity, Integer_ - Log index position in the block. `null` when log is pending.
+  - `toBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+    The default is `latest`.
 
-  - `transactionIndex`: _Quantity, Integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - `address`: _data | array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
 
-  - `transactionHash`: _Data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+  - `topics`: _array of data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
 
-  - `blockHash`: _Data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+  - `blockHash`: _data, 32 bytes_ - (Optional) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
 
-  - `blockNumber`: _Quantity_ - Number of block that includes the log. `null` when log is pending.
+  </Fields>
 
-  - `blockTimestamp`: _Quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+### Returns
 
-  - `address`: _Data, 20 bytes_ - Address the log originated from.
+- List of log objects.
 
-  - `data`: _Data_ - Non-indexed arguments of the log.
+  <Fields>
 
-  - `topics`: _Array of Data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
+  - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+
+  - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
+
+  - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+
+  - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+
+  - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+
+  - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
+
+  - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+
+  - `address`: _data, 20 bytes_ - Address the log originated from.
+
+  - `data`: _data_ - Non-indexed arguments of the log.
+
+  - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
   </Fields>
 
@@ -568,23 +570,23 @@ Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs a
 
 ### Parameters
 
-- `filterOptions`: _object_ - Filter options object with the following fields:
+- `filterOptions`: _object_ - Filter options object.
 
-- `fromBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
+  <Fields>
 
-- `toBlock`: _Quantity | Tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter). Default is `latest`.
+  - `fromBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+    The default is `latest`.
 
-- `address`: _Data | Array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
+  - `toBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+    The default is `latest`.
 
-- `topics`: _Array of Data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
+  - `address`: _data | array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
 
-- `blockHash`: _Data, 32 bytes_ - (`eth_getLogs` only) (Optional.) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
+  - `topics`: _array of data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
 
-:::note
+  - `blockHash`: _data, 32 bytes_ - (`eth_getLogs` only) (Optional) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
 
-`fromBlock` and `toBlock` in the filter options object default to `latest`.
-
-:::
+  </Fields>
 
 ### Returns
 

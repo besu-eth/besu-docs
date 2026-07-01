@@ -14,7 +14,8 @@ The `TXPOOL` API methods allow you to inspect the contents of the transaction po
 
 :::note
 
-The `TXPOOL` API methods are not enabled by default for JSON-RPC. To enable the `TXPOOL` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `TXPOOL` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
 
 :::
 
@@ -59,39 +60,39 @@ The only supported `action` is `"contract_creation"`.
 
 ### Returns
 
-- List of objects with details of the pending transaction, each with the following fields:
+- List of objects with details of the pending transaction.
 
   <Fields>
 
-  - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `from`: _Data, 20 bytes_ - Address of the sender.
+  - `from`: _data, 20 bytes_ - Address of the sender.
 
-  - `gas`: _Quantity_ - Gas provided by the sender.
+  - `gas`: _quantity_ - Gas provided by the sender.
 
-  - `gasPrice`: _Quantity_ - (Optional) Gas price, in wei, provided by the sender. Not used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `gasPrice`: _quantity_ - (Optional) Gas price, in wei, provided by the sender. Not used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+  - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-  - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+  - `hash`: _data, 32 bytes_ - Hash of the transaction.
 
-  - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+  - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
 
-  - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+  - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
 
-  - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+  - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-  - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+  - `transactionType`: _string_ - [Transaction type](../../concepts/transactions/types.md).
 
-  - `value`: _Quantity_ - Value transferred, in wei.
+  - `value`: _quantity_ - Value transferred, in wei.
 
-  - `v`: _Quantity_ - ECDSA Recovery ID.
+  - `v`: _quantity_ - ECDSA Recovery ID.
 
-  - `r`: _Data, 32 bytes_ - ECDSA signature r.
+  - `r`: _data, 32 bytes_ - ECDSA signature r.
 
-  - `s`: _Data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
   </Fields>
 
@@ -190,7 +191,7 @@ Lists statistics about the node transaction pool.
 
 ### Returns
 
-- Transaction pool statistics object with the following fields:
+- Transaction pool statistics object.
 
   <Fields>
 
@@ -330,101 +331,101 @@ sender address and sorted by nonce.
 
 ### Returns
 
-- Transaction pool content object with the following fields:
+- Transaction pool content object.
 
   <Fields>
 
   - `pending`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
-    for transactions pending inclusion in the next block, each with the following fields:
+    for transactions pending inclusion in the next block.
 
     <Fields>
 
-    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
 
-    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+    - `chainId`: _quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
 
-    - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `from`: _data, 20 bytes_ - Address of the sender.
 
-    - `gas`: _Quantity_ - Gas provided by the sender.
+    - `gas`: _quantity_ - Gas provided by the sender.
 
-    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `hash`: _data, 32 bytes_ - Hash of the transaction.
 
-    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
 
-    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
 
-    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
 
-    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+    - `transactionType`: _string_ - [Transaction type](../../concepts/transactions/types.md).
 
-    - `value`: _Quantity_ - Value transferred, in Wei.
+    - `value`: _quantity_ - Value transferred, in Wei.
 
-    - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `v`: _quantity_ - ECDSA Recovery ID.
 
-    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+    - `r`: _data, 32 bytes_ - ECDSA signature r.
 
-    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+    - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
 
   - `queued`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
-    for transactions scheduled for future execution, each with the following fields:
+    for transactions scheduled for future execution.
 
     <Fields>
 
-    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
 
-    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+    - `chainId`: _quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
 
-    - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `from`: _data, 20 bytes_ - Address of the sender.
 
-    - `gas`: _Quantity_ - Gas provided by the sender.
+    - `gas`: _quantity_ - Gas provided by the sender.
 
-    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `hash`: _data, 32 bytes_ - Hash of the transaction.
 
-    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
 
-    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
 
-    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
 
-    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+    - `transactionType`: _string_ - [Transaction type](../../concepts/transactions/types.md).
 
-    - `value`: _Quantity_ - Value transferred, in Wei.
+    - `value`: _quantity_ - Value transferred, in Wei.
 
-    - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `v`: _quantity_ - ECDSA Recovery ID.
 
-    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+    - `r`: _data, 32 bytes_ - ECDSA signature r.
 
-    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+    - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
 
@@ -528,95 +529,95 @@ Returns the pending and queued transactions for a given sender address.
 
 - Transaction pool content for the given address:
 
-  - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address, each with the following fields:
+  - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address.
 
     <Fields>
 
-    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
 
-    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+    - `chainId`: _quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
 
-    - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `from`: _data, 20 bytes_ - Address of the sender.
 
-    - `gas`: _Quantity_ - Gas provided by the sender.
+    - `gas`: _quantity_ - Gas provided by the sender.
 
-    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `hash`: _data, 32 bytes_ - Hash of the transaction.
 
-    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
 
-    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
 
-    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
 
-    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+    - `transactionType`: _string_ - [Transaction type](../../concepts/transactions/types.md).
 
-    - `value`: _Quantity_ - Value transferred, in Wei.
+    - `value`: _quantity_ - Value transferred, in Wei.
 
-    - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `v`: _quantity_ - ECDSA Recovery ID.
 
-    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+    - `r`: _data, 32 bytes_ - ECDSA signature r.
 
-    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+    - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
 
-  - `queued`: _object_ - Map of nonces to transaction objects for queued transactions from the given address, each with the following fields:
+  - `queued`: _object_ - Map of nonces to transaction objects for queued transactions from the given address.
 
     <Fields>
 
-    - `accessList`: _Array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `blockHash`: _Data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockNumber`: _Quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
 
-    - `blockTimestamp`: _Quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
 
-    - `chainId`: _Quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
+    - `chainId`: _quantity_ - [Chain ID](../../concepts/network-and-chain-id.md).
 
-    - `from`: _Data, 20 bytes_ - Address of the sender.
+    - `from`: _data, 20 bytes_ - Address of the sender.
 
-    - `gas`: _Quantity_ - Gas provided by the sender.
+    - `gas`: _quantity_ - Gas provided by the sender.
 
-    - `gasPrice`: _Quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-    - `maxPriorityFeePerGas`: _Quantity, Integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `maxFeePerGas`: _Quantity, Integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions).
 
-    - `hash`: _Data, 32 bytes_ - Hash of the transaction.
+    - `hash`: _data, 32 bytes_ - Hash of the transaction.
 
-    - `input`: _Data_ - Data sent with the transaction to create or invoke a contract.
+    - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
 
-    - `nonce`: _Quantity_ - Number of transactions made by the sender before this one.
+    - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
 
-    - `to`: _Data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
 
-    - `transactionIndex`: _Quantity, Integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
 
-    - `transactionType`: _String_ - [Transaction type](../../concepts/transactions/types.md).
+    - `transactionType`: _string_ - [Transaction type](../../concepts/transactions/types.md).
 
-    - `value`: _Quantity_ - Value transferred, in Wei.
+    - `value`: _quantity_ - Value transferred, in Wei.
 
-    - `v`: _Quantity_ - ECDSA Recovery ID.
+    - `v`: _quantity_ - ECDSA Recovery ID.
 
-    - `r`: _Data, 32 bytes_ - ECDSA signature r.
+    - `r`: _data, 32 bytes_ - ECDSA signature r.
 
-    - `s`: _Data, 32 bytes_ - ECDSA signature s.
+    - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
 
@@ -727,7 +728,7 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
 
 ### Returns
 
-- Transaction pool inspect object with the following fields:
+- Transaction pool inspect object.
 
   <Fields>
 

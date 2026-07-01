@@ -14,7 +14,8 @@ The `ADMIN` API methods provide administrative functionality to manage your node
 
 :::note
 
-The `ADMIN` API methods are not enabled by default for JSON-RPC. To enable the `ADMIN` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `ADMIN` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
 
 :::
 
@@ -34,7 +35,7 @@ If connections are timing out, ensure the node ID in the [enode URL](../../conce
 
 ### Returns
 
-- `true` if peer added or `false` if peer already a [static node](../../how-to/connect/static-nodes.md).
+- `true` if peer added or `false` if peer is already a [static node](../../how-to/connect/static-nodes.md).
 
 ### Example
 
@@ -218,7 +219,8 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `admin_generateLogBloomCache`
 
-Generates cached log bloom indexes for blocks. APIs calls such as [`eth_getLogs`](eth/filter.md#eth_getlogs) and [`eth_getFilterLogs`](eth/filter.md#eth_getfilterlogs) use the cache for improved performance.
+Generates cached log bloom indexes for blocks.
+API methods such as [`eth_getLogs`](eth/filter.md#eth_getlogs) and [`eth_getFilterLogs`](eth/filter.md#eth_getfilterlogs) use the cache for improved performance.
 
 :::tip
 
@@ -240,7 +242,7 @@ Each index file contains 100000 blocks. The last fragment of blocks less than 10
 
 ### Returns
 
-- Log bloom index details:
+- Log bloom index details.
 
   <Fields>
 
@@ -252,7 +254,7 @@ Each index file contains 100000 blocks. The last fragment of blocks less than 10
 
   - `indexing`: _boolean_ - Indicates if indexing is in progress.
 
-  - _boolean_ - Indicates acceptance of the request from this call to generate the cache.
+  - `requestAccepted`: _boolean_ - Indicates acceptance of the request from this call to generate the cache.
 
   </Fields>
 
@@ -406,7 +408,8 @@ Repairs cached logs by fixing all segments starting with the specified block num
 
 ### Parameters
 
-- `startBlock`: _string_ - Decimal index of the starting block to fix; defaults to the head block.
+- `startBlock`: _string_ - Decimal index of the starting block to fix.
+  The default is the head block.
 
 ### Returns
 
@@ -476,7 +479,7 @@ Returns networking information about the node. The information includes general 
 
 ### Returns
 
-- Node object with the following fields:
+- Node object.
 
   <Fields>
 
@@ -514,13 +517,15 @@ Returns networking information about the node. The information includes general 
 
   - `protocols`: _object_ - List of objects containing information for each Ethereum sub-protocol.
 
+  <br />
+  
+  :::note
+
+  If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
+
+  :::
+
   </Fields>
-
-:::note
-
-If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
-
-:::
 
 ### Example
 
@@ -618,7 +623,7 @@ Returns networking information about connected remote nodes.
 
 ### Returns
 
-- List of objects returned for each remote node, with the following fields.
+- List of objects returned for each remote node.
 
   <Fields>
 
@@ -719,7 +724,7 @@ Removes a [static node](../../how-to/connect/static-nodes.md).
 
 ### Returns
 
-- `true` if peer removed or `false` if peer not a [static node](../../how-to/connect/static-nodes.md).
+- `true` if peer removed or `false` if peer is not a [static node](../../how-to/connect/static-nodes.md).
 
 ### Example
 

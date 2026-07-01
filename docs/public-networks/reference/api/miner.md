@@ -10,12 +10,12 @@ import TabItem from '@theme/TabItem';
 
 # `MINER` methods
 
-The `MINER` API methods allow you to control the node's mining operation, or settings related to
-block creation in general. 
+The `MINER` API methods allow you to control settings related to block creation. 
 
 :::note
 
-The `MINER` API methods are not enabled by default for JSON-RPC. To enable the `MINER` API methods, use the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) options.
+The `MINER` API is not enabled by default for JSON-RPC.
+Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
 
 :::
 

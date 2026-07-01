@@ -9,7 +9,7 @@ toc_max_heading_level: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Trace methods trace transactions, blocks, and calls to inspect low-level execution.
+These methods trace transactions, blocks, and calls to inspect low-level execution.
 
 ## `debug_standardTraceBlockToFile`
 
@@ -23,21 +23,25 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 - `blockHash`: _string_ - Block hash.
 
-- Optional second parameter _object_ (all keys optional):
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
-  - `disableMemory`: _boolean_ - Omit EVM memory from the trace; defaults to `false`.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
+    The default is `true`.
 
-  - `disableStack`: _boolean_ - Omit stack from the trace; defaults to `false`.
+  - `disableStack`: _boolean_ - `true` disables stack capture.
+    The default is `false`.
 
-  - `disableStorage`: _boolean_ - Omit storage from the trace; defaults to `false`.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
+    The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture.
+    The default is `false`.
 
   </Fields>
 
@@ -117,21 +121,25 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 - `blockHash`: _string_ - Block hash.
 
-- Optional second parameter _object_ (all keys optional):
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
-  - `disableMemory`: _boolean_ - Omit EVM memory from the trace; defaults to `true`.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
+    The default is `true`.
 
-  - `disableStack`: _boolean_ - Omit stack from the trace; defaults to `false`.
+  - `disableStack`: _boolean_ - `true` disables stack capture.
+    The default is `false`.
 
-  - `disableStorage`: _boolean_ - Omit storage from the trace; defaults to `true`.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
+    The default is `false`.
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture.
+    The default is `false`.
 
   </Fields>
 
@@ -203,7 +211,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
 - `transactionHash`: _string_ - Transaction hash.
 
-- `options`: _object_ - Request options object with the following fields (all optional):
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
@@ -224,39 +232,39 @@ Reruns the transaction with the same state as when the transaction executed.
 
 ### Returns
 
-- Trace object with the following fields:
+- Trace object.
 
   <Fields>
 
-  - `gas`: _Integer_ - Gas used by the transaction.
+  - `gas`: _integer_ - Gas used by the transaction.
 
-  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
+  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
+  - `returnValue`: _string_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+  - `structLogs`: _array_ - Array of structured log objects.
 
     <Fields>
 
-    - `pc`: _Integer_ - Current program counter.
+    - `pc`: _integer_ - Current program counter.
 
-    - `op`: _String_ - Current OpCode.
+    - `op`: _string_ - Current opcode.
 
-    - `gas`: _Integer_ - Gas remaining.
+    - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Cost in wei of each gas unit.
 
-    - `depth`: _Integer_ - Execution depth.
+    - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
-    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
 
-    - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Storage entries changed by the current transaction.
 
-    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
 
@@ -345,7 +353,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `block`: _string_ - RLP of the block.
 
-- `options`: _object_ - (Optional) Request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
@@ -366,39 +374,39 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-- Trace object with the following fields:
+- Trace object.
 
   <Fields>
 
-  - `gas`: _Integer_ - Gas used by the transaction.
+  - `gas`: _integer_ - Gas used by the transaction.
 
-  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
+  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
+  - `returnValue`: _string_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+  - `structLogs`: _array_ - Array of structured log objects.
 
     <Fields>
 
-    - `pc`: _Integer_ - Current program counter.
+    - `pc`: _integer_ - Current program counter.
 
-    - `op`: _String_ - Current OpCode.
+    - `op`: _string_ - Current opcode.
 
-    - `gas`: _Integer_ - Gas remaining.
+    - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Cost in wei of each gas unit.
 
-    - `depth`: _Integer_ - Execution depth.
+    - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
-    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
 
-    - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Storage entries changed by the current transaction.
 
-    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
 
@@ -478,7 +486,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `blockHash`: _string_ - Block hash.
 
-- `options`: _object_ - (Optional) Request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
@@ -499,39 +507,39 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-- List of trace objects, each with the following fields:
+- List of trace objects.
 
   <Fields>
 
-  - `gas`: _Integer_ - Gas used by the transaction.
+  - `gas`: _integer_ - Gas used by the transaction.
 
-  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
+  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
+  - `returnValue`: _string_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+  - `structLogs`: _array_ - Array of structured log objects.
 
     <Fields>
 
-    - `pc`: _Integer_ - Current program counter.
+    - `pc`: _integer_ - Current program counter.
 
-    - `op`: _String_ - Current OpCode.
+    - `op`: _string_ - Current opcode.
 
-    - `gas`: _Integer_ - Gas remaining.
+    - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Cost in wei of each gas unit.
 
-    - `depth`: _Integer_ - Execution depth.
+    - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
-    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
 
-    - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Storage entries changed by the current transaction.
 
-    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
 
@@ -619,7 +627,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _object_ - (Optional) Request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
@@ -640,39 +648,39 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 ### Returns
 
-- List of trace objects, each with the following fields:
+- List of trace objects.
 
   <Fields>
 
-  - `gas`: _Integer_ - Gas used by the transaction.
+  - `gas`: _integer_ - Gas used by the transaction.
 
-  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
+  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
+  - `returnValue`: _string_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+  - `structLogs`: _array_ - Array of structured log objects.
 
     <Fields>
 
-    - `pc`: _Integer_ - Current program counter.
+    - `pc`: _integer_ - Current program counter.
 
-    - `op`: _String_ - Current OpCode.
+    - `op`: _string_ - Current opcode.
 
-    - `gas`: _Integer_ - Gas remaining.
+    - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Cost in wei of each gas unit.
 
-    - `depth`: _Integer_ - Execution depth.
+    - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
-    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
 
-    - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Storage entries changed by the current transaction.
 
-    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
 
@@ -761,37 +769,37 @@ temporary state changes without affecting the actual blockchain state.
 
 ### Parameters
 
-- `call`: _object_ - Transaction call object with the following fields:
+- `call`: _object_ - Transaction call object.
 
   <Fields>
 
-  - `from`: _Data, 20 bytes_ - Address of the sender.
+  - `from`: _data, 20 bytes_ - Address of the sender.
 
-  - `to`: _Data, 20 bytes_ - Address of the action receiver.
+  - `to`: _data, 20 bytes_ - Address of the action receiver.
 
-  - `gas`: _Quantity, Integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
+  - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
 
-  - `gasPrice`: _Quantity, Integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+  - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
 
-  - `maxPriorityFeePerGas`: _Quantity, Integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
+  - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
 
-  - `maxFeePerGas`: _Quantity, Integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
+  - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
 
-  - `maxFeePerBlobGas`: _Quantity, Integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](../ https://eips.ethereum.org/EIPS/eip-4844).
+  - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
-  - `nonce`: _Quantity, Integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
+  - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
 
-  - `value`: _Quantity, Integer_ - Value transferred, in Wei.
+  - `value`: _quantity, integer_ - Value transferred, in Wei.
 
-  - `data`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
+  - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
 
-  - `input`: _Data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
+  - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
 
-  - `accessList`: _Array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
+  - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
 
-  - `strict`: _Tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
+  - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
 
-  - `blobVersionedHashes`: _Array_ - List of references to blobs introduced in [EIP-4844](../ https://eips.ethereum.org/EIPS/eip-4844).
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
   </Fields>
 
@@ -803,42 +811,42 @@ temporary state changes without affecting the actual blockchain state.
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _object_ - Request options object with the following fields:
+- `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
 
-  - `disableStorage`: _boolean_ - (Optional) `true` disables storage capture.
+  - `disableStorage`: _boolean_ - `true` disables storage capture.
     The default is `false`.
 
-  - `enableMemory`: _boolean_ - (Optional) `true` enables memory capture.
+  - `enableMemory`: _boolean_ - `true` enables memory capture.
     The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
 
-  - `disableMemory`: _boolean_ - (Optional) `true` disables memory capture.
+  - `disableMemory`: _boolean_ - `true` disables memory capture.
     The default is `true`.
 
-  - `disableStack` : _boolean_ - (Optional) `true` disables stack capture.
+  - `disableStack` : _boolean_ - `true` disables stack capture.
     The default is `false`.
 
-  - `opcodes`: _array_ of _strings_ - (Optional) List of opcode names to trace; if omitted or empty, all opcodes are traced.
+  - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - (Optional) `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
-  - `stateOverrides`: _object_ - (Optional) Address-to-state mapping, with the following fields:
+  - `stateOverrides`: _object_ - Address-to-state mapping.
 
     <Fields>
 
-    - `balance`: _Quantity_ - Temporary account balance for the call execution.
+    - `balance`: _quantity_ - Temporary account balance for the call execution.
 
-    - `nonce`: _Quantity_ - Temporary nonce value for the call execution.
+    - `nonce`: _quantity_ - Temporary nonce value for the call execution.
 
-    - `code`: _Binary_ - Bytecode to inject into the account.
+    - `code`: _binary_ - Bytecode to inject into the account.
 
-    - `movePrecompileToAddress`: _Data, 20 bytes_ - Address to which the precompile address should be moved.
+    - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
 
-    - `state`: _Quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+    - `state`: _quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-    - `stateDiff`: _Quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+    - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
     </Fields>
 
@@ -846,39 +854,39 @@ temporary state changes without affecting the actual blockchain state.
 
 ### Returns
 
-- List of trace objects, each with the following fields:
+- List of trace objects.
 
   <Fields>
 
-  - `gas`: _Integer_ - Gas used by the transaction.
+  - `gas`: _integer_ - Gas used by the transaction.
 
-  - `failed`: _Boolean_ - True if transaction failed, otherwise, false.
+  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-  - `returnValue`: _String_ - Bytes returned from transaction execution (without a `0x` prefix).
+  - `returnValue`: _string_ - Bytes returned from transaction execution (without a `0x` prefix).
 
-  - `structLogs`: _Array_ - Array of structured log objects, each with the following fields:
+  - `structLogs`: _array_ - Array of structured log objects.
 
     <Fields>
 
-    - `pc`: _Integer_ - Current program counter.
+    - `pc`: _integer_ - Current program counter.
 
-    - `op`: _String_ - Current OpCode.
+    - `op`: _string_ - Current opcode.
 
-    - `gas`: _Integer_ - Gas remaining.
+    - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _Integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Cost in wei of each gas unit.
 
-    - `depth`: _Integer_ - Execution depth.
+    - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _Array_ - One or more strings representing an error condition causing the EVM execution to terminate. These strings suggest that EVM execution terminated for reasons such as running out of gas or attempting to execute an unknown instruction. Generally a single exceptional halt reason returns but it's possible for more than one to occur at once.
+    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _Array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
-    - `memory`: _Array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
 
-    - `storage`: _Object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Storage entries changed by the current transaction.
 
-    - `returnData`: _Data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
 
