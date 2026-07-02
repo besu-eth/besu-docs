@@ -283,22 +283,6 @@ Returns the [network ID](../../concepts/network-and-chain-id.md).
 
 - Current network ID.
 
-| Network ID | Chain  | Network | Description                   |
-| ---------- | -------| ------- | ----------------------------- |
-| `1`        | ETH    | Mainnet | Main Ethereum network         |
-| `560048`   | ETH    | Hoodi   | Ethereum PoS test network     |
-| `11155111` | ETH    | Sepolia | Ethereum PoS test network     |
-| `2018`     | ETH    | Dev     | Ethereum PoW development network|
-| `59144`    | Linea  | Mainnet | Main Linea network            |
-| `59141`    | Linea  | Testnet | Linea Sepolia testnet         |
-| `4201`     | Lukso  | Mainnet | Main Lukso network            |
-
-:::note
-
-For almost all networks, network ID and chain ID are the same. For Ephemery, the network ID is dynamic.
-
-:::
-
 ### Example
 
 <Tabs>

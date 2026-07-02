@@ -30,7 +30,8 @@ those plugins are reloaded. This method awaits all reloads before returning its 
 
 ### Returns
 
-- `Success`.
+- `Success` if the plugins reload.
+  If one or more plugins fail, the error response provides a comma-separated list of `<pluginName>:success` or `<pluginName>:failure (reason)`.
 
 ### Example
 
@@ -77,13 +78,6 @@ curl -X POST http://127.0.0.1:8545/ \
   "result": "Success"
 }
 ```
-
-:::note
-
-If one or more plugins fail, the error response provides a comma-separated list of `pluginName`:success or 
-`pluginName`:failure (reason).
-
-:::
 
 </TabItem>
 

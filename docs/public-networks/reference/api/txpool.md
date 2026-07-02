@@ -29,34 +29,39 @@ Lists pending transactions that match the supplied filter conditions.
 
 - `fields`: _object_ - Object of fields used to create the filter condition.
 
-Each field in the object corresponds to a field name containing an operator, and a value for the operator. A field name can only be specified once, and can only contain one operator. For example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the `gt` and `lt` operator in the same field name instance.
+  <Fields>
 
-All filters must be satisfied for a transaction to be returned.
+  Each field in the object corresponds to a field name containing an operator, and a value for the operator.
+  A field name can only be specified once, and can only contain one operator.
+  For example, you cannot query transactions with a gas price between 8 and 9 Gwei by using both the `gt` and `lt` operator in the same field name instance.
 
-| Field name | Value | Value type | Supported operators |
-| --- | --- | :-: | --- |
-| `from` | Address of the sender. | _Data_, 20&nbsp;bytes | `eq` |
-| `to` | Address of the receiver, or `"contract_creation"`. | _Data_, 20&nbsp;bytes | `eq`, `action` |
-| `gas` | Gas provided by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
-| `gasPrice` | Gas price, in wei, provided by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
-| `value` | Value transferred, in wei. | _Quantity_ | `eq`, `gt`, `lt` |
-| `nonce` | Number of transactions made by the sender. | _Quantity_ | `eq`, `gt`, `lt` |
+  All filters must be satisfied for a transaction to be returned.
 
-Supported operators:
+  :::note
+ 
+  The available operators are `eq` (equal to), `lt` (less than), `gt` (greater than), and `action`.
+  The only supported `action` is `"contract_creation"`.
 
-- `eq` (equal to)
+  :::
 
-- `lt` (less than)
+  - `from`: _data, 20 bytes_ - Address of the sender. Supported operator: `eq`.
 
-- `gt` (greater than)
+  - `to`: _data, 20 bytes_ - Address of the receiver, or `"contract_creation"`.
+    Supported operators: `eq`, `action`.
 
-- `action`
+  - `gas`: _quantity_ - Gas provided by the sender.
+    Supported operators: `eq`, `gt`, `lt`.
 
-:::note
+  - `gasPrice`: _quantity_ - Gas price, in wei, provided by the sender.
+    Supported operators: `eq`, `gt`, `lt`.
 
-The only supported `action` is `"contract_creation"`.
+  - `value`: _quantity_ - Value transferred, in wei.
+    Supported operators: `eq`, `gt`, `lt`.
 
-:::
+  - `nonce`: _quantity_ - Number of transactions made by the sender.
+    Supported operators: `eq`, `gt`, `lt`.
+
+  </Fields>
 
 ### Returns
 
@@ -527,7 +532,9 @@ Returns the pending and queued transactions for a given sender address.
 
 ### Returns
 
-- Transaction pool content for the given address:
+- Transaction pool content for the given address.
+
+  <Fields>
 
   - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address.
 
@@ -620,6 +627,8 @@ Returns the pending and queued transactions for a given sender address.
     - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
+
+  </Fields>
 
 ### Example
 
@@ -808,13 +817,17 @@ Returns the number of pending and queued transactions in the pool.
 
 ### Returns
 
-- Transaction count details:
+- Transaction count details.
+
+  <Fields>
 
   - `pending`: _string_ - Count of the transactions currently pending for inclusion in the next
     block or blocks.
 
   - `queued`: _string_ - Count of the transactions that are scheduled for future execution
     (transactions with nonce gaps).
+
+  </Fields>
 
 ### Example
 
