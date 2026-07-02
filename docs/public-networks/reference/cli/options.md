@@ -883,7 +883,11 @@ discovery-dns-url="enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPR
 
 </Tabs>
 
-The `enrtree` URL of the DNS node list for [node discovery via DNS](https://eips.ethereum.org/EIPS/eip-1459). The default is `null`.
+The `enrtree` URL of the DNS node list for [node discovery via DNS](https://eips.ethereum.org/EIPS/eip-1459).
+
+The default is `null`, which uses the `enrtree` URL embedded in the network's genesis configuration, if one is present.
+Set this option to an empty string (`""`) to explicitly disable DNS-based peer discovery, even on
+networks that include an `enrtree` URL in their genesis configuration.
 
 ### `discovery-enabled`
 
