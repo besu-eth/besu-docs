@@ -7,8 +7,6 @@ toc_max_heading_level: 3
 
 import TestAccounts from '../../global/test_accounts.md';
 
-import Postman from '../../global/postman.md';
-
 # Developer Quickstart
 
 The Besu Developer Quickstart generates a local private [QBFT](../how-to/configure/consensus/qbft.md) network of Besu nodes managed by Docker Compose.

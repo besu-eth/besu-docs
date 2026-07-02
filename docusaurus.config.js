@@ -276,7 +276,7 @@ const config = {
         selectors: [
           "div.docusaurus-mermaid-container",
           "div.mermaid[data-processed=\"true\"]",
-          ".theme-doc-markdown img:not([alt=\"Run in Postman\"])",
+          ".theme-doc-markdown img",
           ".drawio",
         ],
         toolbar: {

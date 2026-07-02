@@ -5,7 +5,6 @@ description: Besu JSON-RPC API methods reference
 toc_max_heading_level: 3
 ---
 
-import Postman from '../../../global/postman.md'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -18,8 +17,6 @@ import TabItem from '@theme/TabItem';
 - Most example requests are made against private networks. Depending on network configuration and activity, your example results might be different.
 
 :::
-
-<Postman />
 
 ## `ADMIN` methods
 
