@@ -27,20 +27,23 @@ Besu supports [UPnP](specify-nat.md) for home or small office environments where
 ## P2P networking
 
 To enable peer discovery, the P2P UDP port must be open for inbound connections.
-Specify the P2P port using the [`--p2p-port`](../../reference/cli/options.md#p2p-port) or 
-[`--p2p-port-ipv6`](../../reference/cli/options.md#p2p-port-ipv6) option.
+Specify the P2P port using [`--p2p-port`](../../reference/cli/options.md#p2p-port) (and
+[`--p2p-port-ipv6`](../../reference/cli/options.md#p2p-port-ipv6) for dual-stack).
 
 :::tip Early access feature
-To use IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
+Options that end in `ipv6` configure [dual-stack networking](../../concepts/ipv6-dual-stack.md).
+Dual-stack requires discovery v5, an early access feature.
+Set `--Xv5-discovery-enabled` to `true` to use these options.
 :::
 
 We also recommend opening the P2P TCP port for inbound connections. This is not strictly required because Besu attempts to open outbound TCP connections. But if no nodes on the network are accepting inbound TCP connections, nodes cannot communicate.
 
-To specify the P2P host, set the [`--p2p-host`](../../reference/cli/options.md#p2p-host) or [`--p2p-host-ipv6`](../../reference/cli/options.md#p2p-host-ipv6) option.
+To specify the P2P host, set [`--p2p-host`](../../reference/cli/options.md#p2p-host)
+(and [`--p2p-host-ipv6`](../../reference/cli/options.md#p2p-host-ipv6) for dual-stack).
 
 By default, peer discovery listens on all available network interfaces.
-If the device Besu is running on must bind to a specific network interface, specify the interface using the [`--p2p-interface`](../../reference/cli/options.md#p2p-interface) or
-[`--p2p-interface-ipv6`](../../reference/cli/options.md#p2p-interface-ipv6) option.
+If the device Besu is running on must bind to a specific network interface, specify the interface using [`--p2p-interface`](../../reference/cli/options.md#p2p-interface)
+(and [`--p2p-interface-ipv6`](../../reference/cli/options.md#p2p-interface-ipv6) for dual-stack).
 
 ## JSON-RPC API
 
