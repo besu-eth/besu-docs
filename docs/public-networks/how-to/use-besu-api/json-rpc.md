@@ -4,7 +4,6 @@ sidebar_position: 1
 description: How to access the Besu API using JSON-RPC
 ---
 
-import Postman from '../../../global/postman.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -29,8 +28,6 @@ To enable JSON-RPC over an [IPC socket](index.md#socket-path), use the `--Xrpc-i
 :::
 
 Subscription methods (`eth_subscribe`, `eth_unsubscribe`) are supported over IPC as well as WebSocket, but not over HTTP. See [RPC Pub/Sub over WebSockets and IPC](rpc-pubsub.md).
-
-<Postman />
 
 ## Geth console
 

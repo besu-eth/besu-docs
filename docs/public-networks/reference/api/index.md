@@ -3,7 +3,6 @@ sidebar_position: 2
 description: Besu JSON-RPC API methods reference
 ---
 
-import Postman from '../../../global/postman.md'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
