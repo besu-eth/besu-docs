@@ -48,7 +48,7 @@ Enabling revert reason may use a significant amount of memory. We do not recomme
 
 ## Where the revert reason is included
 
-With revert reason enabled, the transaction receipt returned by [`eth_getTransactionReceipt`](../../../public-networks/reference/api/index.md#eth_gettransactionreceipt) includes the revert reason as an ABI-encoded string.
+With revert reason enabled, the transaction receipt returned by [`eth_getTransactionReceipt`](../../../public-networks/reference/api/eth/transaction.md#eth_gettransactionreceipt) includes the revert reason as an ABI-encoded string.
 
 :::info
 
@@ -80,7 +80,7 @@ Nodes that sync without executing historical blocks ([snap sync](../../../public
 }
 ```
 
-With revert reason enabled, the list items in the [`trace`](../../../public-networks/reference/trace-types.md#trace) response returned by [`trace_replayBlockTransactions`](../../../public-networks/reference/api/index.md#trace_replayblocktransactions), [`trace_block`](../../../public-networks/reference/api/index.md#trace_block), and [`trace_transaction`](../../../public-networks/reference/api/index.md#trace_transaction) include the revert reason as an ABI-encoded string.
+With revert reason enabled, the list items in the [`trace`](../../../public-networks/reference/trace-types.md#trace) response returned by [`trace_replayBlockTransactions`](../../../public-networks/reference/api/trace.md#trace_replayblocktransactions), [`trace_block`](../../../public-networks/reference/api/trace.md#trace_block), and [`trace_transaction`](../../../public-networks/reference/api/trace.md#trace_transaction) include the revert reason as an ABI-encoded string.
 
 ```json title="Example of trace response list item"
 {
@@ -110,7 +110,7 @@ With revert reason enabled, the list items in the [`trace`](../../../public-netw
 }
 ```
 
-By default, the error returned by [`eth_estimateGas`](../../../public-networks/reference/api/index.md#eth_estimategas) and [`eth_call`](../../../public-networks/reference/api/index.md#eth_call) includes the revert reason as an ABI-encoded string in the `data` field.
+By default, the error returned by [`eth_estimateGas`](../../../public-networks/reference/api/eth/execute.md#eth_estimategas) and [`eth_call`](../../../public-networks/reference/api/eth/execute.md#eth_call) includes the revert reason as an ABI-encoded string in the `data` field.
 
 ```json title="Example of eth_estimateGas and eth_call error"
 {

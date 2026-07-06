@@ -23,7 +23,7 @@ For most use cases, the basic method provides enough configurability.
 
 :::tip
 
-Use the [`admin_changeLogLevel`](../../reference/api/index.md#admin_changeloglevel) API method to change the log level while Besu is running.
+Use the [`admin_changeLogLevel`](../../reference/api/admin.md#admin_changeloglevel) API method to change the log level while Besu is running.
 
 :::
 

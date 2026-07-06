@@ -139,7 +139,7 @@ Each index file contains 100000 blocks. The last fragment of blocks less that 10
 
 :::
 
-To generate cached log bloom indexes while the node is running, use the [`admin_generateLogBloomCache`](../api/index.md#admin_generatelogbloomcache) API.
+To generate cached log bloom indexes while the node is running, use the [`admin_generateLogBloomCache`](../api/admin.md#admin_generatelogbloomcache) API.
 
 ## `password`
 

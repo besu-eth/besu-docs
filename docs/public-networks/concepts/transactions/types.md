@@ -10,10 +10,10 @@ You can interact with the Besu JSON-RPC API using different transaction types (s
 
 The following API objects use a unique format for each `transactionType`:
 
-- [Pending transaction object](../../reference/api/objects.md#pending-transaction-object)
-- [Transaction object](../../reference/api/objects.md#transaction-object)
-- [Transaction call object](../../reference/api/objects.md#transaction-call-object)
-- [Transaction receipt object](../../reference/api/objects.md#transaction-receipt-object)
+- [Pending transaction object](../../reference/api/txpool.md#txpool_besupendingtransactions)
+- [Transaction object](../../reference/api/eth/transaction.md#eth_gettransactionbyhash)
+- [Transaction call object](../../reference/api/eth/execute.md#eth_call)
+- [Transaction receipt object](../../reference/api/eth/transaction.md#eth_gettransactionreceipt)
 
 ## `FRONTIER` transactions
 
@@ -23,7 +23,7 @@ Transactions with type `FRONTIER` are _legacy transactions_ that use the transac
 
 Transactions with type `ACCESS_LIST` are transactions introduced in [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930). They contain, along with the [legacy parameters](#frontier-transactions), an `accessList` parameter, which specifies an array of addresses and storage keys that the transaction plans to access (an _access list_). `ACCESS_LIST` transactions must specify an access list, and they don't incorporate [EIP-1559 fee market changes](#eip1559-transactions).
 
-Use the [`eth_createAccessList`](../../reference/api/index.md#eth_createaccesslist) API to simulate a transaction which returns the addresses and storage keys that may be used to send the real transaction, and the approximate gas cost.
+Use the [`eth_createAccessList`](../../reference/api/eth/execute.md#eth_createaccesslist) API to simulate a transaction which returns the addresses and storage keys that may be used to send the real transaction, and the approximate gas cost.
 
 ## `EIP1559` transactions
 
@@ -69,8 +69,8 @@ Configure the maximum number of blobs per block and transaction using the
 
 ### View blob transaction costs
 
-Use the [`eth_blobBaseFee`](../../reference/api/index.md#eth_blobbasefee) method to view the current base
+Use the [`eth_blobBaseFee`](../../reference/api/eth/fee.md#eth_blobbasefee) method to view the current base
 fee per blob gas in wei.
 
-You can also use [`eth_feeHistory`](../../reference/api/index.md#eth_feehistory) to view the historical
+You can also use [`eth_feeHistory`](../../reference/api/eth/fee.md#eth_feehistory) to view the historical
 blob transaction cost details.
