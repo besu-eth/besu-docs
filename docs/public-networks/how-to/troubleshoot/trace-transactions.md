@@ -12,7 +12,9 @@ The `TRACE` API has two sets of trace calls, [ad-hoc tracing APIs](#ad-hoc-traci
 
 ## Ad-hoc tracing APIs
 
-These APIs allow you to use the [`trace`, `vmTrace`, or `stateDiff`](../../reference/trace-types.md) diagnostic options when tracing calls or transactions.
+These APIs allow you to use the [`trace`](../../reference/api/trace.md#trace),
+[`vmTrace`](../../reference/api/trace.md#vmtrace), or
+[`stateDiff`](../../reference/api/trace.md#statediff) diagnostic options when tracing calls or transactions.
 
 When using [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries) with the ad-hoc
 tracing APIs, the requested block or transaction must be within the number of
@@ -28,7 +30,7 @@ The ad-hoc tracing APIs are:
 
 ## Transaction-trace filtering APIs
 
-These APIs allow you to filter and search by specific information such as the block, address, or transaction. These APIs only use the [`trace` type](../../reference/trace-types.md#trace).
+These APIs allow you to filter and search by specific information such as the block, address, or transaction. These APIs only use the [`trace`](../../reference/api/trace.md#trace) type.
 
 To use the transaction-trace filtering APIs, your node must be an
 [archive node](../../concepts/node-sync.md#archive-nodes), or the requested block

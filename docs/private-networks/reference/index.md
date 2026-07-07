@@ -15,6 +15,6 @@ The following features and resources are shared with [public networks](../../pub
   - [Standard Besu API methods](../../public-networks/reference/api/index.md) (response object schemas are documented inline within each method)
 - [Genesis file items](../../public-networks/reference/genesis-items.md)
 - [EVM tool options](../../public-networks/reference/evm-tool.md)
-- [Transaction trace types](../../public-networks/reference/trace-types.md)
+- [Transaction trace types](../../public-networks/reference/api/trace.md#trace-types)
 - [Projects using Besu](../../public-networks/reference/projects-using-besu.md)
 - [Security disclosure policy](../../public-networks/reference/disclosure.md)

@@ -56,16 +56,16 @@ The `PERM` API methods are not enabled by default. To enable the `PERM` API meth
 
 To update the nodes allowlist while the node is running, use the following JSON-RPC API methods:
 
-- [`perm_addNodesToAllowlist`](../reference/api.md#perm_addnodestoallowlist)
-- [`perm_removeNodesFromAllowlist`](../reference/api.md#perm_removenodesfromallowlist)
+- [`perm_addNodesToAllowlist`](../reference/api/perm.md#perm_addnodestoallowlist)
+- [`perm_removeNodesFromAllowlist`](../reference/api/perm.md#perm_removenodesfromallowlist)
 
-You can also update the [`permissions_config.toml`](#permissions-configuration-file) file directly and then update the allowlist using the [`perm_reloadPermissionsFromFile`](../reference/api.md#perm_reloadpermissionsfromfile) method.
+You can also update the [`permissions_config.toml`](#permissions-configuration-file) file directly and then update the allowlist using the [`perm_reloadPermissionsFromFile`](../reference/api/perm.md#perm_reloadpermissionsfromfile) method.
 
 Updates to the permissions configuration file persist across node restarts.
 
 ### View the node allowlist
 
-To view the nodes allowlist, use the [`perm_getNodesAllowlist`](../reference/api.md#perm_getnodesallowlist) method.
+To view the nodes allowlist, use the [`perm_getNodesAllowlist`](../reference/api/perm.md#perm_getnodesallowlist) method.
 
 :::note
 
@@ -142,16 +142,16 @@ The `PERM` API methods are not enabled by default. To enable the `PERM` API meth
 
 To update the accounts allowlist when the node is running, use the JSON-RPC API methods:
 
-- [`perm_addAccountsToAllowlist`](../reference/api.md#perm_addaccountstoallowlist)
-- [`perm_removeAccountsFromAllowlist`](../reference/api.md#perm_removeaccountsfromallowlist).
+- [`perm_addAccountsToAllowlist`](../reference/api/perm.md#perm_addaccountstoallowlist)
+- [`perm_removeAccountsFromAllowlist`](../reference/api/perm.md#perm_removeaccountsfromallowlist).
 
-You can also update the [`permissions_config.toml`](#permissions-configuration-file) file directly and use the [`perm_reloadPermissionsFromFile`](../reference/api.md#perm_reloadpermissionsfromfile) method to update the allowlists.
+You can also update the [`permissions_config.toml`](#permissions-configuration-file) file directly and use the [`perm_reloadPermissionsFromFile`](../reference/api/perm.md#perm_reloadpermissionsfromfile) method to update the allowlists.
 
 Updates to the permissions configuration file persist across node restarts.
 
 ### View the account allowlist
 
-To view the accounts allowlist, use the [`perm_getAccountsAllowlist`](../reference/api.md#perm_getaccountsallowlist) method.
+To view the accounts allowlist, use the [`perm_getAccountsAllowlist`](../reference/api/perm.md#perm_getaccountsallowlist) method.
 
 ## Permissions configuration file
 

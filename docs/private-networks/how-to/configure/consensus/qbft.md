@@ -341,11 +341,11 @@ The QBFT API methods are disabled by default. To enable them, specify the [`--rp
 
 The methods to add or remove validators are:
 
-- [`qbft_getPendingVotes`](../../../reference/api.md#qbft_getpendingvotes).
-- [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote).
-- [`qbft_discardValidatorVote`](../../../reference/api.md#qbft_discardvalidatorvote).
+- [`qbft_getPendingVotes`](../../../reference/api/qbft.md#qbft_getpendingvotes).
+- [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote).
+- [`qbft_discardValidatorVote`](../../../reference/api/qbft.md#qbft_discardvalidatorvote).
 
-To view validator metrics for a specified block range, use [`qbft_getSignerMetrics`](../../../reference/api.md#qbft_getsignermetrics).
+To view validator metrics for a specified block range, use [`qbft_getSignerMetrics`](../../../reference/api/qbft.md#qbft_getsignermetrics).
 
 :::note
 
@@ -355,23 +355,23 @@ If network conditions render it impossible to add and remove validators by votin
 
 #### Add a validator
 
-To propose adding a validator, call [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
+To propose adding a validator, call [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
 
 ```bash title="JSON-RPC qbft_proposeValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_proposeValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", true], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-When the validator proposes the next block, the protocol inserts one proposal received from [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
+When the validator proposes the next block, the protocol inserts one proposal received from [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
 
 When more than 50% of the existing validators have published a matching proposal, the protocol adds the proposed validator to the validator pool and the validator can begin validating blocks.
 
-To return a list of validators and confirm the addition of a proposed validator, use [`qbft_getValidatorsByBlockNumber`](../../../reference/api.md#qbft_getvalidatorsbyblocknumber).
+To return a list of validators and confirm the addition of a proposed validator, use [`qbft_getValidatorsByBlockNumber`](../../../reference/api/qbft.md#qbft_getvalidatorsbyblocknumber).
 
 ```bash title="JSON-RPC qbft_getValidatorsByBlockNumber request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getValidatorsByBlockNumber","params":["latest"], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-To discard your proposal after confirming the addition of a validator, call [`qbft_discardValidatorVote`](../../../reference/api.md#qbft_discardvalidatorvote), specifying the address of the proposed validator.
+To discard your proposal after confirming the addition of a validator, call [`qbft_discardValidatorVote`](../../../reference/api/qbft.md#qbft_discardvalidatorvote), specifying the address of the proposed validator.
 
 ```bash title="JSON-RPC qbft_discardValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_discardValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73"], "id":1}' <JSON-RPC-endpoint:port>
@@ -379,7 +379,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_discardValidatorVote","para
 
 #### Remove a validator
 
-The process for removing a validator is the same as adding a validator except you specify `false` as the second parameter of [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote).
+The process for removing a validator is the same as adding a validator except you specify `false` as the second parameter of [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote).
 
 #### Epoch transition
 

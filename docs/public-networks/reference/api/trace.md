@@ -2,7 +2,7 @@
 title: TRACE methods
 description: Besu TRACE JSON-RPC API methods reference
 sidebar_label: TRACE
-toc_max_heading_level: 2
+toc_max_heading_level: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -21,7 +21,7 @@ Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rp
 
 ## `trace_block`
 
-Provides transaction processing of [type `trace`](../trace-types.md#trace) for the specified block.
+Provides transaction processing of type [`trace`](#trace) for the specified block.
 
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
@@ -30,7 +30,7 @@ the requested block must be within the number of
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -40,11 +40,11 @@ the requested block must be within the number of
   `pending` returns the same value as `latest`.
   :::
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -158,7 +158,7 @@ be within the number of [blocks retained](../cli/options.md#bonsai-historical-bl
 default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `call`: _object_ - Transaction call object.
 
@@ -202,13 +202,25 @@ default, 512 from the head of the chain).
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+- Object containing the trace results for the call, depending on the requested `options`.
 
-### Example
+  <Fields>
+
+  - `output`: _data_ - Return value of the call.
+
+  - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
+  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+
+  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+
+  </Fields>
+
+<h3>Example</h3>
 
 <Tabs>
 
@@ -315,9 +327,9 @@ be within the number of [blocks retained](../cli/options.md#bonsai-historical-bl
 default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
-- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -327,11 +339,23 @@ default, 512 from the head of the chain).
   `pending` returns the same value as `latest`.
   :::
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+- List of objects containing the trace results for each call, in the order the calls were specified, one object per call, depending on the requested `options`.
 
-### Example
+  <Fields>
+
+  - `output`: _data_ - Return value of the call.
+
+  - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
+  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+
+  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+
+  </Fields>
+
+<h3>Example</h3>
 
 <Tabs>
 
@@ -483,7 +507,7 @@ the requested blocks must be within the number of
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `traceFilterOptions`: _object_ - Trace filter options object.
 
@@ -499,11 +523,11 @@ the requested blocks must be within the number of
 
 - `count`: _integer_ - Number of traces to display in a batch.
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in transaction execution order.
+- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order.
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -622,17 +646,17 @@ the requested transaction must be contained in a block within the number of
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `transaction`: _string_ - Transaction hash.
 
 - `indexPositions`: _array_ - Index positions of the traces.
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction.
+- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction.
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -720,17 +744,31 @@ must be contained in a block within the number of
 the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `data` - _string_ - Raw transaction data.
 
-- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction.
+- Object containing the trace results for the transaction, depending on the requested `options`.
 
-### Example
+  <Fields>
+
+  - `output`: _data_ - Return value of the transaction.
+
+  - `from`: _data, 20 bytes_ - Address of the transaction sender.
+
+  - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
+  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+
+  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+
+  </Fields>
+
+<h3>Example</h3>
 
 <Tabs>
 
@@ -810,7 +848,7 @@ be within the number of [blocks retained](../cli/options.md#bonsai-historical-bl
 default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -820,27 +858,27 @@ default, 512 from the head of the chain).
   `pending` returns the same value as `latest`.
   :::
 
-- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`, `vmTrace`, and `stateDiff`](../trace-types.md). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
 
-### Returns
+<h3>Returns</h3>
 
-- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](../trace-types.md#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
   <Fields>
 
   - `output`: _boolean_ - Transaction result. 1 for success and 0 for failure.
 
-  - `stateDiff`: _object_ - [State changes in the requested block](../trace-types.md#statediff).
+  - `stateDiff`: _object_ - [State changes in the requested block](#statediff).
 
-  - `trace`: _array_ - [Ordered list of calls to other contracts](../trace-types.md#trace).
+  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace).
 
-  - `vmTrace`: _object_ - [Ordered list of EVM actions](../trace-types.md#vmtrace).
+  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace).
 
   - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -965,7 +1003,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `trace_transaction`
 
-Provides transaction processing of [type `trace`](../trace-types.md#trace) for the specified transaction.
+Provides transaction processing of type [`trace`](#trace) for the specified transaction.
 
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
@@ -974,15 +1012,15 @@ the requested transaction must be contained in a block within the number of
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
-### Parameters
+<h3>Parameters</h3>
 
 - `transaction`: _string_ - Transaction hash.
 
-### Returns
+<h3>Returns</h3>
 
-- List of [calls to other contracts](../trace-types.md#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -1107,3 +1145,197 @@ curl -X POST http://127.0.0.1:8545/ \
 
 </TabItem>
 </Tabs>
+
+---
+
+## Trace types
+
+### `trace`
+
+An ordered list of calls to other contracts, excluding precompiled contracts.
+Each item in the list is an object with the following fields.
+
+<Fields>
+
+- `action`: _object_ - Transaction details.
+
+  <Fields>
+
+  - `callType`: _string_ - Whether the transaction is `call` or `create`.
+
+  - `from`: _data, 20 bytes_ - Address of the transaction sender.
+
+  - `gas`: _quantity_ - Gas provided by sender.
+
+  - `input`: _data_ - Transaction data.
+
+  - `to`: _data, 20 bytes_ - Target of the transaction.
+
+  - `value`: _quantity_ - Value transferred in the transaction.
+
+  </Fields>
+
+- `result`: _object_ - Transaction result.
+
+  <Fields>
+
+  - `gasUsed`: _quantity_ - Gas used by the transaction. Includes any refunds of unused gas.
+
+  - `output`: _data_ - Return value of the contract call. Contains only the actual value sent by a `RETURN` operation. If a `RETURN` was not executed, the output is empty bytes.
+
+  </Fields>
+
+- `subtraces`: _integer_ - Traces of contract calls made by the transaction.
+
+- `traceAddress`: _array_ - Tree list address of where the call occurred, address of the parents, and order of the current sub call.
+
+- `type`: _string_ - Whether the transaction is a `CALL` or `CREATE` series operation.
+
+</Fields>
+
+#### Example
+
+```json
+"trace":[
+  {
+    "action":{
+      "callType":"call",
+      "from":"0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+      "gas":"0xffadea",
+      "input":"0x",
+      "to":"0x0100000000000000000000000000000000000000",
+      "value":"0x0"
+    },
+    "result":{
+      "gasUsed":"0x1e",
+      "output":"0x"
+    },
+    "subtraces":0,
+    "traceAddress":[
+    ],
+    "type":"call"
+  }
+]
+```
+
+### `vmTrace`
+
+An object containing the following fields.
+
+<Fields>
+
+- `code`: _data_ - Code executed by the EVM.
+
+- `ops`: _array_ - Sequence of EVM operations (opcodes) executed in the transaction.
+
+  <Fields>
+
+  - `cost`: _quantity_ - Gas cost of the opcode. Includes memory expansion costs but not gas refunds. For precompiled contract calls, reports only the actual cost.
+
+  - `ex`: _object_ - Executed operations.
+
+    <Fields>
+
+    - `mem`: _object_ - Memory read or written by the operation.
+
+    - `push`: _array_ - Adjusted stack items. For swap, includes all intermediate values and the result. Otherwise, is the value pushed onto the stack.
+
+    - `store`: _object_ - Account storage written by the operation.
+
+    - `used`: _quantity_ - Remaining gas taking into account the all but 1/64th rule for calls.
+
+    </Fields>
+
+  - `pc`: _quantity_ - Program counter.
+
+  - `sub`: _object_ - Sub call operations.
+
+  </Fields>
+
+</Fields>
+
+`vmTrace` only reports actual data returned from a `RETURN` opcode and does not return the contents of the reserved output space for the call operations. As a result:
+
+- `vmTrace` reports `null` when a call operation ends because of a `STOP`, `HALT`, `REVERT`, running out of instructions, or any exceptional halts.
+- When a `RETURN` operation returns data of a different length to the space reserved by the call, `vmTrace` reports only the data passed to the `RETURN` operation and does not include pre-existing memory data or trim the returned data.
+
+For out of gas operations, `vmTrace` reports the operation that caused the out of gas exception, including the calculated gas cost. `vmTrace` does not report `ex` values because the operation is not executed.
+
+#### Example
+
+```json
+"vmTrace":{
+  "code":"0x7f3940be4289e4c3587d88c1856cc95352461992db0a584c281226faefe560b3016000527f14c4d2c102bdeb2354bfc3dc96a95e4512cf3a8461e0560e2272dbf884ef3905601052600851",
+  "ops":[
+    {
+    "cost":3,
+    "ex":{
+      "mem":null,
+      "push":[
+        "0x8"
+      ],
+      "store":null,
+      "used":16756175
+    },
+    "pc":72,
+    "sub":null
+    },
+    ...
+  ]
+}
+```
+
+### `stateDiff`
+
+State changes in the requested block for each transaction represented as a map of accounts to an object.
+Besu lists the balance, code, nonce, and storage changes from immediately before the transaction to after the transaction.
+
+<Fields>
+
+- `balance`: _string or object_ - Change of balance.
+
+- `code`: _string or object_ - Change to the account's code.
+
+- `nonce`: _string or object_ - Change of nonce.
+
+- `storage`: _object_ - Map of each changed storage slot key to its diff value.
+
+<br/>
+
+Each of the `balance`, `code`, and `nonce` values, and each changed storage slot in `storage`, uses one of the following notations, depending on the type of change:
+
+- `"="` - The value didn't change.
+
+- `{"+": <value>}` - The value didn't exist before the transaction and now has the specified value.
+
+- `{"-": <value>}` - The value existed before the transaction and was deleted.
+
+- `{"*": {"from": <value>, "to": <value>}}` - The value changed from one value to another.
+
+An absent value is distinct from zero when creating accounts or clearing storage.
+
+</Fields>
+
+#### Example
+
+```json
+"stateDiff":{
+  "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73":{
+    "balance":{
+      "*":{
+        "from":"0xffffffffffffffffffffffffffffffffc3e12a20b",
+        "to":"0xffffffffffffffffffffffffffffffffc3dc5f091"
+      }
+    },
+    "code":"=",
+    "nonce":{
+      "*":{
+        "from":"0x14",
+        "to":"0x15"
+      }
+    },
+    "storage":{
+    }
+  }
+}
+```
