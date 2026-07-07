@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Use the Engine API
 
-[Consensus and execution clients](../concepts/node-clients.md#execution-and-consensus-clients) communicate with each other using the [Engine API](../reference/engine-api/index.md). These API methods are a separate subsection of the [JSON-RPC API](../how-to/use-besu-api/index.md).
+[Consensus and execution clients](../concepts/node-clients.md#execution-and-consensus-clients) communicate with each other using the [Engine API](../reference/engine-api.md). These API methods are a separate subsection of the [JSON-RPC API](../how-to/use-besu-api/index.md).
 
 ## Configure the Engine API
 
@@ -65,7 +65,7 @@ Set the [JWT secret](use-besu-api/authenticate.md#jwt-public-key-authentication)
 
 ### 1. Prepare a payload
 
-Prepare to send a payload using [`engine_forkchoiceUpdatedV1`](../reference/engine-api/index.md#engine_forkchoiceupdatedv1).
+Prepare to send a payload using [`engine_forkchoiceUpdatedV1`](https://ethereum.github.io/execution-apis/api/methods/engine_forkchoiceUpdatedV1).
 
 <Tabs>
 
@@ -100,7 +100,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"engine_forkchoiceUpdatedV1","par
 
 ### 2. Get the payload
 
-Get the payload using [`engine_getPayloadV1`](../reference/engine-api/index.md#engine_getpayloadv1)
+Get the payload using [`engine_getPayloadV1`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV1)
 
 <Tabs>
 
@@ -143,7 +143,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"engine_getPayloadV1","params":["
 
 ### 3. Execute the payload
 
-Execute the payload using [`engine_newPayloadV1`](../reference/engine-api/index.md#engine_newpayloadv1)
+Execute the payload using [`engine_newPayloadV1`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV1)
 
 <Tabs>
 
@@ -192,7 +192,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"engine_newPayloadV1","params":[
 
 ### 4. Update the fork choice
 
-Update the fork choice using [`engine_forkchoiceUpdatedV1`](../reference/engine-api/index.md#engine_forkchoiceupdatedv1) again.
+Update the fork choice using [`engine_forkchoiceUpdatedV1`](https://ethereum.github.io/execution-apis/api/methods/engine_forkchoiceUpdatedV1) again.
 
 <Tabs>
 

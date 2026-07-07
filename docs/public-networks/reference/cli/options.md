@@ -1099,7 +1099,7 @@ engine-rpc-enabled=true
 
 </Tabs>
 
-Enables or disables the [Engine API](../engine-api/index.md). 
+Enables or disables the [Engine API](../engine-api.md). 
 
 The default is `false`.
 

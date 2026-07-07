@@ -90,6 +90,10 @@
     {
       "source": "/public-networks/reference/api/objects/",
       "destination": "/public-networks/reference/api/eth"
+    },
+    {
+      "source": "/public-networks/reference/engine-api/objects/",
+      "destination": "/public-networks/reference/engine-api"
     }
   ],
   "rewrites": [
