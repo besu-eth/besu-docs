@@ -11,7 +11,7 @@ See [how to use the Engine API](../how-to/use-engine-api.md) to communicate with
 
 :::info
 
-The engine API is enabled by default.
+The Engine API is enabled by default.
 
 :::
 
