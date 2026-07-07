@@ -38,7 +38,7 @@ contract VendingMachine {
 
 ## Enable revert reason
 
-Use the [`--revert-reason-enabled`](../../../public-networks/reference/cli/options.md#revert-reason-enabled) command line option to include the revert reason in the transaction receipt and the [`trace`](../../../public-networks/reference/trace-types.md#trace) response in Besu.
+Use the [`--revert-reason-enabled`](../../../public-networks/reference/cli/options.md#revert-reason-enabled) command line option to include the revert reason in the transaction receipt and the [`trace`](../../../public-networks/reference/api/trace.md#trace) response in Besu.
 
 :::caution
 
@@ -80,7 +80,7 @@ Nodes that sync without executing historical blocks ([snap sync](../../../public
 }
 ```
 
-With revert reason enabled, the list items in the [`trace`](../../../public-networks/reference/trace-types.md#trace) response returned by [`trace_replayBlockTransactions`](../../../public-networks/reference/api/trace.md#trace_replayblocktransactions), [`trace_block`](../../../public-networks/reference/api/trace.md#trace_block), and [`trace_transaction`](../../../public-networks/reference/api/trace.md#trace_transaction) include the revert reason as an ABI-encoded string.
+With revert reason enabled, the list items in the [`trace`](../../../public-networks/reference/api/trace.md#trace) response returned by [`trace_replayBlockTransactions`](../../../public-networks/reference/api/trace.md#trace_replayblocktransactions), [`trace_block`](../../../public-networks/reference/api/trace.md#trace_block), and [`trace_transaction`](../../../public-networks/reference/api/trace.md#trace_transaction) include the revert reason as an ABI-encoded string.
 
 ```json title="Example of trace response list item"
 {

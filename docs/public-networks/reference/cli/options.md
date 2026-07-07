@@ -4199,7 +4199,7 @@ revert-reason-enabled=true
 
 </Tabs>
 
-Enables or disables including the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](../api/eth/execute.md#eth_estimategas) error response, [`eth_call`](../api/eth/execute.md#eth_call) error response, and [`trace`](../trace-types.md#trace) response. 
+Enables or disables including the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](../api/eth/execute.md#eth_estimategas) error response, [`eth_call`](../api/eth/execute.md#eth_call) error response, and [`trace`](../api/trace.md#trace) response. 
 
 The default is `false`.
 
