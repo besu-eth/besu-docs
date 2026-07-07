@@ -305,7 +305,7 @@ The command line specifies:
 
 ### 10. Confirm the private network is working
 
-Start another terminal, use curl to call the JSON-RPC API [`ibft_getvalidatorsbyblocknumber`](../../reference/api.md#ibft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
+Start another terminal, use curl to call the JSON-RPC API [`ibft_getvalidatorsbyblocknumber`](../../reference/api/ibft.md#ibft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' localhost:8545/ -H "Content-Type: application/json"
@@ -358,7 +358,7 @@ If a new key was created, the validator key specified in the configuration does 
 
 ## Next steps
 
-Use the [IBFT API](../../reference/api.md#ibft-20-methods) to remove or add validators.
+Use the [IBFT API](../../reference/api/ibft.md) to remove or add validators.
 
 :::note
 

@@ -397,7 +397,7 @@ The block parameter can have one of the following values:
     same value as `latest`.
   - For [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount),
     `pending` refers to the most recent block plus pending transactions.
-  - For [`qbft_getValidatorsByBlockNumber`](../../../private-networks/reference/api.md#qbft_getvalidatorsbyblocknumber),
+  - For [`qbft_getValidatorsByBlockNumber`](../../../private-networks/reference/api/qbft.md#qbft_getvalidatorsbyblocknumber),
     `pending` returns a list of validators that will be used to produce the next block.
 - `finalized` : _tag_ - The most recent crypto-economically secure block.
   It cannot be reorganized outside manual intervention driven by community coordination.

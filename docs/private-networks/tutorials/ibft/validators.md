@@ -73,7 +73,7 @@ besu --data-path=IBFT-Network/Node-5/data public-key export-address
 
 ### 4. Propose adding the new validator
 
-Propose adding the new validator from more than half the number of current validators, using [`ibft_proposeValidatorVote`](../../reference/api.md#ibft_proposevalidatorvote), specifying the address of the proposed validator and `true`:
+Propose adding the new validator from more than half the number of current validators, using [`ibft_proposeValidatorVote`](../../reference/api/ibft.md#ibft_proposevalidatorvote), specifying the address of the proposed validator and `true`:
 
 <Tabs>
 
@@ -102,7 +102,7 @@ Repeat the proposal process for this candidate node from at least two of the oth
 
 ### 5. Verify the addition of the new validator
 
-Verify that the new validator is now in the list of validators using [`ibft_getValidatorsByBlockNumber`](../../reference/api.md#ibft_getvalidatorsbyblocknumber):
+Verify that the new validator is now in the list of validators using [`ibft_getValidatorsByBlockNumber`](../../reference/api/ibft.md#ibft_getvalidatorsbyblocknumber):
 
 <Tabs>
 
@@ -132,4 +132,4 @@ The list of validators contains 5 addresses now.
 
 ## Remove a validator
 
-The process for removing a validator is similar to [adding a validator](#add-a-validator) starting from step 2, except you specify `false` as the second parameter of [`ibft_proposeValidatorVote`](../../reference/api.md#ibft_proposevalidatorvote).
+The process for removing a validator is similar to [adding a validator](#add-a-validator) starting from step 2, except you specify `false` as the second parameter of [`ibft_proposeValidatorVote`](../../reference/api/ibft.md#ibft_proposevalidatorvote).
