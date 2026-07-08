@@ -287,14 +287,6 @@ With authentication enabled, to explicitly specify a user cannot access any meth
 
 Specify the authentication token as a `Bearer` token in the JSON-RPC request header.
 
-### Postman
-
-In the **Authorization** tab in the **TYPE** drop-down list, select **Bearer Token** and specify the token (generated either [externally](#2-create-the-jwt) or by the [`login` request](#3-generate-an-authentication-token)).
-
-### cURL
-
-Specify the `Bearer` in the header.
-
 <Tabs>
 
 <TabItem value="cURL Request with authentication placeholders" label="cURL Request with authentication placeholders" default>

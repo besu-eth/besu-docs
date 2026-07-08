@@ -33,7 +33,7 @@ uses the [Engine API](../how-to/use-engine-api.md) to communicate with the execu
 ### Execution clients
 
 Execution clients, such as Besu, manage the execution layer, including executing transactions and 
-updating the world state. Execution clients serve [JSON-RPC API](../reference/engine-api/index.md) 
+updating the world state. Execution clients serve [JSON-RPC API](../reference/engine-api.md) 
 requests and communicate with each other P2P.
 
 Besu is an execution client that you can run with:

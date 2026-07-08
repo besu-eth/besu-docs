@@ -65,7 +65,7 @@ besu --node-private-key-file="/Users/username/privatekeyfile"
 ## Enode URL
 
 The enode URL identifies a node for discovery v4.
-For example, you can specify nodes by the enode URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option and the [`admin_addPeer`](../reference/api/index.md#admin_addpeer) method.
+For example, you can specify nodes by the enode URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option and the [`admin_addPeer`](../reference/api/admin.md#admin_addpeer) method.
 
 :::tip
 Besu supports [ENR URLs](#enr-url) for discovery v5 when the early access option 
@@ -93,7 +93,7 @@ If the [`--p2p-host`](../reference/cli/options.md#p2p-host) or [`--p2p-port`](..
 
 :::
 
-The enode URL displays when starting a Besu node. Use the [`net_enode`](../reference/api/index.md#net_enode) JSON-RPC API method to get the enode URL of the node.
+The enode URL displays when starting a Besu node. Use the [`net_enode`](../reference/api/net.md#net_enode) JSON-RPC API method to get the enode URL of the node.
 
 The enode advertised to other nodes during discovery is the external IP address and port, as defined by [`--nat-method`](../how-to/connect/specify-nat.md).
 
@@ -122,14 +122,14 @@ Use the [`--Xhelp`](../reference/cli/options.md#xhelp) command line option to vi
 
 :::
 
-If nodes are not connecting as expected, set the [log level to TRACE](../reference/api/index.md#admin_changeloglevel) to help troubleshoot the issue.
+If nodes are not connecting as expected, set the [log level to TRACE](../reference/api/admin.md#admin_changeloglevel) to help troubleshoot the issue.
 
 ## ENR URL
 
 The Ethereum Node Record, or ENR URL, identifies a node for [discovery v5](https://github.com/ethereum/devp2p/tree/master/discv5).
 For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option
 or in the [`v5Bootnodes`](../reference/genesis-items.md#discovery-configuration-items) discovery setting in the genesis file.
-The [`admin_nodeInfo`](../reference/api/index.md#admin_nodeinfo) method returns the ENR URL in the `enr` field.
+The [`admin_nodeInfo`](../reference/api/admin.md#admin_nodeinfo) method returns the ENR URL in the `enr` field.
 
 :::tip Early access feature
 To use ENR URLs (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.

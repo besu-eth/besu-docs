@@ -28,7 +28,7 @@ Predefined genesis configurations for named networks are in the [Besu source fil
 
 ## Confirm node is running
 
-If you started Besu with the [`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api.md) to confirm the node is running.
+If you started Besu with the [`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
 
 - `eth_chainId` returns the chain ID of the network.
 

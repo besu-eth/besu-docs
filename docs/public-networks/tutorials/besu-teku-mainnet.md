@@ -71,7 +71,7 @@ Also, in the command:
 - [`--sync-mode`](../reference/cli/options.md#sync-mode) specifies using [snap sync](../concepts/node-sync.md#snap-synchronization).
 - [`--data-storage-format`](../reference/cli/options.md#data-storage-format) specifies using [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries).
 - [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
-- [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../reference/engine-api/index.md).
+- [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../reference/engine-api.md).
 
 You can modify the option values and add other [command line options](../reference/cli/options.md) as needed.
 

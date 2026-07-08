@@ -83,7 +83,7 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"
 
 </Tabs>
 
-The following [`syncing`](../../reference/api/index.md#eth_syncing) request returns data about the
+The following [`syncing`](../../reference/api/eth/client.md#eth_syncing) request returns data about the
 synchronization status:
 
 <Tabs>

@@ -14,7 +14,7 @@ Transaction pools are categorized into the following two types:
 * [Sequenced](#sequenced-transaction-pool) - Recommended for private blockchain networks.
 
 You can use specific [options](../../reference/cli/options.md#tx-pool) and
-[methods](../../reference/api/index.md#txpool-methods) to configure and monitor the transaction pool.
+[methods](../../reference/api/txpool.md) to configure and monitor the transaction pool.
 
 ## Layered transaction pool
 

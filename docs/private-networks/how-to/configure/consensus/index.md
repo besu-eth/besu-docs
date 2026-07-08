@@ -14,10 +14,9 @@ Besu supports the following consensus protocols:
 - [QBFT](qbft.md) (proof of authority) - The recommended enterprise-grade consensus protocol for private networks.
 - [IBFT 2.0](ibft.md) (proof of authority) - Supported for existing private networks.
 - [Proof of stake](../../../../public-networks/concepts/proof-of-stake/index.md) - Used on Ethereum Mainnet and public testnets.
-- [Ethash](https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/) (proof of work) - Can be used in [small development networks](../../../tutorials/ethash.md).
 
 :::warning Important
-Besu no longer supports the Clique consensus protocol.
+Besu no longer supports the Clique and Ethash consensus protocols.
 :::
 
 Learn more about the [proof of authority consensus protocols](../../../concepts/poa.md).
@@ -26,14 +25,14 @@ The `config` property in the genesis file specifies the consensus protocol for a
 
 <Tabs>
 
-<TabItem value="Ethash" label="Ethash" default>
+<TabItem value="QBFT" label="QBFT" default>
 
 ```json
 {
   "config": {
-  ...
-    "ethash": {
     ...
+    "qbft": {
+      ...
     }
   },
   ...
@@ -49,22 +48,6 @@ The `config` property in the genesis file specifies the consensus protocol for a
   "config": {
     ...
     "ibft2": {
-      ...
-    }
-  },
-  ...
-}
-```
-
-</TabItem>
-
-<TabItem value="QBFT" label="QBFT">
-
-```json
-{
-  "config": {
-    ...
-    "qbft": {
       ...
     }
   },

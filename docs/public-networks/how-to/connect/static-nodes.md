@@ -35,7 +35,7 @@ To configure a network of static nodes:
 
 1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/cli/options.md#discovery-enabled).
 
-To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/index.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/index.md#admin_removepeer) JSON-RPC API methods.
+To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/admin.md#admin_removepeer) JSON-RPC API methods.
 
 :::note
 
@@ -47,7 +47,7 @@ Nodes not in the list of the static nodes are not prevented from connecting. To 
 
 :::tip
 
-If the added peer does not appear in the peer list (returned by [`admin_peers`](../../reference/api/index.md#admin_peers)), check the supplied [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the node is listening for TCP connections on the endpoint.
+If the added peer does not appear in the peer list (returned by [`admin_peers`](../../reference/api/admin.md#admin_peers)), check the supplied [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the node is listening for TCP connections on the endpoint.
 
 :::
 

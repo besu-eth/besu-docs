@@ -77,7 +77,7 @@ Also, in the command:
 - [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote RPC connections.
 - [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC service.
 - [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC connections.
-- [`--engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../../reference/engine-api/index.md).
+- [`--engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../../reference/engine-api.md).
 
 You can modify the option values and add other [command line options](../../reference/cli/options.md) as needed.
 

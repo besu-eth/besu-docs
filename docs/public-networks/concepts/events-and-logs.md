@@ -12,7 +12,7 @@ The smart contract address is the link to the logs and the blockchain includes t
 
 A Dapp front end can either access logs using the [JSON-RPC API filter methods](../how-to/use-besu-api/access-logs.md) or subscribe to logs using the [RPC Pub/Sub API](../how-to/use-besu-api/rpc-pubsub.md#logs).
 
-Use [`admin_generateLogBloomCache`](../reference/api/index.md#admin_generatelogbloomcache) to improve log retrieval performance.
+Use [`admin_generateLogBloomCache`](../reference/api/admin.md#admin_generatelogbloomcache) to improve log retrieval performance.
 
 ## Topics
 
@@ -155,7 +155,7 @@ Log entries from invoking the Solidity contract in the previous example:
 
 ## Topic filters
 
-[Filter options objects](../reference/api/objects.md#filter-options-object) have a `topics` key to filter logs by topics.
+[Filter options objects](../reference/api/eth/filter.md#eth_newfilter) have a `topics` key to filter logs by topics.
 
 Topics are order-dependent. A transaction with a log containing topics `[A, B]` matches with the following topic filters:
 
