@@ -885,9 +885,8 @@ discovery-dns-url="enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPR
 
 The `enrtree` URL of the DNS node list for [node discovery via DNS](https://eips.ethereum.org/EIPS/eip-1459).
 
-The default is `null`, which uses the `enrtree` URL embedded in the network's genesis configuration, if one is present.
-Set this option to an empty string (`""`) to explicitly disable DNS-based peer discovery, even on
-networks that include an `enrtree` URL in their genesis configuration.
+By default, Besu uses the value of the [`discovery.dns`](../genesis-items.md#discovery-configuration-items) item in the network's genesis configuration file.
+To disable DNS-based discovery, set `discovery-dns-url` to an empty string (`""`) or remove the `discovery.dns` entry in the genesis file.
 
 ### `discovery-enabled`
 
