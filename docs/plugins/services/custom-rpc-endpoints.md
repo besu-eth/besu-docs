@@ -64,8 +64,8 @@ public void register(final ServiceManager context) {
 ## Enable the namespace
 
 When you register a custom endpoint, you must also add the plugin namespace
-to [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../public-networks/reference/cli/options.md#rpc-ws-api) when starting Besu.
+to [`--rpc-http-api`](../../public-networks/reference/options.md#rpc-http-api) or
+[`--rpc-ws-api`](../../public-networks/reference/options.md#rpc-ws-api) when starting Besu.
 The namespace is matched case-insensitively, but uppercase is the convention.
 
 For example, to enable the `example` namespace:

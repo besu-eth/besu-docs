@@ -17,7 +17,7 @@ You should secure access to your node's JSON-RPC endpoints. Users with access to
 
 :::
 
-To enable JSON-RPC over HTTP or WebSocket, use the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) and [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) options.
+To enable JSON-RPC over HTTP or WebSocket, use the [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled) and [`--rpc-ws-enabled`](../../reference/options.md#rpc-ws-enabled) options.
 
 To enable JSON-RPC over an [IPC socket](index.md#socket-path), use the `--Xrpc-ipc-enabled` option.
 
@@ -35,10 +35,10 @@ The geth console is a REPL (Read, Evaluate, & Print Loop) JavaScript console. Us
 
 To use the geth console with Besu:
 
-1. Start Besu with the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) or `--Xrpc-ipc-enabled` 
+1. Start Besu with the [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled) or `--Xrpc-ipc-enabled` 
 option.
 
-2. Specify which APIs to enable using the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api) or 
+2. Specify which APIs to enable using the [`--rpc-http-api`](../../reference/options.md#rpc-http-api) or 
 `--Xrpc-ipc-api` option.
 
 3. Start the geth console specifying the JSON-RPC endpoint:
@@ -111,7 +111,7 @@ curl -X POST --data '{"jsonrpc":"2.0","id":"1","method":"eth_blockNumber","param
 
 </Tabs>
 
-You can use `curl` to make multiple RPC requests (batch requests) over HTTP at the same time. Send the requests as an array, and receive an array of responses. The default number of allowed requests in a RPC batch request is `1024`. Use the [`--rpc-http-max-batch-size`](../../reference/cli/options.md#rpc-http-max-batch-size) command line option to update the default value.
+You can use `curl` to make multiple RPC requests (batch requests) over HTTP at the same time. Send the requests as an array, and receive an array of responses. The default number of allowed requests in a RPC batch request is `1024`. Use the [`--rpc-http-max-batch-size`](../../reference/options.md#rpc-http-max-batch-size) command line option to update the default value.
 
 <Tabs>
 
@@ -234,7 +234,7 @@ Both return a `200 OK` HTTP status when ready or live, and a `503 Service Unavai
 
 ### Readiness
 
-By default, the readiness check requires a connected peer and the node to be within two blocks of the best known block. If you have [disabled P2P communication](../../reference/cli/options.md#p2p-enabled), you do not need peers. A live node with P2P disabled is always ready.
+By default, the readiness check requires a connected peer and the node to be within two blocks of the best known block. If you have [disabled P2P communication](../../reference/options.md#p2p-enabled), you do not need peers. A live node with P2P disabled is always ready.
 
 Use the query parameters `minPeers` and `maxBlocksBehind` to adjust the number of peers required and the number of blocks tolerance.
 
@@ -294,7 +294,7 @@ The readiness response object contains the following fields:
 
 - `checks`: _object_ - peer and sync diagnostics
 
-  - `peers`: _object_ - peer connectivity diagnostics; included only when [P2P communication](../../reference/cli/options.md#p2p-enabled) is enabled
+  - `peers`: _object_ - peer connectivity diagnostics; included only when [P2P communication](../../reference/options.md#p2p-enabled) is enabled
 
     - `status`: _boolean_ - whether the peer requirement is met
 
@@ -352,7 +352,7 @@ curl -v 'http://localhost:8545/liveness'
 
 Besu enables the `ETH`, `NET`, and `WEB3` API methods by default.
 
-To enable the `ADMIN`, `DEBUG`, `EEA`, `IBFT`, `MINER`, `PERM`, `PLUGINS`, `PRIV`, `TRACE`, and `TXPOOL` API methods, use the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api), [`--rpc-ws-api`](../../reference/cli/options.md#rpc-ws-api), or `--Xrpc-ipc-api` options.
+To enable the `ADMIN`, `DEBUG`, `EEA`, `IBFT`, `MINER`, `PERM`, `PLUGINS`, `PRIV`, `TRACE`, and `TXPOOL` API methods, use the [`--rpc-http-api`](../../reference/options.md#rpc-http-api), [`--rpc-ws-api`](../../reference/options.md#rpc-ws-api), or `--Xrpc-ipc-api` options.
 
 :::caution
 

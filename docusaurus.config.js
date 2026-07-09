@@ -376,7 +376,23 @@ const config = {
           {
             from: "/private-networks/reference/api/objects",
             to: "/public-networks/reference/api",
-          }
+          },
+          {
+            from: "/public-networks/reference/cli/options",
+            to: "/public-networks/reference/options",
+          },
+          {
+            from: "/public-networks/reference/cli/subcommands",
+            to: "/public-networks/reference/subcommands",
+          },
+          {
+            from: "/private-networks/reference/cli/options",
+            to: "/private-networks/reference/options",
+          },
+          {
+            from: "/private-networks/reference/cli/subcommands",
+            to: "/private-networks/reference/subcommands",
+          },
         ],
       },
     ],

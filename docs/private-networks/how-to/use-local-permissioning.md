@@ -24,7 +24,7 @@ If using Kubernetes, enable domain name support and use the `--Xdns-update-enabl
 nodes-allowlist=["enode://6f8a80d14311c39f35f516fa664deaaaa13e85b2f7493f37f6144d86991ec012937307647bd3b9a82abe2974e1407241d54947bbb39763a4cac9f77166ad92a0@192.168.0.9:4567","enode://6f8a80d14311c39f35f516fa664deaaaa13e85b2f7493f37f6144d86991ec012937307647bd3b9a82abe2974e1407241d54947bbb39763a4cac9f77166ad92a0@192.169.0.9:4568"]
 ```
 
-Node allowlisting is at the node level. That is, each node in the network has a [permissions configuration file](#permissions-configuration-file) file in the [data directory](../../public-networks/reference/cli/options.md#data-path) for the node.
+Node allowlisting is at the node level. That is, each node in the network has a [permissions configuration file](#permissions-configuration-file) file in the [data directory](../../public-networks/reference/options.md#data-path) for the node.
 
 Local permissioning doesn't check that the node using the permissions configuration file is listed in the allowlist, it only checks that the remote end of the connection is in the allowlist.
 
@@ -48,9 +48,9 @@ If your node has two different IP addresses for ingress and egress (for example,
 
 ### Enable node allowlisting
 
-To enable node allowlisting, specify the [`--permissions-nodes-config-file-enabled`](../reference/cli/options.md#permissions-nodes-config-file-enabled) option when starting Besu.
+To enable node allowlisting, specify the [`--permissions-nodes-config-file-enabled`](../reference/options.md#permissions-nodes-config-file-enabled) option when starting Besu.
 
-The `PERM` API methods are not enabled by default. To enable the `PERM` API methods, use the [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `PERM` API methods are not enabled by default. To enable the `PERM` API methods, use the [`--rpc-http-api`](../../public-networks/reference/options.md#rpc-http-api) or [`--rpc-ws-api`](../../public-networks/reference/options.md#rpc-ws-api) options.
 
 ### Update the node allowlist
 
@@ -92,7 +92,7 @@ You can specify accounts in the accounts allowlist in the [permissions configura
 
 :::
 
-Account allowlisting is at the node level. That is, each node in the network has a [permissions configuration file](#permissions-configuration-file) in the [data directory](../../public-networks/reference/cli/options.md#data-path) for the node.
+Account allowlisting is at the node level. That is, each node in the network has a [permissions configuration file](#permissions-configuration-file) in the [data directory](../../public-networks/reference/options.md#data-path) for the node.
 
 Transaction validation against the accounts allowlist occurs at the following points:
 
@@ -134,9 +134,9 @@ Each node has a [permissions configuration file](#permissions-configuration-file
 
 ### Enable account allowlisting
 
-To enable account allowlisting, specify the [`--permissions-accounts-config-file-enabled`](../reference/cli/options.md#permissions-accounts-config-file-enabled) option when starting Besu.
+To enable account allowlisting, specify the [`--permissions-accounts-config-file-enabled`](../reference/options.md#permissions-accounts-config-file-enabled) option when starting Besu.
 
-The `PERM` API methods are not enabled by default. To enable the `PERM` API methods, use the [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../public-networks/reference/cli/options.md#rpc-ws-api) options.
+The `PERM` API methods are not enabled by default. To enable the `PERM` API methods, use the [`--rpc-http-api`](../../public-networks/reference/options.md#rpc-http-api) or [`--rpc-ws-api`](../../public-networks/reference/options.md#rpc-ws-api) options.
 
 ### Update the account allowlist
 
@@ -155,15 +155,15 @@ To view the accounts allowlist, use the [`perm_getAccountsAllowlist`](../referen
 
 ## Permissions configuration file
 
-The permissions configuration file contains the nodes and accounts allowlists. If the [`--permissions-accounts-config-file`](../reference/cli/options.md#permissions-accounts-config-file) and [`--permissions-nodes-config-file`](../reference/cli/options.md#permissions-nodes-config-file) options are not specified, the name of the permissions configuration file must be [`permissions_config.toml`](#permissions-configuration-file) and must be in the [data directory](../../public-networks/reference/cli/options.md#data-path) for the node.
+The permissions configuration file contains the nodes and accounts allowlists. If the [`--permissions-accounts-config-file`](../reference/options.md#permissions-accounts-config-file) and [`--permissions-nodes-config-file`](../reference/options.md#permissions-nodes-config-file) options are not specified, the name of the permissions configuration file must be [`permissions_config.toml`](#permissions-configuration-file) and must be in the [data directory](../../public-networks/reference/options.md#data-path) for the node.
 
 You can specify the accounts and nodes allowlists in the same file or in separate files for accounts and nodes.
 
-To specify a permissions configuration file (or separate files for accounts and nodes) in any location, use the [`--permissions-accounts-config-file`](../reference/cli/options.md#permissions-accounts-config-file) and [`--permissions-nodes-config-file`](../reference/cli/options.md#permissions-nodes-config-file) options.
+To specify a permissions configuration file (or separate files for accounts and nodes) in any location, use the [`--permissions-accounts-config-file`](../reference/options.md#permissions-accounts-config-file) and [`--permissions-nodes-config-file`](../reference/options.md#permissions-nodes-config-file) options.
 
 :::note
 
-The [`--permissions-accounts-config-file`](../reference/cli/options.md#permissions-accounts-config-file) and [`permissions-nodes-config-file`](../reference/cli/options.md#permissions-nodes-config-file) options are not used when running Besu from the [Docker image](../get-started/install/run-docker-image.md). Use a bind mount to [specify a permissions configuration file with Docker].
+The [`--permissions-accounts-config-file`](../reference/options.md#permissions-accounts-config-file) and [`permissions-nodes-config-file`](../reference/options.md#permissions-nodes-config-file) options are not used when running Besu from the [Docker image](../get-started/install/run-docker-image.md). Use a bind mount to [specify a permissions configuration file with Docker].
 
 :::
 

@@ -16,8 +16,8 @@ Use these methods for [local permissioning](../../how-to/use-local-permissioning
 :::note
 
 The `PERM` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api) or
+[`--rpc-ws-api`](../../../public-networks/reference/options.md#rpc-ws-api) option.
 
 :::
 

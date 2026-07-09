@@ -54,7 +54,7 @@ permissions=["net:version","admin:*"]
 Each user requiring JSON-RPC access the configuration file lists the:
 
 - Username. `Users.` is mandatory and followed by the username. That is, replace `<username>` in `[Users.<username>]` with the username.
-- Hash of the user password. Use the [`password hash`](../../reference/cli/subcommands.md#password) subcommand to generate the hash.
+- Hash of the user password. Use the [`password hash`](../../reference/subcommands.md#password) subcommand to generate the hash.
 - [JSON-RPC permissions](#json-rpc-permissions).
 
 <Tabs>
@@ -80,17 +80,17 @@ $2a$10$L3Xb5G/AJOsEK5SuOn9uzOhpCCfuVWTajc5hwWerY6N5xBM/xlrMK
 ### 2. Enable authentication
 
 Enable authentication for the JSON-RPC API using the
-[`--rpc-http-authentication-enabled`](../../reference/cli/options.md#rpc-http-authentication-enabled)
-or [`--rpc-ws-authentication-enabled`](../../reference/cli/options.md#rpc-ws-authentication-enabled) option.
+[`--rpc-http-authentication-enabled`](../../reference/options.md#rpc-http-authentication-enabled)
+or [`--rpc-ws-authentication-enabled`](../../reference/options.md#rpc-ws-authentication-enabled) option.
 
 Specify the [credentials file](#1-create-the-credentials-file) using the
-[`--rpc-http-authentication-credentials-file`](../../reference/cli/options.md#rpc-http-authentication-credentials-file)
-or [`--rpc-ws-authentication-credentials-file`](../../reference/cli/options.md#rpc-ws-authentication-credentials-file) option.
+[`--rpc-http-authentication-credentials-file`](../../reference/options.md#rpc-http-authentication-credentials-file)
+or [`--rpc-ws-authentication-credentials-file`](../../reference/options.md#rpc-ws-authentication-credentials-file) option.
 
 :::note
 With authentication enabled, you can specify methods that don't require authentication using
-[`--rpc-http-api-methods-no-auth`](../../reference/cli/options.md#rpc-http-api-methods-no-auth) or
-[`--rpc-ws-api-methods-no-auth`](../../reference/cli/options.md#rpc-ws-api-methods-no-auth).
+[`--rpc-http-api-methods-no-auth`](../../reference/options.md#rpc-http-api-methods-no-auth) or
+[`--rpc-ws-api-methods-no-auth`](../../reference/options.md#rpc-ws-api-methods-no-auth).
 :::
 
 ### 3. Generate an authentication token
@@ -166,9 +166,9 @@ The [key algorithm](https://datatracker.ietf.org/doc/html/rfc7518#section-3.1) c
 
 The default value for Besu is `RS256`.
 When you use a different key algorithm, you must specify the
-[`--rcp-http-authentication-jwt-algorithm`](../../reference/cli/options.md#rpc-http-authentication-jwt-algorithm)
+[`--rcp-http-authentication-jwt-algorithm`](../../reference/options.md#rpc-http-authentication-jwt-algorithm)
 option and/or the
-[`--rcp-ws-authentication-jwt-algorithm`](../../reference/cli/options.md#rpc-ws-authentication-jwt-algorithm)
+[`--rcp-ws-authentication-jwt-algorithm`](../../reference/options.md#rpc-ws-authentication-jwt-algorithm)
 option depending on your needs.
 
 <Tabs>
@@ -260,17 +260,17 @@ Each payload for the JWT must contain:
 ### 3. Enable authentication
 
 Enable authentication for the JSON-RPC API using the
-[`--rpc-http-authentication-enabled`](../../reference/cli/options.md#rpc-http-authentication-enabled)
-or [`--rpc-ws-authentication-enabled`](../../reference/cli/options.md#rpc-ws-authentication-enabled) option.
+[`--rpc-http-authentication-enabled`](../../reference/options.md#rpc-http-authentication-enabled)
+or [`--rpc-ws-authentication-enabled`](../../reference/options.md#rpc-ws-authentication-enabled) option.
 
 Specify the JWT provider's public key file to use with the externally created JWT, using the
-[`--rpc-http-authentication-jwt-public-key-file`](../../reference/cli/options.md#rpc-http-authentication-jwt-public-key-file)
-or [`--rpc-ws-authentication-jwt-public-key-file`](../../reference/cli/options.md#rpc-ws-authentication-jwt-public-key-file) option.
+[`--rpc-http-authentication-jwt-public-key-file`](../../reference/options.md#rpc-http-authentication-jwt-public-key-file)
+or [`--rpc-ws-authentication-jwt-public-key-file`](../../reference/options.md#rpc-ws-authentication-jwt-public-key-file) option.
 
 :::note
 With authentication enabled, you can specify methods that don't require authentication using
-[`--rpc-http-api-methods-no-auth`](../../reference/cli/options.md#rpc-http-api-methods-no-auth) or
-[`--rpc-ws-api-methods-no-auth`](../../reference/cli/options.md#rpc-ws-api-methods-no-auth).
+[`--rpc-http-api-methods-no-auth`](../../reference/options.md#rpc-http-api-methods-no-auth) or
+[`--rpc-ws-api-methods-no-auth`](../../reference/options.md#rpc-ws-api-methods-no-auth).
 :::
 
 ## JSON-RPC permissions

@@ -9,7 +9,7 @@ description: Send transactions using eth_call or eth_sendRawTransaction.
 You can send signed transactions using the [`eth_sendRawTransaction`](../reference/api/eth/submit.md#eth_sendrawtransaction)
 JSON-RPC API method.
 Signed transactions can be simple value transfers, contract creation, or contract invocation. Set the
-maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../reference/cli/options.md#rpc-tx-feecap) CLI option.
+maximum transaction fee for transactions using the [`--rpc-tx-feecap`](../reference/options.md#rpc-tx-feecap) CLI option.
 
 [Use client libraries](develop/client-libraries.md) to create and send a signed raw transaction to
 transfer Ether and create a smart contract.

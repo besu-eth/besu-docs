@@ -109,8 +109,8 @@ Besu calls this method through the
 [`plugins_reloadPluginConfig`](../../public-networks/reference/api/plugins.md#plugins_reloadpluginconfig)
 JSON-RPC method.
 The method belongs to the `PLUGINS` API group, which is disabled by default.
-Enable it with [`--rpc-http-api`](../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../public-networks/reference/cli/options.md#rpc-ws-api).
+Enable it with [`--rpc-http-api`](../../public-networks/reference/options.md#rpc-http-api) or
+[`--rpc-ws-api`](../../public-networks/reference/options.md#rpc-ws-api).
 
 Calling `plugins_reloadPluginConfig` without parameters reloads all plugins.
 Supplying a plugin name reloads only that plugin.

@@ -584,7 +584,7 @@ your node's public mempool.
 
 Run Besu as an execution client on Hoodi alongside a consensus client.
 Start Besu with metrics enabled and the plugin's metric category included.
-The [`--metrics-category`](../../public-networks/reference/cli/options.md#metrics-category) option replaces 
+The [`--metrics-category`](../../public-networks/reference/options.md#metrics-category) option replaces 
 the default set of categories, so list the `TX_DETECTION` category to expose the plugin's metrics:
 
 ```bash

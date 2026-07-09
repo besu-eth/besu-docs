@@ -12,7 +12,7 @@ Access the [Besu API](../../reference/api/index.md) using:
 
 :::note
 
-HTTP and WebSocket responses are compact JSON by default. You can use [`--json-pretty-print-enabled`](../../reference/cli/options.md#json-pretty-print-enabled) to pretty-print the output.
+HTTP and WebSocket responses are compact JSON by default. You can use [`--json-pretty-print-enabled`](../../reference/options.md#json-pretty-print-enabled) to pretty-print the output.
 
 :::
 
@@ -20,7 +20,7 @@ The following sections provide information about JSON-RPC, RPC Pub/Sub, and Grap
 
 ## Enable API access
 
-To enable API access, use the [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled), [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled), [`--graphql-http-enabled`](../../reference/cli/options.md#graphql-http-enabled), or the early access `--Xrpc-ipc-enabled` options.
+To enable API access, use the [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled), [`--rpc-ws-enabled`](../../reference/options.md#rpc-ws-enabled), [`--graphql-http-enabled`](../../reference/options.md#graphql-http-enabled), or the early access `--Xrpc-ipc-enabled` options.
 
 :::caution
 
@@ -30,7 +30,7 @@ To enable API access, use the [`--rpc-http-enabled`](../../reference/cli/options
 
 ## Service hosts
 
-To specify the host the API service listens on, use the [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host), [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host), and [`--graphql-http-host`](../../reference/cli/options.md#graphql-http-host) options. The default host is `127.0.0.1`.
+To specify the host the API service listens on, use the [`--rpc-http-host`](../../reference/options.md#rpc-http-host), [`--rpc-ws-host`](../../reference/options.md#rpc-ws-host), and [`--graphql-http-host`](../../reference/options.md#graphql-http-host) options. The default host is `127.0.0.1`.
 
 To allow remote connections, set the host to `0.0.0.0`.
 
@@ -42,7 +42,7 @@ Setting the host to `0.0.0.0` exposes the API service connection on your node to
 
 ## Service ports
 
-To specify the port the API service listens on, use the [`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port), [`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port), and [`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port) options.
+To specify the port the API service listens on, use the [`--rpc-http-port`](../../reference/options.md#rpc-http-port), [`--rpc-ws-port`](../../reference/options.md#rpc-ws-port), and [`--graphql-http-port`](../../reference/options.md#graphql-http-port) options.
 
 The default ports are:
 
@@ -64,7 +64,7 @@ To specify the socket path for the IPC socket, use the `--Xrpc-ipc-path` option.
 
 ## Host allowlist
 
-To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL requests. Besu accepts requests only when hostnames specified using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist) option matches the request host headers. By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
+To prevent DNS rebinding attacks, Besu checks incoming HTTP request host headers, WebSocket connections, and GraphQL requests. Besu accepts requests only when hostnames specified using the [`--host-allowlist`](../../reference/options.md#host-allowlist) option matches the request host headers. By default, Besu accepts requests and connections from `localhost` and `127.0.0.1`.
 
 :::info
 

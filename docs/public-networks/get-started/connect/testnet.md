@@ -129,9 +129,9 @@ besu \
   </TabItem>
 </Tabs>
 
-Specify the path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
+Specify the path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/options.md#engine-jwt-secret) option.
 
-You can modify the option values and add other [command line options](../../reference/cli/options.md) as needed.
+You can modify the option values and add other [command line options](../../reference/options.md) as needed.
 
 ### 4. Start the consensus client
 

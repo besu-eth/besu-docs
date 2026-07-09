@@ -49,7 +49,7 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
 
-  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
+  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
   - `size`: _quantity, integer_ - Size of block in bytes.
 
@@ -290,7 +290,7 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
 
-  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
+  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
   - `size`: _quantity, integer_ - Size of block in bytes.
 
@@ -549,7 +549,7 @@ of the transaction receipts of the specified block.
 
   - `transactionType`: _string_ - [Transaction type](../../../concepts/transactions/types.md).
 
-  - `revertReason`: _string_ - ABI-encoded string that displays the [reason for reverting the transaction](../../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../../cli/options.md#revert-reason-enabled).
+  - `revertReason`: _string_ - ABI-encoded string that displays the [reason for reverting the transaction](../../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../../options.md#revert-reason-enabled).
 
   - `type`: _quantity_ - Transaction type, `0x00` for legacy transactions, `0x01` for access list types, `0x02` for dynamic fees, and `0x03` for blob transactions.
 

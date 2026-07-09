@@ -67,7 +67,7 @@ In the `config` section of the genesis file, set the contract size limit to the 
 
 ### 3. Start Besu with a minimum gas price of zero
 
-When starting nodes, set the [minimum gas price](../../../public-networks/reference/cli/options.md#min-gas-price) to zero.
+When starting nodes, set the [minimum gas price](../../../public-networks/reference/options.md#min-gas-price) to zero.
 
 <Tabs>
 
@@ -91,7 +91,7 @@ min-gas-price=0
 
 :::danger Important
 
-In a free gas network, ensure the [minimum gas price](../../../public-networks/reference/cli/options.md#min-gas-price) is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../../../public-networks/reference/api/eth/fee.md#eth_gasprice).
+In a free gas network, ensure the [minimum gas price](../../../public-networks/reference/options.md#min-gas-price) is set to zero for every node. Any node with a minimum gas price set higher than zero will silently drop transactions with a zero gas price. You can query a node's gas configuration using [`eth_gasPrice`](../../../public-networks/reference/api/eth/fee.md#eth_gasprice).
 
 :::
 
@@ -110,7 +110,7 @@ If your network is configured to use the `londonBlock` or a later hard fork, the
 }
 ```
 
-If zero base fee is enabled, you cannot specify a value for [`--tx-pool-price-bump`](../../../public-networks/reference/cli/options.md#tx-pool-price-bump).
+If zero base fee is enabled, you cannot specify a value for [`--tx-pool-price-bump`](../../../public-networks/reference/options.md#tx-pool-price-bump).
 
 ## Configure free gas in Hardhat
 

@@ -1,6 +1,6 @@
 ---
 title: Accounts for testing
-sidebar_position: 3
+sidebar_position: 4
 description: Ethereum accounts used for Besu testing only on private networks
 ---
 
@@ -12,7 +12,7 @@ You can use existing accounts for testing by including them in the genesis file 
 
 ## Development mode
 
-When you start Besu with the [`--network=dev`](../../public-networks/reference/cli/options.md#network) command line option, Besu uses the `dev.json` genesis file by default.
+When you start Besu with the [`--network=dev`](../../public-networks/reference/options.md#network) command line option, Besu uses the `dev.json` genesis file by default.
 
 The `dev.json` genesis file defines the following accounts used for testing.
 
@@ -22,4 +22,4 @@ The `dev.json` genesis file defines the following accounts used for testing.
 
 To use existing test accounts, specify the accounts and balances in a genesis file for your test network. For an example of how to define accounts in the genesis file, see [`dev.json`](https://github.com/besu-eth/besu/blob/750580dcca349d22d024cc14a8171b2fa74b505a/config/src/main/resources/dev.json).
 
-To start Besu with the genesis file defining the existing accounts, use the [`--genesis-file`](../../public-networks/reference/cli/options.md#genesis-file) command line option .
+To start Besu with the genesis file defining the existing accounts, use the [`--genesis-file`](../../public-networks/reference/options.md#genesis-file) command line option .

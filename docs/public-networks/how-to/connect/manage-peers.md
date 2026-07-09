@@ -14,7 +14,7 @@ The frequency of discovery isn't configurable, but you can:
 - [Limit remote connections](#limit-remote-connections) in public networks.
 - [Allowlist peers by IP subnet](#allowlist-peers) to create a private network of peers across public 
 networks.
-- [Randomly prioritize connections](../../reference/cli/options.md#random-peer-priority-enabled) in
+- [Randomly prioritize connections](../../reference/options.md#random-peer-priority-enabled) in
 small, stable networks.
 
 :::info
@@ -68,23 +68,23 @@ The more peers Besu is connected to, the more confident it is of having an accur
 
 You can limit peers to reduce the bandwidth, CPU time, and disk access Besu uses to manage and respond to peers.
 
-To reduce the maximum number of peers, use the [`--max-peers`](../../reference/cli/options.md#max-peers) option. The default is 25.
+To reduce the maximum number of peers, use the [`--max-peers`](../../reference/options.md#max-peers) option. The default is 25.
 
 ## Allowlist peers
 
-You can define specific IP subnets permitted to interact with the node using the [`--net-restrict`](../../reference/cli/options.md#net-restrict) configuration. This restricts access to only those peers whose IP addresses fall within the allowed subnets. This is useful if you maintain a set of nodes and want to restrict which of those can connect to external nodes.
+You can define specific IP subnets permitted to interact with the node using the [`--net-restrict`](../../reference/options.md#net-restrict) configuration. This restricts access to only those peers whose IP addresses fall within the allowed subnets. This is useful if you maintain a set of nodes and want to restrict which of those can connect to external nodes.
 
 ## Limit remote connections
 
-Prevent eclipse attacks when using [`--sync-mode`](../../reference/cli/options.md#sync-mode) and
-[`--sync-min-peers`](../../reference/cli/options.md#sync-min-peers) on public networks by enabling
-the [remote connection limits](../../reference/cli/options.md#remote-connections-limit-enabled).
+Prevent eclipse attacks when using [`--sync-mode`](../../reference/options.md#sync-mode) and
+[`--sync-min-peers`](../../reference/options.md#sync-min-peers) on public networks by enabling
+the [remote connection limits](../../reference/options.md#remote-connections-limit-enabled).
 
-In private and permissioned networks with only trusted peers, enabling the remote connection limits is unnecessary and might adversely affect the speed at which nodes can join the network. Limiting remote connections can cause a closed group of peers to form when the number of nodes in the network is slightly higher than [`--max-peers`](../../reference/cli/options.md#max-peers). The nodes in this closed group are all connected to each other and can't accept more connections.
+In private and permissioned networks with only trusted peers, enabling the remote connection limits is unnecessary and might adversely affect the speed at which nodes can join the network. Limiting remote connections can cause a closed group of peers to form when the number of nodes in the network is slightly higher than [`--max-peers`](../../reference/options.md#max-peers). The nodes in this closed group are all connected to each other and can't accept more connections.
 
 :::tip
 
-You can use [`--random-peer-priority-enabled`](../../reference/cli/options.md#random-peer-priority-enabled) to help prevent closed groups of peers in small, stable networks.
+You can use [`--random-peer-priority-enabled`](../../reference/options.md#random-peer-priority-enabled) to help prevent closed groups of peers in small, stable networks.
 
 :::
 
@@ -106,7 +106,7 @@ Each peer entry returned by [`admin_peers`](../../reference/api/admin.md#admin_p
 
 ## List node connections
 
-The default logging configuration doesn't list node connection and disconnection messages. To enable listing them, set the [`--logging`](../../reference/cli/options.md#logging) option to `DEBUG`. For more verbosity, set the option to `TRACE`.
+The default logging configuration doesn't list node connection and disconnection messages. To enable listing them, set the [`--logging`](../../reference/options.md#logging) option to `DEBUG`. For more verbosity, set the option to `TRACE`.
 
 The console logs connection and disconnection events when the log level is `DEBUG` or higher. If the message `Successfully accepted connection from ...` displays, connections are getting through the firewalls.
 
@@ -116,7 +116,7 @@ The console logs connection and disconnection events when the log level is `DEBU
 
 ## Disable discovery
 
-To disable P2P discovery, set the [`--discovery-enabled`](../../reference/cli/options.md#discovery-enabled) option to `false`.
+To disable P2P discovery, set the [`--discovery-enabled`](../../reference/options.md#discovery-enabled) option to `false`.
 
 With discovery disabled, peers can't open connections with the node unless they were previously discovered or manually peered (for example, using [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer)). [Static nodes](static-nodes.md) can also open connections.
 

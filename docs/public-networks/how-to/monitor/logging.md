@@ -17,7 +17,7 @@ Besu uses [Log4j 2](https://logging.apache.org/log4j/2.x/) for logging and provi
 
 ## Basic logging
 
-Use the [`--logging`](../../reference/cli/options.md#logging) command line option to specify logging verbosity. The [`--logging`](../../reference/cli/options.md#logging) option changes the volume of events displayed in the log. Valid log levels are `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`. The default level is `INFO`.
+Use the [`--logging`](../../reference/options.md#logging) command line option to specify logging verbosity. The [`--logging`](../../reference/options.md#logging) option changes the volume of events displayed in the log. Valid log levels are `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`. The default level is `INFO`.
 
 For most use cases, the basic method provides enough configurability.
 

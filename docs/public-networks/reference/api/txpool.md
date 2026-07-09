@@ -15,7 +15,7 @@ The `TXPOOL` API methods allow you to inspect the contents of the transaction po
 :::note
 
 The `TXPOOL` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../options.md#rpc-http-api) or [`--rpc-ws-api`](../options.md#rpc-ws-api) option.
 
 :::
 
@@ -200,7 +200,7 @@ Lists statistics about the node transaction pool.
 
   <Fields>
 
-  - `maxSize`: _number_ - Maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../cli/options.md#tx-pool-max-size) option to configure the maximum size.
+  - `maxSize`: _number_ - Maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../options.md#tx-pool-max-size) option to configure the maximum size.
 
   - `localCount`: _number_ - Number of transactions submitted directly to this node.
 

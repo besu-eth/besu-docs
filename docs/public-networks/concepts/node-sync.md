@@ -72,9 +72,9 @@ If your node is having trouble peering, try [troubleshooting peering](../how-to/
 
 ### Snap synchronization
 
-Snap sync is the default sync mode for all named [networks](../reference/cli/options.md#network)
+Snap sync is the default sync mode for all named [networks](../reference/options.md#network)
 except `dev`.
-You can enable snap sync using [`--sync-mode=SNAP`](../reference/cli/options.md#sync-mode).
+You can enable snap sync using [`--sync-mode=SNAP`](../reference/options.md#sync-mode).
 You need Besu version 22.4.0 or later to use snap sync.
 By default, [Snap sync prunes historical block data](../how-to/pre-merge-history-expiry.md) for
 [pre-merge](https://ethereum.org/en/roadmap/merge/) PoW blocks, retaining only the
@@ -82,14 +82,14 @@ headers and the genesis block.
 
 :::note
 To download the full PoW block history, set
-[`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled`](../reference/cli/options.md#snapsync-synchronizer-pre-checkpoint-headers-only-enabled)
+[`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled`](../reference/options.md#snapsync-synchronizer-pre-checkpoint-headers-only-enabled)
 to `false`. However, this will increase the sync time and disk space usage.
 :::
 
 Instead of downloading the [state trie](data-storage-formats.md) node by node, snap
 sync downloads as many leaves of the trie as possible, and reconstructs the trie locally.
 To enable serving snap sync data to other nodes, set
-[`--snapsync-server-enabled`](../reference/cli/options.md#snapsync-server-enabled) to `true`.
+[`--snapsync-server-enabled`](../reference/options.md#snapsync-server-enabled) to `true`.
 
 You can restart Besu during a snap sync in case of hardware or software problems. The sync resumes
 from the last valid world state and continues to download blocks starting from the last downloaded
@@ -100,8 +100,8 @@ snap sync.
 
 ### Full synchronization
 
-Full sync is the default sync mode for the [`dev` network](../reference/cli/options.md#network).
-You can enable full sync using [`--sync-mode=FULL`](../reference/cli/options.md#sync-mode).
+Full sync is the default sync mode for the [`dev` network](../reference/options.md#network).
+You can enable full sync using [`--sync-mode=FULL`](../reference/options.md#sync-mode).
 Use full sync with [Forest of Tries](data-storage-formats.md#forest-of-tries) to run an
 [archive node](#archive-nodes).
 Full sync starts from the genesis block and reprocesses all transactions.

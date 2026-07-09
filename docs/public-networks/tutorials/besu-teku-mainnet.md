@@ -63,17 +63,17 @@ besu \
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
-- The public IP address of your Besu node using the [`--host-allowlist`](../reference/cli/options.md#host-allowlist) and [`--engine-host-allowlist`](../reference/cli/options.md#engine-host-allowlist) options.
+- The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/options.md#engine-jwt-secret) option.
+- The public IP address of your Besu node using the [`--host-allowlist`](../reference/options.md#host-allowlist) and [`--engine-host-allowlist`](../reference/options.md#engine-host-allowlist) options.
 
 Also, in the command:
 
-- [`--sync-mode`](../reference/cli/options.md#sync-mode) specifies using [snap sync](../concepts/node-sync.md#snap-synchronization).
-- [`--data-storage-format`](../reference/cli/options.md#data-storage-format) specifies using [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries).
-- [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
-- [`--engine-rpc-enabled`](../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../reference/engine-api.md).
+- [`--sync-mode`](../reference/options.md#sync-mode) specifies using [snap sync](../concepts/node-sync.md#snap-synchronization).
+- [`--data-storage-format`](../reference/options.md#data-storage-format) specifies using [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries).
+- [`--rpc-http-enabled`](../reference/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
+- [`--engine-rpc-enabled`](../reference/options.md#engine-rpc-enabled) enables the [Engine API](../reference/engine-api.md).
 
-You can modify the option values and add other [command line options](../reference/cli/options.md) as needed.
+You can modify the option values and add other [command line options](../reference/options.md) as needed.
 
 ## 5. Start Teku
 

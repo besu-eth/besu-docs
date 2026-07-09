@@ -161,7 +161,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns an array of [logs](../../../concepts/events-and-logs.md) for the specified filter.
 
-Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
+Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
 
 :::note
 
@@ -286,11 +286,11 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns an array of [logs](../../../concepts/events-and-logs.md) matching a specified filter object.
 
-Leave the [`--auto-log-bloom-caching-enabled`](../../cli/options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
+Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-caching-enabled) command line option at the default value of `true` to improve log retrieval performance.
 
 :::caution
 
-Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../cli/options.md#rpc-max-logs-range) option (or leaving it at its default value of 1000).
+Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of 1000).
 
 :::
 

@@ -15,7 +15,7 @@ The `ADMIN` API methods provide administrative functionality to manage your node
 :::note
 
 The `ADMIN` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../options.md#rpc-http-api) or [`--rpc-ws-api`](../options.md#rpc-ws-api) option.
 
 :::
 
@@ -97,7 +97,7 @@ You can specify only one log level per RPC call.
 
 ### Parameters
 
-- `level`: _string_ - [Log level](../cli/options.md#logging).
+- `level`: _string_ - [Log level](../options.md#logging).
 
 - `log_filter`: _array_ - (Optional) Packages or classes for which to change the log level.
 
@@ -224,7 +224,7 @@ API methods such as [`eth_getLogs`](eth/filter.md#eth_getlogs) and [`eth_getFilt
 
 :::tip
 
-Manually executing `admin_generateLogBloomCache` is not required unless the [`--auto-log-bloom-caching-enabled`](../cli/options.md#auto-log-bloom-caching-enabled) command line option is set to false.
+Manually executing `admin_generateLogBloomCache` is not required unless the [`--auto-log-bloom-caching-enabled`](../options.md#auto-log-bloom-caching-enabled) command line option is set to false.
 
 :::
 

@@ -98,6 +98,22 @@
     {
       "source": "/public-networks/reference/trace-types/",
       "destination": "/public-networks/reference/api/trace/"
+    },
+    {
+      "source": "/public-networks/reference/cli/options/",
+      "destination": "/public-networks/reference/options/"
+    },
+    {
+      "source": "/public-networks/reference/cli/subcommands/",
+      "destination": "/public-networks/reference/subcommands/"
+    },
+    {
+      "source": "/private-networks/reference/cli/options/",
+      "destination": "/private-networks/reference/options/"
+    },
+    {
+      "source": "/private-networks/reference/cli/subcommands/",
+      "destination": "/private-networks/reference/subcommands/"
     }
   ],
   "rewrites": [

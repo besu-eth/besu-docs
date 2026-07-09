@@ -200,7 +200,7 @@ If you installed Besu using Homebrew or docker, see [Deploy a plugin](../how-to/
 Start Besu.
 It loads all JARs found in the `plugins` directory automatically.
 To load only specific plugins, use
-[`--plugins`](../../public-networks/reference/cli/options.md#plugins).
+[`--plugins`](../../public-networks/reference/options.md#plugins).
 
 ## Next steps
 

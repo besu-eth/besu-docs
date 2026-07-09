@@ -38,7 +38,7 @@ contract VendingMachine {
 
 ## Enable revert reason
 
-Use the [`--revert-reason-enabled`](../../../public-networks/reference/cli/options.md#revert-reason-enabled) command line option to include the revert reason in the transaction receipt and the [`trace`](../../../public-networks/reference/api/trace.md#trace) response in Besu.
+Use the [`--revert-reason-enabled`](../../../public-networks/reference/options.md#revert-reason-enabled) command line option to include the revert reason in the transaction receipt and the [`trace`](../../../public-networks/reference/api/trace.md#trace) response in Besu.
 
 :::caution
 

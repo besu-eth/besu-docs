@@ -20,7 +20,7 @@ Methods specific to RPC Pub/Sub are:
 
 :::info
 
-Unlike other [Besu API methods](../../reference/api/index.md), you cannot call the RPC Pub/Sub methods over HTTP. Use the [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) option for WebSockets or the `--Xrpc-ipc-enabled` option for IPC (see [JSON-RPC over IPC](json-rpc.md)) to enable subscription methods.
+Unlike other [Besu API methods](../../reference/api/index.md), you cannot call the RPC Pub/Sub methods over HTTP. Use the [`--rpc-ws-enabled`](../../reference/options.md#rpc-ws-enabled) option for WebSockets or the `--Xrpc-ipc-enabled` option for IPC (see [JSON-RPC over IPC](json-rpc.md)) to enable subscription methods.
 
 :::
 

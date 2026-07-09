@@ -16,7 +16,7 @@ As when [configuring bootnodes](bootnodes.md):
    node key in the HSM before starting Besu.
    Configure Besu with a security module plugin, such as the
    [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin), using the
-   [`--security-module`](../../../public-networks/reference/cli/options.md#security-module)
+   [`--security-module`](../../../public-networks/reference/options.md#security-module)
    option.
 
    :::

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 # Start Besu
 
-Use the [`besu`](../reference/cli/options.md) command with the required command line options to start a node.
+Use the [`besu`](../reference/options.md) command with the required command line options to start a node.
 
 ## Prerequisites
 
@@ -14,21 +14,21 @@ Use the [`besu`](../reference/cli/options.md) command with the required command 
 
 ## Local block data
 
-When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) option to specify a different data directory.
+When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../../public-networks/reference/options.md#data-path) option to specify a different data directory.
 
 To delete the local block data, delete the `database` directory in the `besu/build/distribution/besu-<version>` directory.
 
 ## Genesis configuration
 
-To define a genesis configuration, create a [genesis file](../../public-networks/concepts/genesis-file.md) (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../../public-networks/reference/cli/options.md#genesis-file) option.
+To define a genesis configuration, create a [genesis file](../../public-networks/concepts/genesis-file.md) (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../../public-networks/reference/options.md#genesis-file) option.
 
-When you specify [`--network=dev`](../../public-networks/reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../../public-networks/reference/cli/options.md#network) has an empty bootnodes list by default.
+When you specify [`--network=dev`](../../public-networks/reference/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../../public-networks/reference/options.md#network) has an empty bootnodes list by default.
 
 Predefined genesis configurations for named networks are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
 ## Confirm node is running
 
-If you started Besu with the [`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
+If you started Besu with the [`--rpc-http-enabled`](../../public-networks/reference/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
 
 - `eth_chainId` returns the chain ID of the network.
 
@@ -79,9 +79,9 @@ data-path="/tmp/tmpdata-path"
 
 The following settings are a security risk in production environments:
 
-- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../../public-networks/reference/cli/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../../public-networks/reference/cli/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
-- Setting [`--host-allowlist`](../../public-networks/reference/cli/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
-- Setting [`--rpc-http-cors-origins`](../../public-networks/reference/cli/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
+- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../../public-networks/reference/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../../public-networks/reference/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
+- Setting [`--host-allowlist`](../../public-networks/reference/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
+- Setting [`--rpc-http-cors-origins`](../../public-networks/reference/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
 
 :::
 
@@ -97,7 +97,7 @@ Where `<data-path>` is the path to the directory to save the chain data to. Ensu
 
 :::note
 
-You might need to set [`--tx-pool-limit-by-account-percentage`](../../public-networks/reference/cli/options.md#tx-pool-limit-by-account-percentage) to 1. The default value is suitable for Mainnet, but may cause issues on private networks.
+You might need to set [`--tx-pool-limit-by-account-percentage`](../../public-networks/reference/options.md#tx-pool-limit-by-account-percentage) to 1. The default value is suitable for Mainnet, but may cause issues on private networks.
 
 :::
 
@@ -108,8 +108,8 @@ Besu uses [full sync](../../public-networks/concepts/node-sync.md#full-synchroni
 
 To use [snap sync](../../public-networks/concepts/node-sync.md#snap-synchronization) for a node joining or catching up to an existing QBFT or IBFT 2.0 network,
 the existing nodes must serve snap sync data using
-[`--snapsync-server-enabled=true`](../../public-networks/reference/cli/options.md#snapsync-server-enabled),
+[`--snapsync-server-enabled=true`](../../public-networks/reference/options.md#snapsync-server-enabled),
 and the joining node must set
-[`--sync-mode=SNAP`](../../public-networks/reference/cli/options.md#sync-mode).
+[`--sync-mode=SNAP`](../../public-networks/reference/options.md#sync-mode).
 
 :::

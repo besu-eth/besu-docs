@@ -1,6 +1,6 @@
 ---
 title: Engine API
-sidebar_position: 3
+sidebar_position: 6
 description: Engine API methods reference
 ---
 

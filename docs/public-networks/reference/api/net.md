@@ -198,7 +198,7 @@ Returns enabled services (for example, `jsonrpc`) and the host and port for each
 
 :::note
 
-The [`--nat-method`](../cli/options.md#nat-method) setting affects the JSON-RPC and P2P host and port values, but not the metrics host and port values.
+The [`--nat-method`](../options.md#nat-method) setting affects the JSON-RPC and P2P host and port values, but not the metrics host and port values.
 
 :::
 

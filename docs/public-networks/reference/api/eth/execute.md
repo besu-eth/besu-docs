@@ -841,7 +841,7 @@ block parameters without submitting them to the network.
 
     - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
 
-    - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
+    - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
     - `size`: _quantity, integer_ - Size of block in bytes.
 
