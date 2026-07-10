@@ -1,98 +1,40 @@
 ---
-title: Developer Quickstart with Privacy
+title: Developer Quickstart with privacy
 sidebar_position: 2
 description: Rapidly generate a local blockchain network with privacy using the Quickstart.
+keywords: [Besu, Paladin, privacy, quickstart, Pente, Noto, Zeto, QBFT, Docker]
 toc_max_heading_level: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 import TestAccounts from '../../global/test_accounts.md';
 
-import Postman from '../../global/postman.md';
-
-# Developer Quickstart with Privacy
-
-The Besu Developer Quickstart generates a local private [QBFT](../how-to/configure/consensus/qbft.md) network of Besu nodes and privacy with
-[LFDT Paladin](https://www.lfdecentralizedtrust.org/projects/paladin); all managed by Docker Compose.
-Use this tutorial to create a development network, use privacy in multiple forms, send JSON-RPC requests, view blocks and transactions, monitor nodes
-and test a transaction from MetaMask.
+The Besu Developer Quickstart generates a local private
+[QBFT](../how-to/configure/consensus/qbft.md) network of Besu nodes with privacy from
+[LFDT Paladin](../concepts/privacy-with-paladin.md), all managed by Docker Compose.
+Paladin is an open-source privacy layer from the Linux Foundation Decentralized Trust (LFDT),
+separate from Besu.
+Use this tutorial to create a development network, test each Paladin privacy domain, send JSON-RPC
+requests, view blocks and transactions, monitor nodes, and test a transaction from MetaMask.
 
 :::caution
 
-This tutorial runs a private network suitable for education or demonstration purposes and is not intended for running production 
-networks.
+This tutorial runs a private network suitable for education or demonstration purposes and is not
+intended for running production networks.
 
 :::
 
-The generated private network includes four validators, one non-validator RPC node, three member nodes (besu paired with paladin) and monitoring services.
-You can optionally enable Chainlens Explorer and OpenTelemetry (OTel) when you generate the network.
+The generated private network includes four validators, one non-validator RPC node, three member
+nodes (each a Besu node paired with a Paladin node), and monitoring services.
+You can optionally enable Chainlens Explorer and OpenTelemetry (OTel) when you generate the
+network.
 
-## Privacy with Paladin
-
-[Paladin](https://lfdt-paladin.github.io/paladin/head/architecture/overview/) supports three privacy domains, each with a different trust model and privacy mechanism. This quickstart deploys all three so you can test each.
-
-### Overview
-
-**Pente** is a _privacy group_ and the most similar to Consensys Tessera. It is a domain where a subset of nodes share an encrypted EVM environment. Members
-of the group can deploy and call Solidity contracts whose state is invisible to non-members. Transactions are submitted by any group member and executed
-privately; only an encrypted state root lands on the public chain.
-
-- **Who can see the state?** Only nodes that are members of the privacy group.
-- **Who signs?** The submitting node. Other group members endorse the EVM execution.
-- **Third-party trust required?** No — the group collectively holds the state.
-- **Use when:** You need private business logic (confidential contracts, private DeFi, multi-party workflows that need compute, not just value transfer).
-
-**Noto** is a _private token ledger_ backed by a designated notary. Every transfer must be co-signed by the notary, who has full visibility into all
-balances and transfers. Non-participants cannot see amounts, but the notary always can.
-
-- **Who can see balances?** The notary sees everything. Each participant sees only their own transactions.
-- **Who signs?** The sender submits; the notary automatically co-signs (in `notaryMode: basic`).
-- **Third-party trust required?** Yes — you are trusting the notary to act honestly and not front-run transfers.
-- **Use when:** You need a regulated token where an issuer or custodian must maintain auditability (CBDC, tokenised securities, supply-chain tokens with
-compliance requirements).
-
-**Zeto** is a _privacy-preserving token using ZK-SNARKs_. Each transfer is accompanied by a cryptographic proof that the sender owned the funds and the amounts
-are consistent — without revealing what those amounts are. No third party is required; the math enforces correctness.
-
-- **Who can see balances?** Only the sender and receiver of each transaction. On-chain observers see only UTXO hashes and proofs.
-- **Who signs?** The sender's Paladin node generates and submits the ZK proof. No co-signer needed.
-- **Third-party trust required?** No — validity is guaranteed by the proof, not by a trusted party.
-- **ZK proofs:** Generated server-side inside `libzeto.so` using WASM-compiled Groth16 circuits bundled in the Docker image. No ZK tooling is needed on your machine.
-- **Use when:** You need the strongest privacy guarantees with no trusted intermediary (interbank settlement, privacy-first payment rails).
-
-### Comparison table
-
-| | Pente | Noto | Zeto |
-|---|---|---|---|
-| **Privacy mechanism** | Encrypted EVM state | UTXO hashes, notary co-signs | UTXO hashes + Groth16 ZK proof |
-| **Who can see amounts** | Group members only | Notary sees all; participants see own txns | Sender and receiver only |
-| **Who must sign** | Submitting node | Sender + notary (automatic in basic mode) | Sender only (proof substitutes co-signer) |
-| **Trusted third party** | No | Yes (notary) | No |
-| **Smart contract support** | Yes (private EVM) | No | No |
-| **Token transfers** | No (compute, not value) | Yes | Yes |
-| **Double-spend protection** | EVM state | Notary enforces UTXO rules | Nullifiers (`Zeto_AnonNullifier`) or none (`Zeto_Anon`) |
-| **Proof of validity** | EVM re-execution by members | Notary signature | Cryptographic (Groth16 SNARK) |
-| **First-tx latency** | ~seconds | ~seconds | 3-5 min (WASM warm-up in Docker/WSL2) |
-| **Production latency** | ~seconds | ~seconds | < 30s (native binaries, dedicated CPU) |
-| **Best for** | Private business logic | Regulated tokens with oversight | Maximum privacy, no trusted party |
-
-#### Before you start 
-
-##### ZK proof performance
-
-Zeto ZK proof generation is the slowest part of this quickstart. The proofs are computed by the Paladin container using WASM-compiled Groth16 circuits
-bundled at `/app/domains/zeto/zkp/` inside the image. WASM JIT is 10-50× slower than native code, and proof times depend heavily on your runtime environment.
-
-##### Expected times by setup
-
-| Setup | First proof (WASM cold start) | Subsequent proofs |
-|---|---|---|
-| Docker Desktop + WSL2 (default limits) | 10+ minutes | 3-5 minutes |
-| Docker Desktop + WSL2 (tuned limits) | 3-5 minutes | 1-2 minutes |
-| Docker native in WSL2 (no Desktop) | 2-4 minutes | 30s-1min |
-| Native Linux (bare metal or VM) | 30-60 seconds | 10-30 seconds |
-
-**The warm-up only happens once per `docker compose up`.** After the first proof the WASM circuit instance stays loaded in the Paladin process. Subsequent proofs reuse it and are noticeably faster. A `docker compose down` restarts the process and resets the timer.
-
+This quickstart deploys all three Paladin privacy domains (Pente, Noto, and Zeto) so you can test
+each.
+For an explanation of each domain and how the factory contracts work, see
+[Privacy with Paladin](../concepts/privacy-with-paladin.md).
 
 ## Prerequisites
 
@@ -111,16 +53,19 @@ You can use Docker Desktop or Docker Engine with the Compose plugin in the WSL2 
 
 ### Native Linux / WSL2 without Docker Desktop
 
-If you are running Docker directly inside WSL2 (i.e. the Docker daemon is installed in the WSL2 distro itself, not via Docker Desktop), you only
-need to tune the WSL2 VM resource allocation. WSL2 is still a Hyper-V lightweight VM and defaults cap CPU well below your physical core count.
+If you are running Docker directly inside WSL2 (that is, the Docker daemon is installed in the
+WSL2 distro itself, not via Docker Desktop), you only need to tune the WSL2 VM resource
+allocation.
+WSL2 is still a Hyper-V lightweight VM and defaults cap CPU well below your physical core count.
 
-Create or edit `%USERPROFILE%\.wslconfig` on the Windows host (e.g. `C:\Users\YourName\.wslconfig`):
+Create or edit `%USERPROFILE%\.wslconfig` on the Windows host
+(for example, `C:\Users\<YOUR_USERNAME>\.wslconfig`):
 
 ```ini
 [wsl2]
-processors=8      # physical cores to expose to the WSL2 VM (up to your machine's core count)
-memory=16GB       # RAM for the VM — aim for at least 8 GB for comfortable Zeto proof generation
-swap=0            # optional: disable swap to avoid latency spikes during proof generation
+processors=8      # Physical cores to expose to the WSL2 VM (up to your machine's core count).
+memory=16GB       # RAM for the VM. Allow at least 8 GB for Zeto proof generation.
+swap=0            # Optional. Disable swap to avoid latency spikes during proof generation.
 ```
 
 Apply by restarting the VM from PowerShell:
@@ -129,27 +74,52 @@ Apply by restarting the VM from PowerShell:
 wsl --shutdown
 ```
 
-Then reopen your WSL2 terminal. The change takes effect immediately on next WSL2 start.
+Then reopen your WSL2 terminal.
+The change takes effect immediately on the next WSL2 start.
 
-If you are on **native Linux** (not WSL2 at all), no tuning is needed — Docker runs directly on the host kernel and proof times are in the 30-60s range.
+If you are on **native Linux** (not WSL2 at all), no tuning is needed.
+Docker runs directly on the host kernel and proof times are in the 30 to 60 second range.
 
-### Docker Desktop + WSL2
+### Docker Desktop and WSL2
 
-If you are using Docker Desktop with the WSL2 backend you have two resource caps to raise:
+If you are using Docker Desktop with the WSL2 backend, you have two resource caps to raise:
 
-**1. Set WSL2 VM limits** — same `.wslconfig` as above.
-
-**2. Match Docker Desktop's own cap** — Docker Desktop has a separate CPU/memory limit that overrides the WSL2 allocation if it is lower. Open
-Docker Desktop → **Settings** → **Resources** and set CPUs and Memory to match what you put in `.wslconfig`, then click **Apply & Restart**.
+1. Set the WSL2 VM limits using the same `.wslconfig` as above.
+2. Match Docker Desktop's own cap.
+   Docker Desktop has a separate CPU and memory limit that overrides the WSL2 allocation if it is
+   lower.
+   In Docker Desktop, go to **Settings** > **Resources**, set CPUs and Memory to match your
+   `.wslconfig` values, then select **Apply & Restart**.
 
 Without step 2, Docker Desktop silently ignores the extra WSL2 resources and you get no benefit.
+
+### ZK proof performance
+
+Zeto ZK proof generation is the slowest part of this quickstart.
+The proofs are computed by the Paladin container using WASM-compiled Groth16 circuits bundled at
+`/app/domains/zeto/zkp/` inside the image.
+WASM JIT is 10 to 50 times slower than native code, and proof times depend heavily on your runtime
+environment.
+
+| Setup                                      | First proof (WASM cold start) | Subsequent proofs          |
+| ------------------------------------------ | ----------------------------- | -------------------------- |
+| Docker Desktop and WSL2 (default limits)   | 10+ minutes                   | 3 to 5 minutes             |
+| Docker Desktop and WSL2 (tuned limits)     | 3 to 5 minutes                | 1 to 2 minutes             |
+| Docker native in WSL2 (no Docker Desktop)  | 2 to 4 minutes                | 30 seconds to 1 minute     |
+| Native Linux (bare metal or VM)            | 30 to 60 seconds              | 10 to 30 seconds           |
+
+The warm-up only happens once per `docker compose up`.
+After the first proof, the WASM circuit instance stays loaded in the Paladin process.
+Subsequent proofs reuse it and are noticeably faster.
+A `docker compose down` restarts the process and resets the timer.
 
 ## Steps
 
 ### 1. Generate the private network files
 
 Run the Developer Quickstart.
-The quickstart generates a folder (`./besu-test-network` by default) with the Docker Compose files, scripts, and Besu configuration in it.
+The quickstart generates a folder (`./besu-test-network` by default) with the Docker Compose
+files, scripts, and Besu configuration in it.
 
 ```bash
 npx @consensys-software/besu-dev-quickstart
@@ -157,13 +127,13 @@ npx @consensys-software/besu-dev-quickstart
 
 When prompted, select the following options:
 
-| Prompt                               | Selection             |
-| ------------------------------------ | --------------------- |
-| Network type                         | **Private**           |
-| Add privacy (using paladin) to the network? | **Y**          |
-| Add OTel Collector spans to Grafana? | **N**                 |
-| Enable Chainlens Explorer?           | **Y**                 |
-| Config files directory               | `./besu-test-network` |
+| Prompt                                      | Selection             |
+| ------------------------------------------- | --------------------- |
+| Network type                                | **Private**           |
+| Add privacy (using paladin) to the network? | **Y**                 |
+| Add OTel Collector spans to Grafana?        | **N**                 |
+| Enable Chainlens Explorer?                  | **Y**                 |
+| Config files directory                      | `./besu-test-network` |
 
 To skip the prompts, run:
 
@@ -181,7 +151,8 @@ cd besu-test-network
 ```
 
 The script builds the Docker images and starts the network.
-The private network contains four QBFT validators named `validator1` through `validator4`, one non-validator node named `rpcnode`, three members 
+The private network contains four QBFT validators named `validator1` through `validator4`, one
+non-validator node named `rpcnode`, and three member nodes each paired with a Paladin node.
 
 When startup finishes, the script lists the available endpoints:
 
@@ -228,13 +199,18 @@ This tutorial uses [curl](https://curl.haxx.se/download.html) to send JSON-RPC r
 
 #### Request the node version
 
-Run the following command from the host shell:
+Run the following command from the host shell.
+The result displays the client version of the running node:
+
+<Tabs>
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
 ```
 
-The result displays the client version of the running node:
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
 
 ```json
 {
@@ -244,19 +220,30 @@ The result displays the client version of the running node:
 }
 ```
 
-The exact version, architecture, and Java runtime can differ depending on the Besu image used by your generated network.
-Successfully calling this method shows that you can connect to the network using JSON-RPC over HTTP.
+</TabItem>
+</Tabs>
+
+The exact version, architecture, and Java runtime can differ depending on the Besu image used by
+your generated network.
+Successfully calling this method shows that you can connect to the network using JSON-RPC over
+HTTP.
 
 #### Count the peers
 
 Peers are the other nodes connected to the node receiving the JSON-RPC request.
-Poll the peer count using [`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount):
+Poll the peer count using
+[`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount).
+The result indicates that `rpcnode` has seven peers:
+
+<Tabs>
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
 ```
 
-The result indicates that `rpcnode` has seven peers:
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
 
 ```json
 {
@@ -266,15 +253,24 @@ The result indicates that `rpcnode` has seven peers:
 }
 ```
 
+</TabItem>
+</Tabs>
+
 #### Request the most recent block number
 
-Call [`eth_blockNumber`](../../public-networks/reference/api/index.md#eth_blocknumber) to retrieve the highest block number on `rpcnode`:
+Call [`eth_blockNumber`](../../public-networks/reference/api/index.md#eth_blocknumber) to retrieve
+the highest block number on `rpcnode`.
+The result indicates the highest block number synchronized on this node:
+
+<Tabs>
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
 ```
 
-The result indicates the highest block number synchronized on this node:
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
 
 ```json
 {
@@ -284,41 +280,35 @@ The result indicates the highest block number synchronized on this node:
 }
 ```
 
+</TabItem>
+</Tabs>
+
 The hexadecimal value `0x2a` translates to `42`, the number of blocks received by the node so far.
 
-### 4. Paladin Bootstrap
+### 4. Verify the Paladin bootstrap
 
-Paladin is a multi-node system, and the nodes need a shared on-chain coordination point for each privacy domain. The factory is that coordination point.
-Paladin's whole job is to keep private state off-chain — in each node's encrypted private database. But the public chain still needs to know something is
-happening, otherwise double-spends are possible, state roots can't be anchored, and nodes have no way to discover that a new token or privacy group exists.
+The `paladin-bootstrap` container starts automatically after the validators are healthy and deploys
+the three factory contracts, one per privacy domain.
+For an explanation of factory contracts, see
+[Privacy with Paladin](../concepts/privacy-with-paladin.md#factory-contracts).
 
-For example when node A wants to create a Noto token, or form a Pente privacy group, it needs to publish something on-chain. _But what address does it publish to?_
-And how do nodes B and C know to look for it? The factory is the answer. It is a known, static address — hardcoded in every `paladin*.yaml` — that acts as a **shared
-registry.** When node A calls the factory to deploy a new token instance, the factory emits an on-chain event. Nodes B and C are watching that factory address
-and see the event. Discovery is solved without any out-of-band coordination.
+The bootstrap scripts are in the generated network at
+`smart_contracts/scripts/paladin_bootstrap/`: `deploy_pente_factory.ts`,
+`deploy_noto_factory.ts`, and `deploy_zeto_factory.ts`.
+See `config/paladin/README.md` in the generated network for more details on how Paladin is
+configured in this quickstart.
 
-Each domain has its own factory (& contract). **Before any Paladin node starts, three factory contracts must be deployed to the chain — one per privacy domain.**
-
-The quickstart bootstrap is designed for a fresh chain where the rpcnode deployer account starts at _nonce=0_, producing **deterministic addresses that are pre-hardcoded
-in the YAML files**. 
-
-**On an existing network the deployer account will have a non-zero nonce, so addresses will differ — you must collect the printed addresses and configure each Paladin
-node manually.**
-
-After the network is up (ie the validators) a paladin bootstrap container runs and creates these factory contracts. **Pente is deployed first** because its factory
-address derives from nonce=0 of the deployer account. The `CREATE` opcode computes the contract address as `keccak256(rlp([sender, nonce]))[12:]`, so the very first
-transaction from the `rpcnode` always produces `0xBca0fDc68d9b21b5bfB16D784389807017B2bbbc`. This address is pre-hardcoded into all three `paladin*.yaml` files.
-
-**If anything else were deployed before Pente, it would consume nonce=0 and push the factory to a different address, breaking the config.**
-
-To examine this code please see the `smart_contracts/paladin_bootstrap/deploy_*.ts` files of the quickstart. We deploy in the order of pente -> noto -> zeto.
-
-Also refer to `config/paladin/README.md` for more details on how paladin works and is used in the quickstart.
-
-When the container has finished, the logs should resemble the following:
+Check the bootstrap logs to confirm all three factory contracts deployed successfully:
 
 ```bash
+docker compose logs paladin-bootstrap
+```
 
+The output should resemble the following.
+In the logs, each `registryAddress` is the factory contract address for that privacy domain.
+If any deployment step is missing, the Paladin nodes will fail to start correctly.
+
+```log title="Paladin bootstrap logs"
 > besu-paladin-smart-contracts@1.0.0 precompile
 > node scripts/paladin_bootstrap/get_abis.mjs
 
@@ -373,26 +363,27 @@ Current nonce: 4
 
 Add to each paladin*.yaml under domains.zeto:
     registryAddress: "0x49f8866d90ffDa8B12AC5677966e963acEc6d80E"
-
 ```
 
-### 5 Paladin Pente - Privacy Groups
+### 5. Create a Pente privacy group
 
-Pente is also the simplest domain: a single self-contained contract, one transaction, no proxy pattern, no initialization arguments. 
+This example creates a privacy group containing `member1` and `member2`, deploys a
+`SimpleStorage` contract privately into the group, sets a value, and reads it back from all three
+members.
+`member1` and `member2` return the value.
+`member3` receives an error because it is not a member of the privacy group.
 
-Run the privacy example between `member1` to `member2` by creating a privacy group and then deploys the `SimpleStorage` contract, does a read and write operation and then 
-requests the value from all three members. `member1` and `member2` respond correctly, `member3` however throws an error as it was not part of the privacy group
+From the generated network directory, run:
 
 ```bash
 cd smart_contracts
-npm i
+npm install
 npm run pente-tx
 ```
 
-which results in 
+The output resembles the following:
 
-```bash
-
+```log title="Pente example output"
 > besu-paladin-smart-contracts@1.0.0 pente-tx
 > ts-node scripts/privacy/pente_tx.ts
 
@@ -422,30 +413,29 @@ JSON-RPC error from pgroup_call (200 OK) PD012502: Privacy group '0xa0004eccd032
   member3 correctly denied — "PD012502: Privacy group '0xa0004eccd032092fc41176255b0d2f5a8eed08f636104fecf53e377e388d12c5' not found" ✓
 
 === DONE ===
-
 ```
 
-### 6 Paladin Noto - Notazized Tokens
+### 6. Transfer notarized tokens with Noto
 
-Noto is second. With Pente having consumed nonce=0, the three Noto contracts land at deterministic addresses that are also pre-hardcoded in the YAML files. The proxy at nonce=3 — `0x9393486896D3ae612B4939afAF2C367Df17CC39B` — is the `registryAddress` Paladin nodes use to deploy and look up Noto token instances.
-Noto uses NotoFactory V2, which is UUPS upgradeable. Unlike Pente's V0 self-contained contract, an upgradeable factory separates the business logic from a stable proxy address so the implementation can be swapped without invalidating existing token deployments. This requires three sequential steps:
+This example deploys a Noto token with `member1` as the notary in `notaryMode: basic`, where only
+the notary can mint tokens and the notary must co-sign every token operation.
+`member1` mints 2000 tokens, transfers 1000 to `member2`, and `member2` transfers 800 to
+`member3`.
+The script then reads the final balances of all three members.
 
-With this example `member 1` is the notary. With `notaryMode: "basic"` only the notary can mint tokens - please see the paladin docs on `notaryMode: "hooks"` if you want other members
-to have the ability to mint tokens. In this example, `member1` mints 2000 tokens and then transfers 1000 to `member2` which in turn sends 800 to `member3`. Each of these transfers needs
-the notary i.e., `member1` to co-sign them (every token operation in fact).
+To let other members mint tokens, see `notaryMode: hooks` in the
+[Paladin documentation](https://lfdt-paladin.github.io/paladin/head/architecture/overview/).
 
-Lastly it reads the final balances of all three members.
+From the `smart_contracts` directory, run:
 
 ```bash
-cd smart_contracts
-npm i
+npm install
 npm run noto-tx
 ```
 
-which results in 
+The output resembles the following:
 
-```bash
-
+```log title="Noto example output"
 > besu-paladin-smart-contracts@1.0.0 noto-tx
 > ts-node scripts/privacy/noto_tx.ts
 
@@ -474,27 +464,31 @@ member3:          member@paladin3
 === DONE ===
 ```
 
-### 7 Paladin Zeto - ZK Snark Private Tokens
+### 7. Transfer private tokens with Zeto
 
-Zeto ZK proof generation is the slowest part of this quickstart. The proofs are computed by the Paladin container using WASM-compiled Groth16 circuits
-bundled at `/app/domains/zeto/zkp/` inside the image. WASM JIT is 10-50× slower than native code, and proof times depend heavily on your runtime environment.
+This example deploys a `Zeto_Anon` token and transfers it between members using zero-knowledge
+succinct non-interactive arguments of knowledge (ZK-SNARK) proofs.
+`member1` mints 1000 tokens, transfers 400 to `member2`, and `member2` transfers 300 to
+`member3`.
 
-Zeto is deployed last because it requires the most on-chain setup. Starting at nonce=4, the bootstrap runs nine steps: a UUPS proxy deployment (two contracts), five Groth16 verifier contracts, the Zeto_Anon token implementation, and a final `registerImplementation` call that ties them together. The ZetoFactory proxy at nonce=5 is the `registryAddress` hardcoded in the YAML files; all other addresses support it.
+Each operation waits for Paladin to generate a proof, and the first proof after startup can take
+several minutes.
+See [ZK proof performance](#zk-proof-performance) for expected times.
 
-The five `Groth16Verifier_*` contracts are the key difference from Noto. **Zeto does not rely on a trusted notary — instead, on-chain Solidity contracts verify each ZK proof independently.** Every mint and transfer is accompanied by a Groth16 proof that the chain verifies before accepting the transaction. This means no off-chain coordinator is needed; correctness is enforced by math, not by trust.
+This quickstart uses the `Zeto_Anon` token variant for simplicity.
+For other Zeto variants, see the
+[Paladin Zeto documentation](https://lfdt-paladin.github.io/paladin/head/architecture/zeto/).
 
-This quickstart uses `Zeto_Anon` for simplicity, but Paladin supports richer Zeto variants. Please refer to the [paladin documentation](https://lfdt-paladin.github.io/paladin/head/architecture/zeto/) for that.
+From the `smart_contracts` directory, run:
 
 ```bash
-cd smart_contracts
-npm i
+npm install
 npm run zeto-tx
 ```
 
-which results in 
+The output resembles the following:
 
-```bash
-
+```log title="Zeto example output"
 > besu-paladin-smart-contracts@1.0.0 zeto-tx
 > ts-node scripts/privacy/zeto_tx.ts
 
@@ -550,36 +544,42 @@ member3: member@paladin3
    member3: 300 (expected: 300) ✓
 
 === DONE ===
-
 ```
 
-### 7. View the network in Chainlens
+### 8. View the network in Chainlens
 
-If you enabled Chainlens when generating the network, open `http://localhost:8081/dashboard` in your browser.
+If you enabled Chainlens when generating the network, open `http://localhost:8081/dashboard` in
+your browser.
 
 Chainlens connects to `rpcnode` and displays network activity, blocks, and transactions.
-If the dashboard is empty at first, wait for the ingestion service to index the latest blocks, then refresh the page.
+If the dashboard is empty at first, wait for the ingestion service to index the latest blocks,
+then refresh the page.
 
-To add Chainlens after generating the network, generate a new quickstart directory with `--chainlens true`.
-The Developer Quickstart adds the Chainlens services to the generated Docker Compose file at generation time.
+To add Chainlens after generating the network, generate a new quickstart directory with
+`--chainlens true`.
+The Developer Quickstart adds the Chainlens services to the generated Docker Compose file at
+generation time.
 
-### 8. Monitor nodes with Prometheus, Grafana, and Loki
+### 9. Monitor nodes with Prometheus, Grafana, and Loki
 
-The Developer Quickstart starts Prometheus, Grafana, Loki, and Grafana Alloy with the private network.
+The Developer Quickstart starts Prometheus, Grafana, Loki, and Grafana Alloy with the private
+network.
 Use these services to inspect node metrics and logs.
 
 - Open `http://localhost:9090/graph` to query metrics in Prometheus.
 - Open the Grafana metrics URL listed by `./list.sh` to view the Besu overview dashboard.
 - Open the Grafana logs URL listed by `./list.sh` to view logs from Loki.
 
-If you generated the network with `--otel true`, the Developer Quickstart also includes an OTel Collector and Tempo.
+If you generated the network with `--otel true`, the Developer Quickstart also includes an OTel
+Collector and Tempo.
 Use Grafana to inspect the additional tracing data.
 
 Learn more about how to [monitor metrics](../../public-networks/how-to/monitor/metrics.md).
 
-### 9. Send a transaction with MetaMask
+### 10. Send a transaction with MetaMask
 
-Connect MetaMask to the local JSON-RPC endpoint and send a transaction between the prefunded test accounts.
+Connect MetaMask to the local JSON-RPC endpoint and send a transaction between the prefunded test
+accounts.
 
 #### Import test accounts
 
@@ -607,34 +607,13 @@ The private network has zero gas price configured, so the transaction doesn't re
 After MetaMask confirms the transaction, copy the transaction hash.
 If Chainlens is enabled, search for the transaction hash in `http://localhost:8081/dashboard`.
 
-### 10. Stop and restart the network
+### 11. Add a non-validator node
 
-Stop the containers without deleting the chain data:
-
-```bash
-./stop.sh
-```
-
-Restart the containers with the existing data:
-
-```bash
-./resume.sh
-```
-
-### 11. Remove the network
-
-Stop the containers and remove the generated container volumes:
-
-```bash
-./remove.sh
-```
-
-The command doesn't delete the generated files in `besu-test-network`.
-
-### 12. Add a non-validator node
-
-You can add a non-validator Besu node to the private network by generating node keys, adding a Docker Compose service, and allowing the node in the network configuration.
-To add a validator instead, use the [QBFT validator voting process](../how-to/configure/consensus/qbft.md#add-and-remove-validators) after the node is running.
+Add a non-validator Besu node to the private network by generating node keys, adding a Docker
+Compose service, and allowing the node in the network configuration.
+To add a validator instead, use the
+[QBFT validator voting process](../how-to/configure/consensus/qbft.md#add-and-remove-validators)
+after the node is running.
 
 #### Generate node keys
 
@@ -654,7 +633,6 @@ The script writes the following files:
 - `accountKeystore`
 - `accountPrivateKey`
 - `accountPassword`
-
 
 Create a directory for the new node and copy the files:
 
@@ -722,17 +700,42 @@ Restart the network for the updated Docker Compose and Besu configuration files 
 ./resume.sh
 ```
 
-After the containers start, confirm that `node5` appears in Docker and that the peer count has increased:
+After the containers start, confirm that `node5` appears in Docker and that the peer count has
+increased:
 
 ```bash
 docker compose ps node5
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
 ```
 
+### 12. Stop and restart the network
+
+Stop the containers without deleting the chain data:
+
+```bash
+./stop.sh
+```
+
+Restart the containers with the existing data:
+
+```bash
+./resume.sh
+```
+
+### 13. Remove the network
+
+Stop the containers and remove the generated container volumes:
+
+```bash
+./remove.sh
+```
+
+The command doesn't delete the generated files in `besu-test-network`.
+
 ## Next steps
 
+- [Privacy with Paladin](../concepts/privacy-with-paladin.md).
 - [Configure QBFT consensus](../how-to/configure/consensus/qbft.md).
 - [Configure local permissioning](../how-to/use-local-permissioning.md).
 - [Deploy and interact with smart contracts](./contracts/interact.md).
 - [Monitor Besu metrics](/public-networks/how-to/monitor/metrics).
-
