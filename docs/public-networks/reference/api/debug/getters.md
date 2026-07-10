@@ -29,6 +29,8 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
 
+  - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
+
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
 
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
@@ -47,7 +49,7 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
 
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
+  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
 
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
@@ -107,7 +109,31 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
   - `uncles`: _array_ - Array of uncle hashes.
 
-  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
+  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+  - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+
+  - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+
+    <Fields>
+
+    - `index`: _quantity_ - Index of the withdrawal.
+
+    - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
+
+    - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
+
+    - `amount`: _quantity_ - Amount withdrawn, in Gwei.
+
+    </Fields>
+
+  - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
+
+  - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
 
@@ -270,6 +296,8 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
 
+  - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
+
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
 
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
@@ -288,7 +316,7 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
 
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. This field is only returned for pre-merge (Proof of Work) blocks. This value will always be `0` for an uncle block.
+  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
 
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../cli/options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
@@ -348,7 +376,31 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
   - `uncles`: _array_ - Array of uncle hashes.
 
-  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). This field is empty for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
+  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+  - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+
+  - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+
+    <Fields>
+
+    - `index`: _quantity_ - Index of the withdrawal.
+
+    - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
+
+    - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
+
+    - `amount`: _quantity_ - Amount withdrawn, in Gwei.
+
+    </Fields>
+
+  - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
+
+  - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
 
