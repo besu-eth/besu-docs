@@ -53,6 +53,7 @@ When prompted, select the following options:
 | Prompt                               | Selection             |
 | ------------------------------------ | --------------------- |
 | Network type                         | **Private**           |
+| Add privacy (using paladin) to the network? | **N**          |
 | Add OTel Collector spans to Grafana? | **N**                 |
 | Enable Chainlens Explorer?           | **Y**                 |
 | Config files directory               | `./besu-test-network` |
@@ -355,6 +356,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 
 ## Next steps
 
+- [Privacy with Paladin](./quickstart-with-privacy.md).
 - [Configure QBFT consensus](../how-to/configure/consensus/qbft.md).
 - [Configure local permissioning](../how-to/use-local-permissioning.md).
 - [Deploy and interact with smart contracts](./contracts/interact.md).
