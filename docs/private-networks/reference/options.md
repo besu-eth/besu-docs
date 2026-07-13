@@ -1,15 +1,15 @@
 ---
-sidebar_label: Configuration options
+sidebar_label: Command line options
 sidebar_position: 1
-description: Besu private network configuration options reference
+description: Besu private network command line options reference
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Private network configuration options
+# Private network command line options
 
-This reference describes the syntax of the Besu private network configuration options.
+This reference describes the syntax of the Besu private network command line interface (CLI) options.
 
 :::caution Important
 

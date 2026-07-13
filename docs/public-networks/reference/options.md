@@ -1,14 +1,13 @@
 ---
-title: Configuration options
-description: Besu configuration options reference
+title: Command line options
+description: Besu command line options reference
 sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-This reference describes the syntax of the Besu configuration options.
+This reference describes the syntax of the Besu command line interface (CLI) options.
 
 :::warning Important
 

@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Besu comes with a [default configuration](#default-configuration) that is suitable for staking.
 
-You can override the default values by specifying [configuration options](../../reference/options.md) on the command line, as environment variables, or in a [TOML configuration file](#toml-configuration-file) that can be reused across node startups.
+You can override the default values by specifying [options](../../reference/options.md) on the command line, as environment variables, or in a [TOML configuration file](#toml-configuration-file) that can be reused across node startups.
 
 You can also use a [pre-configured profile](profile.md) for some common use cases or create and apply a [custom profile](profile.md#load-external-profiles).
 
@@ -45,7 +45,7 @@ Table headings are ignored in TOML files. If you specify a valid Besu option und
 
 :::tip
 
-The [configuration options reference](../../reference/options.md) includes configuration file examples for each option.
+The [options reference](../../reference/options.md) includes configuration file examples for each option.
 
 :::
 
@@ -103,5 +103,5 @@ For example, extending the default configuration using the [staker profile](prof
 |[`sync-mode`](../../reference/options.md#sync-mode)|`SNAP`|Besu syncs using [snap sync](../../concepts/node-sync.md#snap-synchronization), the most time-efficient sync method.|
 
 :::note
-You can see all default configuration values in the [configuration options reference](../../reference/options.md).
+You can see all default configuration values in the [options reference](../../reference/options.md).
 :::
