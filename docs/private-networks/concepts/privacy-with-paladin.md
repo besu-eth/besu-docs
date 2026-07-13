@@ -59,9 +59,22 @@ Zeto is a private token domain that uses zero-knowledge succinct non-interactive
 knowledge (ZK-SNARKs).
 Each transfer is accompanied by a cryptographic proof that the sender owned the funds and the
 amounts are consistent, without revealing what those amounts are.
-Proofs are generated server-side inside `libzeto.so` using WASM-compiled Groth16 circuits bundled
-in the Docker image, so no ZK tooling is needed on your machine.
 No trusted third party is required; validity is guaranteed by the proof, not by a co-signer.
+
+:::note Proof generation: bundled library vs. production
+The Paladin Docker image bundles a shared library (`libzeto.so`) containing WASM-compiled
+Groth16 circuits for proof generation.
+This is the setup used in the Developer Quickstart and requires no ZK tooling on your machine,
+but WASM warm-up adds 3 to 5 minutes of latency on the first transaction in each session,
+particularly noticeable in Docker or WSL2 environments.
+
+In production, most deployments replace the bundled WASM circuits with natively compiled
+binaries and a dedicated prover such as
+[rapidsnark](https://github.com/iden3/rapidsnark), reducing proof generation to under 30
+seconds and eliminating the warm-up penalty.
+Refer to the [Paladin documentation](https://lfdt-paladin.github.io/paladin/head/architecture/overview/)
+for guidance on configuring a production prover.
+:::
 
 Use Zeto when you need the strongest privacy guarantees with no trusted intermediary: interbank
 settlement, privacy-first payment rails, or any use case where even the notary model is
@@ -79,8 +92,7 @@ unacceptable.
 | **Token transfers** | No (compute, not value) | Yes | Yes |
 | **Double-spend protection** | EVM state | Notary enforces UTXO rules | Nullifiers (`Zeto_AnonNullifier`) or none (`Zeto_Anon`) |
 | **Proof of validity** | EVM re-execution by members | Notary signature | Cryptographic (Groth16 SNARK) |
-| **First transaction latency** | Seconds | Seconds | 3 to 5 minutes (WASM warm-up in Docker or WSL2) |
-| **Production latency** | Seconds | Seconds | Under 30 seconds (native binaries) |
+| **Transaction latency** | Seconds | Seconds | Under 30s (native binaries); 3–5 min first-run warm-up with bundled `libzeto.so` (WASM) |
 | **Best for** | Private business logic | Regulated tokens with oversight | Maximum privacy, no trusted party |
 
 ## Factory contracts
