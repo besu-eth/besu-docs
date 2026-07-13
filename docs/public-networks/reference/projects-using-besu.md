@@ -12,9 +12,11 @@ This page highlights a selection of projects and organizations using Besu.
 
 The following block explorers are compatible with Besu:
 
-- [BlockScout](https://github.com/blockscout/blockscout#readme) - See the [project documentation](https://docs.blockscout.com/) for setup instructions.
+- [BlockScout](https://github.com/blockscout/blockscout#readme) - Blockscout is an open-source block explorer that supports indexing Besu networks through their JSON-RPC endpoints.
+See the [project documentation](https://docs.blockscout.com/) for setup instructions.
 
-- [Chainlens Blockchain Explorer](https://www.web3labs.com/chainlens) - See how to [use Chainlens](../../private-networks/how-to/monitor/chainlens.md).
+- [Chainlens Blockchain Explorer](https://www.web3labs.com/chainlens) - Chainlens is a block explorer and analytics platform that supports Besu networks through the Ethereum JSON-RPC API.
+  See how to [use Chainlens](../../private-networks/how-to/monitor/chainlens.md).
 
 ## Blockchains
 
