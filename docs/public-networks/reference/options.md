@@ -1,7 +1,7 @@
 ---
 title: Command line options
 description: Besu command line options reference
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
