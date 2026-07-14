@@ -268,19 +268,7 @@ curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
 
 ```json
 {
-  "status": "DOWN",
-  "checks": {
-    "peers": {
-      "status": true,
-      "currentPeers": 5,
-      "requiredPeers": 1
-    },
-    "sync": {
-      "status": false,
-      "blocksBehind": 150,
-      "maxBlocksBehind": 2
-    }
-  }
+  "status": "DOWN"
 }
 ```
 
@@ -288,31 +276,9 @@ curl -v 'http://localhost:8545/readiness?minPeers=0&maxBlocksBehind=10'
 
 </Tabs>
 
-The readiness response object contains the following fields:
+The readiness response object contains the following field:
 
 - `status`: _string_ - readiness status of the node, either `UP` or `DOWN`
-
-- `checks`: _object_ - peer and sync diagnostics
-
-  - `peers`: _object_ - peer connectivity diagnostics; included only when [P2P communication](../../reference/cli/options.md#p2p-enabled) is enabled
-
-    - `status`: _boolean_ - whether the peer requirement is met
-
-    - `currentPeers`: _number_ - number of connected peers
-
-    - `requiredPeers`: _number_ - minimum number of peers required, from the `minPeers` query parameter or the default
-
-    - `error`: _string_ - present only when the `minPeers` query parameter is invalid
-
-  - `sync`: _object_ - sync diagnostics; included only when sync status is available
-
-    - `status`: _boolean_ - whether the node is within the block tolerance
-
-    - `blocksBehind`: _number_ - number of blocks the node is behind the best known block
-
-    - `maxBlocksBehind`: _number_ - maximum number of blocks the node can be behind, from the `maxBlocksBehind` query parameter or the default
-
-    - `error`: _string_ - present only when the `maxBlocksBehind` query parameter is invalid
 
 ### Liveness
 
