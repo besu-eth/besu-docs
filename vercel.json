@@ -98,6 +98,10 @@
     {
       "source": "/public-networks/reference/trace-types/",
       "destination": "/public-networks/reference/api/trace/"
+    },
+    {
+      "source": "/public-networks/how-to/configuration-file/",
+      "destination": "/public-networks/how-to/configure-besu/"
     }
   ],
   "rewrites": [
