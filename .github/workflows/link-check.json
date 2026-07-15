@@ -23,6 +23,10 @@
       "pattern": "^http(s)?://consensys.net"
     },
     {
+      "comment": "Swift.com has bot/DDoS attack protection that blocks the link checker",
+      "pattern": "^http(s)?://(www\\.)?swift.com"
+    },
+    {
       "comment": "Exclude addresses with extra data variable placeholders (not yet replaced when checking for links)",
       "pattern": "{{[a-zA-Z_\\-\\.\\[\\]\\']+}}"
     },

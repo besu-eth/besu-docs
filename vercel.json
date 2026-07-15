@@ -114,6 +114,10 @@
     {
       "source": "/private-networks/reference/cli/subcommands/",
       "destination": "/private-networks/reference/subcommands/"
+    },
+    {
+      "source": "/public-networks/how-to/configuration-file/",
+      "destination": "/public-networks/how-to/configure-besu/"
     }
   ],
   "rewrites": [
