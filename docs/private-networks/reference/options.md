@@ -1,15 +1,16 @@
 ---
-sidebar_label: Command line options
-sidebar_position: 1
-description: Besu private network command line options reference
+sidebar_label: Configuration options
+sidebar_position: 2
+description: Besu private network configuration options reference
+keywords: [configuration, options, command line, command line interface, CLI]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Private network command line options
+# Private network configuration options
 
-This reference describes the syntax of the Besu private network command line interface (CLI) options.
+This reference describes the syntax of the Besu private network configuration options.
 
 :::caution Important
 
@@ -20,18 +21,9 @@ This reference contains options that apply to only private networks. For options
 You can specify options:
 
 - On the command line.
+  Options are part of the command line interface (CLI); run `besu --help` to display all options and [subcommands](subcommands.md).
 
-  ```bash
-  besu [OPTIONS] [SUBCOMMAND]
-  ```
-
-- As an environment variable. For each command line option, the equivalent environment variable is:
-
-  - Uppercase.
-  - `_` replaces `-`.
-  - Has a `BESU_` prefix.
-
-For example, set `--rpc-http-enabled` using the `BESU_RPC_HTTP_ENABLED` environment variable.
+- As an environment variable.
 
 - In a [configuration file](../../public-networks/how-to/configure-besu/index.md).
 

@@ -1,7 +1,8 @@
 ---
 title: Subcommands
-description: Besu command line interface subcommands
+description: Besu subcommands reference
 sidebar_position: 3
+keywords: [subcommands, subcommand options, command line, command line interface, CLI]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,6 +11,7 @@ import TabItem from '@theme/TabItem';
 # Subcommands
 
 This reference describes the syntax of the Besu subcommands.
+Subcommands are part of the command line interface (CLI); run `besu --help` to display all subcommands and [options](options.md).
 
 :::warning Important
 

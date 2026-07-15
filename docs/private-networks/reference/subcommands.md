@@ -1,7 +1,8 @@
 ---
 sidebar_label: Subcommands
 sidebar_position: 3
-description: Besu command line interface subcommands
+description: Besu private network subcommands reference
+keywords: [subcommands, subcommand options, command line, command line interface, CLI]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,6 +11,7 @@ import TabItem from '@theme/TabItem';
 # Private network subcommands
 
 This reference describes the syntax of the Besu private network subcommands.
+Subcommands are part of the command line interface (CLI); run `besu --help` to display all subcommands and [options](options.md).
 
 :::caution Important
 
