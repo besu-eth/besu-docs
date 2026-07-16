@@ -14,7 +14,7 @@ and [metrics](#metrics) that highlight Besu's improved performance.
 
 ## Parallelization mechanism overview
 
-When [parallel transaction execution is enabled](../reference/cli/options.md#bonsai-parallel-tx-processing-enabled), Besu initially executes all transactions within a
+When [parallel transaction execution is enabled](../reference/options.md#bonsai-parallel-tx-processing-enabled), Besu initially executes all transactions within a
 block in parallel, operating under the optimistic assumption that they can all be executed
 concurrently without conflict.
 This parallel execution runs in the background, and Besu proceeds to sequentially process the
@@ -139,7 +139,7 @@ With this approach to parallel transaction execution,
 [approximately 40% of transactions do not require replay](#metrics).
 In the future, the conflict detection strategy may be refined to reduce false positives.
 
-You can enable parallel transaction execution using the [`--bonsai-parallel-tx-processing-enabled`](../reference/cli/options.md#bonsai-parallel-tx-processing-enabled) option.
+You can enable parallel transaction execution using the [`--bonsai-parallel-tx-processing-enabled`](../reference/options.md#bonsai-parallel-tx-processing-enabled) option.
 
 ## Metrics
 

@@ -13,7 +13,7 @@ In QBFT and IBFT 2.0 private networks, node addresses are validator addresses.
 
 ## Node private key
 
-When starting Besu, if the [`--node-private-key-file`](../reference/cli/options.md#node-private-key-file) option is not specified and a `key` file does not exist in the data directory for the node, Besu generates a node private key and writes it to the `key` file.
+When starting Besu, if the [`--node-private-key-file`](../reference/options.md#node-private-key-file) option is not specified and a `key` file does not exist in the data directory for the node, Besu generates a node private key and writes it to the `key` file.
 
 If a `key` file does exist in the data directory when starting Besu, the node starts using the private key in the `key` file.
 
@@ -27,7 +27,7 @@ The local private key file is not encrypted.
 
 For deployments that require hardware-backed key storage, use a security module
 plugin, such as the [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin),
-with the [`--security-module`](../reference/cli/options.md#security-module)
+with the [`--security-module`](../reference/options.md#security-module)
 option.
 The plugin delegates node key operations to a Hardware Security Module (HSM)
 instead of reading a local key file.
@@ -42,17 +42,17 @@ proof of stake validator keys.
 
 The node public key displays in the log after starting Besu. Also referred to as the node ID, the node public key forms part of the enode URL of a node.
 
-You can export the node public key, either to standard output or to a specified file, using the [`public-key export`](../reference/cli/subcommands.md#public-key) subcommand.
+You can export the node public key, either to standard output or to a specified file, using the [`public-key export`](../reference/subcommands.md#public-key) subcommand.
 
 ## Node address
 
 Besu generates the node address by creating a hash of the node public key and using the last 20 bytes of the hash as the node address. It is also displayed in the logs after starting Besu.
 
-You can export the node address, either to standard output or to a specified file, using the [`public-key export-address`](../reference/cli/subcommands.md#public-key) subcommand.
+You can export the node address, either to standard output or to a specified file, using the [`public-key export-address`](../reference/subcommands.md#public-key) subcommand.
 
 ## Specify a custom node private key file
 
-Use the [`--node-private-key-file`](../reference/cli/options.md#node-private-key-file) option to specify a custom `key` file in any location.
+Use the [`--node-private-key-file`](../reference/options.md#node-private-key-file) option to specify a custom `key` file in any location.
 
 If the `key` file exists, the node starts with the private key in the `key` file. If the `key` file does not exist, Besu generates a node private key and writes it to the `key` file.
 
@@ -65,17 +65,17 @@ besu --node-private-key-file="/Users/username/privatekeyfile"
 ## Enode URL
 
 The enode URL identifies a node for discovery v4.
-For example, you can specify nodes by the enode URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option and the [`admin_addPeer`](../reference/api/admin.md#admin_addpeer) method.
+For example, you can specify nodes by the enode URL using the [`--bootnodes`](../reference/options.md#bootnodes) option and the [`admin_addPeer`](../reference/api/admin.md#admin_addpeer) method.
 
 :::tip
 Besu supports [ENR URLs](#enr-url) for discovery v5 when the early access option 
-[`--Xv5-discovery-enabled`](../reference/cli/options.md#xhelp) is set to `true`.
+[`--Xv5-discovery-enabled`](../reference/options.md#xhelp) is set to `true`.
 :::
 
 The enode URL format is `enode://<id>@<host:port>[?discport=<port>]` where:
 
 - `<id>` is the node public key, excluding the initial 0x.
-- `<host:port>` is the host and TCP port the bootnode is listening on for P2P discovery. Specify the host and TCP port using the [`--p2p-host`](../reference/cli/options.md#p2p-host) and [`--p2p-port`](../reference/cli/options.md#p2p-port) options. The default host is `127.0.0.1` and the default port is `30303`.
+- `<host:port>` is the host and TCP port the bootnode is listening on for P2P discovery. Specify the host and TCP port using the [`--p2p-host`](../reference/options.md#p2p-host) and [`--p2p-port`](../reference/options.md#p2p-port) options. The default host is `127.0.0.1` and the default port is `30303`.
 
   :::note
 
@@ -89,7 +89,7 @@ The enode URL format is `enode://<id>@<host:port>[?discport=<port>]` where:
 
 If the node public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`, the host is `10.3.58.6`, the TCP listening port is `30303`, and the UDP discovery port is `30301`, then the enode URL is `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@10.3.58.6:30303?discport=30301`
 
-If the [`--p2p-host`](../reference/cli/options.md#p2p-host) or [`--p2p-port`](../reference/cli/options.md#p2p-port) options are not specified and the node public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`, then the enode URL is `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303`
+If the [`--p2p-host`](../reference/options.md#p2p-host) or [`--p2p-port`](../reference/options.md#p2p-port) options are not specified and the node public key is `0xc35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f`, then the enode URL is `enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303`
 
 :::
 
@@ -118,7 +118,7 @@ enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb9589bab2c04b3794f2bc3fc2631dabb
 
 If deploying Besu using Kubernetes in private permissioned networks, use the `--Xdns-enabled` and `--Xdns-update-enabled` options to ensure that Besu can connect to a container after restarting even if the IP address of the container changes.
 
-Use the [`--Xhelp`](../reference/cli/options.md#xhelp) command line option to view early access options and their descriptions.
+Use the [`--Xhelp`](../reference/options.md#xhelp) command line option to view early access options and their descriptions.
 
 :::
 
@@ -127,7 +127,7 @@ If nodes are not connecting as expected, set the [log level to TRACE](../referen
 ## ENR URL
 
 The Ethereum Node Record, or ENR URL, identifies a node for [discovery v5](https://github.com/ethereum/devp2p/tree/master/discv5).
-For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../reference/cli/options.md#bootnodes) option
+For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../reference/options.md#bootnodes) option
 or in the [`v5Bootnodes`](../reference/genesis-items.md#discovery-configuration-items) discovery setting in the genesis file.
 The [`admin_nodeInfo`](../reference/api/admin.md#admin_nodeinfo) method returns the ENR URL in the `enr` field.
 

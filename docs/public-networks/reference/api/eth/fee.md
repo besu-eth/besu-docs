@@ -297,9 +297,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns a percentile gas unit price for the most recent blocks, in wei. By default, the last 100 blocks are examined and the 50th percentile gas unit price (that is, the median value) is returned.
 
-If there are no blocks, the value for [`--min-gas-price`](../../cli/options.md#min-gas-price) is returned. The value returned is restricted to values between [`--min-gas-price`](../../cli/options.md#min-gas-price) and [`--api-gas-price-max`](../../cli/options.md#api-gas-price-max). By default, 1000 wei and 500 gwei.
+If there are no blocks, the value for [`--min-gas-price`](../../options.md#min-gas-price) is returned. The value returned is restricted to values between [`--min-gas-price`](../../options.md#min-gas-price) and [`--api-gas-price-max`](../../options.md#api-gas-price-max). By default, 1000 wei and 500 gwei.
 
-Use the [`--api-gas-price-blocks`](../../cli/options.md#api-gas-price-blocks), [`--api-gas-price-percentile`](../../cli/options.md#api-gas-price-percentile) , and [`--api-gas-price-max`](../../cli/options.md#api-gas-price-max) command line options to configure the `eth_gasPrice` default values.
+Use the [`--api-gas-price-blocks`](../../options.md#api-gas-price-blocks), [`--api-gas-price-percentile`](../../options.md#api-gas-price-percentile) , and [`--api-gas-price-max`](../../options.md#api-gas-price-max) command line options to configure the `eth_gasPrice` default values.
 
 ### Parameters
 

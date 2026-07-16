@@ -15,13 +15,13 @@ The `MINER` API methods allow you to control settings related to block creation.
 :::note
 
 The `MINER` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../options.md#rpc-http-api) or [`--rpc-ws-api`](../options.md#rpc-ws-api) option.
 
 :::
 
 ## `miner_changeTargetGasLimit`
 
-Updates the target gas limit set using the [`--target-gas-limit`](../cli/options.md#target-gas-limit) command line option.
+Updates the target gas limit set using the [`--target-gas-limit`](../options.md#target-gas-limit) command line option.
 
 ### Parameters
 
@@ -146,7 +146,7 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `miner_getMinGasPrice`
 
 Gets the minimum gas price (in wei) offered by a transaction to be included in a block.
-The initial value is set using the [`--min-gas-price`](../cli/options.md#min-gas-price) command line
+The initial value is set using the [`--min-gas-price`](../options.md#min-gas-price) command line
 option, or is set to `1000` if the command line option is not specified.
 Use [`miner_setMinGasPrice`](#miner_setmingasprice) to change the current value of the gas price.
 
@@ -207,7 +207,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `miner_getMinPriorityFee`
 
-Gets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. The initial value is set using the [`--min-priority-fee`](../cli/options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
+Gets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. The initial value is set using the [`--min-priority-fee`](../options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
 Use [`miner_setMinPriorityFee`](#miner_setminpriorityfee) to change the current value of the fee.
 
 ### Parameters
@@ -333,7 +333,7 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `miner_setMinGasPrice`
 
 Sets the minimum gas price (in wei) offered by a transaction to be included in a block.
-The initial value is set using the [`--min-gas-price`](../cli/options.md#min-gas-price) command line
+The initial value is set using the [`--min-gas-price`](../options.md#min-gas-price) command line
 option, or is set to `1000` if the command line option is not specified.
 Use [`miner_getMinGasPrice`](#miner_getmingasprice) to get the current value of the gas price.
 
@@ -400,7 +400,7 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `miner_setMinPriorityFee`
 
 Sets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. 
-The initial value is set using the [`--min-priority-fee`](../cli/options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
+The initial value is set using the [`--min-priority-fee`](../options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
 Use [`miner_getMinPriorityFee`](#miner_getminpriorityfee) to get the current value of the fee.
 
 ### Parameters

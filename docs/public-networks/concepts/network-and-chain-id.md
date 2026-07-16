@@ -27,7 +27,7 @@ For most networks, including Mainnet and the public testnets, the network ID and
 }
 ```
 
-Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/cli/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/cli/options.md#network) option. The following table lists the available networks and their chain and network IDs.
+Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/options.md#network) option. The following table lists the available networks and their chain and network IDs.
 
 | Network   | Chain | Chain ID | Network ID | Type        |
 | --------- | ----- | -------- | ---------- | ----------- |
@@ -49,7 +49,7 @@ The following networks and testnets are deprecated: ETC (Ethereum Classic) and M
 
 ## Specify a different network ID
 
-Usually the network ID is the same as the chain ID, but if you want to separate specific nodes from the rest of the network so they can't connect or synchronize with other nodes, you can override the default network ID for those nodes using the [`--network-id`](../reference/cli/options.md#network-id) option.
+Usually the network ID is the same as the chain ID, but if you want to separate specific nodes from the rest of the network so they can't connect or synchronize with other nodes, you can override the default network ID for those nodes using the [`--network-id`](../reference/options.md#network-id) option.
 
 ## Start a new chain with a new chain ID
 

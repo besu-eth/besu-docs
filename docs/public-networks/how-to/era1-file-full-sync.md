@@ -16,14 +16,14 @@ besu --era1-import-prepipeline-enabled --era1-data-uri=<PATH-OR-URI> --era1-impo
 
 In the command:
 
-- [`--era1-import-prepipeline-enabled`](../reference/cli/options.md#era1-import-prepipeline-enabled)
+- [`--era1-import-prepipeline-enabled`](../reference/options.md#era1-import-prepipeline-enabled)
     enables importing pre-merge blocks from ERA1 archive files before full synchronization begins.
     This option only applies in `FULL` sync mode.
-- [`--era1-data-uri`](../reference/cli/options.md#era1-data-uri) specifies the location of the ERA1
+- [`--era1-data-uri`](../reference/options.md#era1-data-uri) specifies the location of the ERA1
     files to be imported. Either a simple filesystem path (`/path/to/files/`), or an HTTP address
     (`https://mainnet.era1.nimbus.team`). The default is
     `https://mainnet.era1.nimbus.team`.
-- [`--era1-import-prepipeline-concurrency`](../reference/cli/options.md#era1-import-prepipeline-concurrency)
+- [`--era1-import-prepipeline-concurrency`](../reference/options.md#era1-import-prepipeline-concurrency)
     sets the number of parallel processes used to import ERA1 files. The default is `1`.
     Increase only if you encounter slow file download speeds and your system can handle additional load.
 

@@ -204,13 +204,13 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line enables:
 
-- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/cli/options.md#permissions-nodes-config-file-enabled) and [`--permissions-accounts-config-file-enabled`](../../reference/cli/options.md#permissions-accounts-config-file-enabled).
-- The JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled).
-- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
-- All-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
-- All-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
+- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/options.md#permissions-nodes-config-file-enabled) and [`--permissions-accounts-config-file-enabled`](../../reference/options.md#permissions-accounts-config-file-enabled).
+- The JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/options.md#rpc-http-enabled).
+- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api).
+- All-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/options.md#host-allowlist).
+- All-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/options.md#rpc-http-cors-origins).
 - The [enterprise/private profile](../../../public-networks/how-to/configure-besu/profile.md#enterpriseprivate-profile)
-  using the [`--profile`](../../../public-networks/reference/cli/options.md#profile) option.
+  using the [`--profile`](../../../public-networks/reference/options.md#profile) option.
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to specify Node-1 as a peer and update the permissions configuration file in the following steps.
 
@@ -242,9 +242,9 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-2 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-2 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
@@ -275,9 +275,9 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-3 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-3 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
@@ -308,9 +308,9 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-4 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-4 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.

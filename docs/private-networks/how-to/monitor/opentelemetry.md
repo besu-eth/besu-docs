@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Use OpenTelemetry
 
-You can use the OpenTelemetry monitoring and tracing service to gather node metrics and traces. To enable OpenTelemetry to access Besu, use the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options. Use [Splunk](https://splunk.com) to visualize the collected data.
+You can use the OpenTelemetry monitoring and tracing service to gather node metrics and traces. To enable OpenTelemetry to access Besu, use the [`--metrics-enabled`](../../../public-networks/reference/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/options.md#metrics-protocol) options. Use [Splunk](https://splunk.com) to visualize the collected data.
 
 :::tip
 
@@ -143,7 +143,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     
     </Tabs>
 
-2.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/cli/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/cli/options.md#metrics-protocol) options. For example, run the following command to start a single node:
+2.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/options.md#metrics-protocol) options. For example, run the following command to start a single node:
         
     <Tabs>
     

@@ -58,7 +58,7 @@ Genesis block parameters are specified as top-level fields in the genesis file, 
 
 :::caution
 
-If a `Supplied genesis block does not match stored chain data` error occurs, use the genesis file matching the genesis block of the data directory, or use the [`--data-path`](../reference/cli/options.md#data-path) option to specify a different data directory.
+If a `Supplied genesis block does not match stored chain data` error occurs, use the genesis file matching the genesis block of the data directory, or use the [`--data-path`](../reference/options.md#data-path) option to specify a different data directory.
 
 :::
 
@@ -156,7 +156,7 @@ Prague, and Blob Parameter Only (BPO) forks.
 
 ## Discovery configuration items
 
-Use the `discovery` configuration items to specify the [`bootnodes`](cli/options.md#bootnodes) and [`discovery-dns-url`](cli/options.md#discovery-dns-url) in the genesis file, in place of using CLI options or listing them in the configuration file.
+Use the `discovery` configuration items to specify the [`bootnodes`](options.md#bootnodes) and [`discovery-dns-url`](options.md#discovery-dns-url) in the genesis file, in place of using CLI options or listing them in the configuration file.
 The genesis file can take discovery v4 bootnodes (specified as [enode URLs](../concepts/node-keys.md#enode-url) using the `bootnodes` option) and discovery v5 bootnodes (specified as [ENR URLs](../concepts/node-keys.md#enr-url) using the `v5Bootnodes` option).
 
 :::tip Early access feature

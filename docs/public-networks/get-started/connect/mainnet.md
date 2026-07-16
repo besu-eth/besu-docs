@@ -68,18 +68,18 @@ besu \
 
 Specify:
 
-- The path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/cli/options.md#engine-jwt-secret) option.
-- The IP address of your Besu node using the [`--host-allowlist`](../../reference/cli/options.md#host-allowlist) and [`--engine-host-allowlist`](../../reference/cli/options.md#engine-host-allowlist) options.
+- The path to the `jwtsecret.hex` file generated in [step 1](#1-generate-the-shared-secret) using the [`--engine-jwt-secret`](../../reference/options.md#engine-jwt-secret) option.
+- The IP address of your Besu node using the [`--host-allowlist`](../../reference/options.md#host-allowlist) and [`--engine-host-allowlist`](../../reference/options.md#engine-host-allowlist) options.
 
 Also, in the command:
 
-- [`--rpc-http-enabled`](../../reference/cli/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
-- [`--rpc-http-host`](../../reference/cli/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote RPC connections.
-- [`--rpc-ws-enabled`](../../reference/cli/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC service.
-- [`--rpc-ws-host`](../../reference/cli/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC connections.
-- [`--engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled) enables the [Engine API](../../reference/engine-api.md).
+- [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled) enables the HTTP JSON-RPC service.
+- [`--rpc-http-host`](../../reference/options.md#rpc-http-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--rpc-ws-enabled`](../../reference/options.md#rpc-ws-enabled) enables the WebSocket JSON-RPC service.
+- [`--rpc-ws-host`](../../reference/options.md#rpc-ws-host) is set to `0.0.0.0` to allow remote RPC connections.
+- [`--engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled) enables the [Engine API](../../reference/engine-api.md).
 
-You can modify the option values and add other [command line options](../../reference/cli/options.md) as needed.
+You can modify the option values and add other [command line options](../../reference/options.md) as needed.
 
 ### 4. Start the consensus client
 

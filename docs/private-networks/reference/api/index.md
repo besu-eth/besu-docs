@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 description: Besu private network JSON-RPC API methods reference
 ---
 
@@ -16,6 +16,6 @@ The Besu private network JSON-RPC API methods are grouped by namespace:
 :::caution Important
 
 - This reference contains API methods that apply to only private networks. For API methods that apply to both private and public networks, see the [public network API reference](../../../public-networks/reference/api/index.md).
-- All JSON-RPC HTTP examples use the default host and port endpoint `http://127.0.0.1:8545`. If using the [`--rpc-http-host`](../../../public-networks/reference/cli/options.md#rpc-http-host) or [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) options, update the endpoint.
+- All JSON-RPC HTTP examples use the default host and port endpoint `http://127.0.0.1:8545`. If using the [`--rpc-http-host`](../../../public-networks/reference/options.md#rpc-http-host) or [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port) options, update the endpoint.
 
 :::

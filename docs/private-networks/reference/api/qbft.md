@@ -15,8 +15,8 @@ The `QBFT` API methods provide access to the [QBFT](../../how-to/configure/conse
 :::note
 
 The `QBFT` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api) or
+[`--rpc-ws-api`](../../../public-networks/reference/options.md#rpc-ws-api) option.
 
 :::
 

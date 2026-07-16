@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Nodes can connect to Ethereum Mainnet, [Linea](https://docs.linea.build/get-started/how-to/run-a-node), and their respective public testnets.
 
-Use the [`besu`](../reference/cli/options.md) command with the required command line options to start a node.
+Use the [`besu`](../reference/options.md) command with the required command line options to start a node.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Use the [`besu`](../reference/cli/options.md) command with the required command 
 
 ## Local block data
 
-When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../reference/cli/options.md#data-path) option to specify a different data directory.
+When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../reference/options.md#data-path) option to specify a different data directory.
 
 To delete the local block data, delete the `database` directory in the `besu/build/distribution/besu-<version>` directory.
 
@@ -27,20 +27,20 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 Besu specifies the genesis configuration, and sets the network ID and bootnodes when connecting to [ETH testnets](#run-a-node-on-an-ethereum-testnet), and [Mainnet](#run-a-node-on-ethereum-mainnet).
 
-When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development network genesis configuration, which is intended for local development and testing. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
+When you specify [`--network=dev`](../reference/options.md#network), Besu uses the development network genesis configuration, which is intended for local development and testing. A node started with [`--network=dev`](../reference/options.md#network) has an empty bootnodes list by default.
 
 The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
-To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/cli/options.md#genesis-file) option.
+To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/options.md#genesis-file) option.
 
 ## Syncing and storage
 
 By default, Besu syncs to the current state of the blockchain using [snap sync](../concepts/node-sync.md#snap-synchronization) in:
 
-- Networks specified using [`--network`](../reference/cli/options.md#network) except for the `dev` development network.
+- Networks specified using [`--network`](../reference/options.md#network) except for the `dev` development network.
 - Ethereum Mainnet.
 
-We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/cli/options.md#sync-mode).
+We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/options.md#sync-mode).
 
 By default, Besu stores data in the [Bonsai Tries format](../concepts/data-storage-formats.md#bonsai-tries).
 
@@ -106,7 +106,7 @@ See the [guide on connecting to Mainnet](connect/mainnet.md) for more informatio
 
 ## Confirm node is running
 
-If you started Besu with the [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
+If you started Besu with the [`--rpc-http-enabled`](../reference/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
 
 - `eth_chainId` returns the chain ID of the network.
 

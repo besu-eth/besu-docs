@@ -15,7 +15,7 @@ The `TRACE` API is a more concise alternative to the [`DEBUG` API](debug/index.m
 :::note
 
 The `TRACE` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../options.md#rpc-http-api) or [`--rpc-ws-api`](../options.md#rpc-ws-api) option.
 
 :::
 
@@ -26,7 +26,7 @@ Provides transaction processing of type [`trace`](#trace) for the specified bloc
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
 the requested block must be within the number of
-[blocks retained](../cli/options.md#bonsai-historical-block-limit) when using
+[blocks retained](../options.md#bonsai-historical-block-limit) when using
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
@@ -42,7 +42,7 @@ the requested block must be within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
 
@@ -154,7 +154,7 @@ Executes the given call and returns a number of possible traces for it.
 
 :::info note
 When using [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries), the requested block must
-be within the number of [blocks retained](../cli/options.md#bonsai-historical-block-limit) (by
+be within the number of [blocks retained](../options.md#bonsai-historical-block-limit) (by
 default, 512 from the head of the chain).
 :::
 
@@ -323,7 +323,7 @@ Performs multiple call traces on top of the same block. You can trace dependent 
 
 :::info note
 When using [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries), the requested block must
-be within the number of [blocks retained](../cli/options.md#bonsai-historical-block-limit) (by
+be within the number of [blocks retained](../options.md#bonsai-historical-block-limit) (by
 default, 512 from the head of the chain).
 :::
 
@@ -498,12 +498,12 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `trace_filter`
 
-Returns traces matching the specified filter. The maximum number of blocks you can supply to `trace_filter` is 1000 by default. You can adjust this limit using the [`--rpc-max-trace-filter-range`](../cli/options.md#rpc-max-trace-filter-range) option. 
+Returns traces matching the specified filter. The maximum number of blocks you can supply to `trace_filter` is 1000 by default. You can adjust this limit using the [`--rpc-max-trace-filter-range`](../options.md#rpc-max-trace-filter-range) option. 
 
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
 the requested blocks must be within the number of
-[blocks retained](../cli/options.md#bonsai-historical-block-limit) when using
+[blocks retained](../options.md#bonsai-historical-block-limit) when using
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
@@ -642,7 +642,7 @@ Returns a trace at the given position.
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
 the requested transaction must be contained in a block within the number of
-[blocks retained](../cli/options.md#bonsai-historical-block-limit) when using
+[blocks retained](../options.md#bonsai-historical-block-limit) when using
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
@@ -740,7 +740,7 @@ Traces a call to `eth_sendRawTransaction` without making the call, returning the
 :::info note
 When using [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries), the requested transaction
 must be contained in a block within the number of
-[blocks retained](../cli/options.md#bonsai-historical-block-limit) (by default, 512 from the head of
+[blocks retained](../options.md#bonsai-historical-block-limit) (by default, 512 from the head of
 the chain).
 :::
 
@@ -844,7 +844,7 @@ Provides transaction processing tracing per block.
 
 :::info note
 When using [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries), the requested block must
-be within the number of [blocks retained](../cli/options.md#bonsai-historical-block-limit) (by
+be within the number of [blocks retained](../options.md#bonsai-historical-block-limit) (by
 default, 512 from the head of the chain).
 :::
 
@@ -862,7 +862,7 @@ default, 512 from the head of the chain).
 
 <h3>Returns</h3>
 
-- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the [`trace`](#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the [`trace`](#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
   <Fields>
 
@@ -1008,7 +1008,7 @@ Provides transaction processing of type [`trace`](#trace) for the specified tran
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
 the requested transaction must be contained in a block within the number of
-[blocks retained](../cli/options.md#bonsai-historical-block-limit) when using
+[blocks retained](../options.md#bonsai-historical-block-limit) when using
 [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
 :::
 
@@ -1018,7 +1018,7 @@ the requested transaction must be contained in a block within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../cli/options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
 

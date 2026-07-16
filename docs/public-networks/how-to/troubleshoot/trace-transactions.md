@@ -6,7 +6,7 @@ description: How to trace transactions
 
 # Trace transactions
 
-To get detailed information about transaction processing, use the [`TRACE` API](../../reference/api/trace.md). Enable the `TRACE` API using the [`--rpc-http-api`](../../reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../reference/cli/options.md#rpc-ws-api) command line options.
+To get detailed information about transaction processing, use the [`TRACE` API](../../reference/api/trace.md). Enable the `TRACE` API using the [`--rpc-http-api`](../../reference/options.md#rpc-http-api) or [`--rpc-ws-api`](../../reference/options.md#rpc-ws-api) command line options.
 
 The `TRACE` API has two sets of trace calls, [ad-hoc tracing APIs](#ad-hoc-tracing-apis) and [transaction-trace filtering APIs](#transaction-trace-filtering-apis).
 
@@ -18,7 +18,7 @@ These APIs allow you to use the [`trace`](../../reference/api/trace.md#trace),
 
 When using [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries) with the ad-hoc
 tracing APIs, the requested block or transaction must be within the number of
-[blocks retained](../../reference/cli/options.md#bonsai-historical-block-limit) (by default, 512 
+[blocks retained](../../reference/options.md#bonsai-historical-block-limit) (by default, 512 
 from the head of the chain).
 
 The ad-hoc tracing APIs are:
@@ -35,7 +35,7 @@ These APIs allow you to filter and search by specific information such as the bl
 To use the transaction-trace filtering APIs, your node must be an
 [archive node](../../concepts/node-sync.md#archive-nodes), or the requested block
 or transaction must be within the number of
-[blocks retained](../../reference/cli/options.md#bonsai-historical-block-limit) when using
+[blocks retained](../../reference/options.md#bonsai-historical-block-limit) when using
 [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head
 of the chain).
 
@@ -57,6 +57,6 @@ Enable or disable trace fields (txHash, stack, memory, storage, and opcodes) via
 
 :::note
 
-Trace files are written under the node data directory in the `traces` subdirectory; the data directory is set by the [`--data-path`](../../reference/cli/options.md#data-path) option.
+Trace files are written under the node data directory in the `traces` subdirectory; the data directory is set by the [`--data-path`](../../reference/options.md#data-path) option.
 
 :::

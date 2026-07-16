@@ -19,7 +19,7 @@ the genesis block.
 Besu does not currently provide a way to import pre-merge block data after pruning.
 If you need to restore the full pre-merge history, you can revert to the former Snap sync behaviour and download
 all blocks from peers by setting
-[`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled=false`](../reference/cli/options.md#snapsync-synchronizer-pre-checkpoint-headers-only-enabled).
+[`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled=false`](../reference/options.md#snapsync-synchronizer-pre-checkpoint-headers-only-enabled).
 
 :::
 
@@ -38,7 +38,7 @@ The fastest option for pruning pre-merge blocks is to perform an offline prune. 
     ```bash
     besu --data-path=/path/to/your/database storage prune-pre-merge-blocks
     ```
-    The command [`prune-pre-merge-blocks`](../reference/cli/subcommands.md#prune-pre-merge-blocks)
+    The command [`prune-pre-merge-blocks`](../reference/subcommands.md#prune-pre-merge-blocks)
     prunes the database using the default options.
 
     On completion, you'll receive the `Pruning pre-merge blocks and transaction receipts completed` log message.
@@ -67,7 +67,7 @@ Use [offline pruning](#offline-pruning) or [sync without pre-merge blocks](#sync
 :::
 
 Online pruning allows you to prune the pre-merge blocks on a running Besu instance. It has the least
-downtime but may impact normal operations for lower spec users. Add the [`--history-expiry-prune`](../reference/cli/options.md#history-expiry-prune) option and restart your Besu node.
+downtime but may impact normal operations for lower spec users. Add the [`--history-expiry-prune`](../reference/options.md#history-expiry-prune) option and restart your Besu node.
 
 :::note
 The early access option `--Xpre-merge-pruning-quantity` can be used to specify how many blocks to prune
@@ -81,7 +81,7 @@ when complete.
 ## Sync without pre-merge blocks
 
 This option has the most downtime but reclaims the most disk space.
-Delete your database and by default, syncing a Besu node using [`SNAP` sync (`--sync-mode=SNAP`)](../reference/cli/options.md#sync-mode)
+Delete your database and by default, syncing a Besu node using [`SNAP` sync (`--sync-mode=SNAP`)](../reference/options.md#sync-mode)
 will prune pre-merge blocks and only retain their headers.
 
 If you're a solo staker, consider using [RocketPool's rescue node](https://rescuenode.com/docs/about)

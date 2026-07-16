@@ -152,7 +152,7 @@ The playbook:
 
 ### RPC methods
 
-If you have [JSON-RPC HTTP enabled](../reference/cli/options.md#rpc-http-enabled),
+If you have [JSON-RPC HTTP enabled](../reference/options.md#rpc-http-enabled),
 you can use the following commands to verify that you've successfully upgraded your Besu node.
 
 Call [`eth_syncing`](../reference/api/eth/client.md#eth_syncing) to check the node synchronization status:
@@ -191,7 +191,7 @@ For example, the startup logs look like the following:
 
 ### Metrics
 
-If you have [metrics enabled](../reference/cli/options.md#metrics-enabled), you can verify the version by checking the
+If you have [metrics enabled](../reference/options.md#metrics-enabled), you can verify the version by checking the
 `process_release` metric in [Prometheus](monitor/metrics.md), or on the command line:
 
 ```bash

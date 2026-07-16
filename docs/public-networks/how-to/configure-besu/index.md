@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Besu comes with a [default configuration](#default-configuration) that is suitable for staking.
 
-You can override the default values by specifying [configuration options](../../reference/cli/options.md) on the command line, as environment variables, or in a [TOML configuration file](#toml-configuration-file) that can be reused across node startups.
+You can override the default values by specifying [options](../../reference/options.md) on the command line, as environment variables, or in a [TOML configuration file](#toml-configuration-file) that can be reused across node startups.
 
 You can also use a [pre-configured profile](profile.md) for some common use cases or create and apply a [custom profile](profile.md#load-external-profiles).
 
@@ -33,7 +33,7 @@ If the option is not found in `staker.toml`, Besu uses the default value for tha
 The configuration file is used for node-level settings. You can specify network-wide settings in the [genesis file](../../concepts/genesis-file.md).
 :::
 
-Specify the configuration file using the [`--config-file`](../../reference/cli/options.md#config-file) option.
+Specify the configuration file using the [`--config-file`](../../reference/options.md#config-file) option.
 The configuration file must be a valid TOML file composed of key/value pairs. Each key is the same as the corresponding command line option name without the leading dashes (`--`).
 
 Values must conform to TOML specifications for string, numbers, arrays, and booleans. Specific differences between the command line and the TOML file format are:
@@ -45,7 +45,7 @@ Table headings are ignored in TOML files. If you specify a valid Besu option und
 
 :::tip
 
-The [command line reference](../../reference/cli/options.md) includes configuration file examples for each option.
+The [options reference](../../reference/options.md) includes configuration file examples for each option.
 
 :::
 
@@ -86,22 +86,22 @@ For example, extending the default configuration using the [staker profile](prof
 
 |Configuration option|Default|Description|
 |---------------------------|--------------------|------------------------------------------|
-|[`discovery-enabled`](../../reference/cli/options.md#discovery-enabled)|`true`|Besu assumes the node will automatically discover other Ethereum nodes using P2P.|
-|[`p2p-enabled`](../../reference/cli/options.md#p2p-enabled)|`true`|Besu assumes the node will connect P2P.|
-|[`engine-rpc-enabled`](../../reference/cli/options.md#engine-rpc-enabled)|`true`|Besu assumes the Engine API will be required to communicate with the consensus layer.|
+|[`discovery-enabled`](../../reference/options.md#discovery-enabled)|`true`|Besu assumes the node will automatically discover other Ethereum nodes using P2P.|
+|[`p2p-enabled`](../../reference/options.md#p2p-enabled)|`true`|Besu assumes the node will connect P2P.|
+|[`engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled)|`true`|Besu assumes the Engine API will be required to communicate with the consensus layer.|
 
 ### Storage
 
 |Configuration option|Default|Description|
 |---------------------------|--------------------|------------------------------------------|
-|[`data-storage-format`](../../reference/cli/options.md#data-storage-format)|`BONSAI`|Besu uses [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries), the most space-efficient data storage format.|
+|[`data-storage-format`](../../reference/options.md#data-storage-format)|`BONSAI`|Besu uses [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries), the most space-efficient data storage format.|
 
 ### Sync
 
 |Configuration option|Default|Description|
 |---------------------------|--------------------|------------------------------------------|
-|[`sync-mode`](../../reference/cli/options.md#sync-mode)|`SNAP`|Besu syncs using [snap sync](../../concepts/node-sync.md#snap-synchronization), the most time-efficient sync method.|
+|[`sync-mode`](../../reference/options.md#sync-mode)|`SNAP`|Besu syncs using [snap sync](../../concepts/node-sync.md#snap-synchronization), the most time-efficient sync method.|
 
 :::note
-You can see all default configuration values in the [configuration options reference](../../reference/cli/options.md).
+You can see all default configuration values in the [options reference](../../reference/options.md).
 :::

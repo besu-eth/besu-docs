@@ -31,9 +31,9 @@ To configure a network of static nodes:
 
 1. List the [enode URLs](../../concepts/node-keys.md#enode-url) of the nodes in the [`static-nodes.json` file](#static-nodesjson-file).
 
-1. Save the `static-nodes.json` file in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) of each node. Alternatively, you can explicitly specify the static nodes file on the command line using [`--static-nodes-file`](../../reference/cli/options.md#static-nodes-file).
+1. Save the `static-nodes.json` file in the data directory (specified by [`--data-path`](../../reference/options.md#data-path)) of each node. Alternatively, you can explicitly specify the static nodes file on the command line using [`--static-nodes-file`](../../reference/options.md#static-nodes-file).
 
-1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/cli/options.md#discovery-enabled).
+1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/options.md#discovery-enabled).
 
 To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/admin.md#admin_removepeer) JSON-RPC API methods.
 
@@ -53,7 +53,7 @@ If the added peer does not appear in the peer list (returned by [`admin_peers`](
 
 ### `static-nodes.json` file
 
-The `static-nodes.json` file must be in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) and contain a JSON array of [enode URLs](../../concepts/node-keys.md#enode-url).
+The `static-nodes.json` file must be in the data directory (specified by [`--data-path`](../../reference/options.md#data-path)) and contain a JSON array of [enode URLs](../../concepts/node-keys.md#enode-url).
 
 ```json title="Example"
 [

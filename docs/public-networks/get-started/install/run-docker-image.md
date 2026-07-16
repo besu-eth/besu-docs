@@ -42,7 +42,7 @@ To ensure your image is up to date, pull the `latest` version again using `docke
 
 ## Expose ports
 
-Expose ports for P2P discovery, GraphQL, metrics, and HTTP and WebSocket JSON-RPC. You need to expose the ports to use the default ports or the ports specified using [`--rpc-http-port`](../../reference/cli/options.md#rpc-http-port), [`--p2p-port`](../../reference/cli/options.md#p2p-port), [`--rpc-ws-port`](../../reference/cli/options.md#rpc-ws-port), [`--metrics-port`](../../reference/cli/options.md#metrics-port), [`--graphql-http-port`](../../reference/cli/options.md#graphql-http-port), and [`--metrics-push-port`](../../reference/cli/options.md#metrics-push-port) options.
+Expose ports for P2P discovery, GraphQL, metrics, and HTTP and WebSocket JSON-RPC. You need to expose the ports to use the default ports or the ports specified using [`--rpc-http-port`](../../reference/options.md#rpc-http-port), [`--p2p-port`](../../reference/options.md#p2p-port), [`--rpc-ws-port`](../../reference/options.md#rpc-ws-port), [`--metrics-port`](../../reference/options.md#metrics-port), [`--graphql-http-port`](../../reference/options.md#graphql-http-port), and [`--metrics-push-port`](../../reference/options.md#metrics-push-port) options.
 
 To run Besu exposing local ports for access:
 
@@ -74,13 +74,13 @@ docker run -p 8545:8545 -p 13001:30303 hyperledger/besu:latest --rpc-http-enable
 
 Don't mount a volume at the default data path (`/opt/besu`). Mounting a volume at the default data path interferes with the operation of Besu and prevents Besu from safely launching.
 
-To run a node that maintains the node state (key and database), [`--data-path`](../../reference/cli/options.md#data-path) must be set to a location other than `/opt/besu` and a storage volume mounted at that location.
+To run a node that maintains the node state (key and database), [`--data-path`](../../reference/options.md#data-path) must be set to a location other than `/opt/besu` and a storage volume mounted at that location.
 
 When running in a Docker container, [`--nat-method`](../../how-to/connect/specify-nat.md) must be set to `DOCKER` or `AUTO` (default). Don't set [`--nat-method`](../../how-to/connect/specify-nat.md) to `NONE` or `UPNP`.
 
 :::
 
-You can specify [Besu environment variables](../../reference/cli/options.md#specify-options) with the Docker image instead of the command line options.
+You can specify [Besu environment variables](../../reference/options.md#specify-options) with the Docker image instead of the command line options.
 
 ```bash title="Example"
 docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=sepolia hyperledger/besu:latest

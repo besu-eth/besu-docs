@@ -569,7 +569,7 @@ Returns transaction information for the specified sender address and nonce.
 :::note
 To return transactions included in blocks, this method requires the sender and nonce index.
 The index is enabled by default; you can disable it using
-[`--tx-sender-nonce-index-enabled`](../../cli/options.md#tx-sender-nonce-index-enabled).
+[`--tx-sender-nonce-index-enabled`](../../options.md#tx-sender-nonce-index-enabled).
 If the index is disabled, this method only returns information for pending transactions.
 :::
 
@@ -768,7 +768,7 @@ If you enabled [revert reason](../../../../private-networks/how-to/send-transact
 
   - `transactionType`: _string_ - [Transaction type](../../../concepts/transactions/types.md).
 
-  - `revertReason`: _string_ - ABI-encoded string that displays the [reason for reverting the transaction](../../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../../cli/options.md#revert-reason-enabled).
+  - `revertReason`: _string_ - ABI-encoded string that displays the [reason for reverting the transaction](../../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../../options.md#revert-reason-enabled).
 
   - `type`: _quantity_ - Transaction type, `0x00` for legacy transactions, `0x01` for access list types, `0x02` for dynamic fees, and `0x03` for blob transactions.
 

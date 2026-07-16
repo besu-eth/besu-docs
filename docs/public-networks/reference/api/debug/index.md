@@ -17,7 +17,7 @@ Specifically, we recommend `trace_block` over `debug_traceBlock`, and `trace_tra
 :::note
 
 The `DEBUG` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../../cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../../options.md#rpc-http-api) or [`--rpc-ws-api`](../../options.md#rpc-ws-api) option.
 
 :::
 

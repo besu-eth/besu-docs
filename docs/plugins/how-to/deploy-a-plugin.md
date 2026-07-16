@@ -55,7 +55,7 @@ unzip -j build/distributions/<project-name>.zip -d /path/to/besu/plugins/
 Start Besu.
 By default, Besu loads all JARs found in the `plugins` directory automatically.
 To load only specific plugins, pass a comma-separated list to
-[`--plugins`](../../public-networks/reference/cli/options.md#plugins).
+[`--plugins`](../../public-networks/reference/options.md#plugins).
 
 #### Homebrew
 
@@ -106,7 +106,7 @@ Check the Besu startup logs to confirm your plugin was detected and registered.
 Besu logs a plugin registration summary that lists registered plugins and any plugins that
 were detected but skipped.
 
-Use [`--plugins-verification-mode`](../../public-networks/reference/cli/options.md#plugins-verification-mode)
+Use [`--plugins-verification-mode`](../../public-networks/reference/options.md#plugins-verification-mode)
 to control how Besu handles plugin verification failures:
 
 - `NONE` (default) logs a warning and continues.

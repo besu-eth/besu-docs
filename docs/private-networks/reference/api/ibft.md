@@ -15,8 +15,8 @@ The `IBFT` API methods provide access to the [IBFT 2.0](../../how-to/configure/c
 :::note
 
 The `IBFT` API is not enabled by default for JSON-RPC.
-Enable it using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) or
-[`--rpc-ws-api`](../../../public-networks/reference/cli/options.md#rpc-ws-api) option.
+Enable it using the [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api) or
+[`--rpc-ws-api`](../../../public-networks/reference/options.md#rpc-ws-api) option.
 
 :::
 
