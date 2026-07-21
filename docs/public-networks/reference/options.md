@@ -953,9 +953,11 @@ engine-rpc-enabled=true
 
 </Tabs>
 
-Enables or disables the [Engine API](engine-api.md). 
+Enables or disables the [Engine API](engine-api.md).
 
 The default is `false`.
+On post-Merge networks (including Mainnet and public testnets), Besu
+enables the Engine API automatically whether or not you set this option.
 
 ---
 
