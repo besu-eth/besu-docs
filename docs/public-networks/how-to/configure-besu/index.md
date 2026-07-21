@@ -88,7 +88,7 @@ For example, extending the default configuration using the [staker profile](prof
 |---------------------------|--------------------|------------------------------------------|
 |[`discovery-enabled`](../../reference/options.md#discovery-enabled)|`true`|Besu assumes the node will automatically discover other Ethereum nodes using P2P.|
 |[`p2p-enabled`](../../reference/options.md#p2p-enabled)|`true`|Besu assumes the node will connect P2P.|
-|[`engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled)|`true`|Besu assumes the Engine API will be required to communicate with the consensus layer.|
+|[`engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled)|`true`|The option's default value is `false`, but Besu enables the Engine API automatically on post-Merge networks. Using the default network (Mainnet), the Engine API is enabled.|
 
 ### Storage
 
