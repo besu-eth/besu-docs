@@ -170,7 +170,7 @@ You can configure the following properties in the `qbft` configuration object:
   If set, all nodes on the network must use the identical value.
 - `validatorcontractaddress` - Address of the validator smart contract. Required only if using a contract validator selection. The address must be identical to the address in the `alloc` section. This option can also be used in the [transitions](#transitions) configuration item if swapping [validator management methods](#add-and-remove-validators) in an existing network.
 - `startblock` - Block number at which QBFT starts.
-  Use this when migrating from IBFT to QBFT.
+  Use this when [migrating from IBFT 2.0 to QBFT](migrate-from-ibft-to-qbft.md).
 - `miningbeneficiary` - Beneficiary of the `blockreward`.
   If omitted, the validator that proposes the block receives the reward.
   If set, all nodes on the network must use the same beneficiary.
