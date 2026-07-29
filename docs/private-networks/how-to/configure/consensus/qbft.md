@@ -31,7 +31,7 @@ For QBFT validators, [node addresses](../../../../public-networks/concepts/node-
 To store a validator's node key in a Hardware Security Module (HSM) instead of
 on disk, use a security module plugin, such as the
 [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin), with the
-[`--security-module`](../../../../public-networks/reference/cli/options.md#security-module)
+[`--security-module`](../../../../public-networks/reference/options.md#security-module)
 option.
 
 :::
@@ -201,7 +201,7 @@ The properties with specific values in the QBFT genesis files are:
 - `difficulty` - `0x1`
 - `mixHash` - `0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365` for Istanbul block identification
 
-To start a node on a QBFT private network, use the [`--genesis-file`](../../../../public-networks/reference/cli/options.md#genesis-file) option to specify the custom genesis file.
+To start a node on a QBFT private network, use the [`--genesis-file`](../../../../public-networks/reference/options.md#genesis-file) option to specify the custom genesis file.
 
 ### Extra data
 
@@ -239,13 +239,13 @@ RLP encoding is a space-efficient object serialization scheme used in Ethereum.
 
 #### Generate extra data
 
-To generate the `extraData` RLP string for inclusion in the genesis file, use the [`rlp encode`](../../../reference/cli/subcommands.md#encode) Besu subcommand.
+To generate the `extraData` RLP string for inclusion in the genesis file, use the [`rlp encode`](../../../reference/subcommands.md#encode) Besu subcommand.
 
 ```bash title="Example"
 besu rlp encode --from=toEncode.json --type=QBFT_EXTRA_DATA
 ```
 
-Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/cli/subcommands.md#export-address) Besu subcommand. For example:
+Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/subcommands.md#export-address) Besu subcommand. For example:
 
 ```json title="Initial validators in toEncode.json file"
 [
@@ -290,7 +290,7 @@ To tune the block timeout for your network deployment:
 
 :::tip
 
-View [`TRACE` logs](../../../../public-networks/reference/api/index.md#admin_changeloglevel) to see round change log messages.
+View [`TRACE` logs](../../../../public-networks/reference/api/admin.md#admin_changeloglevel) to see round change log messages.
 
 :::
 
@@ -335,17 +335,17 @@ For block header validator selection, initial validators are configured in the g
 
 ### Add and remove validators using block headers
 
-Enable the HTTP interface with [`--rpc-http-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-enabled) or the WebSockets interface with [`--rpc-ws-enabled`](../../../../public-networks/reference/cli/options.md#rpc-ws-enabled).
+Enable the HTTP interface with [`--rpc-http-enabled`](../../../../public-networks/reference/options.md#rpc-http-enabled) or the WebSockets interface with [`--rpc-ws-enabled`](../../../../public-networks/reference/options.md#rpc-ws-enabled).
 
-The QBFT API methods are disabled by default. To enable them, specify the [`--rpc-http-api`](../../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../../public-networks/reference/cli/options.md#rpc-ws-api) option and include `QBFT`.
+The QBFT API methods are disabled by default. To enable them, specify the [`--rpc-http-api`](../../../../public-networks/reference/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../../public-networks/reference/options.md#rpc-ws-api) option and include `QBFT`.
 
 The methods to add or remove validators are:
 
-- [`qbft_getPendingVotes`](../../../reference/api.md#qbft_getpendingvotes).
-- [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote).
-- [`qbft_discardValidatorVote`](../../../reference/api.md#qbft_discardvalidatorvote).
+- [`qbft_getPendingVotes`](../../../reference/api/qbft.md#qbft_getpendingvotes).
+- [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote).
+- [`qbft_discardValidatorVote`](../../../reference/api/qbft.md#qbft_discardvalidatorvote).
 
-To view validator metrics for a specified block range, use [`qbft_getSignerMetrics`](../../../reference/api.md#qbft_getsignermetrics).
+To view validator metrics for a specified block range, use [`qbft_getSignerMetrics`](../../../reference/api/qbft.md#qbft_getsignermetrics).
 
 :::note
 
@@ -355,23 +355,23 @@ If network conditions render it impossible to add and remove validators by votin
 
 #### Add a validator
 
-To propose adding a validator, call [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
+To propose adding a validator, call [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
 
 ```bash title="JSON-RPC qbft_proposeValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_proposeValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", true], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-When the validator proposes the next block, the protocol inserts one proposal received from [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
+When the validator proposes the next block, the protocol inserts one proposal received from [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
 
 When more than 50% of the existing validators have published a matching proposal, the protocol adds the proposed validator to the validator pool and the validator can begin validating blocks.
 
-To return a list of validators and confirm the addition of a proposed validator, use [`qbft_getValidatorsByBlockNumber`](../../../reference/api.md#qbft_getvalidatorsbyblocknumber).
+To return a list of validators and confirm the addition of a proposed validator, use [`qbft_getValidatorsByBlockNumber`](../../../reference/api/qbft.md#qbft_getvalidatorsbyblocknumber).
 
 ```bash title="JSON-RPC qbft_getValidatorsByBlockNumber request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_getValidatorsByBlockNumber","params":["latest"], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-To discard your proposal after confirming the addition of a validator, call [`qbft_discardValidatorVote`](../../../reference/api.md#qbft_discardvalidatorvote), specifying the address of the proposed validator.
+To discard your proposal after confirming the addition of a validator, call [`qbft_discardValidatorVote`](../../../reference/api/qbft.md#qbft_discardvalidatorvote), specifying the address of the proposed validator.
 
 ```bash title="JSON-RPC qbft_discardValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_discardValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73"], "id":1}' <JSON-RPC-endpoint:port>
@@ -379,7 +379,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"qbft_discardValidatorVote","para
 
 #### Remove a validator
 
-The process for removing a validator is the same as adding a validator except you specify `false` as the second parameter of [`qbft_proposeValidatorVote`](../../../reference/api.md#qbft_proposevalidatorvote).
+The process for removing a validator is the same as adding a validator except you specify `false` as the second parameter of [`qbft_proposeValidatorVote`](../../../reference/api/qbft.md#qbft_proposevalidatorvote).
 
 #### Epoch transition
 

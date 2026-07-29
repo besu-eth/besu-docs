@@ -10,20 +10,20 @@ import TabItem from '@theme/TabItem';
 # Reduce storage for Bonsai Tries
 
 When using the [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries) data storage format,
-[`--bonsai-limit-trie-logs-enabled`](../reference/cli/options.md#bonsai-limit-trie-logs-enabled) is
+[`--bonsai-limit-trie-logs-enabled`](../reference/options.md#bonsai-limit-trie-logs-enabled) is
 enabled by default. 
 When enabled, this feature can reduce database growth by more than 3 GB each week on Mainnet.
 
 :::note
-If [`--sync-mode=FULL`](../reference/cli/options.md#sync-mode) is set, the
-[`--bonsai-limit-trie-logs-enabled`](../reference/cli/options.md#bonsai-limit-trie-logs-enabled)
+If [`--sync-mode=FULL`](../reference/options.md#sync-mode) is set, the
+[`--bonsai-limit-trie-logs-enabled`](../reference/options.md#bonsai-limit-trie-logs-enabled)
 option is disallowed and must be set to `false`.
 :::
 
 ## Limit and prune trie logs
 
 If you're running Besu without
-[`--bonsai-limit-trie-logs-enabled`](../reference/cli/options.md#bonsai-limit-trie-logs-enabled),
+[`--bonsai-limit-trie-logs-enabled`](../reference/options.md#bonsai-limit-trie-logs-enabled),
 you might have a backlog of redundant trie logs.
 You can prune these using the following instructions.
 
@@ -48,7 +48,7 @@ Before executing these example commands on your node, modify them to apply to yo
 ### Prune outdated trie logs
 
 When you start Besu with
-[`--bonsai-limit-trie-logs-enabled`](../reference/cli/options.md#bonsai-limit-trie-logs-enabled), it
+[`--bonsai-limit-trie-logs-enabled`](../reference/options.md#bonsai-limit-trie-logs-enabled), it
 continuously prunes the unnecessary trie log data, removing it one block at a time.
 This process begins after an initial reduction in the database size during startup.
 
@@ -109,9 +109,9 @@ sudo /usr/local/bin/besu/bin/besu --config-file=besu-config.toml storage trie-lo
 Troubleshoot common errors that can occur when using the trie log prune command to reduce your database size for Bonsai Tries.
 To minimize errors, ensure your command specifies the following:
 
-- [`--data-storage-format`](../reference/cli/options.md#data-storage-format)
-- [`--data-path`](../reference/cli/options.md#data-path)
-- [`--sync-mode`](../reference/cli/options.md#sync-mode)
+- [`--data-storage-format`](../reference/options.md#data-storage-format)
+- [`--data-path`](../reference/options.md#data-path)
+- [`--sync-mode`](../reference/options.md#sync-mode)
 
 ### Prune command for Mainnet
 

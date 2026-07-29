@@ -10,7 +10,7 @@ function HomepageText() {
       <Heading as='h2'>What does Besu support?</Heading>
       <p>
         Besu includes a{" "}
-        <Link href="/public-networks/reference/cli/options">
+        <Link href="/public-networks/reference/options">
           command line interface
         </Link>{" "}
         and <Link to="/public-networks/how-to/use-besu-api">JSON-RPC API</Link> for

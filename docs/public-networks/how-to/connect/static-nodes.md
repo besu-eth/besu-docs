@@ -31,11 +31,11 @@ To configure a network of static nodes:
 
 1. List the [enode URLs](../../concepts/node-keys.md#enode-url) of the nodes in the [`static-nodes.json` file](#static-nodesjson-file).
 
-1. Save the `static-nodes.json` file in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) of each node. Alternatively, you can explicitly specify the static nodes file on the command line using [`--static-nodes-file`](../../reference/cli/options.md#static-nodes-file).
+1. Save the `static-nodes.json` file in the data directory (specified by [`--data-path`](../../reference/options.md#data-path)) of each node. Alternatively, you can explicitly specify the static nodes file on the command line using [`--static-nodes-file`](../../reference/options.md#static-nodes-file).
 
-1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/cli/options.md#discovery-enabled).
+1. Start Besu with discovery disabled using [`--discovery-enabled=false`](../../reference/options.md#discovery-enabled).
 
-To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/index.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/index.md#admin_removepeer) JSON-RPC API methods.
+To update the list of static peers at run time, use the [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer) and [`admin_removePeer`](../../reference/api/admin.md#admin_removepeer) JSON-RPC API methods.
 
 :::note
 
@@ -47,13 +47,13 @@ Nodes not in the list of the static nodes are not prevented from connecting. To 
 
 :::tip
 
-If the added peer does not appear in the peer list (returned by [`admin_peers`](../../reference/api/index.md#admin_peers)), check the supplied [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the node is listening for TCP connections on the endpoint.
+If the added peer does not appear in the peer list (returned by [`admin_peers`](../../reference/api/admin.md#admin_peers)), check the supplied [enode URL](../../concepts/node-keys.md#enode-url) is correct, the node is running, and the node is listening for TCP connections on the endpoint.
 
 :::
 
 ### `static-nodes.json` file
 
-The `static-nodes.json` file must be in the data directory (specified by [`--data-path`](../../reference/cli/options.md#data-path)) and contain a JSON array of [enode URLs](../../concepts/node-keys.md#enode-url).
+The `static-nodes.json` file must be in the data directory (specified by [`--data-path`](../../reference/options.md#data-path)) and contain a JSON array of [enode URLs](../../concepts/node-keys.md#enode-url).
 
 ```json title="Example"
 [

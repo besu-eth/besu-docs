@@ -1,7 +1,8 @@
 ---
-title: Private network subcommands
-sidebar_position: 2
-description: Besu command line interface subcommands
+sidebar_label: Subcommands
+sidebar_position: 3
+description: Besu private network subcommands reference
+keywords: [subcommands, subcommand options, command line, command line interface, CLI]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,11 +10,12 @@ import TabItem from '@theme/TabItem';
 
 # Private network subcommands
 
-This reference describes the syntax of the Besu private network command line interface (CLI) subcommands.
+This reference describes the syntax of the Besu private network subcommands.
+Subcommands are part of the command line interface (CLI); run `besu --help` to display all subcommands and [options](options.md).
 
 :::caution Important
 
-This reference contains subcommands that apply to only private networks. For subcommands that apply to both private and public networks, see the [public network subcommands reference](../../../public-networks/reference/cli/subcommands.md).
+This reference contains subcommands that apply to only private networks. For subcommands that apply to both private and public networks, see the [public network subcommands reference](../../public-networks/reference/subcommands.md).
 
 :::
 
@@ -28,6 +30,8 @@ If using Bash or Z shell, you can view subcommand suggestions by pressing the Ta
 ```bash
 besu Tab+Tab
 ```
+
+---
 
 ## `operator`
 
@@ -55,9 +59,11 @@ besu operator generate-blockchain-config --config-file=config.json --to=myNetwor
 
 </Tabs>
 
-Generates an [IBFT 2.0](../../how-to/configure/consensus/ibft.md#genesis-file) or [QBFT](../../how-to/configure/consensus/qbft.md#genesis-file) genesis file.
+Generates an [IBFT 2.0](../how-to/configure/consensus/ibft.md#genesis-file) or [QBFT](../how-to/configure/consensus/qbft.md#genesis-file) genesis file.
 
 The configuration file has two nested JSON nodes. The first is the `genesis` property defining the IBFT 2.0 or QBFT genesis file, except for the `extraData` string. The second is the `blockchain` property defining the number of key pairs to generate.
+
+---
 
 ## `rlp`
 
@@ -94,8 +100,8 @@ cat ibft_extra_data.txt | besu rlp decode > decoded_ibft_extra_data.txt
 </Tabs>
 
 Decodes the RLP hexadecimal string used as `extraData` in an
-[IBFT 2.0](../../how-to/configure/consensus/ibft.md#extra-data) or
-[QBFT](../../how-to/configure/consensus/qbft.md#extra-data) genesis file into a validator list.
+[IBFT 2.0](../how-to/configure/consensus/ibft.md#extra-data) or
+[QBFT](../how-to/configure/consensus/qbft.md#extra-data) genesis file into a validator list.
 
 This subcommand takes the following options:
 
@@ -138,8 +144,8 @@ cat extra_data.json | besu rlp encode > rlp.txt
 </Tabs>
 
 Encodes a validator list into an RLP hexadecimal string to use as `extraData` in an
-[IBFT 2.0](../../how-to/configure/consensus/ibft.md#extra-data) or
-[QBFT](../../how-to/configure/consensus/qbft.md#extra-data) genesis file.
+[IBFT 2.0](../how-to/configure/consensus/ibft.md#extra-data) or
+[QBFT](../how-to/configure/consensus/qbft.md#extra-data) genesis file.
 
 This subcommand takes the following options:
 
@@ -150,6 +156,8 @@ This subcommand takes the following options:
 - `type` - `IBFT_EXTRA_DATA` for an IBFT 2.0 `extraData` string, or `QBFT_EXTRA_DATA` for a QBFT
   `extraData` string.
   The default is `IBFT_EXTRA_DATA`.
+
+---
 
 ## IBFT 2.0 extra data
 

@@ -176,7 +176,7 @@ nodes-allowlist=[]
 
 The permissions configuration file includes the first two accounts from the genesis file.
 
-Use the [`perm_addNodesToAllowlist`](../../reference/api.md#perm_addnodestoallowlist) JSON-RPC API method to add permissioned nodes after starting the nodes.
+Use the [`perm_addNodesToAllowlist`](../../reference/api/perm.md#perm_addnodestoallowlist) JSON-RPC API method to add permissioned nodes after starting the nodes.
 
 ### 7. Start Node-1
 
@@ -204,13 +204,13 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line enables:
 
-- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/cli/options.md#permissions-nodes-config-file-enabled) and [`--permissions-accounts-config-file-enabled`](../../reference/cli/options.md#permissions-accounts-config-file-enabled).
-- The JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled).
-- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api).
-- All-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist).
-- All-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins).
+- Nodes and accounts permissions using [`--permissions-nodes-config-file-enabled`](../../reference/options.md#permissions-nodes-config-file-enabled) and [`--permissions-accounts-config-file-enabled`](../../reference/options.md#permissions-accounts-config-file-enabled).
+- The JSON-RPC API using [`--rpc-http-enabled`](../../../public-networks/reference/options.md#rpc-http-enabled).
+- The `ADMIN`, `ETH`, `NET`, `PERM`, and `IBFT` APIs using [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api).
+- All-host access to the HTTP JSON-RPC API using [`--host-allowlist`](../../../public-networks/reference/options.md#host-allowlist).
+- All-domain access to the node through the HTTP JSON-RPC API using [`--rpc-http-cors-origins`](../../../public-networks/reference/options.md#rpc-http-cors-origins).
 - The [enterprise/private profile](../../../public-networks/how-to/configure-besu/profile.md#enterpriseprivate-profile)
-  using the [`--profile`](../../../public-networks/reference/cli/options.md#profile) option.
+  using the [`--profile`](../../../public-networks/reference/options.md#profile) option.
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to specify Node-1 as a peer and update the permissions configuration file in the following steps.
 
@@ -242,9 +242,9 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-2 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-2 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
@@ -275,9 +275,9 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-3 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1 and Node-2 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-3 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
@@ -308,16 +308,16 @@ besu --data-path=data --genesis-file=..\genesis.json --permissions-nodes-config-
 
 The command line specifies:
 
-- A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port).
-- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port).
-- A data directory for Node-4 using [`--data-path`](../../../public-networks/reference/cli/options.md#data-path).
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port).
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port).
+- A data directory for Node-4 using [`--data-path`](../../../public-networks/reference/options.md#data-path).
 - Other options as for [Node-1](#7-start-node-1).
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. You need the enode URL to update the permissions configuration file in the following steps.
 
 ### 11. Add enode URLs for nodes to permissions configuration file
 
-Start another terminal and use the [`perm_addNodesToAllowlist`](../../reference/api.md#perm_addnodestoallowlist) JSON-RPC API method to add the nodes to the permissions configuration file for each node.
+Start another terminal and use the [`perm_addNodesToAllowlist`](../../reference/api/perm.md#perm_addnodestoallowlist) JSON-RPC API method to add the nodes to the permissions configuration file for each node.
 
 Replace `<EnodeNode1>`, `<EnodeNode2>`, `<EnodeNode3>`, and `<EnodeNode4>` with the enode URL displayed when starting each node.
 
@@ -365,7 +365,7 @@ The curl call is the same for each node except for the JSON-RPC endpoint.
 
 ### 12. Add nodes as peers
 
-Use the [`admin_addPeer`](../../../public-networks/reference/api/index.md#admin_addpeer) JSON-RPC API method to add Node-1 as a peer for Node-2, Node-3, and Node-4.
+Use the [`admin_addPeer`](../../../public-networks/reference/api/admin.md#admin_addpeer) JSON-RPC API method to add Node-1 as a peer for Node-2, Node-3, and Node-4.
 
 Replace `<EnodeNode1>` with the enode URL displayed when starting Node-1.
 
@@ -435,7 +435,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"admin_addPeer","params":["<Enode
 
 #### Check peer count
 
-Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method and confirm the nodes are functioning as peers:
+Use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/net.md#net_peercount) method and confirm the nodes are functioning as peers:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545/ -H "Content-Type: application/json"
@@ -507,7 +507,7 @@ besu --data-path=data --bootnodes="<EnodeNode1>" --genesis-file=..\genesis.json 
 
 </Tabs>
 
-Start another terminal and use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/index.md#net_peercount) method:
+Start another terminal and use curl to call the JSON-RPC API [`net_peerCount`](../../../public-networks/reference/api/net.md#net_peercount) method:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8549

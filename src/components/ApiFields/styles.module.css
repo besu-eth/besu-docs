@@ -1,0 +1,77 @@
+.fields {
+  margin-bottom: 1.2rem;
+}
+
+.content .fields {
+  margin-top: 1rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.2rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ifm-color-emphasis-700);
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.toggle:hover {
+  color: var(--ifm-color-emphasis-900);
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.icon {
+  display: inline-block;
+  width: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.iconOpen {
+  transform: rotate(45deg);
+}
+
+.content {
+  margin-top: 0;
+  margin-left: 0.2rem;
+  padding: 0.15rem 0 0.15rem 0.9rem;
+  border-left: 2px solid var(--ifm-color-emphasis-200);
+  font-size: 0.875rem;
+}
+
+/*
+  Collapsed state: keep the content in the DOM (so it stays in the static HTML
+  and is picked up by DOM-based markdown extractors) but hide it visually.
+*/
+.contentHidden {
+  display: none;
+}
+
+/* Compact the field lists so the box reads more densely than body copy. */
+.content ul {
+  margin-bottom: 0;
+  padding-left: 1.1rem;
+}
+
+.content li {
+  margin-top: 0.2rem;
+}
+
+.content p {
+  margin-bottom: 0.4rem;
+}

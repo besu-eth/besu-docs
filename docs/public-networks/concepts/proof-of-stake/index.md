@@ -25,7 +25,7 @@ Chain](https://ethereum.org/en/upgrades/beacon-chain/) in defined time frames.
 
 Proposers are responsible for proposing new consensus blocks, and non-proposing validators are
 responsible for validating (attesting to) proposed blocks.
-Validators earn [rewards](https://www.blocknative.com/ethereum-staking-calculator) for proposing and
+Validators earn rewards for proposing and
 attesting to consensus blocks eventually included in the Beacon Chain, and penalized for malicious behavior.
 [Attestations](./attestations.md) make up the bulk of validator rewards (~85%).
 Validators also receive transaction fees for included blocks.

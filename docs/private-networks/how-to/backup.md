@@ -16,7 +16,7 @@ The genesis file for a network must be accessible on every node. We recommend st
 
 If installed locally, the default data location is the Besu installation directory.
 
-We recommend mounting a [separate volume to store data](../get-started/install/run-docker-image.md). Use the [`--data-path`](../../public-networks/reference/cli/options.md#data-path) command line option to pass the path to Besu.
+We recommend mounting a [separate volume to store data](../get-started/install/run-docker-image.md). Use the [`--data-path`](../../public-networks/reference/options.md#data-path) command line option to pass the path to Besu.
 
 The default data location is the Besu installation directory, or `/opt/besu/database` if using the [Besu Docker image](../get-started/install/run-docker-image.md).
 
@@ -44,7 +44,7 @@ If log messages signify a corrupt database, the cleanest way to recover is:
 
 When restarting Besu, accidentally using an earlier version of Besu might risk corrupting your database.
 To protect against incompatibility between versions, set the
-[`--version-compatibility-protection`](../../public-networks/reference/cli/options.md#version-compatibility-protection)
+[`--version-compatibility-protection`](../../public-networks/reference/options.md#version-compatibility-protection)
 option to `true`.
 
 ## Find peers after restarting

@@ -40,7 +40,7 @@ unzip -l build/distributions/<project-name>.zip
 
 ### 2. Deploy to Besu
 
-Deploy your plugin via a standard Besu installation or Besu Docker image.
+The method for deploying your plugin depends on how you installed Besu.
 
 #### Standard installation
 
@@ -55,7 +55,25 @@ unzip -j build/distributions/<project-name>.zip -d /path/to/besu/plugins/
 Start Besu.
 By default, Besu loads all JARs found in the `plugins` directory automatically.
 To load only specific plugins, pass a comma-separated list to
-[`--plugins`](../../public-networks/reference/cli/options.md#plugins).
+[`--plugins`](../../public-networks/reference/options.md#plugins).
+
+#### Homebrew
+
+The installation lives in the Homebrew Cellar (for example,
+`/opt/homebrew/Cellar/besu/<version>`, which `brew --prefix besu` resolves to).
+By default, Besu looks for plugins in a `plugins` directory there, but Homebrew replaces the entire
+Cellar directory on `brew upgrade`, which removes any plugins you add.
+
+Instead, keep your plugins in a stable location outside the Cellar and point Besu at it using the
+`besu.plugins.dir` system property via `BESU_OPTS`:
+
+```bash
+mkdir -p ~/besu/plugins
+unzip -j build/distributions/<project-name>.zip -d ~/besu/plugins/
+
+export BESU_OPTS="-Dbesu.plugins.dir=$HOME/besu/plugins"
+besu [options]
+```
 
 #### Docker
 
@@ -88,7 +106,7 @@ Check the Besu startup logs to confirm your plugin was detected and registered.
 Besu logs a plugin registration summary that lists registered plugins and any plugins that
 were detected but skipped.
 
-Use [`--plugins-verification-mode`](../../public-networks/reference/cli/options.md#plugins-verification-mode)
+Use [`--plugins-verification-mode`](../../public-networks/reference/options.md#plugins-verification-mode)
 to control how Besu handles plugin verification failures:
 
 - `NONE` (default) logs a warning and continues.

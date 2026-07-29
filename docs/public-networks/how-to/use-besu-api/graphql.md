@@ -23,8 +23,8 @@ GraphQL is not supported over WebSocket.
 :::
 
 Access the GraphQL endpoint at `http://<HOST>:<PORT>/graphql`.
-Configure `<HOST>` and `<PORT>` using [`graphql-http-host`](../../reference/cli/options.md#graphql-http-host)
-and [`graphql-http-port`](../../reference/cli/options.md#graphql-http-port).
+Configure `<HOST>` and `<PORT>` using [`graphql-http-host`](../../reference/options.md#graphql-http-host)
+and [`graphql-http-port`](../../reference/options.md#graphql-http-port).
 The default endpoint is `http://127.0.0.1:8547/graphql`.
 
 ## GraphQL requests with cURL
@@ -83,7 +83,7 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"
 
 </Tabs>
 
-The following [`syncing`](../../reference/api/index.md#eth_syncing) request returns data about the
+The following [`syncing`](../../reference/api/eth/client.md#eth_syncing) request returns data about the
 synchronization status:
 
 <Tabs>

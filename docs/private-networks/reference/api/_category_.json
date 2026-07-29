@@ -1,0 +1,8 @@
+{
+  "label": "JSON-RPC API",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "private-networks/reference/api/index"
+  }
+}

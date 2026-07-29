@@ -7,8 +7,6 @@ toc_max_heading_level: 3
 
 import TestAccounts from '../../global/test_accounts.md';
 
-import Postman from '../../global/postman.md';
-
 # Developer Quickstart
 
 The Besu Developer Quickstart generates a local private [QBFT](../how-to/configure/consensus/qbft.md) network of Besu nodes managed by Docker Compose.
@@ -55,6 +53,7 @@ When prompted, select the following options:
 | Prompt                               | Selection             |
 | ------------------------------------ | --------------------- |
 | Network type                         | **Private**           |
+| Add privacy (using paladin) to the network? | **N**          |
 | Add OTel Collector spans to Grafana? | **N**                 |
 | Enable Chainlens Explorer?           | **Y**                 |
 | Config files directory               | `./besu-test-network` |
@@ -144,7 +143,7 @@ Successfully calling this method shows that you can connect to the network using
 #### Count the peers
 
 Peers are the other nodes connected to the node receiving the JSON-RPC request.
-Poll the peer count using [`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount):
+Poll the peer count using [`net_peerCount`](../../public-networks/reference/api/net.md#net_peercount):
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
@@ -162,7 +161,7 @@ The result indicates that `rpcnode` has four peers:
 
 #### Request the most recent block number
 
-Call [`eth_blockNumber`](../../public-networks/reference/api/index.md#eth_blocknumber) to retrieve the highest block number on `rpcnode`:
+Call [`eth_blockNumber`](../../public-networks/reference/api/eth/client.md#eth_blocknumber) to retrieve the highest block number on `rpcnode`:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' http://localhost:8545/ -H "Content-Type: application/json"
@@ -357,6 +356,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 
 ## Next steps
 
+- [Privacy with Paladin](./quickstart-with-privacy.md).
 - [Configure QBFT consensus](../how-to/configure/consensus/qbft.md).
 - [Configure local permissioning](../how-to/use-local-permissioning.md).
 - [Deploy and interact with smart contracts](./contracts/interact.md).

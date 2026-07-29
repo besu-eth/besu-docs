@@ -10,7 +10,7 @@ testnets, such as Hoodi, Ephemery, and Sepolia.
 
 - [Public networks documentation](https://docs.besu-eth.org/public-networks)
 - [Connect to a network](https://docs.besu-eth.org/public-networks/get-started/connect)
-- [Besu command line options](https://docs.besu-eth.org/public-networks/reference/cli/options)
+- [Besu configuration options](https://docs.besu-eth.org/public-networks/reference/options)
 - [Besu JSON-RPC API](https://docs.besu-eth.org/public-networks/reference/api)
 
 ## Private networks
@@ -20,7 +20,7 @@ high-performance transaction processing.
 
 - [Private networks documentation](https://docs.besu-eth.org/private-networks)
 - [Start Besu on a private network](https://docs.besu-eth.org/private-networks/get-started/start-node)
-- [Private network options](https://docs.besu-eth.org/private-networks/reference/cli/options)
+- [Private network configuration options](https://docs.besu-eth.org/private-networks/reference/options)
 - [Private network API methods](https://docs.besu-eth.org/private-networks/reference/api)
 
 ## What Besu supports

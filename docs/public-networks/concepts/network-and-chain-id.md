@@ -21,22 +21,20 @@ For most networks, including Mainnet and the public testnets, the network ID and
 ```json title="Chain ID in the genesis file"
 {
   "config": {
-    "ethash": {
-    },
     "chainID": 1981
   },
   ...
 }
 ```
 
-Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/cli/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/cli/options.md#network) option. The following table lists the available networks and their chain and network IDs.
+Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/options.md#network) option. The following table lists the available networks and their chain and network IDs.
 
 | Network   | Chain | Chain ID | Network ID | Type        |
 | --------- | ----- | -------- | ---------- | ----------- |
 | `mainnet` | ETH   | 1        | 1          | Production  |
 | `hoodi`   | ETH   | 560048   | 560048     | Test        |
 | `sepolia` | ETH   | 11155111 | 11155111   | Test        |
-| `dev`     | ETH   | 2018     | 2018       | Development |
+| `dev`     | ETH   | 1337     | 2018       | Development |
 | `ephemery`| ETH   | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases)    | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases)      | Test  |
 | `lukso`   | Lukso | 4201        | 4201    | Production  |
 | `linea_mainnet`   | Linea | 59144       | 59144   | Production  |
@@ -51,7 +49,7 @@ The following networks and testnets are deprecated: ETC (Ethereum Classic) and M
 
 ## Specify a different network ID
 
-Usually the network ID is the same as the chain ID, but if you want to separate specific nodes from the rest of the network so they can't connect or synchronize with other nodes, you can override the default network ID for those nodes using the [`--network-id`](../reference/cli/options.md#network-id) option.
+Usually the network ID is the same as the chain ID, but if you want to separate specific nodes from the rest of the network so they can't connect or synchronize with other nodes, you can override the default network ID for those nodes using the [`--network-id`](../reference/options.md#network-id) option.
 
 ## Start a new chain with a new chain ID
 

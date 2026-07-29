@@ -119,9 +119,9 @@ besu \
 
 </Tabs>
 
-Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/cli/options.md#engine-jwt-secret) option.
+Specify the path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the [`--engine-jwt-secret`](../reference/options.md#engine-jwt-secret) option.
 
-You can modify the option values and add other [command line options](../reference/cli/options.md) as needed.
+You can modify the option values and add other [command line options](../reference/options.md) as needed.
 
 ## 5. Start Teku
 

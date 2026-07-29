@@ -25,7 +25,7 @@ To find peers, configure one or more bootnodes. To configure a specific set of p
 
 :::note Mainnet and public testnets
 
-For Mainnet and the Sepolia and Ephemery testnets, Besu has an internal list of enode URLs and uses this list automatically when you specify the [`--network`](../../../public-networks/reference/cli/options.md#network) option.
+For Mainnet and the Sepolia and Ephemery testnets, Besu has an internal list of enode URLs and uses this list automatically when you specify the [`--network`](../../../public-networks/reference/options.md#network) option.
 
 :::
 
@@ -33,7 +33,7 @@ For Mainnet and the Sepolia and Ephemery testnets, Besu has an internal list of 
 
 To start a node, specify bootnode [enode URLs](../../../public-networks/concepts/node-keys.md#enode-url) or
 [ENR URLs](../../../public-networks/concepts/node-keys.md#enr-url) for P2P
-discovery using the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
+discovery using the [`--bootnodes`](../../../public-networks/reference/options.md#bootnodes) option.
 
 ```bash
 besu --genesis-file=privateNetworkGenesis.json --data-path=nodeDataPath --bootnodes=enode://c35c3ec90a8a51fd5703594c6303382f3ae6b2ecb99bab2c04b3794f2bc3fc2631dabb0c08af795787a6c004d8f532230ae6e9925cbbefb0b28b79295d615f@127.0.0.1:30303
@@ -58,15 +58,15 @@ To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `
 
 The default host and port advertised to other peers for P2P discovery is `127.0.0.1:30303`.
 To specify a different host or port, use the
-[`--p2p-host`](../../../public-networks/reference/cli/options.md#p2p-host)
-/ [`--p2p-host-ipv6`](../../../public-networks/reference/cli/options.md#p2p-host) or
-[`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port)
-/ [`--p2p-port-ipv6`](../../../public-networks/reference/cli/options.md#p2p-port) options.
+[`--p2p-host`](../../../public-networks/reference/options.md#p2p-host)
+/ [`--p2p-host-ipv6`](../../../public-networks/reference/options.md#p2p-host) or
+[`--p2p-port`](../../../public-networks/reference/options.md#p2p-port)
+/ [`--p2p-port-ipv6`](../../../public-networks/reference/options.md#p2p-port) options.
 
 By default, peer discovery listens on all available network interfaces. If the device Besu is running
 on must bind to a specific network interface, specify the interface using the
-[`--p2p-interface`](../../../public-networks/reference/cli/options.md#p2p-interface) or
-[`--p2p-interface-ipv6`](../../../public-networks/reference/cli/options.md#p2p-interface-ipv6) option.
+[`--p2p-interface`](../../../public-networks/reference/options.md#p2p-interface) or
+[`--p2p-interface-ipv6`](../../../public-networks/reference/options.md#p2p-interface-ipv6) option.
 
 ## Configure bootnodes in a production network
 
@@ -94,6 +94,6 @@ Having each bootnode list the other bootnodes increases the speed of discovery. 
 
 ## Add and remove bootnodes
 
-Adding new bootnodes is a similar process to creating bootnodes. After creating the bootnodes and adding them to the network, update the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) command line option for each node to include the new bootnodes.
+Adding new bootnodes is a similar process to creating bootnodes. After creating the bootnodes and adding them to the network, update the [`--bootnodes`](../../../public-networks/reference/options.md#bootnodes) command line option for each node to include the new bootnodes.
 
-When adding bootnodes, you don't need to restart running nodes. By updating the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option, the next time you restart the nodes (for example, when [upgrading](../../../public-networks/how-to/upgrade-node.md)), the nodes connect to the new bootnodes.
+When adding bootnodes, you don't need to restart running nodes. By updating the [`--bootnodes`](../../../public-networks/reference/options.md#bootnodes) option, the next time you restart the nodes (for example, when [upgrading](../../../public-networks/how-to/upgrade-node.md)), the nodes connect to the new bootnodes.

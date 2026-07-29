@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Use metrics to monitor node performance
 
-To enable the [Prometheus](https://prometheus.io/) monitoring and alerting service to access Besu metrics, use the [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option. Use [Grafana](https://grafana.com/) to visualize the collected data. See the sample [Besu Full Grafana dashboard](https://grafana.com/grafana/dashboards/16455-besu-full/).
+To enable the [Prometheus](https://prometheus.io/) monitoring and alerting service to access Besu metrics, use the [`--metrics-enabled`](../../reference/options.md#metrics-enabled) option. Use [Grafana](https://grafana.com/) to visualize the collected data. See the sample [Besu Full Grafana dashboard](https://grafana.com/grafana/dashboards/16455-besu-full/).
 
 The Besu example networks have [monitoring with Prometheus and Grafana configured].
 
@@ -81,7 +81,7 @@ To configure Prometheus and run with Besu:
 
     Prometheus requires 3 MB of space per node per hour for metrics, with a `scrape_interval` of 15 seconds.
 
-2.  Start Besu with the [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option.
+2.  Start Besu with the [`--metrics-enabled`](../../reference/options.md#metrics-enabled) option.
     To start a single node for testing with metrics enabled, run the following command:
 
     <Tabs>
@@ -102,14 +102,14 @@ To configure Prometheus and run with Besu:
     </Tabs>
 
     To specify the host and port on which Prometheus accesses Besu, use the
-    [`--metrics-host`](../../reference/cli/options.md#metrics-host) and
-    [`--metrics-port`](../../reference/cli/options.md#metrics-port) options.
+    [`--metrics-host`](../../reference/options.md#metrics-host) and
+    [`--metrics-port`](../../reference/options.md#metrics-port) options.
     The default host and port are `127.0.0.1` (`localhost`) and `9545`.
 
     :::danger
     To avoid DNS rebinding attacks, if running Prometheus on a different host than your Besu node
     (any host other than `localhost`), add the hostname that Prometheus uses to
-    [`--host-allowlist`](../../reference/cli/options.md#host-allowlist).
+    [`--host-allowlist`](../../reference/options.md#host-allowlist).
     For example, if Prometheus is configured to get metrics from `http://besu.local:8008/metrics`,
     then `besu.local` must be in `--host-allowlist`.
     :::
@@ -128,11 +128,11 @@ To configure Prometheus and run with Besu:
 
 ## Run Prometheus with Besu in push mode
 
-The [`--metrics-enabled`](../../reference/cli/options.md#metrics-enabled) option enables Prometheus
+The [`--metrics-enabled`](../../reference/options.md#metrics-enabled) option enables Prometheus
 polling of Besu, but sometimes metrics are hard to poll (for example, when running inside Docker
 containers with varying IP addresses).
 To enable Besu to push metrics to a [Prometheus push gateway](https://github.com/prometheus/pushgateway),
-use the [`--metrics-push-enabled`](../../reference/cli/options.md#metrics-push-enabled) option.
+use the [`--metrics-push-enabled`](../../reference/options.md#metrics-push-enabled) option.
 
 To configure Prometheus and run with Besu pushing to a push gateway:
 
@@ -206,7 +206,7 @@ Update the host and port if you are not using the default values.
 Each metric, such as `besu_blockchain_chain_head_gas_limit`, starts with a metric category prefix.
 Metrics specific to Besu use the `besu_` prefix, followed by another metric category.
 You can enable metric categories using the
-[`--metrics-category`](../../reference/cli/options.md#metrics-category) command line option.
+[`--metrics-category`](../../reference/options.md#metrics-category) command line option.
 
 <!-- Links -->
 

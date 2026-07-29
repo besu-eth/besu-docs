@@ -36,7 +36,7 @@ Refer to the external [Ethstats client](https://github.com/goerli/ethstats-clien
 
 You can use command line options to connect a node directly to a [dashboard](https://github.com/goerli/ethstats-client#available-dashboards), without using a client.
 
-Start a node using the [`--ethstats`](../../../public-networks/reference/cli/options.md#ethstats) option to specify the Ethstats server URL. You can specify a contact email to send to the server using [`--ethstats-contact`](../../../public-networks/reference/cli/options.md#ethstats-contact).
+Start a node using the [`--ethstats`](../../../public-networks/reference/options.md#ethstats) option to specify the Ethstats server URL. You can specify a contact email to send to the server using [`--ethstats-contact`](../../../public-networks/reference/options.md#ethstats-contact).
 
 ```bash
 besu --ethstats=Dev-Node-1:secret@127.0.0.1:3001 --ethstats-contact=contact@mail.com

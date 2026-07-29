@@ -195,13 +195,13 @@ besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-ht
 
 The command line:
 
-- Specifies the data directory for Node-1 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-- Enables the JSON-RPC API using the [`--rpc-http-enabled`](../../../public-networks/reference/cli/options.md#rpc-http-enabled) option.
-- Enables the ETH, NET, and IBFT APIs using the [`--rpc-http-api`](../../../public-networks/reference/cli/options.md#rpc-http-api) option.
-- Enables all-host access to the HTTP JSON-RPC API using the [`--host-allowlist`](../../../public-networks/reference/cli/options.md#host-allowlist) option.
-- Enables all-domain access to the node through the HTTP JSON-RPC API using the [`--rpc-http-cors-origins`](../../../public-networks/reference/cli/options.md#rpc-http-cors-origins) option.
+- Specifies the data directory for Node-1 using the [`--data-path`](../../../public-networks/reference/options.md#data-path) option.
+- Enables the JSON-RPC API using the [`--rpc-http-enabled`](../../../public-networks/reference/options.md#rpc-http-enabled) option.
+- Enables the ETH, NET, and IBFT APIs using the [`--rpc-http-api`](../../../public-networks/reference/options.md#rpc-http-api) option.
+- Enables all-host access to the HTTP JSON-RPC API using the [`--host-allowlist`](../../../public-networks/reference/options.md#host-allowlist) option.
+- Enables all-domain access to the node through the HTTP JSON-RPC API using the [`--rpc-http-cors-origins`](../../../public-networks/reference/options.md#rpc-http-cors-origins) option.
 - Loads the [enterprise/private profile](../../../public-networks/how-to/configure-besu/profile.md#enterpriseprivate-profile)
-  using the [`--profile`](../../../public-networks/reference/cli/options.md#profile) option.
+  using the [`--profile`](../../../public-networks/reference/options.md#profile) option.
 
 When the node starts, the [enode URL](../../../public-networks/concepts/node-keys.md#enode-url) displays. Copy the enode URL to specify Node-1 as the bootnode in the following steps.
 
@@ -233,10 +233,10 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-- The data directory for Node-2 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-- A different port to Node-1 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-- A different port to Node-1 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
-- The enode URL of Node-1 using the [`--bootnodes`](../../../public-networks/reference/cli/options.md#bootnodes) option.
+- The data directory for Node-2 using the [`--data-path`](../../../public-networks/reference/options.md#data-path) option.
+- A different port to Node-1 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port) option.
+- A different port to Node-1 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port) option.
+- The enode URL of Node-1 using the [`--bootnodes`](../../../public-networks/reference/options.md#bootnodes) option.
 - Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 8. Start Node-3
@@ -265,9 +265,9 @@ besu --data-path=data --genesis-file=../genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-- The data directory for Node-3 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-- A different port to Node-1 and Node-2 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-- A different port to Node-1 and Node-2 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The data directory for Node-3 using the [`--data-path`](../../../public-networks/reference/options.md#data-path) option.
+- A different port to Node-1 and Node-2 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port) option.
+- A different port to Node-1 and Node-2 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port) option.
 - The bootnode as for [Node-2](#7-start-node-2).
 - Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
@@ -297,15 +297,15 @@ besu --data-path=data --genesis-file=..\genesis.json --bootnodes=<Node-1 Enode U
 
 The command line specifies:
 
-- The data directory for Node-4 using the [`--data-path`](../../../public-networks/reference/cli/options.md#data-path) option.
-- A different port to Node-1, Node-2, and Node-3 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/cli/options.md#p2p-port) option.
-- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/cli/options.md#rpc-http-port) option.
+- The data directory for Node-4 using the [`--data-path`](../../../public-networks/reference/options.md#data-path) option.
+- A different port to Node-1, Node-2, and Node-3 for P2P discovery using the [`--p2p-port`](../../../public-networks/reference/options.md#p2p-port) option.
+- A different port to Node-1, Node-2, and Node-3 for HTTP JSON-RPC using the [`--rpc-http-port`](../../../public-networks/reference/options.md#rpc-http-port) option.
 - The bootnode as for [Node-2](#7-start-node-2).
 - Other options as for [Node-1](#6-start-the-first-node-as-the-bootnode).
 
 ### 10. Confirm the private network is working
 
-Start another terminal, use curl to call the JSON-RPC API [`ibft_getvalidatorsbyblocknumber`](../../reference/api.md#ibft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
+Start another terminal, use curl to call the JSON-RPC API [`ibft_getvalidatorsbyblocknumber`](../../reference/api/ibft.md#ibft_getvalidatorsbyblocknumber) method and confirm the network has four validators:
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' localhost:8545/ -H "Content-Type: application/json"
@@ -358,7 +358,7 @@ If a new key was created, the validator key specified in the configuration does 
 
 ## Next steps
 
-Use the [IBFT API](../../reference/api.md#ibft-20-methods) to remove or add validators.
+Use the [IBFT API](../../reference/api/ibft.md) to remove or add validators.
 
 :::note
 

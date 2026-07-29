@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Nodes can connect to Ethereum Mainnet, [Linea](https://docs.linea.build/get-started/how-to/run-a-node), and their respective public testnets.
 
-Use the [`besu`](../reference/cli/options.md) command with the required command line options to start a node.
+Use the [`besu`](../reference/options.md) command with the required command line options to start a node.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ Use the [`besu`](../reference/cli/options.md) command with the required command 
 
 ## Local block data
 
-When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../reference/cli/options.md#data-path) option to specify a different data directory.
+When connecting to a network other than the network previously connected to, you must either delete the local block data or use the [`--data-path`](../reference/options.md#data-path) option to specify a different data directory.
 
 To delete the local block data, delete the `database` directory in the `besu/build/distribution/besu-<version>` directory.
 
@@ -27,57 +27,22 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 Besu specifies the genesis configuration, and sets the network ID and bootnodes when connecting to [ETH testnets](#run-a-node-on-an-ethereum-testnet), and [Mainnet](#run-a-node-on-ethereum-mainnet).
 
-:::info
-
-The following networks and testnets are deprecated: ETC (Ethereum Classic) and Mordor.
-
-:::
-
-When you specify [`--network=dev`](../reference/cli/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../reference/cli/options.md#network) has an empty bootnodes list by default.
+When you specify [`--network=dev`](../reference/options.md#network), Besu uses the development network genesis configuration, which is intended for local development and testing. A node started with [`--network=dev`](../reference/options.md#network) has an empty bootnodes list by default.
 
 The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
-To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/cli/options.md#genesis-file) option.
+To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/options.md#genesis-file) option.
 
 ## Syncing and storage
 
 By default, Besu syncs to the current state of the blockchain using [snap sync](../concepts/node-sync.md#snap-synchronization) in:
 
-- Networks specified using [`--network`](../reference/cli/options.md#network) except for the `dev` development network.
+- Networks specified using [`--network`](../reference/options.md#network) except for the `dev` development network.
 - Ethereum Mainnet.
 
-We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/cli/options.md#sync-mode).
+We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/options.md#sync-mode).
 
 By default, Besu stores data in the [Bonsai Tries format](../concepts/data-storage-formats.md#bonsai-tries).
-
-## Run a node for testing
-
-To run a node that mines blocks at a rate suitable for testing purposes:
-
-```bash
-besu --network=dev --rpc-http-cors-origins="all" --host-allowlist="*" --rpc-ws-enabled --rpc-http-enabled --data-path=/tmp/tmpDatdir
-```
-
-You can also use the following [configuration file](../how-to/configure-besu/index.md) on the command line to start a node with the same options as above:
-
-```toml
-network="dev"
-rpc-http-cors-origins=["all"]
-host-allowlist=["*"]
-rpc-ws-enabled=true
-rpc-http-enabled=true
-data-path="/tmp/tmpdata-path"
-```
-
-:::danger Warning
-
-The following settings are a security risk in production environments:
-
-- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../reference/cli/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
-- Setting [`--host-allowlist`](../reference/cli/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
-- Setting [`--rpc-http-cors-origins`](../reference/cli/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
-
-:::
 
 ## Run a node on an Ethereum testnet
 
@@ -141,7 +106,7 @@ See the [guide on connecting to Mainnet](connect/mainnet.md) for more informatio
 
 ## Confirm node is running
 
-If you started Besu with the [`--rpc-http-enabled`](../reference/cli/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
+If you started Besu with the [`--rpc-http-enabled`](../reference/options.md#rpc-http-enabled) option, use [cURL](https://curl.haxx.se/) to call [JSON-RPC API methods](../reference/api/index.md) to confirm the node is running.
 
 - `eth_chainId` returns the chain ID of the network.
 

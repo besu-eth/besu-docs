@@ -31,7 +31,7 @@ For IBFT 2.0 validators, [node addresses](../../../../public-networks/concepts/n
 To store a validator's node key in a Hardware Security Module (HSM) instead of
 on disk, use a security module plugin, such as the
 [Besu HSM plugin](https://github.com/besu-eth/besu-hsm-plugin), with the
-[`--security-module`](../../../../public-networks/reference/cli/options.md#security-module)
+[`--security-module`](../../../../public-networks/reference/options.md#security-module)
 option.
 
 :::
@@ -109,7 +109,7 @@ The properties with specific values in the IBFT 2.0 genesis files are:
 - `difficulty` - `0x1`
 - `mixHash` - `0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365` for Istanbul block identification
 
-To start a node on an IBFT 2.0 private network, use the [`--genesis-file`](../../../../public-networks/reference/cli/options.md#genesis-file) option to specify the custom genesis file.
+To start a node on an IBFT 2.0 private network, use the [`--genesis-file`](../../../../public-networks/reference/options.md#genesis-file) option to specify the custom genesis file.
 
 ### Extra data
 
@@ -131,13 +131,13 @@ RLP encoding is a space-efficient object serialization scheme used in Ethereum.
 
 #### Generate extra data
 
-To generate the `extraData` RLP string for inclusion in the genesis file, use the [`rlp encode`](../../../reference/cli/subcommands.md#encode) Besu subcommand.
+To generate the `extraData` RLP string for inclusion in the genesis file, use the [`rlp encode`](../../../reference/subcommands.md#encode) Besu subcommand.
 
 ```bash title="Example"
 besu rlp encode --from=toEncode.json
 ```
 
-Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/cli/subcommands.md#export-address) Besu subcommand. For example:
+Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/subcommands.md#export-address) Besu subcommand. For example:
 
 ```json title="One initial validator in toEncode.json file"
 ["9811ebc35d7b06b3fa8dc5809a1f9c52751e1deb"]
@@ -173,7 +173,7 @@ To tune the block timeout for your network deployment:
 
 :::tip
 
-View [`TRACE` logs](../../../../public-networks/reference/api/index.md#trace-methods) to see round change log messages.
+View [`TRACE` logs](../../../../public-networks/reference/api/trace.md) to see round change log messages.
 
 :::
 
@@ -206,17 +206,17 @@ Additionally, [`extraData`](#extra-data) is limited to 32 bytes of vanity data a
 
 ## Add and remove validators
 
-Existing validators propose and vote to add or remove validators using the IBFT 2.0 JSON-RPC API methods. Enable the HTTP interface with [`--rpc-http-enabled`](../../../../public-networks/reference/cli/options.md#rpc-http-enabled) or the WebSocket interface with [`--rpc-ws-enabled`](../../../../public-networks/reference/cli/options.md#rpc-ws-enabled).
+Existing validators propose and vote to add or remove validators using the IBFT 2.0 JSON-RPC API methods. Enable the HTTP interface with [`--rpc-http-enabled`](../../../../public-networks/reference/options.md#rpc-http-enabled) or the WebSocket interface with [`--rpc-ws-enabled`](../../../../public-networks/reference/options.md#rpc-ws-enabled).
 
-The IBFT 2.0 API methods are disabled by default. To enable them, specify the [`--rpc-http-api`](../../../../public-networks/reference/cli/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../../public-networks/reference/cli/options.md#rpc-ws-api) option and include `IBFT`.
+The IBFT 2.0 API methods are disabled by default. To enable them, specify the [`--rpc-http-api`](../../../../public-networks/reference/options.md#rpc-http-api) or [`--rpc-ws-api`](../../../../public-networks/reference/options.md#rpc-ws-api) option and include `IBFT`.
 
 The methods to add or remove validators are:
 
-- [`ibft_getPendingVotes`](../../../reference/api.md#ibft_getpendingvotes).
-- [`ibft_proposeValidatorVote`](../../../reference/api.md#ibft_proposevalidatorvote).
-- [`ibft_discardValidatorVote`](../../../reference/api.md#ibft_discardvalidatorvote).
+- [`ibft_getPendingVotes`](../../../reference/api/ibft.md#ibft_getpendingvotes).
+- [`ibft_proposeValidatorVote`](../../../reference/api/ibft.md#ibft_proposevalidatorvote).
+- [`ibft_discardValidatorVote`](../../../reference/api/ibft.md#ibft_discardvalidatorvote).
 
-To view validator metrics for a specified block range, use [`ibft_getSignerMetrics`](../../../reference/api.md#ibft_getsignermetrics).
+To view validator metrics for a specified block range, use [`ibft_getSignerMetrics`](../../../reference/api/ibft.md#ibft_getsignermetrics).
 
 :::note
 
@@ -226,23 +226,23 @@ If network conditions render it impossible to add and remove validators by votin
 
 ### Add a validator
 
-To propose adding a validator to an IBFT 2.0 network, call [`ibft_proposeValidatorVote`](../../../reference/api.md#ibft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
+To propose adding a validator to an IBFT 2.0 network, call [`ibft_proposeValidatorVote`](../../../reference/api/ibft.md#ibft_proposevalidatorvote), specifying the address of the proposed validator and `true`. A majority of validators must execute the call.
 
 ```bash title="JSON-RPC ibft_proposeValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73", true], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-When the validator proposes the next block, the protocol inserts one proposal received from [`ibft_proposeValidatorVote`](../../../reference/api.md#ibft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
+When the validator proposes the next block, the protocol inserts one proposal received from [`ibft_proposeValidatorVote`](../../../reference/api/ibft.md#ibft_proposevalidatorvote) into the block. If blocks include all proposals, subsequent blocks proposed by the validator will not contain a vote.
 
 When more than 50% of the existing validators have published a matching proposal, the protocol adds the proposed validator to the validator pool and the validator can begin validating blocks.
 
-To return a list of validators and confirm the addition of a proposed validator, use [`ibft_getValidatorsByBlockNumber`](../../../reference/api.md#ibft_getvalidatorsbyblocknumber).
+To return a list of validators and confirm the addition of a proposed validator, use [`ibft_getValidatorsByBlockNumber`](../../../reference/api/ibft.md#ibft_getvalidatorsbyblocknumber).
 
 ```bash title="JSON-RPC ibft_getValidatorsByBlockNumber request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' <JSON-RPC-endpoint:port>
 ```
 
-To discard your proposal after confirming the addition of a validator, call [`ibft_discardValidatorVote`](../../../reference/api.md#ibft_discardvalidatorvote), specifying the address of the proposed validator.
+To discard your proposal after confirming the addition of a validator, call [`ibft_discardValidatorVote`](../../../reference/api/ibft.md#ibft_discardvalidatorvote), specifying the address of the proposed validator.
 
 ```bash title="JSON-RPC ibft_discardValidatorVote request example"
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_discardValidatorVote","params":["0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73"], "id":1}' <JSON-RPC-endpoint:port>
@@ -250,7 +250,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_discardValidatorVote","para
 
 ### Remove a validator
 
-The process for removing a validator from an IBFT 2.0 network is the same as [adding a validator](#add-a-validator) except you specify `false` as the second parameter of [`ibft_proposeValidatorVote`](../../../reference/api.md#ibft_proposevalidatorvote).
+The process for removing a validator from an IBFT 2.0 network is the same as [adding a validator](#add-a-validator) except you specify `false` as the second parameter of [`ibft_proposeValidatorVote`](../../../reference/api/ibft.md#ibft_proposevalidatorvote).
 
 ### Epoch transition
 
