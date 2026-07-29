@@ -101,15 +101,13 @@ from the network.
 
 ### 4. Verify the migration
 
-When the network reaches the migration block, Besu handles the cutover from IBFT 2.0 to QBFT 
+When the network reaches the migration block, Besu handles the cutover from IBFT 2.0 to QBFT
 automatically.
-Confirm that the network is producing QBFT blocks by calling
-[`qbft_getValidatorsByBlockNumber`](../../../reference/api.md#qbft_getvalidatorsbyblocknumber):
+Confirm that the network has switched to QBFT by checking the node logs for the migration block number.
+From the migration block onwards, imported and produced block log lines are tagged `QbftBesuControllerBuilder`.
+For example:
 
 ```bash
-curl -X POST --data \
-  '{"jsonrpc":"2.0","method":"qbft_getValidatorsByBlockNumber","params":["latest"],"id":1}' \
-  http://<NODE_URL>:8545
+2026-07-29 09:15:12.071+00:00 | pool-8-thread-1 | INFO  | QbftBesuControllerBuilder | Imported empty block #100 / 0 tx / 0 pending / 0 (0.0%) gas / (0x6fc47ada7146d75f6a46911d8d4038795b0c99970bbd4ce0c6d6aa60955f66fe)
+2026-07-29 09:15:14.051+00:00 | pool-8-thread-1 | INFO  | QbftBesuControllerBuilder | Imported empty block #101 / 0 tx / 0 pending / 0 (0.0%) gas / (0x3cb663880a65103266b11a8d8631beca5c482d515ac287125aa077b2e31b80b0)
 ```
-
-A successful response lists the current validators, confirming that QBFT consensus is active.
