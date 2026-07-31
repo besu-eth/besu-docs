@@ -4,7 +4,7 @@ description: Monitoring using metrics and logging
 
 # Monitoring
 
-Use monitoring to identify node and network issues. In private networks, you can [configure metrics and logging](../../../public-networks/how-to/monitor/index.md) as in public networks.
+Monitoring helps you identify node and network issues. In private networks, you can use the same [monitoring tools](../../../public-networks/how-to/monitor/index.md) as in public networks.
 
 You can also use the following monitoring tools in private networks:
 

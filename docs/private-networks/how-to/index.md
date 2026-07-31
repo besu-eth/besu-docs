@@ -26,7 +26,6 @@ The following features are shared with [public networks](../../public-networks/i
   - [Install and update Java](../../public-networks/how-to/configure-java/install-update-java.md)
   - [Pass JVM options](../../public-networks/how-to/configure-java/pass-jvm-options.md)
   - [Manage JVM memory](../../public-networks/how-to/configure-java/manage-memory.md)
-  - [Use Java Flight Recorder](../../public-networks/how-to/configure-java/java-flight-recorder.md)
 - Develop dapps:
   - [Use Hardhat](../../public-networks/how-to/develop/hardhat.md)
   - [Use client libraries](../../public-networks/how-to/develop/client-libraries.md)

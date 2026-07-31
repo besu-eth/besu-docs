@@ -1,12 +1,18 @@
 ---
-title: Use Java Flight Recorder
 sidebar_position: 4
-description: Using Java Flight Recorder with Besu
+sidebar_label: Profile with Java Flight Recorder
+description: Using Java Flight Recorder to profile Besu and analyze JVM performance
+keywords:
+  - java flight recorder
+  - jfr
+  - profiling
 ---
 
-# Use Java Flight Recorder
+# Profile Besu with Java Flight Recorder
 
 [Java Flight Recorder (JFR)](https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/about.htm#JFRUH170) is a monitoring tool that collects information about the Java Virtual Machine (JVM) when Besu is running. Use the JFR as a tool to analyze Besu performance.
+
+JFR records to a file that you inspect afterwards. To profile a node continuously instead, and view the results in Grafana, see [Profile with Pyroscope](pyroscope.md).
 
 ## Enable Java Flight Recorder
 

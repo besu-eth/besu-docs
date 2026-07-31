@@ -118,6 +118,10 @@
     {
       "source": "/public-networks/how-to/configuration-file/",
       "destination": "/public-networks/how-to/configure-besu/"
+    },
+    {
+      "source": "/public-networks/how-to/configure-java/java-flight-recorder/",
+      "destination": "/public-networks/how-to/monitor/java-flight-recorder/"
     }
   ],
   "rewrites": [
