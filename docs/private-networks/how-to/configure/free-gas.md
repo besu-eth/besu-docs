@@ -65,7 +65,7 @@ In the `config` section of the genesis file, set the contract size limit to the 
 }
 ```
 
-### 3. Start Besu with a minimum gas price of zero
+### 3. Set a minimum gas price of zero
 
 When starting nodes, set the [minimum gas price](../../../public-networks/reference/options.md#min-gas-price) to zero.
 
@@ -95,7 +95,35 @@ In a free gas network, ensure the [minimum gas price](../../../public-networks/r
 
 :::
 
-### 4. Enable zero base fee if using London fork or later
+### 4. Disable the transaction pool balance check
+
+Senders in a free gas network can have a zero balance and still submit valid transactions.
+[`--tx-pool-enable-balance-check`](../../../public-networks/reference/options.md#tx-pool-enable-balance-check)
+defaults to `true`, which prevents pending transactions from senders with insufficient balance from
+being included in the prioritized layer of the [transaction pool](../../../public-networks/concepts/transactions/pool.md).
+Set this option to `false` so the balance check doesn't block transactions from zero-balance senders.
+
+<Tabs>
+
+<TabItem value="Command line" default>
+
+```bash
+--tx-pool-enable-balance-check=false
+```
+
+</TabItem>
+
+<TabItem value="Configuration file">
+
+```bash
+tx-pool-enable-balance-check=false
+```
+
+</TabItem>
+
+</Tabs>
+
+### 5. Enable zero base fee if using London fork or later
 
 If your network is configured to use the `londonBlock` or a later hard fork, then you must also enable the `zeroBaseFee` configuration. You must set this on all your nodes. Once it is set, future blocks produced by that node will set a `baseFee` of 0. This is required because the London hard fork (EIP-1559) introduced a non-zero `baseFee` into the block which normally means transactions require gas.
 
