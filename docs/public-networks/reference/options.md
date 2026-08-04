@@ -3221,6 +3221,46 @@ To use IPv6 (discovery v5), set the early access option `--Xv5-discovery-enabled
 
 ---
 
+## `p2p-tx-feecap`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--p2p-tx-feecap=1200000000000000000
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_P2P_TX_FEECAP=1200000000000000000
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+p2p-tx-feecap=1200000000000000000
+```
+
+</TabItem>
+
+</Tabs>
+
+The maximum transaction fee (in wei) accepted for transactions received from peers over the P2P network.
+Transactions with a gas price (or, for EIP-1559 transactions, the max fee per gas) exceeding this value are rejected.
+Rejected transactions never enter the transaction pool and aren't re-broadcast to peers.
+
+The default has no practical limit, so the cap is effectively disabled.
+
+Set this option to `0` to reject any transaction with a positive gas price.
+
+---
+
 ## `plugin-block-txs-selection-max-time`
 
 <Tabs>
@@ -4796,9 +4836,9 @@ rpc-tx-feecap=1200000000000000000
 
 </Tabs>
 
-The maximum transaction fee (in wei) accepted for transactions submitted through the [`eth_sendRawTransaction`](api/eth/submit.md#eth_sendrawtransaction) RPC. The default is 1000000000000000000 (1 ether).
+The maximum transaction fee (in wei) accepted for transactions submitted through the [`eth_sendRawTransaction`](api/eth/submit.md#eth_sendrawtransaction) RPC method. The default is `1000000000000000000` (1 ether).
 
-If set to 0, then this option is ignored and no cap is applied.
+If set to `0`, then this option is ignored and no cap is applied.
 
 ---
 
