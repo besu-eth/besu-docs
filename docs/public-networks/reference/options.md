@@ -604,6 +604,47 @@ The default is `false`.
 
 ---
 
+## `checkpoint`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--checkpoint=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80:12345678:58750003716598352816469
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_CHECKPOINT=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80:12345678:58750003716598352816469
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+checkpoint="0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80:12345678:58750003716598352816469"
+```
+
+</TabItem>
+
+</Tabs>
+
+A trusted checkpoint to anchor sync to, in the format `<blockHash>:<blockNumber>:<totalDifficulty>`. Specifying this option overrides any [checkpoint configured in the genesis file](genesis-items.md#checkpoint-configuration).
+
+- `blockHash` must be a 32-byte hex string.
+- `blockNumber` must be a non-negative integer.
+- `totalDifficulty` can be a decimal or `0x`-prefixed hex value.
+
+This option is only used by [snap sync](../concepts/node-sync.md#snap-synchronization).
+It's ignored when [`--sync-mode`](#sync-mode) is set to `FULL`.
+
+---
+
 ## `color-enabled`
 
 <Tabs>

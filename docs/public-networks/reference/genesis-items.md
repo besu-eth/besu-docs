@@ -28,6 +28,7 @@ Network configuration items are specified in the genesis file in the `config` ob
 | `evmStackSize`                         | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                     |
 | `ecCurve`                              | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
 | `discovery`                            | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                        |
+| `checkpoint`                           | Specifies the [checkpoint configuration](#checkpoint-configuration) to sync from, in place of syncing from the genesis block.                                                  |
 | `zeroBaseFee`                          | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#4-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
 | `fixedBaseFee`                         | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).           |
 | `depositContractAddress`               | Address for the Ethereum staking contract.                                                                                                                           |
@@ -182,3 +183,34 @@ If any option is specified using the command line or [configuration file](../how
   }
 }
 ```
+
+## Checkpoint configuration
+
+Use the `checkpoint` object to anchor [snap sync](../concepts/node-sync.md#snap-synchronization) to a
+trusted block, instead of syncing from the genesis block.
+If you specify a `checkpoint` object, `hash`, `number`, and `totalDifficulty` are all required;
+Besu fails to start if any is missing.
+
+Besu still downloads and validates the full chain of block headers back to the genesis block, whichever
+checkpoint you specify. The checkpoint only skips downloading block bodies, transaction receipts, and
+world state before the checkpoint block.
+
+| Item              | Description                                                                          |
+|-------------------|:--------------------------------------------------------------------------------------|
+| `hash`            | Block hash of the checkpoint block.                                                  |
+| `number`          | Block number of the checkpoint block.                                                |
+| `totalDifficulty` | Total difficulty of the checkpoint block. Specify as a decimal or hexadecimal string. |
+
+```json title="Checkpoint example"
+{
+  "config": {
+    "checkpoint": {
+      "hash": "0x56a9bb0302da44b8c0b3df540781424684c3af04d0b7a38d72842b762076a664",
+      "number": 15537394,
+      "totalDifficulty": "0xC70D815D562D3CFA955"
+    }
+  }
+}
+```
+
+Use the [`--checkpoint`](options.md#checkpoint) option to override the genesis file checkpoint.
