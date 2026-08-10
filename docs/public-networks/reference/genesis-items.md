@@ -191,6 +191,10 @@ trusted block, instead of syncing from the genesis block.
 If you specify a `checkpoint` object, `hash`, `number`, and `totalDifficulty` are all required;
 Besu fails to start if any is missing.
 
+Besu still downloads and validates the full chain of block headers back to the genesis block, whichever
+checkpoint you specify. The checkpoint only skips downloading block bodies, transaction receipts, and
+world state before the checkpoint block.
+
 | Item              | Description                                                                          |
 |-------------------|:--------------------------------------------------------------------------------------|
 | `hash`            | Block hash of the checkpoint block.                                                  |

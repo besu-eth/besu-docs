@@ -634,7 +634,7 @@ checkpoint="0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d091b0097a80:1
 
 </Tabs>
 
-A trusted checkpoint to anchor sync to, in the format `<blockHash>:<blockNumber>:<totalDifficulty>`. Specifying this option overrides any [checkpoint configured in the genesis file](genesis-items.md#checkpoint-configuration-items).
+A trusted checkpoint to anchor sync to, in the format `<blockHash>:<blockNumber>:<totalDifficulty>`. Specifying this option overrides any [checkpoint configured in the genesis file](genesis-items.md#checkpoint-configuration).
 
 - `blockHash` must be a 32-byte hex string.
 - `blockNumber` must be a non-negative integer.
