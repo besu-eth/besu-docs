@@ -5925,10 +5925,12 @@ snapsync-synchronizer-pre-checkpoint-headers-only-enabled=false
 The `--snapsync-synchronizer-pre-checkpoint-headers-only-enabled` option is deprecated and will be
 removed in a future release.
 Besu recognizes this option, but it has no effect.
-[Snap sync](../concepts/node-sync.md#snap-synchronization) always prunes pre-merge Proof of Work
-(PoW) historical blocks, retaining only headers and the genesis block.
-To retain full pre-merge block history, use
-[full sync](../concepts/node-sync.md#full-synchronization) instead.
+When a [checkpoint](genesis-items.md#checkpoint-configuration) is defined, which the default
+Mainnet genesis file specifies, [snap sync](../concepts/node-sync.md#snap-synchronization) doesn't
+download pre-merge Proof of Work (PoW) block bodies or transaction receipts, and only downloads
+headers.
+To retain full pre-merge block history, use [full sync](../concepts/node-sync.md#full-synchronization),
+or sync using a genesis file that doesn't specify a checkpoint.
 
 :::
 

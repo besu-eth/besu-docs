@@ -7,27 +7,29 @@ description: Reduce the size of your database by removing pre-merge blocks from 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Node operators using [snap sync](../concepts/node-sync.md#snap-synchronization) can significantly reduce
-disk usage by removing [pre-merge](https://ethereum.org/en/roadmap/merge/) Proof of Work (PoW)
-block data from the local database.
+Node operators can significantly reduce disk usage related to
+[pre-merge](https://ethereum.org/en/roadmap/merge/) Proof of Work (PoW) block data by pruning it
+from an existing database, or by using [snap sync](../concepts/node-sync.md#snap-synchronization)
+with a [checkpoint](../reference/genesis-items.md#checkpoint-configuration) defined to avoid
+downloading it in the first place.
 
-Besu can prune all pre-merge block bodies and associated transaction receipts, leaving only headers and
-the genesis block.
+Pruning removes all pre-merge block bodies and associated transaction receipts from the database,
+leaving only headers and the genesis block.
 
 :::warning
 
 Besu does not currently provide a way to import pre-merge block data after pruning.
 If you need to restore the full pre-merge history, delete your database and use
-[full sync](../concepts/node-sync.md#full-synchronization) instead, which downloads and retains
-all blocks from peers.
+[full sync](../concepts/node-sync.md#full-synchronization), or snap sync with a genesis file that doesn't 
+specify a checkpoint.
 
 :::
 
-Besu provides multiple options to prune the historical blockchain data:
+Besu provides multiple options to reduce historical blockchain data:
 - [Offline pruning](#offline-pruning) to prune data on a stopped Besu instance.
 - [Online pruning](#online-pruning) to prune data on a running Besu instance.
-- [Sync Besu](#sync-without-pre-merge-blocks) using snap sync, which prunes the historical
-    blockchain data.
+- [Sync Besu](#sync-without-pre-merge-blocks) using snap sync, which avoids downloading pre-merge
+    block bodies and transaction receipts.
 
 ## Offline pruning
 
@@ -81,8 +83,10 @@ when complete.
 ## Sync without pre-merge blocks
 
 This option has the most downtime but reclaims the most disk space.
-Delete your database and sync a Besu node using [`SNAP` sync (`--sync-mode=SNAP`)](../reference/options.md#sync-mode),
-which prunes pre-merge blocks and only retains their headers.
+Delete your database and sync a Besu node using [`SNAP` sync (`--sync-mode=SNAP`)](../reference/options.md#sync-mode).
+When a [checkpoint](../reference/genesis-items.md#checkpoint-configuration) is defined, which the
+default Mainnet genesis file specifies, snap sync doesn't download pre-merge block bodies or
+transaction receipts, and only downloads headers.
 
 If you're a solo staker, consider using [RocketPool's rescue node](https://rescuenode.com/docs/about)
 to minimize downtime.
