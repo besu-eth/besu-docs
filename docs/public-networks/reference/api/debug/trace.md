@@ -256,7 +256,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
     - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
     - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
@@ -398,7 +398,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
     - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
@@ -531,7 +531,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
     - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
@@ -672,7 +672,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
     - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
     - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
@@ -878,7 +878,7 @@ temporary state changes without affecting the actual blockchain state.
 
     - `depth`: _integer_ - Execution depth.
 
-    - `exceptionalHaltReasons`: _array_ - One or more strings representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
     - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
 
