@@ -256,15 +256,17 @@ Reruns the transaction with the same state as when the transaction executed.
 
     - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
 
     - `depth`: _integer_ - Execution depth.
 
     - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of strings_ - EVM stack before the current opcode, as
+      `0x`-prefixed compact hex strings (leading zeros stripped).
 
-    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of strings_ - Contract memory after the current opcode
+      runs, as `0x`-prefixed 32-byte hex strings.
 
     - `storage`: _object_ - Storage entries changed by the current transaction.
 
@@ -372,49 +374,59 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture.
+    The default is `false`.
+    Streamed block traces do not include a per-opcode `returnData` field.
 
   </Fields>
 
 ### Returns
 
-- Trace object.
+- Array of transaction trace objects.
 
   <Fields>
 
-  - `gas`: _integer_ - Gas used by the transaction.
+  - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
 
-  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a hex
-    string with a `0x` prefix.
-    Empty output is `"0x"`.
-
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value transfer
-    between two externally owned accounts (EOAs)).
+  - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
 
-    - `pc`: _integer_ - Current program counter.
+    - `gas`: _integer_ - Gas used by the transaction.
 
-    - `op`: _string_ - Current opcode.
+    - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-    - `gas`: _integer_ - Gas remaining.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    - `gasCost`: _integer_ - Cost in wei of each gas unit.
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
 
-    - `depth`: _integer_ - Execution depth.
+      <Fields>
 
-    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+      - `pc`: _integer_ - Current program counter.
 
-    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
+      - `op`: _string_ - Current opcode.
 
-    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+      - `gas`: _integer_ - Gas remaining.
 
-    - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
 
-    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
@@ -462,12 +474,17 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "gas": 21000,
-    "failed": false,
-    "returnValue": "0x",
-    "structLogs": []
-  }
+  "result": [
+    {
+      "txHash": "0x4ff04c4aec9517721179c8dd435f47fbbfc2ed26cd4926845ab687420d5580a6",
+      "result": {
+        "gas": 21000,
+        "failed": false,
+        "returnValue": "0x",
+        "structLogs": []
+      }
+    }
+  ]
 }
 ```
 
@@ -485,6 +502,11 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `blockHash`: _string_ - Block hash.
 
+  :::note
+  The genesis block is not traceable.
+  Besu returns a JSON-RPC error (`genesis is not traceable`).
+  :::
+
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
@@ -500,49 +522,59 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture.
+    The default is `false`.
+    Streamed block traces do not include a per-opcode `returnData` field.
 
   </Fields>
 
 ### Returns
 
-- List of trace objects.
+- Array of transaction trace objects.
 
   <Fields>
 
-  - `gas`: _integer_ - Gas used by the transaction.
+  - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
 
-  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a hex
-    string with a `0x` prefix.
-    Empty output is `"0x"`.
-
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value transfer
-    between two externally owned accounts (EOAs)).
+  - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
 
-    - `pc`: _integer_ - Current program counter.
+    - `gas`: _integer_ - Gas used by the transaction.
 
-    - `op`: _string_ - Current opcode.
+    - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-    - `gas`: _integer_ - Gas remaining.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    - `gasCost`: _integer_ - Cost in wei of each gas unit.
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
 
-    - `depth`: _integer_ - Execution depth.
+      <Fields>
 
-    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+      - `pc`: _integer_ - Current program counter.
 
-    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
+      - `op`: _string_ - Current opcode.
 
-    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+      - `gas`: _integer_ - Gas remaining.
 
-    - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
 
-    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
@@ -592,10 +624,13 @@ curl -X POST http://127.0.0.1:8545/ \
   "id": 1,
   "result": [
     {
-      "gas": 21000,
-      "failed": false,
-      "returnValue": "0x",
-      "structLogs": []
+      "txHash": "0x4ff04c4aec9517721179c8dd435f47fbbfc2ed26cd4926845ab687420d5580a6",
+      "result": {
+        "gas": 21000,
+        "failed": false,
+        "returnValue": "0x",
+        "structLogs": []
+      }
     }
   ]
 }
@@ -621,6 +656,11 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   `pending` returns the same value as `latest`.
   :::
 
+  :::note
+  The genesis block (`0x0` or `earliest`) is not traceable.
+  Besu returns a JSON-RPC error (`genesis is not traceable`).
+  :::
+
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
   <Fields>
@@ -636,49 +676,59 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
-  - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+  - `enableReturnData`: _boolean_ - `true` enables return data capture.
+    The default is `false`.
+    Streamed block traces do not include a per-opcode `returnData` field.
 
   </Fields>
 
 ### Returns
 
-- List of trace objects.
+- Array of transaction trace objects.
 
   <Fields>
 
-  - `gas`: _integer_ - Gas used by the transaction.
+  - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
 
-  - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a hex
-    string with a `0x` prefix.
-    Empty output is `"0x"`.
-
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value transfer
-    between two externally owned accounts (EOAs)).
+  - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
 
-    - `pc`: _integer_ - Current program counter.
+    - `gas`: _integer_ - Gas used by the transaction.
 
-    - `op`: _string_ - Current opcode.
+    - `failed`: _boolean_ - True if transaction failed, otherwise, false.
 
-    - `gas`: _integer_ - Gas remaining.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    - `gasCost`: _integer_ - Cost in wei of each gas unit.
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
 
-    - `depth`: _integer_ - Execution depth.
+      <Fields>
 
-    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+      - `pc`: _integer_ - Current program counter.
 
-    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
+      - `op`: _string_ - Current opcode.
 
-    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+      - `gas`: _integer_ - Gas remaining.
 
-    - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
 
-    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
@@ -734,10 +784,13 @@ curl -X POST http://127.0.0.1:8545/ \
   "id": 1,
   "result": [
     {
-      "gas": 21000,
-      "failed": false,
-      "returnValue": "0x",
-      "structLogs": []
+      "txHash": "0x4ff04c4aec9517721179c8dd435f47fbbfc2ed26cd4926845ab687420d5580a6",
+      "result": {
+        "gas": 21000,
+        "failed": false,
+        "returnValue": "0x",
+        "structLogs": []
+      }
     }
   ]
 }
@@ -833,9 +886,13 @@ temporary state changes without affecting the actual blockchain state.
 
     - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
 
-    - `state`: _quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+    - `state`: _object_ - Map of storage slot to value that replaces all slots
+      in the account storage.
+      You cannot set both the `state` and `stateDiff` options simultaneously.
 
-    - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+    - `stateDiff`: _object_ - Map of storage slot to value that overrides
+      individual slots in the account storage.
+      You cannot set both the `state` and `stateDiff` options simultaneously.
 
     </Fields>
 
@@ -843,7 +900,7 @@ temporary state changes without affecting the actual blockchain state.
 
 ### Returns
 
-- List of trace objects.
+- Trace object.
 
   <Fields>
 
@@ -867,15 +924,17 @@ temporary state changes without affecting the actual blockchain state.
 
     - `gas`: _integer_ - Gas remaining.
 
-    - `gasCost`: _integer_ - Cost in wei of each gas unit.
+    - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
 
     - `depth`: _integer_ - Execution depth.
 
     - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
 
-    - `stack`: _array of 32 byte arrays_ - EVM execution stack before executing current operation.
+    - `stack`: _array of strings_ - EVM stack before the current opcode, as
+      `0x`-prefixed compact hex strings (leading zeros stripped).
 
-    - `memory`: _array of 32 byte arrays_ - Memory space of the contract before executing current operation.
+    - `memory`: _array of strings_ - Contract memory after the current opcode
+      runs, as `0x`-prefixed 32-byte hex strings.
 
     - `storage`: _object_ - Storage entries changed by the current transaction.
 
@@ -939,14 +998,12 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    {
-      "gas": 21000,
-      "failed": false,
-      "returnValue": "0x",
-      "structLogs": []
-    }
-  ]
+  "result": {
+    "gas": 21000,
+    "failed": false,
+    "returnValue": "0x",
+    "structLogs": []
+  }
 }
 ```
 

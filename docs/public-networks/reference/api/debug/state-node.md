@@ -270,7 +270,7 @@ Sends a list of [signed transactions](../../../how-to/send-transactions.md). Thi
 
   <Fields>
 
-  - `index`: _string_ - Index of the transaction in the request parameters array.
+  - `index`: _integer_ - Index of the transaction in the request parameters array.
 
   - `success`: _boolean_ - Indicates whether or not the transaction has been added to the transaction pool.
 
