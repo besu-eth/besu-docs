@@ -291,9 +291,6 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
 - Hex-encoded RLP of the block.
 
-Use [`eth_getBlockByNumber`](../eth/block.md#eth_getblockbynumber) for the
-decoded JSON block object.
-
 :::note
 Returns a JSON-RPC error (`Block not found`) when the block does not exist.
 :::
@@ -446,9 +443,6 @@ Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structur
 
 - Hex-encoded RLP of the block header.
 
-Use [`eth_getBlockByNumber`](../eth/block.md#eth_getblockbynumber) for the
-decoded JSON block object.
-
 :::note
 Returns a JSON-RPC error (`Block not found`) when the block does not exist.
 :::
@@ -525,9 +519,6 @@ of the transaction receipts of the specified block.
 - Array of hex-encoded RLP transaction receipts, or `null` when the block is
   not found.
 
-Use [`eth_getBlockReceipts`](../eth/block.md#eth_getblockreceipts) for the
-decoded JSON receipt objects.
-
 ### Example
 
 <Tabs>
@@ -596,9 +587,6 @@ of the specified transaction.
 
 - Hex-encoded RLP of the transaction, or `null` when the transaction is not
   found.
-
-Use [`eth_getTransactionByHash`](../eth/transaction.md#eth_gettransactionbyhash)
-for the decoded JSON transaction object.
 
 ### Example
 

@@ -504,7 +504,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   :::note
   The genesis block is not traceable.
-  Besu returns a JSON-RPC error (`genesis is not traceable`).
   :::
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
@@ -649,16 +648,12 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 ### Parameters
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
-  string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  string tags `latest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
-  `pending` returns the same value as `latest`.
-  :::
-
-  :::note
-  The genesis block (`0x0` or `earliest`) is not traceable.
-  Besu returns a JSON-RPC error (`genesis is not traceable`).
+  - `pending` returns the same value as `latest`.
+  - The genesis block (`0x0` or `earliest`) is not traceable.
   :::
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
