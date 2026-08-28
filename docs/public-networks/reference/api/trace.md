@@ -43,7 +43,8 @@ the requested block must be within the number of
 <h3>Returns</h3>
 
 - List of [trace objects](#trace) for the block.
-  Includes transaction traces (`call`, `create`, `suicide`) in execution order,
+  Includes transaction traces (`call`, `create`, and self-destruct) in execution
+  order,
   then block and uncle `reward` traces.
   If revert reason is enabled with
   [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
@@ -1032,7 +1033,7 @@ the requested transaction must be contained in a block within the number of
 <h3>Returns</h3>
 
 - List of [trace objects](#trace) for the transaction, in execution order.
-  Includes `call`, `create`, and `suicide` traces.
+  Includes `call`, `create`, and self-destruct traces.
   If revert reason is enabled with
   [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
   list items include the
@@ -1210,14 +1211,14 @@ The `action` and `result` shapes depend on the trace `type`.
     Present on some `create` traces.
 
   - `address`: _data, 20 bytes_ - Contract that self-destructed.
-    Present on `suicide` traces.
+    Present on self-destruct traces.
 
   - `balance`: _quantity_ - Balance transferred on self-destruct.
-    Present on `suicide` traces.
+    Present on self-destruct traces.
 
   - `refundAddress`: _data, 20 bytes_ - Recipient of the self-destructed
     balance.
-    Present on `suicide` traces.
+    Present on self-destruct traces.
 
   - `author`: _data, 20 bytes_ - Reward recipient.
     Present on `reward` traces (`trace_block` only).
@@ -1230,7 +1231,7 @@ The `action` and `result` shapes depend on the trace `type`.
 - `result`: _object_ - Execution result for successful `call` and `create`
   traces.
   Omitted when `error` is present.
-  `null` for `suicide` and `reward` traces.
+  `null` for self-destruct and `reward` traces.
 
   <Fields>
 
@@ -1260,7 +1261,8 @@ The `action` and `result` shapes depend on the trace `type`.
 - `traceAddress`: _array_ - Path of this trace in the call tree.
   Empty for the top-level trace.
 
-- `type`: _string_ - Trace kind: `call`, `create`, `suicide`, or `reward`.
+- `type`: _string_ - Trace kind: `call`, `create`, `suicide` (self-destruct),
+  or `reward`.
   `reward` appears only in `trace_block` results.
 
 </Fields>
