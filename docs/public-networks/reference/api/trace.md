@@ -43,12 +43,9 @@ the requested block must be within the number of
 <h3>Returns</h3>
 
 - List of [trace objects](#trace) for the block.
-  Includes transaction traces (`call`, `create`, and self-destruct) in execution
-  order,
-  then block and uncle `reward` traces.
-  If revert reason is enabled with
-  [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
-  list items include the
+  Includes transaction traces in execution order, then block and uncle `reward` traces.
+  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the 
+  returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
@@ -1033,10 +1030,8 @@ the requested transaction must be contained in a block within the number of
 <h3>Returns</h3>
 
 - List of [trace objects](#trace) for the transaction, in execution order.
-  Includes `call`, `create`, and self-destruct traces.
-  If revert reason is enabled with
-  [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
-  list items include the
+  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the 
+  returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
