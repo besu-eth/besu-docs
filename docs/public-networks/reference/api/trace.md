@@ -42,7 +42,13 @@ the requested block must be within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [trace objects](#trace) for the block.
+  Includes transaction traces (`call`, `create`, `suicide`) in execution order,
+  then block and uncle `reward` traces.
+  If revert reason is enabled with
+  [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
+  list items include the
+  [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
 
@@ -188,7 +194,7 @@ default, 512 from the head of the chain).
 
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../concepts/transactions/types.md#frontier-transactions) transactions.
 
-  - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
+  - `strict`: _boolean_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
 
   - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
@@ -214,9 +220,11 @@ default, 512 from the head of the chain).
 
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
 
-  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+  - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
+    array if `trace` wasn't a requested option.
 
-  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+  - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
+    ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
 
@@ -349,9 +357,11 @@ default, 512 from the head of the chain).
 
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
 
-  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+  - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
+    array if `trace` wasn't a requested option.
 
-  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+  - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
+    ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
 
@@ -525,7 +535,7 @@ the requested blocks must be within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in transaction execution order.
+- List of [trace objects](#trace) matching the filter, in execution order.
 
 <h3>Example</h3>
 
@@ -654,7 +664,7 @@ the requested transaction must be contained in a block within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction.
+- List of [trace objects](#trace) at the requested positions, in the order specified.
 
 <h3>Example</h3>
 
@@ -762,9 +772,11 @@ the chain).
 
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
 
-  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace), or an empty array if `trace` wasn't a requested option.
+  - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
+    array if `trace` wasn't a requested option.
 
-  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace), or `null` if `vmTrace` wasn't a requested option.
+  - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
+    ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
 
@@ -866,13 +878,14 @@ default, 512 from the head of the chain).
 
   <Fields>
 
-  - `output`: _boolean_ - Transaction result. 1 for success and 0 for failure.
+  - `output`: _data_ - Return value of the transaction.
 
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff).
 
-  - `trace`: _array_ - [Ordered list of calls to other contracts](#trace).
+  - `trace`: _array_ - Ordered list of [trace objects](#trace).
 
-  - `vmTrace`: _object_ - [Ordered list of EVM actions](#vmtrace).
+  - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
+    ordered `ops` list).
 
   - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
@@ -1018,7 +1031,12 @@ the requested transaction must be contained in a block within the number of
 
 <h3>Returns</h3>
 
-- List of [calls to other contracts](#trace) containing one object per call, in the order called by the transaction; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned list items include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
+- List of [trace objects](#trace) for the transaction, in execution order.
+  Includes `call`, `create`, and `suicide` traces.
+  If revert reason is enabled with
+  [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the returned
+  list items include the
+  [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
 <h3>Example</h3>
 
@@ -1152,44 +1170,98 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ### `trace`
 
-An ordered list of calls to other contracts, excluding precompiled contracts.
-Each item in the list is an object with the following fields.
+An ordered list of trace objects produced during execution, excluding
+precompiled-contract calls that do not execute.
+Each item is an object with the following fields.
+The `action` and `result` shapes depend on the trace `type`.
 
 <Fields>
 
-- `action`: _object_ - Transaction details.
+- `action`: _object_ - Details of the traced operation.
+  Fields present depend on `type`.
+  Unused action fields are omitted from the JSON.
 
   <Fields>
 
-  - `callType`: _string_ - Whether the transaction is `call` or `create`.
+  - `callType`: _string_ - CALL-family variant: `call`, `callcode`,
+    `delegatecall`, or `staticcall`.
+    Present only on `call` traces.
+    Contract creation is indicated by `type: "create"`, not by `callType`.
 
-  - `from`: _data, 20 bytes_ - Address of the transaction sender.
+  - `from`: _data, 20 bytes_ - Address of the caller or creator.
+    Present on `call` and `create` traces.
 
-  - `gas`: _quantity_ - Gas provided by sender.
+  - `gas`: _quantity_ - Gas provided for this operation.
+    Present on `call` and `create` traces.
 
-  - `input`: _data_ - Transaction data.
+  - `input`: _data_ - Call data.
+    Present on `call` traces.
 
-  - `to`: _data, 20 bytes_ - Target of the transaction.
+  - `to`: _data, 20 bytes_ - Call target.
+    Present on `call` traces.
 
-  - `value`: _quantity_ - Value transferred in the transaction.
+  - `value`: _quantity_ - Value transferred.
+    Present on `call`, `create`, and `reward` traces.
+
+  - `init`: _data_ - Contract initialization bytecode.
+    Present on `create` traces.
+
+  - `creationMethod`: _string_ - Creation opcode (`create` or `create2`).
+    Present on some `create` traces.
+
+  - `address`: _data, 20 bytes_ - Contract that self-destructed.
+    Present on `suicide` traces.
+
+  - `balance`: _quantity_ - Balance transferred on self-destruct.
+    Present on `suicide` traces.
+
+  - `refundAddress`: _data, 20 bytes_ - Recipient of the self-destructed
+    balance.
+    Present on `suicide` traces.
+
+  - `author`: _data, 20 bytes_ - Reward recipient.
+    Present on `reward` traces (`trace_block` only).
+
+  - `rewardType`: _string_ - Reward kind: `block` or `uncle`.
+    Present on `reward` traces (`trace_block` only).
 
   </Fields>
 
-- `result`: _object_ - Transaction result.
+- `result`: _object_ - Execution result for successful `call` and `create`
+  traces.
+  Omitted when `error` is present.
+  `null` for `suicide` and `reward` traces.
 
   <Fields>
 
-  - `gasUsed`: _quantity_ - Gas used by the transaction. Includes any refunds of unused gas.
+  - `gasUsed`: _quantity_ - Gas used by this trace, including unused-gas
+    refunds.
 
-  - `output`: _data_ - Return value of the contract call. Contains only the actual value sent by a `RETURN` operation. If a `RETURN` was not executed, the output is empty bytes.
+  - `output`: _data_ - Return value of the contract call.
+    Contains only the actual value sent by a `RETURN` operation.
+    If a `RETURN` was not executed, the output is empty bytes.
+    Present on `call` traces.
+
+  - `code`: _data_ - Deployed bytecode.
+    Present on `create` traces.
+
+  - `address`: _data, 20 bytes_ - Created contract address.
+    Present on `create` traces.
 
   </Fields>
 
-- `subtraces`: _integer_ - Traces of contract calls made by the transaction.
+- `error`: _string_ - Error that caused this trace to fail, for example
+  `Reverted`.
+  Present only on failed traces.
+  When this field is present, `result` is omitted from the JSON.
 
-- `traceAddress`: _array_ - Tree list address of where the call occurred, address of the parents, and order of the current sub call.
+- `subtraces`: _integer_ - Number of child traces.
 
-- `type`: _string_ - Whether the transaction is a `CALL` or `CREATE` series operation.
+- `traceAddress`: _array_ - Path of this trace in the call tree.
+  Empty for the top-level trace.
+
+- `type`: _string_ - Trace kind: `call`, `create`, `suicide`, or `reward`.
+  `reward` appears only in `trace_block` results.
 
 </Fields>
 
@@ -1220,7 +1292,9 @@ Each item in the list is an object with the following fields.
 
 ### `vmTrace`
 
-An object containing the following fields.
+The `vmTrace` field is an object with a `code` property and a nested `ops`
+list.
+The field itself is not a list.
 
 <Fields>
 
