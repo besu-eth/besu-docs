@@ -91,6 +91,10 @@ You can restart Besu during a snap sync in case of hardware or software problems
 from the last valid world state and continues to download blocks starting from the last downloaded
 block.
 
+If the chain stops finalizing for an extended period and more than one fork is being built on, you
+can anchor snap sync to a checkpoint block to
+[sync to a specific fork](../how-to/sync-to-a-specific-fork.md).
+
 See [how to read the Besu metrics charts](../how-to/monitor/understand-metrics.md) when using
 snap sync.
 

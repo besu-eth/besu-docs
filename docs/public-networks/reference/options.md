@@ -639,9 +639,15 @@ A trusted checkpoint to anchor sync to, in the format `<blockHash>:<blockNumber>
 - `blockHash` must be a 32-byte hex string.
 - `blockNumber` must be a non-negative integer.
 - `totalDifficulty` can be a decimal or `0x`-prefixed hex value.
+  Total difficulty stopped increasing at [the merge](https://ethereum.org/en/roadmap/merge/), so
+  every post-merge block on a network has the same value.
+  On Mainnet, that value is `0xC70D815D562D3CFA955` (`58750003716598352816469`).
 
 This option is only used by [snap sync](../concepts/node-sync.md#snap-synchronization).
 It's ignored when [`--sync-mode`](#sync-mode) is set to `FULL`.
+
+You can use this option to [sync to a specific fork](../how-to/sync-to-a-specific-fork.md) during an
+extended period of non-finality.
 
 ---
 
@@ -3692,6 +3698,9 @@ required-block=["6485846=0x43f0cd1e5b1f9c4d5cda26c240b59ee4f1b510d0a185aa8fd476d
 
 Requires a peer with the specified block number to have the specified hash when connecting, or Besu rejects that peer.
 
+You can use this option to [sync to a specific fork](../how-to/sync-to-a-specific-fork.md) during an
+extended period of non-finality.
+
 ---
 
 ## `revert-reason-enabled`
@@ -5889,6 +5898,63 @@ download pre-merge Proof of Work (PoW) block bodies or transaction receipts, and
 headers.
 To retain full pre-merge block history, use [full sync](../concepts/node-sync.md#full-synchronization),
 or sync using a genesis file that doesn't specify a checkpoint.
+
+:::
+
+To skip downloading pre-checkpoint headers entirely, use
+[`--snapsync-synchronizer-skip-pre-checkpoint-headers-enabled`](#snapsync-synchronizer-skip-pre-checkpoint-headers-enabled).
+
+---
+
+## `snapsync-synchronizer-skip-pre-checkpoint-headers-enabled`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--snapsync-synchronizer-skip-pre-checkpoint-headers-enabled=true
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_SNAPSYNC_SYNCHRONIZER_SKIP_PRE_CHECKPOINT_HEADERS_ENABLED=true
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+snapsync-synchronizer-skip-pre-checkpoint-headers-enabled=true
+```
+
+</TabItem>
+
+</Tabs>
+
+During [snap sync](../concepts/node-sync.md#snap-synchronization), downloads block headers back to
+the trusted checkpoint only, instead of all the way to the genesis block.
+Besu doesn't store headers earlier than the checkpoint.
+
+This option requires a checkpoint, set using either [`--checkpoint`](#checkpoint) or a
+[checkpoint section in the genesis file](genesis-items.md#checkpoint-configuration).
+Besu doesn't start if you enable this option without a checkpoint.
+
+Use this option with [`--required-block`](#required-block) to
+[sync to a specific fork](../how-to/sync-to-a-specific-fork.md) during an extended period of
+non-finality.
+
+The default is `false`.
+
+:::note
+
+Don't confuse this option with the deprecated
+[`--snapsync-synchronizer-pre-checkpoint-headers-only-enabled`](#snapsync-synchronizer-pre-checkpoint-headers-only-enabled),
+which has no effect.
 
 :::
 
