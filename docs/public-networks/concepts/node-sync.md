@@ -122,8 +122,13 @@ blockchain download.
 
 While the world state syncs, Besu downloads and imports the blockchain in the background.
 The blockchain download time depends on CPU, the network, Besu's peers, and disk speed.
-The blockchain download generally takes longer than the world state sync. Besu must catch up to the 
-current chain head and sync the world state to participate on Mainnet.
+The blockchain download is usually faster than the world state sync.
+The world state syncs against a pivot block, a safe block near the chain head that the
+[consensus client](node-clients.md#execution-and-consensus-clients) announces.
+After the blockchain download catches up to the current pivot block, it pauses until the world
+state sync moves to a new pivot block or finishes.
+The world state sync therefore determines the overall sync time.
+Besu must catch up to the current chain head and sync the world state to participate on Mainnet.
 
 The following table shows estimates for each sync mode on Mainnet.
 All times are hardware dependent.
