@@ -7,38 +7,41 @@ keywords: [checkpoint, fork, non-finality, snap sync]
 
 If the chain stops finalizing for an extended period and more than one fork is being built on,
 you can pin Besu to the fork you consider correct.
-You anchor [snap sync](../concepts/node-sync.md#snap-synchronization) to a checkpoint block on that
+Anchor [snap sync](../concepts/node-sync.md#snap-synchronization) to a checkpoint block on that
 fork, and reject any peer that doesn't have that block.
-
-:::warning
-
-Besu disconnects from every peer that doesn't have the block you specify.
-If the block hash and number don't match a block that exists, Besu finds no peers
-and doesn't sync.
-Confirm against a source you trust that the block exists and is on the fork you
-want to follow before you start the node.
-
-:::
 
 ## Prerequisites
 
-- A new installation with an empty data directory.
-  These options apply to a fresh sync only, not to a node that has already synced.
-- [Snap sync](../concepts/node-sync.md#snap-synchronization).
-  Snap sync is the default for all named networks, so you don't need to set
-  [`--sync-mode=SNAP`](../reference/options.md#sync-mode) unless your configuration selects a
-  different sync mode.
-- The hash and number of a block that you have verified is on the fork you want to follow.
+Ensure you have a new Besu installation with an empty data directory.
+To sync to a specific fork, you cannot use a node that has already synced.
+
+## Steps
+
+### 1. Get your checkpoint block information
+
+Choose the fork you want to follow, and choose a block on that fork to anchor snap sync to.
+Verify the following information about the checkpoint block:
+
+- **The block hash and number.**
   Query a node that is already following the intended fork, or use a block explorer that reports
   that fork.
-- The total difficulty at that block.
-  Every Proof of Stake (PoS) block has a difficulty of `0`, so the total difficulty stopped
-  increasing at [the merge](https://ethereum.org/en/roadmap/merge/) and is identical for every
-  block since.
-  On Mainnet, that value is `0xC70D815D562D3CFA955`, the total difficulty at block 15537394, the
-  first PoS block.
 
-## Configure the node
+  :::warning
+  Besu disconnects from every peer that doesn't have the block you specify.
+  If the block hash and number don't match a block that exists, Besu finds no peers
+  and doesn't sync.
+  Confirm against a source you trust that the block exists and is on the fork you
+  want to follow before you start the node.
+  :::
+
+- **The total difficulty.**
+  Every proof-of-stake (PoS) block has a difficulty of `0`, so the total difficulty stopped
+  increasing at [The Merge](https://ethereum.org/en/roadmap/merge/) and is identical for every
+  block since.
+  On Mainnet, that value is `0xC70D815D562D3CFA955` (the total difficulty at block 15537394, the
+  first PoS block).
+
+### 2. Start Besu with a new configuration
 
 Start Besu with the following options:
 
@@ -64,6 +67,13 @@ In the command:
 - [`--required-block`](../reference/options.md#required-block) rejects any peer that doesn't have
   the specified hash at the specified block number.
   Use the same block as the checkpoint so that Besu only peers with nodes on your chosen fork.
+
+:::note
+Ensure you are using [snap sync](../concepts/node-sync.md#snap-synchronization).
+Snap sync is the default for all named networks, so you don't need to set
+[`--sync-mode=SNAP`](../reference/options.md#sync-mode) unless your configuration selects a
+different sync mode.
+:::
 
 Because `--required-block` filters out peers on other forks, expect a smaller peer count than
 usual, and a longer time to find enough peers to sync.
