@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build
-        uses: ConsenSys/github-actions/docs-build@main
+        uses: Consensys-Incorporated/github-actions/docs-build@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
