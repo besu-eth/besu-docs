@@ -4,6 +4,9 @@ sidebar_position: 2
 description: To enable communication you must expose Besu ports appropriately
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Configure ports
 
 To enable communication you must expose Besu ports appropriately. The following shows an example port configuration for a Besu node on AWS. 
@@ -27,20 +30,47 @@ Besu supports [UPnP](specify-nat.md) for home or small office environments where
 ## P2P networking
 
 To enable peer discovery, the P2P UDP port must be open for inbound connections.
-Specify the P2P port using the [`--p2p-port`](../../reference/options.md#p2p-port) or 
-[`--p2p-port-ipv6`](../../reference/options.md#p2p-port-ipv6) option.
+By default, that UDP port is the same as the TCP P2P port set with
+[`--p2p-port`](../../reference/options.md#p2p-port) (and
+[`--p2p-port-ipv6`](../../reference/options.md#p2p-port-ipv6) for
+[dual-stack](../../concepts/ipv6-dual-stack.md)).
 
-:::tip Early access feature
-To use IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-:::
+To bind discovery on a different UDP port, set
+[`--p2p-discovery-port`](../../reference/options.md#p2p-discovery-port) (and
+[`--p2p-discovery-port-ipv6`](../../reference/options.md#p2p-discovery-port-ipv6) for dual-stack).
+This is useful when the host maps TCP and UDP separately, for example, in Kubernetes.
+
+When the TCP and UDP ports differ, the advertised
+[enode URL](../../concepts/node-keys.md#enode-url) includes `?discport=<udp-port>`.
+For example:
+
+<Tabs>
+<TabItem value="Command line" default>
+
+```bash
+besu --p2p-port=30303 --p2p-discovery-port=30301
+```
+
+</TabItem>
+<TabItem value="Enode URL">
+
+```text
+enode://<id>@<host>:30303?discport=30301
+```
+
+</TabItem>
+</Tabs>
+
+Options that end in `ipv6` configure [dual-stack networking](../../concepts/ipv6-dual-stack.md).
 
 We also recommend opening the P2P TCP port for inbound connections. This is not strictly required because Besu attempts to open outbound TCP connections. But if no nodes on the network are accepting inbound TCP connections, nodes cannot communicate.
 
-To specify the P2P host, set the [`--p2p-host`](../../reference/options.md#p2p-host) or [`--p2p-host-ipv6`](../../reference/options.md#p2p-host-ipv6) option.
+To specify the P2P host, set [`--p2p-host`](../../reference/options.md#p2p-host)
+(and [`--p2p-host-ipv6`](../../reference/options.md#p2p-host-ipv6) for dual-stack).
 
 By default, peer discovery listens on all available network interfaces.
-If the device Besu is running on must bind to a specific network interface, specify the interface using the [`--p2p-interface`](../../reference/options.md#p2p-interface) or
-[`--p2p-interface-ipv6`](../../reference/options.md#p2p-interface-ipv6) option.
+If the device Besu is running on must bind to a specific network interface, specify the interface using [`--p2p-interface`](../../reference/options.md#p2p-interface)
+(and [`--p2p-interface-ipv6`](../../reference/options.md#p2p-interface-ipv6) for dual-stack).
 
 ## JSON-RPC API
 

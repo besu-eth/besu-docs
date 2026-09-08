@@ -45,28 +45,17 @@ The `--bootnodes` option also accepts files or URLs:
 - A file URI: `file:///path/to/bootnodes.txt`
 - An HTTP(S) URL: `https://example.com/bootnodes.txt`
 
-You can mix sources, comma-separated, together with direct enode or ENR URLs.
-The list of sources must specify all enode URLs or all ENR URLs.
+You can mix sources, enode URLs, and ENR URLs.
+Enode URLs bootstrap discovery v4, and ENR URLs bootstrap discovery v5 when
+[`--discovery-mode`](../../../public-networks/reference/options.md#discovery-mode) is `V5` or `BOTH`.
 
 ```bash
 besu --bootnodes=/etc/besu/enodes.txt,https://example.com/enodes.txt,enode://c35c3...d615f@1.2.3.4:30303
 ```
 
-:::tip Early access feature
-To use ENR URLs and IPv6 addresses (discovery v5), set the early access option `--Xv5-discovery-enabled` to `true`.
-:::
-
-The default host and port advertised to other peers for P2P discovery is `127.0.0.1:30303`.
-To specify a different host or port, use the
-[`--p2p-host`](../../../public-networks/reference/options.md#p2p-host)
-/ [`--p2p-host-ipv6`](../../../public-networks/reference/options.md#p2p-host) or
-[`--p2p-port`](../../../public-networks/reference/options.md#p2p-port)
-/ [`--p2p-port-ipv6`](../../../public-networks/reference/options.md#p2p-port) options.
-
-By default, peer discovery listens on all available network interfaces. If the device Besu is running
-on must bind to a specific network interface, specify the interface using the
-[`--p2p-interface`](../../../public-networks/reference/options.md#p2p-interface) or
-[`--p2p-interface-ipv6`](../../../public-networks/reference/options.md#p2p-interface-ipv6) option.
+By default, the advertised address is `127.0.0.1:30303`, and peer discovery listens on all IPv4 interfaces (`0.0.0.0`).
+To add a specific configuration, or to configure dual-stack networking, see the
+[P2P options](../../../public-networks/concepts/ipv6-dual-stack.md#p2p-options).
 
 ## Configure bootnodes in a production network
 

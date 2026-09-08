@@ -157,14 +157,16 @@ Prague, and Blob Parameter Only (BPO) forks.
 
 ## Discovery configuration items
 
-Use the `discovery` configuration items to specify the [`bootnodes`](options.md#bootnodes) and [`discovery-dns-url`](options.md#discovery-dns-url) in the genesis file, in place of using CLI options or listing them in the configuration file.
-The genesis file can take discovery v4 bootnodes (specified as [enode URLs](../concepts/node-keys.md#enode-url) using the `bootnodes` option) and discovery v5 bootnodes (specified as [ENR URLs](../concepts/node-keys.md#enr-url) using the `v5Bootnodes` option).
+Use the `discovery` configuration items to specify the [`bootnodes`](options.md#bootnodes) and 
+[`discovery-dns-url`](options.md#discovery-dns-url) in the genesis file, in place of using CLI options or 
+listing them in the configuration file.
 
-:::tip Early access feature
-To use discovery v5 bootnodes, set the early access option `--Xv5-discovery-enabled` to `true`.
-:::
+The `bootnodes` array can mix [enode URLs](../concepts/node-keys.md#enode-url) (discovery v4) and
+[ENR URLs](../concepts/node-keys.md#enr-url) (discovery v5).
+ENR bootnodes are used when [`--discovery-mode`](options.md#discovery-mode) is `V5` or `BOTH`.
 
-If any option is specified using the command line or [configuration file](../how-to/configure-besu/index.md), it takes precedence over the genesis file.
+If any option is specified using the command line or
+[configuration file](../how-to/configure-besu/index.md), it takes precedence over the genesis file.
 
 ```json
 {
@@ -172,9 +174,7 @@ If any option is specified using the command line or [configuration file](../how
     "discovery": {
       "bootnodes": [
         "enode://c35c3...d615f@1.2.3.4:30303",
-        "enode://f42c13...fc456@1.2.3.5:30303"
-      ],
-      "v5Bootnodes": [
+        "enode://f42c13...fc456@1.2.3.5:30303",
         "enr:-Mq4QL...DdWRwgiMo",
         "enr:-Ku4QLV...IN1ZHCCIyk"
       ],

@@ -473,6 +473,11 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns networking information about the node. The information includes general information about the node and specific information from each running Ethereum sub-protocol (for example, `eth`).
 
+:::tip
+Learn about
+[verifying IPv4 and IPv6 addresses with `admin_nodeInfo`](../../concepts/ipv6-dual-stack.md#verifying-addresses-with-admin_nodeinfo).
+:::
+
 ### Parameters
 
 - None
@@ -490,6 +495,11 @@ Returns networking information about the node. The information includes general 
   - `activeFork`: _string_ - Active EVM hard fork name for the current chain head.
 
   - `enode`: _string_ - [Enode URL](../../concepts/node-keys.md#enode-url) of the node.
+    Includes `?discport=` when the TCP listening and UDP discovery ports differ.
+
+  - `enodeV6`: _string_ - IPv6 [enode URL](../../concepts/node-keys.md#enode-url) of the node.
+    Present when the local ENR contains both IPv6 TCP and UDP ports.
+    Includes `?discport=` when those ports differ.
 
   - `enr`: _string_ - [ENR URL](../../concepts/node-keys.md#enr-url) of the node.
 
@@ -497,9 +507,9 @@ Returns networking information about the node. The information includes general 
 
   - `ipv6`: _string_ - IPv6 address.
 
-  - `listenAddr`: _string_ - Host and port for the node.
+  - `listenAddr`: _string_ - Host and port for the node, as `ip:port`.
 
-  - `listenAddrV6`: _string_ - IPv6 host and port for the node.
+  - `listenAddrV6`: _string_ - IPv6 host and port for the node, as `[ipv6]:port`.
 
   - `ports`: _object_ - Peer discovery and listening ports.
 
@@ -569,6 +579,7 @@ curl -X POST http://127.0.0.1:8545/ \
     "id": "bdf43211dba30bf100a00040b9f839e17161c88c8573028b8533c8adf8ed1e9466e4b87d716d06292426d154d0df7acde83c3f68df151da5413224b22f049054",
     "name": "besu/v26.3-develop-f2ec0fe/osx-aarch_64/oracle_openjdk-java-22",
     "enode": "enode://87ec35d558352cc55cd1bf6a472557797f91287b78fe5e86760219124563450ad1bb807e4cc61e86c574189a851733227155551a14b9d0e1f62c5e11332a18a3@[::]:30303",
+    "enodeV6": "enode://87ec35d558352cc55cd1bf6a472557797f91287b78fe5e86760219124563450ad1bb807e4cc61e86c574189a851733227155551a14b9d0e1f62c5e11332a18a3@[fd00:dead:beef:0:0:0:0:10]:30404",
     "enr": "enr:-Jq4QOBEJ_aqkcth60IN44olOQ3uNsfqwEahYc6eKRfBg8ZlGbqhHTKqN_Yr67QWUA9v8_l-iaYhpd2uJC_AEQDv3agCg2V0aMrJhPxk7ASDEYwwgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQK99DIR26ML8QCgAEC5-DnhcWHIjIVzAouFM8it-O0elIN0Y3CCdl-DdWRwgnZf",
     "ip": "172.28.0.10",
     "ipv6": "fd00:dead:beef:0:0:0:0:10",
