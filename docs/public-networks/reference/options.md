@@ -487,8 +487,8 @@ Enode URLs bootstrap discovery v4, and ENR URLs bootstrap discovery v5 when
 [`--discovery-mode`](#discovery-mode) is `V5` or `BOTH`.
 
 When connecting to Mainnet or public testnets, the default is a predefined list of bootnodes.
-In private networks defined using [`--genesis-file`](#genesis-file) or when using
-[`--network=dev`](#network), the default is an empty list of bootnodes.
+In private networks defined using [`--genesis-file`](#genesis-file), the default is an empty list
+of bootnodes.
 
 ---
 
@@ -2833,7 +2833,6 @@ Possible values include the following:
 | `mainnet`  | ETH   | Production  | [`SNAP`](#sync-mode) | PoS network       | The main [Ethereum network](https://ethereum.org/en/developers/docs/networks/) |
 | `hoodi`    | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Hoodi](https://hoodi.ethpandaops.io/)                    |
 | `sepolia`  | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Sepolia](https://sepolia.dev)                            |
-| `dev`      | ETH   | Development | [`FULL`](#sync-mode) | Dev mode          | Local development network for testing                                          |
 | `ephemery` | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Ephemery](https://ephemery.dev)  
 | `linea_mainnet`  | Linea   | Production        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)       | The main [Linea network](https://docs.linea.build/get-started/build/network-info)                            |
 | `linea_sepolia`  | Linea   | Test        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)      | Linea [Sepolia testnet](https://docs.linea.build/get-started/build/network-info/)                            |
@@ -2848,9 +2847,19 @@ Values are case-insensitive, so either `mainnet` or `MAINNET` works.
 
 :::info
 
-- You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
+You can't use the `--network` and [`--genesis-file`](#genesis-file) options at the same time.
 
-- The following networks and testnets are deprecated: ETC (Ethereum Classic) and Mordor.
+:::
+
+:::warning Removed networks
+
+Besu no longer supports the `dev`, ETC (Ethereum Classic), and Mordor networks.
+
+Specifying `--network=dev` prevents Besu from starting.
+Proof of work mining has been removed, so the development network can't produce blocks.
+For local development, use Ephemery (`--network=ephemery`) with a
+[consensus client](../concepts/node-clients.md#consensus-clients), or use
+[Kurtosis](https://github.com/ethpandaops/ethereum-package).
 
 :::
 
@@ -6255,7 +6264,7 @@ sync-mode="SNAP"
 The synchronization mode. Use `SNAP` for [snap sync](../concepts/node-sync.md#snap-synchronization) and `FULL` for [full sync](../concepts/node-sync.md#full-synchronization).
 
 - The default is `FULL` when connecting to a private network by not using the [`--network`](#network) option and specifying the [`--genesis-file`](#genesis-file) option.
-- The default is `SNAP` when using the [`--network`](#network) option with named networks, except for the `dev` development network. `SNAP` is also the default if running Besu on the default network (Ethereum Mainnet) by specifying neither [network](#network) nor [genesis file](#genesis-file).
+- The default is `SNAP` when using the [`--network`](#network) option with named networks. `SNAP` is also the default if running Besu on the default network (Ethereum Mainnet) by specifying neither [network](#network) nor [genesis file](#genesis-file).
 
 :::warning Checkpoint sync
 

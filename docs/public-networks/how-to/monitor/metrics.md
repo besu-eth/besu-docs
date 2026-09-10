@@ -88,18 +88,26 @@ To configure Prometheus and run with Besu:
     <TabItem value="Syntax">
 
     ```bash
-    besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
+    besu --network=ephemery --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
     ```
 
     </TabItem>
     <TabItem value="Example">
 
     ```bash
-    besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
+    besu --network=ephemery --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled
     ```
 
     </TabItem>
     </Tabs>
+
+    :::note
+
+    Ephemery is a public testnet, so Besu needs a
+    [consensus client](../../concepts/node-clients.md#consensus-clients) to sync.
+    See [Run Besu and Teku on a testnet](../../tutorials/besu-teku-testnet.md).
+
+    :::
 
     To specify the host and port on which Prometheus accesses Besu, use the
     [`--metrics-host`](../../reference/options.md#metrics-host) and
@@ -162,14 +170,14 @@ To configure Prometheus and run with Besu pushing to a push gateway:
     <TabItem value="Syntax">
 
     ```bash
-    besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
+    besu --network=ephemery --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
     ```
 
     </TabItem>
     <TabItem value="Example">
 
     ```bash
-    besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
+    besu --network=ephemery --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-push-enabled --metrics-push-port=9091 --metrics-push-host=127.0.0.1
     ```
 
     </TabItem>

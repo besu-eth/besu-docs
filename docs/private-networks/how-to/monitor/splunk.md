@@ -69,7 +69,8 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
     3. Leave other fields with the default values.
     4. Save the `besu` index.
 
-3.  Run Besu. To start a Besu node running in development mode, run the following command:
+3.  Run Besu. To start a Besu node on your private network, run the following command.
+    If you don't have a private network yet, create one using the [Developer Quickstart](../../tutorials/quickstart.md):
 
     ```bash
     LOGGER=Splunk \
@@ -77,7 +78,7 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
     SPLUNK_TOKEN=11111111-1111-1111-1111-1111111111113 \
     SPLUNK_SKIPTLSVERIFY=true \
     besu \
-    --network=dev \
+    --genesis-file=<path>/genesis.json \
     --logging=trace
     ```
 

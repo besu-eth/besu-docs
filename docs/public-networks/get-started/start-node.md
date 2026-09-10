@@ -27,8 +27,6 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 Besu specifies the genesis configuration, and sets the network ID and bootnodes when connecting to [ETH testnets](#run-a-node-on-an-ethereum-testnet), and [Mainnet](#run-a-node-on-ethereum-mainnet).
 
-When you specify [`--network=dev`](../reference/options.md#network), Besu uses the development network genesis configuration, which is intended for local development and testing. A node started with [`--network=dev`](../reference/options.md#network) has an empty bootnodes list by default.
-
 The genesis files defining the genesis configurations are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
 To define a genesis configuration, create a genesis file (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../reference/options.md#genesis-file) option.
@@ -37,7 +35,7 @@ To define a genesis configuration, create a genesis file (for example, `genesis.
 
 By default, Besu syncs to the current state of the blockchain using [snap sync](../concepts/node-sync.md#snap-synchronization) in:
 
-- Networks specified using [`--network`](../reference/options.md#network) except for the `dev` development network.
+- Networks specified using [`--network`](../reference/options.md#network).
 - Ethereum Mainnet.
 
 We recommend using [snap sync](../concepts/node-sync.md#snap-synchronization) for a faster sync, by starting Besu with [`--sync-mode=SNAP`](../reference/options.md#sync-mode).
@@ -103,6 +101,20 @@ besu --rpc-http-enabled
 ```
 
 See the [guide on connecting to Mainnet](connect/mainnet.md) for more information.
+
+## Run a node for local development
+
+Besu doesn't provide a built-in development network. Use one of the following instead:
+
+- [Ephemery](https://github.com/ephemery-testnet/ephemery-resources) is a public testnet that resets
+  periodically. Start Besu with `--network=ephemery` and pair it with a consensus client, as
+  described in [Run Besu and Teku on a testnet](../tutorials/besu-teku-testnet.md).
+- [Kurtosis](https://github.com/ethpandaops/ethereum-package) runs a self-contained network of
+  execution and consensus clients in Docker.
+
+To run an isolated network that you control, define your own
+[genesis file](../reference/options.md#genesis-file) and start a private network. The
+[Developer Quickstart](/private-networks/tutorials/quickstart) generates one for you.
 
 ## Confirm node is running
 

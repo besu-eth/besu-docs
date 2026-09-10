@@ -101,12 +101,10 @@ This happens when the IPv6 support in Docker is disabled while connecting to an 
 :::
 
 ### Run a node for testing
-  
-To run a node that mines blocks at a rate suitable for testing purposes with WebSocket enabled:
 
-```bash
-docker run -p 8546:8546 --mount type=bind,source=/<myvolume/besu/testnode>,target=/var/lib/besu hyperledger/besu:latest --rpc-ws-enabled --network=dev --data-path=/var/lib/besu
-```
+Besu doesn't provide a built-in development network. For local development options, including
+Ephemery and Kurtosis, see
+[Run a node for local development](../start-node.md#run-a-node-for-local-development).
 
 ### Run a node on Sepolia testnet
 

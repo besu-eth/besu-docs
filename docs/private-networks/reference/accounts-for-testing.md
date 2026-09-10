@@ -8,13 +8,12 @@ import TestAccounts from '../../global/test_accounts.md';
 
 # Accounts for testing
 
-You can use existing accounts for testing by including them in the genesis file for a private network. Besu also provides predefined accounts for use in development mode.
+You can use existing accounts for testing by including them in the genesis file for a private network. Besu provides predefined test accounts in its `dev.json` genesis file.
 
-## Development mode
+## Predefined test accounts
 
-When you start Besu with the [`--network=dev`](../../public-networks/reference/options.md#network) command line option, Besu uses the `dev.json` genesis file by default.
-
-The `dev.json` genesis file defines the following accounts used for testing.
+Besu's `dev.json` genesis file defines the following test accounts.
+To use them, copy the account entries into the `alloc` section of the genesis file for your test network.
 
 <TestAccounts />
 

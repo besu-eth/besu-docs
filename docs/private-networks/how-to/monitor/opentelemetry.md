@@ -143,14 +143,17 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     
     </Tabs>
 
-2.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/options.md#metrics-protocol) options. For example, run the following command to start a single node:
+2.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/options.md#metrics-protocol) options.
+    Specify the [genesis file](../../../public-networks/reference/options.md#genesis-file) for your private network.
+    If you don't have a private network yet, create one using the [Developer Quickstart](../../tutorials/quickstart.md).
+    For example:
         
     <Tabs>
     
     <TabItem value="Syntax" label="Syntax" default>
 
     ```bash
-    OTEL_EXPORTER_OTLP_ENDPOINT=https://<host>:<port> besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled --metrics-protocol=opentelemetry
+    OTEL_EXPORTER_OTLP_ENDPOINT=https://<host>:<port> besu --genesis-file=<path>/genesis.json --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled --metrics-protocol=opentelemetry
     ```
 
     </TabItem>
@@ -158,7 +161,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     <TabItem value="Example" label="Example">
 
     ```bash
-    OTEL_EXPORTER_OTLP_ENDPOINT=https://localhost:4317 besu --network=dev --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled --metrics-protocol=opentelemetry
+    OTEL_EXPORTER_OTLP_ENDPOINT=https://localhost:4317 besu --genesis-file=/opt/besu/genesis.json --rpc-http-cors-origins="all" --rpc-http-enabled --metrics-enabled --metrics-protocol=opentelemetry
     ```
 
     </TabItem>

@@ -22,8 +22,6 @@ To delete the local block data, delete the `database` directory in the `besu/bui
 
 To define a genesis configuration, create a [genesis file](../../public-networks/concepts/genesis-file.md) (for example, `genesis.json`) and specify the file using the [`--genesis-file`](../../public-networks/reference/options.md#genesis-file) option.
 
-When you specify [`--network=dev`](../../public-networks/reference/options.md#network), Besu uses the development mode genesis configuration with a fixed low difficulty. A node started with [`--network=dev`](../../public-networks/reference/options.md#network) has an empty bootnodes list by default.
-
 Predefined genesis configurations for named networks are in the [Besu source files](https://github.com/besu-eth/besu/tree/master/config/src/main/resources).
 
 ## Confirm node is running
@@ -56,35 +54,6 @@ If you started Besu with the [`--rpc-http-enabled`](../../public-networks/refere
   }
   ```
 
-## Run a node for testing
-
-To run a node for testing purposes:
-
-```bash
-besu --network=dev --rpc-http-cors-origins="all" --host-allowlist="*" --rpc-ws-enabled --rpc-http-enabled --data-path=/tmp/tmpDatdir
-```
-
-You can also use the following [configuration file](../../public-networks/how-to/configure-besu/index.md) on the command line to start a node with the same options as above:
-
-```toml
-network="dev"
-rpc-http-cors-origins=["all"]
-host-allowlist=["*"]
-rpc-ws-enabled=true
-rpc-http-enabled=true
-data-path="/tmp/tmpdata-path"
-```
-
-:::caution
-
-The following settings are a security risk in production environments:
-
-- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../../public-networks/reference/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../../public-networks/reference/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
-- Setting [`--host-allowlist`](../../public-networks/reference/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
-- Setting [`--rpc-http-cors-origins`](../../public-networks/reference/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
-
-:::
-
 ## Run a node on a private network
 
 To run a node on your private network specifying a genesis file and data directory:
@@ -95,9 +64,21 @@ besu --genesis-file=<path>/genesis.json --data-path=<data-path> --rpc-http-enabl
 
 Where `<data-path>` is the path to the directory to save the chain data to. Ensure you configure a peer discovery method, such as [bootnodes](../how-to/configure/bootnodes.md).
 
+If you don't have a network yet, use the [Developer Quickstart](../tutorials/quickstart.md) to generate one for testing, or follow [Create a QBFT network](../tutorials/qbft.md) to configure one yourself.
+
 :::note
 
 You might need to set [`--tx-pool-limit-by-account-percentage`](../../public-networks/reference/options.md#tx-pool-limit-by-account-percentage) to 1. The default value is suitable for Mainnet, but may cause issues on private networks.
+
+:::
+
+:::caution
+
+The following settings are a security risk in production environments:
+
+- Enabling the HTTP JSON-RPC service ([`--rpc-http-enabled`](../../public-networks/reference/options.md#rpc-http-enabled)) and setting [`--rpc-http-host`](../../public-networks/reference/options.md#rpc-http-host) to 0.0.0.0 exposes the RPC connection on your node to any remote connection.
+- Setting [`--host-allowlist`](../../public-networks/reference/options.md#host-allowlist) to `"*"` allows JSON-RPC API access from any host.
+- Setting [`--rpc-http-cors-origins`](../../public-networks/reference/options.md#rpc-http-cors-origins) to `"all"` or `"*"` allows cross-origin resource sharing (CORS) access from any domain.
 
 :::
 
