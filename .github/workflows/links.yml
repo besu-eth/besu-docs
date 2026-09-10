@@ -14,6 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: LinkCheck
-        uses: ConsenSys/github-actions/docs-link-check@main
+        uses: Consensys-Incorporated/github-actions/docs-link-check@main
         with:
           FILE_EXTENSION: ${{ matrix.file-extensions }}
