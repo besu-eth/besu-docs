@@ -122,10 +122,6 @@
     {
       "source": "/public-networks/how-to/configure-java/java-flight-recorder/",
       "destination": "/public-networks/how-to/monitor/java-flight-recorder/"
-    },
-    {
-      "source": "/plugins/services/consensus-validator-queries/",
-      "destination": "/plugins/services/"
     }
   ],
   "rewrites": [

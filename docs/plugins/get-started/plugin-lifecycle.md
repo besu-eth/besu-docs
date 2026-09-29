@@ -73,6 +73,7 @@ Some are available and used in `register` before startup completes, and others i
 The following services are typically used in `register`:
 
 - [`BesuConfiguration`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BesuConfiguration.html)
+- [`BftQueryService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/query/BftQueryService.html)
 - [`MetricCategoryRegistry`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/metrics/MetricCategoryRegistry.html)
 - [`PermissioningService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PermissioningService.html)
 - [`SecurityModuleService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/SecurityModuleService.html)
@@ -89,6 +90,7 @@ The remaining services only become available at `start`:
 - [`MetricsSystem`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/MetricsSystem.html)
 - [`MiningService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/mining/MiningService.html)
 - [`P2PService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/p2p/P2PService.html)
+- [`PoaQueryService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/query/PoaQueryService.html)
 - [`RlpConverterService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/rlp/RlpConverterService.html)
 - [`SynchronizationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/sync/SynchronizationService.html)
 - [`TraceService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TraceService.html)
