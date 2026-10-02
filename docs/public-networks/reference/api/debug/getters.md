@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 These methods retrieve bad blocks and raw, RLP-encoded blocks, block access lists, headers,
-receipts, and transactions.
+receipts, transactions, and execution witnesses.
 
 ## `debug_getBadBlocks`
 
@@ -631,6 +631,119 @@ curl -X POST http://127.0.0.1:8545/ \
   "jsonrpc": "2.0",
   "id": 1,
   "result": "0xf8678084342770c182520894658bdf435d810c91414ec09147daa6db624063798203e880820a95a0af5fc351b9e457a31f37c84e5cd99dd3c5de60af3de33c6f4160177a2c786a60a0201da7a21046af55837330a2c52fc1543cd4d9ead00ddf178dd96935b607ff9b"
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
+## `debug_executionWitness`
+
+Returns the [EIP-8025](https://eips.ethereum.org/EIPS/eip-8025) execution witness for an
+imported block.
+
+Besu rebuilds the witness by re-executing the block against its parent state.
+The witness contains the trie nodes, contract bytecodes, and ancestor headers needed
+to re-execute the block without the full state.
+
+### Parameters
+
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
+  32-byte block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
+  `safe`, as described in
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+
+  :::note
+  `pending` returns the same value as `latest`.
+  :::
+
+### Returns
+
+- Object with the following fields:
+
+  - `state`: _array of data_ - [RLP-encoded](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/)
+    account and storage trie nodes for the block, sorted.
+
+  - `codes`: _array of data_ - Pre-state contract bytecodes for accounts the block access
+    list reports as touched, sorted.
+    Empty code is omitted.
+    The list can include bytecode the block did not read.
+
+  - `headers`: _array of data_ - RLP-encoded ancestor block headers, in ascending block
+    number order.
+    The list ends at the parent of the requested block.
+    It does not include that block's header.
+
+:::note
+Returns `null` when the block does not exist.
+Returns a JSON-RPC error (`Block not found`) for the genesis block (`earliest` or block
+`0`), which has no parent state to re-execute against.
+Returns a JSON-RPC error (`Internal error`) when your node is not using
+[Bonsai Tries](../../../concepts/data-storage-formats.md#bonsai-tries), the block's trie
+log has been pruned, or re-execution fails.
+See [Reduce storage for Bonsai Tries](../../../how-to/bonsai-limit-trie-logs.md) for how
+trie log pruning works.
+:::
+
+### Example
+
+Each value in `state`, `codes`, and `headers` is a hex string.
+The result below shortens those strings.
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "debug_executionWitness",
+    "params": [
+      "latest"
+    ],
+    "id": 1
+  }'
+```
+
+</TabItem>
+
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "debug_executionWitness",
+  "params": [
+    "latest"
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "state": [
+      "0x..."
+    ],
+    "codes": [
+      "0x..."
+    ],
+    "headers": [
+      "0x..."
+    ]
+  }
 }
 ```
 
