@@ -1602,6 +1602,45 @@ The port (TCP) on which GraphQL HTTP listens. The default is `8547`. Ports must 
 
 ---
 
+## `graphql-max-blocks-range`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--graphql-max-blocks-range=1000
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_GRAPHQL_MAX_BLOCKS_RANGE=1000
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+graphql-max-blocks-range=1000
+```
+
+</TabItem>
+
+</Tabs>
+
+The maximum number of blocks a single [GraphQL](../how-to/use-besu-api/graphql.md) `blocks(from, to)` or
+`logs(filter)` query can retrieve.
+Besu measures the requested range before it reduces an end block past the chain head.
+A query that exceeds this limit is rejected.
+Set to `0` to specify no limit.
+The default is `5000`.
+
+---
+
 ## `graphql-mtls-enabled`
 
 <Tabs>
@@ -4930,11 +4969,17 @@ rpc-max-logs-range=500
 
 </Tabs>
 
-When using [`eth_getLogs`](api/eth/filter.md#eth_getlogs), the maximum number of blocks to retrieve logs from. Set to 0 to specify no limit. The default is 5000.
+The maximum number of blocks to retrieve logs from when using [`eth_getLogs`](api/eth/filter.md#eth_getlogs),
+[`eth_newFilter`](api/eth/filter.md#eth_newfilter), or
+[`eth_getFilterLogs`](api/eth/filter.md#eth_getfilterlogs).
+Besu checks the range when a filter is installed and again when its logs are retrieved.
+A request whose block range is larger than this limit returns an error.
+Set to `0` to specify no limit.
+The default is `5000`.
 
 :::caution
 
-Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its
+Using `eth_getLogs` or `eth_getFilterLogs` to get logs from a large range of blocks, especially an entire chain from its
 genesis block, might cause Besu to stop responding for an indeterminable amount of time while
 generating the response.
 
@@ -4975,6 +5020,51 @@ rpc-max-trace-filter-range=100
 </Tabs>
 
 The maximum number of blocks you can supply to the [`trace_filter`](api/trace.md#trace_filter) method. The value must be equal to or greater than `0`. Setting this option to `0` indicates there is no limit. The default is `1000`.
+
+---
+
+## `rpc-max-trace-steps`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--rpc-max-trace-steps=50000
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_RPC_MAX_TRACE_STEPS=50000
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+rpc-max-trace-steps=50000
+```
+
+</TabItem>
+
+</Tabs>
+
+The maximum number of EVM steps captured by one [`debug_traceCall`](api/debug/trace.md#debug_tracecall),
+[`debug_traceTransaction`](api/debug/trace.md#debug_tracetransaction),
+[`debug_traceBlock`](api/debug/trace.md#debug_traceblock),
+[`debug_traceBlockByHash`](api/debug/trace.md#debug_traceblockbyhash),
+[`debug_traceBlockByNumber`](api/debug/trace.md#debug_traceblockbynumber),
+[`trace_call`](api/trace.md#trace_call), or [`trace_callMany`](api/trace.md#trace_callmany) request.
+Set to `0` to specify no limit.
+The default is `100000`.
+
+On the `debug_trace*` methods, [`limit`](api/debug/trace.md#debug_tracetransaction) sets how many opcode 
+steps to capture (the default is `0`, which sets no limit).
+When `limit` and `--rpc-max-trace-steps` are both greater than `0`, Besu uses the lower value.
 
 ---
 

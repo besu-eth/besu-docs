@@ -228,6 +228,11 @@ Reruns the transaction with the same state as when the transaction executed.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
+  - `limit`: _integer_ - Maximum number of opcode steps to capture.
+    The default is `0`, which sets no caller limit.
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than 
+    `0`, Besu uses the lower value.
+
   </Fields>
 
 ### Returns
@@ -273,6 +278,10 @@ Reruns the transaction with the same state as when the transaction executed.
     - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
+
+  - `truncated`: _boolean_ - `true` when opcode tracing stopped because it reached `limit` or
+    [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps).
+    Omitted when the trace is complete.
 
   </Fields>
 
@@ -377,6 +386,12 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
+  - `limit`: _integer_ - Maximum number of opcode steps to capture
+    for each transaction.
+    The default is `0`, which sets no caller limit.
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
+    `0`, Besu uses the lower value.
 
   </Fields>
 
@@ -524,6 +539,12 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
+  - `limit`: _integer_ - Maximum number of opcode steps to capture
+    for each transaction.
+    The default is `0`, which sets no caller limit.
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
+    `0`, Besu uses the lower value.
 
   </Fields>
 
@@ -674,6 +695,12 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
+  - `limit`: _integer_ - Maximum number of opcode steps to capture
+    for each transaction.
+    The default is `0`, which sets no caller limit.
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
+    `0`, Besu uses the lower value.
 
   </Fields>
 
@@ -869,6 +896,11 @@ temporary state changes without affecting the actual blockchain state.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
 
+  - `limit`: _integer_ - Maximum number of opcode steps to capture.
+    The default is `0`, which sets no caller limit.
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
+    `0`, Besu uses the lower value.
+
   - `stateOverrides`: _object_ - Address-to-state mapping.
 
     <Fields>
@@ -936,6 +968,11 @@ temporary state changes without affecting the actual blockchain state.
     - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
+
+  - `truncated`: _boolean_ - `true` when opcode tracing stopped because it
+    reached `limit` or
+    [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps).
+    Omitted when the trace is complete.
 
   </Fields>
 
