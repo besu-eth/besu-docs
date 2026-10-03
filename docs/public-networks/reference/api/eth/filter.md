@@ -31,7 +31,7 @@ Polls the specified filter and returns an array of changes that have occurred si
 
     <Fields>
 
-    - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+    - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
     - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
@@ -179,7 +179,7 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-c
 
   <Fields>
 
-  - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
   - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
@@ -290,7 +290,7 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-c
 
 :::caution
 
-Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of 1000).
+Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of 5000).
 
 :::
 
@@ -320,7 +320,7 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
   <Fields>
 
-  - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+  - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
   - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
