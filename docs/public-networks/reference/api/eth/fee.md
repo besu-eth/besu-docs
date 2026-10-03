@@ -155,7 +155,13 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
   `pending` returns the same value as `latest`.
   :::
 
-- `array` of `integers` - (optional) A monotonically increasing list of percentile values to sample from each block's effective priority fees per gas in ascending order, weighted by gas used.
+- `rewardPercentiles`: _array_ of _numbers_ - (optional) Percentile values used to sample each block's 
+  effective priority fees per gas, weighted by gas used.
+  Each value must be in the range `[0, 100]`, and the list must be strictly increasing.
+  Fractional values are allowed.
+  Besu accepts at most 100 values.
+  Out-of-range values, duplicates, values that are not strictly increasing, and lists longer than 100 return 
+  an error.
 
 ### Returns
 
