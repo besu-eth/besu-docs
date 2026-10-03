@@ -275,7 +275,8 @@ Sets a new value for the extra data field that is used when producing blocks.
 
 ### Returns
 
-- `true` or `false`.
+- `true` when the extra data is accepted.
+  An invalid value returns an error.
 
 ### Example
 
@@ -318,9 +319,8 @@ curl -X POST http://127.0.0.1:8545/ \
 ```json
 {
   "jsonrpc": "2.0",
-  "params": ["0x0010203"],
   "id": 1,
-  "result": "true"
+  "result": true
 }
 ```
 
