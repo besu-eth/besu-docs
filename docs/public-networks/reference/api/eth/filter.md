@@ -169,6 +169,12 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-c
 
 :::
 
+:::caution
+
+Using `eth_getFilterLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of `5000`).
+
+:::
+
 ### Parameters
 
 - `filterId`: _string_ - Filter ID.
@@ -290,7 +296,7 @@ Leave the [`--auto-log-bloom-caching-enabled`](../../options.md#auto-log-bloom-c
 
 :::caution
 
-Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of 5000).
+Using `eth_getLogs` to get logs from a large range of blocks, especially an entire chain from its genesis block, might cause Besu to hang for an indeterminable amount of time while generating the response. We recommend setting a range limit using the [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) option (or leaving it at its default value of `5000`).
 
 :::
 
@@ -567,6 +573,14 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `eth_newFilter`
 
 Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs associated with the created filter, use [`eth_getFilterChanges`](#eth_getfilterchanges). To get all logs associated with the filter, use [`eth_getFilterLogs`](#eth_getfilterlogs).
+
+:::note
+
+[`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) limits the block range of a new filter (the 
+default is `5000`).
+If the resolved block range is larger than the limit, Besu returns an error and does not install the filter.
+
+:::
 
 ### Parameters
 
