@@ -46,7 +46,7 @@ Trace transactions, blocks, and calls.
 
 #### Getters
 
-Retrieve block and transaction information.
+Retrieve block, transaction, and execution witness information.
 
 - `debug_getBadBlocks`
 - `debug_getRawBlock`
@@ -54,6 +54,7 @@ Retrieve block and transaction information.
 - `debug_getRawHeader`
 - `debug_getRawReceipts`
 - `debug_getRawTransaction`
+- `debug_executionWitness`
 
 </Link>
 </div>
