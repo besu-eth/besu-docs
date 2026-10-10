@@ -295,7 +295,8 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `eth_createAccessList`
 
-Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that you can [include in a transaction](../../../concepts/transactions/types.md#access_list-transactions). The method returns a success response (access list and gas used) even if the simulated transaction would revert.
+Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that you can [include in a transaction](../../../concepts/transactions/types.md#access_list-transactions). The method returns a success response with the access list and gas used.
+If the simulated transaction reverts, the result also includes an error message.
 
 ### Parameters
 
@@ -354,6 +355,9 @@ Creates an [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list that 
     </Fields>
 
   - `gasUsed`: _string_ - Approximate gas cost for the transaction if the access list is included.
+
+  - `error`: _string_ - (Optional) `"execution reverted"` when the simulation does not succeed.
+    Omitted when the simulation succeeds.
 
   </Fields>
 
@@ -423,8 +427,8 @@ curl -X POST http://127.0.0.1:8545/ \
 
 :::tip
 
-This method doesn't indicate whether a transaction would succeed or revert; to see simulation outcomes
-use [`eth_call`](#eth_call) or [`eth_estimateGas`](#eth_estimategas).
+A reverted simulation still returns `accessList` and `gasUsed`, and sets `error` to `"execution reverted"`.
+Use [`eth_call`](#eth_call) or [`eth_estimateGas`](#eth_estimategas) when you need the revert data.
 
 :::
 
@@ -713,8 +717,7 @@ block parameters without submitting them to the network.
 
     <Fields>
 
-    - `blockOverrides`: _array_ of _objects_ - List of block override objects.
-
+    - `blockOverrides`: _object_ - Block fields to override for this simulated block.
 
       <Fields>
 
@@ -730,13 +733,16 @@ block parameters without submitting them to the network.
 
       - `prevRandao`: _data, 32 bytes_ - Previous value of randomness.
 
-      - `time`: _quantity_ - Unix epoch time in seconds. Time must increase or remain constant relative to the previous block. By default, it's incremented by one for each block.
+      - `time`: _quantity_ - Unix epoch timestamp, in seconds, of this simulated block.
+        It must be greater than the timestamp of the block before it in the simulation.
+        By default, Besu sets `time` to the previous timestamp plus 12 seconds.
 
       - `withdrawals`: _array_ - Array of withdrawals made by validators. This array can have a maximum length of 16.
 
       </Fields>
 
-    - `stateOverrides`: _array_ of _objects_ - List of state override objects.
+    - `stateOverrides`: _object_ - Map of account addresses to state overrides.
+      Each key is a 20-byte address.
 
       <Fields>
 
@@ -748,9 +754,9 @@ block parameters without submitting them to the network.
 
       - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
 
-      - `state`: _quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+      - `state`: _object_ - Map of storage slots to values. Overrides the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
-      - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+      - `stateDiff`: _object_ - Map of storage slots to values. Overrides individual slots. You cannot set both the `state` and `stateDiff` options simultaneously.
 
       </Fields>
 
@@ -939,7 +945,7 @@ block parameters without submitting them to the network.
 
       <Fields>
 
-      - `removed`: _tag_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
+      - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
       - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
 
