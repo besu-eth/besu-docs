@@ -577,8 +577,7 @@ Notable options are [`--json`](#json-trace), [`--nomemory`](#nomemory-tracenomem
 [`--summary-only`](#summary-only).
 
 Set `--json` for EVM Lab Fuzzing.
-Each executed test prints a summary JSON object to standard output, whether or not
-`--json` is set.
+Each executed test prints a summary JSON object to standard output, whether or not `--json` is set.
 [`--summary-only`](#summary-only) omits that object for tests that pass.
 [`--json-array`](#json-array) prints one JSON array instead.
 The command exits with code 1 when any test fails or when no test runs.
