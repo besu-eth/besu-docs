@@ -387,6 +387,7 @@ The block parameter can have one of the following values:
 
   Only the following methods support the `blockHash` parameter:
 
+  - [`debug_traceCall`](../../reference/api/debug/trace.md#debug_tracecall)
   - [`eth_call`](../../reference/api/eth/execute.md#eth_call)
   - [`eth_getBalance`](../../reference/api/eth/state.md#eth_getbalance)
   - [`eth_getCode`](../../reference/api/eth/state.md#eth_getcode)
