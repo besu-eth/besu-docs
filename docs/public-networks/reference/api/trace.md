@@ -506,7 +506,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `trace_filter`
 
-Returns traces matching the specified filter. The maximum number of blocks you can supply to `trace_filter` is 1000 by default. You can adjust this limit using the [`--rpc-max-trace-filter-range`](../options.md#rpc-max-trace-filter-range) option. 
+Returns traces matching the specified filter. The maximum number of blocks you can supply to `trace_filter` is 1000 by default. You can adjust this limit using the [`--rpc-max-trace-filter-range`](../options.md#rpc-max-trace-filter-range) option.
 
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
@@ -519,9 +519,13 @@ the requested blocks must be within the number of
 
 - `traceFilterOptions`: _object_ - Trace filter options object.
 
-- `fromBLock`: _String | Tag_ - Trace starts at this block.
+- `fromBlock`: _String | Tag_ - (Optional) Trace starts at this block.
 
-- `toBlock`: _String | Tag_ - Trace stops at this block.
+- `toBlock`: _String | Tag_ - (Optional) Trace stops at this block.
+
+- `blockHash`: _data, 32 bytes_ - (Optional) Hash of the block to trace.
+  If you specify `blockHash`, you cannot specify `fromBlock` or `toBlock`.
+  A `null` `blockHash` is ignored.
 
 - `fromAddress`: _string_ - Include only traces sent from this address.
 
