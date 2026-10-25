@@ -520,8 +520,10 @@ the requested blocks must be within the number of
 - `traceFilterOptions`: _object_ - Trace filter options object.
 
 - `fromBlock`: _String | Tag_ - (Optional) Trace starts at this block.
+  The default is `latest`.
 
 - `toBlock`: _String | Tag_ - (Optional) Trace stops at this block.
+  The default is `latest`.
 
 - `blockHash`: _data, 32 bytes_ - (Optional) Hash of the block to trace.
   If you specify `blockHash`, you cannot specify `fromBlock` or `toBlock`.
