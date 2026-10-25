@@ -383,20 +383,33 @@ The block parameter can have one of the following values:
   canonical block.
   See [this example](https://github.com/besu-eth/besu/blob/a2dedb0b2c7980cdc35db8eb4c094f2eb0dc7deb/ethereum/api/src/test/resources/org/hyperledger/besu/ethereum/api/jsonrpc/eth/eth_getBalance_blockHashObjectCanonical.json).
 
-  :::note
+  <details>
+  <summary>Methods that support `blockHash`</summary>
+  <div>
 
   Only the following methods support the `blockHash` parameter:
 
+  - [`debug_accountAt`](../../reference/api/debug/state-node.md#debug_accountat)
+  - [`debug_executionWitness`](../../reference/api/debug/getters.md#debug_executionwitness)
+  - [`debug_getRawBlockAccessList`](../../reference/api/debug/getters.md#debug_getrawblockaccesslist)
+  - [`debug_getRawReceipts`](../../reference/api/debug/getters.md#debug_getrawreceipts)
+  - [`debug_setHead`](../../reference/api/debug/state-node.md#debug_sethead)
   - [`debug_traceCall`](../../reference/api/debug/trace.md#debug_tracecall)
   - [`eth_call`](../../reference/api/eth/execute.md#eth_call)
+  - [`eth_createAccessList`](../../reference/api/eth/execute.md#eth_createaccesslist)
+  - [`eth_estimateGas`](../../reference/api/eth/execute.md#eth_estimategas)
   - [`eth_getBalance`](../../reference/api/eth/state.md#eth_getbalance)
+  - [`eth_getBlockAccessList`](../../reference/api/eth/block.md#eth_getblockaccesslist)
+  - [`eth_getBlockReceipts`](../../reference/api/eth/block.md#eth_getblockreceipts)
   - [`eth_getCode`](../../reference/api/eth/state.md#eth_getcode)
   - [`eth_getProof`](../../reference/api/eth/state.md#eth_getproof)
   - [`eth_getStorageAt`](../../reference/api/eth/state.md#eth_getstorageat)
   - [`eth_getStorageValues`](../../reference/api/eth/state.md#eth_getstoragevalues)
   - [`eth_getTransactionCount`](../../reference/api/eth/state.md#eth_gettransactioncount)
+  - [`eth_simulateV1`](../../reference/api/eth/execute.md#eth_simulatev1)
 
-  :::
+  </div>
+  </details>
 
 - `earliest` : _tag_ - The earliest (genesis) block.
 - `latest` : _tag_ - The most recent block.

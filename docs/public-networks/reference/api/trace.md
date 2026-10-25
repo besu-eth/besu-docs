@@ -1032,7 +1032,8 @@ the requested transaction must be contained in a block within the number of
 
 <h3>Returns</h3>
 
-- List of [trace objects](#trace) for the transaction, in execution order.
+- List of [trace objects](#trace) for the transaction, in execution order,
+  or `null` when the transaction hash is not on the chain.
   If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the 
   returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).

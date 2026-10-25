@@ -947,7 +947,8 @@ block parameters without submitting them to the network.
 
       - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
 
-      - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
+      - `logIndex`: _quantity, integer_ - Position among logs returned for that simulated
+        block, starting at `0`.
 
       - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
 
