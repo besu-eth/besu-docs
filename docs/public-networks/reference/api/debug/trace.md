@@ -867,9 +867,10 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
-- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
-  string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
+  block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+  An unknown block hash returns a JSON-RPC error (`-32000`, `Block not found`).
 
   :::note
   `pending` returns the same value as `latest`.
