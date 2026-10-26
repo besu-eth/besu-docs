@@ -783,6 +783,329 @@ This path runs one file at a time and does not use `--workers`:
 evmtool --json state-test < filenames.txt
 ```
 
+### `block-test`
+
+Allows the Ethereum blockchain tests in the
+[execution spec releases](https://github.com/ethereum/execution-specs/releases)
+to be evaluated.
+Run `evmtool block-test --help` for the full list of supported options.
+Notable options are [`--json`](#json-trace), [`--nomemory`](#nomemory-tracenomemory),
+[`--workers`](#workers), [`--test-name`](#test-name),
+[`--test-name-regex`](#test-name-regex), [`--json-array`](#block-test-json-array),
+[`--cache-precompiles`](#block-test-cache-precompiles),
+[`--block-access-list`](#block-test-block-access-list),
+[`--trace-output`](#block-test-trace-output), and [`--verbose`](#block-test-verbose).
+
+The command prints a test summary after the run.
+[`--json-array`](#block-test-json-array) prints one JSON array instead.
+The command exits with code 1 when a test fails, when no test runs, or when a
+declared case never ran.
+
+#### `json-array` {#block-test-json-array}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool block-test --json-array
+```
+
+</TabItem>
+
+</Tabs>
+
+Prints results as one JSON array and prints nothing else.
+Each element has `name`, `pass`, `fork`, `lastBlockHash`, and `error`.
+Unreadable fixture files, and declared cases that never ran, appear as extra
+elements with `pass` set to `false`.
+A `NOT RUN` element reports how many of the declared cases never executed.
+The process exits with code 1 when a test fails, when no test runs, or when a
+declared case never ran.
+
+```json
+[
+  {
+    "name": "<test-name>",
+    "pass": true,
+    "fork": "<fork>",
+    "lastBlockHash": "<block-hash>",
+    "error": null
+  }
+]
+```
+
+#### `[no]block-access-list` {#block-test-block-access-list}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool block-test --block-access-list, --noblock-access-list
+```
+
+</TabItem>
+
+</Tabs>
+
+Imports each block with the access list its fixture carries.
+This option is enabled by default.
+`--noblock-access-list` imports each block without an access list, as full sync
+does, so post-Amsterdam blocks take the accumulator state root path rather than
+the access list path.
+
+#### `[no]cache-precompiles` {#block-test-cache-precompiles}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool block-test --cache-precompiles, --nocache-precompiles
+```
+
+</TabItem>
+
+</Tabs>
+
+Enables precompile result caching, matching Besu's `--cache-precompiles` option.
+Caching is disabled by default.
+
+#### `trace-output` {#block-test-trace-output}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool block-test --json --trace-output=<file>
+```
+
+</TabItem>
+
+<TabItem value="Example" label="Example">
+
+```bash
+evmtool block-test --json --trace-output=traces.log
+```
+
+</TabItem>
+
+</Tabs>
+
+Writes traces to this file instead of standard error.
+This option requires [`--json`](#json-trace) or `--trace`.
+
+#### `verbose` {#block-test-verbose}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool block-test --verbose
+```
+
+</TabItem>
+
+</Tabs>
+
+Prints a line for each test considered or skipped.
+The command also prints `Chain import successful` when a test passes.
+
+#### Use command arguments
+
+Pass one or more blockchain test files or directories.
+A directory is expanded recursively to its `.json` files, in sorted order.
+Files under a `.meta` directory are skipped.
+The collected files run in parallel when [`--workers`](#workers) is greater than 1 and more
+than one file is collected.
+A single file runs on one thread.
+
+<Tabs>
+
+<TabItem value="Docker example" label="Docker example" default>
+```bash
+docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop --json block-test /opt/referencetests/BlockchainTests/ValidBlocks/bcExample/shanghaiExample.json
+```
+
+</TabItem>
+
+<TabItem value="CLI example" label="CLI example">
+
+
+```bash
+evmtool --json block-test bcExample/shanghaiExample.json
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Use standard input
+
+Pass the path `stdin` to read one blockchain test JSON object from standard input.
+
+<Tabs>
+
+<TabItem value="Docker example" label="Docker example" default>
+
+```bash
+docker run --rm -i hyperledger/besu-evmtool:develop --json block-test stdin < bcExample/shanghaiExample.json
+```
+
+</TabItem>
+
+<TabItem value="CLI example" label="CLI example">
+
+```bash
+evmtool --json block-test stdin < bcExample/shanghaiExample.json
+```
+
+</TabItem>
+
+</Tabs>
+
+With no path argument, each line of standard input is the path of one blockchain
+test file.
+This path runs one file at a time and does not use `--workers`:
+
+```bash
+evmtool --json block-test < filenames.txt
+```
+
+### `engine-test`
+
+Allows the Ethereum engine tests in the
+[execution spec releases](https://github.com/ethereum/execution-specs/releases)
+to be evaluated through the [Engine API](engine-api.md).
+Run `evmtool engine-test --help` for the full list of supported options.
+Notable options are [`--json`](#json-trace), [`--nomemory`](#nomemory-tracenomemory),
+[`--workers`](#workers), [`--test-name`](#test-name),
+[`--test-name-regex`](#test-name-regex), [`--json-array`](#engine-test-json-array),
+and [`--verbose`](#engine-test-verbose).
+
+Without [`--verbose`](#engine-test-verbose), only failing tests and the final
+summary are printed.
+[`--json-array`](#engine-test-json-array) prints one JSON array instead.
+The command exits with code 1 when a test fails, when no test runs, or when a
+declared case never ran.
+
+#### `json-array` {#engine-test-json-array}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool engine-test --json-array
+```
+
+</TabItem>
+
+</Tabs>
+
+Prints results as one JSON array and prints nothing else.
+Each element has `name`, `pass`, `fork`, `lastBlockHash`, `lastPayloadStatus`,
+and `error`.
+`error` is an empty string when the test passes.
+Unreadable fixture files, and declared cases that never ran, appear as extra
+elements with `pass` set to `false`.
+A `NOT RUN` element reports how many of the declared cases never executed.
+The process exits with code 1 when a test fails, when no test runs, or when a
+declared case never ran.
+
+```json
+[
+  {
+    "name": "<test-name>",
+    "pass": true,
+    "fork": "<fork>",
+    "lastBlockHash": "<block-hash>",
+    "lastPayloadStatus": "<status>",
+    "error": ""
+  }
+]
+```
+
+#### `verbose` {#engine-test-verbose}
+
+<Tabs>
+
+<TabItem value="Syntax" label="Syntax" default>
+
+```bash
+evmtool engine-test --verbose
+```
+
+</TabItem>
+
+</Tabs>
+
+Prints progress for each test.
+Without this option, only failing tests and the final summary are printed.
+
+#### Use command arguments
+
+Pass one or more engine test files or directories.
+A directory is expanded recursively to its `.json` files, in sorted order.
+Files under a `.meta` directory are skipped.
+The collected files run in parallel when [`--workers`](#workers) is greater than 1 and more
+than one file is collected.
+A single file runs on one thread.
+
+<Tabs>
+
+<TabItem value="Docker example" label="Docker example" default>
+```bash
+docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop engine-test /opt/referencetests/blockchain_tests_engine
+```
+
+</TabItem>
+
+<TabItem value="CLI example" label="CLI example">
+
+```bash
+evmtool engine-test blockchain_tests_engine
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Use standard input
+
+Pass the path `stdin` to read one engine test JSON object from standard input.
+
+<Tabs>
+
+<TabItem value="Docker example" label="Docker example" default>
+
+```bash
+docker run --rm -i hyperledger/besu-evmtool:develop engine-test stdin < blockchain_tests_engine/for_shanghai/shanghai/eip4895_withdrawals/withdrawals/zero_amount.json
+```
+
+</TabItem>
+
+<TabItem value="CLI example" label="CLI example">
+
+```bash
+evmtool engine-test stdin < blockchain_tests_engine/for_shanghai/shanghai/eip4895_withdrawals/withdrawals/zero_amount.json
+```
+
+</TabItem>
+
+</Tabs>
+
+With no path argument, each line of standard input is the path of one engine test
+file.
+This path runs one file at a time and does not use `--workers`:
+
+```bash
+evmtool engine-test < filenames.txt
+```
+
 ### `transition`, `t8n`, `t8n-server`
 
 Allows the Ethereum state transition and blockchain tests to be evaluated.
