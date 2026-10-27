@@ -4552,6 +4552,16 @@ You must enable client authentication using the [`--rpc-http-tls-client-auth-ena
 
 :::
 
+:::warning CA compromise risk
+
+Setting this option to `true` trusts any client certificate that chains to a certificate authority
+in the JVM truststore, including public CAs. Following the
+[October 2026 eMudhra CA compromise](https://github.com/besu-eth/besu/wiki/Incident-Report-2026-10-26-eMudhra-CA-Compromise),
+prefer [`--rpc-http-tls-known-clients-file`](#rpc-http-tls-known-clients-file), or a truststore that
+contains only your own CA, to authenticate clients.
+
+:::
+
 ---
 
 ## `rpc-http-tls-client-auth-enabled`

@@ -85,9 +85,15 @@ The command line:
 - specifies the Java cipher suites using the [`--rpc-http-tls-cipher-suite`](../../../public-networks/reference/options.md#rpc-http-tls-cipher-suite) option.
 - specifies the TLS protocol version using the [`--rpc-http-tls-protocol`](../../../public-networks/reference/options.md#rpc-http-tls-protocol) option.
 
-:::note
+:::warning CA compromise risk
 
-Set [`--rpc-http-tls-ca-clients-enabled`](../../../public-networks/reference/options.md#rpc-http-tls-ca-clients-enabled) to `true` to allow access to clients with signed and trusted root CAs.
+Enabling [`--rpc-http-tls-ca-clients-enabled`](../../../public-networks/reference/options.md#rpc-http-tls-ca-clients-enabled)
+trusts any client certificate that chains to a certificate authority in the JVM
+truststore, including public CAs.
+Following the
+[October 2026 eMudhra CA compromise](https://github.com/besu-eth/besu/wiki/Incident-Report-2026-10-26-eMudhra-CA-Compromise),
+prefer [`--rpc-http-tls-known-clients-file`](../../../public-networks/reference/options.md#rpc-http-tls-known-clients-file),
+or a truststore that contains only your own CA, to authenticate clients.
 
 :::
 
