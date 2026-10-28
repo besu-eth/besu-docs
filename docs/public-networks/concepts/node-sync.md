@@ -91,6 +91,24 @@ You can restart Besu during a snap sync in case of hardware or software problems
 from the last valid world state and continues to download blocks starting from the last downloaded
 block.
 
+After initial synchronization, Besu can attempt a bounded repair when a block needs world-state
+data that is missing locally. This can recover a missing trie node without restarting
+synchronization or downloading a replacement world state. The repair is available only when the
+configured storage supports targeted Bonsai repair; other storage configurations continue to use
+their existing synchronization behavior.
+
+Besu verifies repaired data against the requested state root before making it available. A repair
+attempt has a cumulative time budget of 10 seconds. Fetching any one missing trie node is limited to
+3 seconds across at most two eligible SNAP peers. An unsuccessful attempt starts a 60-second
+cooldown before another attempt can begin. These are limits on the recovery work, not a promise that
+the missing state will be recovered within those times. Queued repair requests start their budget
+when work begins, and cancellation can take additional time while active work drains.
+
+Targeted repair can use at most 64 trie-log transitions and cannot reconstruct arbitrary historical
+state or cross the finalized-state boundary. If the required data is outside those limits or cannot
+be verified, the repair fails and normal synchronization or operator intervention might still be
+needed.
+
 If the chain stops finalizing for an extended period and more than one fork is being built on, you
 can anchor snap sync to a checkpoint block to
 [sync to a specific fork](../how-to/sync-to-a-specific-fork.md).

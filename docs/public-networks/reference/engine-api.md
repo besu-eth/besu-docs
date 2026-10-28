@@ -41,3 +41,10 @@ A consensus client calls the version appropriate for the network's currently act
 [`V3`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV3),
 [`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV4),
 [`V5`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV5) - Executes the payload with the consensus client.
+
+When `engine_forkchoiceUpdated` references a known head whose required world state is unavailable,
+Besu returns `SYNCING` and does not apply that fork choice update. On supported Bonsai
+configurations, Besu can attempt bounded background repair of the missing state. The consensus
+client must retry the fork choice update after recovery; repair does not change the Engine API
+request or response format. This recovery applies after initial synchronization and does not replace
+the normal sync process.
