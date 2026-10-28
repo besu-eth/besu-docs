@@ -91,24 +91,6 @@ You can restart Besu during a snap sync in case of hardware or software problems
 from the last valid world state and continues to download blocks starting from the last downloaded
 block.
 
-After initial synchronization, Besu can attempt a bounded repair when a block needs world-state
-data that is missing locally. This can recover a missing trie node without restarting
-synchronization or downloading a replacement world state. The repair is available only when the
-configured storage supports targeted Bonsai repair; other storage configurations continue to use
-their existing synchronization behavior.
-
-Besu verifies repaired data against the requested state root before making it available. A repair
-attempt has a cumulative time budget of 10 seconds. Fetching any one missing trie node is limited to
-3 seconds across at most two eligible SNAP peers. An unsuccessful attempt starts a 60-second
-cooldown before another attempt can begin. These are limits on the recovery work, not a promise that
-the missing state will be recovered within those times. Queued repair requests start their budget
-when work begins, and cancellation can take additional time while active work drains.
-
-Targeted repair can use at most 64 trie-log transitions and cannot reconstruct arbitrary historical
-state or cross the finalized-state boundary. If the required data is outside those limits or cannot
-be verified, the repair fails and normal synchronization or operator intervention might still be
-needed.
-
 If the chain stops finalizing for an extended period and more than one fork is being built on, you
 can anchor snap sync to a checkpoint block to
 [sync to a specific fork](../how-to/sync-to-a-specific-fork.md).
@@ -132,6 +114,35 @@ Do not run full sync with the [Bonsai Tries](data-storage-formats.md#bonsai-trie
 data storage format.
 Bonsai is designed for retrieving recent data only.
 :::
+
+## World-state recovery
+
+Besu can automatically attempt bounded repair of missing trie data on supported
+[Bonsai](data-storage-formats.md#bonsai-tries) configurations.
+Repair verifies data before making it available and can fail when the required data
+or retained history is unavailable.
+
+Recovery can occur through two paths:
+
+- **Fork choice update:** After initial synchronization, a fork choice update for a
+  known head with missing required state receives `SYNCING`.
+  Besu can attempt repair in the background; the consensus client must retry the
+  update after recovery.
+- **Backward synchronization:** Missing parent state can trigger repair.
+  After successful repair, backward sync retries within its existing session.
+  A repeated missing-state failure does not start an unlimited repair loop.
+
+### Recovery limits
+
+- Each admitted repair attempt has a cumulative 10-second budget.
+  This is not a guaranteed recovery time; cancellation and cleanup can extend
+  elapsed time.
+- Each missing trie node fetch has up to 3 seconds total across at most two
+  eligible SNAP peers, within the remaining attempt budget.
+- An unsuccessful attempt starts a global 60-second cooldown.
+- Repair uses retained trie logs, which record state changes, along a route of at
+  most 64 state transitions.
+  It cannot cross the finalized-state boundary or restore arbitrary historical state.
 
 ## Sync times
 
