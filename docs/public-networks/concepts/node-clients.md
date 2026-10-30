@@ -48,7 +48,7 @@ Besu is an execution client that you can run with:
 The consensus client (also known as the beacon node, CL client or, formerly, the Eth2 client) 
 implements the PoS consensus algorithm, which enables the network to achieve agreement based on 
 validated data from the execution client. Consensus clients serve 
-[REST API](https://docs.teku.consensys.net/reference/rest) requests and
+[REST API](https://docs.teku.consensys.com/reference/rest) requests and
 communicate with each other P2P.
 
 Consensus clients, such as [Teku](https://docs.teku.consensys.net/en/latest/) contain beacon node 
@@ -63,12 +63,12 @@ To operate a validator node, node operators must also run a validator client and
 deposit contract. The validator client handles attestations and block proposal &mdash; i.e. performs 
 [validator duties](proof-of-stake/index.md) on the consensus layer. 
 The validator client may either be run 
-[in the same process](https://docs.teku.consensys.net/get-started/start-teku#start-the-clients-in-a-single-process) 
-as the beacon node or [separately](https://docs.teku.consensys.net/get-started/start-teku#run-the-clients-separately).
+[in the same process](https://docs.teku.consensys.com/get-started/start-teku#start-the-clients-in-a-single-process) 
+as the beacon node or [separately](https://docs.teku.consensys.com/get-started/start-teku#run-the-clients-separately).
 
 Validators earn rewards for performing
  [validator duties](proof-of-stake/index.md), and 
- [fee recipients](https://docs.teku.consensys.net/reference/cli#validators-proposer-default-fee-recipient) 
+ [fee recipients](https://docs.teku.consensys.com/reference/cli#validators-proposer-default-fee-recipient) 
  also earn rewards for the inclusion of execution layer transactions.
 
 <!-- links -->
