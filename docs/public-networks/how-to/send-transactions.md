@@ -25,7 +25,7 @@ Don't use the accounts from the examples on Mainnet or any public network except
 
 All accounts and private keys in the examples are from the `dev.json` genesis file in the [`/besu/config/src/main/resources`](https://github.com/besu-eth/besu/tree/master/config/src/main/resources) directory.
 
-In production environments avoid exposing your private keys by creating signed transactions offline, or use [Web3Signer](https://docs.web3signer.consensys.net/) to isolate your private keys and sign transactions with [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction).
+In production environments avoid exposing your private keys by creating signed transactions offline, or use [Web3Signer](https://docs.web3signer.consensys.com/) to isolate your private keys and sign transactions with [`eth_sendTransaction`](https://docs.web3signer.consensys.com/reference/api/json-rpc#eth_sendtransaction).
 
 :::
 
@@ -64,5 +64,5 @@ The following methods support the [state override object](../reference/api/eth/e
 
 Besu doesn't support key management inside the client. Use:
 
-- [Web3Signer](https://docs.web3signer.consensys.net/) with Besu to provide access to your key store and sign transactions.
+- [Web3Signer](https://docs.web3signer.consensys.com/) with Besu to provide access to your key store and sign transactions.
 - Third-party tools (for example, [MetaMask](https://metamask.io/) and [web3j](https://web3j.io/)) for creating accounts.

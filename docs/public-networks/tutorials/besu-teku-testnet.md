@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Run Besu and Teku on a testnet
 
-Run Besu as an [execution client](../concepts/node-clients.md#execution-clients) and [Teku](https://docs.teku.consensys.net/) as a [consensus client](../concepts/node-clients.md#consensus-clients) on the [Hoodi](https://github.com/eth-clients/hoodi), [Ephemery](https://github.com/ephemery-testnet/ephemery-resources), and [Sepolia](https://github.com/eth-clients/sepolia) Ethereum testnets.
+Run Besu as an [execution client](../concepts/node-clients.md#execution-clients) and [Teku](https://docs.teku.consensys.com/) as a [consensus client](../concepts/node-clients.md#consensus-clients) on the [Hoodi](https://github.com/eth-clients/hoodi), [Ephemery](https://github.com/ephemery-testnet/ephemery-resources), and [Sepolia](https://github.com/eth-clients/sepolia) Ethereum testnets.
 
 :::note
 
@@ -183,11 +183,11 @@ teku \
 Specify:
 
 - The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the
-  [`--ee-jwt-secret-file`](https://docs.teku.consensys.io/reference/cli#ee-jwt-secret-file) option.
+  [`--ee-jwt-secret-file`](https://docs.teku.consensys.com/reference/cli#ee-jwt-secret-file) option.
 - The public IP address of your Teku node using the
-  [`--p2p-advertised-ip`](https://docs.teku.consensys.io/reference/cli#p2p-advertised-ip) option.
+  [`--p2p-advertised-ip`](https://docs.teku.consensys.com/reference/cli#p2p-advertised-ip) option.
 - The URL of a checkpoint sync endpoint using the
-  [`--checkpoint-sync-url`](https://docs.teku.consensys.io/reference/cli#checkpoint-sync-url) option.
+  [`--checkpoint-sync-url`](https://docs.teku.consensys.com/reference/cli#checkpoint-sync-url) option.
 
 You can modify the option values and add other [Teku command line options] as needed.
 
@@ -225,18 +225,18 @@ Sepolia is a permissioned network and you can't run a validator client on it wit
 Specify:
 
 - The path to the `jwtsecret.hex` file generated in [step 2](#2-generate-the-shared-secret) using the
-  [`--ee-jwt-secret-file`](https://docs.teku.consensys.io/reference/cli#ee-jwt-secret-file) option.
+  [`--ee-jwt-secret-file`](https://docs.teku.consensys.com/reference/cli#ee-jwt-secret-file) option.
 - The public IP address of your Teku node using the
-  [`--p2p-advertised-ip`](https://docs.teku.consensys.io/reference/cli#p2p-advertised-ip) option.
+  [`--p2p-advertised-ip`](https://docs.teku.consensys.com/reference/cli#p2p-advertised-ip) option.
 - The URL of a checkpoint sync endpoint using the
-  [`--checkpoint-sync-url`](https://docs.teku.consensys.io/reference/cli#checkpoint-sync-url) option.
+  [`--checkpoint-sync-url`](https://docs.teku.consensys.com/reference/cli#checkpoint-sync-url) option.
 - The test Ethereum address created in [step 3](#3-generate-validator-keys) as the default fee
   recipient using the
-  [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.io/reference/cli#validators-proposer-default-fee-recipient)
+  [`--validators-proposer-default-fee-recipient`](https://docs.teku.consensys.com/reference/cli#validators-proposer-default-fee-recipient)
   option.
 - The paths to the keystore `.json` file and password `.txt` file created in
   [step 3](#3-generate-validator-keys) for each validator using the
-  [`--validator-keys`](https://docs.teku.consensys.io/reference/cli#validator-keys) option.
+  [`--validator-keys`](https://docs.teku.consensys.com/reference/cli#validator-keys) option.
   Separate the `.json` and `.txt` files with a colon, and separate entries for multiple validators with commas.
 
 You can modify the option values and add other [Teku command line options] as needed.

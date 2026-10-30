@@ -6,7 +6,7 @@ sidebar_label: TLS
 
 # Configure client TLS
 
-Besu supports TLS for client communication. For example, you can configure TLS for communication between [Web3Signer](https://docs.web3signer.consensys.net/concepts/tls) and Besu.
+Besu supports TLS for client communication. For example, you can configure TLS for communication between [Web3Signer](https://docs.web3signer.consensys.com/concepts/tls) and Besu.
 
 <p align="center">
 
@@ -99,4 +99,4 @@ or a truststore that contains only your own CA, to authenticate clients.
 
 <!-- Links -->
 
-[Configure the client for TLS]: https://docs.web3signer.consensys.net/how-to/configure-tls
+[Configure the client for TLS]: https://docs.web3signer.consensys.com/how-to/configure-tls

@@ -15,7 +15,7 @@ These methods submit signed transactions to the network.
 
 Besu doesn't implement [`eth_sendTransaction`](../../../how-to/send-transactions.md).
 
-[Web3Signer](https://docs.web3signer.consensys.net/) provides transaction signing and implements [`eth_sendTransaction`](https://docs.web3signer.consensys.net/reference/api/json-rpc#eth_sendtransaction).
+[Web3Signer](https://docs.web3signer.consensys.com/) provides transaction signing and implements [`eth_sendTransaction`](https://docs.web3signer.consensys.com/reference/api/json-rpc#eth_sendtransaction).
 
 :::
 

@@ -86,7 +86,7 @@ A [full example](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc28
 
 ## Use `eth_sendTransaction`
 
-An alternative to using `eth_sendSignedTransaction` is [`eth_sendTransaction`](https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html#sendtransaction). However, Besu does not support the `eth_sendTransaction` API call and keeps account management separate for stronger security. Instead, Besu uses [Web3Signer](https://docs.web3signer.consensys.net/) to make the `eth_sendTransaction` API call.
+An alternative to using `eth_sendSignedTransaction` is [`eth_sendTransaction`](https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html#sendtransaction). However, Besu does not support the `eth_sendTransaction` API call and keeps account management separate for stronger security. Instead, Besu uses [Web3Signer](https://docs.web3signer.consensys.com/) to make the `eth_sendTransaction` API call.
 
 Use `eth_sendTransaction` similarly to [using `eth_sendSignedTransaction`](#use-eth_sendsignedtransaction) (without the signing step which is done by Web3Signer):
 

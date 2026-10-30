@@ -65,7 +65,7 @@ async function getValueAtAddress(
 
 ### 2. Perform a write operation
 
-To perform a write operation, send a transaction to update the stored value. As with the [`get` call](#1-perform-a-read-operation), you need to use the address that the contract was deployed to and the contract's ABI. The account address must correspond to an actual account with some ETH in it to perform the transaction. Because Besu doesn't manage accounts, this address is the address you use in [Web3Signer](https://docs.web3signer.consensys.net/) (or equivalent) to manage your accounts.
+To perform a write operation, send a transaction to update the stored value. As with the [`get` call](#1-perform-a-read-operation), you need to use the address that the contract was deployed to and the contract's ABI. The account address must correspond to an actual account with some ETH in it to perform the transaction. Because Besu doesn't manage accounts, this address is the address you use in [Web3Signer](https://docs.web3signer.consensys.com/) (or equivalent) to manage your accounts.
 
 Make the `set` call passing in your account address, `value` as the updated value of the contract, and the amount of gas you are willing to spend for the transaction:
 
