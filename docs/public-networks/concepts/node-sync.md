@@ -115,6 +115,35 @@ data storage format.
 Bonsai is designed for retrieving recent data only.
 :::
 
+## World-state recovery
+
+Besu can automatically attempt bounded repair of missing trie data on supported
+[Bonsai](data-storage-formats.md#bonsai-tries) configurations.
+Repair verifies data before making it available and can fail when the required data
+or retained history is unavailable.
+
+Recovery can occur through two paths:
+
+- **Fork choice update:** After initial synchronization, a fork choice update for a
+  known head with missing required state receives `SYNCING`.
+  Besu can attempt repair in the background; the consensus client must retry the
+  update after recovery.
+- **Backward synchronization:** Missing parent state can trigger repair.
+  After successful repair, backward sync retries within its existing session.
+  A repeated missing-state failure does not start an unlimited repair loop.
+
+### Recovery limits
+
+- Each admitted repair attempt has a cumulative 10-second budget.
+  This is not a guaranteed recovery time; cancellation and cleanup can extend
+  elapsed time.
+- Each missing trie node fetch has up to 3 seconds total across at most two
+  eligible SNAP peers, within the remaining attempt budget.
+- An unsuccessful attempt starts a global 60-second cooldown.
+- Repair uses retained trie logs, which record state changes, along a route of at
+  most 64 state transitions.
+  It cannot cross the finalized-state boundary or restore arbitrary historical state.
+
 ## Sync times
 
 To sync with a public network, Besu runs two processes in parallel: the world state sync and the
