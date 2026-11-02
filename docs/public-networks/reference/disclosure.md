@@ -6,6 +6,27 @@ description: Besu responsible disclosure statement
 
 # Security disclosure policy
 
-At Besu, security is a priority. But regardless of how much effort we put into system security, there might still be vulnerabilities present. If you discover a vulnerability, we need to know about it so we can take steps to address it as quickly as possible. We would like you to help us better protect our clients and our systems.
+Report a vulnerability in Besu privately.
+Do not open a public issue.
 
-Please follow the process explained on [defect response wiki page](https://lf-hyperledger.atlassian.net/wiki/spaces/SEC/pages/20283618/Defect+Response).
+## GitHub
+
+Use [Report a vulnerability](https://github.com/besu-eth/besu/security/advisories/new)
+on the Security tab of the Besu repository.
+This opens a private draft advisory that only maintainers can see.
+Use this method for most reports.
+
+## Email
+
+For a highly sensitive report, or if you prefer not to use GitHub,
+email one of these addresses:
+
+- [security-besu@lists.hyperledger.org](mailto:security-besu@lists.hyperledger.org)
+  reaches a subset of Besu maintainers and LF Decentralized Trust staff.
+  Use this address for a particularly sensitive report.
+- [security@hyperledger.org](mailto:security@hyperledger.org)
+  reaches security staff across LF Decentralized Trust projects.
+  Maintainers outside Besu may have access to this list.
+
+Include a description of the vulnerability, the steps to reproduce it,
+the affected versions, and any known active exploitation.
