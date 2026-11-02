@@ -27,7 +27,6 @@ In production networks, you must [secure access](../../../public-networks/how-to
 
 - [Docker and Docker Compose](https://docs.docker.com/compose/install/) v2 or later
 - [Node.js](https://nodejs.org/en/download/), to run the sample transaction scripts
-- Internet access, to download the npm dependencies and contract ABIs the first time you compile the sample contracts
 
 ## Start Besu Blockchain Explorer
 

@@ -214,11 +214,7 @@ Use these services to inspect node metrics and logs.
 If you generated the network with `--otel true`, the Developer Quickstart also includes an OTel Collector and Tempo.
 Use Grafana to inspect the additional tracing data.
 
-Learn more about how to:
-
-- [Monitor metrics](../../public-networks/how-to/monitor/metrics.md).
-- [Use Besu Blockchain Explorer](../how-to/monitor/besu-blockchain-explorer.md) to view blocks, transactions, tokens, and NFTs.
-- [Use Chainlens Explorer](../how-to/monitor/chainlens.md) if you enabled Chainlens when generating the network.
+Learn more about how to [monitor metrics](../../public-networks/how-to/monitor/metrics.md).
 
 ### 6. Send a transaction with MetaMask
 
