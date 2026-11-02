@@ -29,7 +29,7 @@ function HomepageText() {
       </p>
       <p>
         Besu doesn&apos;t support key management inside the client. You can use{" "}
-        <Link to="https://docs.web3signer.consensys.net/">Web3Signer</Link> with
+        <Link to="https://docs.web3signer.consensys.com/">Web3Signer</Link> with
         Besu to access your keystore and sign transactions.
       </p>
 

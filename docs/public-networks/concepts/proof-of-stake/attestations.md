@@ -43,7 +43,7 @@ If you have attestations with incorrect head votes, your node might be experienc
 
 In case of a slowdown, identify whether the issue is with the beacon node or the execution client. Block timing logs can be helpful in determining this.
 
-If you're using [Teku](https://docs.teku.consensys.net/) as a consensus layer client, identify late blocks (the block didn't get to Teku in time) with the following kind of log:
+If you're using [Teku](https://docs.teku.consensys.com/) as a consensus layer client, identify late blocks (the block didn't get to Teku in time) with the following kind of log:
 
 ```bash
 Late Block Import *** Block: c2b911533a8f8d5e699d1a334e0576d2b9aa4caa726bde8b827548b579b47c68 (4765916) proposer 6230 arrival 3475ms, pre-state_retrieved +5ms, processed +185ms, execution_payload_result_received +1436ms, begin_importing +0ms, transaction_prepared +0ms, transaction_committed +0ms, completed +21ms

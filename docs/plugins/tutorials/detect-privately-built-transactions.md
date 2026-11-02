@@ -27,7 +27,7 @@ The signal is most meaningful once your node is fully synced and following the c
   [Java JDK](https://www.oracle.com/java/technologies/downloads).
 - [Gradle](https://gradle.org/install/).
 - A [Besu installation](../../public-networks/get-started/install/index.md).
-- A consensus client, for example [Teku](https://docs.teku.consensys.net/), to run alongside Besu.
+- A consensus client, for example [Teku](https://docs.teku.consensys.com/), to run alongside Besu.
 
 ## Steps
 

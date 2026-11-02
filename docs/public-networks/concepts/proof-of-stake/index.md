@@ -13,8 +13,8 @@ Under Ethereum's PoS, you must run a [full node](../node-clients.md#execution-an
 :::note
 To operate a full node on Mainnet, you must run a beacon node, i.e. a consensus client and an execution client.
 To become a validator, you must also run a validator client (either [in the same process as the
-beacon node](https://docs.teku.consensys.net/get-started/start-teku#start-the-clients-in-a-single-process)
-or [separately](https://docs.teku.consensys.net/get-started/start-teku#run-the-clients-separately)).
+beacon node](https://docs.teku.consensys.com/get-started/start-teku#start-the-clients-in-a-single-process)
+or [separately](https://docs.teku.consensys.com/get-started/start-teku#run-the-clients-separately)).
 :::
 
 PoS is preferred over Proof of Work and Proof of Authority as a consensus mechanism because it is
