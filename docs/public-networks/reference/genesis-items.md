@@ -69,6 +69,7 @@ Milestone items activate protocol changes for the network.
 Use `terminalTotalDifficulty` for the Paris transition (The Merge).
 Use block-number milestone items for pre-merge forks and timestamp milestone
 items for post-merge forks (Shanghai and later).
+`bogotaTime` is the timestamp that schedules the Bogota milestone.
 
 See the Ethereum execution specs
 [protocol history](https://github.com/ethereum/execution-specs/blob/master/docs/specs/protocol_history.md#mainnet-hardforks)
