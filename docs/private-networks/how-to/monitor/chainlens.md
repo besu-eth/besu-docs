@@ -1,6 +1,6 @@
 ---
 title: Use Chainlens Explorer
-sidebar_position: 7
+sidebar_position: 8
 description: Use Chainlens Explorer on a Besu network
 ---
 
@@ -26,7 +26,7 @@ to RPC nodes.
 Generate a private network using the [Developer Quickstart](../../tutorials/quickstart.md), with Chainlens enabled:
 
 ```bash
-npx @consensys-software/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens true
+npx @consensys/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens true
 ```
 
 Start the generated network:

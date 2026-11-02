@@ -12,6 +12,7 @@ You can also use the following monitoring tools in private networks:
 - [Elastic Stack](elastic-stack.md)
 - [Splunk](splunk.md)
 - [OpenTelemetry](opentelemetry.md)
+- [Besu Blockchain Explorer](besu-blockchain-explorer.md)
 - [Chainlens Explorer](chainlens.md)
 
 For an overview of monitoring Besu, view [this recording](https://www.youtube.com/watch?v=7BuutRe0I28&feature=youtu.be).
