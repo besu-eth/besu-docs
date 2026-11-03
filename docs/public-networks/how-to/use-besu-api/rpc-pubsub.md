@@ -188,8 +188,10 @@ Logs subscriptions have a filter object parameter with the following fields:
 
 - `address` - (optional) Either an address or an array of addresses. Returns only logs created from these addresses.
 - `topics` - (optional) Returns only logs that match the [specified topics](../../concepts/events-and-logs.md#topic-filters).
-- `fromBlock` - (optional) The earliest block from which to return logs.
-- `toBlock` - (optional) The last block from which to return logs.
+- `fromBlock` - (optional) Block number of the earliest block from which to return logs.
+- `toBlock` - (optional) Block number of the last block from which to return logs.
+
+`fromBlock` and `toBlock` only filter logs from new blocks. A logs subscription doesn't return logs from blocks imported before you subscribe; use [`eth_getLogs`](../../reference/api/eth/filter.md#eth_getlogs) for those. Of the block tags, only `earliest` sets a bound. `latest`, `pending`, `safe`, and `finalized` don't limit the range.
 
 If a chain reorganization occurs, the subscription publishes notifications for logs from the old chain with the `removed` property in the [log object](../../reference/api/eth/filter.md#eth_getlogs) set to `true`. This means the subscription can publish notifications for multiple logs for the same transaction.
 
