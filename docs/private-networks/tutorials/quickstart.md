@@ -19,7 +19,7 @@ networks.
 
 :::
 
-The generated private network includes four validators, one non-validator RPC node, and monitoring services.
+The generated private network includes four validators, one non-validator RPC node, Besu Blockchain Explorer, and monitoring services.
 You can optionally enable Chainlens Explorer and OpenTelemetry (OTel) when you generate the network.
 
 ## Prerequisites
@@ -45,7 +45,7 @@ Run the Developer Quickstart.
 The quickstart generates a folder (`./besu-test-network` by default) with the Docker Compose files, scripts, and Besu configuration in it.
 
 ```bash
-npx @consensys-software/besu-dev-quickstart
+npx @consensys/besu-dev-quickstart
 ```
 
 When prompted, select the following options:
@@ -61,7 +61,7 @@ When prompted, select the following options:
 To skip the prompts, run:
 
 ```bash
-npx @consensys-software/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens true
+npx @consensys/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens true
 ```
 
 ### 2. Start the network
@@ -90,6 +90,7 @@ JSON-RPC WebSocket service endpoint   : ws://localhost:8546
 Prometheus address                    : http://localhost:9090/graph
 Grafana metrics                       : http://localhost:3000/d/XE4V0WGZz/besu-overview?orgId=1&refresh=10s&from=now-30m&to=now&var-system=All
 Grafana logs                          : http://localhost:3000/a/grafana-lokiexplore-app/explore
+Besu Explorer (private network)       : http://localhost:25000/explorer
 Chainlens Explorer (if selected)      : http://localhost:8081/dashboard
 
 For more information on the endpoints and services, refer to README.md in the installation directory.
@@ -102,6 +103,7 @@ Use the endpoints as follows:
 - Use the JSON-RPC WebSocket endpoint for WebSocket subscriptions.
 - Use Prometheus and Grafana to monitor node metrics.
 - Use Grafana logs to view Besu logs in Loki.
+- Use Besu Blockchain Explorer to inspect blocks, transactions, tokens, and validators.
 - Use Chainlens Explorer to inspect blocks and transactions if you enabled it.
 
 To display the list of endpoints again, run:
@@ -179,7 +181,18 @@ The result indicates the highest block number synchronized on this node:
 
 The hexadecimal value `0x2a` translates to `42`, the number of blocks received by the node so far.
 
-### 4. View the network in Chainlens
+### 4. View the network in a blockchain explorer
+
+#### Besu Blockchain Explorer
+
+The Developer Quickstart always starts Besu Blockchain Explorer with the private network.
+Open `http://localhost:25000/explorer` in your browser to view blocks, transactions, contracts, tokens, nodes, and validators.
+
+![Besu Blockchain Explorer nodes](../../assets/images/besu-explorer-nodes.png)
+
+For a tour of each page, and to generate sample transactions, tokens, and NFTs to inspect, see [Use Besu Blockchain Explorer](../how-to/monitor/besu-blockchain-explorer.md).
+
+#### Chainlens
 
 If you enabled Chainlens when generating the network, open `http://localhost:8081/dashboard` in your browser.
 
@@ -231,7 +244,8 @@ From one imported test account, send a small amount of ETH to another imported t
 The private network has zero gas price configured, so the transaction doesn't require a gas fee.
 
 After MetaMask confirms the transaction, copy the transaction hash.
-If Chainlens is enabled, search for the transaction hash in `http://localhost:8081/dashboard`.
+To view the transaction, search for the transaction hash on the **Transactions** page in Besu Blockchain Explorer (`http://localhost:25000/explorer/transactions`).
+If Chainlens is enabled, you can also search for the transaction hash in `http://localhost:8081/dashboard`.
 
 ### 7. Stop and restart the network
 
@@ -312,7 +326,7 @@ Use an unused IP address in the `besu-dev-quickstart` subnet:
       - 9545
     networks:
       besu-dev-quickstart:
-        ipv4_address: 172.16.239.16
+        ipv4_address: 172.16.239.17
 ```
 
 #### Allow and discover the node
@@ -320,7 +334,7 @@ Use an unused IP address in the `besu-dev-quickstart` subnet:
 Create the enode URL for the new node using the contents of `config/nodes/node5/nodekey.pub`:
 
 ```text
-enode://<nodekey.pub>@172.16.239.16:30303
+enode://<nodekey.pub>@172.16.239.17:30303
 ```
 
 Add the enode URL to `config/besu/permissions_config.toml`.
