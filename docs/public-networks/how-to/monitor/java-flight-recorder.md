@@ -50,6 +50,6 @@ Inspect the file written to `/tmp/recording.jfr` with tools such as [Mission Con
 
 :::danger
 
-If providing the output file to [ConsenSys Quorum support](https://consensys.net/quorum/support/), be aware that while JFR files don't contain secrets such as private keys, some details about the user configuration can be inferred from the JFR output.
+If providing the output file to [Besu support](https://discord.gg/hyperledger), be aware that while JFR files don't contain secrets such as private keys, some details about the user configuration can be inferred from the JFR output.
 
 :::
