@@ -11,9 +11,7 @@ for full details. The rules below cover the most common conventions.
 
 ## Line length and sentence breaks
 
-- Wrap lines at roughly 80 columns (per the project `.editorconfig` and `.prettierrc`).
-- Start each new sentence on a new line, even if the previous line is short. This makes diffs
-  easier to review.
+- When writing prose, wrap at about 100 characters. Start each sentence on its own line.
 
 ## Links
 
