@@ -5,7 +5,7 @@ description: Read chain state and simulate transactions.
 
 # Chain state and simulation
 
-Use chain state and simulation services to inspect blocks, receipts, transactions, world state, 
+Use chain state and simulation services to inspect blocks, receipts, transactions, world state,
 or simulated execution results.
 
 ## Read blockchain data
@@ -55,7 +55,7 @@ public void start() {
 
 ## Simulate execution
 
-[`TransactionSimulationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionSimulationService.html) simulates transactions and can create a pending block header for simulation. 
+[`TransactionSimulationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/TransactionSimulationService.html) simulates transactions and can create a pending block header for simulation.
 [`BlockSimulationService`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/BlockSimulationService.html) simulates blocks and includes a method to simulate and persist world state.
 
 Use simulation services for plugins that need to evaluate transaction or block execution without

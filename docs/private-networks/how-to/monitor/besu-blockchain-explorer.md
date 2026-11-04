@@ -71,11 +71,11 @@ npm run compile
 
 Run any of the following scripts:
 
-| Command              | Contract             | What the script does                                                                                                                                 |
-| -------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run public-tx`  | `SimpleStorage.sol`  | Deploys the contract with an initial value of `47`, reads the value, sets it to `123`, and reads it again.                                            |
-| `npm run erc20-tx`   | `ERC20Token.sol`     | Deploys the `DemoToken` (`DEMO`) ERC-20 token with a supply of 1000, mints 500, transfers 200 to a new account, then approves and calls `transferFrom` for 100. |
-| `npm run nft-tx`     | `ERC721Token.sol`    | Deploys the `DemoNFT` (`DNFT`) ERC-721 collection, mints two NFTs, transfers both to a new account (one directly and one with `approve` and `transferFrom`), and burns one. |
+| Command             | Contract            | What the script does                                                                                                                                                        |
+| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run public-tx` | `SimpleStorage.sol` | Deploys the contract with an initial value of `47`, reads the value, sets it to `123`, and reads it again.                                                                  |
+| `npm run erc20-tx`  | `ERC20Token.sol`    | Deploys the `DemoToken` (`DEMO`) ERC-20 token with a supply of 1000, mints 500, transfers 200 to a new account, then approves and calls `transferFrom` for 100.             |
+| `npm run nft-tx`    | `ERC721Token.sol`   | Deploys the `DemoNFT` (`DNFT`) ERC-721 collection, mints two NFTs, transfers both to a new account (one directly and one with `approve` and `transferFrom`), and burns one. |
 
 The ERC-20 and NFT scripts create a new random recipient account on each run and send it 0.01 ETH so it can submit its own transactions.
 

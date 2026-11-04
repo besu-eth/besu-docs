@@ -30,25 +30,15 @@ Polls the specified filter and returns an array of changes that have occurred si
   - For filters created with `eth_newFilter`, returns log objects.
 
     <Fields>
-
     - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
-
     - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
-
     - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
-
     - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
-
     - `address`: _data, 20 bytes_ - Address the log originated from.
-
     - `data`: _data_ - Non-indexed arguments of the log.
-
     - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
     </Fields>
@@ -80,9 +70,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getFilterChanges",
-  "params": [
-    "0xf8bf5598d9e04fbe84523d42640b9b0e"
-  ],
+  "params": ["0xf8bf5598d9e04fbe84523d42640b9b0e"],
   "id": 1
 }
 ```
@@ -107,10 +95,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "0x1e977049b6db09362da09491bee3949d9362080ce3f4fc19721196d508580d46",
-    "0xa3abc4b9a4e497fd58dc59cdff52e9bb5609136bcd499e760798aa92802769be"
-  ]
+  "result": ["0x1e977049b6db09362da09491bee3949d9362080ce3f4fc19721196d508580d46", "0xa3abc4b9a4e497fd58dc59cdff52e9bb5609136bcd499e760798aa92802769be"]
 }
 ```
 
@@ -129,9 +114,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "transactionIndex": "0x0",
       "address": "0x42699a7612a82f1d9c36148af9c77354759b210b",
       "data": "0x0000000000000000000000000000000000000000000000000000000000000004",
-      "topics": [
-        "0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"
-      ]
+      "topics": ["0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"]
     },
     {
       "logIndex": "0x0",
@@ -143,9 +126,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "transactionIndex": "0x0",
       "address": "0x42699a7612a82f1d9c36148af9c77354759b210b",
       "data": "0x0000000000000000000000000000000000000000000000000000000000000007",
-      "topics": [
-        "0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"
-      ]
+      "topics": ["0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"]
     }
   ]
 }
@@ -184,25 +165,15 @@ Using `eth_getFilterLogs` to get logs from a large range of blocks, especially a
 - List of log objects.
 
   <Fields>
-
   - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
-
   - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
-
   - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
-
   - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
-
   - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
-
   - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
-
   - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
-
   - `address`: _data, 20 bytes_ - Address the log originated from.
-
   - `data`: _data_ - Non-indexed arguments of the log.
-
   - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
   </Fields>
@@ -234,9 +205,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getFilterLogs",
-  "params": [
-    "0x5ace5de3985749b6a1b2b0d3f3e1fb69"
-  ],
+  "params": ["0x5ace5de3985749b6a1b2b0d3f3e1fb69"],
   "id": 1
 }
 ```
@@ -260,9 +229,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "transactionIndex": "0x0",
       "address": "0x2e1f232a9439c3d459fceca0beef13acc8259dd8",
       "data": "0x0000000000000000000000000000000000000000000000000000000000000003",
-      "topics": [
-        "0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"
-      ]
+      "topics": ["0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"]
     },
     {
       "logIndex": "0x0",
@@ -274,9 +241,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "transactionIndex": "0x0",
       "address": "0x2e1f232a9439c3d459fceca0beef13acc8259dd8",
       "data": "0x0000000000000000000000000000000000000000000000000000000000000005",
-      "topics": [
-        "0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"
-      ]
+      "topics": ["0x04474795f5b996ff80cb47c148d4c5ccdbe09ef27551820caa9c2f8ed149cce3"]
     }
   ]
 }
@@ -305,17 +270,12 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 - `filterOptions`: _object_ - Filter options object.
 
   <Fields>
-
   - `fromBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
     The default is `latest`.
-
   - `toBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
     The default is `latest`.
-
   - `address`: _data | array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
-
   - `topics`: _array of data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
-
   - `blockHash`: _data, 32 bytes_ - (Optional) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
 
   </Fields>
@@ -325,25 +285,15 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 - List of log objects.
 
   <Fields>
-
   - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
-
   - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
-
   - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
-
   - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
-
   - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
-
   - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
-
   - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
-
   - `address`: _data, 20 bytes_ - Address the log originated from.
-
   - `data`: _data_ - Non-indexed arguments of the log.
-
   - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
   </Fields>
@@ -411,9 +361,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "blockTimestamp": "0x693c23db",
       "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       "data": "0x00000000000000000000000000000000000000000000000001112ea12c39c032",
-      "topics": [
-        "0xddf252ad1be2c89b69c2b068fc378da...9d4b2b7fad"
-      ]
+      "topics": ["0xddf252ad1be2c89b69c2b068fc378da...9d4b2b7fad"]
     },
     {
       "removed": false,
@@ -425,9 +373,7 @@ curl -X POST http://127.0.0.1:8545/ \
       "blockTimestamp": "0x693c23db",
       "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       "data": "0x00000000000000000000000000000000000000000000000001112ea12c39c032",
-      "topics": [
-        "0xddf252ad1be2c89b69c2b068fc378d...629ba9375161"
-      ]
+      "topics": ["0xddf252ad1be2c89b69c2b068fc378d...629ba9375161"]
     }
   ]
 }
@@ -475,9 +421,7 @@ curl -X POST http://localhost:8547/graphql \
     "logs": [
       {
         "index": 2,
-        "topics": [
-          "0xddf252ad1be2c89b69c2b068fc378...d4b2b7fad"
-        ],
+        "topics": ["0xddf252ad1be2c89b69c2b068fc378...d4b2b7fad"],
         "data": "0x00000000000000000000000000000000000000000000000001112ea12c39c032",
         "account": {
           "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
@@ -488,9 +432,7 @@ curl -X POST http://localhost:8547/graphql \
       },
       {
         "index": 6,
-        "topics": [
-          "0xddf252ad1be2c89b69c2b068fc378...9ba9375161"
-        ],
+        "topics": ["0xddf252ad1be2c89b69c2b068fc378...9ba9375161"],
         "data": "0x00000000000000000000000000000000000000000000000001112ea12c39c032",
         "account": {
           "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
@@ -576,7 +518,7 @@ Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs a
 
 :::note
 
-[`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) limits the block range of a new filter (the 
+[`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) limits the block range of a new filter (the
 default is `5000`).
 If the resolved block range is larger than the limit, Besu returns an error and does not install the filter.
 
@@ -587,17 +529,12 @@ If the resolved block range is larger than the limit, Besu returns an error and 
 - `filterOptions`: _object_ - Filter options object.
 
   <Fields>
-
   - `fromBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
     The default is `latest`.
-
   - `toBlock`: _quantity | tag_ - (Optional) Integer block number or `latest`, `pending`, `earliest`. See [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
     The default is `latest`.
-
   - `address`: _data | array_ - (Optional) Contract address or array of addresses from which [logs](../../../concepts/events-and-logs.md) originate.
-
   - `topics`: _array of data, 32 bytes each_ - (Optional) Array of topics by which to [filter logs](../../../concepts/events-and-logs.md#topic-filters).
-
   - `blockHash`: _data, 32 bytes_ - (`eth_getLogs` only) (Optional) Hash of block for which to return logs. If you specify `blockHash`, you cannot specify `fromBlock` and `toBlock`.
 
   </Fields>
@@ -767,9 +704,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_uninstallFilter",
-  "params": [
-    "0x70355a0b574b437eaa19fe95adfedc0a"
-  ],
+  "params": ["0x70355a0b574b437eaa19fe95adfedc0a"],
   "id": 1
 }
 ```

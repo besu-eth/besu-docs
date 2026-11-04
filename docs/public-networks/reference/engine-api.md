@@ -31,13 +31,13 @@ A consensus client calls the version appropriate for the network's currently act
 - [`engine_getBlobsV1`](https://ethereum.github.io/execution-apis/api/methods/engine_getBlobsV1), [`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_getBlobsV2), [`V3`](https://ethereum.github.io/execution-apis/api/methods/engine_getBlobsV3), [`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_getBlobsV4) - Returns the blobs corresponding to the specified blob versioned hashes.
 - [`engine_getClientVersionV1`](https://github.com/ethereum/execution-apis/blob/main/src/engine/identification.md#engine_getclientversionv1) - Exchanges the current client version.
 - [`engine_getPayloadV1`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV1), [`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV2), [`V3`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV3),
-[`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV4),
-[`V5`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV5),
-[`V6`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV6) - Prepares the payload to send to the consensus client.
+  [`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV4),
+  [`V5`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV5),
+  [`V6`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadV6) - Prepares the payload to send to the consensus client.
 - [`engine_getPayloadBodiesByHashV1`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadBodiesByHashV1), [`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadBodiesByHashV2) - Returns execution payload bodies for the specified block hashes.
 - [`engine_getPayloadBodiesByRangeV1`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadBodiesByRangeV1), [`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_getPayloadBodiesByRangeV2) - Returns execution payload bodies for the specified range of block numbers.
 - [`engine_newPayloadV1`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV1),
-[`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV2),
-[`V3`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV3),
-[`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV4),
-[`V5`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV5) - Executes the payload with the consensus client.
+  [`V2`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV2),
+  [`V3`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV3),
+  [`V4`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV4),
+  [`V5`](https://ethereum.github.io/execution-apis/api/methods/engine_newPayloadV5) - Executes the payload with the consensus client.

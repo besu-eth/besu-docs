@@ -136,7 +136,7 @@ public class TxDetectionPlugin implements BesuPlugin {
 }
 ```
 
-The `@AutoService(BesuPlugin.class)` annotation generates the service provider entry that Besu's `ServiceLoader` 
+The `@AutoService(BesuPlugin.class)` annotation generates the service provider entry that Besu's `ServiceLoader`
 uses to discover your plugin at startup.
 Besu calls `register(ServiceManager)` once, early in startup, and passes the
 [`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html)
@@ -149,7 +149,7 @@ Add a `Set` that records the hash of every transaction your node sees in the
 mempool.
 
 A busy node sees many transactions; use a bounded structure so memory usage stays constant.
-The following uses a fixed-size `LinkedHashMap` that evicts the oldest entry once it reaches its capacity, 
+The following uses a fixed-size `LinkedHashMap` that evicts the oldest entry once it reaches its capacity,
 wrapped to make it thread-safe because Besu fires events from multiple threads:
 
 ```java title="TxDetectionPlugin.java"
@@ -203,7 +203,7 @@ lets the plugin receive a callback every time a transaction is added to the node
 ### 5. Inspect new blocks
 
 Add the block listener that detects unseen transactions.
-For each new block that advances the chain head, count the transactions whose hash the plugin never recorded 
+For each new block that advances the chain head, count the transactions whose hash the plugin never recorded
 from the mempool:
 
 ```java title="TxDetectionPlugin.java"
@@ -584,7 +584,7 @@ your node's public mempool.
 
 Run Besu as an execution client on Hoodi alongside a consensus client.
 Start Besu with metrics enabled and the plugin's metric category included.
-The [`--metrics-category`](../../public-networks/reference/options.md#metrics-category) option replaces 
+The [`--metrics-category`](../../public-networks/reference/options.md#metrics-category) option replaces
 the default set of categories, so list the `TX_DETECTION` category to expose the plugin's metrics:
 
 ```bash

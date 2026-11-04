@@ -29,17 +29,16 @@ For most networks, including Mainnet and the public testnets, the network ID and
 
 Besu sets the chain ID (and by default the network ID) automatically, using either the [`--genesis-file`](../reference/options.md#genesis-file) option or when specifying a network using the [`--network`](../reference/options.md#network) option. The following table lists the available networks and their chain and network IDs.
 
-| Network   | Chain | Chain ID | Network ID | Type        |
-| --------- | ----- | -------- | ---------- | ----------- |
-| `mainnet` | ETH   | 1        | 1          | Production  |
-| `hoodi`   | ETH   | 560048   | 560048     | Test        |
-| `sepolia` | ETH   | 11155111 | 11155111   | Test        |
-| `dev`     | ETH   | 1337     | 2018       | Development |
-| `ephemery`| ETH   | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases)    | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases)      | Test  |
-| `lukso`   | Lukso | 4201        | 4201    | Production  |
-| `linea_mainnet`   | Linea | 59144       | 59144   | Production  |
-| `linea_sepolia`| Linea |59141   | 59141   | Test        |
-
+| Network         | Chain | Chain ID                                                                 | Network ID                                                               | Type        |
+| --------------- | ----- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ----------- |
+| `mainnet`       | ETH   | 1                                                                        | 1                                                                        | Production  |
+| `hoodi`         | ETH   | 560048                                                                   | 560048                                                                   | Test        |
+| `sepolia`       | ETH   | 11155111                                                                 | 11155111                                                                 | Test        |
+| `dev`           | ETH   | 1337                                                                     | 2018                                                                     | Development |
+| `ephemery`      | ETH   | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases) | [dynamic](https://github.com/ephemery-testnet/ephemery-genesis/releases) | Test        |
+| `lukso`         | Lukso | 4201                                                                     | 4201                                                                     | Production  |
+| `linea_mainnet` | Linea | 59144                                                                    | 59144                                                                    | Production  |
+| `linea_sepolia` | Linea | 59141                                                                    | 59141                                                                    | Test        |
 
 :::info
 

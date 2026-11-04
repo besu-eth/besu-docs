@@ -190,7 +190,7 @@ auto-log-bloom-caching-enabled=false
 
 </Tabs>
 
-Enables or disables automatic log bloom caching. APIs such as [`eth_getLogs`](api/eth/filter.md#eth_getlogs) and [`eth_getFilterLogs`](api/eth/filter.md#eth_getfilterlogs) use the cache for improved performance. 
+Enables or disables automatic log bloom caching. APIs such as [`eth_getLogs`](api/eth/filter.md#eth_getlogs) and [`eth_getFilterLogs`](api/eth/filter.md#eth_getfilterlogs) use the cache for improved performance.
 
 The default is `true`.
 
@@ -315,11 +315,11 @@ bonsai-historical-block-limit=256
 When using [Bonsai Tries](../concepts/data-storage-formats.md#bonsai-tries), the
 [maximum number of previous blocks](../concepts/data-storage-formats.md#accessing-data) for which
 Bonsai can reconstruct a historical state.
-The default is `512`. 
+The default is `512`.
 
 :::note
 
-If you plan on querying historical blocks or state using the [JSON-RPC API](api/index.md), you might need to adjust the default value or your configured value to avoid errors. 
+If you plan on querying historical blocks or state using the [JSON-RPC API](api/index.md), you might need to adjust the default value or your configured value to avoid errors.
 
 :::
 
@@ -395,10 +395,10 @@ bonsai-parallel-tx-processing-enabled=false
 
 </Tabs>
 
-Enables [parallelization of transactions](../concepts/parallel-transaction-execution) to optimize 
-processing speed. 
+Enables [parallelization of transactions](../concepts/parallel-transaction-execution) to optimize
+processing speed.
 
-This applies to Besu instances configured to the [Bonsai Trie](../concepts/data-storage-formats.md#bonsai-tries) 
+This applies to Besu instances configured to the [Bonsai Trie](../concepts/data-storage-formats.md#bonsai-tries)
 data storage format, otherwise this option is ignored.
 
 The default is `true`.
@@ -522,8 +522,8 @@ cache-last-blocks=2048
 
 </Tabs>
 
-The number of recent blocks to cache. 
-Using this option can improve the performance of several RPC calls including: [`eth_getBlockByNumber`](api/eth/block.md#eth_getblockbynumber), [`eth_getBlockByHash`](api/eth/block.md#eth_getblockbyhash), [`eth_getTransactionReceipt`](api/eth/transaction.md#eth_gettransactionreceipt), and especially [`eth_feeHistory`](api/eth/fee.md#eth_feehistory). 
+The number of recent blocks to cache.
+Using this option can improve the performance of several RPC calls including: [`eth_getBlockByNumber`](api/eth/block.md#eth_getblockbynumber), [`eth_getBlockByHash`](api/eth/block.md#eth_getblockbyhash), [`eth_getTransactionReceipt`](api/eth/transaction.md#eth_gettransactionreceipt), and especially [`eth_feeHistory`](api/eth/fee.md#eth_feehistory).
 The default is `0`.
 
 ---
@@ -679,7 +679,7 @@ color-enabled=false
 
 </Tabs>
 
-Enables or disables color output to console. 
+Enables or disables color output to console.
 
 The default is `true`.
 
@@ -846,7 +846,7 @@ discovery-enabled=false
 
 </Tabs>
 
-Enables or disables P2P discovery. 
+Enables or disables P2P discovery.
 
 The default is `true`.
 
@@ -970,7 +970,7 @@ engine-jwt-disabled=true
 
 </Tabs>
 
-Disables or enables [authentication](../how-to/use-engine-api.md#authentication) for Engine APIs. 
+Disables or enables [authentication](../how-to/use-engine-api.md#authentication) for Engine APIs.
 
 The default is `false` (authentication is enabled by default).
 
@@ -1187,7 +1187,7 @@ era1-import-prepipeline-enabled=true
 
 Enables [importing pre-merge blocks from ERA1 archive files](../how-to/era1-file-full-sync.md) before full sync begins. Files are loaded from the location specified by[`--era1-data-uri`](#era1-data-uri) (supports local paths and HTTP URLs).
 
-This option only applies when [`--sync-mode=FULL`](#sync-mode); it has no effect in other sync modes. 
+This option only applies when [`--sync-mode=FULL`](#sync-mode); it has no effect in other sync modes.
 
 The default is `false`.
 
@@ -1444,7 +1444,7 @@ genesis-state-hash-cache-enabled=true
 
 </Tabs>
 
-Enables or disables fast startup from an existing genesis state hash. 
+Enables or disables fast startup from an existing genesis state hash.
 
 The default is `false`.
 
@@ -1520,7 +1520,7 @@ graphql-http-enabled=true
 
 </Tabs>
 
-Enables or disables the GraphQL HTTP service. 
+Enables or disables the GraphQL HTTP service.
 
 The default is `false`.
 
@@ -2037,7 +2037,7 @@ json-pretty-print-enabled=true
 
 </Tabs>
 
-Enables or disables the pretty-print output for HTTP and WebSocket responses. 
+Enables or disables the pretty-print output for HTTP and WebSocket responses.
 
 The default is `false`.
 
@@ -2366,7 +2366,7 @@ metrics-enabled=true
 
 </Tabs>
 
-Enables or disables the [metrics exporter](../how-to/monitor/metrics.md). 
+Enables or disables the [metrics exporter](../how-to/monitor/metrics.md).
 
 The default is `false`.
 
@@ -2694,8 +2694,8 @@ The default is `1000`.
 
 For a running node, use:
 
-* [`miner_getMinGasPrice`](api/miner.md#miner_getmingasprice) to get the value.
-* [`miner_setMinGasPrice`](api/miner.md#miner_setmingasprice) to change the value.
+- [`miner_getMinGasPrice`](api/miner.md#miner_getmingasprice) to get the value.
+- [`miner_setMinGasPrice`](api/miner.md#miner_setmingasprice) to change the value.
 
 :::tip
 
@@ -2744,8 +2744,8 @@ The default is `0`.
 
 For a running node, use:
 
-* [`miner_getMinPriorityFee`](api/miner.md#miner_getminpriorityfee) to get the value.
-* [`miner_setMinPriorityFee`](api/miner.md#miner_setminpriorityfee) to change the value.
+- [`miner_getMinPriorityFee`](api/miner.md#miner_getminpriorityfee) to get the value.
+- [`miner_setMinPriorityFee`](api/miner.md#miner_setminpriorityfee) to change the value.
 
 ---
 
@@ -2912,16 +2912,15 @@ The predefined network configuration. The default is `mainnet`.
 
 Possible values include the following:
 
-| Network    | Chain | Type        | Default sync mode    | Consensus mechanism | Description                                                                    |
-|:-----------|:------|:------------|:---------------------|:--------------------|:-------------------------------------------------------------------------------|
-| `mainnet`  | ETH   | Production  | [`SNAP`](#sync-mode) | PoS network       | The main [Ethereum network](https://ethereum.org/en/developers/docs/networks/) |
-| `hoodi`    | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Hoodi](https://hoodi.ethpandaops.io/)                    |
-| `sepolia`  | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Sepolia](https://sepolia.dev)                            |
-| `ephemery` | ETH   | Test        | [`SNAP`](#sync-mode) | PoS network       | Multi-client Ethereum testnet [Ephemery](https://ephemery.dev)  
-| `linea_mainnet`  | Linea   | Production        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)       | The main [Linea network](https://docs.linea.build/get-started/build/network-info)                            |
-| `linea_sepolia`  | Linea   | Test        | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup)      | Linea [Sepolia testnet](https://docs.linea.build/get-started/build/network-info/)                            |
-| `lukso`    | Lukso  | Production  | [`SNAP`](#sync-mode) | PoS network       | Network for the [Lukso chain](https://lukso.network/)                          |
-
+| Network         | Chain | Type       | Default sync mode    | Consensus mechanism            | Description                                                                       |
+| :-------------- | :---- | :--------- | :------------------- | :----------------------------- | :-------------------------------------------------------------------------------- |
+| `mainnet`       | ETH   | Production | [`SNAP`](#sync-mode) | PoS network                    | The main [Ethereum network](https://ethereum.org/en/developers/docs/networks/)    |
+| `hoodi`         | ETH   | Test       | [`SNAP`](#sync-mode) | PoS network                    | Multi-client Ethereum testnet [Hoodi](https://hoodi.ethpandaops.io/)              |
+| `sepolia`       | ETH   | Test       | [`SNAP`](#sync-mode) | PoS network                    | Multi-client Ethereum testnet [Sepolia](https://sepolia.dev)                      |
+| `ephemery`      | ETH   | Test       | [`SNAP`](#sync-mode) | PoS network                    | Multi-client Ethereum testnet [Ephemery](https://ephemery.dev)                    |
+| `linea_mainnet` | Linea | Production | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup) | The main [Linea network](https://docs.linea.build/get-started/build/network-info) |
+| `linea_sepolia` | Linea | Test       | [`SNAP`](#sync-mode) | Sequencer-based (zkEVM rollup) | Linea [Sepolia testnet](https://docs.linea.build/get-started/build/network-info/) |
+| `lukso`         | Lukso | Production | [`SNAP`](#sync-mode) | PoS network                    | Network for the [Lukso chain](https://lukso.network/)                             |
 
 :::tip
 
@@ -3138,7 +3137,7 @@ p2p-enabled=false
 
 </Tabs>
 
-Enables or disables all P2P communication. 
+Enables or disables all P2P communication.
 
 The default is `true`.
 
@@ -3300,7 +3299,7 @@ p2p-interface-ipv6="2001:db8:85a3::1"
 
 The IPv6 network interface on which the node listens for [P2P communication](../how-to/connect/configure-ports.md#p2p-networking).
 Use the option to specify the required network interface when the device that Besu is running on has multiple network interfaces.
-Set this option for a [dual-stack](../concepts/ipv6-dual-stack.md) node, in which case 
+Set this option for a [dual-stack](../concepts/ipv6-dual-stack.md) node, in which case
 [`--p2p-interface`](#p2p-interface) must be an IPv4 address or `0.0.0.0`.
 
 If you set `--p2p-interface-ipv6` without [`--p2p-host-ipv6`](#p2p-host-ipv6), Besu can auto-discover the
@@ -3339,7 +3338,7 @@ p2p-ipv6-outbound-enabled=true
 
 </Tabs>
 
-Enables or disables preferring IPv6 addresses for outbound P2P connections when peers advertise both 
+Enables or disables preferring IPv6 addresses for outbound P2P connections when peers advertise both
 IPv4 and IPv6 ([dual-stack](../concepts/ipv6-dual-stack.md)).
 
 When set to `true`, IPv6 is preferred.
@@ -3573,10 +3572,11 @@ plugins-verification-mode=FULL
 
 </Tabs>
 
-Controls whether Besu fails to start if a [plugin's](../../plugins/index.md) verification fails at 
+Controls whether Besu fails to start if a [plugin's](../../plugins/index.md) verification fails at
 startup.
 
 Verification mode options are `NONE` or `FULL`:
+
 - If set to `NONE` and plugin verification fails, Besu logs a warning and continues running.
 - If set to `FULL` and any plugin verification fails, Besu logs an error and stops running.
 
@@ -3675,7 +3675,7 @@ Possible values are:
 - [`PERFORMANCE_RPC`](../how-to/configure-besu/profile.md#performance-profiles)
 - File name of an [external profile](../how-to/configure-besu/profile.md#load-external-profiles),
   without the `.toml` extension.
-  
+
 The default is `null`.
 
 ---
@@ -3710,7 +3710,7 @@ random-peer-priority-enabled=true
 
 </Tabs>
 
-Enables or disables random prioritization of incoming connections. Enable in small, stable networks to prevent closed groups of peers forming. 
+Enables or disables random prioritization of incoming connections. Enable in small, stable networks to prevent closed groups of peers forming.
 
 The default is `false`.
 
@@ -3746,8 +3746,8 @@ receipt-compaction-enabled=true
 
 </Tabs>
 
-Enables or disables receipt compaction. 
-Compacting receipts reduces storage by trimming unnecessary data from transaction receipts. 
+Enables or disables receipt compaction.
+Compacting receipts reduces storage by trimming unnecessary data from transaction receipts.
 
 The default is `true`.
 
@@ -3783,7 +3783,7 @@ remote-connections-limit-enabled=false
 
 </Tabs>
 
-Enables or disables using the [`--remote-connections-max-percentage`](#remote-connections-max-percentage) option to limit the percentage of remote P2P connections initiated by peers. 
+Enables or disables using the [`--remote-connections-max-percentage`](#remote-connections-max-percentage) option to limit the percentage of remote P2P connections initiated by peers.
 
 The default is `true`.
 
@@ -3936,7 +3936,7 @@ revert-reason-enabled=true
 
 </Tabs>
 
-Enables or disables including the [revert reason](../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](api/eth/execute.md#eth_estimategas) error response, [`eth_call`](api/eth/execute.md#eth_call) error response, and [`trace`](api/trace.md#trace) response. 
+Enables or disables including the [revert reason](../../private-networks/how-to/send-transactions/revert-reason.md) in the transaction receipt, [`eth_estimateGas`](api/eth/execute.md#eth_estimategas) error response, [`eth_call`](api/eth/execute.md#eth_call) error response, and [`trace`](api/trace.md#trace) response.
 
 The default is `false`.
 
@@ -4014,11 +4014,11 @@ rpc-gas-cap=50000000
 
 </Tabs>
 
-Sets a limit on the amount of gas for transaction simulation RPC methods. 
-This option allows users to override the transaction's gas limit. 
+Sets a limit on the amount of gas for transaction simulation RPC methods.
+This option allows users to override the transaction's gas limit.
 This can prevent the simulation of transactions with high gas usage by setting a predefined cap, preventing DoS attacks.
-Its value must be greater than or equal to `0`. 
-The default is `100000000`. You can set this to `0` to indicate there is no limit. 
+Its value must be greater than or equal to `0`.
+The default is `100000000`. You can set this to `0` to indicate there is no limit.
 This cap prevents [`eth_call`](api/eth/execute.md#eth_call) requests from using excessive resources.
 
 ---
@@ -4324,7 +4324,7 @@ rpc-http-enabled=true
 
 </Tabs>
 
-Enables or disables the JSON-RPC HTTP service. 
+Enables or disables the JSON-RPC HTTP service.
 
 The default is `false`.
 
@@ -4542,7 +4542,7 @@ rpc-http-tls-ca-clients-enabled=true
 
 </Tabs>
 
-Enables or disables clients with trusted CA certificates to connect. 
+Enables or disables clients with trusted CA certificates to connect.
 
 The default is `false`.
 
@@ -4594,7 +4594,7 @@ rpc-http-tls-client-auth-enabled=true
 
 </Tabs>
 
-Enables or disables TLS client authentication for the JSON-RPC HTTP service. 
+Enables or disables TLS client authentication for the JSON-RPC HTTP service.
 
 The default is `false`.
 
@@ -4676,7 +4676,7 @@ rpc-http-tls-enabled=true
 
 </Tabs>
 
-Enables or disables TLS for the JSON-RPC HTTP service. 
+Enables or disables TLS for the JSON-RPC HTTP service.
 
 The default is `false`.
 
@@ -5072,7 +5072,7 @@ The maximum number of EVM steps captured by one [`debug_traceCall`](api/debug/tr
 Set to `0` to specify no limit.
 The default is `1000000`.
 
-On the `debug_trace*` methods, [`limit`](api/debug/trace.md#debug_tracetransaction) sets how many opcode 
+On the `debug_trace*` methods, [`limit`](api/debug/trace.md#debug_tracetransaction) sets how many opcode
 steps to capture (the default is `0`, which sets no limit).
 When `limit` and `--rpc-max-trace-steps` are both greater than `0`, Besu uses the lower value.
 
@@ -5369,7 +5369,7 @@ rpc-ws-enabled=true
 
 </Tabs>
 
-Enables or disables the WebSocket JSON-RPC service. 
+Enables or disables the WebSocket JSON-RPC service.
 
 The default is `false`.
 
@@ -5621,7 +5621,7 @@ rpc-ws-ssl-client-auth-enabled=true
 
 </Tabs>
 
-Enables or disables client authentication for the WebSocket JSON-RPC service. 
+Enables or disables client authentication for the WebSocket JSON-RPC service.
 
 The default is `false`.
 
@@ -5667,7 +5667,7 @@ rpc-ws-ssl-enabled=true
 
 </Tabs>
 
-Enables or disables server SSL/TLS authentication for the WebSocket JSON-RPC service. 
+Enables or disables server SSL/TLS authentication for the WebSocket JSON-RPC service.
 
 The default is `false`.
 
@@ -6260,9 +6260,9 @@ The default is `false`.
 
 :::note Notes
 
-- Enable this option to query historical transactions by hash. 
+- Enable this option to query historical transactions by hash.
 - Setting this option to `true` increases sync time and disk space usage.
-:::
+  :::
 
 ---
 
@@ -6330,7 +6330,7 @@ strict-tx-replay-protection-enabled=false
 
 </Tabs>
 
-Enables or disables replay protection, in accordance with [EIP-155](https://eips.ethereum.org/EIPS/eip-155), on transactions submitted using JSON-RPC. 
+Enables or disables replay protection, in accordance with [EIP-155](https://eips.ethereum.org/EIPS/eip-155), on transactions submitted using JSON-RPC.
 
 The default is `false`.
 
@@ -6527,7 +6527,7 @@ tx-pool-blob-price-bump="25"
 
 </Tabs>
 
-Sets the price bump policy for re-issued blob transactions as a percentage increase in price. 
+Sets the price bump policy for re-issued blob transactions as a percentage increase in price.
 A blob transaction can only replace, or be replaced by, another blob transaction.
 The default is `100`.
 
@@ -6683,6 +6683,7 @@ Accepted values are in the range `(0–1]`.
 The default is `.001`, or 0.1% of transactions from a single sender to be kept in the pool.
 
 :::caution
+
 - With the [layered transaction pool](../concepts/transactions/pool.md#layered-transaction-pool)
   implementation, this option is not applicable.
   Replace this option with [`--tx-pool-max-future-by-sender`](#tx-pool-max-future-by-sender) to
@@ -6693,7 +6694,7 @@ The default is `.001`, or 0.1% of transactions from a single sender to be kept i
   executable by Besu.
   This is important for Mainnet, but may cause issues on private networks.
   Please update this value or set to `1` if you know the nodes gossiping transactions in your network.
-:::
+  :::
 
 ---
 
@@ -6806,10 +6807,10 @@ tx-pool-max-prioritized-by-type=["BLOB=6","FRONTIER=200"]
 
 </Tabs>
 
-The maximum number of transactions of a specific [transaction type](../concepts/transactions/types.md) that are prioritized in the [layered transaction pool](../concepts/transactions/pool.md#layered-transaction-pool). 
+The maximum number of transactions of a specific [transaction type](../concepts/transactions/types.md) that are prioritized in the [layered transaction pool](../concepts/transactions/pool.md#layered-transaction-pool).
 
-This option is mostly useful for tuning the amount of prioritized [blob transactions](../concepts/transactions/types.md#blob-transactions) in the transaction pool. 
-Keeping the prioritized layer sorted is costly, and only a few blob transactions can fit in a block (currently a maximum of six). 
+This option is mostly useful for tuning the amount of prioritized [blob transactions](../concepts/transactions/types.md#blob-transactions) in the transaction pool.
+Keeping the prioritized layer sorted is costly, and only a few blob transactions can fit in a block (currently a maximum of six).
 Tuning the maximum number of prioritized transactions by type can help maintain the efficiency and performance of the transaction pool.
 The default is `BLOB=6`.
 
@@ -6961,7 +6962,7 @@ tx-pool-no-local-priority=true
 
 </Tabs>
 
-If this option is set to `true`, senders of transactions submitted via RPC are *not* prioritized over
+If this option is set to `true`, senders of transactions submitted via RPC are _not_ prioritized over
 remote transactions in the [transaction pool](../concepts/transactions/pool.md).
 
 The default is `false`.
@@ -6998,10 +6999,10 @@ tx-pool-price-bump=25
 
 </Tabs>
 
-The price bump percentage to 
+The price bump percentage to
 [replace an existing transaction in the transaction pool](../concepts/transactions/pool.md#replace-transactions-with-the-same-sender-and-nonce).
 For networks with a [base fee and priced gas](../concepts/transactions/pool.md#in-networks-with-a-base-fee-and-priced-gas), the default is `10`, or 10%.
-For networks with [zero base fee, or free gas](../concepts/transactions/pool.md#in-networks-with-zero-base-base-or-free-gas), the default is `0`. 
+For networks with [zero base fee, or free gas](../concepts/transactions/pool.md#in-networks-with-zero-base-base-or-free-gas), the default is `0`.
 
 ---
 
@@ -7162,7 +7163,7 @@ The index adds approximately 60 bytes per transaction.
 If you upgrade Besu to enable this index without resyncing, the index is only populated for blocks processed after the upgrade.
 Resyncing will index the full available transaction history.
 
-Disabling this option for [archive nodes](../concepts/node-sync.md#archive-nodes) avoids the extra 
+Disabling this option for [archive nodes](../concepts/node-sync.md#archive-nodes) avoids the extra
 storage cost in the case of a resync.
 :::
 

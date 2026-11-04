@@ -17,11 +17,11 @@ Use [`--discovery-mode`](../reference/options.md#discovery-mode) to choose one o
 
 Discovery v4 advertises each peer as a single IP address, usually written as an
 [enode URL](node-keys.md#enode-url).
-Discovery v5 advertises each peer using an [Ethereum Node Record (ENR)](node-keys.md#enr-url), which can 
+Discovery v5 advertises each peer using an [Ethereum Node Record (ENR)](node-keys.md#enr-url), which can
 carry an IPv4 address and an IPv6 address at the same time (see
 [EIP-778](https://eips.ethereum.org/EIPS/eip-778)).
 
-Dual-stack works in both discovery modes; discovery v5 is not required to bind IPv6 sockets or advertise 
+Dual-stack works in both discovery modes; discovery v5 is not required to bind IPv6 sockets or advertise
 an IPv6 enode.
 Set [`--discovery-mode`](../reference/options.md#discovery-mode) to `V5` or `BOTH` to do any of the following:
 
@@ -34,12 +34,12 @@ Set [`--discovery-mode`](../reference/options.md#discovery-mode) to `V5` or `BOT
 
 Besu has a primary set of P2P options and a parallel set of `ipv6` options:
 
-| Purpose            | Primary option                                                                          | IPv6 option                                                                                       |
-| ------------------ | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Advertised host    | [`--p2p-host`](../reference/options.md#p2p-host) (default: `127.0.0.1`)                          | [`--p2p-host-ipv6`](../reference/options.md#p2p-host-ipv6) (no default)                                        |
-| Listening interface | [`--p2p-interface`](../reference/options.md#p2p-interface) (default: `0.0.0.0`)                  | [`--p2p-interface-ipv6`](../reference/options.md#p2p-interface-ipv6) (no default)                              |
-| TCP listening port | [`--p2p-port`](../reference/options.md#p2p-port) (default: `30303`)                               | [`--p2p-port-ipv6`](../reference/options.md#p2p-port-ipv6) (default: `30404`)                              |
-| UDP discovery port | [`--p2p-discovery-port`](../reference/options.md#p2p-discovery-port) (default: `--p2p-port`) | [`--p2p-discovery-port-ipv6`](../reference/options.md#p2p-discovery-port-ipv6) (default: `--p2p-port-ipv6`) |
+| Purpose             | Primary option                                                                               | IPv6 option                                                                                                 |
+| ------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Advertised host     | [`--p2p-host`](../reference/options.md#p2p-host) (default: `127.0.0.1`)                      | [`--p2p-host-ipv6`](../reference/options.md#p2p-host-ipv6) (no default)                                     |
+| Listening interface | [`--p2p-interface`](../reference/options.md#p2p-interface) (default: `0.0.0.0`)              | [`--p2p-interface-ipv6`](../reference/options.md#p2p-interface-ipv6) (no default)                           |
+| TCP listening port  | [`--p2p-port`](../reference/options.md#p2p-port) (default: `30303`)                          | [`--p2p-port-ipv6`](../reference/options.md#p2p-port-ipv6) (default: `30404`)                               |
+| UDP discovery port  | [`--p2p-discovery-port`](../reference/options.md#p2p-discovery-port) (default: `--p2p-port`) | [`--p2p-discovery-port-ipv6`](../reference/options.md#p2p-discovery-port-ipv6) (default: `--p2p-port-ipv6`) |
 
 The primary options configure the node's main address family, IPv4 or IPv6.
 The `ipv6` options are IPv6-specific and add a second address family for dual-stack operation.

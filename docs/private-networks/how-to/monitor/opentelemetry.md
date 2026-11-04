@@ -114,7 +114,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     It is easiest to run the OpenTelemetry collector with Docker with the following command:
 
     <Tabs>
-    
+
     <TabItem value="Syntax" label="Syntax" default>
 
     ```bash
@@ -127,7 +127,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     ```
 
     </TabItem>
-    
+
     <TabItem value="Example" label="Example">
 
     ```bash
@@ -140,16 +140,16 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     ```
 
     </TabItem>
-    
+
     </Tabs>
 
 2.  Start Besu with the [`--metrics-enabled`](../../../public-networks/reference/options.md#metrics-enabled) and [`--metrics-protocol=opentelemetry`](../../../public-networks/reference/options.md#metrics-protocol) options.
     Specify the [genesis file](../../../public-networks/reference/options.md#genesis-file) for your private network.
     If you don't have a private network yet, create one using the [Developer Quickstart](../../tutorials/quickstart.md).
     For example:
-        
+
     <Tabs>
-    
+
     <TabItem value="Syntax" label="Syntax" default>
 
     ```bash
@@ -157,7 +157,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     ```
 
     </TabItem>
-    
+
     <TabItem value="Example" label="Example">
 
     ```bash
@@ -165,7 +165,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     ```
 
     </TabItem>
-    
+
     </Tabs>
 
     The [OpenTelemetry SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/8f7cdb73618a0b3afa9532b8f8103d719e352781/specification/sdk-environment-variables.md) mandates how to configure the OpenTelemetry gRPC client, so data flows to the collector from Besu.
@@ -173,7 +173,7 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     You can use the following environment variables:
 
     | Name                          | Description                                                                                                 | Required |
-    |-------------------------------|-------------------------------------------------------------------------------------------------------------|----------|
+    | ----------------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
     | `OTEL_EXPORTER_OTLP_ENDPOINT` | OpenTelemetry Collector endpoint, of the form `https://host:port`. The default is `https://localhost:4317`. | Yes      |
     | `OTEL_EXPORTER_OTLP_INSECURE` | Whether to allow insecure connections for OpenTelemetry data. The default is `false`.                       | No       |
 

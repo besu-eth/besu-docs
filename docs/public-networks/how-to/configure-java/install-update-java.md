@@ -29,80 +29,80 @@ You can install OpenJDK on Ubuntu using the `apt-get` command.
 
 1. Ensure `apt` libraries are installed and up-to-date:
 
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
 
 2. Confirm whether Java is already installed:
 
-    ```bash
-    java -version
-    ```
+   ```bash
+   java -version
+   ```
 
-    If a version is returned, and you would like to update, see how to [update Java on Ubuntu](#update-java-on-ubuntu).
+   If a version is returned, and you would like to update, see how to [update Java on Ubuntu](#update-java-on-ubuntu).
 
-3. If no version is returned, use `apt` to install the preferred version. 
+3. If no version is returned, use `apt` to install the preferred version.
 
-    ```bash
-    sudo apt-get install openjdk-25-jdk
-    ```
+   ```bash
+   sudo apt-get install openjdk-25-jdk
+   ```
 
 4. Confirm the installation:
 
-    ```bash
-    java -version
-    ```
-   
-5. You might need to update your environment to make Java visible to Besu.
-    Edit the `.bashrc` file in your home directory (or create it if needed) and add the following
-    lines to the end of the file:
+   ```bash
+   java -version
+   ```
 
-    ```text title=".bashrc"
-    export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-    export PATH=$PATH:$JAVA_HOME/bin
-    ```
+5. You might need to update your environment to make Java visible to Besu.
+   Edit the `.bashrc` file in your home directory (or create it if needed) and add the following
+   lines to the end of the file:
+
+   ```text title=".bashrc"
+   export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+   export PATH=$PATH:$JAVA_HOME/bin
+   ```
 
 6. Save your changes and source the file:
 
-    ```bash
-    source ~/.bashrc 
-    ```
+   ```bash
+   source ~/.bashrc
+   ```
 
 7. Verify that you updated your environment:
 
-    ```bash
-    echo $JAVA_HOME
-    echo $PATH
-    ```
+   ```bash
+   echo $JAVA_HOME
+   echo $PATH
+   ```
 
-    You should see the JDK versions output.
+   You should see the JDK versions output.
 
-### Install Java on MacOS 
+### Install Java on MacOS
 
 You can install OpenJDK on MacOS using Homebrew.
 
 1. With `brew` installed, run:
 
-    ```bash
-    brew install openjdk@25
-    ```
+   ```bash
+   brew install openjdk@25
+   ```
 
-    You can target another version if you prefer. 
+   You can target another version if you prefer.
 
 2. Confirm the installation:
 
-    ```bash
-    java -version
-    ```
+   ```bash
+   java -version
+   ```
 
-    The OpenJDK version you install should display.
+   The OpenJDK version you install should display.
 
-    If this command returns `command not found: java`, check your terminal logs.
-    Brew might prompt you to create a symlink or update your path variables within the logs in the
-    terminal output.
-    If so, run the prompts provided.
+   If this command returns `command not found: java`, check your terminal logs.
+   Brew might prompt you to create a symlink or update your path variables within the logs in the
+   terminal output.
+   If so, run the prompts provided.
 
-## Update Java 
+## Update Java
 
 ### Update Java on Ubuntu
 
@@ -121,25 +121,25 @@ You can update Java on MacOS using Homebrew.
 
 1. List your Homebrew packages:
 
-    ```bash
-    brew ls
-    ```
+   ```bash
+   brew ls
+   ```
 
 2. To update the JDK version (for example, from 21 to 25), uninstall the old version and reinstall
-    the target version:
+   the target version:
 
-    ```bash
-    brew uninstall openjdk@21
-    brew install openjdk@25
-    ```
+   ```bash
+   brew uninstall openjdk@21
+   brew install openjdk@25
+   ```
 
-    :::note
-    If you installed a version of Java not using Homebrew, it is located at
-    `/Library/Java/JavaVirtualMachines` and can be safely deleted from that directory.
-    :::
+   :::note
+   If you installed a version of Java not using Homebrew, it is located at
+   `/Library/Java/JavaVirtualMachines` and can be safely deleted from that directory.
+   :::
 
 3. To update point versions of Java, run the `upgrade` command:
 
-    ```bash
-    brew upgrade openjdk
-    ```
+   ```bash
+   brew upgrade openjdk
+   ```

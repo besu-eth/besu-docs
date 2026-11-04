@@ -19,7 +19,7 @@ Besu supports:
 
 - MacOS High Sierra 10.13 or later versions.
 - Java 25+. You can install Java using `brew install openjdk@25`. Alternatively, you can manually
-    install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
+  install the [Java JDK](https://www.oracle.com/java/technologies/downloads).
 
 :::
 

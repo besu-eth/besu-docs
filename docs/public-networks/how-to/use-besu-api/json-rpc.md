@@ -35,39 +35,39 @@ The geth console is a REPL (Read, Evaluate, & Print Loop) JavaScript console. Us
 
 To use the geth console with Besu:
 
-1. Start Besu with the [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled) or `--Xrpc-ipc-enabled` 
-option.
+1. Start Besu with the [`--rpc-http-enabled`](../../reference/options.md#rpc-http-enabled) or `--Xrpc-ipc-enabled`
+   option.
 
-2. Specify which APIs to enable using the [`--rpc-http-api`](../../reference/options.md#rpc-http-api) or 
-`--Xrpc-ipc-api` option.
+2. Specify which APIs to enable using the [`--rpc-http-api`](../../reference/options.md#rpc-http-api) or
+   `--Xrpc-ipc-api` option.
 
 3. Start the geth console specifying the JSON-RPC endpoint:
 
     <Tabs>
-    
+
     <TabItem value="HTTP endpoint" label="HTTP endpoint" default>
-    
-    ```bash
-    geth attach http://localhost:8545
-    ```
-    
+
+   ```bash
+   geth attach http://localhost:8545
+   ```
+
     </TabItem>
-    
+
     <TabItem value="IPC endpoint" label="IPC endpoint">
-    
-    ```bash
-    geth attach /path/to/besu.ipc
-    ```
-    
+
+   ```bash
+   geth attach /path/to/besu.ipc
+   ```
+
     </TabItem>
-    
+
     </Tabs>
 
 4. Use the geth console to call [JSON-RPC API methods](../../reference/api/index.md) that geth and Besu share.
 
-    ```bash
-    eth.syncing
-    ```
+   ```bash
+   eth.syncing
+   ```
 
 ## JSON-RPC authentication
 
@@ -302,7 +302,7 @@ The readiness response object contains the following fields:
 
     - `currentPeers`: _number_ - Number of connected peers.
 
-    - `requiredPeers`: _number_ - Minimum number of peers required, from the `minPeers` query parameter or the 
+    - `requiredPeers`: _number_ - Minimum number of peers required, from the `minPeers` query parameter or the
       default of `1`.
       Omitted when `minPeers` is invalid.
 
@@ -315,7 +315,7 @@ The readiness response object contains the following fields:
 
     - `blocksBehind`: _number_ - Number of blocks the node is behind the best known block.
 
-    - `maxBlocksBehind`: _number_ - Maximum number of blocks the node can be behind, from the 
+    - `maxBlocksBehind`: _number_ - Maximum number of blocks the node can be behind, from the
       `maxBlocksBehind` query parameter or the default of `2`.
       Omitted when `maxBlocksBehind` is invalid.
 

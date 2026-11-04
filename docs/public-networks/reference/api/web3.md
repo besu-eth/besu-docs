@@ -107,9 +107,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "web3_sha3",
-  "params": [
-    "0x68656c6c6f20776f726c00"
-  ],
+  "params": ["0x68656c6c6f20776f726c00"],
   "id": 53
 }
 ```

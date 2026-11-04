@@ -91,7 +91,7 @@ besu \
   --rpc-http-enabled=true     \
   --rpc-http-cors-origins="*" \
   --rpc-ws-enabled=true       \
-  --p2p-host=<your public IP> \  
+  --p2p-host=<your public IP> \
   --host-allowlist="*"        \
   --engine-host-allowlist="*" \
   --engine-rpc-enabled        \
@@ -142,7 +142,7 @@ teku \
   --ee-jwt-secret-file=<path to jwtsecret.hex> \
   --metrics-enabled=true                       \
   --rest-api-enabled=true                      \
-  --p2p-advertised-ip=<your public IP>         \  
+  --p2p-advertised-ip=<your public IP>         \
   --checkpoint-sync-url=<checkpoint sync URL>
 ```
 
@@ -157,7 +157,7 @@ teku \
   --ee-jwt-secret-file=<path to jwtsecret.hex> \
   --metrics-enabled=true                       \
   --rest-api-enabled=true                      \
-  --p2p-advertised-ip=<your public IP>         \  
+  --p2p-advertised-ip=<your public IP>         \
   --checkpoint-sync-url=<checkpoint sync URL>
 ```
 
@@ -172,7 +172,7 @@ teku \
   --ee-jwt-secret-file=<path to jwtsecret.hex> \
   --metrics-enabled=true                       \
   --rest-api-enabled=true                      \
-  --p2p-advertised-ip=<your public IP>         \  
+  --p2p-advertised-ip=<your public IP>         \
   --checkpoint-sync-url=<checkpoint sync URL>
 ```
 
@@ -206,7 +206,7 @@ teku \
   --ee-jwt-secret-file=<path to jwtsecret.hex>              \
   --metrics-enabled=true                                    \
   --rest-api-enabled=true                                   \
-  --p2p-advertised-ip=<your public IP>                      \  
+  --p2p-advertised-ip=<your public IP>                      \
   --checkpoint-sync-url=<checkpoint sync URL>               \
   --validators-proposer-default-fee-recipient=<ETH address> \
   --validator-keys=<path to key file>:<path to password file>[,<path to key file>:<path to password file>,...]

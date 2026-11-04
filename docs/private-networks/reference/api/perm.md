@@ -69,12 +69,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "perm_addAccountsToAllowlist",
-  "params": [
-    [
-      "0xb9b81ee349c3807e46bc71aa2632203c5b462032",
-      "0xb9b81ee349c3807e46bc71aa2632203c5b462034"
-    ]
-  ],
+  "params": [["0xb9b81ee349c3807e46bc71aa2632203c5b462032", "0xb9b81ee349c3807e46bc71aa2632203c5b462034"]],
   "id": 1
 }
 ```
@@ -231,10 +226,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "0x0000000000000000000000000000000000000009",
-    "0xb9b81ee349c3807e46bc71aa2632203c5b462033"
-  ]
+  "result": ["0x0000000000000000000000000000000000000009", "0xb9b81ee349c3807e46bc71aa2632203c5b462033"]
 }
 ```
 
@@ -415,12 +407,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "perm_removeAccountsFromAllowlist",
-  "params": [
-    [
-      "0xb9b81ee349c3807e46bc71aa2632203c5b462032",
-      "0xb9b81ee349c3807e46bc71aa2632203c5b462034"
-    ]
-  ],
+  "params": [["0xb9b81ee349c3807e46bc71aa2632203c5b462032", "0xb9b81ee349c3807e46bc71aa2632203c5b462034"]],
   "id": 1
 }
 ```

@@ -114,18 +114,18 @@ If running [Besu as a Docker container](../../get-started/install/run-docker-ima
 
 ## Splunk options reference
 
-| Name | Description | Required |
-| --- | --- | --- |
-| `LOGGER` | Set to `Splunk` to activate sending logs to Splunk. | Yes |
-| `HOST` | Current host. If in a Docker environment, the default value is the docker container ID. Otherwise, the default value is `localhost`. | No |
-| `SPLUNK_URL` | URL of the Splunk HTTP Event Collector. For example, use `https://localhost:8088` | Yes |
-| `SPLUNK_TOKEN` | Authentication token, usually of the form `11111111-1111-1111-1111-111111111111` | Yes |
-| `SPLUNK_INDEX` | [Index](https://docs.splunk.com/Splexicon:Index) to store logs. Defaults to `besu` | No |
-| `SPLUNK_SOURCE` | [Source of the logs](https://docs.splunk.com/Splexicon:Source). Defaults to `besu` | No |
-| `SPLUNK_SOURCETYPE` | [Source type of the logs](https://docs.splunk.com/Splexicon:Sourcetype). Defaults to `besu` | No |
-| `SPLUNK_BATCH_SIZE_BYTES` | Size of a log batch in bytes. Defaults to `65536` | No |
-| `SPLUNK_BATCH_SIZE_COUNT` | Size of a log batch in number of events. Defaults to `1000` | No |
-| `SPLUNK_BATCH_INTERVAL` | Interval at which to send log batches. Defaults to `500` | No |
-| `SPLUNK_SKIPTLSVERIFY` | Whether to check the Splunk instance TLS certificate when sending data. Defaults to `false` | No |
+| Name                      | Description                                                                                                                          | Required |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `LOGGER`                  | Set to `Splunk` to activate sending logs to Splunk.                                                                                  | Yes      |
+| `HOST`                    | Current host. If in a Docker environment, the default value is the docker container ID. Otherwise, the default value is `localhost`. | No       |
+| `SPLUNK_URL`              | URL of the Splunk HTTP Event Collector. For example, use `https://localhost:8088`                                                    | Yes      |
+| `SPLUNK_TOKEN`            | Authentication token, usually of the form `11111111-1111-1111-1111-111111111111`                                                     | Yes      |
+| `SPLUNK_INDEX`            | [Index](https://docs.splunk.com/Splexicon:Index) to store logs. Defaults to `besu`                                                   | No       |
+| `SPLUNK_SOURCE`           | [Source of the logs](https://docs.splunk.com/Splexicon:Source). Defaults to `besu`                                                   | No       |
+| `SPLUNK_SOURCETYPE`       | [Source type of the logs](https://docs.splunk.com/Splexicon:Sourcetype). Defaults to `besu`                                          | No       |
+| `SPLUNK_BATCH_SIZE_BYTES` | Size of a log batch in bytes. Defaults to `65536`                                                                                    | No       |
+| `SPLUNK_BATCH_SIZE_COUNT` | Size of a log batch in number of events. Defaults to `1000`                                                                          | No       |
+| `SPLUNK_BATCH_INTERVAL`   | Interval at which to send log batches. Defaults to `500`                                                                             | No       |
+| `SPLUNK_SKIPTLSVERIFY`    | Whether to check the Splunk instance TLS certificate when sending data. Defaults to `false`                                          | No       |
 
 [Create an event index]: https://docs.splunk.com/Documentation/Splunk/8.0.4/Indexer/Setupmultipleindexes#Create_events_indexes

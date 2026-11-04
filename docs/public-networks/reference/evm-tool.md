@@ -742,7 +742,6 @@ docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop -
 
 <TabItem value="CLI example" label="CLI example">
 
-
 ```bash
 evmtool --json state-test stExample/add11.json
 ```
@@ -933,7 +932,6 @@ docker run --rm -v ${PWD}:/opt/referencetests hyperledger/besu-evmtool:develop -
 </TabItem>
 
 <TabItem value="CLI example" label="CLI example">
-
 
 ```bash
 evmtool --json block-test bcExample/shanghaiExample.json

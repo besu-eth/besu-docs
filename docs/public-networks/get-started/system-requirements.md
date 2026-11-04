@@ -29,8 +29,8 @@ OpenJ9 consumes less memory and system resources, but can have worse performance
 If you have more than 32GB RAM (for Besu and your [consensus client](../concepts/node-clients.md#consensus-clients)), use OpenJDK.
 If you have less RAM:
 
-* If you're on Linux (or Unix-based) and your CPU is x86-64 bit architecture (like Intel), use OpenJ9.
-* If you're on ARM-64 CPU architecture (Mac M-series, Raspberry Pi), use OpenJDK.
+- If you're on Linux (or Unix-based) and your CPU is x86-64 bit architecture (like Intel), use OpenJ9.
+- If you're on ARM-64 CPU architecture (Mac M-series, Raspberry Pi), use OpenJDK.
 
 If you have OpenJDK installed or need a fresh installation of OpenJ9, you can pick up the OpenJ9
 docker image, or install the OpenJ9 JDK using the following steps:
@@ -39,24 +39,25 @@ docker image, or install the OpenJ9 JDK using the following steps:
    your OS architecture.
    For example:
 
-    ```bash
-    wget https://github.com/ibmruntimes/semeru25-certified-binaries/releases/download/jdk-25.0.3.0/ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
-    ```
+   ```bash
+   wget https://github.com/ibmruntimes/semeru25-certified-binaries/releases/download/jdk-25.0.3.0/ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
+   ```
+
 2. Uncompress the binaries:
 
     <Tabs>
     <TabItem value="Command" label="Command" default>
 
-    ```bash
-    tar -xvf YOUR_J9_IMAGE.tar.gz
-    ```
+   ```bash
+   tar -xvf YOUR_J9_IMAGE.tar.gz
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```bash
-    tar -xvf ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
-    ```
+   ```bash
+   tar -xvf ibm-semeru-certified-jdk_x64_linux_25.0.3.0.tar.gz
+   ```
 
     </TabItem>
     </Tabs>
@@ -66,16 +67,16 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <Tabs>
     <TabItem value="Command" label="Command" default>
 
-    ```bash
-    sudo cp -r YOUR_IMAGE/ /usr/bin/
-    ```
+   ```bash
+   sudo cp -r YOUR_IMAGE/ /usr/bin/
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```bash
-    sudo cp -r jdk-25.0.3+9/ /usr/bin/
-    ```
+   ```bash
+   sudo cp -r jdk-25.0.3+9/ /usr/bin/
+   ```
 
     </TabItem>
     </Tabs>
@@ -85,37 +86,37 @@ docker image, or install the OpenJ9 JDK using the following steps:
     <Tabs>
     <TabItem value="Command" label="Command" default>
 
-    ```bash
-    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/YOUR_IMAGE" 1
-    sudo update-alternatives --config java (and choose OpenJ9)
-    ```
+   ```bash
+   sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/YOUR_IMAGE" 1
+   sudo update-alternatives --config java (and choose OpenJ9)
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```bash
-    sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/jdk-25.0.3+9/bin/java"
-    ```
+   ```bash
+   sudo update-alternatives --install "/usr/bin/java" "java" "/usr/bin/jdk-25.0.3+9/bin/java"
+   ```
 
     </TabItem>
     </Tabs>
 
-    Change your `JAVA_HOME` to OpenJ9 (if using the JDK implementation), where `jdk-install-dir` is
-    the installation location you specified:
+   Change your `JAVA_HOME` to OpenJ9 (if using the JDK implementation), where `jdk-install-dir` is
+   the installation location you specified:
 
     <Tabs>
     <TabItem value="Command" label="Command" default>
 
-    ```bash
-    export JAVA_HOME=jdk-install-dir
-    ```
+   ```bash
+   export JAVA_HOME=jdk-install-dir
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```bash
-    export JAVA_HOME=/usr/bin/jdk-25.0.3+9
-    ```
+   ```bash
+   export JAVA_HOME=/usr/bin/jdk-25.0.3+9
+   ```
 
     </TabItem>
     </Tabs>

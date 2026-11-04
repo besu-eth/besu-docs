@@ -84,7 +84,7 @@ besu \
   <OTHER_FLAGS>
 ```
 
-Nodes automatically register both the IBFT 2.0 and QBFT wire protocols so they can communicate 
+Nodes automatically register both the IBFT 2.0 and QBFT wire protocols so they can communicate
 before and after the migration block.
 
 :::tip

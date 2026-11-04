@@ -5,7 +5,7 @@ sidebar_position: 3
 toc_max_heading_level: 3
 ---
 
-# Deploy a Besu public node using Kubernetes 
+# Deploy a Besu public node using Kubernetes
 
 You can use a cloud provider such as [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
 or [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-au/products/kubernetes-service) to deploy
@@ -25,19 +25,19 @@ Set up a Kubernetes cluster using a managed Kubernetes service such as
 #### 1. Create a security group for discovery
 
 Create a security group in your VPC that allows traffic from anywhere on ports `30303` and `9000`
-(or equivalent ports that you are using for discovery). 
+(or equivalent ports that you are using for discovery).
 
 ##### Outbound rules
 
 | Type        | Protocol | Port range | Destination |
-|-------------|----------|------------|-------------|
+| ----------- | -------- | ---------- | ----------- |
 | All traffic | All      | All        | `0.0.0.0/0` |
 | All traffic | All      | All        | `::/0`      |
 
 #### Inbound rules
 
 | Type       | Protocol | Port range | Destination | Description |
-|------------|----------|------------|-------------|-------------|
+| ---------- | -------- | ---------- | ----------- | ----------- |
 | Custom UDP | UDP      | `9000`     | `0.0.0.0/0` | CL client   |
 | Custom TCP | TCP      | `9000`     | `0.0.0.0/0` | CL client   |
 | Custom UDP | UDP      | `30303`    | `0.0.0.0/0` | EL client   |
@@ -62,7 +62,7 @@ managedNodeGroups:
   - name: ng-ethereum
     instanceType: m6a.xlarge
     desiredCapacity: 1 # Increase this capacity if you need more nodes.
-    
+
     subnets:
       - public-subnet-id1
       - public-subnet-id2
@@ -111,7 +111,7 @@ new node pool:
     ...
 ```
 
-#### 3. Install the EBS or EFS drivers 
+#### 3. Install the EBS or EFS drivers
 
 We recommend using EBS or NvME storage for your chain data.
 For most cases, the [EBS drivers](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) or
@@ -130,8 +130,7 @@ First, add the following snippet to your StatefulSet:
 ```yaml
 template:
   metadata:
-    labels:
-      ...
+    labels: ...
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
@@ -158,11 +157,11 @@ template:
           - name: pip
             mountPath: /pip
           - name: shared-jwt
-            mountPath: /jwt           
+            mountPath: /jwt
           - name: besu-data
             mountPath: /data
         securityContext:
-          runAsUser: 0                        
+          runAsUser: 0
         command:
         - /bin/bash
         - -xec
@@ -171,7 +170,7 @@ template:
           PUBLIC_IP_TO_ASSOCIATE=$(curl http://ifconfig.me/ip)
           # Store the public IP in a local file to be used by the container.
           echo -ne "$PUBLIC_IP_TO_ASSOCIATE" > /pip/ip
-          
+
           # Create the JWT key.
           openssl rand -hex 32 | tr -d "\n" > /jwt/jwtSecret.hex
 
@@ -213,11 +212,11 @@ template:
           - name: pip
             mountPath: /pip
           - name: shared-jwt
-            mountPath: /jwt             
+            mountPath: /jwt
           - name: besu-data
             mountPath: /data
         securityContext:
-          runAsUser: 0                        
+          runAsUser: 0
         command:
         - /bin/bash
         - -xec
@@ -226,7 +225,7 @@ template:
           PUBLIC_IP_TO_ASSOCIATE=$(curl http://ifconfig.me/ip)
           # Store the public IP in a local file to be used by the container.
           echo -ne "$PUBLIC_IP_TO_ASSOCIATE" > /pip/ip
-          
+
           # Create the JWT key.
           openssl rand -hex 32 | tr -d "\n" > /jwt/jwtSecret.hex
 
@@ -241,7 +240,7 @@ template:
             mountPath: /pip
             readOnly: true
           - name: shared-jwt
-            mountPath: /jwt               
+            mountPath: /jwt
           - name: besu-data
             mountPath: {{ .Values.settings.dataPath }}
         ports:
@@ -262,7 +261,7 @@ template:
             protocol: TCP
           - name: elc-engine
             containerPort: 8551
-            protocol: TCP         
+            protocol: TCP
         command:
           - /bin/sh
           - -c
@@ -272,7 +271,7 @@ template:
             /opt/besu/bin/besu \
               --p2p-host=${pip} \
               ...
-      
+
       - name: teku
         image: consensys/teku:develop
         ...
@@ -287,9 +286,8 @@ template:
           claimName: besu-pvc
       - name: teku-data
         persistentVolumeClaim:
-          claimName: teku-pvc          
+          claimName: teku-pvc
 ```
-
 
 ## Azure AKS
 
@@ -299,7 +297,6 @@ The process for Azure is much the same as that of AWS with a couple of differenc
 
 Create a NSG with ports `30303` and `9000` (or equivalent) open for TCP and UDP.
 Bind this NSG with the subnet you've designated for your Ethereum nodes to ensure that nodes initiated within this subnet will automatically inherit these security rules.
-
 
 #### 2. Add a node pool to your cluster
 
@@ -332,7 +329,6 @@ new node pool:
   }
 ```
 
-
 #### 3. Use Azure StorageClasses to suit your needs
 
 We recommend using either Azure Disk or Azure Files to store your chain data
@@ -340,4 +336,3 @@ using the [CSI storage drivers](https://learn.microsoft.com/en-us/azure/aks/csi-
 If you are using a Terraform to provision your cluster e.g.
 [terraform-azurerm-aks](https://registry.terraform.io/modules/Azure/aks/azurerm/latest)
 the CSI drivers are provisioned automatically for you.
-

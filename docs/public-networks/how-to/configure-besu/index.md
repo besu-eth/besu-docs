@@ -74,6 +74,7 @@ genesis-file="/path/to/genesis.json" # Path to the custom genesis file
 ```bash title="Starting Besu with a configuration file"
 besu --config-file=/home/me/me_node/config.toml
 ```
+
 ## Default configuration
 
 The following tables describe important default values of Besu's configuration.
@@ -84,23 +85,23 @@ For example, extending the default configuration using the [staker profile](prof
 
 ### Peering
 
-|Configuration option|Default|Description|
-|---------------------------|--------------------|------------------------------------------|
-|[`discovery-enabled`](../../reference/options.md#discovery-enabled)|`true`|Besu assumes the node will automatically discover other Ethereum nodes using P2P.|
-|[`p2p-enabled`](../../reference/options.md#p2p-enabled)|`true`|Besu assumes the node will connect P2P.|
-|[`engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled)|`true`|The option's default value is `false`, but Besu enables the Engine API automatically on post-Merge networks. Using the default network (Mainnet), the Engine API is enabled.|
+| Configuration option                                                  | Default | Description                                                                                                                                                                  |
+| --------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`discovery-enabled`](../../reference/options.md#discovery-enabled)   | `true`  | Besu assumes the node will automatically discover other Ethereum nodes using P2P.                                                                                            |
+| [`p2p-enabled`](../../reference/options.md#p2p-enabled)               | `true`  | Besu assumes the node will connect P2P.                                                                                                                                      |
+| [`engine-rpc-enabled`](../../reference/options.md#engine-rpc-enabled) | `true`  | The option's default value is `false`, but Besu enables the Engine API automatically on post-Merge networks. Using the default network (Mainnet), the Engine API is enabled. |
 
 ### Storage
 
-|Configuration option|Default|Description|
-|---------------------------|--------------------|------------------------------------------|
-|[`data-storage-format`](../../reference/options.md#data-storage-format)|`BONSAI`|Besu uses [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries), the most space-efficient data storage format.|
+| Configuration option                                                    | Default  | Description                                                                                                                  |
+| ----------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [`data-storage-format`](../../reference/options.md#data-storage-format) | `BONSAI` | Besu uses [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries), the most space-efficient data storage format. |
 
 ### Sync
 
-|Configuration option|Default|Description|
-|---------------------------|--------------------|------------------------------------------|
-|[`sync-mode`](../../reference/options.md#sync-mode)|`SNAP`|Besu syncs using [snap sync](../../concepts/node-sync.md#snap-synchronization), the most time-efficient sync method.|
+| Configuration option                                | Default | Description                                                                                                          |
+| --------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| [`sync-mode`](../../reference/options.md#sync-mode) | `SNAP`  | Besu syncs using [snap sync](../../concepts/node-sync.md#snap-synchronization), the most time-efficient sync method. |
 
 :::note
 You can see all default configuration values in the [options reference](../../reference/options.md).

@@ -29,19 +29,14 @@ Before making the transaction, check the balances of both accounts to verify the
 ```js
 const web3 = new Web3(host);
 // Pre-seeded account with 90000 ETH
-const privateKeyA =
-  "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3";
+const privateKeyA = "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3";
 const accountA = web3.eth.accounts.privateKeyToAccount(privateKeyA);
-var accountABalance = web3.utils.fromWei(
-  await web3.eth.getBalance(accountA.address),
-);
+var accountABalance = web3.utils.fromWei(await web3.eth.getBalance(accountA.address));
 console.log("Account A has balance of: " + accountABalance);
 
 // Create a new account to transfer ETH to
 var accountB = web3.eth.accounts.create();
-var accountBBalance = web3.utils.fromWei(
-  await web3.eth.getBalance(accountB.address),
-);
+var accountBBalance = web3.utils.fromWei(await web3.eth.getBalance(accountB.address));
 console.log("Account B has balance of: " + accountBBalance);
 ```
 
@@ -50,9 +45,7 @@ Use the test account address (Account A) for the `from` parameter, the recipient
 ```js
 // Send some ETH from A to B
 const rawTxOptions = {
-  nonce: web3.utils.numberToHex(
-    await web3.eth.getTransactionCount(accountA.address),
-  ),
+  nonce: web3.utils.numberToHex(await web3.eth.getTransactionCount(accountA.address)),
   from: accountA.address,
   to: accountB.address,
   value: "0x100", // Amount of ETH to transfer
@@ -65,9 +58,7 @@ console.log("Signing transaction...");
 tx.sign(Buffer.from(accountA.privateKey.substring(2), "hex"));
 console.log("Sending transaction...");
 var serializedTx = tx.serialize();
-const pTx = await web3.eth.sendSignedTransaction(
-  "0x" + serializedTx.toString("hex").toString("hex"),
-);
+const pTx = await web3.eth.sendSignedTransaction("0x" + serializedTx.toString("hex").toString("hex"));
 console.log("tx transactionHash: " + pTx.transactionHash);
 ```
 

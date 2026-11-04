@@ -107,7 +107,7 @@ public class ExamplePlugin implements BesuPlugin { ... }
 ### 4. Register CLI options
 
 Use the `register` method to add plugin CLI options to the Besu command line.
-Retrieve the [`PicoCLIOptions`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PicoCLIOptions.html) service and call `addPicoCLIOptions`, passing a short namespace string and 
+Retrieve the [`PicoCLIOptions`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/services/PicoCLIOptions.html) service and call `addPicoCLIOptions`, passing a short namespace string and
 the object whose fields carry [PicoCLI](https://picocli.info/) `@Option` annotations.
 
 ```java title="ExamplePlugin.java"
@@ -131,7 +131,7 @@ public class ExamplePlugin implements BesuPlugin {
     serviceManager
         .getService(PicoCLIOptions.class)
         .ifPresent(cli -> cli.addPicoCLIOptions("example", this));
-// highlight-end  
+// highlight-end
   }
   ...
 }

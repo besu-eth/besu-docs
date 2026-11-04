@@ -18,7 +18,7 @@ Besu uses [Log4j 2](https://logging.apache.org/log4j/2.x/) for logging and provi
 
 ## Basic logging
 
-Use the [`--logging`](../../reference/options.md#logging) command line option to specify logging verbosity. 
+Use the [`--logging`](../../reference/options.md#logging) command line option to specify logging verbosity.
 This option changes the volume of events displayed in the log.
 Valid log levels are `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`.
 The default level is `INFO`.
@@ -30,7 +30,7 @@ Use the [`admin_changeLogLevel`](../../reference/api/admin.md#admin_changeloglev
 :::
 
 Use the [`--logging-format`](../../reference/options.md#logging-format) option to specify the logging format.
-You can select a structured logging format, which emits each log record as a JSON object in a well-defined 
+You can select a structured logging format, which emits each log record as a JSON object in a well-defined
 format, making logs consistent and machine-readable.
 Valid formats are `PLAIN`, `ECS`, `GCP`, `LOGSTASH`, and `GELF`.
 The default format is `PLAIN`, which specifies traditional pattern-based text logging.
@@ -39,11 +39,11 @@ The default format is `PLAIN`, which specifies traditional pattern-based text lo
 
 You can provide your own logging configuration using the standard Log4j 2 configuration mechanisms.
 
-Besu includes the Log4j JSON Template Layout library, which supplies production-ready templates for each 
+Besu includes the Log4j JSON Template Layout library, which supplies production-ready templates for each
 structured logging format.
 Specify `JsonTemplateLayout` in your configuration file to use the Log4J templates.
 
-The following is an example of a custom configuration file, a configuration file using the default Elastic 
+The following is an example of a custom configuration file, a configuration file using the default Elastic
 Common Schema (ECS) template, and a configuration file using the Google Cloud Platform (GCP) template.
 For more information, see the Log4j
 [configuration file](https://logging.apache.org/log4j/2.x/manual/configuration.html) and
@@ -125,14 +125,14 @@ For more information, see the Log4j
 
 </Tabs>
 
-To use your custom configuration, set the `LOG4J_CONFIGURATION_FILE` environment variable to the location 
+To use your custom configuration, set the `LOG4J_CONFIGURATION_FILE` environment variable to the location
 of your configuration file.
 
 ```bash
 export LOG4J_CONFIGURATION_FILE="<path_to_file>"
 ```
 
-For Bash-based executions, you can set the variable for only the scope of the program execution by setting 
+For Bash-based executions, you can set the variable for only the scope of the program execution by setting
 it before starting Besu.
 
 ```bash title="Set the custom logging and start Besu"

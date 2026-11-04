@@ -59,9 +59,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "qbft_discardValidatorVote",
-  "params": [
-    "0xef1bfb6a12794615c9b0b5a21e6741f01e570185"
-  ],
+  "params": ["0xef1bfb6a12794615c9b0b5a21e6741f01e570185"],
   "id": 1
 }
 ```
@@ -180,14 +178,13 @@ If you specify:
 - List of validator objects.
 
   <Fields>
-
   - `address`: _string_ - Address of the validator.
 
-    :::note
+  :::note
 
-    The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
+  The proposer of the genesis block has address `0x0000000000000000000000000000000000000000`.
 
-    :::
+  :::
 
   - `proposedBlockCount`: _string_ - Hexadecimal integer representing the number of blocks proposed by the validator in the specified range.
 
@@ -223,10 +220,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "qbft_getSignerMetrics",
-  "params": [
-    "0x1",
-    "0x64"
-  ],
+  "params": ["0x1", "0x64"],
   "id": 1
 }
 ```
@@ -304,9 +298,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "qbft_getValidatorsByBlockHash",
-  "params": [
-    "0xbae7d3feafd743343b9a4c578cab5e5d65eb735f6855fb845c00cab356331256"
-  ],
+  "params": ["0xbae7d3feafd743343b9a4c578cab5e5d65eb735f6855fb845c00cab356331256"],
   "id": 1
 }
 ```
@@ -319,11 +311,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "0x42d4287eac8078828cf5f3486cfe601a275a49a5",
-    "0xb1b2bc9582d2901afdc579f528a35ca41403fa85",
-    "0xef1bfb6a12794615c9b0b5a21e6741f01e570185"
-  ]
+  "result": ["0x42d4287eac8078828cf5f3486cfe601a275a49a5", "0xb1b2bc9582d2901afdc579f528a35ca41403fa85", "0xef1bfb6a12794615c9b0b5a21e6741f01e570185"]
 }
 ```
 
@@ -386,9 +374,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "qbft_getValidatorsByBlockNumber",
-  "params": [
-    "latest"
-  ],
+  "params": ["latest"],
   "id": 1
 }
 ```
@@ -401,11 +387,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "0x42d4287eac8078828cf5f3486cfe601a275a49a5",
-    "0xb1b2bc9582d2901afdc579f528a35ca41403fa85",
-    "0xef1bfb6a12794615c9b0b5a21e6741f01e570185"
-  ]
+  "result": ["0x42d4287eac8078828cf5f3486cfe601a275a49a5", "0xb1b2bc9582d2901afdc579f528a35ca41403fa85", "0xef1bfb6a12794615c9b0b5a21e6741f01e570185"]
 }
 ```
 
@@ -457,10 +439,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "qbft_proposeValidatorVote",
-  "params": [
-    "0x42d4287eac8078828cf5f3486cfe601a275a49a5",
-    true
-  ],
+  "params": ["0x42d4287eac8078828cf5f3486cfe601a275a49a5", true],
   "id": 1
 }
 ```

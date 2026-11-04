@@ -16,12 +16,12 @@ If you're using [Teku](https://docs.teku.consensys.net/en/latest/) as a consensu
 :::note
 
 - Sepolia is a permissioned network and you can't run a validator client on it without
-    [requesting to become a validator](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg) first. You can connect
-    your consensus client using the beacon node only, without any validator duties.
+  [requesting to become a validator](https://notes.ethereum.org/zvkfSmYnT0-uxwwEegbCqg) first. You can connect
+  your consensus client using the beacon node only, without any validator duties.
 
 - Ephemery is a single network that resets to the genesis block after a set period. The network focuses on
-    short-term, intensive testing use cases. This approach avoids issues like insufficient testnet funds, inactive
-    validators, and state bloat that long-running testnets face.
+  short-term, intensive testing use cases. This approach avoids issues like insufficient testnet funds, inactive
+  validators, and state bloat that long-running testnets face.
 
 :::
 
@@ -112,19 +112,19 @@ besu \
 
   <TabItem value="Ephemery" label="Ephemery">
 
-  ```bash
-  besu \
-    --network=ephemery          \
-    --rpc-http-enabled=true     \
-    --rpc-http-host=0.0.0.0     \
-    --rpc-http-cors-origins="*" \
-    --rpc-ws-enabled=true       \
-    --rpc-ws-host=0.0.0.0       \
-    --host-allowlist="*"        \
-    --engine-host-allowlist="*" \
-    --engine-rpc-enabled        \
-    --engine-jwt-secret=<path to jwtsecret.hex>
-  ```
+```bash
+besu \
+  --network=ephemery          \
+  --rpc-http-enabled=true     \
+  --rpc-http-host=0.0.0.0     \
+  --rpc-http-cors-origins="*" \
+  --rpc-ws-enabled=true       \
+  --rpc-ws-host=0.0.0.0       \
+  --host-allowlist="*"        \
+  --engine-host-allowlist="*" \
+  --engine-rpc-enabled        \
+  --engine-jwt-secret=<path to jwtsecret.hex>
+```
 
   </TabItem>
 </Tabs>

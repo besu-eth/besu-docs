@@ -7,9 +7,9 @@ description: Using Besu with Hardhat
 # Use Hardhat
 
 Developing for Besu using Hardhat is the same as developing for public Ethereum networks using Hardhat. Hardhat
-supports Besu with the only difference being Besu does not support private key management. 
+supports Besu with the only difference being Besu does not support private key management.
 
-You can therefore use a wallet provider, or specify your private  key in the code.
+You can therefore use a wallet provider, or specify your private key in the code.
 
 ## Private key management
 

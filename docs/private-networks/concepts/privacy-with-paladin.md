@@ -82,18 +82,18 @@ unacceptable.
 
 ### Domain comparison
 
-| | Pente | Noto | Zeto |
-| -------------------------------- | ----------------------------- | ------------------------------------------- | ------------------------------------------------------- |
-| **Privacy mechanism** | Encrypted EVM state | UTXO hashes, notary co-signs | UTXO hashes and Groth16 ZK proof |
-| **Who can see amounts** | Group members only | Notary sees all; participants see own txns | Sender and receiver only |
-| **Who must sign** | Submitting node | Sender and notary (automatic in basic mode) | Sender only (proof substitutes co-signer) |
-| **Trusted third party** | No | Yes (notary) | No |
-| **Smart contract support** | Yes (private EVM) | No | No |
-| **Token transfers** | No (compute, not value) | Yes | Yes |
-| **Double-spend protection** | EVM state | Notary enforces UTXO rules | Nullifiers (`Zeto_AnonNullifier`) or none (`Zeto_Anon`) |
-| **Proof of validity** | EVM re-execution by members | Notary signature | Cryptographic (Groth16 SNARK) |
-| **Transaction latency** | Seconds | Seconds | Under 30s (native binaries); 3–5 min first-run warm-up with bundled `libzeto.so` (WASM) |
-| **Best for** | Private business logic | Regulated tokens with oversight | Maximum privacy, no trusted party |
+|                             | Pente                       | Noto                                        | Zeto                                                                                    |
+| --------------------------- | --------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **Privacy mechanism**       | Encrypted EVM state         | UTXO hashes, notary co-signs                | UTXO hashes and Groth16 ZK proof                                                        |
+| **Who can see amounts**     | Group members only          | Notary sees all; participants see own txns  | Sender and receiver only                                                                |
+| **Who must sign**           | Submitting node             | Sender and notary (automatic in basic mode) | Sender only (proof substitutes co-signer)                                               |
+| **Trusted third party**     | No                          | Yes (notary)                                | No                                                                                      |
+| **Smart contract support**  | Yes (private EVM)           | No                                          | No                                                                                      |
+| **Token transfers**         | No (compute, not value)     | Yes                                         | Yes                                                                                     |
+| **Double-spend protection** | EVM state                   | Notary enforces UTXO rules                  | Nullifiers (`Zeto_AnonNullifier`) or none (`Zeto_Anon`)                                 |
+| **Proof of validity**       | EVM re-execution by members | Notary signature                            | Cryptographic (Groth16 SNARK)                                                           |
+| **Transaction latency**     | Seconds                     | Seconds                                     | Under 30s (native binaries); 3–5 min first-run warm-up with bundled `libzeto.so` (WASM) |
+| **Best for**                | Private business logic      | Regulated tokens with oversight             | Maximum privacy, no trusted party                                                       |
 
 ## Factory contracts
 

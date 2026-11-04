@@ -80,7 +80,7 @@ BESU_OPTS="-XX:HeapDumpPath=/<path>/<to>/<directory>"
 
 ## Default options
 
-To reduce Besu memory footprint, the following G1GC Java options are enabled by default: 
+To reduce Besu memory footprint, the following G1GC Java options are enabled by default:
 
 ```bash
 -XX:G1ConcRefinementThreads=2
@@ -88,4 +88,4 @@ To reduce Besu memory footprint, the following G1GC Java options are enabled by 
 -XX:MaxGCPauseMillis=100
 ```
 
-To run Besu without the default G1GC options, use the `besu-untuned` start script. 
+To run Besu without the default G1GC options, use the `besu-untuned` start script.

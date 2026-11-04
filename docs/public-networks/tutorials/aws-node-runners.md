@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 [AWS Blockchain Node Runners](https://aws-samples.github.io/aws-blockchain-node-runners/docs/intro)
 is an open-source initiative aimed at simplifying the deployment of self-managed blockchain nodes
-on AWS using vetted deployment blueprints and infrastructure configurations. 
+on AWS using vetted deployment blueprints and infrastructure configurations.
 AWS Node Runners solves common challenges in architecting and deploying blockchain nodes on AWS,
 helping users identify optimal configurations for specific protocol clients.
 
@@ -54,9 +54,9 @@ In this highly available, multiple node setup:
 
 ### Architecture checklist
 
-The following is a checklist for an implementation of the AWS Blockchain Node Runners. 
+The following is a checklist for an implementation of the AWS Blockchain Node Runners.
 This checklist takes into account questions from the [AWS Well-Architected framework](https://aws.amazon.com/architecture/well-architected/)
-that are relevant to this workload. 
+that are relevant to this workload.
 You can add more checks from the framework if required for your workload.
 
 <table>
@@ -176,7 +176,7 @@ modify parameters in the `config/config.ts` file.
 #### 1.1. Log into AWS
 
 Log in to your [AWS account](https://aws.amazon.com/) with permissions to create and modify
-resources in IAM, EC2, EBS, VPC, S3, KMS, and Secrets Manager. 
+resources in IAM, EC2, EBS, VPC, S3, KMS, and Secrets Manager.
 From the AWS Management Console, open the [AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html),
 a web-based shell environment.
 For more information, see [this demo](https://youtu.be/fz4rbjRaiQM) on
@@ -185,7 +185,7 @@ which you'll use to test APIs from an internal IP address space.
 
 #### 1.2. Install dependencies
 
-To deploy and test blueprints in the CloudShell, clone the following repository and install dependencies: 
+To deploy and test blueprints in the CloudShell, clone the following repository and install dependencies:
 
 ```bash
 git clone https://github.com/aws-samples/aws-blockchain-node-runners.git
@@ -199,47 +199,47 @@ In the root directory of your project:
 
 1. If you have deleted or don't have the default VPC, create a default VPC:
 
-    ```bash
-    aws ec2 create-default-vpc
-    ```
-  
-    :::note
-    You might see the following error if the default VPC already exists: 
-    
-    ```bash
-    An error occurred (DefaultVpcAlreadyExists) when calling the CreateDefaultVpc operation: A Default VPC already exists for this account in this region.
-    ``` 
-   
-    This means that the default VPC must have at least two public subnets in different availability
-    zones, and public subnet must set `Auto-assign public IPv4 address` to `YES`.
-    :::
+   ```bash
+   aws ec2 create-default-vpc
+   ```
+
+   :::note
+   You might see the following error if the default VPC already exists:
+
+   ```bash
+   An error occurred (DefaultVpcAlreadyExists) when calling the CreateDefaultVpc operation: A Default VPC already exists for this account in this region.
+   ```
+
+   This means that the default VPC must have at least two public subnets in different availability
+   zones, and public subnet must set `Auto-assign public IPv4 address` to `YES`.
+   :::
 
 1. Configure your Node Runners Ethereum blueprint deployment.
    To specify the Ethereum client combination you want to deploy, create your own copy of the `.env`
    file and edit it using your preferred text editor.
    The following example uses a sample configuration from the repository for a Besu and Teku node deployment:
 
-    ```bash
-    # Ensure you're in aws-blockchain-node-runners/lib/ethereum
-    cd lib/ethereum
-    pwd
-    cp ./sample-configs/.env-besu-teku .env
-    nano .env
-    ```
-  
-    :::note
-    You can find more examples for other Ethereum client combinations in the `sample-configs` directory.
-    :::
+   ```bash
+   # Ensure you're in aws-blockchain-node-runners/lib/ethereum
+   cd lib/ethereum
+   pwd
+   cp ./sample-configs/.env-besu-teku .env
+   nano .env
+   ```
+
+   :::note
+   You can find more examples for other Ethereum client combinations in the `sample-configs` directory.
+   :::
 
 1. Deploy common components, such as IAM role and Amazon S3 bucket to store data snapshots:
 
-    ```bash
-    pwd
-    # Ensure you're in aws-blockchain-node-runners/lib/ethereum
-    npx cdk deploy eth-common
-    ```
+   ```bash
+   pwd
+   # Ensure you're in aws-blockchain-node-runners/lib/ethereum
+   npx cdk deploy eth-common
+   ```
 
-### 3. Deploy  nodes
+### 3. Deploy nodes
 
 Deploy your node or nodes, depending on your setup:
 
@@ -252,16 +252,16 @@ In a single RPC node setup:
 
 1. Deploy the node:
 
-    ```bash
-    pwd
-    # Ensure you're in aws-blockchain-node-runners/lib/ethereum
-    npx cdk deploy eth-single-node --json --outputs-file single-node-deploy.json
-    ```
+   ```bash
+   pwd
+   # Ensure you're in aws-blockchain-node-runners/lib/ethereum
+   npx cdk deploy eth-single-node --json --outputs-file single-node-deploy.json
+   ```
 
-    :::note
-    The default VPC must have at least two public subnets in different Availability Zones, and the
-    public subnets must set `Auto-assign public IPv4 address` to `YES`.
-    :::
+   :::note
+   The default VPC must have at least two public subnets in different Availability Zones, and the
+   public subnets must set `Auto-assign public IPv4 address` to `YES`.
+   :::
 
 1. After starting the node, wait for the initial synchronization process to finish.
    It can take half a day to approximately 6-10 days, depending on the client combination and
@@ -280,30 +280,30 @@ In a single RPC node setup:
    The RPC port is not exposed to the Internet.
    Run the following query against the private IP of the single RPC node you deployed:
 
-    ```bash
-    INSTANCE_ID=$(cat single-node-deploy.json | jq -r '..|.node-instance-id? | select(. != null)')
-    NODE_INTERNAL_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
-    echo "NODE_INTERNAL_IP=$NODE_INTERNAL_IP"
-    ```
+   ```bash
+   INSTANCE_ID=$(cat single-node-deploy.json | jq -r '..|.node-instance-id? | select(. != null)')
+   NODE_INTERNAL_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text)
+   echo "NODE_INTERNAL_IP=$NODE_INTERNAL_IP"
+   ```
 
-    Copy the output from the last `echo` command with `NODE_INTERNAL_IP=<internal_IP>` and open
-    [CloudShell tab with VPC environment](https://docs.aws.amazon.com/cloudshell/latest/userguide/creating-vpc-environment.html)
-    to access the internal IP address space.
-    Paste `NODE_INTERNAL_IP=<internal_IP>` into the new CloudShell tab.
-    Then, query the API:
-    
-    ``` bash
-    # IMPORTANT: Run from CloudShell VPC environment tab
-    # This queries the token balance of a Beacon deposit contract: https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa
-    curl http://$NODE_INTERNAL_IP:8545 -X POST -H "Content-Type: application/json" \
-    --data '{"method":"eth_getBalance","params":["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1,"jsonrpc":"2.0"}'
-    ```
+   Copy the output from the last `echo` command with `NODE_INTERNAL_IP=<internal_IP>` and open
+   [CloudShell tab with VPC environment](https://docs.aws.amazon.com/cloudshell/latest/userguide/creating-vpc-environment.html)
+   to access the internal IP address space.
+   Paste `NODE_INTERNAL_IP=<internal_IP>` into the new CloudShell tab.
+   Then, query the API:
 
-    The result should look like the following (the actual balance might change):
-    
-    ```javascript
-    {"jsonrpc":"2.0","id":1,"result":"0xe791d050f91d9949d344d"}
-    ```
+   ```bash
+   # IMPORTANT: Run from CloudShell VPC environment tab
+   # This queries the token balance of a Beacon deposit contract: https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa
+   curl http://$NODE_INTERNAL_IP:8545 -X POST -H "Content-Type: application/json" \
+   --data '{"method":"eth_getBalance","params":["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1,"jsonrpc":"2.0"}'
+   ```
+
+   The result should look like the following (the actual balance might change):
+
+   ```javascript
+   {"jsonrpc":"2.0","id":1,"result":"0xe791d050f91d9949d344d"}
+   ```
 
 #### 3.2. (Option 2) Highly available RPC nodes
 
@@ -311,16 +311,16 @@ In a highly available multi-node setup:
 
 1. Deploy the sync node:
 
-    ```bash
-    pwd
-    # Ensure you're in aws-blockchain-node-runners/lib/ethereum
-    npx cdk deploy eth-sync-node --json --outputs-file sync-node-deploy.json
-    ```
-   
-    :::note
-    The default VPC must have at least two public subnets in different Availability Zones, and the
-    public subnets must set `Auto-assign public IPv4 address` to `YES`.
-    :::
+   ```bash
+   pwd
+   # Ensure you're in aws-blockchain-node-runners/lib/ethereum
+   npx cdk deploy eth-sync-node --json --outputs-file sync-node-deploy.json
+   ```
+
+   :::note
+   The default VPC must have at least two public subnets in different Availability Zones, and the
+   public subnets must set `Auto-assign public IPv4 address` to `YES`.
+   :::
 
 1. After starting the node, wait for the initial synchronization process to finish.
    It can take from half a day to approximately 6-10 days, depending on the client combination and
@@ -330,68 +330,68 @@ In a highly available multi-node setup:
    When the node is fully synced, those two metrics should be `0`.
    To see them:
 
-    - Navigate to [CloudWatch service](https://console.aws.amazon.com/cloudwatch/) (make sure you are
-    in the region you have specified for `AWS_REGION`).
-    - Open `Dashboards` and select `eth-sync-node-<your-eth-client-combination>` from the list of dashboards.
+   - Navigate to [CloudWatch service](https://console.aws.amazon.com/cloudwatch/) (make sure you are
+     in the region you have specified for `AWS_REGION`).
+   - Open `Dashboards` and select `eth-sync-node-<your-eth-client-combination>` from the list of dashboards.
 
-    Once the synchronization process is over, the script automatically stops both clients and copies
-    all the contents of the `/data` directory to your snapshot S3 bucket.
-    That can take from 30 minutes to approximately 2 hours.
-    During the process, you will see lower CPU and RAM usage, but high data disc throughput and
-    outbound network traffic.
-    The script automatically starts the clients after the process is done.
-    
-    :::note
-    The snapshot backup process automatically runs every day at midnight of the time zone were the
-    sync node runs.
-    To change the schedule, modify `crontab` of the root user on the node's EC2 instance.
-    :::
+   Once the synchronization process is over, the script automatically stops both clients and copies
+   all the contents of the `/data` directory to your snapshot S3 bucket.
+   That can take from 30 minutes to approximately 2 hours.
+   During the process, you will see lower CPU and RAM usage, but high data disc throughput and
+   outbound network traffic.
+   The script automatically starts the clients after the process is done.
+
+   :::note
+   The snapshot backup process automatically runs every day at midnight of the time zone were the
+   sync node runs.
+   To change the schedule, modify `crontab` of the root user on the node's EC2 instance.
+   :::
 
 1. Configure and deploy two RPC nodes:
 
-    ```bash
-    pwd
-    # Ensure you're in aws-blockchain-node-runners/lib/ethereum
-    npx cdk deploy eth-rpc-nodes --json --outputs-file rpc-node-deploy.json
-    ```
+   ```bash
+   pwd
+   # Ensure you're in aws-blockchain-node-runners/lib/ethereum
+   npx cdk deploy eth-rpc-nodes --json --outputs-file rpc-node-deploy.json
+   ```
 
 1. Give the new RPC nodes approximately 30 minutes to initialize, then run the following query
    against the load balancer behind the RPC node created:
 
-    ```bash
-    export ETH_RPC_ABL_URL=$(cat rpc-node-deploy.json | jq -r '..|.alburl? | select(. != null)')
-    echo ETH_RPC_ABL_URL=$ETH_RPC_ABL_URL
-    ```
-    
-    ```bash
-    # IMPORTANT: Run from CloudShell VPC environment tab
-    # We query token balance of Beacon deposit contract: https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa
-    curl http://$ETH_RPC_ABL_URL:8545 -X POST -H "Content-Type: application/json" \
-     --data '{"method":"eth_getBalance","params":["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1,"jsonrpc":"2.0"}'
-    ```
-    
-    The result should look like the following (the actual balance might change):
-    
-    ```javascript
-    {"jsonrpc":"2.0","id":1,"result":"0xe791d050f91d9949d344d"}
-    ```
+   ```bash
+   export ETH_RPC_ABL_URL=$(cat rpc-node-deploy.json | jq -r '..|.alburl? | select(. != null)')
+   echo ETH_RPC_ABL_URL=$ETH_RPC_ABL_URL
+   ```
 
-    If the nodes are still starting and catching up with the chain, you will see the following response:
+   ```bash
+   # IMPORTANT: Run from CloudShell VPC environment tab
+   # We query token balance of Beacon deposit contract: https://etherscan.io/address/0x00000000219ab540356cbb839cbe05303d7705fa
+   curl http://$ETH_RPC_ABL_URL:8545 -X POST -H "Content-Type: application/json" \
+    --data '{"method":"eth_getBalance","params":["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1,"jsonrpc":"2.0"}'
+   ```
 
-    ```HTML
-    <html>
-    <head><title>503 Service Temporarily Unavailable</title></head>
-    <body>
-    <center><h1>503 Service Temporarily Unavailable</h1></center>
-    </body>
-    ```
+   The result should look like the following (the actual balance might change):
 
-    :::note
-    By default and for security reasons, the load balancer is available only from within the default
-    VPC in the region where it is deployed.
-    It is not available from the Internet and is not open for external connections.
-    Before opening it up, protect your RPC APIs.
-    :::
+   ```javascript
+   {"jsonrpc":"2.0","id":1,"result":"0xe791d050f91d9949d344d"}
+   ```
+
+   If the nodes are still starting and catching up with the chain, you will see the following response:
+
+   ```HTML
+   <html>
+   <head><title>503 Service Temporarily Unavailable</title></head>
+   <body>
+   <center><h1>503 Service Temporarily Unavailable</h1></center>
+   </body>
+   ```
+
+   :::note
+   By default and for security reasons, the load balancer is available only from within the default
+   VPC in the region where it is deployed.
+   It is not available from the Internet and is not open for external connections.
+   Before opening it up, protect your RPC APIs.
+   :::
 
 ### 4. Clear and undeploy nodes
 

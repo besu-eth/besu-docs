@@ -24,34 +24,20 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 - `call`: _object_ - Transaction call object.
 
   <Fields>
-
   - `from`: _data, 20 bytes_ - Address of the sender.
-
   - `to`: _data, 20 bytes_ - Address of the action receiver.
-
   - `gas`: _integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
-
   - `gasPrice`: _integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
   - `maxPriorityFeePerGas`: _integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
-
   - `maxFeePerGas`: _integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-
-  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
+  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
   - `nonce`: _integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
-
   - `value`: _integer_ - Value transferred, in Wei.
-
   - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
-
   - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
-
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
-
   - `strict`: _boolean_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-
-  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
   <br />
 
@@ -72,22 +58,16 @@ By default, the `eth_call` error response includes the [revert reason](../../../
   :::
 
 - `stateOverride`: _object_ - (Optional) The address-to-state mapping.
-    Each entry specifies a state that will be temporarily overridden before executing the call.
-    This allows you to test, analyze, and debug smart contracts more efficiently by allowing
-    temporary state changes without affecting the actual blockchain state.
+  Each entry specifies a state that will be temporarily overridden before executing the call.
+  This allows you to test, analyze, and debug smart contracts more efficiently by allowing
+  temporary state changes without affecting the actual blockchain state.
 
   <Fields>
-
   - `balance`: _quantity_ - Temporary account balance for the call execution.
-
   - `nonce`: _quantity_ - Temporary nonce value for the call execution.
-
   - `code`: _binary_ - Bytecode to inject into the account.
-
   - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
-
   - `state`: _quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
-
   - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
   </Fields>
@@ -281,9 +261,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc":"2.0",
-  "id":1,
-  "result":"0x0000000000000000000000000000000000000000000000000000000000004e20"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0x0000000000000000000000000000000000000000000000000000000000004e20"
 }
 ```
 
@@ -303,34 +283,20 @@ If the simulated transaction reverts, the result also includes an error message.
 - `transaction`: _object_ - Transaction call object.
 
   <Fields>
-
   - `from`: _data, 20 bytes_ - Address of the sender.
-
   - `to`: _data, 20 bytes_ - Address of the action receiver.
-
   - `gas`: _integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
-
   - `gasPrice`: _integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
   - `maxPriorityFeePerGas`: _integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
-
   - `maxFeePerGas`: _integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-
-  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
+  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
   - `nonce`: _integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
-
   - `value`: _integer_ - Value transferred, in Wei.
-
   - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
-
   - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
-
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
-
   - `strict`: _boolean_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-
-  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
   </Fields>
 
@@ -343,19 +309,14 @@ If the simulated transaction reverts, the result also includes an error message.
 - Access list object.
 
   <Fields>
-
   - `accessList`: _array_ of _objects_ - List of objects.
 
     <Fields>
-
     - `address`: _string_ - Addresses to be accessed by the transaction.
-
-    - `storageKeys`: _array_ - Storage keys to be accessed by the transaction.
+  - `storageKeys`: _array_ - Storage keys to be accessed by the transaction.
 
     </Fields>
-
   - `gasUsed`: _string_ - Approximate gas cost for the transaction if the access list is included.
-
   - `error`: _string_ - (Optional) `"execution reverted"` when the simulation does not succeed.
     Omitted when the simulation succeeds.
 
@@ -447,34 +408,20 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 - `call`: _object_ - Transaction call object.
 
   <Fields>
-
   - `from`: _data, 20 bytes_ - Address of the sender.
-
   - `to`: _data, 20 bytes_ - Address of the action receiver.
-
   - `gas`: _integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
-
   - `gasPrice`: _integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
   - `maxPriorityFeePerGas`: _integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
-
   - `maxFeePerGas`: _integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-
-  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
+  - `maxFeePerBlobGas`: _integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
   - `nonce`: _integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
-
   - `value`: _integer_ - Value transferred, in Wei.
-
   - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
-
   - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
-
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
-
   - `strict`: _boolean_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-
-  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
   <br />
 
@@ -492,21 +439,15 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
   The default is `pending`.
 
 - `stateOverride`: _object_ - The address-to-state mapping.
-    Each entry specifies a state that will be temporarily overridden before executing the call.
-    This allows you to make temporary state changes without affecting the actual blockchain state.
+  Each entry specifies a state that will be temporarily overridden before executing the call.
+  This allows you to make temporary state changes without affecting the actual blockchain state.
 
   <Fields>
-
   - `balance`: _quantity_ - Temporary account balance for the call execution.
-
   - `nonce`: _quantity_ - Temporary nonce value for the call execution.
-
   - `code`: _binary_ - Bytecode to inject into the account.
-
   - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
-
   - `state`: _quantity_ - `key:value` pairs to override all slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
-
   - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
   </Fields>
@@ -690,9 +631,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc":"2.0",
-  "id":1,
-  "result":"0xfa07"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0xfa07"
 }
 ```
 
@@ -712,15 +653,12 @@ block parameters without submitting them to the network.
 - `payload`: _object_ - Transaction simulation payload object.
 
   <Fields>
-
   - `blockStateCalls`: _array_ of _objects_ - List of block state call objects.
 
     <Fields>
-
     - `blockOverrides`: _object_ - Block fields to override for this simulated block.
 
       <Fields>
-
       - `baseFeePerGas`: _quantity_ - Base fee per gas for the block.
 
       - `blobBaseFee`: _quantity_ - Base fee per unit of blob gas.
@@ -741,64 +679,43 @@ block parameters without submitting them to the network.
 
       </Fields>
 
-    - `stateOverrides`: _object_ - Map of account addresses to state overrides.
-      Each key is a 20-byte address.
+  - `stateOverrides`: _object_ - Map of account addresses to state overrides.
+    Each key is a 20-byte address.
 
-      <Fields>
-
-      - `balance`: _quantity_ - Temporary account balance for the call execution.
-
-      - `nonce`: _quantity_ - Temporary nonce value for the call execution.
-
-      - `code`: _binary_ - Bytecode to inject into the account.
-
-      - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
-
-      - `state`: _object_ - Map of storage slots to values. Overrides the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
-
-      - `stateDiff`: _object_ - Map of storage slots to values. Overrides individual slots. You cannot set both the `state` and `stateDiff` options simultaneously.
-
-      </Fields>
-
-    - `calls`: _array_ of _objects_ - List of transaction call objects.
-
-
-      <Fields>
-
-      - `from`: _data, 20 bytes_ - Address of the sender.
-
-      - `to`: _data, 20 bytes_ - Address of the action receiver.
-
-      - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
-
-      - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
-      - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
-
-      - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-
-      - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
-      - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
-
-      - `value`: _quantity, integer_ - Value transferred, in Wei.
-
-      - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
-
-      - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
-
-      - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
-
-      - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-
-      - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
-
-      </Fields>
+    <Fields>
+    - `balance`: _quantity_ - Temporary account balance for the call execution.
+    - `nonce`: _quantity_ - Temporary nonce value for the call execution.
+    - `code`: _binary_ - Bytecode to inject into the account.
+    - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
+    - `state`: _object_ - Map of storage slots to values. Overrides the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
+    - `stateDiff`: _object_ - Map of storage slots to values. Overrides individual slots. You cannot set both the `state` and `stateDiff` options simultaneously.
 
     </Fields>
 
-  - `traceTransfers`:  _boolean_ - (Optional) If `true`, ETH transfers are added as ERC-20 transfer
-      events to the logs, allowing you to trace value transfers. The default is `false`.
+  - `calls`: _array_ of _objects_ - List of transaction call objects.
+
+    <Fields>
+    - `from`: _data, 20 bytes_ - Address of the sender.
+    - `to`: _data, 20 bytes_ - Address of the action receiver.
+    - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
+    - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
+    - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
+    - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+    - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
+    - `value`: _quantity, integer_ - Value transferred, in Wei.
+    - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
+    - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
+    - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
+    - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
+    - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+
+    </Fields>
+
+    </Fields>
+
+  - `traceTransfers`: _boolean_ - (Optional) If `true`, ETH transfers are added as ERC-20 transfer
+    events to the logs, allowing you to trace value transfers. The default is `false`.
 
   - `validation`: _boolean_ - (Optional) If `true`, `eth_simulateV1` does all the validation that a
     normal EVM would do, except contract sender and signature checks. If `false`, `eth_simulateV1` behaves like `eth_call`.
@@ -818,161 +735,94 @@ block parameters without submitting them to the network.
 - List of simulation result objects.
 
   <Fields>
-
   - All the fields of a block object.
 
     <Fields>
-
     - `number`: _quantity, integer_ - Block number. `null` when block is pending.
+  - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
+  - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
+  - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
+  - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
+  - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
+  - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
+  - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
+  - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
+  - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
+  - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
+  - `difficulty`: _quantity, integer_ - Difficulty for this block.
+  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
+  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
+  - `size`: _quantity, integer_ - Size of block in bytes.
+  - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
+  - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
+  - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
+  - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
-    - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
-    - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
-    - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
-    - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
-    - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
-    - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
-    - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
-    - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
-    - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
-    - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
-    - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
-    - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
-    - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
-    - `size`: _quantity, integer_ - Size of block in bytes.
-
-    - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
-    - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
-    - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
-    - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
-
-      <Fields>
-
-      - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
-      - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
-      - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
-      - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
-      - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
-      - `from`: _data, 20 bytes_ - Address of the sender.
-
-      - `gas`: _quantity_ - Gas provided by the sender.
-
-      - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
-      - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
-      - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
-      - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
-      - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
-      - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
-      - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
-      - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-      - `transactionType`: _string_ - [Transaction type](../../../concepts/transactions/types.md).
-
-      - `value`: _quantity_ - Value transferred, in Wei.
-
-      - `v`: _quantity_ - ECDSA Recovery ID.
-
-      - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-      - `s`: _data, 32 bytes_ - ECDSA signature s.
-
-      </Fields>
-
-    - `uncles`: _array_ - Array of uncle hashes.
-
-    - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
-    - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
-    - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
-      <Fields>
-
-      - `index`: _quantity_ - Index of the withdrawal.
-
-      - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
-      - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
-      - `amount`: _quantity_ - Amount withdrawn, in Gwei.
-
-      </Fields>
-
-    - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
-    - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
-    - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
-    - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
+    <Fields>
+    - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
+    - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
+    - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
+    - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
+    - `from`: _data, 20 bytes_ - Address of the sender.
+    - `gas`: _quantity_ - Gas provided by the sender.
+    - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+    - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
+    - `hash`: _data, 32 bytes_ - Hash of the transaction.
+    - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
+    - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
+    - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
+    - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
+    - `transactionType`: _string_ - [Transaction type](../../../concepts/transactions/types.md).
+    - `value`: _quantity_ - Value transferred, in Wei.
+    - `v`: _quantity_ - ECDSA Recovery ID.
+    - `r`: _data, 32 bytes_ - ECDSA signature r.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
+  - `uncles`: _array_ - Array of uncle hashes.
+  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+  - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+  - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
+    <Fields>
+    - `index`: _quantity_ - Index of the withdrawal.
+    - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
+    - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
+    - `amount`: _quantity_ - Amount withdrawn, in Gwei.
+
+    </Fields>
+  - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+  - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+  - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
+  - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
+
+    </Fields>
   - `calls`: _array_ of _objects_ - List of call result objects.
 
     <Fields>
-
     - `returnData`: _data_ - Data returned for the call.
-
     - `logs`: _array_ - Array of log objects generated during the call.
 
       <Fields>
-
       - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
-
       - `logIndex`: _quantity, integer_ - Position among logs returned for that simulated
         block, starting at `0`.
+  - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+  - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
+  - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
+  - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
+  - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
+  - `address`: _data, 20 bytes_ - Address the log originated from.
+  - `data`: _data_ - Non-indexed arguments of the log.
+  - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
 
-      - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
+    </Fields>
 
-      - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
-
-      - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
-
-      - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
-
-      - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
-
-      - `address`: _data, 20 bytes_ - Address the log originated from.
-
-      - `data`: _data_ - Non-indexed arguments of the log.
-
-      - `topics`: _array of data, 32 bytes each_ - [Event signature hash](../../../concepts/events-and-logs.md#event-signature-hash) and 0 to 3 [indexed log arguments](../../../concepts/events-and-logs.md#event-parameters).
-
-      </Fields>
-
-    - `gasUsed`: _quantity_ - Amount of gas used by the call.
-
-    - `maxUsedGas`: _quantity_ - Maximum gas used during the call before any refunds.
-
-    - `status`: _quantity_ - Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed.
+  - `gasUsed`: _quantity_ - Amount of gas used by the call.
+  - `maxUsedGas`: _quantity_ - Maximum gas used during the call before any refunds.
+  - `status`: _quantity_ - Status indicating whether the call succeeded (`0x1`). `0x0` indicates that a call has failed.
 
     </Fields>
 
@@ -1150,16 +1000,13 @@ curl -X POST http://127.0.0.1:8545/ \
       "size": "0x29c",
       "stateRoot": "0xd6da11fae4ab94ddba2c4c71206962f7c6eaec6e5fabf00f3f7540c4ed7ad8f1",
       "timestamp": "0x67803e64",
-      "transactions": [
-        "0xe7217784e0c3f7b35d39303b1165046e9b7e8af9b9cf80d5d5f96c3163de8f51",
-        "0xf0182201606ec03701ba3a07d965fabdb4b7d06b424f226ea7ec3581802fc6fa"
-      ],
+      "transactions": ["0xe7217784e0c3f7b35d39303b1165046e9b7e8af9b9cf80d5d5f96c3163de8f51", "0xf0182201606ec03701ba3a07d965fabdb4b7d06b424f226ea7ec3581802fc6fa"],
       "transactionsRoot": "0x9bdb74f3ce41f5893a02a631e904ae0d21ae8c4e416786d8dbd9cb5c54f1dc0f",
       "uncles": [],
       "withdrawals": [],
       "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
     }
-  ]  
+  ]
 }
 ```
 

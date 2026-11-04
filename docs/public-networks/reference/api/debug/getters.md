@@ -25,115 +25,64 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 - List of block objects.
 
   <Fields>
-
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
-
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
   - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
   - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
   - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
   - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
   - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
   - `size`: _quantity, integer_ - Size of block in bytes.
-
   - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
   - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
   - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
   - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
     <Fields>
-
     - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
     - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
     - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
     - `from`: _data, 20 bytes_ - Address of the sender.
-
     - `gas`: _quantity_ - Gas provided by the sender.
-
     - `gasPrice`: _quantity_ - (Optional) Gas price, in Wei, provided by the sender. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
-
     - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
     - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
     - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
     - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
     - `transactionType`: _string_ - [Transaction type](../../../concepts/transactions/types.md).
-
     - `value`: _quantity_ - Value transferred, in Wei.
-
     - `v`: _quantity_ - ECDSA Recovery ID.
-
     - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-    - `s`: _data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
-
   - `uncles`: _array_ - Array of uncle hashes.
-
   - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
   - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
   - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
     <Fields>
-
     - `index`: _quantity_ - Index of the withdrawal.
-
     - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
     - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
     - `amount`: _quantity_ - Amount withdrawn, in Gwei.
 
     </Fields>
-
   - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
@@ -322,9 +271,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawBlock",
-  "params": [
-    "0x32026E"
-  ],
+  "params": ["0x32026E"],
   "id": 1
 }
 ```
@@ -400,9 +347,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawBlockAccessList",
-  "params": [
-    "0x1"
-  ],
+  "params": ["0x1"],
   "id": 1
 }
 ```
@@ -474,9 +419,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawHeader",
-  "params": [
-    "0x32026E"
-  ],
+  "params": ["0x32026E"],
   "id": 1
 }
 ```
@@ -546,9 +489,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawReceipts",
-  "params": [
-    "0x32026E"
-  ],
+  "params": ["0x32026E"],
   "id": 1
 }
 ```
@@ -615,9 +556,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawTransaction",
-  "params": [
-    "0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"
-  ],
+  "params": ["0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"],
   "id": 1
 }
 ```
@@ -685,13 +624,13 @@ This method returns:
 
 - `null` when the block does not exist.
 - A JSON-RPC error (`Block not found`) for the genesis block (`earliest` or block
-`0`), which has no parent state to re-execute against.
+  `0`), which has no parent state to re-execute against.
 - A JSON-RPC error (`Internal error`) when your node is not using
-[Bonsai Tries](../../../concepts/data-storage-formats.md#bonsai-tries), the block's trie
-log has been pruned, or re-execution fails.
-See [Reduce storage for Bonsai Tries](../../../how-to/bonsai-limit-trie-logs.md) for how
-trie log pruning works.
-:::
+  [Bonsai Tries](../../../concepts/data-storage-formats.md#bonsai-tries), the block's trie
+  log has been pruned, or re-execution fails.
+  See [Reduce storage for Bonsai Tries](../../../how-to/bonsai-limit-trie-logs.md) for how
+  trie log pruning works.
+  :::
 
 ### Example
 
@@ -720,9 +659,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_executionWitness",
-  "params": [
-    "latest"
-  ],
+  "params": ["latest"],
   "id": 1
 }
 ```
@@ -736,15 +673,9 @@ curl -X POST http://127.0.0.1:8545/ \
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "state": [
-      "0xe7a03c216028b53575ba5007db30cf00..."
-    ],
-    "codes": [
-      "0x3373ffffffffffffffffffffffffffffff..."
-    ],
-    "headers": [
-      "0xf90302a0234dbe099ccc101ee2eb17864a..."
-    ]
+    "state": ["0xe7a03c216028b53575ba5007db30cf00..."],
+    "codes": ["0x3373ffffffffffffffffffffffffffffff..."],
+    "headers": ["0xf90302a0234dbe099ccc101ee2eb17864a..."]
   }
 }
 ```

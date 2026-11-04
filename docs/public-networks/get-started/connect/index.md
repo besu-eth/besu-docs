@@ -13,4 +13,3 @@ This section provides information on connecting Besu to a public Ethereum networ
 Besu is also compatible with [Linea](https://docs.linea.build/get-started/how-to/run-a-node/besu), the Ethereum L2.
 
 :::
-

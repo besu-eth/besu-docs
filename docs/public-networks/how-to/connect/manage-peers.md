@@ -12,10 +12,10 @@ network and the node's [peer limit](#limit-peers).
 The frequency of discovery isn't configurable, but you can:
 
 - [Limit remote connections](#limit-remote-connections) in public networks.
-- [Allowlist peers by IP subnet](#allowlist-peers) to create a private network of peers across public 
-networks.
+- [Allowlist peers by IP subnet](#allowlist-peers) to create a private network of peers across public
+  networks.
 - [Randomly prioritize connections](../../reference/options.md#random-peer-priority-enabled) in
-small, stable networks.
+  small, stable networks.
 
 :::info
 You can use [`admin_addPeer`](../../reference/api/admin.md#admin_addpeer) to attempt a specific

@@ -190,73 +190,52 @@ Returns the node's data-serving capabilities.
 - Capabilities information.
 
   <Fields>
-
   - `head`: _object_ - Current chain head information.
 
     <Fields>
-
     - `number`: _string_ - Current chain head block number.
-
-    - `hash`: _string_ - Current chain head block hash.
+  - `hash`: _string_ - Current chain head block hash.
 
     </Fields>
-
   - `state`: _object_ - State capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `state` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
-
   - `tx`: _object_ - Transaction capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `tx` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
-
   - `logs`: _object_ - Logs capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `logs` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
-
   - `receipts`: _object_ - Receipts capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `receipts` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
-
   - `blocks`: _object_ - Blocks capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `blocks` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
-
   - `stateproofs`: _object_ - State proofs capability information.
 
     <Fields>
-
     - `disabled`: _boolean_ - Indicates whether the `stateproofs` resource is disabled.
-
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
@@ -302,34 +281,34 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc":"2.0",
-  "id":1,
-  "result":{
-    "head":{
-      "number":"0x13f8e3a",
-      "hash":"0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "head": {
+      "number": "0x13f8e3a",
+      "hash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
     },
-    "state":{
-      "disabled":false
+    "state": {
+      "disabled": false
     },
-    "tx":{
-      "disabled":false,
-      "oldestBlock":"0x11b340a"
+    "tx": {
+      "disabled": false,
+      "oldestBlock": "0x11b340a"
     },
-    "logs":{
-      "disabled":false,
-      "oldestBlock":"0x11b340a"
+    "logs": {
+      "disabled": false,
+      "oldestBlock": "0x11b340a"
     },
-    "receipts":{
-      "disabled":false,
-      "oldestBlock":"0x11b340a"
+    "receipts": {
+      "disabled": false,
+      "oldestBlock": "0x11b340a"
     },
-    "blocks":{
-      "disabled":false,
-      "oldestBlock":"0x0"
+    "blocks": {
+      "disabled": false,
+      "oldestBlock": "0x0"
     },
-    "stateproofs":{
-      "disabled":false
+    "stateproofs": {
+      "disabled": false
     }
   }
 }
@@ -420,39 +399,27 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 - Configuration information.
 
   <Fields>
-
   - `current`: _object_ - Current fork configuration.
 
     <Fields>
-
     - `activationTime`: _number_ - Fork activation timestamp (Unix epoch seconds).
+  - `blobSchedule`: _object_ - Blob configuration parameters.
 
-    - `blobSchedule`: _object_ - Blob configuration parameters.
-
-      <Fields>
-
-      - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
-
-      - `max`: _number_ - Maximum number of blobs per block.
-
-      - `target`: _number_ - Target number of blobs per block.
-
-      </Fields>
-
-    - `chainId`: _string_ - Chain ID in hexadecimal.
-
-    - `forkId`: _string_ - Fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122).
-
-    - `precompiles`: _object_ - Active precompiled contracts with names and addresses.
-
-    - `systemContracts`: _object_ - System contract addresses.
+    <Fields>
+    - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
+    - `max`: _number_ - Maximum number of blobs per block.
+  - `target`: _number_ - Target number of blobs per block.
 
     </Fields>
+  - `chainId`: _string_ - Chain ID in hexadecimal.
+  - `forkId`: _string_ - Fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122).
+  - `precompiles`: _object_ - Active precompiled contracts with names and addresses.
+  - `systemContracts`: _object_ - System contract addresses.
 
+    </Fields>
   - `next`: _object_ - Next fork configuration, or `null` if no future fork is scheduled.
-
   - `last`: _object_ - The furthest configured future fork configuration (the future fork with
-      the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
+    the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
 
   </Fields>
 
@@ -656,16 +623,11 @@ Once the node reaches the head of the chain, `eth_syncing` returns `false`, indi
 - Synchronization status data object, or `false` if not synchronizing.
 
   <Fields>
-
   - `startingBlock`: _string_ - Index of the highest block on the blockchain when the network synchronization starts.
-
   - `currentBlock`: _string_ - Index of the latest block (also known as the best block) for the current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
-
   - `highestBlock`: _string_ - Index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
-
   - `pulledStates`: _string_ - The number of state entries fetched so far, or `null` if this is not known or not relevant (if
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
-
   - `knownStates`: _string_ - The number of states the node knows of so far, or `null` if this is not known or not relevant (if
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 

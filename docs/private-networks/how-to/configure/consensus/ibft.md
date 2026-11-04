@@ -207,7 +207,7 @@ The `ibft2` object also supports the following optional properties:
 After [The Merge](https://ethereum.org/en/upgrades/merge/), the following block fields are modified or deprecated. Their fields **must** contain only the constant values from the following chart.
 
 | Field            | Constant value                                                       | Comment                    |
-|------------------|----------------------------------------------------------------------|----------------------------|
+| ---------------- | -------------------------------------------------------------------- | -------------------------- |
 | **`ommersHash`** | `0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347` | `= Keccak256(RLP([]))`     |
 | **`difficulty`** | `0`                                                                  | Replaced with `prevrandao` |
 | **`mixHash`**    | `0x0000000000000000000000000000000000000000000000000000000000000000` | Replaced with `prevrandao` |
@@ -302,58 +302,58 @@ To update an existing network with a new `blockperiodseconds`:
 1. Stop all nodes in the network.
 2. In the [genesis file](#genesis-file), add the `transitions` configuration item where:
 
-    - `<FutureBlockNumber>` is the upcoming block at which to change `blockperiodseconds`.
-    - `<NewValue>` is the updated value for `blockperiodseconds`.
+   - `<FutureBlockNumber>` is the upcoming block at which to change `blockperiodseconds`.
+   - `<NewValue>` is the updated value for `blockperiodseconds`.
 
     <Tabs>
     <TabItem value="Syntax" label="Syntax" default>
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": <FutureBlockNumber>,
-              "blockperiodseconds": <NewValue>
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": <FutureBlockNumber>,
+             "blockperiodseconds": <NewValue>
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": 1240,
-              "blockperiodseconds": 4
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": 1240,
+             "blockperiodseconds": 4
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     </Tabs>
@@ -370,59 +370,59 @@ To update an existing network with a new `pertxgaslimit`:
 2. In the [genesis file](#genesis-file), add the `transitions`
    configuration item where:
 
-    - `<FutureBlockNumber>` is the upcoming block at which to change
-      `pertxgaslimit`.
-    - `<NewValue>` is the updated value for `pertxgaslimit`.
+   - `<FutureBlockNumber>` is the upcoming block at which to change
+     `pertxgaslimit`.
+   - `<NewValue>` is the updated value for `pertxgaslimit`.
 
     <Tabs>
     <TabItem value="Syntax" label="Syntax" default>
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": <FutureBlockNumber>,
-              "pertxgaslimit": <NewValue>
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": <FutureBlockNumber>,
+             "pertxgaslimit": <NewValue>
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": 1240,
-              "pertxgaslimit": 0
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": 1240,
+             "pertxgaslimit": 0
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     </Tabs>
@@ -436,85 +436,85 @@ To update an existing network with a new `blockreward`:
 1. Stop all nodes in the network.
 2. In the [genesis file](#genesis-file), add the `transitions` configuration item where:
 
-    - `<FutureBlockNumber>` is the upcoming block at which to change `blockreward`.
-    - `<NewValue>` is the updated value for `blockreward`.
+   - `<FutureBlockNumber>` is the upcoming block at which to change `blockreward`.
+   - `<NewValue>` is the updated value for `blockreward`.
 
     <Tabs>
     <TabItem value="Syntax" label="Syntax" default>
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-          "blockreward": "5000000000000000"
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": <FutureBlockNumber>,
-              "blockreward": <NewValue>
-            },
-            {
-              "block": <FutureBlockNumber>,
-              "blockreward": <NewValue>
-            },
-            {
-              "block": <FutureBlockNumber>,
-              "blockreward": <NewValue>
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+         "blockreward": "5000000000000000"
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": <FutureBlockNumber>,
+             "blockreward": <NewValue>
+           },
+           {
+             "block": <FutureBlockNumber>,
+             "blockreward": <NewValue>
+           },
+           {
+             "block": <FutureBlockNumber>,
+             "blockreward": <NewValue>
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```json
-    {
-      "config": {
-        ...
-        "ibft2": {
-          "blockperiodseconds": 2,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 4
-          "blockreward": "5000000000000000"
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": 10,
-              "blockreward": "6000000000000000"
-            },
-            {
-              "block": 15,
-              "blockreward": "75000000000000000"
-            },
-            {
-              "block": 20,
-              "blockreward": "0"
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       ...
+       "ibft2": {
+         "blockperiodseconds": 2,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 4
+         "blockreward": "5000000000000000"
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": 10,
+             "blockreward": "6000000000000000"
+           },
+           {
+             "block": 15,
+             "blockreward": "75000000000000000"
+           },
+           {
+             "block": 20,
+             "blockreward": "0"
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     </Tabs>
-    
-    :::note
 
-    You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+   :::note
 
-    :::
+   You can add multiple `blockreward` updates in one transition object by specifying multiple future blocks.
+
+   :::
 
 3. Restart all nodes in the network using the updated genesis file.
 
@@ -525,80 +525,80 @@ To update an existing network with a new mining beneficiary:
 1. Stop all nodes in the network.
 2. In the [genesis file](#genesis-file), add the `transitions` configuration item where:
 
-    - `<FutureBlockNumber>` is the upcoming block at which to change `miningbeneficiary`.
-    - `<NewAddress>` is the updated 20-byte address for `miningbeneficiary`. Starting at `<FutureBlockNumber>`, block rewards go to this address.
+   - `<FutureBlockNumber>` is the upcoming block at which to change `miningbeneficiary`.
+   - `<NewAddress>` is the updated 20-byte address for `miningbeneficiary`. Starting at `<FutureBlockNumber>`, block rewards go to this address.
 
     <Tabs>
     <TabItem value="Syntax" label="Syntax" default>
 
-    ```json
-    {
-      "config": {
-        "chainId": 999,
-        "berlinBlock": 0,
-        "ibft2": {
-          "blockperiodseconds": 1,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 5,
-          "blockreward": "5000000000000000000",
-          "miningbeneficiary": "0x0000000000000000000000000000000000000001"
-        },
-        "transitions": {
-          "ibft2": [
-            {
-              "block": <FutureBlockNumber>,
-              "miningbeneficiary": <NewAddress>
-            },
-            {
-              "block": <FutureBlockNumber>,
-              "miningbeneficiary": <NewAddress>
-            }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       "chainId": 999,
+       "berlinBlock": 0,
+       "ibft2": {
+         "blockperiodseconds": 1,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 5,
+         "blockreward": "5000000000000000000",
+         "miningbeneficiary": "0x0000000000000000000000000000000000000001"
+       },
+       "transitions": {
+         "ibft2": [
+           {
+             "block": <FutureBlockNumber>,
+             "miningbeneficiary": <NewAddress>
+           },
+           {
+             "block": <FutureBlockNumber>,
+             "miningbeneficiary": <NewAddress>
+           }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     <TabItem value="Example" label="Example">
 
-    ```json
-    {
-      "config": {
-        "chainId": 999,
-        "berlinBlock": 0,
-        "ibft2": {
-          "blockperiodseconds": 1,
-          "epochlength": 30000,
-          "requesttimeoutseconds": 5,
-          "blockreward": "5000000000000000000",
-          "miningbeneficiary": "0x0000000000000000000000000000000000000001"
-        },
-        "transitions": {
-          "ibft2": [
-          {
-            "block": 10000,
-            "miningbeneficiary": "",
-          },
-          {
-            "block": 20000,
-            "miningbeneficiary": "0x0000000000000000000000000000000000000002",
-          }
-          ]
-        }
-      },
-      ...
-    }
-    ```
+   ```json
+   {
+     "config": {
+       "chainId": 999,
+       "berlinBlock": 0,
+       "ibft2": {
+         "blockperiodseconds": 1,
+         "epochlength": 30000,
+         "requesttimeoutseconds": 5,
+         "blockreward": "5000000000000000000",
+         "miningbeneficiary": "0x0000000000000000000000000000000000000001"
+       },
+       "transitions": {
+         "ibft2": [
+         {
+           "block": 10000,
+           "miningbeneficiary": "",
+         },
+         {
+           "block": 20000,
+           "miningbeneficiary": "0x0000000000000000000000000000000000000002",
+         }
+         ]
+       }
+     },
+     ...
+   }
+   ```
 
     </TabItem>
     </Tabs>
-    
-    :::note
 
-    Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the block producer rather than a global override address.
+   :::note
 
-    :::
+   Setting the `miningbeneficiary` to an empty value clears out any override so that block rewards go to the block producer rather than a global override address.
+
+   :::
 
 3. Restart all nodes in the network using the updated genesis file.

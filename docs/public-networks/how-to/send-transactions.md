@@ -33,16 +33,16 @@ In production environments avoid exposing your private keys by creating signed t
 
 You can interact with contracts using [`eth_call`](../reference/api/eth/execute.md#eth_call) or [`eth_sendRawTransaction`](../reference/api/eth/submit.md#eth_sendrawtransaction). The table below compares the characteristics of both calls.
 
-| `eth_call` | `eth_sendRawTransaction` |
-| --- | --- |
-| Read-only | Write |
-| Invokes contract function locally | Broadcasts to the network |
-| Does not change state of blockchain | Updates the blockchain (for example, transfers ether between accounts) |
-| Does not consume gas | Requires gas |
-| Synchronous | Asynchronous |
+| `eth_call`                                                     | `eth_sendRawTransaction`                                                                                                       |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Read-only                                                      | Write                                                                                                                          |
+| Invokes contract function locally                              | Broadcasts to the network                                                                                                      |
+| Does not change state of blockchain                            | Updates the blockchain (for example, transfers ether between accounts)                                                         |
+| Does not consume gas                                           | Requires gas                                                                                                                   |
+| Synchronous                                                    | Asynchronous                                                                                                                   |
 | Returns the value of a contract function available immediately | Returns transaction hash only. A block might not include all possible transactions (for example, if the gas price is too low). |
 
-## Override state values 
+## Override state values
 
 Use methods that accept the [state override object](../reference/api/eth/execute.md#eth_call) to override an account with temporary state values before
 executing a call. State overrides allow you to make temporary state changes without affecting the actual blockchain state, and provide the following benefits:

@@ -84,7 +84,7 @@ The following settings are a security risk in production environments:
 
 :::info Sync nodes for BFT
 
-If you're running a node on a [QBFT](../how-to/configure/consensus/qbft.md) or [IBFT 2.0](../how-to/configure/consensus/ibft.md) network, 
+If you're running a node on a [QBFT](../how-to/configure/consensus/qbft.md) or [IBFT 2.0](../how-to/configure/consensus/ibft.md) network,
 Besu uses [full sync](../../public-networks/concepts/node-sync.md#full-synchronization) by default.
 
 To use [snap sync](../../public-networks/concepts/node-sync.md#snap-synchronization) for a node joining or catching up to an existing QBFT or IBFT 2.0 network,

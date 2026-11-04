@@ -39,57 +39,41 @@ Returns data only for blocks that include an EIP-7928 BAL.
   found.
 
   <Fields>
-
   - `address`: _data, 20 bytes_ - Account address.
-
   - `storageChanges`: _array_ - Storage slots written during block execution.
 
     <Fields>
-
     - `key`: _data, 32 bytes_ - Storage slot key.
-
     - `changes`: _array_ - Post-execution storage values for the slot.
 
       <Fields>
-
       - `index`: _quantity_ - Block access index for the change.
         `0` is pre-execution, `1` through `n` are transactions, and `n+1` is post-execution.
-
       - `value`: _data, 32 bytes_ - Post-execution storage value.
 
       </Fields>
 
     </Fields>
-
   - `storageReads`: _array of data, 32 bytes_ - Storage slot keys read during block execution
     without a corresponding write.
-
   - `balanceChanges`: _array_ - Post-execution balance updates for the account.
 
     <Fields>
-
     - `index`: _quantity_ - Block access index for the change.
-
     - `value`: _quantity_ - Post-execution balance, in Wei.
 
     </Fields>
-
   - `nonceChanges`: _array_ - Post-execution nonce updates for the account.
 
     <Fields>
-
     - `index`: _quantity_ - Block access index for the change.
-
     - `value`: _quantity_ - Post-execution nonce.
 
     </Fields>
-
   - `codeChanges`: _array_ - Post-execution code updates for the account.
 
     <Fields>
-
     - `index`: _quantity_ - Block access index for the change.
-
     - `code`: _data_ - Post-execution contract bytecode.
 
     </Fields>
@@ -128,9 +112,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockAccessList",
-  "params": [
-    "0x1"
-  ],
+  "params": ["0x1"],
   "id": 1
 }
 ```
@@ -200,118 +182,67 @@ Returns information about the block matching the specified block hash.
 - Block object, or `null` when there is no block.
 
   <Fields>
-
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
-
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
   - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
   - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
   - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
   - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
   - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
   - `size`: _quantity, integer_ - Size of block in bytes.
-
   - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
   - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
   - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
   - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
     <Fields>
-
     - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
     - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
     - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
     - `from`: _data, 20 bytes_ - Address of the sender.
-
     - `gas`: _quantity_ - Gas provided by the sender.
-
     - `gasPrice`: _quantity_ - Gas price, in Wei.
-      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of 
+      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of
       an included transaction, or `maxFeePerGas` when the transaction is not yet included.
-
     - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
     - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
     - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
     - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy, 
+    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy,
       `0x1` for access list, `0x2` for EIP-1559, and `0x3` for blob transactions.
-
     - `value`: _quantity_ - Value transferred, in Wei.
-
     - `v`: _quantity_ - ECDSA Recovery ID.
-
     - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-    - `s`: _data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
-
   - `uncles`: _array_ - Array of uncle hashes.
-
   - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
   - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
   - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
     <Fields>
-
     - `index`: _quantity_ - Index of the withdrawal.
-
     - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
     - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
     - `amount`: _quantity_ - Amount withdrawn, in Gwei.
 
     </Fields>
-
   - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
@@ -344,10 +275,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockByHash",
-  "params": [
-    "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c",
-    false
-  ],
+  "params": ["0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c", false],
   "id": 53
 }
 ```
@@ -380,10 +308,7 @@ curl -X POST http://127.0.0.1:8545/ \
     "gasUsed": "0x37993",
     "timestamp": "0x5835c54d",
     "uncles": [],
-    "transactions": [
-      "0xa0807e117a8dd124ab949f460f08c36c72b710188f01609595223b325e58e0fc",
-      "0xeae6d797af50cb62a596ec3939114d63967c374fa57de9bc0f4e2b576ed6639d"
-    ],
+    "transactions": ["0xa0807e117a8dd124ab949f460f08c36c72b710188f01609595223b325e58e0fc", "0xeae6d797af50cb62a596ec3939114d63967c374fa57de9bc0f4e2b576ed6639d"],
     "baseFeePerGas": "0x7"
   }
 }
@@ -491,118 +416,67 @@ Returns information about the block matching the specified block number.
 - Block object, or `null` when there is no block.
 
   <Fields>
-
   - `number`: _quantity, integer_ - Block number.
-
   - `hash`: _data, 32 bytes_ - Hash of the block.
-
   - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work.
-
   - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs.
-
   - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
   - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
   - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
   - `size`: _quantity, integer_ - Size of block in bytes.
-
   - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
   - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
   - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
   - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
     <Fields>
-
     - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
     - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
     - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
     - `from`: _data, 20 bytes_ - Address of the sender.
-
     - `gas`: _quantity_ - Gas provided by the sender.
-
     - `gasPrice`: _quantity_ - Gas price, in Wei.
-      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of 
+      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of
       an included transaction, or `maxFeePerGas` when the transaction is not yet included.
-
     - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
     - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
     - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
     - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy, 
+    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy,
       `0x1` for access list, `0x2` for EIP-1559, and `0x3` for blob transactions.
-
     - `value`: _quantity_ - Value transferred, in Wei.
-
     - `v`: _quantity_ - ECDSA Recovery ID.
-
     - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-    - `s`: _data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
-
   - `uncles`: _array_ - Array of uncle hashes.
-
   - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
   - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
   - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
     <Fields>
-
     - `index`: _quantity_ - Index of the withdrawal.
-
     - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
     - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
     - `amount`: _quantity_ - Amount withdrawn, in Gwei.
 
     </Fields>
-
   - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
@@ -635,10 +509,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockByNumber",
-  "params": [
-    "0x68B3",
-    true
-  ],
+  "params": ["0x68B3", true],
   "id": 1
 }
 ```
@@ -802,66 +673,40 @@ gas used and any event logs that might have been produced by a smart contract du
 - List of transaction receipt objects, or `null` when there is no block.
 
   <Fields>
-
   - `blockHash`: _data, 32 bytes_ - Hash of block containing this transaction.
-
   - `blockNumber`: _quantity_ - Block number of block containing this transaction.
-
   - `contractAddress`: _data, 20 bytes_ - Contract address created, if contract creation transaction, otherwise, `null`. A failed contract creation transaction still produces a contract address value.
-
   - `cumulativeGasUsed`: _quantity_ - Total amount of gas used by previous transactions in the block and this transaction.
-
   - `effectiveGasPrice`: _quantity_ - The [actual value per gas deducted](../../../concepts/transactions/types.md#eip1559-transactions) from the sender's account.
-
   - `from`: _data, 20 bytes_ - Address of the sender.
-
   - `gasUsed`: _quantity_ - Amount of gas used by this specific transaction.
-
   - `logs`: _array_ - Array of log objects generated by this transaction.
 
     <Fields>
-
     - `removed`: _boolean_ - `true` if log removed because of a chain reorganization. `false` if a valid log.
-
     - `logIndex`: _quantity, integer_ - Log index position in the block. `null` when log is pending.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the starting transaction for the log. `null` when log is pending.
-
     - `transactionHash`: _data, 32 bytes_ - Hash of the starting transaction for the log. `null` when log is pending.
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block that includes the log. `null` when log is pending.
-
     - `blockNumber`: _quantity_ - Number of block that includes the log. `null` when log is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded unix timestamp (in seconds) of the block that includes the log.
-
     - `address`: _data, 20 bytes_ - Address the log originated from.
-
-    - `data`: _data_ - Non-indexed arguments of the log.
-
-    - `topics`: _array of data, 32 bytes each_ - Topics the log emitted.
-      A log can contain 0 to 4 topics.
-      When the event is not anonymous, the first topic is the
-      [event signature hash](../../../concepts/events-and-logs.md#event-signature-hash).
+  - `data`: _data_ - Non-indexed arguments of the log.
+  - `topics`: _array of data, 32 bytes each_ - Topics the log emitted.
+    A log can contain 0 to 4 topics.
+    When the event is not anonymous, the first topic is the
+    [event signature hash](../../../concepts/events-and-logs.md#event-signature-hash).
 
     </Fields>
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for light clients to quickly retrieve related logs.
-
   - `status`: _quantity_ - Either `0x0` (failure), `0x1` (success), or `0x2` (invalid).
-
   - `to`: _data, 20 bytes_ - Address of the receiver.
     `null` for a contract creation transaction.
     A zero-value call still includes `to` when the transaction has a recipient.
-
   - `transactionHash`: _data, 32 bytes_ - Hash of the transaction.
-
   - `transactionIndex`: _quantity, integer_ - Index position of transaction in the block.
-
   - `revertReason`: _string_ - ABI-encoded string that displays the [reason for reverting the transaction](../../../../private-networks/how-to/send-transactions/revert-reason.md). Only available if revert reason is [enabled](../../options.md#revert-reason-enabled).
-
   - `type`: _quantity_ - Transaction type, `0x00` for legacy transactions, `0x01` for access list types, `0x02` for dynamic fees, and `0x03` for blob transactions.
-
   - `root`: _data, 32 bytes_ - Pre-Byzantium transactions return this field instead of `status`. Post-transaction state root.
 
   </Fields>
@@ -893,9 +738,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockReceipts",
-  "params": [
-    "0x6f55"
-  ],
+  "params": ["0x6f55"],
   "id": 1
 }
 ```
@@ -982,27 +825,27 @@ curl -X POST http://localhost:8547/graphql \
 ```text
 {
   block (hash: "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d") {
-    transactions { 
-      block { 
+    transactions {
+      block {
         hash
         logsBloom
-      } 
+      }
       hash
       createdContract {
         address
-      } 
+      }
       cumulativeGasUsed
       gas
       gasUsed
-      logs{ 
+      logs{
         topics
-      } 
-      from{ 
+      }
+      from{
         address
       }
-      to { 
+      to {
         address
-      } 
+      }
       index
     }
   }
@@ -1015,47 +858,52 @@ curl -X POST http://localhost:8547/graphql \
 
 ```json
 {
-  "data" : {
-    "block" : {
-      "transactions" : [ {
-        "block" : {
-          "hash" : "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
-          "logsBloom" : "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
+  "data": {
+    "block": {
+      "transactions": [
+        {
+          "block": {
+            "hash": "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
+            "logsBloom": "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
+          },
+          "hash": "0x7afe779fd0c6d4a1b6f330e679a5cf94095eaa57d2ce0c0ef991dfb2b405374f",
+          "createdContract": null,
+          "cumulativeGasUsed": "0x5208",
+          "gas": "0x61a8",
+          "gasUsed": "0x5208",
+          "logs": [],
+          "from": {
+            "address": "0x66f962241b8ff853849c85a63a0ce20bae4f68d5"
+          },
+          "to": {
+            "address": "0x6be8356826a9fc7b2d911fcc1de6342ae5f5b9a3"
+          },
+          "index": "0x0"
         },
-        "hash" : "0x7afe779fd0c6d4a1b6f330e679a5cf94095eaa57d2ce0c0ef991dfb2b405374f",
-        "createdContract" : null,
-        "cumulativeGasUsed" : "0x5208",
-        "gas" : "0x61a8",
-        "gasUsed" : "0x5208",
-        "logs" : [ ],
-        "from" : {
-          "address" : "0x66f962241b8ff853849c85a63a0ce20bae4f68d5"
-        },
-        "to" : {
-          "address" : "0x6be8356826a9fc7b2d911fcc1de6342ae5f5b9a3"
-        },
-        "index" : "0x0"
-      }, {
-        "block" : {
-          "hash" : "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
-          "logsBloom" : "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
-        },
-        "hash" : "0x412f04ba27c1c096dadb2d8af54ee61034c3d4679fdd025a634e95fa2238713c",
-        "createdContract" : null,
-        "cumulativeGasUsed" : "0xbcdb2",
-        "gas" : "0xbdfe0",
-        "gasUsed" : "0xb7baa",
-        "logs" : [ {
-          "topics" : [ "0xd93fde3ea1bb11dcd7a4e66320a05fc5aa63983b6447eff660084c4b1b1b499b", "0x00000000000000000000000000000000000000000000000000000000000e4d3a" ]
-        } ],
-        "from" : {
-          "address" : "0xe253f7a6533c62755f470b33fa5bcd659a5db3cd"
-        },
-        "to" : {
-          "address" : "0x95ff8d3ce9dcb7455beb7845143bea84fe5c4f6f"
-        },
-        "index" : "0x1"
-      } ]
+        {
+          "block": {
+            "hash": "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
+            "logsBloom": "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
+          },
+          "hash": "0x412f04ba27c1c096dadb2d8af54ee61034c3d4679fdd025a634e95fa2238713c",
+          "createdContract": null,
+          "cumulativeGasUsed": "0xbcdb2",
+          "gas": "0xbdfe0",
+          "gasUsed": "0xb7baa",
+          "logs": [
+            {
+              "topics": ["0xd93fde3ea1bb11dcd7a4e66320a05fc5aa63983b6447eff660084c4b1b1b499b", "0x00000000000000000000000000000000000000000000000000000000000e4d3a"]
+            }
+          ],
+          "from": {
+            "address": "0xe253f7a6533c62755f470b33fa5bcd659a5db3cd"
+          },
+          "to": {
+            "address": "0x95ff8d3ce9dcb7455beb7845143bea84fe5c4f6f"
+          },
+          "index": "0x1"
+        }
+      ]
     }
   }
 }
@@ -1106,9 +954,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockTransactionCountByHash",
-  "params": [
-    "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-  ],
+  "params": ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],
   "id": 53
 }
 ```
@@ -1214,9 +1060,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockTransactionCountByNumber",
-  "params": [
-    "0xe8"
-  ],
+  "params": ["0xe8"],
   "id": 51
 }
 ```
@@ -1292,118 +1136,67 @@ Returns uncle specified by block hash and index.
 - Block object.
 
   <Fields>
-
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
-
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
   - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
   - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
   - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
   - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
   - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
   - `size`: _quantity, integer_ - Size of block in bytes.
-
   - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
   - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
   - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
   - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
     <Fields>
-
     - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
     - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
     - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
     - `from`: _data, 20 bytes_ - Address of the sender.
-
     - `gas`: _quantity_ - Gas provided by the sender.
-
     - `gasPrice`: _quantity_ - Gas price, in Wei.
-      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of 
+      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of
       an included transaction, or `maxFeePerGas` when the transaction is not yet included.
-
     - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
     - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
     - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
     - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy, 
+    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy,
       `0x1` for access list, `0x2` for EIP-1559, and `0x3` for blob transactions.
-
     - `value`: _quantity_ - Value transferred, in Wei.
-
     - `v`: _quantity_ - ECDSA Recovery ID.
-
     - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-    - `s`: _data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
-
   - `uncles`: _array_ - Array of uncle hashes.
-
   - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
   - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
   - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
     <Fields>
-
     - `index`: _quantity_ - Index of the withdrawal.
-
     - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
     - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
     - `amount`: _quantity_ - Amount withdrawn, in Gwei.
 
     </Fields>
-
   - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   <br />
@@ -1443,10 +1236,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleByBlockHashAndIndex",
-  "params": [
-    "0xc48fb64230a82f65a08e7280bd8745e7fea87bc7c206309dee32209fe9a985f7",
-    "0x0"
-  ],
+  "params": ["0xc48fb64230a82f65a08e7280bd8745e7fea87bc7c206309dee32209fe9a985f7", "0x0"],
   "id": 1
 }
 ```
@@ -1576,118 +1366,67 @@ Returns uncle specified by block number and index.
 - Block object.
 
   <Fields>
-
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
-
   - `hash`: _data, 32 bytes_ - Hash of the block. `null` when block is pending.
-
   - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
-
   - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
-
   - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work. `null` when block is pending.
-
   - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
-
   - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs. `null` when block is pending.
-
   - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
-
   - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
-
   - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
-
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
-
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
   - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
-
   - `size`: _quantity, integer_ - Size of block in bytes.
-
   - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
-
   - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
-
   - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
-
   - `transactions`: _array_ - Array of transaction objects, or 32 byte transaction hashes depending on the specified boolean parameter.
 
     <Fields>
-
     - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `blockHash`: _data, 32 bytes_ - Hash of the block containing this transaction. `null` when transaction is pending.
-
     - `blockNumber`: _quantity_ - Block number of the block containing this transaction. `null` when transaction is pending.
-
     - `blockTimestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) of the block containing this transaction. `null` when transaction is pending.
-
     - `chainId`: _quantity_ - [Chain ID](../../../concepts/network-and-chain-id.md).
-
     - `from`: _data, 20 bytes_ - Address of the sender.
-
     - `gas`: _quantity_ - Gas provided by the sender.
-
     - `gasPrice`: _quantity_ - Gas price, in Wei.
-      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of 
+      For [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transactions, this is the effective gas price of
       an included transaction, or `maxFeePerGas` when the transaction is not yet included.
-
     - `maxPriorityFeePerGas`: _quantity, integer_ - (Optional) Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `maxFeePerGas`: _quantity, integer_ - (Optional) Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
-
     - `hash`: _data, 32 bytes_ - Hash of the transaction.
-
     - `input`: _data_ - Data sent with the transaction to create or invoke a contract.
-
     - `nonce`: _quantity_ - Number of transactions made by the sender before this one.
-
     - `to`: _data, 20 bytes_ - Address of the receiver. `null` if a contract creation transaction.
-
     - `transactionIndex`: _quantity, integer_ - Index position of the transaction in the block. `null` when transaction is pending.
-
-    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy, 
+    - `type`: _quantity_ - [Transaction type](../../../concepts/transactions/types.md): `0x0` for legacy,
       `0x1` for access list, `0x2` for EIP-1559, and `0x3` for blob transactions.
-
     - `value`: _quantity_ - Value transferred, in Wei.
-
     - `v`: _quantity_ - ECDSA Recovery ID.
-
     - `r`: _data, 32 bytes_ - ECDSA signature r.
-
-    - `s`: _data, 32 bytes_ - ECDSA signature s.
+  - `s`: _data, 32 bytes_ - ECDSA signature s.
 
     </Fields>
-
   - `uncles`: _array_ - Array of uncle hashes.
-
   - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
-
   - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
-
   - `withdrawals`: _array_ - Array of validator withdrawal objects included in the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
 
     <Fields>
-
     - `index`: _quantity_ - Index of the withdrawal.
-
     - `validatorIndex`: _quantity_ - Index of the validator that initiated the withdrawal.
-
     - `address`: _data, 20 bytes_ - Address the withdrawal was sent to.
-
     - `amount`: _quantity_ - Amount withdrawn, in Gwei.
 
     </Fields>
-
   - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
-
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
-
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   <br />
@@ -1728,10 +1467,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleByBlockNumberAndIndex",
-  "params": [
-    "0x7689D2",
-    "0x0"
-  ],
+  "params": ["0x7689D2", "0x0"],
   "id": 1
 }
 ```
@@ -1866,9 +1602,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleCountByBlockHash",
-  "params": [
-    "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
-  ],
+  "params": ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],
   "id": 1
 }
 ```
@@ -1974,9 +1708,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleCountByBlockNumber",
-  "params": [
-    "0xe8"
-  ],
+  "params": ["0xe8"],
   "id": 1
 }
 ```

@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Configure ports
 
-To enable communication you must expose Besu ports appropriately. The following shows an example port configuration for a Besu node on AWS. 
+To enable communication you must expose Besu ports appropriately. The following shows an example port configuration for a Besu node on AWS.
 
 ![Port Configuration](../../../assets/images/port-configuration.png)
 

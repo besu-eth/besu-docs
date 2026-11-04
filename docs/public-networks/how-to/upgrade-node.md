@@ -24,33 +24,33 @@ When upgrading your node, we recommend:
 
 1. Run the following script to automatically download the latest Linux release, extract it, and clean up:
 
-    ```bash
-    RELEASE_URL="https://api.github.com/repos/besu-eth/besu/releases/latest"
-    TAG=$(curl -s $RELEASE_URL | jq -r .tag_name)
-    BINARIES_URL="https://github.com/besu-eth/besu/releases/download/$TAG/besu-$TAG.tar.gz"
-   
-    echo Downloading URL: $BINARIES_URL
-   
-    cd $HOME
-    wget -O besu.tar.gz $BINARIES_URL
-    tar -xzvf besu.tar.gz -C $HOME
-    rm besu.tar.gz
-    sudo mv $HOME/besu-${TAG} besu
-    ```
-   
+   ```bash
+   RELEASE_URL="https://api.github.com/repos/besu-eth/besu/releases/latest"
+   TAG=$(curl -s $RELEASE_URL | jq -r .tag_name)
+   BINARIES_URL="https://github.com/besu-eth/besu/releases/download/$TAG/besu-$TAG.tar.gz"
+
+   echo Downloading URL: $BINARIES_URL
+
+   cd $HOME
+   wget -O besu.tar.gz $BINARIES_URL
+   tar -xzvf besu.tar.gz -C $HOME
+   rm besu.tar.gz
+   sudo mv $HOME/besu-${TAG} besu
+   ```
+
 2. Stop your Besu node:
 
-    ```bash
-    sudo systemctl stop execution
-    ```
-   
+   ```bash
+   sudo systemctl stop execution
+   ```
+
 3. Remove old binaries, install new binaries, and restart Besu:
 
-    ```bash
-    sudo rm -rf /usr/local/bin/besu
-    sudo mv $HOME/besu /usr/local/bin/besu
-    sudo systemctl start execution
-    ```
+   ```bash
+   sudo rm -rf /usr/local/bin/besu
+   sudo mv $HOME/besu /usr/local/bin/besu
+   sudo systemctl start execution
+   ```
 
 :::tip note
 Thank you to
@@ -58,35 +58,35 @@ Thank you to
 for this upgrade script.
 You can also see CoinCashew for instructions on upgrading Besu by building from source.
 :::
- 
+
 ## Upgrade on Docker
 
 1. Update your Docker image:
 
-    ```bash
-    docker pull hyperledger/besu:latest
-    ```
+   ```bash
+   docker pull hyperledger/besu:latest
+   ```
 
 2. Stop the current container:
 
-    ```bash
-    docker stop besu-node
-    ```
+   ```bash
+   docker stop besu-node
+   ```
 
 3. Start a new container with the updated image:
 
-    ```bash
-    docker run -d \
-      --name besu-node            \
-      -v besu-data:/opt/besu/data \
-      -v besu-config:/etc/besu    \
-      hyperledger/besu:latest
-    ```
+   ```bash
+   docker run -d \
+     --name besu-node            \
+     -v besu-data:/opt/besu/data \
+     -v besu-config:/etc/besu    \
+     hyperledger/besu:latest
+   ```
 
 Here is an example `docker-compose.yml` file:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   besu:
     image: hyperledger/besu:latest
@@ -105,18 +105,18 @@ volumes:
 
 1. Update your deployment manifest with a new image version:
 
-    ```yaml
-    spec:
-      containers:
-      - name: besu
-        image: hyperledger/besu:new-version
-    ```
+   ```yaml
+   spec:
+     containers:
+       - name: besu
+         image: hyperledger/besu:new-version
+   ```
 
 2. Apply the update:
 
-    ```bash
-    kubectl apply -f besu-deployment.yaml
-    ```
+   ```bash
+   kubectl apply -f besu-deployment.yaml
+   ```
 
 Here is an example PVC configuration:
 
@@ -157,9 +157,9 @@ you can use the following commands to verify that you've successfully upgraded y
 
 Call [`eth_syncing`](../reference/api/eth/client.md#eth_syncing) to check the node synchronization status:
 
- ```bash
- curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
- ```
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
+```
 
 Call [`web3_clientVersion`](../reference/api/web3.md#web3_clientversion) to check the current client version:
 
@@ -169,9 +169,9 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],
 
 Call [`net_peerCount`](../reference/api/net.md#net_peercount) to verify peer connections:
 
- ```bash
- curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
- ```
+```bash
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' http://127.0.0.1:8545 -H "Content-Type: application/json"
+```
 
 ### Logs
 
@@ -185,7 +185,7 @@ For example, the startup logs look like the following:
 ####################################################################################################
 #                                                                                                  #
 # Besu version 25.1.0                                                                #
-#   
+#
 ...                                                                                               #
 ```
 
@@ -229,7 +229,7 @@ Ensure that your network connection is stable and that the required ports for pe
 
 #### API unavailable
 
-Check the configuration of your RPC endpoint to ensure it is set up correctly and is accessible. 
+Check the configuration of your RPC endpoint to ensure it is set up correctly and is accessible.
 Verify that the API service is running and the correct ports are being used.
 
 #### Data corruption
