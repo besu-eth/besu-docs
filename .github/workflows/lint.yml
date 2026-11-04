@@ -15,3 +15,6 @@ jobs:
 
       - name: Lint
         uses: Consensys-Incorporated/github-actions/docs-lint-all@main
+
+      - name: Check Markdown formatting
+        run: npm run format:docs:check

@@ -20,13 +20,16 @@
     "lint:js": "eslint . --ext js,jsx,ts,tsx --max-warnings=0",
     "lint:style": "stylelint \"**/*.css\"",
     "lint:fix": "npm run lint:js -- --fix",
-    "format": "prettier --write '{blog,docs,src,static}/**/*.{md,mdx,ts,js,tsx,jsx,json}'"
+    "format": "prettier --write '{blog,docs,src,static}/**/*.{md,mdx,ts,js,tsx,jsx,json}'",
+    "format:docs": "prettier --write \"docs/**/*.{md,mdx}\"",
+    "format:docs:check": "prettier --check \"docs/**/*.{md,mdx}\"",
+    "prepare": "node scripts/husky-prepare.js"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": "npm run typecheck-staged",
     "**/*.css": "npm run lint:style",
-    "**/*.{md,mdx}": "npm run lint:spelling",
-    "**/*.{md,mdx,ts,js,tsx,jsx,json}": "npm run format"
+    "**/*.{ts,js,tsx,jsx,json}": "prettier --write",
+    "**/*.{md,mdx}": "prettier --write"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.1",
@@ -66,6 +69,9 @@
     "@typescript-eslint/parser": "^6.13.1",
     "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.9.10",
     "semantic-release": "^25.0.5",
     "stylelint": "^15.0.0 ",
     "stylelint-config-standard": "^34.0.0",
