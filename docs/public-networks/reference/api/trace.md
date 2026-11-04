@@ -164,23 +164,41 @@ default, 512 from the head of the chain).
 
 - `call`: _object_ - Transaction call object.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `from`: _data, 20 bytes_ - Address of the sender.
+
   - `to`: _data, 20 bytes_ - Address of the action receiver.
+
   - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
+
   - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../concepts/transactions/types.md#eip1559-transactions) transactions.
+
   - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
+
   - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
-  - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+
+  - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
+
   - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
+
   - `value`: _quantity, integer_ - Value transferred, in Wei.
+
   - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
+
   - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
+
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../concepts/transactions/types.md#frontier-transactions) transactions.
+
   - `strict`: _boolean_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
-  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+
+  - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844]( https://eips.ethereum.org/EIPS/eip-4844).
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
@@ -196,15 +214,23 @@ default, 512 from the head of the chain).
 
 - Object containing the trace results for the call, depending on the requested `options`.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `output`: _data_ - Return value of the call.
+
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
   - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
     array if `trace` wasn't a requested option.
+
   - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -327,15 +353,23 @@ default, 512 from the head of the chain).
 
 - List of objects containing the trace results for each call, in the order the calls were specified, one object per call, depending on the requested `options`.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `output`: _data_ - Return value of the call.
+
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
   - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
     array if `trace` wasn't a requested option.
+
   - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -734,16 +768,25 @@ the chain).
 
 - Object containing the trace results for the transaction, depending on the requested `options`.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `output`: _data_ - Return value of the transaction.
+
   - `from`: _data, 20 bytes_ - Address of the transaction sender.
+
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
   - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
     array if `trace` wasn't a requested option.
+
   - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -836,15 +879,24 @@ default, 512 from the head of the chain).
 
 - List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the [`trace`](#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `output`: _data_ - Return value of the transaction.
+
   - `stateDiff`: _object_ - [State changes in the requested block](#statediff).
+
   - `trace`: _array_ - Ordered list of [trace objects](#trace).
+
   - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
     ordered `ops` list).
+
   - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -1120,6 +1172,8 @@ precompiled-contract calls that do not execute.
 Each item is an object with the following fields.
 The `action` and `result` shapes depend on the trace `type`.
 
+<!-- prettier-ignore-start -->
+
 <Fields>
 
 - `action`: _object_ - Details of the traced operation.
@@ -1127,33 +1181,46 @@ The `action` and `result` shapes depend on the trace `type`.
   Unused action fields are omitted from the JSON.
 
   <Fields>
+
   - `callType`: _string_ - CALL-family variant: `call`, `callcode`,
     `delegatecall`, or `staticcall`.
     Present only on `call` traces.
     Contract creation is indicated by `type: "create"`, not by `callType`.
+
   - `from`: _data, 20 bytes_ - Address of the caller or creator.
     Present on `call` and `create` traces.
+
   - `gas`: _quantity_ - Gas provided for this operation.
     Present on `call` and `create` traces.
+
   - `input`: _data_ - Call data.
     Present on `call` traces.
+
   - `to`: _data, 20 bytes_ - Call target.
     Present on `call` traces.
+
   - `value`: _quantity_ - Value transferred.
     Present on `call`, `create`, and `reward` traces.
+
   - `init`: _data_ - Contract initialization bytecode.
     Present on `create` traces.
+
   - `creationMethod`: _string_ - Creation opcode (`create` or `create2`).
     Present on some `create` traces.
+
   - `address`: _data, 20 bytes_ - Contract that self-destructed.
     Present on self-destruct traces.
+
   - `balance`: _quantity_ - Balance transferred on self-destruct.
     Present on self-destruct traces.
+
   - `refundAddress`: _data, 20 bytes_ - Recipient of the self-destructed
     balance.
     Present on self-destruct traces.
+
   - `author`: _data, 20 bytes_ - Reward recipient.
     Present on `reward` traces (`trace_block` only).
+
   - `rewardType`: _string_ - Reward kind: `block` or `uncle`.
     Present on `reward` traces (`trace_block` only).
 
@@ -1165,14 +1232,18 @@ The `action` and `result` shapes depend on the trace `type`.
   `null` for self-destruct and `reward` traces.
 
   <Fields>
+
   - `gasUsed`: _quantity_ - Gas used by this trace, including unused-gas
     refunds.
+
   - `output`: _data_ - Return value of the contract call.
     Contains only the actual value sent by a `RETURN` operation.
     If a `RETURN` was not executed, the output is empty bytes.
     Present on `call` traces.
+
   - `code`: _data_ - Deployed bytecode.
     Present on `create` traces.
+
   - `address`: _data, 20 bytes_ - Created contract address.
     Present on `create` traces.
 
@@ -1193,6 +1264,8 @@ The `action` and `result` shapes depend on the trace `type`.
   `reward` appears only in `trace_block` results.
 
 </Fields>
+
+<!-- prettier-ignore-end -->
 
 #### Example
 
@@ -1225,6 +1298,8 @@ The `vmTrace` field is an object with a `code` property and a nested `ops`
 list.
 The field itself is not a list.
 
+<!-- prettier-ignore-start -->
+
 <Fields>
 
 - `code`: _data_ - Code executed by the EVM.
@@ -1232,22 +1307,32 @@ The field itself is not a list.
 - `ops`: _array_ - Sequence of EVM operations (opcodes) executed in the transaction.
 
   <Fields>
+
   - `cost`: _quantity_ - Gas cost of the opcode. Includes memory expansion costs but not gas refunds. For precompiled contract calls, reports only the actual cost.
+
   - `ex`: _object_ - Executed operations.
 
     <Fields>
+
     - `mem`: _object_ - Memory read or written by the operation.
+
     - `push`: _array_ - Adjusted stack items. For swap, includes all intermediate values and the result. Otherwise, is the value pushed onto the stack.
-  - `store`: _object_ - Account storage written by the operation.
-  - `used`: _quantity_ - Remaining gas taking into account the all but 1/64th rule for calls.
+
+    - `store`: _object_ - Account storage written by the operation.
+
+    - `used`: _quantity_ - Remaining gas taking into account the all but 1/64th rule for calls.
 
     </Fields>
+
   - `pc`: _quantity_ - Program counter.
+
   - `sub`: _object_ - Sub call operations.
 
   </Fields>
 
 </Fields>
+
+<!-- prettier-ignore-end -->
 
 `vmTrace` only reports actual data returned from a `RETURN` opcode and does not return the contents of the reserved output space for the call operations. As a result:
 

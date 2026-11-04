@@ -189,53 +189,76 @@ Returns the node's data-serving capabilities.
 
 - Capabilities information.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `head`: _object_ - Current chain head information.
 
     <Fields>
+
     - `number`: _string_ - Current chain head block number.
-  - `hash`: _string_ - Current chain head block hash.
+
+    - `hash`: _string_ - Current chain head block hash.
 
     </Fields>
+
   - `state`: _object_ - State capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `state` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
+
   - `tx`: _object_ - Transaction capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `tx` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
+
   - `logs`: _object_ - Logs capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `logs` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
+
   - `receipts`: _object_ - Receipts capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `receipts` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
+
   - `blocks`: _object_ - Blocks capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `blocks` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
+
   - `stateproofs`: _object_ - State proofs capability information.
 
     <Fields>
+
     - `disabled`: _boolean_ - Indicates whether the `stateproofs` resource is disabled.
+
     - `oldestBlock`: _string_ - (Optional) Oldest available block.
 
     </Fields>
@@ -244,6 +267,8 @@ Returns the node's data-serving capabilities.
   If the full chain is available, this can be `0x0`.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -398,30 +423,46 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
 - Configuration information.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `current`: _object_ - Current fork configuration.
 
     <Fields>
+
     - `activationTime`: _number_ - Fork activation timestamp (Unix epoch seconds).
-  - `blobSchedule`: _object_ - Blob configuration parameters.
 
-    <Fields>
-    - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
-    - `max`: _number_ - Maximum number of blobs per block.
-  - `target`: _number_ - Target number of blobs per block.
+    - `blobSchedule`: _object_ - Blob configuration parameters.
+
+      <Fields>
+
+      - `baseFeeUpdateFraction`: _number_ - Base fee update fraction.
+
+      - `max`: _number_ - Maximum number of blobs per block.
+
+      - `target`: _number_ - Target number of blobs per block.
+
+      </Fields>
+
+    - `chainId`: _string_ - Chain ID in hexadecimal.
+
+    - `forkId`: _string_ - Fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122).
+
+    - `precompiles`: _object_ - Active precompiled contracts with names and addresses.
+
+    - `systemContracts`: _object_ - System contract addresses.
 
     </Fields>
-  - `chainId`: _string_ - Chain ID in hexadecimal.
-  - `forkId`: _string_ - Fork hash as defined in [EIP-6122](https://eips.ethereum.org/EIPS/eip-6122).
-  - `precompiles`: _object_ - Active precompiled contracts with names and addresses.
-  - `systemContracts`: _object_ - System contract addresses.
 
-    </Fields>
   - `next`: _object_ - Next fork configuration, or `null` if no future fork is scheduled.
+
   - `last`: _object_ - The furthest configured future fork configuration (the future fork with
-    the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
+      the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -622,16 +663,25 @@ Once the node reaches the head of the chain, `eth_syncing` returns `false`, indi
 
 - Synchronization status data object, or `false` if not synchronizing.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `startingBlock`: _string_ - Index of the highest block on the blockchain when the network synchronization starts.
+
   - `currentBlock`: _string_ - Index of the latest block (also known as the best block) for the current node (this is the same index that [`eth_blockNumber`](#eth_blocknumber) returns.)
+
   - `highestBlock`: _string_ - Index of the highest known block in the peer network (that is, the highest block so far discovered among peer nodes. This is the same value as `currentBlock` if the current node has no peers.)
+
   - `pulledStates`: _string_ - The number of state entries fetched so far, or `null` if this is not known or not relevant (if
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
+
   - `knownStates`: _string_ - The number of states the node knows of so far, or `null` if this is not known or not relevant (if
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 

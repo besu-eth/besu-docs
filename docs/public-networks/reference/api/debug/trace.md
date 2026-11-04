@@ -25,19 +25,29 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture.
     The default is `true`.
+
   - `disableStack`: _boolean_ - `true` disables stack capture.
     The default is `false`.
+
   - `disableStorage`: _boolean_ - `true` disables storage capture.
     The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -115,19 +125,29 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture.
     The default is `true`.
+
   - `disableStack`: _boolean_ - `true` disables stack capture.
     The default is `false`.
+
   - `disableStorage`: _boolean_ - `true` disables storage capture.
     The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -195,55 +215,85 @@ Reruns the transaction with the same state as when the transaction executed.
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
   - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+
   - `limit`: _integer_ - Maximum number of opcode steps to capture.
     The default is `0`, which sets no caller limit.
-    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
+    When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than 
     `0`, Besu uses the lower value.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Returns
 
 - Trace object.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `gas`: _integer_ - Gas used by the transaction.
+
   - `failed`: _boolean_ - True if transaction failed, otherwise, false.
+
   - `returnValue`: _string_ - Bytes returned from transaction execution, as a hex
     string with a `0x` prefix.
     Empty output is `"0x"`.
+
   - `structLogs`: _array_ - Array of structured log objects.
     Empty when the executed code is empty (for example, a plain value transfer
     between two externally owned accounts (EOAs)).
 
     <Fields>
+
     - `pc`: _integer_ - Current program counter.
+
     - `op`: _string_ - Current opcode.
+
     - `gas`: _integer_ - Gas remaining.
+
     - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
-  - `depth`: _integer_ - Execution depth.
-  - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
-  - `stack`: _array of strings_ - EVM stack before the current opcode, as
-    `0x`-prefixed compact hex strings (leading zeros stripped).
-  - `memory`: _array of strings_ - Contract memory after the current opcode
-    runs, as `0x`-prefixed 32-byte hex strings.
-  - `storage`: _object_ - Storage entries changed by the current transaction.
-  - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+
+    - `depth`: _integer_ - Execution depth.
+
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+    - `stack`: _array of strings_ - EVM stack before the current opcode, as
+      `0x`-prefixed compact hex strings (leading zeros stripped).
+
+    - `memory`: _array of strings_ - Contract memory after the current opcode
+      runs, as `0x`-prefixed 32-byte hex strings.
+
+    - `storage`: _object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
+
   - `truncated`: _boolean_ - `true` when opcode tracing stopped because it reached `limit` or
     [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps).
     Omitted when the trace is complete.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -330,16 +380,25 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
   - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
     The default is `0`, which sets no caller limit.
@@ -348,42 +407,63 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
+<!-- prettier-ignore-end -->
+
 ### Returns
 
 - Array of transaction trace objects.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
+
   - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
+
     - `gas`: _integer_ - Gas used by the transaction.
+
     - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a
-    hex string with a `0x` prefix.
-    Empty output is `"0x"`.
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value
-    transfer between two externally owned accounts (EOAs)).
 
-    <Fields>
-    - `pc`: _integer_ - Current program counter.
-    - `op`: _string_ - Current opcode.
-    - `gas`: _integer_ - Gas remaining.
-    - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
-  - `depth`: _integer_ - Execution depth.
-  - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
-  - `stack`: _array of strings_ - EVM stack before the current opcode, as
-    `0x`-prefixed compact hex strings (leading zeros stripped).
-  - `memory`: _array of strings_ - Contract memory after the current opcode
-    runs, as `0x`-prefixed 32-byte hex strings.
-  - `storage`: _object_ - Storage entries changed by the current transaction.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    </Fields>
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
+
+      <Fields>
+
+      - `pc`: _integer_ - Current program counter.
+
+      - `op`: _string_ - Current opcode.
+
+      - `gas`: _integer_ - Gas remaining.
+
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
+
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -461,16 +541,25 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
   - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
     The default is `0`, which sets no caller limit.
@@ -479,42 +568,63 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
+<!-- prettier-ignore-end -->
+
 ### Returns
 
 - Array of transaction trace objects.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
+
   - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
+
     - `gas`: _integer_ - Gas used by the transaction.
+
     - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a
-    hex string with a `0x` prefix.
-    Empty output is `"0x"`.
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value
-    transfer between two externally owned accounts (EOAs)).
 
-    <Fields>
-    - `pc`: _integer_ - Current program counter.
-    - `op`: _string_ - Current opcode.
-    - `gas`: _integer_ - Gas remaining.
-    - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
-  - `depth`: _integer_ - Execution depth.
-  - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
-  - `stack`: _array of strings_ - EVM stack before the current opcode, as
-    `0x`-prefixed compact hex strings (leading zeros stripped).
-  - `memory`: _array of strings_ - Contract memory after the current opcode
-    runs, as `0x`-prefixed 32-byte hex strings.
-  - `storage`: _object_ - Storage entries changed by the current transaction.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    </Fields>
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
+
+      <Fields>
+
+      - `pc`: _integer_ - Current program counter.
+
+      - `op`: _string_ - Current opcode.
+
+      - `gas`: _integer_ - Gas remaining.
+
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
+
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -593,16 +703,25 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
+
   - `enableMemory`: _boolean_ - `true` enables memory capture. The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture. The default is `true`.
+
   - `disableStack` : _boolean_ - `true` disables stack capture. The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
     Streamed block traces do not include a per-opcode `returnData` field.
+
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
     The default is `0`, which sets no caller limit.
@@ -611,42 +730,63 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
+<!-- prettier-ignore-end -->
+
 ### Returns
 
 - Array of transaction trace objects.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `txHash`: _data, 32 bytes_ - Hash of the traced transaction.
+
   - `result`: _object_ - Opcode tracer result for that transaction.
 
     <Fields>
+
     - `gas`: _integer_ - Gas used by the transaction.
+
     - `failed`: _boolean_ - True if transaction failed, otherwise, false.
-  - `returnValue`: _string_ - Bytes returned from transaction execution, as a
-    hex string with a `0x` prefix.
-    Empty output is `"0x"`.
-  - `structLogs`: _array_ - Array of structured log objects.
-    Empty when the executed code is empty (for example, a plain value
-    transfer between two externally owned accounts (EOAs)).
 
-    <Fields>
-    - `pc`: _integer_ - Current program counter.
-    - `op`: _string_ - Current opcode.
-    - `gas`: _integer_ - Gas remaining.
-    - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
-  - `depth`: _integer_ - Execution depth.
-  - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
-  - `stack`: _array of strings_ - EVM stack before the current opcode, as
-    `0x`-prefixed compact hex strings (leading zeros stripped).
-  - `memory`: _array of strings_ - Contract memory after the current opcode
-    runs, as `0x`-prefixed 32-byte hex strings.
-  - `storage`: _object_ - Storage entries changed by the current transaction.
+    - `returnValue`: _string_ - Bytes returned from transaction execution, as a
+      hex string with a `0x` prefix.
+      Empty output is `"0x"`.
 
-    </Fields>
+    - `structLogs`: _array_ - Array of structured log objects.
+      Empty when the executed code is empty (for example, a plain value
+      transfer between two externally owned accounts (EOAs)).
+
+      <Fields>
+
+      - `pc`: _integer_ - Current program counter.
+
+      - `op`: _string_ - Current opcode.
+
+      - `gas`: _integer_ - Gas remaining.
+
+      - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
+
+      - `depth`: _integer_ - Execution depth.
+
+      - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+      - `stack`: _array of strings_ - EVM stack before the current opcode, as
+        `0x`-prefixed compact hex strings (leading zeros stripped).
+
+      - `memory`: _array of strings_ - Contract memory after the current opcode
+        runs, as `0x`-prefixed 32-byte hex strings.
+
+      - `storage`: _object_ - Storage entries changed by the current transaction.
+
+      </Fields>
 
     </Fields>
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -728,23 +868,41 @@ temporary state changes without affecting the actual blockchain state.
 
 - `call`: _object_ - Transaction call object.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `from`: _data, 20 bytes_ - Address of the sender.
+
   - `to`: _data, 20 bytes_ - Address of the action receiver.
+
   - `gas`: _quantity, integer_ - Gas provided by the sender. `eth_call` consumes zero gas, but other executions might need this parameter. `eth_estimateGas` ignores this value.
+
   - `gasPrice`: _quantity, integer_ - Gas price, in Wei, provided by the sender. The default is `0`. Used only in non-[`EIP1559`](../../../concepts/transactions/types.md#eip1559-transactions) transactions.
+
   - `maxPriorityFeePerGas`: _quantity, integer_ - Maximum fee, in Wei, the sender is willing to pay per gas above the base fee. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxFeePerGas`.
+
   - `maxFeePerGas`: _quantity, integer_ - Maximum total fee (base fee + priority fee), in Wei, the sender is willing to pay per gas. Can be used only in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions). If used, must specify `maxPriorityFeePerGas`.
+
   - `maxFeePerBlobGas`: _quantity, integer_ - Maximum fee the sender is willing to pay per blob gas. Only used for blob transactions introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+
   - `nonce`: _quantity, integer_ - Number of transactions made by the sender before this one. The default is the sender's nonce.
+
   - `value`: _quantity, integer_ - Value transferred, in Wei.
+
   - `data`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `input` if both parameters are provided.
+
   - `input`: _data_ - Hash of the method signature and encoded parameters. For details, see [Ethereum Contract ABI](https://solidity.readthedocs.io/en/develop/abi-spec.html). Must be equal to `data` if both parameters are provided.
+
   - `accessList`: _array_ - List of addresses and storage keys that the transaction plans to access. Used only in non-[`FRONTIER`](../../../concepts/transactions/types.md#frontier-transactions) transactions.
+
   - `strict`: _tag_ - Determines if the sender account balance is considered during gas estimation. If `true`, the sender's balance is checked against the transaction's gas parameters. This ensures the estimated gas reflects what the sender can actually afford. If `false`, the balance checks are skipped. The default is `true`.
+
   - `blobVersionedHashes`: _array_ - List of references to blobs introduced in [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
@@ -757,32 +915,48 @@ temporary state changes without affecting the actual blockchain state.
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `disableStorage`: _boolean_ - `true` disables storage capture.
     The default is `false`.
+
   - `enableMemory`: _boolean_ - `true` enables memory capture.
     The default is `false`.
     If specified, `enableMemory` takes precedence over `disableMemory`.
+
   - `disableMemory`: _boolean_ - `true` disables memory capture.
     The default is `true`.
+
   - `disableStack` : _boolean_ - `true` disables stack capture.
     The default is `false`.
+
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
+
   - `enableReturnData`: _boolean_ - `true` enables return data capture. The default is `false`.
+
   - `limit`: _integer_ - Maximum number of opcode steps to capture.
     The default is `0`, which sets no caller limit.
     When `limit` and [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps) are both greater than
     `0`, Besu uses the lower value.
+
   - `stateOverrides`: _object_ - Address-to-state mapping.
 
     <Fields>
+
     - `balance`: _quantity_ - Temporary account balance for the call execution.
+
     - `nonce`: _quantity_ - Temporary nonce value for the call execution.
+
     - `code`: _binary_ - Bytecode to inject into the account.
+
     - `movePrecompileToAddress`: _data, 20 bytes_ - Address to which the precompile address should be moved.
+
     - `state`: _object_ - Map of storage slot to value that replaces all slots
       in the account storage.
       You cannot set both the `state` and `stateDiff` options simultaneously.
+
     - `stateDiff`: _object_ - Map of storage slot to value that overrides
       individual slots in the account storage.
       You cannot set both the `state` and `stateDiff` options simultaneously.
@@ -791,41 +965,62 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
+<!-- prettier-ignore-end -->
+
 ### Returns
 
 - Trace object.
 
+<!-- prettier-ignore-start -->
+
   <Fields>
+
   - `gas`: _integer_ - Gas used by the transaction.
+
   - `failed`: _boolean_ - True if transaction failed, otherwise, false.
+
   - `returnValue`: _string_ - Bytes returned from transaction execution, as a hex
     string with a `0x` prefix.
     Empty output is `"0x"`.
+
   - `structLogs`: _array_ - Array of structured log objects.
     Empty when the executed code is empty (for example, a plain value transfer
     between two externally owned accounts (EOAs)).
 
     <Fields>
+
     - `pc`: _integer_ - Current program counter.
+
     - `op`: _string_ - Current opcode.
+
     - `gas`: _integer_ - Gas remaining.
+
     - `gasCost`: _integer_ - Gas consumed by the current opcode, in gas units.
-  - `depth`: _integer_ - Execution depth.
-  - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
-  - `stack`: _array of strings_ - EVM stack before the current opcode, as
-    `0x`-prefixed compact hex strings (leading zeros stripped).
-  - `memory`: _array of strings_ - Contract memory after the current opcode
-    runs, as `0x`-prefixed 32-byte hex strings.
-  - `storage`: _object_ - Storage entries changed by the current transaction.
-  - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+
+    - `depth`: _integer_ - Execution depth.
+
+    - `error`: _string_ - A string representing an error condition causing the EVM execution to terminate, such as running out of gas or attempting to execute an unknown instruction.
+
+    - `stack`: _array of strings_ - EVM stack before the current opcode, as
+      `0x`-prefixed compact hex strings (leading zeros stripped).
+
+    - `memory`: _array of strings_ - Contract memory after the current opcode
+      runs, as `0x`-prefixed 32-byte hex strings.
+
+    - `storage`: _object_ - Storage entries changed by the current transaction.
+
+    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
 
     </Fields>
+
   - `truncated`: _boolean_ - `true` when opcode tracing stopped because it
     reached `limit` or
     [`--rpc-max-trace-steps`](../../options.md#rpc-max-trace-steps).
     Omitted when the trace is complete.
 
   </Fields>
+
+<!-- prettier-ignore-end -->
 
 ### Example
 
