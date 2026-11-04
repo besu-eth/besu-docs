@@ -131,7 +131,6 @@ curl -X POST http://127.0.0.1:8545/ \
   "result": "0x3f5694c1f"
 }
 ```
-
 </TabItem>
 </Tabs>
 
@@ -142,7 +141,7 @@ curl -X POST http://127.0.0.1:8545/ \
 Returns base fee per gas and transaction effective priority fee per gas history for the requested block
 range, allowing you to track trends over time.
 
-As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks transaction blob gas fees as well.
+As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks transaction blob gas fees as well.  
 
 ### Parameters
 
@@ -156,12 +155,12 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
   `pending` returns the same value as `latest`.
   :::
 
-- `rewardPercentiles`: _array_ of _numbers_ - (optional) Percentile values used to sample each block's
+- `rewardPercentiles`: _array_ of _numbers_ - (optional) Percentile values used to sample each block's 
   effective priority fees per gas, weighted by gas used.
   Each value must be in the range `[0, 100]`, and the list must be strictly increasing.
   Fractional values are allowed.
   Besu accepts at most 100 values.
-  Out-of-range values, duplicates, values that are not strictly increasing, and lists longer than 100 return
+  Out-of-range values, duplicates, values that are not strictly increasing, and lists longer than 100 return 
   an error.
 
 ### Returns
@@ -169,11 +168,17 @@ As of [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), this method tracks tr
 - Fee history results object.
 
   <Fields>
+
   - `oldestBlock`: _quantity, integer_ - Lowest number block of the returned range.
+
   - `baseFeePerGas`: _array_ - Array of block base fees per gas, including an extra block value. The extra value is the next block after the newest block in the returned range. Returns zeroes for blocks created before [EIP-1559](https://github.com/ethereum/EIPs/blob/2d8a95e14e56de27c5465d93747b0006bd8ac47f/EIPS/eip-1559.md).
+
   - `baseFeePerBlobGas`: _array_ - Array of base fees per blob gas. Returns zeroes for blocks created before [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844).
+
   - `gasUsedRatio`: _array_ - Array of block gas used ratios. These are calculated as the ratio of `gasUsed` and `gasLimit`.
+
   - `blobGasUsedRatio`: _array_ - Array of blob gas used ratios. These are calculated as the ratio of `blobGasUsed` and the max blob gas per block.
+
   - `reward`: _array_ - Array of effective priority fee per gas data points from a single block. All zeroes are returned if the block is empty.
 
   </Fields>
@@ -210,7 +215,14 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_feeHistory",
-  "params": ["0x5", "latest", [20, 30]],
+  "params": [
+    "0x5",
+    "latest",
+    [
+      20,
+      30
+    ]
+  ],
   "id": 1
 }
 ```
@@ -221,22 +233,63 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "oldestBlock": "0x10b52f",
-    "baseFeePerGas": ["0x3fa63a3f", "0x37f999ee", "0x3e36f20a", "0x4099f79a", "0x430d532d", "0x46fcd4a4"],
-    "baseFeePerBlobGas": ["0x7b7609c19", "0x6dbe41789", "0x7223341d4", "0x6574a002c", "0x7223341d4", "0x6574a002c"],
-    "gasUsedRatio": [0.017712333333333333, 0.9458865666666667, 0.6534561, 0.6517375666666667, 0.7347769666666667],
-    "blobGasUsedRatio": [0.0, 0.6666666666666666, 0.0, 1.0, 0.0],
-    "reward": [
-      ["0x3b9aca00", "0x59682f00"],
-      ["0x3a13012", "0x3a13012"],
-      ["0xf4240", "0xf4240"],
-      ["0xf4240", "0xf4240"],
-      ["0xf4240", "0xf4240"]
-    ]
-  }
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+        "oldestBlock": "0x10b52f",
+        "baseFeePerGas": [
+            "0x3fa63a3f",
+            "0x37f999ee",
+            "0x3e36f20a",
+            "0x4099f79a",
+            "0x430d532d",
+            "0x46fcd4a4"
+        ],
+        "baseFeePerBlobGas": [
+            "0x7b7609c19",
+            "0x6dbe41789",
+            "0x7223341d4",
+            "0x6574a002c",
+            "0x7223341d4",
+            "0x6574a002c"
+        ],
+        "gasUsedRatio": [
+            0.017712333333333333,
+            0.9458865666666667,
+            0.6534561,
+            0.6517375666666667,
+            0.7347769666666667
+        ],
+        "blobGasUsedRatio": [
+            0.0,
+            0.6666666666666666,
+            0.0,
+            1.0,
+            0.0
+        ],
+        "reward": [
+            [
+                "0x3b9aca00",
+                "0x59682f00"
+            ],
+            [
+                "0x3a13012",
+                "0x3a13012"
+            ],
+            [
+                "0xf4240",
+                "0xf4240"
+            ],
+            [
+                "0xf4240",
+                "0xf4240"
+            ],
+            [
+                "0xf4240",
+                "0xf4240"
+            ]
+        ]
+    }
 }
 ```
 

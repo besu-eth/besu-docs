@@ -25,8 +25,6 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
@@ -46,8 +44,6 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
     The default is `false`.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -103,7 +99,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": ["/Users/me/mynode/sepolia/data/traces/block_0x2dc0b6c4-4-0x4ff04c4a-1612820117332"]
+  "result": [
+    "/Users/me/mynode/sepolia/data/traces/block_0x2dc0b6c4-4-0x4ff04c4a-1612820117332"
+  ]
 }
 ```
 
@@ -125,8 +123,6 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
@@ -146,8 +142,6 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
     The default is `false`.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -180,7 +174,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_standardTraceBadBlockToFile",
-  "params": ["0x53741e9e94791466d117c5f9e41a2ed1de3f73d39920c621dfc2f294e7779baa"],
+  "params": [
+    "0x53741e9e94791466d117c5f9e41a2ed1de3f73d39920c621dfc2f294e7779baa"
+  ],
   "id": 1
 }
 ```
@@ -193,7 +189,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": ["/Users/me/mynode/sepolia/data/traces/block_0x53741e9e-0-0x407ec43d-1600951088172"]
+  "result": [
+    "/Users/me/mynode/sepolia/data/traces/block_0x53741e9e-0-0x407ec43d-1600951088172"
+  ]
 }
 ```
 
@@ -214,8 +212,6 @@ Reruns the transaction with the same state as when the transaction executed.
 - `transactionHash`: _string_ - Transaction hash.
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -239,13 +235,9 @@ Reruns the transaction with the same state as when the transaction executed.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - Trace object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -292,8 +284,6 @@ Reruns the transaction with the same state as when the transaction executed.
     Omitted when the trace is complete.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -380,8 +370,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
@@ -407,13 +395,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - Array of transaction trace objects.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -462,8 +446,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
     </Fields>
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -541,8 +523,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `disableStorage`: _boolean_ - `true` disables storage capture. The default is `false`.
@@ -568,13 +548,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - Array of transaction trace objects.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -624,8 +600,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -653,7 +627,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_traceBlockByHash",
-  "params": ["0xaceb3b2c9b25b0589230873921eb894b28722011b8df63977145517d754875a5"],
+  "params": [
+    "0xaceb3b2c9b25b0589230873921eb894b28722011b8df63977145517d754875a5"
+  ],
   "id": 1
 }
 ```
@@ -699,11 +675,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
   :::note
   - `pending` returns the same value as `latest`.
   - The genesis block (`0x0` or `earliest`) is not traceable.
-    :::
+  :::
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -730,13 +704,9 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - Array of transaction trace objects.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -785,8 +755,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
     </Fields>
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -849,7 +817,6 @@ curl -X POST http://127.0.0.1:8545/ \
   ]
 }
 ```
-
 </TabItem>
 
 </Tabs>
@@ -860,15 +827,13 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Performs an [`eth_call`](../eth/execute.md#eth_call) within the execution environment of a given block, using the final state of its parent block as the base, and provides a detailed trace of the executed opcodes.
 
-Each `options` entry specifies a state that will be temporarily overridden before executing the call.
+Each `options` entry specifies a state that will be temporarily overridden before executing the call. 
 This allows you to test, analyze, and debug smart contracts more efficiently by allowing
 temporary state changes without affecting the actual blockchain state.
 
 ### Parameters
 
 - `call`: _object_ - Transaction call object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -902,8 +867,6 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
   described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
@@ -914,8 +877,6 @@ temporary state changes without affecting the actual blockchain state.
   :::
 
 - `options`: _object_ - (Optional) Request options object (all fields optional).
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -965,13 +926,9 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - Trace object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -1019,8 +976,6 @@ temporary state changes without affecting the actual blockchain state.
     Omitted when the trace is complete.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 

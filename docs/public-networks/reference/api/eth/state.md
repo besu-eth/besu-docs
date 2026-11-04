@@ -60,7 +60,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBalance",
-  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73", "latest"],
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -170,7 +173,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getCode",
-  "params": ["0xa50a51c09a5c451c52bb714527e1974b686d8e77", "latest"],
+  "params": [
+    "0xa50a51c09a5c451c52bb714527e1974b686d8e77",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -257,16 +263,25 @@ The API allows IoT devices or mobile apps which are unable to run light clients 
 - Account details object.
 
   <Fields>
+
   - `balance`: _string_ - Account balance.
+
   - `codeHash`: _string_ - 32-byte hash of the account code.
+
   - `nonce`: _string_ - Number of transactions sent from the account.
+
   - `storageHash`: _string_ - 32-byte SHA3 of the `storageRoot`.
+
   - `accountProof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `stateRoot`.
+
   - `storageProof`: _array_ of _objects_ - List of storage entry objects.
 
     <Fields>
+
     - `key`: _string_ - Storage key.
+
     - `value`: _string_ - Storage value.
+
     - `proof`: _array_ of _strings_ - List of RLP-encoded Merkle tree nodes, starting with the `storageHash`.
 
     </Fields>
@@ -304,7 +319,13 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getProof",
-  "params": ["0a8156e7ee392d885d10eaa86afd0e323afdcd95", ["0x0000000000000000000000000000000000000000000000000000000000000347"], "latest"],
+  "params": [
+    "0a8156e7ee392d885d10eaa86afd0e323afdcd95",
+    [
+      "0x0000000000000000000000000000000000000000000000000000000000000347"
+    ],
+    "latest"
+  ],
   "id": 1
 }
 ```
@@ -318,7 +339,12 @@ curl -X POST http://127.0.0.1:8545/ \
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "accountProof": ["0xf90211a0...608d898380", "0xf90211a0...ec33f19580", "0xf901d1a0...9e55584480", "0xf8718080...18e5777142"],
+    "accountProof": [
+      "0xf90211a0...608d898380",
+      "0xf90211a0...ec33f19580",
+      "0xf901d1a0...9e55584480",
+      "0xf8718080...18e5777142"
+    ],
     "address": "0x0a8156e7ee392d885d10eaa86afd0e323afdcd95",
     "balance": "0x0",
     "codeHash": "0x2b6975dcaf69f9bb9a3b30bb6a37b305ce440250bf0dd2f23338cb18e5777142",
@@ -328,7 +354,11 @@ curl -X POST http://127.0.0.1:8545/ \
       {
         "key": "0x0000000000000000000000000000000000000000000000000000000000000347",
         "value": "0x0",
-        "proof": ["0xf90211a0...5176779280", "0xf901f1a0...c208d86580", "0xf8d180a0...1ce6808080"]
+        "proof": [
+          "0xf90211a0...5176779280",
+          "0xf901f1a0...c208d86580",
+          "0xf8d180a0...1ce6808080"
+        ]
       }
     ]
   }
@@ -393,7 +423,11 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getStorageAt",
-  "params": ["0x‭3B3F3E‬", "0x0", "latest"],
+  "params": [
+    "0x‭3B3F3E‬",
+    "0x0",
+    "latest"
+  ],
   "id": 53
 }
 ```
@@ -519,8 +553,13 @@ curl -X POST http://127.0.0.1:8545/ \
   "method": "eth_getStorageValues",
   "params": [
     {
-      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": ["0x0", "0x1"],
-      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": ["0x0"]
+      "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+        "0x0",
+        "0x1"
+      ],
+      "0x627306090abaB3A6e1400e9345bC60c78a8BEf57": [
+        "0x0"
+      ]
     },
     "latest"
   ],
@@ -537,8 +576,13 @@ curl -X POST http://127.0.0.1:8545/ \
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "0x627306090abab3a6e1400e9345bc60c78a8bef57": ["0x0000000000000000000000000000000000000000000000000000000000000000"],
-    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000"]
+    "0x627306090abab3a6e1400e9345bc60c78a8bef57": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73": [
+      "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "0x0000000000000000000000000000000000000000000000000000000000000000"
+    ]
   }
 }
 ```
@@ -592,7 +636,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionCount",
-  "params": ["0xc94770007dda54cF92009BFF0dE90c06F603a09f", "latest"],
+  "params": [
+    "0xc94770007dda54cF92009BFF0dE90c06F603a09f",
+    "latest"
+  ],
   "id": 1
 }
 ```

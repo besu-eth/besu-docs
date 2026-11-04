@@ -25,8 +25,6 @@ Returns transaction information for the specified block hash and transaction ind
 
 - Transaction object, or `null` when there is no transaction.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
@@ -74,8 +72,6 @@ Returns transaction information for the specified block hash and transaction ind
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -104,7 +100,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionByBlockHashAndIndex",
-  "params": ["0xbf137c3a7a1ebdfac21252765e5d7f40d115c2757e4a4abee929be88c624fdb7", "0x2"],
+  "params": [
+    "0xbf137c3a7a1ebdfac21252765e5d7f40d115c2757e4a4abee929be88c624fdb7",
+    "0x2"
+  ],
   "id": 1
 }
 ```
@@ -212,8 +211,6 @@ Returns transaction information for the specified block number and transaction i
 
 - Transaction object, or `null` when there is no transaction.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
@@ -261,8 +258,6 @@ Returns transaction information for the specified block number and transaction i
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -291,7 +286,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionByBlockNumberAndIndex",
-  "params": ["0x1442e", "0x2"],
+  "params": [
+    "0x1442e",
+    "0x2"
+  ],
   "id": 1
 }
 ```
@@ -391,8 +389,6 @@ Returns transaction information for the specified transaction hash.
 
 - Transaction object, or `null` when there is no transaction.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
@@ -440,8 +436,6 @@ Returns transaction information for the specified transaction hash.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -469,7 +463,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionByHash",
-  "params": ["0xa52be92809541220ee0aaaede6047d9a6c5d0cd96a517c854d944ee70a0ebb44"],
+  "params": [
+    "0xa52be92809541220ee0aaaede6047d9a6c5d0cd96a517c854d944ee70a0ebb44"
+  ],
   "id": 53
 }
 ```
@@ -596,8 +592,6 @@ If the index is disabled, this method only returns information for pending trans
 
 - Transaction object, or `null` when there is no transaction.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `accessList`: _array_ - (Optional) List of addresses and storage keys the transaction plans to access. Used in [`ACCESS_LIST` transactions](../../../concepts/transactions/types.md#access_list-transactions) and may be used in [`EIP1559` transactions](../../../concepts/transactions/types.md#eip1559-transactions).
@@ -645,8 +639,6 @@ If the index is disabled, this method only returns information for pending trans
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -675,7 +667,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionBySenderAndNonce",
-  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73", "0x1"],
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+    "0x1"
+  ],
   "id": 53
 }
 ```
@@ -728,8 +723,6 @@ If you enabled [revert reason](../../../../private-networks/how-to/send-transact
 ### Returns
 
 - Transaction receipt object, or `null` when there is no receipt.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -795,8 +788,6 @@ If you enabled [revert reason](../../../../private-networks/how-to/send-transact
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -824,7 +815,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getTransactionReceipt",
-  "params": ["0x504ce587a65bdbdb6414a0c6c16d86a04dd79bfcc4f2950eec9634b30ce5370f"],
+  "params": [
+    "0x504ce587a65bdbdb6414a0c6c16d86a04dd79bfcc4f2950eec9634b30ce5370f"
+  ],
   "id": 53
 }
 ```

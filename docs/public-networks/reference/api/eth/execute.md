@@ -23,8 +23,6 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
 - `call`: _object_ - Transaction call object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `from`: _data, 20 bytes_ - Address of the sender.
@@ -65,8 +63,6 @@ By default, the `eth_call` error response includes the [revert reason](../../../
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
   described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
@@ -76,11 +72,9 @@ By default, the `eth_call` error response includes the [revert reason](../../../
   :::
 
 - `stateOverride`: _object_ - (Optional) The address-to-state mapping.
-  Each entry specifies a state that will be temporarily overridden before executing the call.
-  This allows you to test, analyze, and debug smart contracts more efficiently by allowing
-  temporary state changes without affecting the actual blockchain state.
-
-<!-- prettier-ignore-start -->
+    Each entry specifies a state that will be temporarily overridden before executing the call.
+    This allows you to test, analyze, and debug smart contracts more efficiently by allowing
+    temporary state changes without affecting the actual blockchain state.
 
   <Fields>
 
@@ -97,8 +91,6 @@ By default, the `eth_call` error response includes the [revert reason](../../../
   - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -289,9 +281,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "0x0000000000000000000000000000000000000000000000000000000000004e20"
+  "jsonrpc":"2.0",
+  "id":1,
+  "result":"0x0000000000000000000000000000000000000000000000000000000000004e20"
 }
 ```
 
@@ -309,8 +301,6 @@ If the simulated transaction reverts, the result also includes an error message.
 ### Parameters
 
 - `transaction`: _object_ - Transaction call object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -344,8 +334,6 @@ If the simulated transaction reverts, the result also includes an error message.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
@@ -353,8 +341,6 @@ If the simulated transaction reverts, the result also includes an error message.
 ### Returns
 
 - Access list object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -374,8 +360,6 @@ If the simulated transaction reverts, the result also includes an error message.
     Omitted when the simulation succeeds.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -462,8 +446,6 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
 - `call`: _object_ - Transaction call object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `from`: _data, 20 bytes_ - Address of the sender.
@@ -504,18 +486,14 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber`: _string_ - (Optional) Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
   The default is `pending`.
 
 - `stateOverride`: _object_ - The address-to-state mapping.
-  Each entry specifies a state that will be temporarily overridden before executing the call.
-  This allows you to make temporary state changes without affecting the actual blockchain state.
-
-<!-- prettier-ignore-start -->
+    Each entry specifies a state that will be temporarily overridden before executing the call.
+    This allows you to make temporary state changes without affecting the actual blockchain state.
 
   <Fields>
 
@@ -532,8 +510,6 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
   - `stateDiff`: _quantity_ - `key:value` pairs to override individual slots in the account storage. You cannot set both the `state` and `stateDiff` options simultaneously.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Returns
 
@@ -714,9 +690,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": "0xfa07"
+  "jsonrpc":"2.0",
+  "id":1,
+  "result":"0xfa07"
 }
 ```
 
@@ -734,8 +710,6 @@ block parameters without submitting them to the network.
 ### Parameters
 
 - `payload`: _object_ - Transaction simulation payload object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -835,8 +809,6 @@ block parameters without submitting them to the network.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
   block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
   described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
@@ -844,8 +816,6 @@ block parameters without submitting them to the network.
 ### Returns
 
 - List of simulation result objects.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -1007,8 +977,6 @@ block parameters without submitting them to the network.
     </Fields>
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -1182,13 +1150,16 @@ curl -X POST http://127.0.0.1:8545/ \
       "size": "0x29c",
       "stateRoot": "0xd6da11fae4ab94ddba2c4c71206962f7c6eaec6e5fabf00f3f7540c4ed7ad8f1",
       "timestamp": "0x67803e64",
-      "transactions": ["0xe7217784e0c3f7b35d39303b1165046e9b7e8af9b9cf80d5d5f96c3163de8f51", "0xf0182201606ec03701ba3a07d965fabdb4b7d06b424f226ea7ec3581802fc6fa"],
+      "transactions": [
+        "0xe7217784e0c3f7b35d39303b1165046e9b7e8af9b9cf80d5d5f96c3163de8f51",
+        "0xf0182201606ec03701ba3a07d965fabdb4b7d06b424f226ea7ec3581802fc6fa"
+      ],
       "transactionsRoot": "0x9bdb74f3ce41f5893a02a631e904ae0d21ae8c4e416786d8dbd9cb5c54f1dc0f",
       "uncles": [],
       "withdrawals": [],
       "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
     }
-  ]
+  ]  
 }
 ```
 

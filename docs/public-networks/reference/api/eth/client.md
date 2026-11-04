@@ -189,8 +189,6 @@ Returns the node's data-serving capabilities.
 
 - Capabilities information.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `head`: _object_ - Current chain head information.
@@ -268,8 +266,6 @@ Returns the node's data-serving capabilities.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -306,34 +302,34 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "head": {
-      "number": "0x13f8e3a",
-      "hash": "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
+  "jsonrpc":"2.0",
+  "id":1,
+  "result":{
+    "head":{
+      "number":"0x13f8e3a",
+      "hash":"0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3"
     },
-    "state": {
-      "disabled": false
+    "state":{
+      "disabled":false
     },
-    "tx": {
-      "disabled": false,
-      "oldestBlock": "0x11b340a"
+    "tx":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
     },
-    "logs": {
-      "disabled": false,
-      "oldestBlock": "0x11b340a"
+    "logs":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
     },
-    "receipts": {
-      "disabled": false,
-      "oldestBlock": "0x11b340a"
+    "receipts":{
+      "disabled":false,
+      "oldestBlock":"0x11b340a"
     },
-    "blocks": {
-      "disabled": false,
-      "oldestBlock": "0x0"
+    "blocks":{
+      "disabled":false,
+      "oldestBlock":"0x0"
     },
-    "stateproofs": {
-      "disabled": false
+    "stateproofs":{
+      "disabled":false
     }
   }
 }
@@ -423,8 +419,6 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
 
 - Configuration information.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `current`: _object_ - Current fork configuration.
@@ -461,8 +455,6 @@ This method is defined in [EIP-7910](https://eips.ethereum.org/EIPS/eip-7910) an
       the largest `activationTime` among the client's configured forks). If only one future fork is configured, `next` and `last` are the same object. `null` if no future fork is scheduled.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -663,8 +655,6 @@ Once the node reaches the head of the chain, `eth_syncing` returns `false`, indi
 
 - Synchronization status data object, or `false` if not synchronizing.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `startingBlock`: _string_ - Index of the highest block on the blockchain when the network synchronization starts.
@@ -680,8 +670,6 @@ Once the node reaches the head of the chain, `eth_syncing` returns `false`, indi
     [full syncing](../../../concepts/node-sync.md#full-synchronization) or fully synchronized, this field is not returned.)
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 

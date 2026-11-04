@@ -1,0 +1,4 @@
+# JSON-RPC reference pages nest <Fields> around Markdown lists. Prettier pulls those
+# lists out of the tag, so the page no longer compiles. Leave this tree unformatted.
+docs/private-networks/reference/api/
+docs/public-networks/reference/api/

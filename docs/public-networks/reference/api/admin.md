@@ -64,7 +64,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_addPeer",
-  "params": ["enode://f59c0ab603377b6ec88b89d5bb41b98fc385030ab1e4b03752db6f7dab364559d92c757c13116ae6408d2d33f0138e7812eb8b696b2a22fe3332c4b5127b22a3@127.0.0.1:30304"],
+  "params": [
+    "enode://f59c0ab603377b6ec88b89d5bb41b98fc385030ab1e4b03752db6f7dab364559d92c757c13116ae6408d2d33f0138e7812eb8b696b2a22fe3332c4b5127b22a3@127.0.0.1:30304"
+  ],
   "id": 1
 }
 ```
@@ -138,7 +140,13 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_changeLogLevel",
-  "params": ["DEBUG", ["org.hyperledger.besu.ethereum.eth.manager", "org.hyperledger.besu.ethereum.p2p.rlpx.connections.netty.ApiHandler"]],
+  "params": [
+    "DEBUG",
+    [
+      "org.hyperledger.besu.ethereum.eth.manager",
+      "org.hyperledger.besu.ethereum.p2p.rlpx.connections.netty.ApiHandler"
+    ]
+  ],
   "id": 1
 }
 ```
@@ -186,7 +194,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_changeLogLevel",
-  "params": ["WARN"],
+  "params": [
+    "WARN"
+  ],
   "id": 1
 }
 ```
@@ -237,10 +247,15 @@ Each index file contains 100000 blocks. The last fragment of blocks less than 10
 - Log bloom index details, or `null` when the node has no log bloom cacher configured.
 
   <Fields>
+
   - `startBlock`: _string_ - Starting block for the last requested cache generation.
+
   - `endBlock`: _string_ - Ending block for the last requested cache generation.
+
   - `currentBlock`: _string_ - Most recent block added to the cache.
+
   - `caching`: _boolean_ - Indicates if cache generation is in progress.
+
   - `requestAccepted`: _boolean_ - Indicates acceptance of the request from this call to generate the cache.
 
   </Fields>
@@ -273,7 +288,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_generateLogBloomCache",
-  "params": ["0x0", "0x10000"],
+  "params": [
+    "0x0",
+    "0x10000"
+  ],
   "id": 1
 }
 ```
@@ -323,7 +341,7 @@ Removes cache files for the specified range of blocks.
 If you specify:
 
 - No parameters, Besu removes cache files from the genesis block through the chain head.
-- One parameter, Besu sets `fromBlock` and `toBlock` to that one block and removes cache files for that
+- One parameter, Besu sets `fromBlock` and `toBlock` to that one block and removes cache files for that 
   block only.
 - Two parameters, Besu removes cache files from `fromBlock` through `toBlock`, inclusive.
 
@@ -361,7 +379,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_logsRemoveCache",
-  "params": ["0x1", "0x64"],
+  "params": [
+    "0x1",
+    "0x64"
+  ],
   "id": 1
 }
 ```
@@ -426,7 +447,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_logsRepairCache",
-  "params": ["1200"],
+  "params": [
+    "1200"
+  ],
   "id": 1
 }
 ```
@@ -469,32 +492,48 @@ Learn about
 - Node object.
 
   <Fields>
+
   - `id`: _string_ - [Node public key](../../concepts/node-keys.md#node-public-key).
+
   - `name`: _string_ - Client name.
+
   - `activeFork`: _string_ - Active EVM hard fork name for the current chain head.
+
   - `enode`: _string_ - [Enode URL](../../concepts/node-keys.md#enode-url) of the node.
     Includes `?discport=` when the TCP listening and UDP discovery ports differ.
+
   - `enodeV6`: _string_ - IPv6 [enode URL](../../concepts/node-keys.md#enode-url) of the node.
     Present when the local ENR contains both IPv6 TCP and UDP ports.
     Includes `?discport=` when those ports differ.
+
   - `enr`: _string_ - [ENR URL](../../concepts/node-keys.md#enr-url) of the node.
+
   - `ip`: _string_ - IP address.
+
   - `ipv6`: _string_ - IPv6 address.
+
   - `listenAddr`: _string_ - Host and port for the node, as `ip:port`.
+
   - `listenAddrV6`: _string_ - IPv6 host and port for the node, as `[ipv6]:port`.
+
   - `ports`: _object_ - Peer discovery and listening ports.
 
     <Fields>
+
     - `discovery`: _number_ - UDP discovery port.
+
     - `discoveryV6`: _number_ - IPv6 UDP discovery port.
+
     - `listener`: _number_ - TCP listening port.
+
     - `listenerV6`: _number_ - IPv6 TCP listening port.
 
     </Fields>
+
   - `protocols`: _object_ - List of objects containing information for each Ethereum sub-protocol.
 
   <br />
-
+  
   :::note
 
   If the node is running locally, the host of the `enode` and `listenAddr` display as `[::]` in the result. When advertising externally, the external address displayed for the `enode` and `listenAddr` is defined by [`--nat-method`](../../how-to/connect/specify-nat.md).
@@ -603,13 +642,21 @@ Returns networking information about connected remote nodes.
 - List of objects returned for each remote node.
 
   <Fields>
+
   - `version`: _string_ - P2P protocol version.
+
   - `name`: _string_ - Client name.
+
   - `caps`: _array_ of _strings_ - List of Ethereum sub-protocol capabilities.
+
   - `network`: _object_ - Local and remote addresses established at time of bonding with the peer (the remote address might not match the hex value for `port`; it depends on which node initiated the connection.)
+
   - `port`: _string_ - Port on the remote node on which P2P discovery is listening.
+
   - `id`: _string_ - Node public key (excluding the `0x` prefix, the node public key is the ID in the [enode URL](../../concepts/node-keys.md#enode-url) `enode://<id ex 0x>@<host>:<port>`.)
+
   - `protocols`: _object_ - [Current state of peer](../../how-to/connect/manage-peers.md#monitor-peer-connections) including `difficulty`, `head`, and `latestBlock` (`head` is the hash of the highest known block for the peer; `latestBlock` is the corresponding block number.)
+
   - `enode`: _string_ - Enode URL of the remote node.
 
   </Fields>
@@ -722,7 +769,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "admin_removePeer",
-  "params": ["enode://f59c0ab603377b6ec88b89d5bb41b98fc385030ab1e4b03752db6f7dab364559d92c757c13116ae6408d2d33f0138e7812eb8b696b2a22fe3332c4b5127b22a3@127.0.0.1:30304"],
+  "params": [
+    "enode://f59c0ab603377b6ec88b89d5bb41b98fc385030ab1e4b03752db6f7dab364559d92c757c13116ae6408d2d33f0138e7812eb8b696b2a22fe3332c4b5127b22a3@127.0.0.1:30304"
+  ],
   "id": 1
 }
 ```

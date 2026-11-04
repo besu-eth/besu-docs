@@ -38,8 +38,6 @@ Returns data only for blocks that include an EIP-7928 BAL.
 - Array of account change objects for the block access list, or `null` when the block is not
   found.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `address`: _data, 20 bytes_ - Account address.
@@ -98,8 +96,6 @@ Returns data only for blocks that include an EIP-7928 BAL.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 :::note
 Returns a JSON-RPC error (`Resource not found`) for blocks that don't include an EIP-7928 BAL,
 and (`Pruned history unavailable`) when the BAL is missing from local storage.
@@ -132,7 +128,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockAccessList",
-  "params": ["0x1"],
+  "params": [
+    "0x1"
+  ],
   "id": 1
 }
 ```
@@ -200,8 +198,6 @@ Returns information about the block matching the specified block hash.
 ### Returns
 
 - Block object, or `null` when there is no block.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -320,8 +316,6 @@ Returns information about the block matching the specified block hash.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -350,7 +344,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockByHash",
-  "params": ["0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c", false],
+  "params": [
+    "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c",
+    false
+  ],
   "id": 53
 }
 ```
@@ -383,7 +380,10 @@ curl -X POST http://127.0.0.1:8545/ \
     "gasUsed": "0x37993",
     "timestamp": "0x5835c54d",
     "uncles": [],
-    "transactions": ["0xa0807e117a8dd124ab949f460f08c36c72b710188f01609595223b325e58e0fc", "0xeae6d797af50cb62a596ec3939114d63967c374fa57de9bc0f4e2b576ed6639d"],
+    "transactions": [
+      "0xa0807e117a8dd124ab949f460f08c36c72b710188f01609595223b325e58e0fc",
+      "0xeae6d797af50cb62a596ec3939114d63967c374fa57de9bc0f4e2b576ed6639d"
+    ],
     "baseFeePerGas": "0x7"
   }
 }
@@ -489,8 +489,6 @@ Returns information about the block matching the specified block number.
 ### Returns
 
 - Block object, or `null` when there is no block.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -609,8 +607,6 @@ Returns information about the block matching the specified block number.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -639,7 +635,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockByNumber",
-  "params": ["0x68B3", true],
+  "params": [
+    "0x68B3",
+    true
+  ],
   "id": 1
 }
 ```
@@ -802,8 +801,6 @@ gas used and any event logs that might have been produced by a smart contract du
 
 - List of transaction receipt objects, or `null` when there is no block.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `blockHash`: _data, 32 bytes_ - Hash of block containing this transaction.
@@ -869,8 +866,6 @@ gas used and any event logs that might have been produced by a smart contract du
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -898,7 +893,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockReceipts",
-  "params": ["0x6f55"],
+  "params": [
+    "0x6f55"
+  ],
   "id": 1
 }
 ```
@@ -985,27 +982,27 @@ curl -X POST http://localhost:8547/graphql \
 ```text
 {
   block (hash: "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d") {
-    transactions {
-      block {
+    transactions { 
+      block { 
         hash
         logsBloom
-      }
+      } 
       hash
       createdContract {
         address
-      }
+      } 
       cumulativeGasUsed
       gas
       gasUsed
-      logs{
+      logs{ 
         topics
-      }
-      from{
+      } 
+      from{ 
         address
       }
-      to {
+      to { 
         address
-      }
+      } 
       index
     }
   }
@@ -1018,52 +1015,47 @@ curl -X POST http://localhost:8547/graphql \
 
 ```json
 {
-  "data": {
-    "block": {
-      "transactions": [
-        {
-          "block": {
-            "hash": "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
-            "logsBloom": "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
-          },
-          "hash": "0x7afe779fd0c6d4a1b6f330e679a5cf94095eaa57d2ce0c0ef991dfb2b405374f",
-          "createdContract": null,
-          "cumulativeGasUsed": "0x5208",
-          "gas": "0x61a8",
-          "gasUsed": "0x5208",
-          "logs": [],
-          "from": {
-            "address": "0x66f962241b8ff853849c85a63a0ce20bae4f68d5"
-          },
-          "to": {
-            "address": "0x6be8356826a9fc7b2d911fcc1de6342ae5f5b9a3"
-          },
-          "index": "0x0"
+  "data" : {
+    "block" : {
+      "transactions" : [ {
+        "block" : {
+          "hash" : "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
+          "logsBloom" : "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
         },
-        {
-          "block": {
-            "hash": "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
-            "logsBloom": "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
-          },
-          "hash": "0x412f04ba27c1c096dadb2d8af54ee61034c3d4679fdd025a634e95fa2238713c",
-          "createdContract": null,
-          "cumulativeGasUsed": "0xbcdb2",
-          "gas": "0xbdfe0",
-          "gasUsed": "0xb7baa",
-          "logs": [
-            {
-              "topics": ["0xd93fde3ea1bb11dcd7a4e66320a05fc5aa63983b6447eff660084c4b1b1b499b", "0x00000000000000000000000000000000000000000000000000000000000e4d3a"]
-            }
-          ],
-          "from": {
-            "address": "0xe253f7a6533c62755f470b33fa5bcd659a5db3cd"
-          },
-          "to": {
-            "address": "0x95ff8d3ce9dcb7455beb7845143bea84fe5c4f6f"
-          },
-          "index": "0x1"
-        }
-      ]
+        "hash" : "0x7afe779fd0c6d4a1b6f330e679a5cf94095eaa57d2ce0c0ef991dfb2b405374f",
+        "createdContract" : null,
+        "cumulativeGasUsed" : "0x5208",
+        "gas" : "0x61a8",
+        "gasUsed" : "0x5208",
+        "logs" : [ ],
+        "from" : {
+          "address" : "0x66f962241b8ff853849c85a63a0ce20bae4f68d5"
+        },
+        "to" : {
+          "address" : "0x6be8356826a9fc7b2d911fcc1de6342ae5f5b9a3"
+        },
+        "index" : "0x0"
+      }, {
+        "block" : {
+          "hash" : "0x4d746a3381673a5180744a56e78cded4696b77317866c2253566e0fa16967e1d",
+          "logsBloom" : "0x2e0a8080520608000e38181e0c9081e813a00c184a010d1900c9602240428dc6480004444098428b945010802454104002827420426591a200224016802841900031bd4440828ec9b113081880027c01cc47105c1885d556216200880026160810050028422a4b0c4bc8087372860851000802c8d901158504a482100d488040119c08045e500824402054a0d91cc433188909020a06ac841914a2a082c104a1260460014b8b001b28030202518c040008266038a880026208041d082503589054581223c188004396804801280c00020c492816060a421831c8820ac04460303a9e48128238e0098f319030083808150c4914b8840000206715481500690000"
+        },
+        "hash" : "0x412f04ba27c1c096dadb2d8af54ee61034c3d4679fdd025a634e95fa2238713c",
+        "createdContract" : null,
+        "cumulativeGasUsed" : "0xbcdb2",
+        "gas" : "0xbdfe0",
+        "gasUsed" : "0xb7baa",
+        "logs" : [ {
+          "topics" : [ "0xd93fde3ea1bb11dcd7a4e66320a05fc5aa63983b6447eff660084c4b1b1b499b", "0x00000000000000000000000000000000000000000000000000000000000e4d3a" ]
+        } ],
+        "from" : {
+          "address" : "0xe253f7a6533c62755f470b33fa5bcd659a5db3cd"
+        },
+        "to" : {
+          "address" : "0x95ff8d3ce9dcb7455beb7845143bea84fe5c4f6f"
+        },
+        "index" : "0x1"
+      } ]
     }
   }
 }
@@ -1114,7 +1106,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockTransactionCountByHash",
-  "params": ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],
+  "params": [
+    "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
+  ],
   "id": 53
 }
 ```
@@ -1220,7 +1214,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getBlockTransactionCountByNumber",
-  "params": ["0xe8"],
+  "params": [
+    "0xe8"
+  ],
   "id": 51
 }
 ```
@@ -1294,8 +1290,6 @@ Returns uncle specified by block hash and index.
 ### Returns
 
 - Block object.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -1421,8 +1415,6 @@ Returns uncle specified by block hash and index.
   :::
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -1451,7 +1443,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleByBlockHashAndIndex",
-  "params": ["0xc48fb64230a82f65a08e7280bd8745e7fea87bc7c206309dee32209fe9a985f7", "0x0"],
+  "params": [
+    "0xc48fb64230a82f65a08e7280bd8745e7fea87bc7c206309dee32209fe9a985f7",
+    "0x0"
+  ],
   "id": 1
 }
 ```
@@ -1580,8 +1575,6 @@ Returns uncle specified by block number and index.
 
 - Block object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
@@ -1707,8 +1700,6 @@ Returns uncle specified by block number and index.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -1737,7 +1728,10 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleByBlockNumberAndIndex",
-  "params": ["0x7689D2", "0x0"],
+  "params": [
+    "0x7689D2",
+    "0x0"
+  ],
   "id": 1
 }
 ```
@@ -1872,7 +1866,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleCountByBlockHash",
-  "params": ["0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"],
+  "params": [
+    "0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238"
+  ],
   "id": 1
 }
 ```
@@ -1978,7 +1974,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "eth_getUncleCountByBlockNumber",
-  "params": ["0xe8"],
+  "params": [
+    "0xe8"
+  ],
   "id": 1
 }
 ```

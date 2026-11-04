@@ -24,8 +24,6 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
 - List of block objects.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `number`: _quantity, integer_ - Block number. `null` when block is pending.
@@ -139,8 +137,6 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -326,7 +322,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawBlock",
-  "params": ["0x32026E"],
+  "params": [
+    "0x32026E"
+  ],
   "id": 1
 }
 ```
@@ -402,7 +400,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawBlockAccessList",
-  "params": ["0x1"],
+  "params": [
+    "0x1"
+  ],
   "id": 1
 }
 ```
@@ -474,7 +474,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawHeader",
-  "params": ["0x32026E"],
+  "params": [
+    "0x32026E"
+  ],
   "id": 1
 }
 ```
@@ -544,7 +546,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawReceipts",
-  "params": ["0x32026E"],
+  "params": [
+    "0x32026E"
+  ],
   "id": 1
 }
 ```
@@ -611,7 +615,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_getRawTransaction",
-  "params": ["0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"],
+  "params": [
+    "0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"
+  ],
   "id": 1
 }
 ```
@@ -679,13 +685,13 @@ This method returns:
 
 - `null` when the block does not exist.
 - A JSON-RPC error (`Block not found`) for the genesis block (`earliest` or block
-  `0`), which has no parent state to re-execute against.
+`0`), which has no parent state to re-execute against.
 - A JSON-RPC error (`Internal error`) when your node is not using
-  [Bonsai Tries](../../../concepts/data-storage-formats.md#bonsai-tries), the block's trie
-  log has been pruned, or re-execution fails.
-  See [Reduce storage for Bonsai Tries](../../../how-to/bonsai-limit-trie-logs.md) for how
-  trie log pruning works.
-  :::
+[Bonsai Tries](../../../concepts/data-storage-formats.md#bonsai-tries), the block's trie
+log has been pruned, or re-execution fails.
+See [Reduce storage for Bonsai Tries](../../../how-to/bonsai-limit-trie-logs.md) for how
+trie log pruning works.
+:::
 
 ### Example
 
@@ -714,7 +720,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_executionWitness",
-  "params": ["latest"],
+  "params": [
+    "latest"
+  ],
   "id": 1
 }
 ```
@@ -728,9 +736,15 @@ curl -X POST http://127.0.0.1:8545/ \
   "jsonrpc": "2.0",
   "id": 1,
   "result": {
-    "state": ["0xe7a03c216028b53575ba5007db30cf00..."],
-    "codes": ["0x3373ffffffffffffffffffffffffffffff..."],
-    "headers": ["0xf90302a0234dbe099ccc101ee2eb17864a..."]
+    "state": [
+      "0xe7a03c216028b53575ba5007db30cf00..."
+    ],
+    "codes": [
+      "0x3373ffffffffffffffffffffffffffffff..."
+    ],
+    "headers": [
+      "0xf90302a0234dbe099ccc101ee2eb17864a..."
+    ]
   }
 }
 ```

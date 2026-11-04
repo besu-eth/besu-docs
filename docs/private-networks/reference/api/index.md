@@ -7,11 +7,11 @@ description: Besu private network JSON-RPC API methods reference
 
 The Besu private network JSON-RPC API methods are grouped by namespace:
 
-| Namespace         | Description                                                                       |
-| ----------------- | --------------------------------------------------------------------------------- |
+| Namespace | Description |
+| --- | --- |
 | [`IBFT`](ibft.md) | Access the [IBFT 2.0](../../how-to/configure/consensus/ibft.md) consensus engine. |
-| [`PERM`](perm.md) | [Local permissioning](../../how-to/use-local-permissioning.md) functionality.     |
-| [`QBFT`](qbft.md) | Access the [QBFT](../../how-to/configure/consensus/qbft.md) consensus engine.     |
+| [`PERM`](perm.md) | [Local permissioning](../../how-to/use-local-permissioning.md) functionality. |
+| [`QBFT`](qbft.md) | Access the [QBFT](../../how-to/configure/consensus/qbft.md) consensus engine. |
 
 :::caution Important
 

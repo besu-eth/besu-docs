@@ -10,17 +10,17 @@ import TabItem from '@theme/TabItem';
 
 The Besu JSON-RPC API methods are grouped by namespace:
 
-| Namespace                 | Description                                                                                     |
-| ------------------------- | ----------------------------------------------------------------------------------------------- |
-| [`ADMIN`](admin.md)       | Administrative functionality to manage your node.                                               |
-| [`DEBUG`](debug/index.md) | Inspect and debug the network.                                                                  |
-| [`ETH`](eth/index.md)     | Interact with the blockchain, including querying blocks, transactions, logs, and account state. |
-| [`MINER`](miner.md)       | Control the node's block creation settings.                                                     |
-| [`NET`](net.md)           | Network-related information.                                                                    |
-| [`PLUGINS`](plugins.md)   | Plugin-related functionality.                                                                   |
-| [`TRACE`](trace.md)       | Concise alternative to the `DEBUG` API for tracing transactions.                                |
-| [`TXPOOL`](txpool.md)     | Inspect the contents of the transaction pool.                                                   |
-| [`WEB3`](web3.md)         | Functionality for the Ethereum ecosystem.                                                       |
+| Namespace | Description |
+| --- | --- |
+| [`ADMIN`](admin.md) | Administrative functionality to manage your node. |
+| [`DEBUG`](debug/index.md) | Inspect and debug the network. |
+| [`ETH`](eth/index.md) | Interact with the blockchain, including querying blocks, transactions, logs, and account state. |
+| [`MINER`](miner.md) | Control the node's block creation settings. |
+| [`NET`](net.md) | Network-related information. |
+| [`PLUGINS`](plugins.md) | Plugin-related functionality. |
+| [`TRACE`](trace.md) | Concise alternative to the `DEBUG` API for tracing transactions. |
+| [`TXPOOL`](txpool.md) | Inspect the contents of the transaction pool. |
+| [`WEB3`](web3.md) | Functionality for the Ethereum ecosystem. |
 
 :::caution Important
 

@@ -29,8 +29,6 @@ Lists pending transactions that match the supplied filter conditions.
 
 - `fields`: _object_ - Object of fields used to create the filter condition.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   Each field in the object corresponds to a field name containing an operator, and a value for the operator.
@@ -65,13 +63,9 @@ Lists pending transactions that match the supplied filter conditions.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Returns
 
 - List of objects with details of the pending transaction.
-
-<!-- prettier-ignore-start -->
 
   <Fields>
 
@@ -106,8 +100,6 @@ Lists pending transactions that match the supplied filter conditions.
   - `s`: _data, 32 bytes_ - ECDSA signature s.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -206,8 +198,6 @@ Lists statistics about the node transaction pool.
 
 - Transaction pool statistics object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `maxSize`: _number_ - Maximum number of transactions kept in the transaction pool; use the [`--tx-pool-max-size`](../options.md#tx-pool-max-size) option to configure the maximum size.
@@ -217,8 +207,6 @@ Lists statistics about the node transaction pool.
   - `remoteCount`: _number_ - Number of transactions received from remote nodes.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -350,8 +338,6 @@ sender address and sorted by nonce.
 
 - Transaction pool content object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `pending`: _object_ - Map of sender addresses to maps of nonces to transaction objects,
@@ -449,8 +435,6 @@ sender address and sorted by nonce.
     </Fields>
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -550,8 +534,6 @@ Returns the pending and queued transactions for a given sender address.
 
 - Transaction pool content for the given address.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `pending`: _object_ - Map of nonces to transaction objects, for pending transactions from the given address.
@@ -648,8 +630,6 @@ Returns the pending and queued transactions for a given sender address.
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 ### Example
 
 <Tabs>
@@ -676,7 +656,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "txpool_contentFrom",
-  "params": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"],
+  "params": [
+    "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+  ],
   "id": 1
 }
 ```
@@ -757,8 +739,6 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
 
 - Transaction pool inspect object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `pending`: _object_ - Map of sender addresses to maps of nonces to human-readable transaction
@@ -768,8 +748,6 @@ For programmatic access to the transaction pool, use [`txpool_content`](#txpool_
     summary strings, for transactions scheduled for future execution.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 
@@ -841,8 +819,6 @@ Returns the number of pending and queued transactions in the pool.
 
 - Transaction count details.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `pending`: _string_ - Count of the transactions currently pending for inclusion in the next
@@ -852,8 +828,6 @@ Returns the number of pending and queued transactions in the pool.
     (transactions with nonce gaps).
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 ### Example
 

@@ -44,7 +44,7 @@ the requested block must be within the number of
 
 - List of [trace objects](#trace) for the block.
   Includes transaction traces in execution order, then block and uncle `reward` traces.
-  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the
+  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the 
   returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
@@ -75,7 +75,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "trace_block",
-  "params": ["0x6"],
+  "params": [
+    "0x6"
+  ],
   "id": 1
 }
 ```
@@ -164,8 +166,6 @@ default, 512 from the head of the chain).
 
 - `call`: _object_ - Transaction call object.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `from`: _data, 20 bytes_ - Address of the sender.
@@ -198,8 +198,6 @@ default, 512 from the head of the chain).
 
   </Fields>
 
-<!-- prettier-ignore-end -->
-
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
   the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
   [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
@@ -214,8 +212,6 @@ default, 512 from the head of the chain).
 
 - Object containing the trace results for the call, depending on the requested `options`.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `output`: _data_ - Return value of the call.
@@ -229,8 +225,6 @@ default, 512 from the head of the chain).
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -281,7 +275,9 @@ curl -X POST http://127.0.0.1:8545/ \
       "data": "0x0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002",
       "nonce": "0x0"
     },
-    ["trace"],
+    [
+      "trace"
+    ],
     "latest"
   ],
   "id": 1
@@ -353,8 +349,6 @@ default, 512 from the head of the chain).
 
 - List of objects containing the trace results for each call, in the order the calls were specified, one object per call, depending on the requested `options`.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `output`: _data_ - Return value of the call.
@@ -368,8 +362,6 @@ default, 512 from the head of the chain).
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -428,7 +420,9 @@ curl -X POST http://127.0.0.1:8545/ \
           "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
           "value": "0x186a0"
         },
-        ["trace"]
+        [
+          "trace"
+        ]
       ],
       [
         {
@@ -436,7 +430,9 @@ curl -X POST http://127.0.0.1:8545/ \
           "to": "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",
           "value": "0x186a0"
         },
-        ["trace"]
+        [
+          "trace"
+        ]
       ]
     ],
     "latest"
@@ -585,7 +581,9 @@ curl -X POST http://127.0.0.1:8545/ \
       "toBlock": "0x21",
       "after": 2,
       "count": 2,
-      "fromAddress": ["0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"]
+      "fromAddress": [
+        "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73"
+      ]
     }
   ],
   "id": 415
@@ -668,7 +666,7 @@ the requested transaction must be contained in a block within the number of
 
 - `indexPositions`: _array_ of _strings_ - Index position of the trace.
   Each array item is a hex quantity and the next step down the call tree.
-  For example: `[]` selects the top-level trace; `["0x0"]` selects its first child; `["0x0", "0x1"]`
+  For example: `[]` selects the top-level trace; `["0x0"]` selects its first child; `["0x0", "0x1"]` 
   selects the second child of that first child.
 
 <h3>Returns</h3>
@@ -704,7 +702,12 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "trace_get",
-  "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  "params": [
+    "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
+    [
+      "0x0"
+    ]
+  ],
   "id": 1
 }
 ```
@@ -768,8 +771,6 @@ the chain).
 
 - Object containing the trace results for the transaction, depending on the requested `options`.
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `output`: _data_ - Return value of the transaction.
@@ -785,8 +786,6 @@ the chain).
     ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -817,7 +816,12 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "trace_rawTransaction",
-  "params": ["0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675", ["trace"]],
+  "params": [
+    "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675",
+    [
+      "trace"
+    ]
+  ],
   "id": 1
 }
 ```
@@ -879,8 +883,6 @@ default, 512 from the head of the chain).
 
 - List of transaction trace objects containing one object per transaction, in transaction execution order; if revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the [`trace`](#trace) list items in the returned transaction trace object include the [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
-<!-- prettier-ignore-start -->
-
   <Fields>
 
   - `output`: _data_ - Return value of the transaction.
@@ -895,8 +897,6 @@ default, 512 from the head of the chain).
   - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
   </Fields>
-
-<!-- prettier-ignore-end -->
 
 <h3>Example</h3>
 
@@ -929,7 +929,14 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "trace_replayBlockTransactions",
-  "params": ["0x12", ["trace", "vmTrace", "stateDiff"]],
+  "params": [
+    "0x12",
+    [
+      "trace",
+      "vmTrace",
+      "stateDiff"
+    ]
+  ],
   "id": 1
 }
 ```
@@ -1033,7 +1040,7 @@ the requested transaction must be contained in a block within the number of
 
 - List of [trace objects](#trace) for the transaction, in execution order,
   or `null` when the transaction hash is not on the chain.
-  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the
+  If revert reason is enabled with [`--revert-reason-enabled`](../options.md#revert-reason-enabled), the 
   returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
@@ -1063,7 +1070,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "trace_transaction",
-  "params": ["0x4c253746668dca6ac3f7b9bc18248b558a95b5fc881d140872c2dff984d344a7"],
+  "params": [
+    "0x4c253746668dca6ac3f7b9bc18248b558a95b5fc881d140872c2dff984d344a7"
+  ],
   "id": 1
 }
 ```
@@ -1172,8 +1181,6 @@ precompiled-contract calls that do not execute.
 Each item is an object with the following fields.
 The `action` and `result` shapes depend on the trace `type`.
 
-<!-- prettier-ignore-start -->
-
 <Fields>
 
 - `action`: _object_ - Details of the traced operation.
@@ -1265,8 +1272,6 @@ The `action` and `result` shapes depend on the trace `type`.
 
 </Fields>
 
-<!-- prettier-ignore-end -->
-
 #### Example
 
 ```json
@@ -1297,8 +1302,6 @@ The `action` and `result` shapes depend on the trace `type`.
 The `vmTrace` field is an object with a `code` property and a nested `ops`
 list.
 The field itself is not a list.
-
-<!-- prettier-ignore-start -->
 
 <Fields>
 
@@ -1331,8 +1334,6 @@ The field itself is not a list.
   </Fields>
 
 </Fields>
-
-<!-- prettier-ignore-end -->
 
 `vmTrace` only reports actual data returned from a `RETURN` opcode and does not return the contents of the reserved output space for the call operations. As a result:
 

@@ -21,8 +21,8 @@ Enable it using the [`--rpc-http-api`](../options.md#rpc-http-api) or [`--rpc-ws
 
 ## `plugins_reloadPluginConfig`
 
-When you call this method without parameters, all plugins are reloaded. If you specify names, only
-those plugins are reloaded. This method awaits all reloads before returning its result.
+When you call this method without parameters, all plugins are reloaded. If you specify names, only 
+those plugins are reloaded. This method awaits all reloads before returning its result. 
 
 ### Parameters
 
@@ -60,7 +60,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "plugins_reloadPluginConfig",
-  "params": ["tech.pegasys.plus.plugin.kafka.KafkaPlugin"],
+  "params": [
+    "tech.pegasys.plus.plugin.kafka.KafkaPlugin"
+  ],
   "id": 1
 }
 ```

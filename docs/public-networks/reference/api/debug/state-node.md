@@ -28,9 +28,13 @@ Returns account information at the specified index of the specified block.
 - Account details object.
 
   <Fields>
+
   - `code`: _data_ - Code for the account. Displays `0x0` if the address is an externally owned account.
+
   - `nonce`: _quantity_ - Number of transactions made by the account before this one.
+
   - `balance`: _quantity_ - Balance of the account in wei.
+
   - `codehash`: _data_ - Code hash for the account.
 
   </Fields>
@@ -66,7 +70,11 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_accountAt",
-  "params": ["0xc8df1f061abb4d0c107b2b1a794ade8780b3120e681f723fe55a7be586d95ba6", 0, "0xbcde5374fce5edbc8e2a8697c15331677e6ebf0b"],
+  "params": [
+    "0xc8df1f061abb4d0c107b2b1a794ade8780b3120e681f723fe55a7be586d95ba6",
+    0,
+    "0xbcde5374fce5edbc8e2a8697c15331677e6ebf0b"
+  ],
   "id": 1
 }
 ```
@@ -121,7 +129,11 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_accountAt",
-  "params": ["0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c", 0, "0x0e0d2c8f7794e82164f11798276a188147fbd415"],
+  "params": [
+    "0x2b76b3a2fc44c0e21ea183d06c846353279a7acf12abcc6fb9d5e8fb14ae2f8c",
+    0,
+    "0x0e0d2c8f7794e82164f11798276a188147fbd415"
+  ],
   "id": 1
 }
 ```
@@ -170,7 +182,9 @@ Returns the accounts for a specified block.
 - Account details object.
 
   <Fields>
+
   - `addressMap`: _map_ of _strings_ to _strings_ - Map of address hashes and account addresses.
+
   - `nextKey`: _string_ - Hash of the next address if any addresses remain in the state, otherwise zero.
 
   </Fields>
@@ -205,7 +219,12 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_accountRange",
-  "params": ["12345", 0, "0", 5],
+  "params": [
+    "12345",
+    0,
+    "0",
+    5
+  ],
   "id": 1
 }
 ```
@@ -250,8 +269,11 @@ Sends a list of [signed transactions](../../../how-to/send-transactions.md). Thi
 - Object returned for each transaction.
 
   <Fields>
+
   - `index`: _integer_ - Index of the transaction in the request parameters array.
+
   - `success`: _boolean_ - Indicates whether or not the transaction has been added to the transaction pool.
+
   - `errorMessage`: _string_ - (Optional) Error message.
 
   </Fields>
@@ -537,7 +559,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_replayBlock",
-  "params": ["0x1"],
+  "params": [
+    "0x1"
+  ],
   "id": 1
 }
 ```
@@ -623,7 +647,7 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `debug_setHead`
 
 Sets the local chain head to the specified block. Optionally, moves the [bonsai](../../../concepts/data-storage-formats.md#bonsai-tries)
-world state to that block when the `shouldMoveWorldstate` parameter is set to `true`.
+world state to that block when  the `shouldMoveWorldstate` parameter is set to `true`.
 
 Moving the world state allows expensive operations like [`debug_traceBlock`](trace.md#debug_traceblock)
 to run on historical blocks without replaying all intermediate states. This is helpful to avoid
@@ -640,15 +664,15 @@ the RPC call might time out even though Besu continues the operation in the back
 ### Parameters
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
-  string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+    string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+    [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
-  :::note
-  `pending` returns the same value as `latest`.
-  :::
+    :::note
+    `pending` returns the same value as `latest`.
+    :::
 
 - `shouldMoveWorldstate`: _boolean_ - (Optional) If `true`, moves the [bonsai](../../../concepts/data-storage-formats.md#bonsai-tries)
-  world state to the specified block. The default is `false`.
+    world state to the specified block. The default is `false`.
 
 ### Returns
 
@@ -681,7 +705,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "debug_setHead",
-  "params": ["0x1"],
+  "params": [
+    "0x1"
+  ],
   "id": 1
 }
 ```
@@ -727,7 +753,9 @@ Returns the contract storage for the specified range.
 - Range object.
 
   <Fields>
+
   - `storage`: _object_ - Key hash and value. Pre-image key is `null` if it falls outside the cache.
+
   - `nextKey`: _hash_ - Hash of next key if further storage in range. Otherwise, not included.
 
   </Fields>

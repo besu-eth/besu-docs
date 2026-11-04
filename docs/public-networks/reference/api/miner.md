@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 # `MINER` methods
 
-The `MINER` API methods allow you to control settings related to block creation.
+The `MINER` API methods allow you to control settings related to block creation. 
 
 :::note
 
@@ -58,7 +58,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "miner_changeTargetGasLimit",
-  "params": [800000],
+  "params": [
+    800000
+  ],
   "id": 1
 }
 ```
@@ -197,7 +199,6 @@ curl -X POST http://127.0.0.1:8545/ \
   "result": "0x3e8"
 }
 ```
-
 </TabItem>
 
 </Tabs>
@@ -258,7 +259,6 @@ curl -X POST http://127.0.0.1:8545/ \
   "result": "0x1"
 }
 ```
-
 </TabItem>
 
 </Tabs>
@@ -305,7 +305,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "miner_setExtraData",
-  "params": ["0x0010203"],
+  "params": [
+    "0x0010203"
+  ],
   "id": 1
 }
 ```
@@ -370,7 +372,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "miner_setMinGasPrice",
-  "params": ["0x5dc"],
+  "params": [
+    "0x5dc"
+  ],
   "id": 1
 }
 ```
@@ -395,7 +399,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `miner_setMinPriorityFee`
 
-Sets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block.
+Sets the minimum priority fee per gas (in wei) offered by a transaction to be included in a block. 
 The initial value is set using the [`--min-priority-fee`](../options.md#min-priority-fee) command line option, or is set to `0` if the command line option is not specified.
 Use [`miner_getMinPriorityFee`](#miner_getminpriorityfee) to get the current value of the fee.
 
@@ -434,7 +438,9 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "method": "miner_setMinPriorityFee",
-  "params": ["0x0a"],
+  "params": [
+    "0x0a"
+  ],
   "id": 1
 }
 ```
