@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/build.yml
 
   lint:
-    name: Lint
+    name: Check for lint errors
     uses: ./.github/workflows/lint.yml
 
   all-jobs-completed:

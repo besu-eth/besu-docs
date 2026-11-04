@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint:
-    name: Lint Code Base
+    name: Lint code and Markdown
     runs-on: ubuntu-latest
     permissions:
       contents: read
