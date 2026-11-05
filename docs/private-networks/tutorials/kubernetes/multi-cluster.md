@@ -18,13 +18,13 @@ This tutorial walks you through using AWS as the main cluster and adding an extr
 
 #### 1. Create an AWC VPC
 
-1. Use a CIDR block that doesn't overlap with that of Azure eg `10.0.0.0/16`
+1. Use a CIDR block that doesn't overlap with that of Azure, for example `10.0.0.0/16`
 2. Create the EKS cluster as normal and use the default Kubernetes service range `172.20.0.0/16`
 
 #### 2. Create an Azure Virtual Network
 
-1. Use a CIDR block that doesn't overlap with that of AWS eg `10.1.0.0/16`
-2. It is also recommended to create a subnet for the Gateway and use a CIDR of `/24` eg `10.1.1.0/24`
+1. Use a CIDR block that doesn't overlap with that of AWS, for example `10.1.0.0/16`
+2. It is also recommended to create a subnet for the Gateway and use a CIDR of `/24`, for example `10.1.1.0/24`
 3. Create the AKS cluster as normal and use the different Kubernetes service range
    `10.2.0.0/16` (the default `10.0.0.0/16` overlaps with the AWS VPC CIDR block)
 
@@ -50,7 +50,7 @@ please note down the IP address that was created for the Virtual Network Gateway
 
 ##### 3.2 On the AWS side create a Customer Gateway
 
-This Customer Gateway points to the Azure Virtual Network Gateay from step 3.1
+This Customer Gateway points to the Azure Virtual Network Gateway from step 3.1
 
 | Setting    | Value                                                 |
 | ---------- | ----------------------------------------------------- |
@@ -98,7 +98,7 @@ Select the VPN connection once it has been created and use the following options
 | Platform | Generic         |
 | Software | Vendor Agnostic |
 
-Save the file and open it. In there you will find the shared keys and putlic address for each tunnel created above
+Save the file and open it. In there you will find the shared keys and public address for each tunnel created above
 
 You need to use the `Pre-Shared Key` in the next step in Azure as well as the `public IP` of Tunnel 1 of the VPN
 connection (There are two created, and we just use #1 for this example)
@@ -122,7 +122,7 @@ Use the settings below
 
 | Setting                           | Value                                                   |
 | --------------------------------- | ------------------------------------------------------- |
-| Connection Type                   | Site-to-Site IPSec                                      |
+| Connection Type                   | Site-to-Site IPsec                                      |
 | Virtual Network Gateway           | Use the Virtual Network Gateway created in step 3.1     |
 | Local Network Gateway             | Use the Local Network Gateway created in step 3.7       |
 | Authentication method             | Shared Key (PSK)                                        |

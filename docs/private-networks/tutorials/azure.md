@@ -16,7 +16,7 @@ The [Quorum Dev Quickstart on Azure Marketplace] enables deploying a private IBF
 
 These are deployed on a single Azure VM in minutes.
 
-Once deployed, you can develop and test applications and connect to the Visual Studio Code (VSCode) plugin using the RPC endpoint `http://<VM_IP>/jsonrpc`.
+Once deployed, you can develop and test applications and connect to the Visual Studio Code (VS Code) plugin using the RPC endpoint `http://<VM_IP>/jsonrpc`.
 
 ## Overview
 
@@ -79,7 +79,7 @@ The dashboard provides a visual way to monitor your network and nodes as the cha
 
 ## Connect to VM RPC endpoint
 
-You can connect dapps or develop directly from the IDE by using VSCode and connecting to the VM RPC endpoint. The endpoint is the DNS name appended with `/jsonrpc`: `http://<DNS_NAME_OF_VM>/jsonrpc`.
+You can connect dapps or develop directly from the IDE by using VS Code and connecting to the VM RPC endpoint. The endpoint is the DNS name appended with `/jsonrpc`: `http://<DNS_NAME_OF_VM>/jsonrpc`.
 
 ## SSH
 

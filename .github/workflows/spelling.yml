@@ -1,0 +1,25 @@
+---
+name: Check for spelling with vale
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  vale:
+    name: Spelling
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Vale
+        uses: Consensys-Incorporated/github-actions/docs-spelling-check@5f8fb160fc7f4cba9e72602cc615199c07d4d1a0
+        with:
+          FILEPATHS: "docs"
