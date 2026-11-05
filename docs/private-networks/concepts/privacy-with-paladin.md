@@ -51,7 +51,7 @@ The notary co-signs automatically in `notaryMode: basic`, which means you are tr
 to act honestly and not front-run transfers.
 
 Use Noto when an issuer or custodian must maintain full auditability over a token: regulated
-assets such as CBDCs, tokenised securities, or supply-chain tokens with compliance requirements.
+assets such as CBDCs, tokenized securities, or supply-chain tokens with compliance requirements.
 
 ### Zeto
 

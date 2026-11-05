@@ -29,7 +29,7 @@ JVM memory requirements are highest when syncing, but will reduce after the node
 
 If you set up your own VM locally using a VM manager such as [VirtualBox](https://www.oracle.com/virtualization/virtualbox/):
 
-- Ensure you enable Intel Virtualization Technology (VTx) and Virtualization Technology for Directed I/O (VT-d) in the BIOS settings.
+- Ensure you enable Intel Virtualization Technology (VT-x) and Virtualization Technology for Directed I/O (VT-d) in the BIOS settings.
 - On Windows, you might need to disable Hyper-V in the Windows Feature list.
 
 We recommend you create a VM with the following attributes:

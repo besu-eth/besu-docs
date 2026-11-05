@@ -1,0 +1,26 @@
+---
+name: Check for spelling with vale
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  vale:
+    name: Spelling
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # vale/linea-pilot. Move this pin to the merged commit after that pull request lands.
+      - name: Vale
+        uses: Consensys-Incorporated/github-actions/docs-spelling-check@39a3578e2979bc6ce4363b53016a377e111fbb09
+        with:
+          FILEPATHS: "docs"

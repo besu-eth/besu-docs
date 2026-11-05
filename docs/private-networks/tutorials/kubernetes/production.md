@@ -72,7 +72,7 @@ By default, the cloud Kubernetes clusters take care of availability and do multi
 
 You can connect to APIs and services outside the cluster normally, but connecting into your network (such as adding an on-premise node to the network) might require more configuration. Please check the [limitations](index.md#limitations) and use CNI where possible. To connect an external node to your cluster, the easiest way is to use a VPN as seen in the following [multi-cluster](#multi-cluster-support) setup.
 
-Finally, we recommend setting up monitoring and alerting from the beginning, so you can get early warnings of issues rather than after failure. We have a monitoring chart which uses Grafana and you can use it with Alertmanager to create alerts or alternatively alert via Cloudwatch or Azure Monitoring.
+Finally, we recommend setting up monitoring and alerting from the beginning, so you can get early warnings of issues rather than after failure. We have a monitoring chart which uses Grafana and you can use it with Alertmanager to create alerts or alternatively alert via CloudWatch or Azure Monitoring.
 
 ## Multi-cluster support
 
