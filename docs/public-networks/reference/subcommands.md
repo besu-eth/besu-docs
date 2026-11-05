@@ -209,7 +209,7 @@ besu --data-path=<node data path> public-key export --node-private-key-file=/hom
 
 </TabItem>
 
-<TabItem value="Example to file" label="Example (to file)"> 
+<TabItem value="Example to file" label="Example (to file)">
 
 ```bash
 besu --data-path=<node data path> public-key export --node-private-key-file=/home/me/me_node/myPrivateKey --to=/home/me/me_project/not_precious_pub_key --ec-curve=secp256k1
@@ -449,11 +449,12 @@ trieLog count: 742311
 </Tabs>
 
 Displays the number of trie logs in the database.
-This is the number of keys for the `TRIE_LOG_STORAGE` [column family in RocksDB](#rocksdb-usage). 
+This is the number of keys for the `TRIE_LOG_STORAGE` [column family in RocksDB](#rocksdb-usage).
 The following are specified in the `trieLog count`:
+
 - `canonical count` represents the finalized blockchain.
 - `fork count` represents non-finalized branches of the blockchain.
-- `orphaned count` represents trie logs not in the blockchain, which can occur  during block creation.
+- `orphaned count` represents trie logs not in the blockchain, which can occur during block creation.
 
 #### `prune`
 
@@ -485,9 +486,9 @@ besu --config-file config.toml --bonsai-historical-block-limit=1024 storage trie
 
 </Tabs>
 
-Removes all trie log layers below the specified retention limit, including orphaned trie logs. 
-You can configure the retention limit using [`--bonsai-historical-block-limit`](options.md#bonsai-historical-block-limit). 
-The retention limit should match the configuration used with [`--bonsai-limit-trie-logs-enabled`](options.md#bonsai-limit-trie-logs-enabled). 
+Removes all trie log layers below the specified retention limit, including orphaned trie logs.
+You can configure the retention limit using [`--bonsai-historical-block-limit`](options.md#bonsai-historical-block-limit).
+The retention limit should match the configuration used with [`--bonsai-limit-trie-logs-enabled`](options.md#bonsai-limit-trie-logs-enabled).
 The default limit is `512`.
 
 #### `export`
@@ -549,7 +550,7 @@ besu --config-file <PATH-TO-CONFIG-FILE> storage trie-log import [--trie-log-fil
 <TabItem value="Example">
 
 ```bash
-besu --config-file config.toml storage trie-log import --trie-log-file-path=/tmp/list_of_trielogs.bin 
+besu --config-file config.toml storage trie-log import --trie-log-file-path=/tmp/list_of_trielogs.bin
 ```
 
 </TabItem>

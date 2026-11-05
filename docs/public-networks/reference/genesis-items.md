@@ -17,45 +17,45 @@ The examples on this page use the casing used in Besu's built-in genesis files.
 
 Network configuration items are specified in the genesis file in the `config` object.
 
-| Item                                   | Description                                                                                                                                                                                                 |
-|----------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Milestone blocks                       | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                                  |
-| `chainId`                              | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                            |
-| `ibft2`                                | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file).   |
-| `qbft`                                 | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).          |
-| `transitions`                          | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                             |
-| `contractSizeLimit`                    | Maximum contract size in bytes. Specify in [free gas networks](/private-networks/how-to/configure/free-gas). The default is `24576` and the maximum size is `2147483647`.                                  |
-| `evmStackSize`                         | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                     |
-| `ecCurve`                              | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
-| `discovery`                            | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                        |
-| `checkpoint`                           | Specifies the [checkpoint configuration](#checkpoint-configuration) to sync from, in place of syncing from the genesis block.                                                  |
-| `zeroBaseFee`                          | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#6-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
-| `fixedBaseFee`                         | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).           |
-| `depositContractAddress`               | Address for the Ethereum staking contract.                                                                                                                           |
-| `withdrawalRequestContractAddress`     | Address for the withdrawal request contract.                                                                                                                          |
-| `consolidationRequestContractAddress`  | Address for the consolidation request contract.                                                                                                                       |
-| `blobSchedule`                         | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                          |
+| Item                                  | Description                                                                                                                                                                                                |
+| ------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Milestone blocks                      | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                    |
+| `chainId`                             | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                           |
+| `ibft2`                               | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file). |
+| `qbft`                                | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).         |
+| `transitions`                         | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                  |
+| `contractSizeLimit`                   | Maximum contract size in bytes. Specify in [free gas networks](/private-networks/how-to/configure/free-gas). The default is `24576` and the maximum size is `2147483647`.                                  |
+| `evmStackSize`                        | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                    |
+| `ecCurve`                             | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
+| `discovery`                           | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                       |
+| `checkpoint`                          | Specifies the [checkpoint configuration](#checkpoint-configuration) to sync from, in place of syncing from the genesis block.                                                                              |
+| `zeroBaseFee`                         | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#6-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
+| `fixedBaseFee`                        | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).          |
+| `depositContractAddress`              | Address for the Ethereum staking contract.                                                                                                                                                                 |
+| `withdrawalRequestContractAddress`    | Address for the withdrawal request contract.                                                                                                                                                               |
+| `consolidationRequestContractAddress` | Address for the consolidation request contract.                                                                                                                                                            |
+| `blobSchedule`                        | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                         |
 
 ## Genesis block parameters
 
 Genesis block parameters are specified as top-level fields in the genesis file, outside of `config`.
 
-| Item                    | Description                                                                                                                                                             |
-|-------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `alloc`                 | Defines [accounts with balances](/private-networks/reference/accounts-for-testing) or [contracts](/private-networks/how-to/configure/contracts).                         |
-| `baseFeePerGas`         | Genesis block base fee per gas, in Wei. Specify as a decimal or hexadecimal string. If omitted and `londonBlock` is `0`, Besu uses `1000000000`.                      |
-| `blobGasUsed`           | Blob gas used in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                                                     |
-| `coinbase`              | Beneficiary address in the genesis block. If omitted, Besu uses the zero address.                                                                                       |
-| `difficulty`            | Difficulty value in the genesis block. The required value depends on the consensus protocol.                                                                             |
-| `excessBlobGas`         | Excess blob gas in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                                                   |
-| `extraData`             | Extra data in the genesis block. For IBFT 2.0 and QBFT, this contains the validator list and consensus metadata.                                                        |
-| `gasLimit`              | Block gas limit. Total gas limit for all transactions in a block.                                                                                                       |
-| `mixHash`               | Mix hash value in the genesis block. The required value depends on the consensus protocol.                                                                               |
-| `nonce`                 | Used in block computation. Can be any value in the genesis block. The default is `0x0`.                                                                                 |
-| `parentBeaconBlockRoot` | Parent beacon block root in the genesis block. Besu applies this value when Cancun is active at genesis. The default is the zero hash.                                  |
-| `parentHash`            | Parent hash in the genesis block.                                                                                                                                      |
-| `slotNumber`            | Slot number in the genesis block. Besu applies this value when Amsterdam is active at genesis. The default is `0x0`.                                                    |
-| `timestamp`             | Creation date and time of the genesis block. Must be before the next block, so we recommend specifying `0x0`. |
+| Item                    | Description                                                                                                                                      |
+| ----------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `alloc`                 | Defines [accounts with balances](/private-networks/reference/accounts-for-testing) or [contracts](/private-networks/how-to/configure/contracts). |
+| `baseFeePerGas`         | Genesis block base fee per gas, in Wei. Specify as a decimal or hexadecimal string. If omitted and `londonBlock` is `0`, Besu uses `1000000000`. |
+| `blobGasUsed`           | Blob gas used in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                              |
+| `coinbase`              | Beneficiary address in the genesis block. If omitted, Besu uses the zero address.                                                                |
+| `difficulty`            | Difficulty value in the genesis block. The required value depends on the consensus protocol.                                                     |
+| `excessBlobGas`         | Excess blob gas in the genesis block. Besu applies this value when Cancun is active at genesis. The default is `0x0`.                            |
+| `extraData`             | Extra data in the genesis block. For IBFT 2.0 and QBFT, this contains the validator list and consensus metadata.                                 |
+| `gasLimit`              | Block gas limit. Total gas limit for all transactions in a block.                                                                                |
+| `mixHash`               | Mix hash value in the genesis block. The required value depends on the consensus protocol.                                                       |
+| `nonce`                 | Used in block computation. Can be any value in the genesis block. The default is `0x0`.                                                          |
+| `parentBeaconBlockRoot` | Parent beacon block root in the genesis block. Besu applies this value when Cancun is active at genesis. The default is the zero hash.           |
+| `parentHash`            | Parent hash in the genesis block.                                                                                                                |
+| `slotNumber`            | Slot number in the genesis block. Besu applies this value when Amsterdam is active at genesis. The default is `0x0`.                             |
+| `timestamp`             | Creation date and time of the genesis block. Must be before the next block, so we recommend specifying `0x0`.                                    |
 
 :::caution
 
@@ -130,11 +130,11 @@ In private networks, we recommend specifying the latest milestone block. It's im
 Use the `blobSchedule` object to configure blob gas parameters for Cancun,
 Prague, and Blob Parameter Only (BPO) forks.
 
-| Item                    | Description                                                           |
-|-------------------------|:----------------------------------------------------------------------|
-| `target`                | Target number of blobs per block for the fork.                        |
-| `max`                   | Maximum number of blobs per block for the fork.                       |
-| `baseFeeUpdateFraction` | Denominator used to update the blob base fee for the fork.            |
+| Item                    | Description                                                |
+| ----------------------- | :--------------------------------------------------------- |
+| `target`                | Target number of blobs per block for the fork.             |
+| `max`                   | Maximum number of blobs per block for the fork.            |
+| `baseFeeUpdateFraction` | Denominator used to update the blob base fee for the fork. |
 
 ```json title="Blob schedule example"
 {
@@ -157,8 +157,8 @@ Prague, and Blob Parameter Only (BPO) forks.
 
 ## Discovery configuration items
 
-Use the `discovery` configuration items to specify the [`bootnodes`](options.md#bootnodes) and 
-[`discovery-dns-url`](options.md#discovery-dns-url) in the genesis file, in place of using CLI options or 
+Use the `discovery` configuration items to specify the [`bootnodes`](options.md#bootnodes) and
+[`discovery-dns-url`](options.md#discovery-dns-url) in the genesis file, in place of using CLI options or
 listing them in the configuration file.
 
 The `bootnodes` array can mix [enode URLs](../concepts/node-keys.md#enode-url) (discovery v4) and
@@ -172,12 +172,7 @@ If any option is specified using the command line or
 {
   "config": {
     "discovery": {
-      "bootnodes": [
-        "enode://c35c3...d615f@1.2.3.4:30303",
-        "enode://f42c13...fc456@1.2.3.5:30303",
-        "enr:-Mq4QL...DdWRwgiMo",
-        "enr:-Ku4QLV...IN1ZHCCIyk"
-      ],
+      "bootnodes": ["enode://c35c3...d615f@1.2.3.4:30303", "enode://f42c13...fc456@1.2.3.5:30303", "enr:-Mq4QL...DdWRwgiMo", "enr:-Ku4QLV...IN1ZHCCIyk"],
       "dns": "enrtree://AM5FCQLWIZX2QFPNJAP7VUERCCRNGRHWZG3YYHIUV7BVDQ5FDPRT2@nodes.example.org"
     }
   }
@@ -195,10 +190,10 @@ Besu still downloads and validates the full chain of block headers back to the g
 checkpoint you specify. The checkpoint only skips downloading block bodies, transaction receipts, and
 world state before the checkpoint block.
 
-| Item              | Description                                                                          |
-|-------------------|:--------------------------------------------------------------------------------------|
-| `hash`            | Block hash of the checkpoint block.                                                  |
-| `number`          | Block number of the checkpoint block.                                                |
+| Item              | Description                                                                           |
+| ----------------- | :------------------------------------------------------------------------------------ |
+| `hash`            | Block hash of the checkpoint block.                                                   |
+| `number`          | Block number of the checkpoint block.                                                 |
 | `totalDifficulty` | Total difficulty of the checkpoint block. Specify as a decimal or hexadecimal string. |
 
 ```json title="Checkpoint example"

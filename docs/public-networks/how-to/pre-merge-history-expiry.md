@@ -20,16 +20,17 @@ leaving only headers and the genesis block.
 
 Besu does not currently provide a way to import pre-merge block data after pruning.
 If you need to restore the full pre-merge history, delete your database and use
-[full sync](../concepts/node-sync.md#full-synchronization), or snap sync with a genesis file that doesn't 
+[full sync](../concepts/node-sync.md#full-synchronization), or snap sync with a genesis file that doesn't
 specify a checkpoint.
 
 :::
 
 Besu provides multiple options to reduce historical blockchain data:
+
 - [Offline pruning](#offline-pruning) to prune data on a stopped Besu instance.
 - [Online pruning](#online-pruning) to prune data on a running Besu instance.
 - [Sync Besu](#sync-without-pre-merge-blocks) using snap sync, which avoids downloading pre-merge
-    block bodies and transaction receipts.
+  block bodies and transaction receipts.
 
 ## Offline pruning
 
@@ -37,14 +38,15 @@ The fastest option for pruning pre-merge blocks is to perform an offline prune. 
 
 1. Ensure your Besu instance has stopped, and run the following command:
 
-    ```bash
-    besu --data-path=/path/to/your/database storage prune-pre-merge-blocks
-    ```
-    The command [`prune-pre-merge-blocks`](../reference/subcommands.md#prune-pre-merge-blocks)
-    prunes the database using the default options.
+   ```bash
+   besu --data-path=/path/to/your/database storage prune-pre-merge-blocks
+   ```
 
-    On completion, you'll receive the `Pruning pre-merge blocks and transaction receipts completed` log message.
-    It should only take a few minutes to complete but has been known to take up to two hours on occasion.
+   The command [`prune-pre-merge-blocks`](../reference/subcommands.md#prune-pre-merge-blocks)
+   prunes the database using the default options.
+
+   On completion, you'll receive the `Pruning pre-merge blocks and transaction receipts completed` log message.
+   It should only take a few minutes to complete but has been known to take up to two hours on occasion.
 
 1. Add the following RocksDB garbage collection options and restart Besu to help free up space:
 

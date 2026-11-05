@@ -71,16 +71,18 @@ You can specify [Besu environment variables](../../../public-networks/reference/
 <Tabs>
   <TabItem value="Sepolia" label="Sepolia">
 
-  ```bash
-  docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=sepolia hyperledger/besu:latest
-  ```
+```bash
+docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=sepolia hyperledger/besu:latest
+```
+
   </TabItem>
 
   <TabItem value="Ephemery" label="Ephemery">
-  
-  ```bash
-  docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=ephemery hyperledger/besu:latest
-  ```
+
+```bash
+docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=ephemery hyperledger/besu:latest
+```
+
   </TabItem>
 </Tabs>
 

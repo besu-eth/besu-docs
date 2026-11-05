@@ -8,10 +8,10 @@ description: Transaction pool overview
 
 All nodes maintain a transaction pool to store pending transactions before processing.
 
-Transaction pools are categorized into the following two types: 
+Transaction pools are categorized into the following two types:
 
-* [Layered](#layered-transaction-pool) - Recommended for public blockchain networks.
-* [Sequenced](#sequenced-transaction-pool) - Recommended for private blockchain networks.
+- [Layered](#layered-transaction-pool) - Recommended for public blockchain networks.
+- [Sequenced](#sequenced-transaction-pool) - Recommended for private blockchain networks.
 
 You can use specific [options](../../reference/options.md#tx-pool) and
 [methods](../../reference/api/txpool.md) to configure and monitor the transaction pool.
@@ -21,7 +21,7 @@ You can use specific [options](../../reference/options.md#tx-pool) and
 The [layered transaction pool](https://github.com/besu-eth/besu/pull/5290) is the default
 transaction pool implementation.
 The implementation separates the pool into layers according to value and executability of the transactions.
-The first layer keeps only the highest-value transactions that can feasibly go into the next block. 
+The first layer keeps only the highest-value transactions that can feasibly go into the next block.
 The other two layers ensure Besu always has a backlog of transactions to fill blocks, maximizing the amount of fees.
 
 Layered pools have additional parameters that allow you to limit and configure the number of transactions
@@ -48,8 +48,8 @@ You can opt out of the layered transaction pool implementation by setting the
 
 ### Transient invalid pending transactions
 
-Transient invalid pending transactions cannot be included in the current block but might be included in a future one. 
-This can happen due to issues like insufficient balance in the sender's wallet or a gas price below the minimum. 
+Transient invalid pending transactions cannot be included in the current block but might be included in a future one.
+This can happen due to issues like insufficient balance in the sender's wallet or a gas price below the minimum.
 These conditions could resolve in the future.
 
 :::note
@@ -59,8 +59,8 @@ are immediately dropped from the transaction pool.
 
 The layered transaction pool uses a scoring system to avoid repeatedly evaluating transient invalid pending
 transactions, which can block the evaluation of valid ones. Each pending transaction starts with a score of
-`127` and is penalized over time, with the score decreasing to a minimum of -128. 
-This score determines the transaction's rank in the pool, pushing invalid transactions lower so they are 
+`127` and is penalized over time, with the score decreasing to a minimum of -128.
+This score determines the transaction's rank in the pool, pushing invalid transactions lower so they are
 evaluated only after non-penalized or less penalized ones.
 
 The [`--tx-pool-min-score`](../../reference/options.md#tx-pool-min-score) option, which accepts a value
@@ -73,21 +73,21 @@ pool with the lowest score and will only be selected after all other pending tra
 When the layered transaction pool is full, it accepts and retains local transactions in preference to remote transactions,
 unless [`--tx-pool-no-local-priority`](../../reference/options.md#tx-pool-no-local-priority) is enabled.
 
-If the transaction pool is full of local transactions, Besu drops the oldest local transactions first. 
+If the transaction pool is full of local transactions, Besu drops the oldest local transactions first.
 That is, a full transaction pool continues to accept new local transactions by first dropping remote transactions and
 then by dropping the oldest local transactions.
 
 ## Sequenced transaction pool
 
 In the sequenced transaction pool, transactions are processed strictly in the order they are received.
-Although sequenced transaction pools lack the flexibility of layered pools, they help maintain a 
-consistent and transparent transaction order, which is often useful in private blockchains. 
+Although sequenced transaction pools lack the flexibility of layered pools, they help maintain a
+consistent and transparent transaction order, which is often useful in private blockchains.
 
 You can select the sequenced transaction pool by setting [`--tx-pool=sequenced`](../../reference/options.md#tx-pool).
 
 If you set the enterprise configuration profile using [`--profile=enterprise`](../../how-to/configure-besu/profile.md#enterpriseprivate-profile) or [`--profile=private`](../../how-to/configure-besu/profile.md#enterpriseprivate-profile), the `sequenced` transaction pool is set by default.
 
-The sequenced transaction pool suits enterprise environments because it functions like a first-in-first-out (FIFO) queue and processes transactions in the order of submission, regardless of the sender. 
+The sequenced transaction pool suits enterprise environments because it functions like a first-in-first-out (FIFO) queue and processes transactions in the order of submission, regardless of the sender.
 When the pool reaches capacity, the newer transactions are evicted first, reducing the likelihood of a nonce gap and avoiding the need to resubmit older transactions.
 
 ## Replacing pending transactions
@@ -118,7 +118,7 @@ If sending a [`BLOB` transaction](types.md#blob-transactions), the old transacti
 - The new transaction's gas price is higher than the existing gas price by the percentage specified by
   [`--tx-pool-price-bump`](../../reference/options.md#tx-pool-price-bump).
 
-- The new transaction's maximum fee per blob gas is higher than the existing maximum fee per blob gas by the percentage specified by 
+- The new transaction's maximum fee per blob gas is higher than the existing maximum fee per blob gas by the percentage specified by
   [`--tx-pool-blob-price-bump`](../../reference/options.md#tx-pool-blob-price-bump).
 
 ### Free gas networks

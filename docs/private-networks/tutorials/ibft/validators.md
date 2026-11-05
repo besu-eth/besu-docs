@@ -94,6 +94,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_proposeValidatorVote","para
   "result": true
 }
 ```
+
 </TabItem>
 
 </Tabs>
@@ -111,6 +112,7 @@ Verify that the new validator is now in the list of validators using [`ibft_getV
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber","params":["latest"], "id":1}' http://127.0.0.1:8545/ -H "Content-Type: application/json"
 ```
+
 </TabItem>
 
 <TabItem value="JSON result" label="JSON result">
@@ -124,6 +126,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"ibft_getValidatorsByBlockNumber"
   "0x90626e6a67445aabf1c0615410d108d4733aa90b"
 ]
 ```
+
 </TabItem>
 
 </Tabs>

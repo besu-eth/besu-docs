@@ -181,10 +181,7 @@ Use the following JSON schema to validate that your JSON data is well-formatted.
     "title": "Validator address",
     "description": "The validator node address",
     "default": "",
-    "examples": [
-      "be068f726a13c8d46c44be6ce9d275600e1735a4",
-      "5ff6f4b66a46a2b2310a6f3a93aaddc0d9a1c193"
-    ],
+    "examples": ["be068f726a13c8d46c44be6ce9d275600e1735a4", "5ff6f4b66a46a2b2310a6f3a93aaddc0d9a1c193"],
     "pattern": "^([0-9a-f]{40})$"
   }
 }
@@ -197,10 +194,7 @@ Example `IBFT_EXTRA_DATA` encoding:
 <TabItem value="JSON input" label="JSON input" default>
 
 ```json
-[
-  "be068f726a13c8d46c44be6ce9d275600e1735a4",
-  "5ff6f4b66a46a2b2310a6f3a93aaddc0d9a1c193"
-]
+["be068f726a13c8d46c44be6ce9d275600e1735a4", "5ff6f4b66a46a2b2310a6f3a93aaddc0d9a1c193"]
 ```
 
 </TabItem>

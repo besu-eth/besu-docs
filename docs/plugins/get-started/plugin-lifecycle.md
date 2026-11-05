@@ -6,21 +6,21 @@ description: Understand the Besu plugin lifecycle.
 # Plugin lifecycle
 
 A Besu plugin is a Java class that implements the [`BesuPlugin`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/BesuPlugin.html) interface.
-Besu discovers plugin JARs using Java's `ServiceLoader`, then calls the plugin lifecycle methods during 
+Besu discovers plugin JARs using Java's `ServiceLoader`, then calls the plugin lifecycle methods during
 startup, runtime, reload, and shutdown.
 
 ## Lifecycle methods
 
-| Method | Purpose |
-| --- | --- |
-| `getName` | Returns the plugin name. Besu uses this name for plugin-specific actions. The default is the plugin class name. |
-| `register(ServiceManager)` | Called early in the Besu lifecycle. Store the [`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) and perform early registration such as CLI options and RPC endpoints. |
-| `beforeExternalServices` | Optional hook called after Besu loads configuration and before external services (like metrics and HTTP) start. |
-| `start` | Called after Besu loads configuration and starts external services, but before the main loop is up. Start runtime work here. |
-| `afterExternalServicePostMainLoop` | Optional hook called after external services and main-loop setup. |
-| `reloadConfiguration` | Optional hook called by the `plugins_reloadPluginConfig` RPC method. Implement it only for configuration that can be reloaded safely. |
-| `stop` | Called when Besu shuts down or disables the plugin. Remove listeners and stop background work here. |
-| `getVersion` | Returns plugin version information from package implementation metadata. |
+| Method                             | Purpose                                                                                                                                                                                                                          |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `getName`                          | Returns the plugin name. Besu uses this name for plugin-specific actions. The default is the plugin class name.                                                                                                                  |
+| `register(ServiceManager)`         | Called early in the Besu lifecycle. Store the [`ServiceManager`](pathname:///plugins/reference/plugin-api/org/hyperledger/besu/plugin/ServiceManager.html) and perform early registration such as CLI options and RPC endpoints. |
+| `beforeExternalServices`           | Optional hook called after Besu loads configuration and before external services (like metrics and HTTP) start.                                                                                                                  |
+| `start`                            | Called after Besu loads configuration and starts external services, but before the main loop is up. Start runtime work here.                                                                                                     |
+| `afterExternalServicePostMainLoop` | Optional hook called after external services and main-loop setup.                                                                                                                                                                |
+| `reloadConfiguration`              | Optional hook called by the `plugins_reloadPluginConfig` RPC method. Implement it only for configuration that can be reloaded safely.                                                                                            |
+| `stop`                             | Called when Besu shuts down or disables the plugin. Remove listeners and stop background work here.                                                                                                                              |
+| `getVersion`                       | Returns plugin version information from package implementation metadata.                                                                                                                                                         |
 
 ## Lifecycle diagram
 

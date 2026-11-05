@@ -101,12 +101,12 @@ The proofs are computed by the Paladin container using WASM-compiled Groth16 cir
 WASM JIT is 10 to 50 times slower than native code, and proof times depend heavily on your runtime
 environment.
 
-| Setup                                      | First proof (WASM cold start) | Subsequent proofs          |
-| ------------------------------------------ | ----------------------------- | -------------------------- |
-| Docker Desktop and WSL2 (default limits)   | 10+ minutes                   | 3 to 5 minutes             |
-| Docker Desktop and WSL2 (tuned limits)     | 3 to 5 minutes                | 1 to 2 minutes             |
-| Docker native in WSL2 (no Docker Desktop)  | 2 to 4 minutes                | 30 seconds to 1 minute     |
-| Native Linux (bare metal or VM)            | 30 to 60 seconds              | 10 to 30 seconds           |
+| Setup                                     | First proof (WASM cold start) | Subsequent proofs      |
+| ----------------------------------------- | ----------------------------- | ---------------------- |
+| Docker Desktop and WSL2 (default limits)  | 10+ minutes                   | 3 to 5 minutes         |
+| Docker Desktop and WSL2 (tuned limits)    | 3 to 5 minutes                | 1 to 2 minutes         |
+| Docker native in WSL2 (no Docker Desktop) | 2 to 4 minutes                | 30 seconds to 1 minute |
+| Native Linux (bare metal or VM)           | 30 to 60 seconds              | 10 to 30 seconds       |
 
 The warm-up only happens once per `docker compose up`.
 After the first proof, the WASM circuit instance stays loaded in the Paladin process.
@@ -668,24 +668,24 @@ In `docker-compose.yml`, add a service for `node5`.
 Use an unused IP address in the `besu-dev-quickstart` subnet:
 
 ```yaml
-  node5:
-    << : *besu-def
-    container_name: node5
-    environment:
-      - OTEL_RESOURCE_ATTRIBUTES=service.name=node5,service.version=${BESU_VERSION:-latest}
-    volumes:
-      - ./config/besu/:/config
-      - ./config/nodes/node5:/opt/besu/keys
-      - ./logs/besu:/tmp/besu
-    depends_on:
-      - validator1
-    ports:
-      - 21005:8545/tcp
-      - 30303
-      - 9545
-    networks:
-      besu-dev-quickstart:
-        ipv4_address: 172.16.239.17
+node5:
+  <<: *besu-def
+  container_name: node5
+  environment:
+    - OTEL_RESOURCE_ATTRIBUTES=service.name=node5,service.version=${BESU_VERSION:-latest}
+  volumes:
+    - ./config/besu/:/config
+    - ./config/nodes/node5:/opt/besu/keys
+    - ./logs/besu:/tmp/besu
+  depends_on:
+    - validator1
+  ports:
+    - 21005:8545/tcp
+    - 30303
+    - 9545
+  networks:
+    besu-dev-quickstart:
+      ipv4_address: 172.16.239.17
 ```
 
 #### Allow and discover the node

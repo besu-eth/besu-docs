@@ -47,16 +47,9 @@ To perform a read operation, you need the address that the contract was deployed
 Use the [`web3.eth.Contract`](https://web3js.readthedocs.io/en/v1.3.4/web3-eth-contract.html) object to create a new instance of the smart contract, then make the `get` function call from the contract's list of methods, which will return the value stored:
 
 ```js
-async function getValueAtAddress(
-  host,
-  deployedContractAbi,
-  deployedContractAddress,
-) {
+async function getValueAtAddress(host, deployedContractAbi, deployedContractAddress) {
   const web3 = new Web3(host);
-  const contractInstance = new web3.eth.Contract(
-    deployedContractAbi,
-    deployedContractAddress,
-  );
+  const contractInstance = new web3.eth.Contract(deployedContractAbi, deployedContractAddress);
   const res = await contractInstance.methods.get().call();
   console.log("Obtained value at deployed contract is: " + res);
   return res;
@@ -71,21 +64,10 @@ Make the `set` call passing in your account address, `value` as the updated valu
 
 ```js
 // You need to use the accountAddress details provided to Besu to send/interact with contracts
-async function setValueAtAddress(
-  host,
-  accountAddress,
-  value,
-  deployedContractAbi,
-  deployedContractAddress,
-) {
+async function setValueAtAddress(host, accountAddress, value, deployedContractAbi, deployedContractAddress) {
   const web3 = new Web3(host);
-  const contractInstance = new web3.eth.Contract(
-    deployedContractAbi,
-    deployedContractAddress,
-  );
-  const res = await contractInstance.methods
-    .set(value)
-    .send({ from: accountAddress, gasPrice: "0xFF", gasLimit: "0x24A22" });
+  const contractInstance = new web3.eth.Contract(deployedContractAbi, deployedContractAddress);
+  const res = await contractInstance.methods.set(value).send({ from: accountAddress, gasPrice: "0xFF", gasLimit: "0x24A22" });
   return res;
 }
 ```
@@ -107,14 +89,7 @@ Use the [`web3.eth.Contract`](https://web3js.readthedocs.io/en/v1.3.4/web3-eth-c
 The keys remain the same for the sender and recipient, and the `to` field is the contract's address. Once you make the request, you receive a `transactionHash`, which you can use to get a `transactionReceipt` containing the value stored:
 
 ```js
-async function getValueAtAddress(
-  clientUrl,
-  address,
-  contractAbi,
-  fromPrivateKey,
-  fromPublicKey,
-  toPublicKey,
-) {
+async function getValueAtAddress(clientUrl, address, contractAbi, fromPrivateKey, fromPublicKey, toPublicKey) {
   const Web3 = require("web3");
   const Web3Quorum = require("web3js-quorum");
   const web3 = new Web3Quorum(new Web3("http://localhost:22000"));
@@ -129,16 +104,10 @@ async function getValueAtAddress(
     privateFrom: fromPublicKey,
     privateFor: [toPublicKey],
   };
-  const transactionHash = await web3quorum.priv.generateAndSendRawTransaction(
-    functionParams,
-  );
+  const transactionHash = await web3quorum.priv.generateAndSendRawTransaction(functionParams);
   // console.log(`Transaction hash: ${transactionHash}`);
-  const result = await web3quorum.priv.waitForTransactionReceipt(
-    transactionHash,
-  );
-  console.log(
-    "" + nodeName + " value from deployed contract is: " + result.output,
-  );
+  const result = await web3quorum.priv.waitForTransactionReceipt(transactionHash);
+  console.log("" + nodeName + " value from deployed contract is: " + result.output);
   return result;
 }
 ```
@@ -148,15 +117,7 @@ async function getValueAtAddress(
 Performing a write operation is almost the same process as the read operation, except that you encode the new value to the `set` function's ABI, and then append these arguments to the `set` function's ABI and use this as the `data` field:
 
 ```js
-async function setValueAtAddress(
-  clientUrl,
-  address,
-  value,
-  contractAbi,
-  fromPrivateKey,
-  fromPublicKey,
-  toPublicKey,
-) {
+async function setValueAtAddress(clientUrl, address, value, contractAbi, fromPrivateKey, fromPublicKey, toPublicKey) {
   const Web3 = require("web3");
   const Web3Quorum = require("web3js-quorum");
   const web3 = new Web3Quorum(new Web3("http://localhost:22000"));
@@ -164,9 +125,7 @@ async function setValueAtAddress(
   const functionAbi = contract._jsonInterface.find((e) => {
     return e.name === "set";
   });
-  const functionArgs = web3quorum.eth.abi
-    .encodeParameters(functionAbi.inputs, [value])
-    .slice(2);
+  const functionArgs = web3quorum.eth.abi.encodeParameters(functionAbi.inputs, [value]).slice(2);
   const functionParams = {
     to: address,
     data: functionAbi.signature + functionArgs,
@@ -174,13 +133,9 @@ async function setValueAtAddress(
     privateFrom: fromPublicKey,
     privateFor: [toPublicKey],
   };
-  const transactionHash = await web3quorum.priv.generateAndSendRawTransaction(
-    functionParams,
-  );
+  const transactionHash = await web3quorum.priv.generateAndSendRawTransaction(functionParams);
   console.log(`Transaction hash: ${transactionHash}`);
-  const result = await web3quorum.priv.waitForTransactionReceipt(
-    transactionHash,
-  );
+  const result = await web3quorum.priv.waitForTransactionReceipt(transactionHash);
   return result;
 }
 ```

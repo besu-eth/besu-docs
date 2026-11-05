@@ -317,12 +317,7 @@ The result displays the four validators:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": [
-    "0x1e326b6da177ede2d3eb6d7247bd9f6901d40234",
-    "0x4aaac297fefe4466ebcb0b23ab90c5f466b11556",
-    "0xa267ead2e91e1673e0943b925176b51d9cd4f6d2",
-    "0xe3e680bc0ff485d1d415a384721f19e0db65fea7"
-  ]
+  "result": ["0x1e326b6da177ede2d3eb6d7247bd9f6901d40234", "0x4aaac297fefe4466ebcb0b23ab90c5f466b11556", "0xa267ead2e91e1673e0943b925176b51d9cd4f6d2", "0xe3e680bc0ff485d1d415a384721f19e0db65fea7"]
 }
 ```
 

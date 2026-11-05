@@ -14,7 +14,7 @@ Use this tutorial to create a development network, send JSON-RPC requests, view 
 
 :::caution
 
-This tutorial runs a private network suitable for education or demonstration purposes and is not intended for running production 
+This tutorial runs a private network suitable for education or demonstration purposes and is not intended for running production
 networks.
 
 :::
@@ -50,13 +50,13 @@ npx @consensys/besu-dev-quickstart
 
 When prompted, select the following options:
 
-| Prompt                               | Selection             |
-| ------------------------------------ | --------------------- |
-| Network type                         | **Private**           |
-| Add privacy (using paladin) to the network? | **N**          |
-| Add OTel Collector spans to Grafana? | **N**                 |
-| Enable Chainlens Explorer?           | **Y**                 |
-| Config files directory               | `./besu-test-network` |
+| Prompt                                      | Selection             |
+| ------------------------------------------- | --------------------- |
+| Network type                                | **Private**           |
+| Add privacy (using paladin) to the network? | **N**                 |
+| Add OTel Collector spans to Grafana?        | **N**                 |
+| Enable Chainlens Explorer?                  | **Y**                 |
+| Config files directory                      | `./besu-test-network` |
 
 To skip the prompts, run:
 
@@ -309,24 +309,24 @@ In `docker-compose.yml`, add a service for `node5`.
 Use an unused IP address in the `besu-dev-quickstart` subnet:
 
 ```yaml
-  node5:
-    << : *besu-def
-    container_name: node5
-    environment:
-      - OTEL_RESOURCE_ATTRIBUTES=service.name=node5,service.version=${BESU_VERSION:-latest}
-    volumes:
-      - ./config/besu/:/config
-      - ./config/nodes/node5:/opt/besu/keys
-      - ./logs/besu:/tmp/besu
-    depends_on:
-      - validator1
-    ports:
-      - 21005:8545/tcp
-      - 30303
-      - 9545
-    networks:
-      besu-dev-quickstart:
-        ipv4_address: 172.16.239.17
+node5:
+  <<: *besu-def
+  container_name: node5
+  environment:
+    - OTEL_RESOURCE_ATTRIBUTES=service.name=node5,service.version=${BESU_VERSION:-latest}
+  volumes:
+    - ./config/besu/:/config
+    - ./config/nodes/node5:/opt/besu/keys
+    - ./logs/besu:/tmp/besu
+  depends_on:
+    - validator1
+  ports:
+    - 21005:8545/tcp
+    - 30303
+    - 9545
+  networks:
+    besu-dev-quickstart:
+      ipv4_address: 172.16.239.17
 ```
 
 #### Allow and discover the node

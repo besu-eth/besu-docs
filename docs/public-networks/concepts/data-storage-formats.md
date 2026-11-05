@@ -61,10 +61,10 @@ We recommend using [Bonsai Tries](#bonsai-tries) to save disk space.
 Mainnet storage requirements change over time as the chain grows.
 Use the following estimates as a reference point, not fixed minimum requirements.
 
-| Data storage format | Sync mode | Node type    | Mainnet storage estimate  |
-|---------------------|-----------|--------------|---------------------------|
-| Bonsai              | [Snap](node-sync.md#snap-synchronization) | [Full node](node-sync.md#full-nodes)       | ~1.14 TB |
-| Forest              | [Full](node-sync.md#full-synchronization) | [Archive node](node-sync.md#archive-nodes) | ~12 TB   |
+| Data storage format | Sync mode                                 | Node type                                  | Mainnet storage estimate |
+| ------------------- | ----------------------------------------- | ------------------------------------------ | ------------------------ |
+| Bonsai              | [Snap](node-sync.md#snap-synchronization) | [Full node](node-sync.md#full-nodes)       | ~1.14 TB                 |
+| Forest              | [Full](node-sync.md#full-synchronization) | [Archive node](node-sync.md#archive-nodes) | ~12 TB                   |
 
 The Bonsai snap sync estimate is based on May 2026 burn-in results for the Besu 26.5.0
 release cycle on AWS `m8g.2xlarge` instances.

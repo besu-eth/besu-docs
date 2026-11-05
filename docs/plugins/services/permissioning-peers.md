@@ -13,7 +13,7 @@ Use permissioning and peer services to influence network access or interact with
 
 - Node connection permissioning - Restrict node access to known participants only.
 - Transaction permissioning - Restrict transaction processing based on transaction properties.
-- Node message permissioning - Propagate different types of devP2P messages to particular nodes. 
+- Node message permissioning - Propagate different types of devP2P messages to particular nodes.
   For example, this can be used to prevent pending transactions from being forwarded to other nodes.
 
 For example, register a node connection permissioning provider:

@@ -132,7 +132,7 @@ For example, you can specify nodes by the ENR URL using the [`--bootnodes`](../r
 option or in the [`bootnodes`](../reference/genesis-items.md#discovery-configuration-items) discovery
 setting in the genesis file.
 
-An ENR is a signed, extensible record that carries a node's network information as key-value pairs, 
+An ENR is a signed, extensible record that carries a node's network information as key-value pairs,
 including its public key, IP addresses, ports, and fork ID.
 See [EIP-778](https://eips.ethereum.org/EIPS/eip-778) for the full specification.
 The text encoding of an ENR begins with `enr:` and is referred to as an ENR URL.

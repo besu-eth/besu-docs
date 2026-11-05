@@ -11,7 +11,7 @@ As when [configuring bootnodes](bootnodes.md):
 1. Create the [node key pair](../../../public-networks/concepts/node-keys.md) (that is, the private and public key) before starting the validator.
 
    :::tip HSM-backed validator keys
-   
+
    For validators backed by a Hardware Security Module (HSM), create or import the
    node key in the HSM before starting Besu.
    Configure Besu with a security module plugin, such as the

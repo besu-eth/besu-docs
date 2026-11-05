@@ -52,7 +52,7 @@ Besu first determines if a transaction has been completed by the background para
 
 ### Conflict detection strategy
 
-Besu's conflict detection strategy uses the *accumulator*, a
+Besu's conflict detection strategy uses the _accumulator_, a
 [Bonsai Tries](data-storage-formats.md#bonsai-tries) feature that tracks addresses and slots touched
 or modified during block or transaction execution.
 
@@ -168,11 +168,11 @@ GiB memory), with Teku and Nimbus as consensus layer (CL) clients:
 
   The following table shows the throughput results:
 
-  | Metric | Throughput |
-  |--------|-----------|
-  | Minimum | 194.55 Mgas/s |
-  | Maximum | 445.99 Mgas/s |
-  | Average | 348.17 Mgas/s |
+  | Metric          | Throughput    |
+  | --------------- | ------------- |
+  | Minimum         | 194.55 Mgas/s |
+  | Maximum         | 445.99 Mgas/s |
+  | Average         | 348.17 Mgas/s |
   | 50th percentile | 352.57 Mgas/s |
   | 95th percentile | 404.93 Mgas/s |
   | 99th percentile | 418.13 Mgas/s |

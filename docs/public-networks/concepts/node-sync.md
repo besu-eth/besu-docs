@@ -12,8 +12,8 @@ Besu supports two [node types](#node-types) and two [synchronization modes](#syn
 
 ### Full nodes
 
-A full node consists of an 
-[execution and consensus client](node-clients.md#execution-and-consensus-clients), 
+A full node consists of an
+[execution and consensus client](node-clients.md#execution-and-consensus-clients),
 and stores a local copy of the blockchain.
 With a full node, you can check current balances, sign and send transactions, and look at current
 dapp data.
@@ -27,8 +27,8 @@ Run a full node using [snap synchronization](#snap-synchronization).
 ### Archive nodes
 
 An archive node is a node that also stores the intermediary state of every account and contract
-for every block since the genesis block. 
-Archive nodes can do everything full nodes do, and they can also access historical state data. 
+for every block since the genesis block.
+Archive nodes can do everything full nodes do, and they can also access historical state data.
 This means that archive nodes require more disk space than full nodes.
 
 Run an archive node using [full synchronization](#full-synchronization).
@@ -43,10 +43,10 @@ Bonsai is designed for retrieving recent data only.
 
 The following table summarizes the recommended public network sync modes:
 
-| Sync mode                     | Recommended use | Besu version requirement |
-|-------------------------------|-----------------|--------------------------|
-| [Snap](#snap-synchronization) | Full nodes on Mainnet and public testnets. | 22.4.0 or later |
-| [Full](#full-synchronization) | Archive nodes on smaller networks. Not recommended on Mainnet. | Any |
+| Sync mode                     | Recommended use                                                | Besu version requirement |
+| ----------------------------- | -------------------------------------------------------------- | ------------------------ |
+| [Snap](#snap-synchronization) | Full nodes on Mainnet and public testnets.                     | 22.4.0 or later          |
+| [Full](#full-synchronization) | Archive nodes on smaller networks. Not recommended on Mainnet. | Any                      |
 
 :::warning Checkpoint sync
 
@@ -133,10 +133,10 @@ Besu must catch up to the current chain head and sync the world state to partici
 The following table shows estimates for each sync mode on Mainnet.
 All times are hardware dependent.
 
-| Sync mode | Storage format | Node type    | Mainnet sync time |
-|-----------|----------------|--------------|-------------------|
-| Snap      | [Bonsai](data-storage-formats.md#bonsai-tries)    | Full node    | ~12-16 hours |
-| Full      | [Forest](data-storage-formats.md#forest-of-tries) | Archive node | ~weeks       |
+| Sync mode | Storage format                                    | Node type    | Mainnet sync time |
+| --------- | ------------------------------------------------- | ------------ | ----------------- |
+| Snap      | [Bonsai](data-storage-formats.md#bonsai-tries)    | Full node    | ~12-16 hours      |
+| Full      | [Forest](data-storage-formats.md#forest-of-tries) | Archive node | ~weeks            |
 
 The Bonsai snap sync estimate is based on May 2026 burn-in results for the Besu 26.5.0
 release cycle on AWS `m8g.2xlarge` instances.

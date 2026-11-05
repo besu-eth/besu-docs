@@ -56,7 +56,7 @@ To configure Prometheus and run with Besu:
     ```
 
     </TabItem>
-    <TabItem value="Full prometheus.yml example"> 
+    <TabItem value="Full prometheus.yml example">
 
     ```yml
     global:

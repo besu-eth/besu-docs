@@ -22,7 +22,6 @@ The Engine API is enabled by default even if no consensus client configuration e
 besu --engine-rpc-port=8551 --engine-host-allowlist=localhost,127.0.0.1 --engine-jwt-secret=jwt.hex
 ```
 
-
 ### Service ports
 
 To specify the port the Engine API service listens on for HTTP and WebSocket, use the [`--engine-rpc-port`](../reference/options.md#engine-rpc-port) option. The default is `8551`. This option is useful when you have another execution engine running on port 8551, in which case you can specify Besu to use another port, for example, `--engine-rpc-port 8552`.

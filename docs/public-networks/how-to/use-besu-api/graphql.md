@@ -47,9 +47,9 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{block{numb
 
 ```json
 {
-  "data" : {
-    "block" : {
-      "number" : "0x281"
+  "data": {
+    "block": {
+      "number": "0x281"
     }
   }
 }
@@ -73,8 +73,8 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{gasPrice}"
 
 ```json
 {
-  "data" : {
-    "gasPrice" : "0x0"
+  "data": {
+    "gasPrice": "0x0"
   }
 }
 ```
@@ -99,11 +99,11 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{syncing{st
 
 ```json
 {
-  "data" : {
-    "syncing" : {
-      "startingBlock" : 665,
-      "currentBlock" : 3190,
-      "highestBlock" : 26395
+  "data": {
+    "syncing": {
+      "startingBlock": 665,
+      "currentBlock": 3190,
+      "highestBlock": 26395
     }
   }
 }
@@ -118,11 +118,12 @@ In some cases, for example, when your node is fully synced, the syncing request 
 
 ```json
 {
-  "data" : {
-    "syncing" : null
+  "data": {
+    "syncing": null
   }
 }
 ```
+
 :::
 
 ## GraphQL requests with GraphiQL app

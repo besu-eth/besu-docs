@@ -55,7 +55,7 @@ of large data blobs.
 :::
 
 This mechanism significantly reduces the computational and storage burden on the Ethereum network while ensuring
-that the data is available for those who need it (for example, rollups or other layer 2 solutions that rely on data 
+that the data is available for those who need it (for example, rollups or other layer 2 solutions that rely on data
 availability for their security and operation).
 
 Blobs are temporarily stored by consensus clients such as Teku, and blocks on the execution layer permanently store

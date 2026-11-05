@@ -18,7 +18,7 @@ These APIs allow you to use the [`trace`](../../reference/api/trace.md#trace),
 
 When using [Bonsai Tries](../../concepts/data-storage-formats.md#bonsai-tries) with the ad-hoc
 tracing APIs, the requested block or transaction must be within the number of
-[blocks retained](../../reference/options.md#bonsai-historical-block-limit) (by default, 512 
+[blocks retained](../../reference/options.md#bonsai-historical-block-limit) (by default, 512
 from the head of the chain).
 
 The ad-hoc tracing APIs are:

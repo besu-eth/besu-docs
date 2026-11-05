@@ -202,9 +202,9 @@ The logs subscription returns [log objects](../../reference/api/eth/filter.md#et
 <TabItem value="All logs" label="All logs" default>
 
 ```json
-{ 
-  "id": 1, 
-  "method": "eth_subscribe", 
+{
+  "id": 1,
+  "method": "eth_subscribe",
   "params": ["logs", {}]
 }
 ```
@@ -220,9 +220,7 @@ The logs subscription returns [log objects](../../reference/api/eth/filter.md#et
     "logs",
     {
       "address": "0x8320fe7702b96808f7bbc0d4a888ed1468216cfd",
-      "topics": [
-        "0xd78a0cb8bb633d06981248b816e7bd33c2a35a6089241d099fa519e361cab902"
-      ],
+      "topics": ["0xd78a0cb8bb633d06981248b816e7bd33c2a35a6089241d099fa519e361cab902"],
       "fromBlock": "0x0",
       "toBlock": "latest"
     }
@@ -257,10 +255,7 @@ The logs subscription returns [log objects](../../reference/api/eth/filter.md#et
       "transactionIndex": "0x0",
       "address": "0x9b8397f1b0fecd3a1a40cdd5e8221fa461898517",
       "data": "0x",
-      "topics": [
-        "0x199cd93e851e4c78c437891155e2112093f8f15394aa89dab09e38d6ca072787",
-        "0x0000000000000000000000000000000000000000000000000000000000000005"
-      ]
+      "topics": ["0x199cd93e851e4c78c437891155e2112093f8f15394aa89dab09e38d6ca072787", "0x0000000000000000000000000000000000000000000000000000000000000005"]
     }
   }
 }
@@ -450,10 +445,7 @@ You can specify up to 200 transaction hashes.
   "params": [
     "transactionReceipts",
     {
-      "transactionHashes": [
-        "0x0000000000000000000000000000000000000000000000000000000000000001",
-        "0x0000000000000000000000000000000000000000000000000000000000000002"
-      ]
+      "transactionHashes": ["0x0000000000000000000000000000000000000000000000000000000000000001", "0x0000000000000000000000000000000000000000000000000000000000000002"]
     }
   ]
 }

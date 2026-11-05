@@ -261,12 +261,7 @@ besu rlp encode --from=toEncode.json --type=QBFT_EXTRA_DATA
 Where the `toEncode.json` file contains a list of the initial validators, in ascending order. To write the validator address and copy it to the `toEncode.json` file, use the [`public-key export-address`](../../../../public-networks/reference/subcommands.md#export-address) Besu subcommand. For example:
 
 ```json title="Initial validators in toEncode.json file"
-[
-  "0x4592c8e45706cc08b8f44b11e43cba0cfc5892cb",
-  "0x06e23768a0f59cf365e18c2e0c89e151bcdedc70",
-  "0xc5327f96ee02d7bcbc1bf1236b8c15148971e1de",
-  "0xab5e7f4061c605820d3744227eed91ff8e2c8908"
-]
+["0x4592c8e45706cc08b8f44b11e43cba0cfc5892cb", "0x06e23768a0f59cf365e18c2e0c89e151bcdedc70", "0xc5327f96ee02d7bcbc1bf1236b8c15148971e1de", "0xab5e7f4061c605820d3744227eed91ff8e2c8908"]
 ```
 
 Copy the RLP encoded data to the `extraData` property in the genesis file.
@@ -325,7 +320,7 @@ The `qbft` object also supports the following optional properties:
 After [The Merge](https://ethereum.org/en/upgrades/merge/), the following block fields are modified or deprecated. Their fields **must** contain only the constant values from the following chart.
 
 | Field            | Constant value                                                       | Comment                    |
-|------------------|----------------------------------------------------------------------|----------------------------|
+| ---------------- | -------------------------------------------------------------------- | -------------------------- |
 | **`ommersHash`** | `0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347` | `= Keccak256(RLP([]))`     |
 | **`difficulty`** | `0`                                                                  | Replaced with `prevrandao` |
 | **`mixHash`**    | `0x0000000000000000000000000000000000000000000000000000000000000000` | Replaced with `prevrandao` |
