@@ -1,6 +1,10 @@
 ---
 description: Required spelling and casing for product names, industry terms, and standards referenced across Besu documentation.
-globs: ["**/*.md", "**/*.mdx"]
+globs:
+  - "**/*.md"
+  - "**/*.mdx"
+  - .github/vale/**
+  - .github/workflows/spelling.yml
 alwaysApply: false
 ---
 
@@ -51,3 +55,16 @@ Examples:
 - Subsequent: "EIP-1559"
 - First use: "Engine API specification"
 - Subsequent: "Engine API"
+
+## Spelling
+
+Pull requests run Vale spelling. A warning means Vale does not recognize a word in a
+changed documentation file.
+
+- If the word is a typo, correct it in the documentation.
+- If the word is a real term this change introduces, add one pattern to
+  `.github/vale/accept.txt` in the same pull request. Vale treats each line as a
+  case-sensitive regular expression. Include plurals and possessives in the pattern
+  when the page uses them, for example `Openfort(?:'s)?`.
+- Leave the shared accept list in `github-actions` unchanged. It already contains the
+  terms accepted in the initial audit. New terms stay in this repository's file.
