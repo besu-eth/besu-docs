@@ -2,7 +2,9 @@
 name: Check for lint errors
 
 on:
-  workflow_call:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   lint:

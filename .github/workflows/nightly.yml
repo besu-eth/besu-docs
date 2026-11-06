@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: LinkCheck
-        uses: Consensys-Incorporated/github-actions/docs-link-check@89c262a30cae735be99dc776f9556b796fb456ca # v1.0.0
+        uses: Consensys-Incorporated/github-actions/docs-link-check@main
         with:
           CONFIG_FILE: .linkspector.yml
 
@@ -33,10 +33,11 @@ jobs:
     permissions: {}
     steps:
       - name: Slack Notification
-        uses: Consensys-Incorporated/github-actions/slack-notify@89c262a30cae735be99dc776f9556b796fb456ca # v1.0.0
-        with:
+        uses: rtcamp/action-slack-notify@v2
+        env:
           SLACK_CHANNEL: ci-documentation
           SLACK_COLOR: danger
+          SLACK_USERNAME: ci
           SLACK_TITLE: Besu docs nightly link check - Failure
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           MSG_MINIMAL: true
