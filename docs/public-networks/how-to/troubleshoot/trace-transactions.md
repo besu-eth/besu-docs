@@ -27,6 +27,7 @@ The ad-hoc tracing APIs are:
 - [`trace_callMany`](../../reference/api/trace.md#trace_callmany)
 - [`trace_rawTransaction`](../../reference/api/trace.md#trace_rawtransaction)
 - [`trace_replayBlockTransactions`](../../reference/api/trace.md#trace_replayblocktransactions)
+- [`trace_replayTransaction`](../../reference/api/trace.md#trace_replaytransaction)
 
 ## Transaction-trace filtering APIs
 
