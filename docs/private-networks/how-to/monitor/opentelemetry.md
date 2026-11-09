@@ -176,7 +176,3 @@ You can also install exporters that send system metrics to OpenTelemetry to moni
     | ----------------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
     | `OTEL_EXPORTER_OTLP_ENDPOINT` | OpenTelemetry Collector endpoint, of the form `https://host:port`. The default is `https://localhost:4317`. | Yes      |
     | `OTEL_EXPORTER_OTLP_INSECURE` | Whether to allow insecure connections for OpenTelemetry data. The default is `false`.                       | No       |
-
-<!-- Links -->
-
-[Monitoring Besu synchronization to chain with Splunk]: https://github.com/splunk/splunk-connect-for-ethereum/tree/master/examples/besu-sync

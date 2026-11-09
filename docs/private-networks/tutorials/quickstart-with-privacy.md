@@ -234,7 +234,7 @@ HTTP.
 
 Peers are the other nodes connected to the node receiving the JSON-RPC request.
 Poll the peer count using
-[`net_peerCount`](../../public-networks/reference/api/index.md#net_peercount).
+[`net_peerCount`](../../public-networks/reference/api/net.md#net_peercount).
 The result indicates that `rpcnode` has seven peers:
 
 <Tabs>
@@ -260,7 +260,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":
 
 #### Request the most recent block number
 
-Call [`eth_blockNumber`](../../public-networks/reference/api/index.md#eth_blocknumber) to retrieve
+Call [`eth_blockNumber`](../../public-networks/reference/api/eth/client.md#eth_blocknumber) to retrieve
 the highest block number on `rpcnode`.
 The result indicates the highest block number synchronized on this node:
 

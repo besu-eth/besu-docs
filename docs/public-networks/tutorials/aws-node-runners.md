@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Deploy AWS Node Runners
 
-[AWS Blockchain Node Runners](https://aws-samples.github.io/aws-blockchain-node-runners/docs/intro)
+[AWS Blockchain Node Runners](https://aws-samples.github.io/aws-blockchain-node-runners/docs/getting-started/why-node-runners)
 is an open-source initiative aimed at simplifying the deployment of self-managed blockchain nodes
 on AWS using vetted deployment blueprints and infrastructure configurations.
 AWS Node Runners solves common challenges in architecting and deploying blockchain nodes on AWS,

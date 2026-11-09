@@ -790,17 +790,17 @@ to be evaluated.
 Run `evmtool block-test --help` for the full list of supported options.
 Notable options are [`--json`](#json-trace), [`--nomemory`](#nomemory-tracenomemory),
 [`--workers`](#workers), [`--test-name`](#test-name),
-[`--test-name-regex`](#test-name-regex), [`--json-array`](#block-test-json-array),
-[`--cache-precompiles`](#block-test-cache-precompiles),
-[`--block-access-list`](#block-test-block-access-list),
-[`--trace-output`](#block-test-trace-output), and [`--verbose`](#block-test-verbose).
+[`--test-name-regex`](#test-name-regex), [`--json-array`](#json-array-1),
+[`--cache-precompiles`](#nocache-precompiles),
+[`--block-access-list`](#noblock-access-list),
+[`--trace-output`](#trace-output), and [`--verbose`](#verbose).
 
 The command prints a test summary after the run.
-[`--json-array`](#block-test-json-array) prints one JSON array instead.
+[`--json-array`](#json-array-1) prints one JSON array instead.
 The command exits with code 1 when a test fails, when no test runs, or when a
 declared case never ran.
 
-#### `json-array` {#block-test-json-array}
+#### `json-array`
 
 <Tabs>
 
@@ -834,7 +834,7 @@ declared case never ran.
 ]
 ```
 
-#### `[no]block-access-list` {#block-test-block-access-list}
+#### `[no]block-access-list`
 
 <Tabs>
 
@@ -854,7 +854,7 @@ This option is enabled by default.
 does, so post-Amsterdam blocks take the accumulator state root path rather than
 the access list path.
 
-#### `[no]cache-precompiles` {#block-test-cache-precompiles}
+#### `[no]cache-precompiles`
 
 <Tabs>
 
@@ -871,7 +871,7 @@ evmtool block-test --cache-precompiles, --nocache-precompiles
 Enables precompile result caching, matching Besu's `--cache-precompiles` option.
 Caching is disabled by default.
 
-#### `trace-output` {#block-test-trace-output}
+#### `trace-output`
 
 <Tabs>
 
@@ -896,7 +896,7 @@ evmtool block-test --json --trace-output=traces.log
 Writes traces to this file instead of standard error.
 This option requires [`--json`](#json-trace) or `--trace`.
 
-#### `verbose` {#block-test-verbose}
+#### `verbose`
 
 <Tabs>
 
@@ -981,16 +981,16 @@ to be evaluated through the [Engine API](engine-api.md).
 Run `evmtool engine-test --help` for the full list of supported options.
 Notable options are [`--json`](#json-trace), [`--nomemory`](#nomemory-tracenomemory),
 [`--workers`](#workers), [`--test-name`](#test-name),
-[`--test-name-regex`](#test-name-regex), [`--json-array`](#engine-test-json-array),
-and [`--verbose`](#engine-test-verbose).
+[`--test-name-regex`](#test-name-regex), [`--json-array`](#json-array-2),
+and [`--verbose`](#verbose-1).
 
-Without [`--verbose`](#engine-test-verbose), only failing tests and the final
+Without [`--verbose`](#verbose-1), only failing tests and the final
 summary are printed.
-[`--json-array`](#engine-test-json-array) prints one JSON array instead.
+[`--json-array`](#json-array-2) prints one JSON array instead.
 The command exits with code 1 when a test fails, when no test runs, or when a
 declared case never ran.
 
-#### `json-array` {#engine-test-json-array}
+#### `json-array`
 
 <Tabs>
 
@@ -1027,7 +1027,7 @@ declared case never ran.
 ]
 ```
 
-#### `verbose` {#engine-test-verbose}
+#### `verbose`
 
 <Tabs>
 

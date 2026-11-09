@@ -66,7 +66,7 @@ To advertise the host IP and host-mapped ports, see [Specify the NAT method](../
 
 :::
 
-You can specify [Besu environment variables](../../../public-networks/reference/options.md#specify-options) with the Docker image instead of the command line options.
+You can specify [Besu environment variables](../../../public-networks/reference/options.md) with the Docker image instead of the command line options.
 
 <Tabs>
   <TabItem value="Sepolia" label="Sepolia">

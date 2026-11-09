@@ -36,7 +36,7 @@ Check the following settings:
 
 - Your machine and router's specified DNS should support TCP. You can check your DNS online for TCP support. Google and Cloudflare, 8.8.8.8 and 1.1.1.1, support TCP over port 853. Other DNS might as well.
 - The appropriate ports should be open on your router, or your router should have UPNP enabled. See the next FAQ for more information on router settings.
-- If you use [Docker](https://docs.docker.com/network/network-tutorial-host/) or virtualization, the container should be able to create outbound connections on the host machine.
+- If you use [Docker](https://docs.docker.com/engine/network/drivers/host/) or virtualization, the container should be able to create outbound connections on the host machine.
 
 ### "Which URLs should I check?"
 

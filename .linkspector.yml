@@ -1,0 +1,32 @@
+dirs:
+  - ./docs
+excludedDirs:
+  - ./build
+  - ./.vercel
+  - ./.docusaurus
+  - ./node_modules
+useGitIgnore: true
+followRedirects: true
+baseUrl: https://docs.besu-eth.org
+
+ignorePatterns:
+  - pattern: "^pathname:"
+  - pattern: "^http(s)?://localhost"
+  - pattern: "^http(s)?://127.0.0.1"
+  - pattern: "^http(s)?://gitlab.com/ConsenSys/"
+  - pattern: "^http(s)?://github.com/ConsenSys/orchestrate"
+  - pattern: "^http(s)?://github.com/INFURA/docs(?:/(issues|pulls))?"
+  - pattern: "^http(s)?://consensys.net"
+  - pattern: "^http(s)?://(www\\.)?swift.com"
+  - pattern: "{{[a-zA-Z_\\-\\.\\[\\]\\']+}}"
+  - pattern: "^https?:\\/\\/[a-zA-Z0-9.-]*\\.infura\\.io\\/v3\\/.*$"
+  - pattern: "^http(s)?://.+.zendesk.com"
+  - pattern: "^http(s)?://.+.etherscan.io"
+  - pattern: "^http(s)?://help.figma.com"
+  - pattern: "^http(s)?://(docs\\.)?metamask\\.io"
+  - pattern: "http(s)?://.+\\&\\#39\\;"
+  - pattern: "http(s)?://.+'"
+aliveStatusCodes:
+  - 200
+  - 206
+  - 403

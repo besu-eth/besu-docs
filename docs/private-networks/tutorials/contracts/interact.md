@@ -78,7 +78,7 @@ To verify that a value has been updated, perform a `get` call after a `set` upda
 
 ## Interact with private contracts
 
-This private contracts example uses the same `SimpleStorage.sol` contract as in the [public contracts example](#interact-with-public-contracts), but it uses the [web3js-quorum](https://consensys.github.io/web3js-quorum/latest/index.html) library and the [`generateAndSendRawTransaction`](https://consensys.github.io/web3js-quorum/latest/module-priv.html#~generateAndSendRawTransaction) method to interact with the contract. Both read and write operations are performed using the `generateAndSendRawTransaction` API call. A [full example](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js) can be found in the [Developer Quickstart].
+This private contracts example uses the same `SimpleStorage.sol` contract as in the [public contracts example](#interact-with-public-contracts), but it uses the [web3js-quorum](https://consensys-inc-archive.github.io/web3js-quorum/latest/index.html) library and the [`generateAndSendRawTransaction`](https://consensys-inc-archive.github.io/web3js-quorum/latest/module-priv.html#~generateAndSendRawTransaction) method to interact with the contract. Both read and write operations are performed using the `generateAndSendRawTransaction` API call. A [full example](https://github.com/ConsenSys/quorum-dev-quickstart/blob/1e8cc281098923802845cd829ec20c88513c2e1c/files/besu/smart_contracts/privacy/scripts/private_tx.js) can be found in the [Developer Quickstart].
 
 ### 1. Perform a read operation
 

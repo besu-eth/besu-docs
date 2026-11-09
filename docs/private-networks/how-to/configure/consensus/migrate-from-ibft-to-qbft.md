@@ -21,7 +21,7 @@ genesis file to include a QBFT configuration section with a future migration blo
 Choose a block number that gives you enough time to update and restart all nodes in the network.
 The migration block must be greater than the current chain head when you restart each node.
 
-Get the current chain head block number using [`eth_blockNumber`](../../../../public-networks/reference/api/index.md#eth_blocknumber):
+Get the current chain head block number using [`eth_blockNumber`](../../../../public-networks/reference/api/eth/client.md#eth_blocknumber):
 
 ```bash
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
