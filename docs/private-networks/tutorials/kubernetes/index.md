@@ -9,7 +9,6 @@ Use the [reference implementations](https://github.com/ConsenSys/besu-kubernetes
 
 - [Helm](https://github.com/ConsenSys/quorum-kubernetes/tree/master/helm).
 - [Helmfile](https://github.com/roboll/helmfile).
-- [`kubectl`](https://github.com/ConsenSys/besu-kubernetes/tree/master/playground/kubectl).
 
 Familiarize yourself with the reference implementations and customize them for your requirements.
 
