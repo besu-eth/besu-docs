@@ -81,7 +81,7 @@ To advertise the host IP and host-mapped ports, see [Specify the NAT method](../
 
 :::
 
-You can specify [Besu environment variables](../../reference/options.md#specify-options) with the Docker image instead of the command line options.
+You can specify [Besu environment variables](../../reference/options.md) with the Docker image instead of the command line options.
 
 ```bash title="Example"
 docker run -p 30303:30303 -p 8545:8545 -e BESU_RPC_HTTP_ENABLED=true -e BESU_NETWORK=sepolia hyperledger/besu:latest

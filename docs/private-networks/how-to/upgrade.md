@@ -25,7 +25,7 @@ To upgrade the protocol in a private network:
 1. Review included EIPs for breaking changes. A [meta EIP](https://eips.ethereum.org/meta) for each protocol upgrade lists included EIPs. For example, [Istanbul](https://eips.ethereum.org/EIPS/eip-1679).
 1. Network participants agree on the block number at which to upgrade.
 1. For each node in the network:
-   1. Add the [milestone block number](../../public-networks/reference/genesis-items.md#milestone-blocks) to the genesis file.
+   1. Add the [milestone block number](../../public-networks/reference/genesis-items.md#milestone-configuration-items) to the genesis file.
    1. Restart the node before reaching milestone block.
 
 :::caution

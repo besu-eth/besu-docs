@@ -6922,7 +6922,7 @@ tx-pool-min-score="-100"
 
 </Tabs>
 
-Remove a pending transaction from the [layered transaction pool](../concepts/transactions/pool.md#penalize-transient-invalid-pending-transactions)
+Remove a pending transaction from the [layered transaction pool](../concepts/transactions/pool.md#transient-invalid-pending-transactions)
 if its score is lower than this value. Accepts a value between `-128` and `127`.
 The default is `-128`.
 
@@ -7000,9 +7000,9 @@ tx-pool-price-bump=25
 </Tabs>
 
 The price bump percentage to
-[replace an existing transaction in the transaction pool](../concepts/transactions/pool.md#replace-transactions-with-the-same-sender-and-nonce).
-For networks with a [base fee and priced gas](../concepts/transactions/pool.md#in-networks-with-a-base-fee-and-priced-gas), the default is `10`, or 10%.
-For networks with [zero base fee, or free gas](../concepts/transactions/pool.md#in-networks-with-zero-base-base-or-free-gas), the default is `0`.
+[replace an existing transaction in the transaction pool](../concepts/transactions/pool.md#replacing-pending-transactions).
+For networks with a [base fee and priced gas](../concepts/transactions/pool.md#eip1559-transactions), the default is `10`, or 10%.
+For networks with [zero base fee, or free gas](../concepts/transactions/pool.md#free-gas-networks), the default is `0`.
 
 ---
 

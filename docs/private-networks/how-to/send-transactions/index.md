@@ -10,4 +10,4 @@ In private networks, you can create and [send regular transactions](../../../pub
 You can also:
 
 - [Include revert reason in transactions](revert-reason.md).
-- [Replace transactions in the transaction pool](../../../public-networks/concepts/transactions/pool.md#in-networks-with-zero-base-base-or-free-gas).
+- [Replace transactions in the transaction pool](../../../public-networks/concepts/transactions/pool.md#free-gas-networks).

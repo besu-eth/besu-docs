@@ -14,7 +14,7 @@ Every epoch (6.4 minutes), a validator proposes an attestation to the network. T
 
 Honest nodes have 1/3 \* `SECONDS_PER_SLOT` (4 seconds) from the start of the slot to either receive the block or decide there was no block produced and attest to an “empty” or “skip” slot. Once this time has elapsed, attesters should broadcast their attestation reflecting their local view of the chain.
 
-See the [official specification](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/validator.md#attesting) for more information about attestations.
+See the [official specification](https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/validator.md#attesting) for more information about attestations.
 
 ## Attestation rewards
 
@@ -71,4 +71,4 @@ Attestations are complicated. Rewards can be impacted by:
 - [Upgrading Ethereum](https://eth2book.info/bellatrix/part2/incentives/rewards/)
 - [Understanding Attestation Misses](https://www.symphonious.net/2022/09/25/understanding-attestation-misses/)
 - [Block production in Ethereum after the Merge](https://notes.ethereum.org/DaWh-02HQ4qftum1xdphkg?view#Broadcast-attestation)
-- [Ethereum Consensus Specs](https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/validator.md#attesting)
+- [Ethereum Consensus Specs](https://github.com/ethereum/consensus-specs/blob/master/specs/phase0/validator.md#attesting)
