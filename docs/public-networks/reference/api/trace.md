@@ -33,11 +33,11 @@ the requested block must be within the number of
 <h3>Parameters</h3>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  the string tags `latest`, `earliest`, `finalized`, or `safe`, as described in
   [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
-  `pending` returns the same value as `latest`.
+  There is no pending block to trace, so `pending` returns error `-32602` (`Invalid block number params`).
   :::
 
 <h3>Returns</h3>
@@ -199,11 +199,11 @@ default, 512 from the head of the chain).
   </Fields>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  the string tags `latest`, `earliest`, `finalized`, or `safe`, as described in
   [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
-  `pending` returns the same value as `latest`.
+  There is no pending block to trace, so `pending` returns error `-32602` (`Invalid block number params`).
   :::
 
 - `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
@@ -338,11 +338,11 @@ default, 512 from the head of the chain).
 - `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  the string tags `latest`, `earliest`, `finalized`, or `safe`, as described in
   [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
-  `pending` returns the same value as `latest`.
+  There is no pending block to trace, so `pending` returns error `-32602` (`Invalid block number params`).
   :::
 
 <h3>Returns</h3>
@@ -524,6 +524,13 @@ the requested blocks must be within the number of
 
 - `toBlock`: _String | Tag_ - (Optional) Trace stops at this block.
   The default is `latest`.
+
+  :::note
+  `fromBlock` and `toBlock` take a block number or one of the tags `latest`, `earliest`,
+  `finalized`, or `safe`. `finalized` and `safe` return error `-32602`
+  (`Invalid block number params`) when the chain has no finalized or safe block yet.
+  `pending` isn't a block range bound and returns error `-32602`.
+  :::
 
 - `blockHash`: _data, 32 bytes_ - (Optional) Hash of the block to trace.
   If you specify `blockHash`, you cannot specify `fromBlock` or `toBlock`.
@@ -870,11 +877,11 @@ default, 512 from the head of the chain).
 <h3>Parameters</h3>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  the string tags `latest`, `earliest`, `finalized`, or `safe`, as described in
   [block parameter](../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
-  `pending` returns the same value as `latest`.
+  There is no pending block to trace, so `pending` returns error `-32602` (`Invalid block number params`).
   :::
 
 - `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
