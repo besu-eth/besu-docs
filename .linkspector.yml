@@ -7,8 +7,10 @@ excludedDirs:
   - ./node_modules
 useGitIgnore: true
 followRedirects: true
+baseUrl: https://docs.besu-eth.org
 
 ignorePatterns:
+  - pattern: "^pathname:"
   - pattern: "^http(s)?://localhost"
   - pattern: "^http(s)?://127.0.0.1"
   - pattern: "^http(s)?://gitlab.com/ConsenSys/"

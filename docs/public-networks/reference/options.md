@@ -395,7 +395,7 @@ bonsai-parallel-tx-processing-enabled=false
 
 </Tabs>
 
-Enables [parallelization of transactions](../concepts/parallel-transaction-execution) to optimize
+Enables [parallelization of transactions](../concepts/parallel-transaction-execution.md) to optimize
 processing speed.
 
 This applies to Besu instances configured to the [Bonsai Trie](../concepts/data-storage-formats.md#bonsai-tries)
@@ -7000,7 +7000,7 @@ tx-pool-price-bump=25
 </Tabs>
 
 The price bump percentage to
-[replace an existing transaction in the transaction pool](../concepts/transactions/pool.md#replacing-pending-transactions).
+[replace an existing transaction in the transaction pool](../concepts/transactions/pool.md#replace-transactions-with-the-same-sender-and-nonce).
 For networks with a [base fee and priced gas](../concepts/transactions/pool.md#eip1559-transactions), the default is `10`, or 10%.
 For networks with [zero base fee, or free gas](../concepts/transactions/pool.md#free-gas-networks), the default is `0`.
 
