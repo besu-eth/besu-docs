@@ -1,0 +1,24 @@
+---
+name: Check file name case
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  case:
+    name: Check for case being inconsistent
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: ["docs"]
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Case check action
+        uses: Consensys-Incorporated/github-actions/docs-case-check@89c262a30cae735be99dc776f9556b796fb456ca # v1.0.0
+        with:
+          DOC_DIR: ${{ matrix.folder }}
