@@ -1,0 +1,22 @@
+name: IndexNow
+on:
+  schedule:
+    - cron: '0 11 * * 0'
+  workflow_dispatch:
+
+permissions: {} # lock everything by default (least-privilege)
+
+jobs:
+  indexnow:
+    environment: analytics
+    runs-on: ubuntu-latest
+    permissions: {}   # zero scopes
+    steps:
+      - name: Submit to IndexNow
+        uses: bojieyang/indexnow-action@38ddfbd93579a8a44c0dee662121bf9d51098f71 # 3.0.0
+        with:
+          sitemap-location: 'https://docs.besu-eth.org/sitemap.xml'
+          key: ${{ secrets.INDEXNOW_APIKEY }}
+          since: 7
+          since-unit: 'day'
+          lastmod-required: false
