@@ -1038,12 +1038,14 @@ the requested transaction must be contained in a block within the number of
 
 - `transaction`: _string_ - Transaction hash.
 
-- `options`: _array_ of _strings_ - List of tracing options; tracing options are [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff). Specify any combination of the three options including none of them.
+- `options`: _array_ of _strings_ - List of tracing options to return; tracing options are
+  [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff).
+  Specify any combination of the three options, including none of them.
 
 <h3>Returns</h3>
 
 - Transaction trace object, or `null` when the transaction hash is not on the chain.
-  If the block or its state is no longer available, Besu returns error `4444`
+  If the block or its state is no longer available, returns error `4444`
   (`Pruned history unavailable`).
 
   <Fields>
