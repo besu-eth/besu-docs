@@ -30,18 +30,18 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture.
-    The default is `true`.
+    The default is `false`.
 
   - `disableStack`: _boolean_ - `true` disables stack capture.
     The default is `false`.
 
   - `disableStorage`: _boolean_ - `true` disables storage capture.
-    The default is `false`.
+    The default is `true`.
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
-    The default is `false`.
+    The default is `true`.
 
   </Fields>
 
@@ -128,18 +128,18 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
   - `txHash`: _string_ - Transaction hash; if omitted, a trace file is generated for each transaction in the block.
 
   - `disableMemory`: _boolean_ - `true` disables memory capture.
-    The default is `true`.
+    The default is `false`.
 
   - `disableStack`: _boolean_ - `true` disables stack capture.
     The default is `false`.
 
   - `disableStorage`: _boolean_ - `true` disables storage capture.
-    The default is `false`.
+    The default is `true`.
 
   - `opcodes`: _array_ of _strings_ - List of opcode names to trace; if omitted or empty, all opcodes are traced.
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
-    The default is `false`.
+    The default is `true`.
 
   </Fields>
 
