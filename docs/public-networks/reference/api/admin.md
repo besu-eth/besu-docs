@@ -409,11 +409,13 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `admin_logsRepairCache`
 
-Repairs cached logs by fixing all segments starting with the specified block number.
+Regenerates the cached log segments before the segment that contains the specified block, back to genesis.
+Each segment covers 100,000 blocks.
+The segment that contains the block, and any later segments, aren't changed.
 
 ### Parameters
 
-- `startBlock`: _string_ - Decimal index of the starting block to fix.
+- `startBlock`: _string_ - Decimal index of the block whose earlier segments are regenerated.
   The default is the head block.
 
 ### Returns
