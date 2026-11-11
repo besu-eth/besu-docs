@@ -1023,10 +1023,9 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ## `trace_replayTransaction`
 
-Provides transaction processing tracing for the specified transaction.
-Besu replays the transaction on top of the transactions before it in its block, so the result
-equals the [`trace_replayBlockTransactions`](#trace_replayblocktransactions) entry for that
-transaction.
+Replays the transaction on the state left by earlier transactions in its block.
+The result is the same object [`trace_replayBlockTransactions`](#trace_replayblocktransactions)
+returns for that transaction.
 
 :::info note
 Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
