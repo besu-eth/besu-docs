@@ -782,6 +782,92 @@ curl -X POST http://localhost:8547/graphql \
 
 ---
 
+## `eth_getHeaderByHash`
+
+Returns the header of the block matching the specified hash, without its transactions or other block body data.
+
+### Parameters
+
+- `hash`: _string_ - 32-byte block hash. An invalid value returns an invalid block hash parameter error.
+
+### Returns
+
+- Block header object, or `null` if the block is not found.
+
+  <Fields>
+
+  - `number`: _quantity_ - Block number.
+  - `hash`: _data, 32 bytes_ - Block hash.
+  - `mixHash`: _data, 32 bytes_ - Proof-of-work mix hash or post-merge `prevRandao`.
+  - `parentHash`: _data, 32 bytes_ - Parent block hash.
+  - `nonce`: _data, 8 bytes_ - Block nonce.
+  - `sha3Uncles`: _data, 32 bytes_ - Hash of the uncle list.
+  - `logsBloom`: _data, 256 bytes_ - Logs bloom filter.
+  - `transactionsRoot`: _data, 32 bytes_ - Transactions trie root.
+  - `stateRoot`: _data, 32 bytes_ - State trie root.
+  - `receiptsRoot`: _data, 32 bytes_ - Receipts trie root.
+  - `miner`: _data, 20 bytes_ - Block beneficiary address.
+  - `difficulty`: _quantity_ - Block difficulty.
+  - `extraData`: _data_ - Block extra data.
+  - `baseFeePerGas`: _quantity_ - Base fee per gas, if applicable.
+  - `gasLimit`: _quantity_ - Block gas limit.
+  - `gasUsed`: _quantity_ - Gas used by the block.
+  - `timestamp`: _quantity_ - Block timestamp in seconds since the Unix epoch.
+  - `withdrawalsRoot`: _data, 32 bytes_ - Withdrawals trie root, if applicable.
+  - `blobGasUsed`: _quantity_ - Blob gas used, if applicable.
+  - `excessBlobGas`: _quantity_ - Excess blob gas, if applicable.
+  - `parentBeaconBlockRoot`: _data, 32 bytes_ - Parent beacon block root, if applicable.
+  - `requestsHash`: _data, 32 bytes_ - Execution requests hash, if applicable.
+  - `blockAccessListHash`: _data, 32 bytes_ - Block access list hash, if applicable.
+  - `slotNumber`: _quantity_ - Slot number, if applicable.
+
+  </Fields>
+
+This method takes **only the hash parameter**. Unlike `eth_getBlockByHash`, it does not accept a `verbose` transaction flag.
+
+### Example
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_getHeaderByHash","params":["0x0000000000000000000000000000000000000000000000000000000000000000"],"id":1}'
+```
+
+The result is `null` if the requested block hash is unknown.
+
+---
+
+## `eth_getHeaderByNumber`
+
+Returns the header of the block matching the specified block number or tag, without its transactions or other block body data.
+
+### Parameters
+
+- `blockNumber`: _string_ - Hexadecimal block number, or `latest`, `earliest`,
+  `pending`, `safe`, or `finalized`. See the
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+
+### Returns
+
+- Block header object with the same fields as [`eth_getHeaderByHash`](#eth_getheaderbyhash),
+  or `null` if the block is not found.
+
+  :::note
+  `pending` returns `null`. `safe` and `finalized` also return `null` when the respective block is not available.
+  :::
+
+An invalid parameter returns an invalid block number parameter error. This method does not accept a `verbose` transaction flag.
+
+### Example
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","method":"eth_getHeaderByNumber","params":["latest"],"id":1}'
+```
+
+---
+
 ## `eth_getBlockReceipts`
 
 Returns all transaction receipts for a given block. Transaction receipts provide a way to track the success or failure of a transaction (`1` if successful and `0` if failed), as well as the amount of
