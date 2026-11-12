@@ -571,6 +571,72 @@ curl -X POST http://localhost:8547/graphql \
 
 ---
 
+## `eth_getRawTransactionByHash`
+
+Returns the [RLP encoding](https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/)
+of the transaction with the specified hash.
+Besu checks the transaction pool first, then the blockchain.
+
+### Parameters
+
+- `transaction`: _string_ - 32-byte transaction hash.
+
+### Returns
+
+- Hex-encoded RLP of the transaction, or `null` when the transaction is not found.
+
+### Example
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getRawTransactionByHash",
+    "params": [
+      "0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"
+    ],
+    "id": 1
+  }'
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getRawTransactionByHash",
+  "params": [
+    "0x3a2fd1a5ea9ffee477f449be53a49398533d2c006a5815023920d1c397298df3"
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": "0xf8678084342770c182520894658bdf435d810c91414ec09147daa6db624063798203e880820a95a0af5fc351b9e457a31f37c84e5cd99dd3c5de60af3de33c6f4160177a2c786a60a0201da7a21046af55837330a2c52fc1543cd4d9ead00ddf178dd96935b607ff9b"
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
 ## `eth_getTransactionBySenderAndNonce`
 
 Returns transaction information for the specified sender address and nonce.

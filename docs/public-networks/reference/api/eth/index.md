@@ -69,6 +69,7 @@ Retrieve transactions and transaction receipts.
 - `eth_getTransactionByBlockHashAndIndex`
 - `eth_getTransactionByBlockNumberAndIndex`
 - `eth_getTransactionByHash`
+- `eth_getRawTransactionByHash`
 - `eth_getTransactionBySenderAndNonce`
 - `eth_getTransactionReceipt`
 
