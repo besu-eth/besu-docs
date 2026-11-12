@@ -506,8 +506,9 @@ of the transaction receipts of the specified block.
 
 ### Parameters
 
-- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
-  string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
+  32-byte block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or
+  `safe`, as described in
   [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
   :::note
