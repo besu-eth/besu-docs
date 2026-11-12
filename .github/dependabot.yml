@@ -12,10 +12,18 @@ updates:
       prefix: "ci"
       include: "scope"
     groups:
+      # SHA-pinned shared actions are allowlisted individually. Keep their bumps
+      # out of the group that also updates actions/checkout.
+      consensys-actions-minor-patch:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "Consensys-Incorporated/github-actions/*"
       actions-minor-patch:
         update-types: ["minor", "patch"]
         patterns:
           - "*"
+        exclude-patterns:
+          - "Consensys-Incorporated/github-actions/*"
     ignore:
       # The Actions allowlist permits these shared workflows only at @main.
       - dependency-name: "Consensys-Incorporated/github-actions/docs-build"
