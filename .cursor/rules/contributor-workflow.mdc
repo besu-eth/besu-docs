@@ -102,7 +102,7 @@ Replace `<base-branch>` with the PR target branch, for example `upstream/main`.
 ## CI linting
 
 Pull requests are checked by the
-[ConsenSys docs-lint-all](https://github.com/Consensys/github-actions) action that enforces
+[Consensys docs-lint-all](https://github.com/Consensys-Incorporated/github-actions) action that enforces
 Microsoft style, Consensys terminology, and spelling. Fix any linter warnings before requesting
 review. If a warning is a false positive, add the term to the Vale vocabulary file rather than
 rewriting valid technical language.
