@@ -36,15 +36,15 @@ function HomepageText() {
       <Heading as='h2'>Questions?</Heading>
       <p>
         If you have any questions about Besu, ask on the <b>besu</b> channel on{" "}
-        <Link to="https://discord.gg/hyperledger">Discord</Link>.
+        <Link to="https://discord.com/invite/hyperledger">Discord</Link>.
       </p>
       <p>
         You can{" "}
-        <Link to="https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22154225/Documentation">
+        <Link to="https://github.com/besu-eth/besu-docs/blob/main/README.md#contribute-to-the-docs">
           contribute to the documentation
         </Link>{" "}
         or to{" "}
-        <Link to="https://lf-hyperledger.atlassian.net/wiki/spaces/BESU/pages/22156850/How+to+Contribute">
+        <Link to="https://github.com/besu-eth/besu/wiki/Contributing">
           Besu itself
         </Link>
         .
