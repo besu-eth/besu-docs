@@ -1040,7 +1040,7 @@ the requested transaction must be contained in a block within the number of
 
 - `options`: _array_ of _strings_ - List of tracing options to return; tracing options are
   [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff).
-  Specify any combination of the three options, including none of them.
+  Required. Specify any combination of the three options, or `[]` for none.
 
 <h3>Returns</h3>
 
