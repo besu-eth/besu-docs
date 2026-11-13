@@ -1028,6 +1028,128 @@ curl -X POST http://127.0.0.1:8545/ \
 
 ---
 
+## `trace_replayTransaction`
+
+Replays the transaction on the state left by earlier transactions in its block.
+The result is the same object [`trace_replayBlockTransactions`](#trace_replayblocktransactions)
+returns for that transaction.
+
+:::info note
+Your node must be an [archive node](../../concepts/node-sync.md#archive-nodes), or
+the requested transaction must be contained in a block within the number of
+[blocks retained](../options.md#bonsai-historical-block-limit) when using
+[Bonsai](../../concepts/data-storage-formats.md#bonsai-tries) (by default, 512 from the head of the chain).
+:::
+
+<h3>Parameters</h3>
+
+- `transaction`: _string_ - Transaction hash.
+
+- `options`: _array_ of _strings_ - List of tracing options to return; tracing options are
+  [`trace`](#trace), [`vmTrace`](#vmtrace), and [`stateDiff`](#statediff).
+  Required. Specify any combination of the three options, or `[]` for none.
+
+<h3>Returns</h3>
+
+- Transaction trace object, or `null` when the transaction hash is not on the chain.
+  If the block or its state is no longer available, returns error `4444`
+  (`Pruned history unavailable`).
+
+  <Fields>
+
+  - `output`: _data_ - Return value of the transaction.
+
+  - `stateDiff`: _object_ - [State changes made by the transaction](#statediff), or `null` if `stateDiff` wasn't a requested option.
+
+  - `trace`: _array_ - Ordered list of [trace objects](#trace), or an empty
+    array if `trace` wasn't a requested option.
+
+  - `vmTrace`: _object_ - [VM execution trace](#vmtrace) (`code` plus an
+    ordered `ops` list), or `null` if `vmTrace` wasn't a requested option.
+
+  - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
+
+  </Fields>
+
+<h3>Example</h3>
+
+<Tabs>
+
+<TabItem value="curl HTTP request" label="curl HTTP request" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "trace_replayTransaction",
+    "params": [
+      "0x821ca63d171c5a3c60d32a738803092a52562056db3727a175f659cf49aae283",
+      [
+        "trace"
+      ]
+    ],
+    "id": 1
+  }'
+```
+
+</TabItem>
+<TabItem value="wscat WS request" label="wscat WS request">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "trace_replayTransaction",
+  "params": [
+    "0x821ca63d171c5a3c60d32a738803092a52562056db3727a175f659cf49aae283",
+    [
+      "trace"
+    ]
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "output": "0x600035ff",
+    "stateDiff": null,
+    "trace": [
+      {
+        "action": {
+          "creationMethod": "create",
+          "from": "0x627306090abab3a6e1400e9345bc60c78a8bef57",
+          "gas": "0xff300e",
+          "init": "0x6004600c60003960046000f3600035ff",
+          "value": "0x0"
+        },
+        "result": {
+          "address": "0xfb88de099e13c3ed21f80a7a1e49f8caecf10df6",
+          "code": "0x600035ff",
+          "gasUsed": "0x338"
+        },
+        "subtraces": 0,
+        "traceAddress": [],
+        "type": "create"
+      }
+    ],
+    "transactionHash": "0x821ca63d171c5a3c60d32a738803092a52562056db3727a175f659cf49aae283",
+    "vmTrace": null
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+---
+
 ## `trace_transaction`
 
 Provides transaction processing of type [`trace`](#trace) for the specified transaction.
