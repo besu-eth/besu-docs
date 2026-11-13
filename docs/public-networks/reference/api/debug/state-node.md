@@ -594,7 +594,7 @@ Triggers a re-synchronization of the world state while retaining imported blocks
 
 ### Returns
 
-- `Success` or `error`.
+- _boolean_ - `true` when world state resynchronization starts successfully.
 
 ### Example
 
@@ -634,7 +634,7 @@ curl -X POST http://127.0.0.1:8545/ \
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "Success"
+  "result": true
 }
 ```
 
