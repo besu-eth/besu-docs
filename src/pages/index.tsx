@@ -40,7 +40,7 @@ function HomepageText() {
       </p>
       <p>
         You can{" "}
-        <Link to="https://github.com/besu-eth/besu-docs/blob/main/README.md#contribute-to-the-docs">
+        <Link to="https://github.com/besu-eth/besu-docs/blob/main/CONTRIBUTING.md">
           contribute to the documentation
         </Link>{" "}
         or to{" "}

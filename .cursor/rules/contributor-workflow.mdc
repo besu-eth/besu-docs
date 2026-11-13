@@ -5,8 +5,7 @@ alwaysApply: true
 
 # Contributor workflow
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and
-[Contribute to the docs](../../README.md#contribute-to-the-docs) for the full contribution
+See [CONTRIBUTING.md](../../CONTRIBUTING.md) for the full contribution
 process. Style guidance is the
 [Consensys documentation contribution guidelines](https://docs-template.consensys.com/contribute).
 The rules below highlight the requirements that are most often missed.
