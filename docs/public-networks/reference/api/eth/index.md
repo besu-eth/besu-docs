@@ -49,6 +49,8 @@ Query blocks and their contents.
 - `eth_getBlockAccessList`
 - `eth_getBlockByHash`
 - `eth_getBlockByNumber`
+- `eth_getHeaderByHash`
+- `eth_getHeaderByNumber`
 - `eth_getBlockReceipts`
 - `eth_getBlockTransactionCountByHash`
 - `eth_getBlockTransactionCountByNumber`
