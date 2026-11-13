@@ -854,12 +854,6 @@ Returns the header of the block matching the specified hash, without its transac
 
   </Fields>
 
-:::note
-
-Returns a JSON-RPC error (`Invalid block hash params`) for an invalid parameter.
-
-:::
-
 ### Example
 
 <Tabs>
@@ -943,7 +937,6 @@ Returns the header of the block matching the specified block number or tag, with
   :::note
 
   `pending` returns `null`.
-  `safe` and `finalized` also return `null` when the respective block is not available.
 
   :::
 
@@ -951,12 +944,6 @@ Returns the header of the block matching the specified block number or tag, with
 
 - Block header object with the same fields as [`eth_getHeaderByHash`](#eth_getheaderbyhash),
   or `null` when there is no block.
-
-:::note
-
-Returns a JSON-RPC error (`Invalid block number params`) for an invalid parameter.
-
-:::
 
 ### Example
 
