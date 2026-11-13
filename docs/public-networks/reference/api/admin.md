@@ -345,6 +345,10 @@ If you specify:
   block only.
 - Two parameters, Besu removes cache files from `fromBlock` through `toBlock`, inclusive.
 
+The `safe` and `finalized` tags resolve to their respective blocks, not the chain head.
+If the requested safe or finalized block is unavailable, Besu returns an `Unknown block` error
+instead of removing cache files for the chain head.
+
 Besu rejects an empty string (`""`) as an invalid block parameter.
 
 ### Returns
