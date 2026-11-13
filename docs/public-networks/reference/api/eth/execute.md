@@ -334,9 +334,9 @@ If the simulated transaction reverts, the result also includes an error message.
 
   </Fields>
 
-- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+- `blockNumber` or `blockHash`: _string_ - Hexadecimal integer representing a block number,
+  block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
 
 ### Returns
 
@@ -486,9 +486,9 @@ By default, the `eth_estimateGas` error response includes the [revert reason](..
 
   </Fields>
 
-- `blockNumber`: _string_ - (Optional) Hexadecimal integer representing a block number, or one of
-  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
-  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter)
+- `blockNumber` or `blockHash`: _string_ - (Optional) Hexadecimal integer representing a block number,
+  block hash, or one of the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as
+  described in [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
   The default is `pending`.
 
 - `stateOverride`: _object_ - The address-to-state mapping.
