@@ -37,7 +37,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution workflow.
    and casing of product and industry terms.
 4. **Verify before publishing.** Preview changes locally with `npm start` before requesting review.
 5. **Pass the CI linter.** PRs are checked by the
-   [ConsenSys docs-lint-all](https://github.com/Consensys/github-actions) action that enforces
+   [Consensys docs-lint-all](https://github.com/Consensys-Incorporated/github-actions) action that enforces
    Microsoft style and Consensys terminology. Fix warnings before requesting review.
 
 ## AI guidance
