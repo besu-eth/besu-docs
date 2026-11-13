@@ -23,8 +23,10 @@ in directories and `sidebar_position` / `sidebar_label` in page frontmatter.
 
 ## Redirects
 
-Every deleted, renamed, or moved page must have a redirect added in `vercel.json`. Docusaurus is
-configured with `onBrokenLinks: 'throw'`, so broken internal links will fail the build.
+Every deleted, renamed, or moved page must have a permanent redirect in `vercel.json`.
+`trailingSlash` is `false`, matching `docusaurus.config.js`, so one entry covers the path
+with and without a trailing slash. Docusaurus is configured with `onBrokenLinks: 'throw'`,
+so broken internal links will fail the build.
 
 ## Factual accuracy
 
