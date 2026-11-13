@@ -130,7 +130,6 @@ Example notification without the `{"includeTransactions": true}` parameter inclu
       "receiptsRoot": "0x81b175ec1f4d44fbbd6ba08f1bd3950663b307b7cb35751c067b535cc0b58f12",
       "miner": "0x0000000000000000000000000000000000000000",
       "difficulty": "0x1",
-      "totalDifficulty": "0x7c16e",
       "extraData": "0xd783010600846765746887676f312e372e33856c696e757800000000000000002160f780bb1f61eda045c67cdb1297ba37d8349df8035533cb0cf82a7e45f23f3d72bbec125a9f499b3eb110b7d1918d466cb2ede90b38296cfe2aaf452c513f00",
       "size": "0x3a1",
       "gasLimit": "0x47e7c4",

@@ -225,8 +225,6 @@ Returns information about the block matching the specified block hash.
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
 
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
   - `size`: _quantity, integer_ - Size of block in bytes.
@@ -373,7 +371,6 @@ curl -X POST http://127.0.0.1:8545/ \
     "receiptsRoot": "0x68461ab700003503a305083630a8fb8d14927238f0bc8b6b3d246c0c64f21f4a",
     "miner": "0xb42b6c4a95406c78ff892d270ad20b22642e102d",
     "difficulty": "0x66e619a",
-    "totalDifficulty": "0x1e875d746ae",
     "extraData": "0xd583010502846765746885676f312e37856c696e7578",
     "size": "0x334",
     "gasLimit": "0x47e7c4",
@@ -515,8 +512,6 @@ Returns information about the block matching the specified block number.
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
 
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
@@ -664,7 +659,6 @@ curl -X POST http://127.0.0.1:8545/ \
     "receiptsRoot": "0x68461ab700003503a305083630a8fb8d14927238f0bc8b6b3d246c0c64f21f4a",
     "miner": "0xb42b6c4a95406c78ff892d270ad20b22642e102d",
     "difficulty": "0x66e619a",
-    "totalDifficulty": "0x1e875d746ae",
     "extraData": "0xd583010502846765746885676f312e37856c696e7578",
     "size": "0x334",
     "gasLimit": "0x47e7c4",
@@ -1317,8 +1311,6 @@ Returns uncle specified by block hash and index.
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
 
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
   - `size`: _quantity, integer_ - Size of block in bytes.
@@ -1476,7 +1468,6 @@ curl -X POST http://127.0.0.1:8545/ \
     "size": "0x21a",
     "stateRoot": "0xa0c7d4fca79810c89c517eff8dadb9c6d6f4bcc27c2edfb301301e1cf7dec642",
     "timestamp": "0x5cdcbba6",
-    "totalDifficulty": "0x229ad33cabd4c40d23d",
     "transactionsRoot": "0x866e38e91d01ef0387b8e07ccf35cd910224271ccf2b7477b8c8439e8b70f365",
     "uncles": []
   }
@@ -1600,8 +1591,6 @@ Returns uncle specified by block number and index.
   - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
-
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
 
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
@@ -1761,7 +1750,6 @@ curl -X POST http://127.0.0.1:8545/ \
     "size": "0x21a",
     "stateRoot": "0x74e97b77813146344d75acb5a52a006cc6dfaca678a10fb8a484a8443e919272",
     "timestamp": "0x5cdcc0a7",
-    "totalDifficulty": "0x229b0583b4bd2698ca0",
     "transactionsRoot": "0x1d21626afddf05e5866de66ca3fcd98f1caf5357eba0cc6ec675606e116a891b",
     "uncles": []
   }

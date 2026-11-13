@@ -50,8 +50,6 @@ Returns a list of invalid blocks. This is used to detect and analyze consensus f
 
   - `difficulty`: _quantity, integer_ - Difficulty for this block.
 
-  - `totalDifficulty`: _quantity, integer_ - Total difficulty of the chain until this block. Only present for pre-[merge](https://ethereum.org/roadmap/merge/) blocks. This value will always be `0` for an uncle block.
-
   - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
 
   - `size`: _quantity, integer_ - Size of block in bytes.
@@ -191,7 +189,6 @@ curl -X POST http://127.0.0.1:8545/ \
         "receiptsRoot": "0xccd2d33763dc0ac3fe02d4ecbbcd7d2bdc6f57db635ba31007184679303721d7",
         "miner": "0x0000000000000000000000000000000000000000",
         "difficulty": "0x1",
-        "totalDifficulty": "0x1",
         "extraData": "0x00000000000000000000000000000000000000000000000000000000000000008c6a091f07e4ba3930f2f5fabbfc5b1c70986319096760ba200a6abc0d30e33c2d501702d1b58d7f75807bdbf981044557628611319121170b96466ec06bb3fd01",
         "size": "0x3a0",
         "gasLimit": "0xffffffffffff",
@@ -234,7 +231,6 @@ curl -X POST http://127.0.0.1:8545/ \
         "receiptsRoot": "0x2b5c77f6e7764d2468178fab7253346b9b8bb6a34b63946f6bdc2f5ad398bfc3",
         "miner": "0x0000000000000000000000000000000000000000",
         "difficulty": "0x2",
-        "totalDifficulty": "0x2",
         "extraData": "0x00000000000000000000000000000000000000000000000000000000000000004d04551bdd9ae08af1fd661e49d4ab662c98c532c7ec0e4656a27e4de7d330af578ab1e4f5e49e085ff1d78673c7388ed9ccf017fbe89e53066bfa4018142c0701",
         "size": "0x3a0",
         "gasLimit": "0xffffffffffff",
