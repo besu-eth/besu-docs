@@ -1,0 +1,51 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      # SHA-pinned shared actions are allowlisted individually. Keep their bumps
+      # out of the group that also updates actions/checkout.
+      consensys-actions-minor-patch:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "Consensys-Incorporated/github-actions/*"
+      actions-minor-patch:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "Consensys-Incorporated/github-actions/*"
+    ignore:
+      # The Actions allowlist permits these shared workflows only at @main.
+      - dependency-name: "Consensys-Incorporated/github-actions/docs-build"
+      - dependency-name: "Consensys-Incorporated/github-actions/docs-link-check"
+      - dependency-name: "Consensys-Incorporated/github-actions/docs-lint-all"
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      npm-minor-patch:
+        update-types: ["minor", "patch"]
+        patterns:
+          - "*"
+    cooldown:
+      default-days: 7
