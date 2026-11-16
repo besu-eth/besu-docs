@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.1",
-    "@docusaurus/plugin-client-redirects": "^3.10.1",
     "@docusaurus/plugin-content-docs": "^3.10.1",
     "@docusaurus/plugin-google-gtag": "^3.10.1",
     "@docusaurus/plugin-google-tag-manager": "^3.10.1",

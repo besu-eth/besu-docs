@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/",
@@ -122,7 +123,57 @@
     {
       "source": "/public-networks/how-to/configure-java/java-flight-recorder/",
       "destination": "/public-networks/how-to/monitor/java-flight-recorder/"
-    }
+    },
+    { "source": "/private-networks/how-to/configure/consensus/clique", "destination": "/private-networks/how-to/configure/consensus", "permanent": true },
+    { "source": "/private-networks/tutorials/clique", "destination": "/private-networks/tutorials", "permanent": true },
+    { "source": "/private-networks/tutorials/ethash", "destination": "/private-networks/tutorials", "permanent": true },
+    { "source": "/public-networks/concepts/plugins", "destination": "/plugins", "permanent": true },
+    { "source": "/private-networks/concepts/permissioning/plugin", "destination": "/plugins/features/permissioning-peers", "permanent": true },
+    { "source": "/public-networks/reference/plugin-api-interfaces", "destination": "/plugins", "permanent": true },
+    { "source": "/public-networks/reference/api/objects", "destination": "/public-networks/reference/api/eth", "permanent": true },
+    { "source": "/public-networks/reference/engine-api/objects", "destination": "/public-networks/reference/engine-api", "permanent": true },
+    { "source": "/public-networks/reference/trace-types", "destination": "/public-networks/reference/api/trace", "permanent": true },
+    { "source": "/public-networks/reference/cli/options", "destination": "/public-networks/reference/options", "permanent": true },
+    { "source": "/public-networks/reference/cli/subcommands", "destination": "/public-networks/reference/subcommands", "permanent": true },
+    { "source": "/private-networks/reference/cli/options", "destination": "/private-networks/reference/options", "permanent": true },
+    { "source": "/private-networks/reference/cli/subcommands", "destination": "/private-networks/reference/subcommands", "permanent": true },
+    { "source": "/public-networks/how-to/configuration-file", "destination": "/public-networks/how-to/configure-besu", "permanent": true },
+    { "source": "/public-networks/how-to/configure-java/java-flight-recorder", "destination": "/public-networks/how-to/monitor/java-flight-recorder", "permanent": true },
+    { "source": "/private-networks/how-to/use-privacy", "destination": "/private-networks", "permanent": true },
+    {
+      "source": "/private-networks/how-to/use-privacy/:match*",
+      "destination": "/private-networks",
+      "permanent": true
+    },
+    { "source": "/private-networks/tutorials/privacy", "destination": "/private-networks/tutorials", "permanent": true },
+    {
+      "source": "/private-networks/tutorials/privacy/:match*",
+      "destination": "/private-networks/tutorials",
+      "permanent": true
+    },
+    { "source": "/private-networks/concepts/privacy", "destination": "/private-networks", "permanent": true },
+    {
+      "source": "/private-networks/concepts/privacy/:match*",
+      "destination": "/private-networks",
+      "permanent": true
+    },
+    { "source": "/public-networks/concepts/the-merge", "destination": "/public-networks/concepts/node-clients", "permanent": true },
+    { "source": "/public-networks/how-to/use-configuration-file", "destination": "/public-networks/how-to/configure-besu", "permanent": true },
+    { "source": "/private-networks/tutorials/permissioning/onchain", "destination": "/private-networks/concepts/permissioning", "permanent": true },
+    { "source": "/private-networks/tutorials/permissioning/upgrade-contracts", "destination": "/private-networks/concepts/permissioning", "permanent": true },
+    { "source": "/private-networks/how-to/use-permissioning/onchain", "destination": "/private-networks/concepts/permissioning", "permanent": true },
+    { "source": "/private-networks/concepts/permissioning/onchain", "destination": "/private-networks/concepts/permissioning", "permanent": true },
+    { "source": "/private-networks/how-to/use-permissioning/local", "destination": "/private-networks/how-to/use-local-permissioning", "permanent": true },
+    { "source": "/private-networks/how-to/monitor/quorum-hibernate", "destination": "/private-networks/how-to/monitor", "permanent": true },
+    { "source": "/private-networks/tutorials/kubernetes/nat-manager", "destination": "/private-networks/tutorials/kubernetes", "permanent": true },
+    { "source": "/private-networks/how-to/configure/tls/client-and-server", "destination": "/private-networks/how-to/configure/tls", "permanent": true },
+    { "source": "/private-networks/concepts/pki", "destination": "/private-networks/how-to/configure/tls", "permanent": true },
+    { "source": "/private-networks/how-to/configure/tls/p2p", "destination": "/private-networks/how-to/configure/tls", "permanent": true },
+    { "source": "/private-networks/how-to/send-transactions/private-transactions", "destination": "/public-networks/how-to/send-transactions", "permanent": true },
+    { "source": "/private-networks/how-to/send-transactions/concurrent-private-transactions", "destination": "/public-networks/how-to/send-transactions", "permanent": true },
+    { "source": "/private-networks/concepts/plugins", "destination": "/plugins", "permanent": true },
+    { "source": "/private-networks/reference/plugin-api-interfaces", "destination": "/plugins", "permanent": true },
+    { "source": "/private-networks/reference/api/objects", "destination": "/public-networks/reference/api", "permanent": true }
   ],
   "rewrites": [
     {
