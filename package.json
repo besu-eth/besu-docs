@@ -69,7 +69,7 @@
     "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.2",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.10",
     "semantic-release": "^25.0.5",
     "stylelint": "^15.0.0 ",
