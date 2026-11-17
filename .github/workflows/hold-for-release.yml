@@ -1,0 +1,20 @@
+name: Hold for release
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, unlabeled]
+
+concurrency:
+  group: hold-for-release-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-label:
+    name: check-label
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if PR is labeled "Hold for release"
+        if: contains(github.event.pull_request.labels.*.name, 'Hold for release')
+        run: |
+          echo "This PR is labeled 'Hold for release' and cannot be merged yet."
+          exit 1
