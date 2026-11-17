@@ -66,10 +66,10 @@ Query blocks and their contents.
 
 Retrieve transactions and transaction receipts.
 
+- `eth_getRawTransactionByHash`
 - `eth_getTransactionByBlockHashAndIndex`
 - `eth_getTransactionByBlockNumberAndIndex`
 - `eth_getTransactionByHash`
-- `eth_getRawTransactionByHash`
 - `eth_getTransactionBySenderAndNonce`
 - `eth_getTransactionReceipt`
 
