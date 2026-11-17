@@ -36,6 +36,39 @@ Network configuration items are specified in the genesis file in the `config` ob
 | `consolidationRequestContractAddress` | Address for the consolidation request contract.                                                                                                                                                            |
 | `blobSchedule`                        | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                         |
 
+:::note System contracts on IBFT 2.0 and QBFT networks
+
+On [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and
+[QBFT](/private-networks/how-to/configure/consensus/qbft) networks, Besu runs the following
+system contract calls only if the genesis file sets **all three** of `depositContractAddress`,
+`withdrawalRequestContractAddress`, and `consolidationRequestContractAddress`:
+
+- From Cancun, the beacon block root update ([EIP-4788](https://eips.ethereum.org/EIPS/eip-4788)).
+- From Prague, the historical block hash update ([EIP-2935](https://eips.ethereum.org/EIPS/eip-2935)),
+  and the collection of deposit, withdrawal, and consolidation requests
+  ([EIP-6110](https://eips.ethereum.org/EIPS/eip-6110),
+  [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002),
+  [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251)).
+
+If any of the three is missing, Besu skips these calls and logs a warning at startup.
+Blocks then never carry execution requests: the `requestsHash` header field is always the hash of
+an empty request list, and a block that carries requests is rejected.
+Setting only `depositContractAddress` is treated the same as setting none.
+
+Most IBFT 2.0 and QBFT networks don't need these contracts and can leave the addresses out.
+If you set them, the contracts must be deployed, for example in the genesis `alloc`, before the
+fork activates.
+
+:::
+
+:::caution
+
+Adding or removing these addresses on a running network changes which blocks are valid.
+Change the genesis file on every node at the same time, and only with a new fork activation, as
+you would for any other network upgrade.
+
+:::
+
 ## Genesis block parameters
 
 Genesis block parameters are specified as top-level fields in the genesis file, outside of `config`.
