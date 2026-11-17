@@ -38,12 +38,13 @@ Network configuration items are specified in the genesis file in the `config` ob
 | `builderExitRequestContractAddress`    | Address for the builder exit request contract ([EIP-8282](https://eips.ethereum.org/EIPS/eip-8282)). Optional. Defaults to `0x000064D678505ad48F8cCb093BC65613800E8282`.                                   |
 | `blobSchedule`                         | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                         |
 
-:::note System contracts on IBFT 2.0 and QBFT networks
+### System contracts on IBFT 2.0 and QBFT networks
 
 On [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and
-[QBFT](/private-networks/how-to/configure/consensus/qbft) networks, Besu runs the following
-system contract calls only if the genesis file sets **all three** of `depositContractAddress`,
-`withdrawalRequestContractAddress`, and `consolidationRequestContractAddress`:
+[QBFT](/private-networks/how-to/configure/consensus/qbft) networks, set all three of
+`depositContractAddress`, `withdrawalRequestContractAddress`, and
+`consolidationRequestContractAddress` to enable the system contract calls below.
+Besu runs each call from the fork that introduces it:
 
 - From Cancun, the beacon block root update ([EIP-4788](https://eips.ethereum.org/EIPS/eip-4788)).
 - From Prague, the historical block hash update ([EIP-2935](https://eips.ethereum.org/EIPS/eip-2935)),
@@ -54,20 +55,18 @@ system contract calls only if the genesis file sets **all three** of `depositCon
 - From Amsterdam, the collection of builder deposit and builder exit requests
   ([EIP-8282](https://eips.ethereum.org/EIPS/eip-8282)).
 
-If any of the three is missing, Besu skips these calls and logs a warning at startup.
+If any of those three adresses is missing, Besu skips these calls and logs a warning at
+startup.
 Blocks then never carry execution requests: the `requestsHash` header field is always the hash of
 an empty request list, and a block that carries requests is rejected.
-Setting only `depositContractAddress` is treated the same as setting none.
 
-Most IBFT 2.0 and QBFT networks don't need these contracts and can leave the addresses out.
-If you set them, the contracts must be deployed, for example in the genesis `alloc`, before the
-fork activates.
-From Amsterdam, this includes the builder deposit and builder exit request contracts, at the
-addresses set by `builderDepositRequestContractAddress` and `builderExitRequestContractAddress`
-or, if those are not set, at their default addresses.
-Otherwise, every block from Amsterdam onwards is invalid.
-
-:::
+Omit the three addresses if the network does not use these calls.
+If you set the three configuration items, deploy the contracts before the fork that calls them,
+for example in the genesis `alloc`.
+From Amsterdam, also deploy the builder deposit and builder exit request contracts at
+`builderDepositRequestContractAddress` and `builderExitRequestContractAddress`, or at the
+default addresses if those items are unset.
+Besu rejects every block from the Amsterdam fork if those contracts are not deployed.
 
 :::caution
 
