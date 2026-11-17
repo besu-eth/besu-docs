@@ -594,7 +594,7 @@ Triggers a re-synchronization of the world state while retaining imported blocks
 
 ### Returns
 
-- _boolean_ - `true` when world state resynchronization starts successfully.
+- _boolean_ - always `true`. The world state resynchronization runs in the background.
 
 ### Example
 
