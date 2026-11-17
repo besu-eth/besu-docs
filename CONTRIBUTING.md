@@ -93,6 +93,8 @@ To contribute changes:
 12. After your PR is validated, all checks have passed, and your branch has no conflicts with the
     target branch, you can merge your PR.
     You can delete the topic branch after merging.
+    A pull request labeled **Hold for release** cannot be merged until that label is removed.
+    Repository admins can bypass the check.
 
 You can use a Git client such as [Fork](https://fork.dev/) instead of the command line.
 The default branch is `main`.
