@@ -38,13 +38,19 @@ contributions.
 
 ## Issue intake
 
-Issue forms live in `.github/ISSUE_TEMPLATE/` and should stay lightweight. Many Besu docs issues
-start as a short note with a link to a Besu product PR, code change, or published docs page.
+Issue forms live in `.github/ISSUE_TEMPLATE/`. `new-content.yml`, `fix-content.yml`, and
+`site.yml` share one field contract. Do not rename these labels: Summary, Docs area,
+Target audience, Content type, Affected pages, Source links, Acceptance criteria, Out of
+scope, Agent disposition, and PR gates. Only the Docs area options and examples are
+product-specific.
 
-When working from an issue, use whatever fields are provided.
-If the issue is sparse, inspect the linked source material and derive the implementation checklist.
-If the source is blank, unclear, or says research is needed, treat verification as part of
-the task before changing docs. Do not fill gaps by inventing Besu behavior.
+Many Besu docs issues start from a Besu product PR, code change, or published docs page.
+Put that link in Source links. When an issue is sparse, inspect the linked source and
+derive the implementation checklist. If the source is blank, unclear, or says research is
+needed, verify the behavior before changing docs. Do not invent Besu behavior.
+
+Open a docs pull request without extra triage only when Agent disposition is
+`Ready for a docs PR` and every PR gate is checked.
 
 ## Images
 
