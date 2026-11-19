@@ -17,24 +17,64 @@ The examples on this page use the casing used in Besu's built-in genesis files.
 
 Network configuration items are specified in the genesis file in the `config` object.
 
-| Item                                  | Description                                                                                                                                                                                                |
-| ------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Milestone blocks                      | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                    |
-| `chainId`                             | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                           |
-| `ibft2`                               | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file). |
-| `qbft`                                | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).         |
-| `transitions`                         | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                  |
-| `contractSizeLimit`                   | Maximum contract size in bytes. Specify in [free gas networks](/private-networks/how-to/configure/free-gas). The default is `24576` and the maximum size is `2147483647`.                                  |
-| `evmStackSize`                        | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                    |
-| `ecCurve`                             | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
-| `discovery`                           | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                       |
-| `checkpoint`                          | Specifies the [checkpoint configuration](#checkpoint-configuration) to sync from, in place of syncing from the genesis block.                                                                              |
-| `zeroBaseFee`                         | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#6-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
-| `fixedBaseFee`                        | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).          |
-| `depositContractAddress`              | Address for the Ethereum staking contract.                                                                                                                                                                 |
-| `withdrawalRequestContractAddress`    | Address for the withdrawal request contract.                                                                                                                                                               |
-| `consolidationRequestContractAddress` | Address for the consolidation request contract.                                                                                                                                                            |
-| `blobSchedule`                        | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                         |
+| Item                                   | Description                                                                                                                                                                                                |
+| -------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Milestone blocks                       | [Protocol milestone activation points](#milestone-configuration-items) for the network.                                                                                                                    |
+| `chainId`                              | [Chain ID](../concepts/network-and-chain-id.md) for the network.                                                                                                                                           |
+| `ibft2`                                | Specifies that the network uses [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and contains [IBFT 2.0 configuration items](/private-networks/how-to/configure/consensus/ibft#genesis-file). |
+| `qbft`                                 | Specifies that the network uses [QBFT](/private-networks/how-to/configure/consensus/qbft) and contains [QBFT configuration items](/private-networks/how-to/configure/consensus/qbft#genesis-file).         |
+| `transitions`                          | Specifies the block at which to [change IBFT 2.0 or QBFT validators](../../private-networks/how-to/configure/consensus/add-validators-without-voting.md).                                                  |
+| `contractSizeLimit`                    | Maximum contract size in bytes. Specify in [free gas networks](/private-networks/how-to/configure/free-gas). The default is `24576` and the maximum size is `2147483647`.                                  |
+| `evmStackSize`                         | Maximum stack size. Specify to increase the maximum stack size in private networks with complex smart contracts. The default is `1024`.                                                                    |
+| `ecCurve`                              | Specifies [the elliptic curve to use](/private-networks/how-to/configure/curves). The default is `secp256k1`.                                                                                              |
+| `discovery`                            | Specifies [discovery configuration items](#discovery-configuration-items). The `discovery` object can be left empty.                                                                                       |
+| `checkpoint`                           | Specifies the [checkpoint configuration](#checkpoint-configuration) to sync from, in place of syncing from the genesis block.                                                                              |
+| `zeroBaseFee`                          | Specifies a base fee of `0` for [free gas networks](/private-networks/how-to/configure/free-gas#6-enable-zero-base-fee-if-using-london-fork-or-later).                                                     |
+| `fixedBaseFee`                         | Specifies a constant base fee for blocks, overriding the dynamic base fee calculation of [Ethereum Improvement Proposal 1559 (EIP-1559)](../concepts/transactions/types.md#eip1559-transactions).          |
+| `depositContractAddress`               | Address for the Ethereum staking contract.                                                                                                                                                                 |
+| `withdrawalRequestContractAddress`     | Address for the withdrawal request contract.                                                                                                                                                               |
+| `consolidationRequestContractAddress`  | Address for the consolidation request contract.                                                                                                                                                            |
+| `builderDepositRequestContractAddress` | Address for the builder deposit request contract ([EIP-8282](https://eips.ethereum.org/EIPS/eip-8282)). Optional. Defaults to `0x0000bFF46984e3725691FA540a8C7589300D8282`.                                |
+| `builderExitRequestContractAddress`    | Address for the builder exit request contract ([EIP-8282](https://eips.ethereum.org/EIPS/eip-8282)). Optional. Defaults to `0x000064D678505ad48F8cCb093BC65613800E8282`.                                   |
+| `blobSchedule`                         | Specifies [blob schedule configuration items](#blob-schedule-configuration-items).                                                                                                                         |
+
+### System contracts on IBFT 2.0 and QBFT networks
+
+On [IBFT 2.0](/private-networks/how-to/configure/consensus/ibft) and
+[QBFT](/private-networks/how-to/configure/consensus/qbft) networks, set all three of
+`depositContractAddress`, `withdrawalRequestContractAddress`, and
+`consolidationRequestContractAddress` to enable the system contract calls below.
+Besu runs each call from the fork that introduces it:
+
+- From Cancun, the beacon block root update ([EIP-4788](https://eips.ethereum.org/EIPS/eip-4788)).
+- From Prague, the historical block hash update ([EIP-2935](https://eips.ethereum.org/EIPS/eip-2935)),
+  and the collection of deposit, withdrawal, and consolidation requests
+  ([EIP-6110](https://eips.ethereum.org/EIPS/eip-6110),
+  [EIP-7002](https://eips.ethereum.org/EIPS/eip-7002),
+  [EIP-7251](https://eips.ethereum.org/EIPS/eip-7251)).
+- From Amsterdam, the collection of builder deposit and builder exit requests
+  ([EIP-8282](https://eips.ethereum.org/EIPS/eip-8282)).
+
+If any of those three adresses is missing, Besu skips these calls and logs a warning at
+startup.
+Blocks then never carry execution requests: the `requestsHash` header field is always the hash of
+an empty request list, and a block that carries requests is rejected.
+
+Omit the three addresses if the network does not use these calls.
+If you set the three configuration items, deploy the contracts before the fork that calls them,
+for example in the genesis `alloc`.
+From Amsterdam, also deploy the builder deposit and builder exit request contracts at
+`builderDepositRequestContractAddress` and `builderExitRequestContractAddress`, or at the
+default addresses if those items are unset.
+Besu rejects every block from the Amsterdam fork if those contracts are not deployed.
+
+:::caution
+
+Adding or removing these addresses on a running network changes which blocks are valid.
+Change the genesis file on every node at the same time, and only with a new fork activation, as
+you would for any other network upgrade.
+
+:::
 
 ## Genesis block parameters
 
