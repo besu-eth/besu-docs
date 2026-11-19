@@ -354,12 +354,14 @@ for blocks outside the range.
 
 - `Cache Removed` status or `error`.
 
+:::note
 If log bloom caching is in progress, Besu removes no cache files and returns a JSON-RPC error (`-32000`,
 `Cache removal is unavailable while log bloom caching is in progress`). Try again when caching completes.
 
 If Besu can't delete a cache file, it still tries the remaining files in the range, then returns a
 JSON-RPC error (`-32000`, `Unable to remove all log bloom cache segments`). Some cache files might have
 been removed.
+:::
 
 ### Example
 
