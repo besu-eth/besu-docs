@@ -312,6 +312,10 @@ Returns information about the block matching the specified block hash.
 
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
+  - `blockAccessListHash`: _data, 32 bytes_ - Hash of the block access list. Only present for blocks created after [EIP-7928](https://eips.ethereum.org/EIPS/eip-7928) (Amsterdam).
+
+  - `slotNumber`: _quantity_ - Slot number of the block. Only present for blocks created after [EIP-7843](https://eips.ethereum.org/EIPS/eip-7843) (Amsterdam).
+
   </Fields>
 
 ### Example
@@ -600,6 +604,10 @@ Returns information about the block matching the specified block number.
 
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
+  - `blockAccessListHash`: _data, 32 bytes_ - Hash of the block access list. Only present for blocks created after [EIP-7928](https://eips.ethereum.org/EIPS/eip-7928) (Amsterdam).
+
+  - `slotNumber`: _quantity_ - Slot number of the block. Only present for blocks created after [EIP-7843](https://eips.ethereum.org/EIPS/eip-7843) (Amsterdam).
+
   </Fields>
 
 ### Example
@@ -766,6 +774,231 @@ curl -X POST http://localhost:8547/graphql \
       },
       "baseFeePerGas": "0x7"
     }
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
+## `eth_getHeaderByHash`
+
+Returns the header of the block matching the specified hash, without its transactions or other block body data.
+
+### Parameters
+
+- `hash`: _string_ - 32-byte hash of a block.
+
+### Returns
+
+- Block header object, or `null` when there is no block.
+
+  <Fields>
+
+  - `number`: _quantity, integer_ - Block number.
+
+  - `hash`: _data, 32 bytes_ - Hash of the block.
+
+  - `mixHash`: _data, 32 bytes_ - For pre-[merge](https://ethereum.org/roadmap/merge/) blocks, the hash used to verify the proof of work. For post-merge blocks, the `prevRandao` value supplied by the consensus layer.
+
+  - `parentHash`: _data, 32 bytes_ - Hash of the parent block.
+
+  - `nonce`: _data, 8 bytes_ - Hash of the generated proof of work.
+
+  - `sha3Uncles`: _data, 32 bytes_ - SHA3 of the uncle's data in the block.
+
+  - `logsBloom`: _data, 256 bytes_ - Bloom filter for the block logs.
+
+  - `transactionsRoot`: _data, 32 bytes_ - Root of the transaction trie for the block.
+
+  - `stateRoot`: _data, 32 bytes_ - Root of the final state trie for the block.
+
+  - `receiptsRoot`: _data, 32 bytes_ - Root of the receipts trie for the block.
+
+  - `miner`: _data, 20 bytes_ - Address to pay mining rewards to.
+
+  - `difficulty`: _quantity, integer_ - Difficulty for this block.
+
+  - `extraData`: _data_ - Extra data field for this block. The first 32 bytes is vanity data you can set using the [`--miner-extra-data`](../../options.md#miner-extra-data) command line option. Stores extra data when used with [IBFT](../../../../private-networks/how-to/configure/consensus/ibft.md#genesis-file).
+
+  - `gasLimit`: _quantity_ - Maximum gas allowed in this block.
+
+  - `gasUsed`: _quantity_ - Total gas used by all transactions in this block.
+
+  - `timestamp`: _quantity_ - Hex-encoded Unix timestamp (in seconds) for block assembly.
+
+  - `baseFeePerGas`: _quantity_ - The block's [base fee per gas](../../../concepts/transactions/types.md#eip1559-transactions). Only present for blocks created after [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559).
+
+  - `withdrawalsRoot`: _data, 32 bytes_ - Root of the withdrawals trie for the block. Only present for blocks created after [EIP-4895](https://eips.ethereum.org/EIPS/eip-4895) (Shanghai).
+
+  - `blobGasUsed`: _quantity_ - Total blob gas used by the transactions in this block. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `excessBlobGas`: _quantity_ - Running total of excess blob gas used to calculate the blob base fee for subsequent blocks. Only present for blocks created after [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844) (Cancun).
+
+  - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
+
+  - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
+
+  - `blockAccessListHash`: _data, 32 bytes_ - Hash of the block access list. Only present for blocks created after [EIP-7928](https://eips.ethereum.org/EIPS/eip-7928) (Amsterdam).
+
+  - `slotNumber`: _quantity_ - Slot number of the block. Only present for blocks created after [EIP-7843](https://eips.ethereum.org/EIPS/eip-7843) (Amsterdam).
+
+  </Fields>
+
+### Example
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getHeaderByHash",
+    "params": [
+      "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c"
+    ],
+    "id": 53
+  }'
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getHeaderByHash",
+  "params": [
+    "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c"
+  ],
+  "id": 53
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 53,
+  "result": {
+    "number": "0x68b3",
+    "hash": "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c",
+    "mixHash": "0x24900fb3da77674a861c428429dce0762707ecb6052325bbd9b3c64e74b5af9d",
+    "parentHash": "0x1f68ac259155e2f38211ddad0f0a15394d55417b185a93923e2abe71bb7a4d6d",
+    "nonce": "0x378da40ff335b070",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "logsBloom": "0x00000000000000100000004080000000000500000000000000020000100000000800001000000004000001000000000000000800040010000020100000000400000010000000000000000040000000000000040000000000000000000000000000000400002400000000000000000000000000000004000004000000000000840000000800000080010004000000001000000800000000000000000000000000000000000800000000000040000000020000000000000000000800000400000000000000000000000600000400000000002000000000000000000000004000000000000000100000000000000000000000000000000000040000900010000000",
+    "transactionsRoot": "0x4d0c8e91e16bdff538c03211c5c73632ed054d00a7e210c0eb25146c20048126",
+    "stateRoot": "0x91309efa7e42c1f137f31fe9edbe88ae087e6620d0d59031324da3e2f4f93233",
+    "receiptsRoot": "0x68461ab700003503a305083630a8fb8d14927238f0bc8b6b3d246c0c64f21f4a",
+    "miner": "0xb42b6c4a95406c78ff892d270ad20b22642e102d",
+    "difficulty": "0x66e619a",
+    "extraData": "0xd583010502846765746885676f312e37856c696e7578",
+    "gasLimit": "0x47e7c4",
+    "gasUsed": "0x37993",
+    "timestamp": "0x5835c54d",
+    "baseFeePerGas": "0x7"
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
+## `eth_getHeaderByNumber`
+
+Returns the header of the block matching the specified block number or tag, without its transactions or other block body data.
+
+### Parameters
+
+- `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of
+  the string tags `latest`, `earliest`, `pending`, `finalized`, or `safe`, as described in
+  [block parameter](../../../how-to/use-besu-api/json-rpc.md#block-parameter).
+
+  :::note
+
+  `pending` returns `null`.
+
+  :::
+
+### Returns
+
+- Block header object with the same fields as [`eth_getHeaderByHash`](#eth_getheaderbyhash),
+  or `null` when there is no block.
+
+### Example
+
+<Tabs>
+
+<TabItem value="curl HTTP" label="curl HTTP" default>
+
+```bash
+curl -X POST http://127.0.0.1:8545/ \
+  -H "Content-Type: application/json" \
+  --data '{
+    "jsonrpc": "2.0",
+    "method": "eth_getHeaderByNumber",
+    "params": [
+      "0x68B3"
+    ],
+    "id": 1
+  }'
+```
+
+</TabItem>
+
+<TabItem value="wscat WS" label="wscat WS">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "eth_getHeaderByNumber",
+  "params": [
+    "0x68B3"
+  ],
+  "id": 1
+}
+```
+
+</TabItem>
+
+<TabItem value="JSON result" label="JSON result">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "number": "0x68b3",
+    "hash": "0xd5f1812548be429cbdc6376b29611fc49e06f1359758c4ceaaa3b393e2239f9c",
+    "mixHash": "0x24900fb3da77674a861c428429dce0762707ecb6052325bbd9b3c64e74b5af9d",
+    "parentHash": "0x1f68ac259155e2f38211ddad0f0a15394d55417b185a93923e2abe71bb7a4d6d",
+    "nonce": "0x378da40ff335b070",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "logsBloom": "0x00000000000000100000004080000000000500000000000000020000100000000800001000000004000001000000000000000800040010000020100000000400000010000000000000000040000000000000040000000000000000000000000000000400002400000000000000000000000000000004000004000000000000840000000800000080010004000000001000000800000000000000000000000000000000000800000000000040000000020000000000000000000800000400000000000000000000000600000400000000002000000000000000000000004000000000000000100000000000000000000000000000000000040000900010000000",
+    "transactionsRoot": "0x4d0c8e91e16bdff538c03211c5c73632ed054d00a7e210c0eb25146c20048126",
+    "stateRoot": "0x91309efa7e42c1f137f31fe9edbe88ae087e6620d0d59031324da3e2f4f93233",
+    "receiptsRoot": "0x68461ab700003503a305083630a8fb8d14927238f0bc8b6b3d246c0c64f21f4a",
+    "miner": "0xb42b6c4a95406c78ff892d270ad20b22642e102d",
+    "difficulty": "0x66e619a",
+    "extraData": "0xd583010502846765746885676f312e37856c696e7578",
+    "gasLimit": "0x47e7c4",
+    "gasUsed": "0x37993",
+    "timestamp": "0x5835c54d",
+    "baseFeePerGas": "0x7"
   }
 }
 ```
@@ -1398,6 +1631,10 @@ Returns uncle specified by block hash and index.
 
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
 
+  - `blockAccessListHash`: _data, 32 bytes_ - Hash of the block access list. Only present for blocks created after [EIP-7928](https://eips.ethereum.org/EIPS/eip-7928) (Amsterdam).
+
+  - `slotNumber`: _quantity_ - Slot number of the block. Only present for blocks created after [EIP-7843](https://eips.ethereum.org/EIPS/eip-7843) (Amsterdam).
+
   <br />
 
   :::note
@@ -1678,6 +1915,10 @@ Returns uncle specified by block number and index.
   - `parentBeaconBlockRoot`: _data, 32 bytes_ - Root of the parent beacon block, which exposes beacon chain state to the EVM. Only present for blocks created after [EIP-4788](https://eips.ethereum.org/EIPS/eip-4788) (Cancun).
 
   - `requestsHash`: _data, 32 bytes_ - Hash of the general purpose execution layer requests (for example, deposits, withdrawals, and consolidations) included in the block. Only present for blocks created after [EIP-7685](https://eips.ethereum.org/EIPS/eip-7685) (Prague).
+
+  - `blockAccessListHash`: _data, 32 bytes_ - Hash of the block access list. Only present for blocks created after [EIP-7928](https://eips.ethereum.org/EIPS/eip-7928) (Amsterdam).
+
+  - `slotNumber`: _quantity_ - Slot number of the block. Only present for blocks created after [EIP-7843](https://eips.ethereum.org/EIPS/eip-7843) (Amsterdam).
 
   <br />
 
