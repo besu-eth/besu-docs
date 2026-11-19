@@ -90,6 +90,12 @@ If you set the enterprise configuration profile using [`--profile=enterprise`](.
 The sequenced transaction pool suits enterprise environments because it functions like a first-in-first-out (FIFO) queue and processes transactions in the order of submission, regardless of the sender.
 When the pool reaches capacity, the newer transactions are evicted first, reducing the likelihood of a nonce gap and avoiding the need to resubmit older transactions.
 
+To control how long pending transactions are retained, set
+[`--tx-pool-retention-seconds`](../../reference/options.md#tx-pool-retention-seconds) to a positive value.
+It takes precedence over [`--tx-pool-retention-hours`](../../reference/options.md#tx-pool-retention-hours).
+The default `-1` disables the seconds option and keeps the hours-based retention period.
+A value of `0` is not accepted.
+
 ## Replacing pending transactions
 
 You can replace a pending transaction with a transaction that has the same sender and nonce but a higher gas price.
