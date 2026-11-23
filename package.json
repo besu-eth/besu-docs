@@ -52,7 +52,7 @@
     "unzipper": "^0.12.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.2.0",
+    "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
     "@docusaurus/eslint-plugin": "^3.10.2",
     "@docusaurus/module-type-aliases": "^3.10.1",
