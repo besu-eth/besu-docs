@@ -341,15 +341,27 @@ Removes cache files for the specified range of blocks.
 If you specify:
 
 - No parameters, Besu removes cache files from the genesis block through the chain head.
-- One parameter, Besu sets `fromBlock` and `toBlock` to that one block and removes cache files for that 
-  block only.
+- One parameter, Besu sets `fromBlock` and `toBlock` to that one block and removes the cache file that
+  contains that block.
 - Two parameters, Besu removes cache files from `fromBlock` through `toBlock`, inclusive.
 
 Besu rejects an empty string (`""`) as an invalid block parameter.
 
+Each cache file covers 100,000 blocks, and Besu removes whole cache files, so it can remove cache data
+for blocks outside the range.
+
 ### Returns
 
 - `Cache Removed` status or `error`.
+
+:::note
+If log bloom caching is in progress, Besu removes no cache files and returns a JSON-RPC error (`-32000`,
+`Cache removal is unavailable while log bloom caching is in progress`). Try again when caching completes.
+
+If Besu can't delete a cache file, it still tries the remaining files in the range, then returns a
+JSON-RPC error (`-32000`, `Unable to remove all log bloom cache segments`). Some cache files might have
+been removed.
+:::
 
 ### Example
 
