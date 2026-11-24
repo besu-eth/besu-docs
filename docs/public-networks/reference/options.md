@@ -7075,11 +7075,61 @@ tx-pool-retention-hours=5
 
 The maximum period (in hours) to hold pending transactions in the [transaction pool](../concepts/transactions/pool.md).
 The default is `13`.
+For the sequenced transaction pool, a positive
+[`--tx-pool-retention-seconds`](#tx-pool-retention-seconds) value takes precedence over this option.
+Besu logs a warning that the hours option is ignored when both are configured.
+If the seconds option is disabled (the default `-1`), this hours setting remains in effect.
 
 :::caution
 With the [layered transaction pool](../concepts/transactions/pool.md#layered-transaction-pool)
 implementation, this option is not applicable because old transactions will expire when the memory
 cache is full.
+:::
+
+---
+
+## `tx-pool-retention-seconds`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--tx-pool-retention-seconds=30
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_TX_POOL_RETENTION_SECONDS=30
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+tx-pool-retention-seconds=30
+```
+
+</TabItem>
+
+</Tabs>
+
+The maximum period (in seconds) to retain pending transactions in the
+[sequenced transaction pool](../concepts/transactions/pool.md#sequenced-transaction-pool).
+The default is `-1`, which disables the seconds option and uses
+[`--tx-pool-retention-hours`](#tx-pool-retention-hours) instead.
+
+A positive value overrides the hours option. If both options are explicitly set, Besu logs a warning
+that `--tx-pool-retention-hours` is ignored.
+The value `0` or any value less than `-1` is rejected.
+
+:::caution
+This option applies to the sequenced transaction pool, not the
+[layered transaction pool](../concepts/transactions/pool.md#layered-transaction-pool).
 :::
 
 ---
