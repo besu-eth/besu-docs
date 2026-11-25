@@ -3,7 +3,7 @@ title: Trace methods
 description: Besu DEBUG JSON-RPC API trace methods reference
 sidebar_label: Trace
 sidebar_position: 1
-toc_max_heading_level: 2
+toc_max_heading_level: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -19,7 +19,7 @@ You can also specify a trace file for a specific transaction in a block.
 
 Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to view the trace for an invalid block.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockHash`: _string_ - Block hash.
 
@@ -45,11 +45,11 @@ Use [`debug_standardTraceBadBlockToFile`](#debug_standardtracebadblocktofile) to
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Location of the generated trace files.
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -117,7 +117,7 @@ Generates files containing the block trace of invalid blocks. A separate file is
 
 Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view the trace for a valid block.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockHash`: _string_ - Block hash.
 
@@ -143,11 +143,11 @@ Use [`debug_standardTraceBlockToFile`](#debug_standardtraceblocktofile) to view 
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Location of the generated trace files.
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -207,7 +207,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Reruns the transaction with the same state as when the transaction executed.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `transactionHash`: _string_ - Transaction hash.
 
@@ -242,7 +242,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Trace object.
   If you specify a `tracer`, Besu returns the [result of that tracer](#tracers) instead of the
@@ -294,7 +294,7 @@ Reruns the transaction with the same state as when the transaction executed.
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -373,7 +373,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `block`: _string_ - RLP of the block.
 
@@ -411,7 +411,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Array of transaction trace objects.
 
@@ -465,7 +465,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -531,7 +531,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockHash`: _string_ - Block hash.
 
@@ -573,7 +573,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Array of transaction trace objects.
 
@@ -627,7 +627,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -693,7 +693,7 @@ curl -X POST http://127.0.0.1:8545/ \
 
 Returns full trace of all invoked opcodes of all transactions included in the block.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `blockNumber`: _string_ - Hexadecimal integer representing a block number, or one of the
   string tags `latest`, `pending`, `finalized`, or `safe`, as described in
@@ -738,7 +738,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Array of transaction trace objects.
 
@@ -792,7 +792,7 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
@@ -867,7 +867,7 @@ Each `options` entry specifies a state that will be temporarily overridden befor
 This allows you to test, analyze, and debug smart contracts more efficiently by allowing
 temporary state changes without affecting the actual blockchain state.
 
-### Parameters
+<h3>Parameters</h3>
 
 - `call`: _object_ - Transaction call object.
 
@@ -969,7 +969,7 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
-### Returns
+<h3>Returns</h3>
 
 - Trace object.
   If you specify a `tracer`, Besu returns the [result of that tracer](#tracers) instead of the
@@ -1022,7 +1022,7 @@ temporary state changes without affecting the actual blockchain state.
 
   </Fields>
 
-### Example
+<h3>Example</h3>
 
 <Tabs>
 
