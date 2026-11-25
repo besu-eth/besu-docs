@@ -760,6 +760,8 @@ curl -X POST http://127.0.0.1:8545/ \
 ## `trace_rawTransaction`
 
 Traces a call to `eth_sendRawTransaction` without making the call, returning the traces.
+The trace captures at most the number of EVM steps set by
+[`--rpc-max-trace-steps`](../options.md#rpc-max-trace-steps).
 
 :::info note
 When using [Bonsai](../../concepts/data-storage-formats.md#bonsai-tries), the requested transaction

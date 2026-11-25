@@ -5068,7 +5068,8 @@ The maximum number of EVM steps captured by one [`debug_traceCall`](api/debug/tr
 [`debug_traceBlock`](api/debug/trace.md#debug_traceblock),
 [`debug_traceBlockByHash`](api/debug/trace.md#debug_traceblockbyhash),
 [`debug_traceBlockByNumber`](api/debug/trace.md#debug_traceblockbynumber),
-[`trace_call`](api/trace.md#trace_call), or [`trace_callMany`](api/trace.md#trace_callmany) request.
+[`trace_call`](api/trace.md#trace_call), [`trace_callMany`](api/trace.md#trace_callmany), or
+[`trace_rawTransaction`](api/trace.md#trace_rawtransaction) request.
 Set to `0` to specify no limit.
 The default is `1000000`.
 
