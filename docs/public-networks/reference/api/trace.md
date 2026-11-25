@@ -1250,9 +1250,11 @@ The `action` and `result` shapes depend on the trace `type`.
   - `gasUsed`: _quantity_ - Gas used by this trace, including unused-gas
     refunds.
 
-  - `output`: _data_ - Return value of the contract call.
-    Contains only the actual value sent by a `RETURN` operation.
-    If a `RETURN` was not executed, the output is empty bytes.
+  - `output`: _data_ - Return data of the call.
+    For a contract call, this is the value sent by a `RETURN` operation, or empty bytes if the
+    call ends without executing `RETURN`.
+    A precompiled contract doesn't execute `RETURN`, so for a successful call to a precompiled
+    contract this is the data that the precompiled contract returns.
     Present on `call` traces.
 
   - `code`: _data_ - Deployed bytecode.
