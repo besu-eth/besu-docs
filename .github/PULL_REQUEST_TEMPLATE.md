@@ -12,12 +12,6 @@ Fixes #
 
 <!-- Copy the issue's Target audience, Docs area, and Content type. Leave blank for a site or tooling issue. -->
 
-## Pages
-
-<!-- One public URL per line. Use N/A for changes that do not publish a page. -->
-
--
-
 ## Source check
 
 <!-- Link the code, spec, or release note that verifies each product fact. Write "Not a product fact" for style, navigation, or tooling-only changes. -->
