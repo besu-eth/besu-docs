@@ -48,6 +48,8 @@ the requested block must be within the number of
   returned list items include the
   [revert reason](../../../private-networks/how-to/send-transactions/revert-reason.md).
 
+If the block isn't on the chain, Besu returns error `-32000` (`Block not found`).
+
 <h3>Example</h3>
 
 <Tabs>
@@ -904,6 +906,8 @@ default, 512 from the head of the chain).
   - `transactionHash`: _data, 32 bytes_ - Hash of the replayed transaction.
 
   </Fields>
+
+If the block isn't on the chain, Besu returns error `-32000` (`Block not found`).
 
 <h3>Example</h3>
 
