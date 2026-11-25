@@ -536,13 +536,33 @@ the requested blocks must be within the number of
   If you specify `blockHash`, you cannot specify `fromBlock` or `toBlock`.
   A `null` `blockHash` is ignored.
 
-- `fromAddress`: _string_ - Include only traces sent from this address.
+- `fromAddress`: _array of data, 20 bytes each_ - (Optional) Include only traces sent from one of
+  these addresses.
 
-- `toAddress`: _string_ - Include only traces with this destination address.
+- `toAddress`: _array of data, 20 bytes each_ - (Optional) Include only traces with one of these
+  destination addresses.
+  A block `reward` trace has no destination, so Besu matches its `author` address instead.
 
-- `after`: _quantity_ - The offset trace number.
+  :::note
+  `fromAddress` and `toAddress` must be arrays.
+  A single address string returns error `-32602` (`Invalid filter params`).
+  :::
 
-- `count`: _integer_ - Number of traces to display in a batch.
+- `mode`: _string_ - (Optional) How to combine `fromAddress` and `toAddress` when you specify both:
+
+  - `intersection` - Include only traces that match both `fromAddress` and `toAddress`.
+  - `union` - Include traces that match either `fromAddress` or `toAddress`.
+
+  The default is `intersection`.
+  Any other value returns error `-32602` (`Invalid filter params`).
+
+- `after`: _integer_ - (Optional) Number of matching traces to skip before the first returned trace.
+
+- `count`: _integer_ - (Optional) Maximum number of traces to return.
+
+  :::note
+  A negative `after` or `count` returns error `-32602` (`Invalid filter params`).
+  :::
 
 <h3>Returns</h3>
 
