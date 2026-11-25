@@ -270,12 +270,16 @@ Reruns the transaction with the same state as when the transaction executed.
     - `stack`: _array of strings_ - EVM stack before the current opcode, as
       `0x`-prefixed compact hex strings (leading zeros stripped).
 
-    - `memory`: _array of strings_ - Contract memory after the current opcode
+    - `memory`: _array of strings_ - Contract memory before the current opcode
       runs, as `0x`-prefixed 32-byte hex strings.
 
-    - `storage`: _object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Map of each storage slot that the current contract has read or
+      written so far in the transaction to the value last read or written.
+      Present only on `SLOAD` and `SSTORE` steps.
+      On an `SSTORE` step, the written slot shows its new value.
 
-    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data before the current opcode runs, as a hex string.
+      Present only when `enableReturnData` is `true` and the return data isn't empty.
 
     </Fields>
 
@@ -385,7 +389,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
-    Streamed block traces do not include a per-opcode `returnData` field.
 
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
@@ -436,10 +439,16 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
       - `stack`: _array of strings_ - EVM stack before the current opcode, as
         `0x`-prefixed compact hex strings (leading zeros stripped).
 
-      - `memory`: _array of strings_ - Contract memory after the current opcode
+      - `memory`: _array of strings_ - Contract memory before the current opcode
         runs, as `0x`-prefixed 32-byte hex strings.
 
-      - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `storage`: _object_ - Map of each storage slot that the current contract has read or
+        written so far in the transaction to the value last read or written.
+        Present only on `SLOAD` and `SSTORE` steps.
+        On an `SSTORE` step, the written slot shows its new value.
+
+      - `returnData`: _data_ - EVM return data before the current opcode runs, as a hex string.
+        Present only when `enableReturnData` is `true` and the return data isn't empty.
 
       </Fields>
 
@@ -538,7 +547,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
-    Streamed block traces do not include a per-opcode `returnData` field.
 
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
@@ -589,10 +597,16 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
       - `stack`: _array of strings_ - EVM stack before the current opcode, as
         `0x`-prefixed compact hex strings (leading zeros stripped).
 
-      - `memory`: _array of strings_ - Contract memory after the current opcode
+      - `memory`: _array of strings_ - Contract memory before the current opcode
         runs, as `0x`-prefixed 32-byte hex strings.
 
-      - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `storage`: _object_ - Map of each storage slot that the current contract has read or
+        written so far in the transaction to the value last read or written.
+        Present only on `SLOAD` and `SSTORE` steps.
+        On an `SSTORE` step, the written slot shows its new value.
+
+      - `returnData`: _data_ - EVM return data before the current opcode runs, as a hex string.
+        Present only when `enableReturnData` is `true` and the return data isn't empty.
 
       </Fields>
 
@@ -694,7 +708,6 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
 
   - `enableReturnData`: _boolean_ - `true` enables return data capture.
     The default is `false`.
-    Streamed block traces do not include a per-opcode `returnData` field.
 
   - `limit`: _integer_ - Maximum number of opcode steps to capture
     for each transaction.
@@ -745,10 +758,16 @@ Returns full trace of all invoked opcodes of all transactions included in the bl
       - `stack`: _array of strings_ - EVM stack before the current opcode, as
         `0x`-prefixed compact hex strings (leading zeros stripped).
 
-      - `memory`: _array of strings_ - Contract memory after the current opcode
+      - `memory`: _array of strings_ - Contract memory before the current opcode
         runs, as `0x`-prefixed 32-byte hex strings.
 
-      - `storage`: _object_ - Storage entries changed by the current transaction.
+      - `storage`: _object_ - Map of each storage slot that the current contract has read or
+        written so far in the transaction to the value last read or written.
+        Present only on `SLOAD` and `SSTORE` steps.
+        On an `SSTORE` step, the written slot shows its new value.
+
+      - `returnData`: _data_ - EVM return data before the current opcode runs, as a hex string.
+        Present only when `enableReturnData` is `true` and the return data isn't empty.
 
       </Fields>
 
@@ -961,12 +980,16 @@ temporary state changes without affecting the actual blockchain state.
     - `stack`: _array of strings_ - EVM stack before the current opcode, as
       `0x`-prefixed compact hex strings (leading zeros stripped).
 
-    - `memory`: _array of strings_ - Contract memory after the current opcode
+    - `memory`: _array of strings_ - Contract memory before the current opcode
       runs, as `0x`-prefixed 32-byte hex strings.
 
-    - `storage`: _object_ - Storage entries changed by the current transaction.
+    - `storage`: _object_ - Map of each storage slot that the current contract has read or
+      written so far in the transaction to the value last read or written.
+      Present only on `SLOAD` and `SSTORE` steps.
+      On an `SSTORE` step, the written slot shows its new value.
 
-    - `returnData`: _data_ - EVM return data produced by the current opcode, as a hex string.
+    - `returnData`: _data_ - EVM return data before the current opcode runs, as a hex string.
+      Present only when `enableReturnData` is `true` and the return data isn't empty.
 
     </Fields>
 
