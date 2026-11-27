@@ -4949,6 +4949,52 @@ Once this limit is reached, requests to create a filter return an error until an
 
 ---
 
+## `rpc-max-log-filter-addresses`
+
+<Tabs>
+
+<TabItem value="Command line example">
+
+```bash
+--rpc-max-log-filter-addresses=500
+```
+
+</TabItem>
+
+<TabItem value="Environment variable example">
+
+```bash
+BESU_RPC_MAX_LOG_FILTER_ADDRESSES=500
+```
+
+</TabItem>
+
+<TabItem value="Config file example">
+
+```bash
+rpc-max-log-filter-addresses=500
+```
+
+</TabItem>
+
+</Tabs>
+
+The maximum number of addresses in a single [`eth_newFilter`](api/eth/filter.md#eth_newfilter),
+[`eth_getLogs`](api/eth/filter.md#eth_getlogs),
+[`eth_subscribe`](../how-to/use-besu-api/rpc-pubsub.md#logs) (`logs`),
+[`trace_filter`](api/trace.md#trace_filter), or [GraphQL](../how-to/use-besu-api/graphql.md)
+`logs(filter)` request.
+For `trace_filter`, the `fromAddress` and `toAddress` lists count together.
+The value must be equal to or greater than `0`.
+Set to `0` to specify no limit.
+The default is `1000`.
+
+Besu rejects a request that names more addresses than this limit.
+JSON-RPC methods return error `-32005` (`Filter address count exceeds limit`).
+GraphQL `logs(filter)` queries return an `Invalid params` error.
+
+---
+
 ## `rpc-max-logs-range`
 
 <Tabs>
