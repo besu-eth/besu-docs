@@ -890,10 +890,10 @@ discovery-mode="BOTH"
 
 The discovery protocol or protocols to run:
 
-- `V4` (the default) runs only discovery v4.
+- `V4` runs only discovery v4.
 - `V5` runs only discovery v5.
   This requires a secp256k1 node key; Besu falls back to discovery v4 if the key curve is unsupported.
-- `BOTH` runs discovery v4 and v5 concurrently on a shared UDP socket.
+- `BOTH` (the default) runs discovery v4 and v5 concurrently on a shared UDP socket.
 
 See how the discovery mode supports
 [IPv6 and dual-stack networking](../concepts/ipv6-dual-stack.md#discovery-protocols).

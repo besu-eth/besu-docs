@@ -13,7 +13,7 @@ This page explains how Besu supports each mode and how the related configuration
 
 Besu supports [discovery v4](https://github.com/ethereum/devp2p/blob/master/discv4.md) and
 [discovery v5](https://github.com/ethereum/devp2p/tree/master/discv5).
-Use [`--discovery-mode`](../reference/options.md#discovery-mode) to choose one or both discovery protocols (the default is v4).
+Use [`--discovery-mode`](../reference/options.md#discovery-mode) to choose one or both discovery protocols (the default is `BOTH`).
 
 Discovery v4 advertises each peer as a single IP address, usually written as an
 [enode URL](node-keys.md#enode-url).
@@ -23,7 +23,7 @@ carry an IPv4 address and an IPv6 address at the same time (see
 
 Dual-stack works in both discovery modes; discovery v5 is not required to bind IPv6 sockets or advertise
 an IPv6 enode.
-Set [`--discovery-mode`](../reference/options.md#discovery-mode) to `V5` or `BOTH` to do any of the following:
+Set [`--discovery-mode`](../reference/options.md#discovery-mode) to `V5` or `BOTH` (the default) to do any of the following:
 
 - Advertise both addresses during discovery
 - Specify [bootnodes](../../private-networks/how-to/configure/bootnodes.md) using ENRs
