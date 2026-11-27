@@ -300,6 +300,15 @@ Using `eth_getLogs` to get logs from a large range of blocks, especially an enti
 
 :::
 
+:::note
+
+[`--rpc-max-log-filter-addresses`](../../options.md#rpc-max-log-filter-addresses) limits the number of
+addresses in `address` (the default is `1000`).
+If the request names more addresses than the limit, Besu returns error `-32005`
+(`Filter address count exceeds limit`).
+
+:::
+
 ### Parameters
 
 - `filterOptions`: _object_ - Filter options object.
@@ -579,6 +588,11 @@ Creates a [log filter](../../../concepts/events-and-logs.md). To poll for logs a
 [`--rpc-max-logs-range`](../../options.md#rpc-max-logs-range) limits the block range of a new filter (the 
 default is `5000`).
 If the resolved block range is larger than the limit, Besu returns an error and does not install the filter.
+
+[`--rpc-max-log-filter-addresses`](../../options.md#rpc-max-log-filter-addresses) limits the number of
+addresses in `address` (the default is `1000`).
+If the request names more addresses than the limit, Besu returns error `-32005`
+(`Filter address count exceeds limit`) and does not install the filter.
 
 :::
 
